@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSFactory', function (FSCharacter, FSGatherables) {
+  .factory('FSFactory', function (FSCharacter) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     /**

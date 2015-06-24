@@ -20,7 +20,7 @@ angular.module('craftyApp')
 		this.activity = null;
 		this.activityCompletedCallback = null;
 		this.ctrllerScope = ctrllerScope;
-		this.bgcolor = "#FFFFFF";
+		this.bgcolor = '#FFFFFF';
 		console.log('scope:'+this.ctrllerScope);
 
 	}
@@ -37,13 +37,13 @@ angular.module('craftyApp')
 		this.activityCompletedCallback = stopGatheringCallback;
 		console.log('FSCharacter.prototype.startGathering' + gatherablesName);
 		setTimeout(this.stopGathering.bind(this), 500);
-		this.bgcolor = "#FF0000";
+		this.bgcolor = '#FF0000';
 	};
 
 	FSCharacter.prototype.stopGathering = function () {
 		this.activityCompletedCallback.context.stopGathering( this.activity );
 		this.activity = null ;
-		this.bgcolor = "#FFFFFF";
+		this.bgcolor = '#FFFFFF';
 		console.log('FSCharacter.prototype.stopGathering');
 		console.log('stopGathering scope:'+this.ctrllerScope);
 		this.ctrllerScope.$apply();
