@@ -81,3 +81,8 @@ body {
     border-bottom: 0;
   }
 }
+
+
+/* scrollable tables */
+.bodycontainer { max-height: 250px; width: 100%; margin: 0; overflow-y: auto; }
+.table-scrollable { margin: 0; padding: 0; }

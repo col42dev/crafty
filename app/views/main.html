@@ -10,12 +10,46 @@
   <h4>Characters</h4> 
   <ul style="list-style-type:none">
     <li>
-      <table class="table table-bordered">
+      <table class="table table-bordered table-condensed table-scrollable">
         <tbody>
           <tr ng-repeat="item in simulation.characterArray">
-            <td> {{item.firstName}} {{item.lastName}}</td> 
+            <td bgcolor={{item.bgcolor}}> {{item.firstName}} {{item.lastName}}</td> 
+            <td > {{item.activity}}</td> 
           </tr>
         </tbody>
       </table>
       </br>
   </ul>
+
+  <h4>Gatherables</h4> 
+  <div class="bodycontainer scrollable">
+  <ul style="list-style-type:none">
+    <li>
+      <table class="table table-bordered table-condensed table-scrollable">
+        <tbody>
+          <tr ng-repeat="(k,v) in simulation.gatherables" ng-click="onClickGatherables(k)">
+            <td> {{k}}</td> 
+            <td> {{v.quantity}}</td> 
+          </tr>
+        </tbody>
+      </table>
+      </br>
+  </ul>
+  </div>
+
+
+   <h4>Bank</h4> 
+  <div class="bodycontainer scrollable">
+  <ul style="list-style-type:none">
+    <li>
+      <table class="table table-bordered table-condensed table-scrollable">
+        <tbody>
+          <tr ng-repeat="(k,v) in simulation.bank">
+            <td>{{ k }}</td>
+            <td>{{ v }}</td>
+          </tr>
+        </tbody>
+      </table>
+      </br>
+  </ul>
+  </div>
