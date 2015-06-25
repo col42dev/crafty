@@ -6,18 +6,22 @@
 </div>
 
   <h4>CHARACTERS</h4> 
-  <ul style="list-style-type:none">
-    <li>
-      <table class="table table-bordered table-condensed table-scrollable">
-        <tbody>
-          <tr ng-repeat="item in simulation.characterArray">
-            <td bgcolor={{item.bgcolor}}> {{item.firstName}} {{item.lastName}}</td> 
-            <td > {{item.activity}}</td> 
-          </tr>
-        </tbody>
-      </table>
-      </br>
-  </ul>
+
+  <table class="table table-bordered table-condensed table-scrollable noselect">
+    <thead>
+      <tr class="noselect">
+        <th width="25%">Name</th>
+        <th width="25%">Activity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in simulation.characterArray" class="noselect">
+        <td width="25%" bgcolor={{item.bgcolor}}> {{item.firstName}} {{item.lastName}}</td> 
+        <td width="25%"> {{item.activity}}</td> 
+      </tr>
+    </tbody>
+  </table>
+
 
 
 
@@ -29,7 +33,7 @@
 <table class="table">
 
    <thead>
-        <tr>
+        <tr class="noselect">
             <th><h4>GATHERABLES</h4>click to gather</th>
             <th><h4>BANK</h4></th>
    
@@ -43,13 +47,21 @@
 
 <td valign="top"> 
 
+   <table class="table table-bordered table-condensed">
+    <thead>
+        <tr class="noselect">
+            <th width="25%">Resoure</th>
+            <th width="25%">Quantity</th>
+        </tr>
+    </thead>
+   </table>   
    <div class="bodycontainer scrollable">
       <table class="table table-bordered table-condensed table-scrollable">
         
         <tbody>
-          <tr ng-repeat="(k,v) in simulation.gatherables" ng-click="onClickGatherables(k)">
-            <td> {{k}}</td> 
-            <td> {{v.quantity}}</td> 
+          <tr ng-repeat="(k,v) in simulation.gatherables" ng-click="onClickGatherables(k)" class="noselect" >
+            <td width="25%"> {{k}}</td> 
+            <td width="25%"> {{v.quantity}}</td> 
           </tr>
         </tbody>
      
@@ -60,13 +72,22 @@
 
 <td valign="top"> 
 
+   <table class="table table-bordered table-condensed">
+    <thead>
+        <tr class="noselect" >
+            <th width="25%">Resoure</th>
+            <th width="25%">Quantity</th>
+        </tr>
+    </thead>
+   </table>  
+
   <div class="bodycontainer scrollable">
    
      <table class="table table-bordered table-condensed table-scrollable" >
         <tbody>
-          <tr ng-repeat="(k,v) in simulation.bank">
-            <td>{{ k }}</td>
-            <td>{{ v }}</td>
+          <tr ng-repeat="(k,v) in simulation.bank" class="noselect" >
+            <td width="25%">{{ k }}</td>
+            <td width="25%">{{ v }}</td>
           </tr>
         </tbody>
       </table>
@@ -81,19 +102,18 @@
 
 
   <h4>RECIPES</h4><b>click to craft</b>
-  <ul style="list-style-type:none">
-    <li>
-      <table class="table table-bordered table-condensed table-scrollable">
-        <tbody>
-          <tr ng-repeat="(k,v)  in simulation.recipes" ng-click="onClickRecipes(k)">
-            <td bgcolor={{v.bgcolor()}} > {{k}}</td> 
-            <td > {{v.input}}</td> 
-            <td > {{v.duration}}</td> 
-          </tr>
-        </tbody>
-      </table>
-      </br>
-  </ul>
+
+  <table class="table table-bordered table-condensed table-scrollable">
+    <tbody>
+      <tr ng-repeat="(k,v)  in simulation.recipes" ng-click="onClickRecipes(k)" class="noselect" >
+        <td bgcolor={{v.bgcolor()}} > {{k}}</td> 
+        <td > {{v.input}}</td> 
+        <td > {{v.duration}}</td> 
+      </tr>
+    </tbody>
+  </table>
+
+
 
 
  
