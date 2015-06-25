@@ -28,6 +28,10 @@ angular.module('craftyApp')
   		$scope.simulation.startGathering( gatherableKey);
 	};
 
+    $scope.onClickRecipes = function(recipeKey) {
+  		console.log(recipeKey);
+  		$scope.simulation.startRecipe( recipeKey);
+	};
 
 
   }]);

@@ -2,6 +2,7 @@
   <p>
     <img src="images/harvestandcraft.jpg" alt="" width="100%" height="100%"><br>
   </p>
+  <a href="https://ptown.hackpad.com/Crafting-WojTOaMPxGR">Design Doc</a>
 </div>
 
   <h4>CHARACTERS</h4> 
@@ -84,7 +85,7 @@
     <li>
       <table class="table table-bordered table-condensed table-scrollable">
         <tbody>
-          <tr ng-repeat="(k,v)  in simulation.recipes">
+          <tr ng-repeat="(k,v)  in simulation.recipes" ng-click="onClickRecipes(k)">
             <td bgcolor={{v.bgcolor()}} > {{k}}</td> 
             <td > {{v.input}}</td> 
             <td > {{v.duration}}</td> 

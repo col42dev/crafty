@@ -108,14 +108,14 @@ angular.module('craftyApp')
 
 			// recipes
 			var Recipe = function( obj) { 
+
 				this.bgcolor =  function( ) {
 
-					console.log ('Recipe');
 					var hasResources = true;
 
 					for (var key in obj.input) {
 					    if (obj.input.hasOwnProperty(key)) {
-					        console.log (key + ':' + obj.input[key] );
+					        //console.log (key + ':' + obj.input[key] );
 
 					        if (key in thisFactory.bank) {
 						        if ( thisFactory.bank[key] < obj.input[key]) {
@@ -129,6 +129,7 @@ angular.module('craftyApp')
 					
 					return  (hasResources === true) ? '#00FF00' : '#FF0000';
 				};
+
 				this.input = obj.input;
 				this.output = obj.output;
 				this.duration = obj.duration;
@@ -174,20 +175,17 @@ angular.module('craftyApp')
 		 */
 		this.startGathering = function (gatherableType) {
 
-			console.log('FSFactory.startGathering');
 			var assigned = false;
 
 		    angular.forEach(this.characterArray, ( function(thisCharacter) {
 		        if (assigned === false && thisCharacter.activity === null) {
 		        	assigned = true;
 		          	thisCharacter.startGathering( gatherableType, { callback: this.stopGathering, context: this} );
-		          	console.log('assigned FSFactory.startGathering');
 		        }
 		    }).bind(this)); 
 		};
 
 		this.stopGathering = function (gatherableType) {
-			console.log('FSFactory.stopGathering');
 			this.gatherables[gatherableType].quantity -= 1;
 
 			if (gatherableType in this.bank) {
@@ -197,6 +195,83 @@ angular.module('craftyApp')
 			}
 		};
 
+		/**
+		 * @desc 
+		 * @return 
+		 */
+		this.startRecipe = function (recipeKey) {
+
+			console.log('FSFactory.startRecipe');
+
+		   	// determine if has reqiored ingredients in bank
+		   	var hasIngredients = true;
+		    var recipeInputObj = this.recipes[recipeKey].input;
+			var recipeInputKeys = Object.keys( recipeInputObj );
+
+			recipeInputKeys.forEach( function ( recipeKey ){
+
+				var recipeInput = recipeKey;
+				var recipeInputQuantity = recipeInputObj[ recipeKey];
+
+				if (recipeInput in this.bank) {
+					if ( this.bank[ recipeInput ] < recipeInputQuantity) {
+						hasIngredients = false;
+						console.log('does not have ingredient quantity:' + recipeInput + ', ' + recipeInputQuantity);
+					}
+				} else {
+					console.log('does not have ingredient:' + recipeInput);
+				
+					hasIngredients = false;
+				}
+			
+			}.bind(this));
+
+			console.log('has ingredients:' + hasIngredients);
+
+			if ( hasIngredients === true) {
+				var characterAssigned = false;
+
+			    angular.forEach(this.characterArray, ( function(thisCharacter) {
+			        if (characterAssigned === false && thisCharacter.activity === null) {
+			        	characterAssigned = true;
+			          	thisCharacter.startRecipe( recipeKey, { callback: this.stopRecipe, context: this} );
+
+			          	// subtract resources from bank.
+			          	recipeInputKeys.forEach( function ( recipeKey ){
+
+							var recipeInput = recipeKey;
+							var recipeInputQuantity = recipeInputObj[ recipeKey];
+
+							this.bank[ recipeInput ] -= recipeInputQuantity;
+							
+						
+						}.bind(this));
+
+
+			        }
+			    }).bind(this)); 
+			}
+			
+		};
+
+		this.stopRecipe = function (recipeKey) {
+			
+			// generate output in bank
+			var recipeOutputObj = this.recipes[recipeKey].output;
+			var recipeOutputKey = Object.keys( recipeOutputObj );
+
+			// assumes only one type is recipeOutput
+			var recipeOutput = recipeOutputKey[0];
+			var recipeOutputQuantity = recipeOutputObj[ recipeOutput ];
+			
+			// add output
+			if (recipeOutput in this.bank) {
+				this.bank[recipeOutput] += recipeOutputQuantity;
+			} else {
+				this.bank[recipeOutput] = recipeOutputQuantity;
+			}
+			
+		};
 
 	    /**
 	    * @desc 

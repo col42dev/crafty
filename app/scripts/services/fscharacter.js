@@ -35,7 +35,6 @@ angular.module('craftyApp')
 	FSCharacter.prototype.startGathering = function ( gatherablesName, stopGatheringCallback) {
 		this.activity = gatherablesName ;
 		this.activityCompletedCallback = stopGatheringCallback;
-		console.log('FSCharacter.prototype.startGathering' + gatherablesName);
 		setTimeout(this.stopGathering.bind(this), 2000);
 		this.bgcolor = '#FF0000';
 	};
@@ -44,8 +43,24 @@ angular.module('craftyApp')
 		this.activityCompletedCallback.context.stopGathering( this.activity );
 		this.activity = null ;
 		this.bgcolor = '#FFFFFF';
-		console.log('FSCharacter.prototype.stopGathering');
-		console.log('stopGathering scope:'+this.ctrllerScope);
+		this.ctrllerScope.$apply();
+	};
+
+
+	FSCharacter.prototype.startRecipe = function ( recipeName, stopRecipeCallback) {
+		this.activity = recipeName ;
+		this.activityCompletedCallback = stopRecipeCallback;
+		console.log('FSCharacter.prototype.startRecipe' + recipeName);
+		setTimeout(this.stopRecipe.bind(this), 2000);
+		this.bgcolor = '#FF0000';
+	};
+
+	FSCharacter.prototype.stopRecipe = function () {
+		this.activityCompletedCallback.context.stopRecipe( this.activity );
+		this.activity = null ;
+		this.bgcolor = '#FFFFFF';
+		console.log('FSCharacter.prototype.stopRecipe');
+		console.log('stopRecipe scope:'+this.ctrllerScope);
 		this.ctrllerScope.$apply();
 	};
 
