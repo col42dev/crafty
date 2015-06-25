@@ -36,7 +36,7 @@ angular.module('craftyApp')
 		this.activity = gatherablesName ;
 		this.activityCompletedCallback = stopGatheringCallback;
 		console.log('FSCharacter.prototype.startGathering' + gatherablesName);
-		setTimeout(this.stopGathering.bind(this), 500);
+		setTimeout(this.stopGathering.bind(this), 2000);
 		this.bgcolor = '#FF0000';
 	};
 

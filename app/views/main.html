@@ -1,6 +1,6 @@
 <div class="jumbotron">
   <p>
-    <img src="images/harvestandcraft.jpg" alt=""><br>
+    <img src="images/harvestandcraft.jpg" alt="" width="100%" height="100%"><br>
   </p>
 </div>
 
@@ -29,7 +29,7 @@
 
    <thead>
         <tr>
-            <th><h4>GATHERABLES</h4></th>
+            <th><h4>GATHERABLES</h4>click to gather</th>
             <th><h4>BANK</h4></th>
    
         </tr>
@@ -77,6 +77,22 @@
 </tbody>
      
 </table>
+
+
+  <h4>RECIPES</h4><b>click to craft</b>
+  <ul style="list-style-type:none">
+    <li>
+      <table class="table table-bordered table-condensed table-scrollable">
+        <tbody>
+          <tr ng-repeat="(k,v)  in simulation.recipes">
+            <td bgcolor={{v.bgcolor()}} > {{k}}</td> 
+            <td > {{v.input}}</td> 
+            <td > {{v.duration}}</td> 
+          </tr>
+        </tbody>
+      </table>
+      </br>
+  </ul>
 
 
  
