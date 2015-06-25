@@ -57,46 +57,58 @@ angular.module('craftyApp')
 
 
 	        // Gatherables
+	        var Gatherable = function( obj) { 
+
+	        	this.bgcolor =  function( ) {				
+					return  (this.gatherers > 0) ? '#FF0000' : '#FFFFFF';
+				
+				};
+
+				this.quantity = obj.quantity;
+				this.gatherers = obj.gatherers;
+			};
+
+	
 	        this.gatherables = {};  
-	        this.gatherables.Earth = { quantity: 100};
-	        this.gatherables.Sand= { quantity: 100};
-	        this.gatherables.Shale= { quantity: 100};
-	        this.gatherables.Clay= { quantity: 100};
-	        this.gatherables.Limestone= { quantity: 100};
-	        this.gatherables.Granite= { quantity: 100};
-	        this.gatherables.Slates= { quantity: 100};
-	        this.gatherables.Marble= { quantity: 100};
-	        this.gatherables.Obsidian= { quantity: 100};
-	        this.gatherables.Salt= { quantity: 100};
-	        this.gatherables.Coal= { quantity: 100};
-			this.gatherables.Iron= { quantity: 100};
-			this.gatherables.Copper= { quantity: 100};
-			this.gatherables.Tin= { quantity: 100};
-			this.gatherables.Silver= { quantity: 100};
-			this.gatherables.Gold= { quantity: 100};
-			this.gatherables.Platinum= { quantity: 100};
-			this.gatherables.Water= { quantity: 100};
-			this.gatherables.Wood= { quantity: 100};
-			this.gatherables.Leaves= { quantity: 100};
-			this.gatherables.Roots= { quantity: 100};
-			this.gatherables.Apples= { quantity: 100};
-			this.gatherables.Berries= { quantity: 100};
-			this.gatherables.Wheat= { quantity: 100};
-			this.gatherables.Grain= { quantity: 100};
-			this.gatherables.Leather= { quantity: 100};
-			this.gatherables.Fur= { quantity: 100};
-			this.gatherables.Meat= { quantity: 100};
-			this.gatherables.Bones= { quantity: 100};
-			this.gatherables.Topaz= { quantity: 100};
-			this.gatherables.Ruby= { quantity: 100};
-			this.gatherables.Diamonds= { quantity: 100};
-			this.gatherables.Amethyst= { quantity: 100};
-			this.gatherables.Saphire= { quantity: 100};
-			this.gatherables.Emerald= { quantity: 100};
-			this.gatherables.Tourmaline= { quantity: 100};
-			this.gatherables.Aquamarine= { quantity: 100};
-			this.gatherables.Opal= { quantity: 100};
-			this.gatherables.Turquoise= { quantity: 100};
+	        this.gatherables.Earth = new Gatherable({ quantity: 100, gatherers: 0});
+	        this.gatherables.Sand= new Gatherable({ quantity: 100, gatherers: 0});
+	        this.gatherables.Shale= new Gatherable({ quantity: 100, gatherers: 0});
+	        this.gatherables.Clay= new Gatherable({ quantity: 100, gatherers: 0});
+	        this.gatherables.Limestone= new Gatherable({ quantity: 100, gatherers: 0});
+	        this.gatherables.Granite= new Gatherable({ quantity: 100, gatherers: 0});
+	        this.gatherables.Slates= new Gatherable({ quantity: 100, gatherers: 0});
+	        this.gatherables.Marble= new Gatherable({ quantity: 100, gatherers: 0});
+	        this.gatherables.Obsidian= new Gatherable({ quantity: 100, gatherers: 0});
+	        this.gatherables.Salt= new Gatherable({ quantity: 100, gatherers: 0});
+	        this.gatherables.Coal= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Iron= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Copper= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Tin= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Silver= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Gold= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Platinum= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Water= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Wood= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Leaves= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Roots= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Apples= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Berries= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Wheat= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Grain= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Leather= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Fur= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Meat= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Bones= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Topaz= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Ruby= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Diamonds= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Amethyst= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Saphire= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Emerald= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Tourmaline= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Aquamarine= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Opal= new Gatherable({ quantity: 100, gatherers: 0});
+			this.gatherables.Turquoise= new Gatherable({ quantity: 100, gatherers: 0});
 
 
 			// bank
@@ -148,6 +160,7 @@ angular.module('craftyApp')
 			this.recipes.SteelPickaxe 	= new Recipe({input:{ Wood: 2, SteelBar:3}, output:{SteelPickaxe: 1}, duration:3000});
 			this.recipes.SteelAxe    	= new Recipe({input:{ Wood: 2, SteelBar:2}, output:{SteelAxe: 1}, duration:3000});
 
+	
 
 
 	        this.runSimulation();
@@ -181,12 +194,15 @@ angular.module('craftyApp')
 		        if (assigned === false && thisCharacter.activity === null) {
 		        	assigned = true;
 		          	thisCharacter.startGathering( gatherableType, { callback: this.stopGathering, context: this} );
+
+		          	this.gatherables[gatherableType].gatherers ++;
 		        }
 		    }).bind(this)); 
 		};
 
 		this.stopGathering = function (gatherableType) {
 			this.gatherables[gatherableType].quantity -= 1;
+			this.gatherables[gatherableType].gatherers --;
 
 			if (gatherableType in this.bank) {
 				this.bank[gatherableType] += 1;

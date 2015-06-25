@@ -60,7 +60,7 @@
         
         <tbody>
           <tr ng-repeat="(k,v) in simulation.gatherables" ng-click="onClickGatherables(k)" class="noselect" >
-            <td width="25%"> {{k}}</td> 
+            <td width="25%" bgcolor={{v.bgcolor()}} > {{k}}</td> 
             <td width="25%"> {{v.quantity}}</td> 
           </tr>
         </tbody>
@@ -101,17 +101,33 @@
 </table>
 
 
-  <h4>RECIPES</h4><b>click to craft</b>
+<br/>
+<br/>
 
+<h4>RECIPES</h4><b>click to craft</b>
+
+<table class="table table-bordered table-condensed">
+<thead>
+    <tr class="noselect" >
+        <th width="25%">Item</th>
+        <th width="50%">Ingredients</th>
+        <th width="25%">Crafting Time</th>
+    </tr>
+</thead>
+</table>  
+
+<div class="bodycontainer scrollable">
   <table class="table table-bordered table-condensed table-scrollable">
+
     <tbody>
       <tr ng-repeat="(k,v)  in simulation.recipes" ng-click="onClickRecipes(k)" class="noselect" >
-        <td bgcolor={{v.bgcolor()}} > {{k}}</td> 
-        <td > {{v.input}}</td> 
-        <td > {{v.duration}}</td> 
+        <td width="25%" bgcolor={{v.bgcolor()}} > {{k}}</td> 
+        <td width="50%"> {{v.input}}</td> 
+        <td width="25%"> {{v.duration}}</td> 
       </tr>
     </tbody>
   </table>
+</div>
 
 
 
