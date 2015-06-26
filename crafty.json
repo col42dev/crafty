@@ -4,6 +4,8 @@
   "characters":[
     {"firstName":"Stroldrin",  "lastName":"Granitechest"}, 
     {"firstName":"Gronderlug", "lastName":"Barbedblade"}, 
+    {"firstName":"Gronderlug", "lastName":"Barbedblade"}, 
+    {"firstName":"Gronderlug", "lastName":"Barbedblade"}, 
     {"firstName":"Dorasgrour", "lastName":"Drakemaster"}
   ],
   "gatherables":[

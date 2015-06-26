@@ -131,7 +131,7 @@
 
     <tbody>
       <tr ng-repeat="(k,v)  in simulation.recipes" ng-click="onClickRecipes(k)" class="noselect" >
-        <td width="25%" bgcolor={{v.bgcolor()}} > {{k}}</td> 
+        <td width="25%" bgcolor={{v.bgcolor()}} > {{v.output}}</td> 
         <td width="50%"> {{v.input}}</td> 
         <td width="25%"> {{v.basetime}}</td> 
       </tr>

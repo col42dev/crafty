@@ -33,15 +33,16 @@ angular.module('craftyApp')
             }
         }).success(function(data) {
 
-            if ( data.app == "crafty") {
+            if ( data.app === 'crafty') {
               $scope.data = data;
               setTimeout($scope.createSim, 200);
             } else {
-              alert("Validation failed for " + $scope.user.input);
+              window.alert('Validation failed for ' + $scope.user.input);
             }
 
         }).error(function(data) {
-            alert("JSON load failed for" + $scope.user.input);
+            data = data;
+            window.alert('JSON load failed for' + $scope.user.input);
         });
     };
 
@@ -50,7 +51,6 @@ angular.module('craftyApp')
 
  
     $scope.createSim = function() {
-   
       console.log('Load JSON success'  + JSON.stringify($scope.data));
       FSService.createSimulation($scope.numberOfCharacters, $scope, $scope.data);
       $scope.simulation = FSService.simulation;
