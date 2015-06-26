@@ -14,7 +14,6 @@ angular.module('craftyApp')
 	*/
 	function FSCharacter(characaterObj, ctrllerScope) {
 		// Public properties, assigned to the instance ('this')
-		this.key = characaterObj.key;
 		this.firstName = characaterObj.firstName;
 		this.lastName = characaterObj.lastName;
 		this.activity = null;
@@ -22,7 +21,6 @@ angular.module('craftyApp')
 		this.ctrllerScope = ctrllerScope;
 		this.bgcolor = '#FFFFFF';
 		console.log('scope:'+this.ctrllerScope);
-
 	}
  
 	/**
@@ -45,7 +43,6 @@ angular.module('craftyApp')
 		this.bgcolor = '#FFFFFF';
 		this.ctrllerScope.$apply();
 	};
-
 
 	FSCharacter.prototype.startRecipe = function ( recipeName, stopRecipeCallback) {
 		this.activity = recipeName ;

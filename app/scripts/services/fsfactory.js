@@ -14,7 +14,7 @@ angular.module('craftyApp')
     /**
    	* Constructor, with class name
     */
-  	var FSFactory = function(characterCount, ctrllerScope) {
+  	var FSFactory = function(characterCount, ctrllerScope, json) {
     // Public properties, assigned to the instance ('this')
 
 	    this.initialize = function() {
@@ -42,16 +42,24 @@ angular.module('craftyApp')
 		        }
 
 		        for ( var characterIndex=0; characterIndex < characterCount; characterIndex++) {
-		          	var character = { key: characterIndex, firstName: generateFirstName(), lastName: generateLastName()};
+		          	var character = { firstName: generateFirstName(), lastName: generateLastName()};
 		          	characters.push( character );
 		        }
 
 		        return characters;
 	      	}
-
 		  
-		    this.characterArray = [];       
+		    this.characterArray = [];  
+		    /*     
 	        angular.forEach( generatedCharacters( this.numberOfCharacters), ( function(thisCharacter) {
+	          	this.characterArray.push(new FSCharacter(thisCharacter, ctrllerScope));
+	        }).bind(this)); 
+**/
+
+ 			
+ 			//console.log( json['characters']);
+
+ 			json['characters'].forEach( ( function(thisCharacter) {
 	          	this.characterArray.push(new FSCharacter(thisCharacter, ctrllerScope));
 	        }).bind(this)); 
 
@@ -60,16 +68,24 @@ angular.module('craftyApp')
 	        var Gatherable = function( obj) { 
 
 	        	this.bgcolor =  function( ) {				
-					return  (this.gatherers > 0) ? '#FF0000' : '#FFFFFF';
-				
+					return  (this.gatherers > 0) ? '#FF0000' : '#FFFFFF';				
 				};
 
 				this.quantity = obj.quantity;
 				this.gatherers = obj.gatherers;
 			};
 
-	
+			//
 	        this.gatherables = {};  
+	        json['gatherables'].forEach( ( function(thisGatherables) {
+	        	var obj = thisGatherables;
+	        	obj.gatherers = 0;
+	          	//this.gatherables.push(new Gatherable(thisGatherables, ctrllerScope));
+
+	          	this.gatherables[thisGatherables.name] = new  Gatherable(obj);
+	        }).bind(this)); 
+
+/*
 	        this.gatherables.Earth = new Gatherable({ quantity: 100, gatherers: 0});
 	        this.gatherables.Sand= new Gatherable({ quantity: 100, gatherers: 0});
 	        this.gatherables.Shale= new Gatherable({ quantity: 100, gatherers: 0});
@@ -109,12 +125,12 @@ angular.module('craftyApp')
 			this.gatherables.Aquamarine= new Gatherable({ quantity: 100, gatherers: 0});
 			this.gatherables.Opal= new Gatherable({ quantity: 100, gatherers: 0});
 			this.gatherables.Turquoise= new Gatherable({ quantity: 100, gatherers: 0});
-
+*/
 
 			// bank
 	        this.bank = {};  
-	        this.bank.Earth = 42;
-	        this.bank.Granite = 11;
+	        //this.bank.Earth = 42;
+	        //this.bank.Granite = 11;
 
 	        var thisFactory = this;
 
@@ -144,10 +160,17 @@ angular.module('craftyApp')
 
 				this.input = obj.input;
 				this.output = obj.output;
-				this.duration = obj.duration;
+				this.basetime = obj.basetime;
 			};
 
 	        this.recipes = {};  
+	       	json['recipes'].forEach( ( function(thisRecipe) {
+	        	var obj = thisRecipe;
+	          	this.recipes[thisRecipe.name] = new Recipe(obj);
+	        }).bind(this)); 
+			
+
+			/*
 	        this.recipes.Rope 			= new Recipe({input:{ Wool: 1}, output:{Rope: 3}, duration:1000});
  			this.recipes.WoodenTable 	= new Recipe({input:{ Wood: 5}, output:{WoodenTable: 1}, duration:2000});
 			this.recipes.Workbench 		= new Recipe({input:{ Wood: 3, WoodenTable:1}, output:{Workbench: 1}, duration:1000});
@@ -159,27 +182,11 @@ angular.module('craftyApp')
 			this.recipes.StonePickaxe 	= new Recipe({input:{ Wood: 2, Granite:3}, output:{StonePickaxe: 1}, duration:3000});
 			this.recipes.SteelPickaxe 	= new Recipe({input:{ Wood: 2, SteelBar:3}, output:{SteelPickaxe: 1}, duration:3000});
 			this.recipes.SteelAxe    	= new Recipe({input:{ Wood: 2, SteelBar:2}, output:{SteelAxe: 1}, duration:3000});
+			*/
 
-	
-
-
-	        this.runSimulation();
 	    };
 
-		/**
-		 * @desc 
-		 * @return 
-		 */
-		this.getCharacter = function( characterKey) {
 
-		    var characterWithKey = 0;
-		    angular.forEach(this.characterArray, ( function(thisCharacter) {
-		        if (thisCharacter.key === characterKey) {
-		          characterWithKey = thisCharacter;
-		        }
-		    }).bind(this)); 
-		    return characterWithKey;
-		};
 
 
 		/**
@@ -259,11 +266,8 @@ angular.module('craftyApp')
 							var recipeInputQuantity = recipeInputObj[ recipeKey];
 
 							this.bank[ recipeInput ] -= recipeInputQuantity;
-							
-						
+		
 						}.bind(this));
-
-
 			        }
 			    }).bind(this)); 
 			}
@@ -289,13 +293,6 @@ angular.module('craftyApp')
 			
 		};
 
-	    /**
-	    * @desc 
-	    * @return 
-	    */
-	    this.runSimulation  = function() {
-		  
-		};
 
 	   
 	    // Call the initialize function for every new instance
