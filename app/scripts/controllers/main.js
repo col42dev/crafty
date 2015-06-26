@@ -10,15 +10,20 @@
  * Controller of the craftyApp
  */
 angular.module('craftyApp')
-  .controller('MainCtrl',['$scope', '$http', 'FSService', function ($scope, $http, FSService) {
+  .controller('MainCtrl',['$scope', '$http', 'FSService', 'stopwatch', function ($scope, $http, FSService, stopwatch) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
 
+    $scope.myStopwatch = stopwatch;
+
+
+
+
     //reset
-    $scope.master = {input: 'https://api.myjson.com/bins/3e4jo?pretty=1'};
+    $scope.master = {input: 'https://api.myjson.com/bins/3bd0c?pretty=1'};
     $scope.user = angular.copy($scope.master);
     $scope.loadJson = function() {
 
@@ -55,6 +60,8 @@ angular.module('craftyApp')
       FSService.createSimulation($scope.numberOfCharacters, $scope, $scope.data);
       $scope.simulation = FSService.simulation;
       $scope.$apply();
+      $scope.myStopwatch.reset();
+      $scope.myStopwatch.start();
     };
 
 
