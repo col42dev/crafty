@@ -15,10 +15,41 @@ angular.module('craftyApp')
    	* Constructor, with class name
     */
   	var FSFactory = function(characterCount, ctrllerScope, json) {
-    // Public properties, assigned to the instance ('this')
 
-    	var FSObject = function() { 
+  		//GameItem
+		var GameItem = function( obj, thisFactory) { 
+			this.thisFactory = thisFactory;
+			this.input = obj.input;
+			this.output = obj.output;
+			this.basetime = obj.basetime;
+			this.category = obj.category;
+			this.construction = obj.construction;
+			console.log('GameItem category:' + obj.category);
+
+		};
+		GameItem.prototype.bgcolor = function( ) {
+			var hasResources = true;
+			for (var key in this.input) {
+			    if (this.input.hasOwnProperty(key)) {
+
+			        if (key in this.thisFactory.bank) {
+				        if ( this.thisFactory.bank[key].quantity.length < this.input[key] ) {
+				        	hasResources = false;
+				        }
+			    	} else {
+			    		hasResources = false;
+			    	}
+			    }
+			}
+			return  (hasResources === true) ? '#00FF00' : '#FF0000';
+		};
+
+		//FSObject
+    	var FSObject = function(obj) { 
+    
     		this.quantity = [];
+    		this.category = obj.category;
+    		console.log('FSObject category:' + obj.category);
 		};
 		FSObject.prototype.increment = function( amount) {
 			for (var i = 0; i < amount; i ++) {
@@ -31,12 +62,31 @@ angular.module('craftyApp')
 			}
 		};
 
+		//FSRecipe
+		var FSRecipe = function( name, thisFactory) { 
+			this.name = name;
+			this.thisFactory = thisFactory;
+		};
+		FSRecipe.prototype.bgcolor = function( ) {
+			var hasResources = true;
+			for (var key in this.thisFactory.gameItems[this.name].input) {
+
+			    if (this.thisFactory.gameItems[this.name].input.hasOwnProperty(key)) {
+			        if (key in this.thisFactory.bank) {
+				        if ( this.thisFactory.bank[key].quantity.length < this.thisFactory.gameItems[this.name].input[key] ) {
+				        	hasResources = false;
+				        }
+			    	} else {
+			    		hasResources = false;
+			    	}
+			    }
+			}
+			return  (hasResources === true) ? '#00FF00' : '#FF0000';
+		};
+
+		// FSFactory
 	    this.initialize = function() {
-
-	     	this.numberOfCharacters = characterCount;
-
-	     	console.log('FSFactory:initilize ' + this.numberOfCharacters);
-
+	
 	     	// Characters
 		    this.characterArray = [];  
  			json['characters'].forEach( ( function(thisCharacter) {
@@ -61,48 +111,47 @@ angular.module('craftyApp')
 
 			// Bank
 	        this.bank = {};  
-	        this.bank['Workbench'] = new FSObject();
-	        this.bank['Workbench'].increment(1);
+	        this.bank['Workstation'] = new FSObject({'category':'constructor'});
+	        this.bank['Workstation'].increment(1);
 
 	        // Know Recipes
 	        this.knownRecipes = json['knownRecipes'];  
 
-
 			// Game Items
-			var thisFactory = this;
-			var GameItem = function( obj) { 
-				this.bgcolor =  function( ) {
-					var hasResources = true;
-					for (var key in obj.input) {
-					    if (obj.input.hasOwnProperty(key)) {
-
-					        if (key in thisFactory.bank) {
-						        if ( thisFactory.bank[key].quantity.length < obj.input[key]) {
-						        	hasResources = false;
-						        }
-					    	} else {
-					    		hasResources = false;
-					    	}
-					    }
-					}
-					return  (hasResources === true) ? '#00FF00' : '#FF0000';
-				};
-
-				this.input = obj.input;
-				this.output = obj.output;
-				this.basetime = obj.basetime;
-			};
-
-			
 	        this.gameItems = {};  
 	       	json['items'].forEach( ( function(thisGameItem) {
 	        	var obj = thisGameItem;
-	          	this.gameItems[thisGameItem.name] = new GameItem(obj);
+	          	this.gameItems[thisGameItem.name] = new GameItem(obj, this);
 	        }).bind(this)); 
 
 
+	        //CraftStationa
+	        this.viewedConstructor = {};
+	        this.viewedConstructorName = null;
 
 	    };
+
+		/**
+		 * @desc 
+		 * @return 
+		 */
+		this.onClickBank = function (bankItemKey) {
+
+			this.viewedConstructor = {};
+			if ( this.bank[bankItemKey].category === 'constructor') {
+	
+				this.viewedConstructorName = bankItemKey;
+
+				Object.keys( this.gameItems ).forEach( ( function(thisGameItemKey) {
+					var thisGameItem = this.gameItems[thisGameItemKey];
+	        		if (thisGameItem.construction === bankItemKey) {
+	          			this.viewedConstructor[thisGameItemKey] = new FSRecipe( thisGameItemKey, this);
+	          		}
+	        	}).bind(this)); 
+			} else {
+	        	this.viewedConstructorName = null;
+			}
+		};
 
 		/**
 		 * @desc 
@@ -134,7 +183,7 @@ angular.module('craftyApp')
 			this.gatherables[gatherableType].gatherers --;
 
 			if (!(gatherableType in this.bank)) {
-				this.bank[gatherableType] = new FSObject();
+				this.bank[gatherableType] = new FSObject({'category':'gatherable'});
 			}
 			this.bank[gatherableType].increment(1);
 		};
@@ -208,11 +257,10 @@ angular.module('craftyApp')
 			
 			// add output
 			if (!(recipeOutput in this.bank)) {
-				this.bank[recipeOutput] = new FSObject();
+				this.bank[recipeOutput] = new FSObject( {'category':this.gameItems[recipeKey].category});
 			}
 			this.bank[recipeOutput].increment( recipeOutputQuantity);
 		};
-
 
 	   
 	    // Call the initialize function for every new instance

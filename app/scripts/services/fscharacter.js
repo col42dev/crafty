@@ -20,7 +20,6 @@ angular.module('craftyApp')
 		this.activityCompletedCallback = [];
 		this.ctrllerScope = ctrllerScope;
 		this.bgcolor = '#FFFFFF';
-		console.log('scope:'+this.ctrllerScope);
 	}
  
 	/**
@@ -31,7 +30,7 @@ angular.module('craftyApp')
 	};
 
 	FSCharacter.prototype.startGathering = function ( gatherablesName, stopGatheringCallback) {
-		this.activity.push( gatherablesName) ;
+		this.activity.push( gatherablesName);
 		this.activityCompletedCallback.push( stopGatheringCallback);
 		setTimeout(this.stopGathering.bind(this), 2000);
 		this.bgcolor = '#FF0000';
@@ -49,7 +48,6 @@ angular.module('craftyApp')
 	FSCharacter.prototype.startRecipe = function ( recipeName, stopRecipeCallback) {
 		this.activity.push(recipeName);
 		this.activityCompletedCallback.push( stopRecipeCallback);
-		console.log('FSCharacter.prototype.startRecipe' + recipeName);
 		setTimeout(this.stopRecipe.bind(this), 2000);
 		this.bgcolor = '#FF0000';
 	};
@@ -58,12 +56,10 @@ angular.module('craftyApp')
 		this.activityCompletedCallback[0].context.stopRecipe( this.activity[0] );
 		this.activity.splice(0, 1);
 		this.activityCompletedCallback.splice(0, 1);
-		
 		this.bgcolor = '#FFFFFF';
-		console.log('FSCharacter.prototype.stopRecipe');
-		console.log('stopRecipe scope:'+this.ctrllerScope);
 		this.ctrllerScope.$apply();
 	};
+
 
 
 	/**

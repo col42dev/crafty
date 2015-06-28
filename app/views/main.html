@@ -99,7 +99,7 @@
         <tbody>
              <tr ng-repeat="item in simulation.characterArray" class="noselect">
    
-          <tr ng-repeat="(k,v) in simulation.bank" class="noselect" >
+          <tr ng-repeat="(k,v) in simulation.bank" ng-click="onClickBank(k)" class="noselect" >
             <td width="25%">{{ k }}</td>
             <td width="25%">{{ v.quantity.length }}</td>
           </tr>
@@ -118,14 +118,11 @@
 <br/>
 <br/>
 
-<h4>RECIPES</h4><b>click to craft</b>
-
+<h4>CRAFTING: {{simulation.viewedConstructorName}}</h4><b>click to craft</b>
 <table class="table table-bordered table-condensed">
 <thead>
     <tr class="noselect" >
         <th width="25%">Item</th>
-        <th width="50%">Ingredients</th>
-        <th width="25%">Crafting Time</th>
     </tr>
 </thead>
 </table>  
@@ -134,10 +131,36 @@
   <table class="table table-bordered table-condensed table-scrollable">
 
     <tbody>
-      <tr ng-repeat="(k,v)  in simulation.gameItems" ng-click="onClickRecipes(k)" class="noselect" >
-        <td width="25%" bgcolor={{v.bgcolor()}} > {{v.output}}</td> 
+      <tr ng-repeat="(k,v)  in simulation.viewedConstructor" ng-click="onClickRecipe(k)" class="noselect" >
+        <td width="25%" bgcolor={{v.bgcolor()}} > {{v.name}}</td> 
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<h4>KNOWN RECIPES</h4>
+
+<table class="table table-bordered table-condensed">
+<thead>
+    <tr class="noselect" >
+        <th width="25%">Item</th>
+        <th width="50%">Ingredients</th>
+        <th width="15%">Constructor</th>
+        <th width="10%">Crafting Time</th>
+    </tr>
+</thead>
+</table>  
+
+<div class="bodycontainer scrollable">
+  <table class="table table-bordered table-condensed table-scrollable">
+
+    <tbody>
+      <tr ng-repeat="(k,v)  in simulation.gameItems" class="noselect" >
+        <td width="25%"> {{v.output}}</td> 
         <td width="50%"> {{v.input}}</td> 
-        <td width="25%"> {{v.basetime}}</td> 
+        <td width="15%"> {{v.construction}}</td> 
+        <td width="10%"> {{v.basetime}}</td> 
       </tr>
     </tbody>
   </table>

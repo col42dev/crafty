@@ -24,7 +24,7 @@ angular.module('craftyApp')
 
     //reset
     //$scope.master = {input: 'https://api.myjson.com/bins/3bd0c?pretty=1'};
-    $scope.master = {input: 'https://api.myjson.com/bins/14q2q?pretty=1'};
+    $scope.master = {input: 'https://api.myjson.com/bins/4s40i?pretty=1'};
     $scope.user = angular.copy($scope.master);
     $scope.loadJson = function() {
 
@@ -71,10 +71,19 @@ angular.module('craftyApp')
   		$scope.simulation.startGathering( gatherableKey);
     };
 
-    $scope.onClickRecipes = function(recipeKey) {
-  		console.log(recipeKey);
-  		$scope.simulation.startRecipe( recipeKey);
+    $scope.onClickBank = function(bankItemKey) {
+      console.log(bankItemKey);
+      $scope.simulation.onClickBank( bankItemKey);
     };
+
+    $scope.onClickRecipe= function(recipeKey) {
+      console.log(recipeKey);
+      $scope.simulation.startRecipe( recipeKey);
+    };
+
+
+
+
 
 
 
