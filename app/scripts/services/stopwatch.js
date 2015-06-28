@@ -18,7 +18,7 @@ angular.module('craftyApp')
         },
         stopwatch = null;
         
-    var start = function () {;
+    var start = function () {
         stopwatch = $timeout(function() {
             data.seconds++;
             if (data.seconds % 60 === 0) {
@@ -40,7 +40,7 @@ angular.module('craftyApp')
     };
 
     var reset = function () {
-        stop()
+        stop();
         data.seconds = 0;
         data.hours = 0;
         data.minutes = 0;

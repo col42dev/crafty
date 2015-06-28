@@ -17,6 +17,20 @@ angular.module('craftyApp')
   	var FSFactory = function(characterCount, ctrllerScope, json) {
     // Public properties, assigned to the instance ('this')
 
+    	var FSObject = function() { 
+    		this.quantity = [];
+		};
+		FSObject.prototype.increment = function( amount) {
+			for (var i = 0; i < amount; i ++) {
+				this.quantity.push({});
+			}
+		};
+		FSObject.prototype.decrement = function( amount) {
+			for (var i = 0; i < amount; i ++) {
+				this.quantity.pop();
+			}
+		};
+
 	    this.initialize = function() {
 
 	     	this.numberOfCharacters = characterCount;
@@ -45,19 +59,25 @@ angular.module('craftyApp')
 	          	this.gatherables[thisGatherables.name] = new Gatherable(obj);
 	        }).bind(this)); 
 
-			// bank
+			// Bank
 	        this.bank = {};  
+	        this.bank['Workbench'] = new FSObject();
+	        this.bank['Workbench'].increment(1);
 
-			// recipes
+	        // Know Recipes
+	        this.knownRecipes = json['knownRecipes'];  
+
+
+			// Game Items
 			var thisFactory = this;
-			var Recipe = function( obj) { 
+			var GameItem = function( obj) { 
 				this.bgcolor =  function( ) {
 					var hasResources = true;
 					for (var key in obj.input) {
 					    if (obj.input.hasOwnProperty(key)) {
 
 					        if (key in thisFactory.bank) {
-						        if ( thisFactory.bank[key] < obj.input[key]) {
+						        if ( thisFactory.bank[key].quantity.length < obj.input[key]) {
 						        	hasResources = false;
 						        }
 					    	} else {
@@ -73,12 +93,15 @@ angular.module('craftyApp')
 				this.basetime = obj.basetime;
 			};
 
-			// Recipes
-	        this.recipes = {};  
-	       	json['recipes'].forEach( ( function(thisRecipe) {
-	        	var obj = thisRecipe;
-	          	this.recipes[thisRecipe.name] = new Recipe(obj);
+			
+	        this.gameItems = {};  
+	       	json['items'].forEach( ( function(thisGameItem) {
+	        	var obj = thisGameItem;
+	          	this.gameItems[thisGameItem.name] = new GameItem(obj);
 	        }).bind(this)); 
+
+
+
 	    };
 
 		/**
@@ -110,11 +133,10 @@ angular.module('craftyApp')
 			this.gatherables[gatherableType].quantity -= 1;
 			this.gatherables[gatherableType].gatherers --;
 
-			if (gatherableType in this.bank) {
-				this.bank[gatherableType] += 1;
-			} else {
-				this.bank[gatherableType] = 1;
+			if (!(gatherableType in this.bank)) {
+				this.bank[gatherableType] = new FSObject();
 			}
+			this.bank[gatherableType].increment(1);
 		};
 
 		/**
@@ -124,7 +146,7 @@ angular.module('craftyApp')
 		this.startRecipe = function (recipeKey) {
 		   	// determine if has reqiored ingredients in bank
 		   	var hasIngredients = true;
-		    var recipeInputObj = this.recipes[recipeKey].input;
+		    var recipeInputObj = this.gameItems[recipeKey].input;
 			var recipeInputKeys = Object.keys( recipeInputObj );
 
 			recipeInputKeys.forEach( function ( recipeKey ) {
@@ -132,7 +154,7 @@ angular.module('craftyApp')
 				var recipeInputQuantity = recipeInputObj[ recipeKey];
 
 				if (recipeInput in this.bank) {
-					if ( this.bank[ recipeInput ] < recipeInputQuantity) {
+					if ( this.bank[ recipeInput ].quantity.length < recipeInputQuantity) {
 						hasIngredients = false;
 						console.log('does not have ingredient quantity:' + recipeInput + ', ' + recipeInputQuantity);
 					}
@@ -166,7 +188,7 @@ angular.module('craftyApp')
 						var recipeInput = recipeKey;
 						var recipeInputQuantity = recipeInputObj[ recipeKey];
 
-						this.bank[ recipeInput ] -= recipeInputQuantity;
+						this.bank[ recipeInput ].decrement( recipeInputQuantity);
 	
 					}.bind(this));
 			    }
@@ -177,7 +199,7 @@ angular.module('craftyApp')
 
 		this.stopRecipe = function (recipeKey) {
 			// generate output in bank
-			var recipeOutputObj = this.recipes[recipeKey].output;
+			var recipeOutputObj = this.gameItems[recipeKey].output;
 			var recipeOutputKey = Object.keys( recipeOutputObj );
 
 			// assumes only one type is recipeOutput
@@ -185,11 +207,10 @@ angular.module('craftyApp')
 			var recipeOutputQuantity = recipeOutputObj[ recipeOutput ];
 			
 			// add output
-			if (recipeOutput in this.bank) {
-				this.bank[recipeOutput] += recipeOutputQuantity;
-			} else {
-				this.bank[recipeOutput] = recipeOutputQuantity;
+			if (!(recipeOutput in this.bank)) {
+				this.bank[recipeOutput] = new FSObject();
 			}
+			this.bank[recipeOutput].increment( recipeOutputQuantity);
 		};
 
 
