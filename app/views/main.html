@@ -47,7 +47,7 @@
    <thead>
         <tr class="noselect">
             <th><h4>GATHERABLES</h4>click to gather</th>
-            <th><h4>BANK</h4></th>
+            <th><h4>BANK</h4> select workstation type</th>
    
         </tr>
     </thead>
@@ -100,7 +100,7 @@
              <tr ng-repeat="item in simulation.characterArray" class="noselect">
    
           <tr ng-repeat="(k,v) in simulation.bank" ng-click="onClickBank(k)" class="noselect" >
-            <td width="25%">{{ k }}</td>
+            <td width="25%" bgcolor={{v.bgcolor()}}>{{ k }}</td>
             <td width="25%">{{ v.quantity.length }}</td>
           </tr>
         </tbody>
