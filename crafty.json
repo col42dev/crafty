@@ -182,17 +182,39 @@
     }
   ],
   "knownRecipes": [
-    { "name": "Rope"},
-    { "name": "WoodenTable"},
-    { "name": "Workbench"},
-    { "name": "Bow"},
-    { "name": "Forge"},
-    { "name": "SteelClub"},
-    { "name": "SteelBar"},
-    { "name": "SteelSword"},
-    { "name": "StonePickaxe"},
-    { "name": "SteelPickaxe"},
-    { "name": "SteelAxe"}
+    {
+      "name": "Rope"
+    },
+    {
+      "name": "WoodenTable"
+    },
+    {
+      "name": "Workbench"
+    },
+    {
+      "name": "Bow"
+    },
+    {
+      "name": "Forge"
+    },
+    {
+      "name": "SteelClub"
+    },
+    {
+      "name": "SteelBar"
+    },
+    {
+      "name": "SteelSword"
+    },
+    {
+      "name": "StonePickaxe"
+    },
+    {
+      "name": "SteelPickaxe"
+    },
+    {
+      "name": "SteelAxe"
+    }
   ],
   "items": [
     {
@@ -209,7 +231,7 @@
     },
     {
       "name": "WoodenTable",
-      "category": "constructor",
+      "category": "tool",
       "construction": "Workstation",
       "input": {
         "Wood": 5
