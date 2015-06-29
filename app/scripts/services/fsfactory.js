@@ -8,13 +8,86 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSFactory', function (FSCharacter) {
+  .factory('FSFactory', function () {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     /**
    	* Constructor, with class name
     */
-  	var FSFactory = function(characterCount, ctrllerScope, json) {
+  	var FSFactory = function(ctrllerScope, json) {
+
+  		// FSCharacter
+		var FSCharacter = function(characaterObj, ctrllerScope) {
+			this.firstName = characaterObj.firstName;
+			this.lastName = characaterObj.lastName;
+			this.activity = [];
+			this.activityCompletedCallback = [];
+			this.ctrllerScope = ctrllerScope;
+			this.bgcolor = '#FFFFFF';
+		};
+	 
+		/**
+		* Public method, assigned to prototype
+		*/
+		FSCharacter.prototype.getFullName = function () {
+			return this.firstName + ' ' + this.lastName;
+		};
+
+		FSCharacter.prototype.startGathering = function ( gatherablesName, stopGatheringCallback) {
+			this.activity.push( gatherablesName);
+			this.activityCompletedCallback.push( stopGatheringCallback);
+			setTimeout(this.stopGathering.bind(this), 2000);
+			this.bgcolor = '#FF0000';
+		};
+
+		FSCharacter.prototype.stopGathering = function () {
+			var fsFactory = this.activityCompletedCallback[0].context;
+			var gatherableType = this.activity[0];
+
+			fsFactory.gatherables[gatherableType].quantity -= 1;
+			fsFactory.gatherables[gatherableType].gatherers --;
+
+			if (!(gatherableType in fsFactory.bank)) {
+				fsFactory.bank[gatherableType] = new FSObject({'category':'gatherable'});
+			}
+			fsFactory.bank[gatherableType].increment(1);
+
+			this.activity.splice(0, 1);
+			this.activityCompletedCallback.splice(0, 1);
+			this.bgcolor = '#FFFFFF';
+			this.ctrllerScope.$apply();
+		};
+
+		FSCharacter.prototype.startRecipe = function ( recipeName, stopRecipeCallback) {
+			this.activity.push(recipeName);
+			this.activityCompletedCallback.push( stopRecipeCallback);
+			setTimeout(this.stopRecipe.bind(this), 2000);
+			this.bgcolor = '#FF0000';
+		};
+
+		FSCharacter.prototype.stopRecipe = function () {
+			var fsFactory = this.activityCompletedCallback[0].context;
+			var recipeKey = this.activity[0];
+
+			// generate output in bank
+			var recipeOutputObj = fsFactory.gameItems[recipeKey].output;
+			var recipeOutputKey = Object.keys( recipeOutputObj );
+
+			// assumes only one type is recipeOutput
+			var recipeOutput = recipeOutputKey[0];
+			var recipeOutputQuantity = recipeOutputObj[ recipeOutput ];
+			
+			// add output to bank
+			if (!(recipeOutput in fsFactory.bank)) {
+				fsFactory.bank[recipeOutput] = new FSObject( {'category':fsFactory.gameItems[recipeKey].category});
+			}
+			fsFactory.bank[recipeOutput].increment( recipeOutputQuantity);
+
+			this.activity.splice(0, 1);
+			this.activityCompletedCallback.splice(0, 1);
+			this.bgcolor = '#FFFFFF';
+			this.ctrllerScope.$apply();
+		};
 
   		//GameItem
 		var GameItem = function( obj, thisFactory) { 
@@ -44,9 +117,8 @@ angular.module('craftyApp')
 			return  (hasResources === true) ? '#00FF00' : '#FF0000';
 		};
 
-		//FSObject
+		// FSObject
     	var FSObject = function(obj) { 
-    
     		this.quantity = [];
     		this.category = obj.category;
     		console.log('FSObject category:' + obj.category);
@@ -62,7 +134,11 @@ angular.module('craftyApp')
 			}
 		};
 
-		//FSRecipe
+		FSObject.prototype.bgcolor = function( ) {
+			return  (this.category  === 'constructor') ? '#00FF00' : '#FFFFFF';
+		};
+
+		// FSRecipe
 		var FSRecipe = function( name, thisFactory) { 
 			this.name = name;
 			this.thisFactory = thisFactory;
@@ -124,11 +200,9 @@ angular.module('craftyApp')
 	          	this.gameItems[thisGameItem.name] = new GameItem(obj, this);
 	        }).bind(this)); 
 
-
-	        //CraftStationa
+	        // CraftStationa
 	        this.viewedConstructor = {};
 	        this.viewedConstructorName = null;
-
 	    };
 
 		/**
@@ -139,9 +213,7 @@ angular.module('craftyApp')
 
 			this.viewedConstructor = {};
 			if ( this.bank[bankItemKey].category === 'constructor') {
-	
 				this.viewedConstructorName = bankItemKey;
-
 				Object.keys( this.gameItems ).forEach( ( function(thisGameItemKey) {
 					var thisGameItem = this.gameItems[thisGameItemKey];
 	        		if (thisGameItem.construction === bankItemKey) {
@@ -169,23 +241,9 @@ angular.module('craftyApp')
 			}.bind(this)));
 	
 			if ( assignedCharacter !== null) {
-			    assignedCharacter.startGathering( gatherableType, { callback: this.stopGathering, context: this} );
+			    assignedCharacter.startGathering( gatherableType, { context: this} );
 			    this.gatherables[gatherableType].gatherers ++;
 			}
-		};
-
-		/**
-		 * @desc 
-		 * @return 
-		 */
-		this.stopGathering = function (gatherableType) {
-			this.gatherables[gatherableType].quantity -= 1;
-			this.gatherables[gatherableType].gatherers --;
-
-			if (!(gatherableType in this.bank)) {
-				this.bank[gatherableType] = new FSObject({'category':'gatherable'});
-			}
-			this.bank[gatherableType].increment(1);
 		};
 
 		/**
@@ -229,7 +287,7 @@ angular.module('craftyApp')
 
 			    if ( assignedCharacter !== null) {
 
-		          	assignedCharacter.startRecipe( recipeKey, { callback: this.stopRecipe, context: this} );
+		          	assignedCharacter.startRecipe( recipeKey, { context: this} );
 
 		          	// subtract resources from bank.
 		          	recipeInputKeys.forEach( function ( recipeKey ){
@@ -241,25 +299,7 @@ angular.module('craftyApp')
 	
 					}.bind(this));
 			    }
-
 			}
-			
-		};
-
-		this.stopRecipe = function (recipeKey) {
-			// generate output in bank
-			var recipeOutputObj = this.gameItems[recipeKey].output;
-			var recipeOutputKey = Object.keys( recipeOutputObj );
-
-			// assumes only one type is recipeOutput
-			var recipeOutput = recipeOutputKey[0];
-			var recipeOutputQuantity = recipeOutputObj[ recipeOutput ];
-			
-			// add output
-			if (!(recipeOutput in this.bank)) {
-				this.bank[recipeOutput] = new FSObject( {'category':this.gameItems[recipeKey].category});
-			}
-			this.bank[recipeOutput].increment( recipeOutputQuantity);
 		};
 
 	   

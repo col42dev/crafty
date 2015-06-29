@@ -24,7 +24,7 @@ angular.module('craftyApp')
 
     //reset
     //$scope.master = {input: 'https://api.myjson.com/bins/3bd0c?pretty=1'};
-    $scope.master = {input: 'https://api.myjson.com/bins/4s40i?pretty=1'};
+    $scope.master = {input: 'https://api.myjson.com/bins/1a4iq?pretty=1'};
     $scope.user = angular.copy($scope.master);
     $scope.loadJson = function() {
 
@@ -52,13 +52,10 @@ angular.module('craftyApp')
         });
     };
 
-    $scope.numberOfCharacters = 4;
-    
-
  
     $scope.createSim = function() {
       console.log('Load JSON success'  + JSON.stringify($scope.data));
-      FSService.createSimulation($scope.numberOfCharacters, $scope, $scope.data);
+      FSService.createSimulation($scope, $scope.data);
       $scope.simulation = FSService.simulation;
       $scope.$apply();
       $scope.myStopwatch.reset();

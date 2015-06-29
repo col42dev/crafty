@@ -11,9 +11,9 @@ angular.module('craftyApp')
   .service('FSService', function ( FSFactory ) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-    this.createSimulation = function( numberOfCharacters, ctrllerScope, json) {
-     	console.log('SimulationService - create simulation' + numberOfCharacters);
-        this.simulation = new FSFactory( numberOfCharacters, ctrllerScope, json);
+    this.createSimulation = function( ctrllerScope, json) {
+     	console.log('SimulationService - create simulation');
+        this.simulation = new FSFactory( ctrllerScope, json);
     };
 
   });
