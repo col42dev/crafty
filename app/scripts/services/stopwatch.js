@@ -12,6 +12,7 @@ angular.module('craftyApp')
 .factory('stopwatch', function (SW_DELAI,$timeout) {
    var data = { 
             hours: 0,
+            pad : function(value) { return ('0000'+value).slice(-2); },
             minutes: 0,
             seconds: 0,
             laps: []

@@ -16,6 +16,8 @@ angular.module('craftyApp')
     */
   	var FSFactory = function(ctrllerScope, json) {
 
+  		var thisFactory = this;
+
   		// FSCharacter
 		var FSCharacter = function(characaterObj, ctrllerScope) {
 			this.firstName = characaterObj.firstName;
@@ -33,60 +35,66 @@ angular.module('craftyApp')
 			return this.firstName + ' ' + this.lastName;
 		};
 
-		FSCharacter.prototype.startGathering = function ( gatherablesName, stopGatheringCallback) {
+		FSCharacter.prototype.startGathering = function ( gatherablesName) {
 			this.activity.push( gatherablesName);
-			this.activityCompletedCallback.push( stopGatheringCallback);
-			setTimeout(this.stopGathering.bind(this), 2000);
+			setTimeout(this.stopGathering.bind(this), thisFactory.gatherables[gatherablesName].gatherBaseTimeS * 1000);
 			this.bgcolor = '#FF0000';
 		};
 
 		FSCharacter.prototype.stopGathering = function () {
-			var fsFactory = this.activityCompletedCallback[0].context;
+			//var fsFactory = this.activityCompletedCallback[0].context;
 			var gatherableType = this.activity[0];
 
-			fsFactory.gatherables[gatherableType].quantity -= 1;
-			fsFactory.gatherables[gatherableType].gatherers --;
+			thisFactory.gatherables[gatherableType].quantity -= 1;
+			thisFactory.gatherables[gatherableType].gatherers --;
 
-			if (!(gatherableType in fsFactory.bank)) {
-				fsFactory.bank[gatherableType] = new FSObject({'category':'gatherable'});
+			if (!(gatherableType in thisFactory.bank)) {
+				thisFactory.bank[gatherableType] = new FSObject({'category':'gatherable'});
 			}
-			fsFactory.bank[gatherableType].increment(1);
+			thisFactory.bank[gatherableType].increment(1);
 
 			this.activity.splice(0, 1);
-			this.activityCompletedCallback.splice(0, 1);
 			this.bgcolor = '#FFFFFF';
 			this.ctrllerScope.$apply();
 		};
 
-		FSCharacter.prototype.startRecipe = function ( recipeName, stopRecipeCallback) {
-			this.activity.push(recipeName);
-			this.activityCompletedCallback.push( stopRecipeCallback);
-			setTimeout(this.stopRecipe.bind(this), 2000);
+		FSCharacter.prototype.startCrafting = function ( craftableKey) {
+			this.activity.push(craftableKey);
+			setTimeout(this.stopCrafting.bind(this), thisFactory.gameItems[craftableKey].craftBaseTimeS * 1000);
 			this.bgcolor = '#FF0000';
 		};
 
-		FSCharacter.prototype.stopRecipe = function () {
-			var fsFactory = this.activityCompletedCallback[0].context;
-			var recipeKey = this.activity[0];
+		FSCharacter.prototype.stopCrafting = function () {
+			var craftableKey = this.activity[0];
 
-			// generate output in bank
-			var recipeOutputObj = fsFactory.gameItems[recipeKey].output;
-			var recipeOutputKey = Object.keys( recipeOutputObj );
+			// generate output in bank.
+			var craftableOutputObj = thisFactory.gameItems[craftableKey].output;
+			var craftableOutputKey = Object.keys( craftableOutputObj );
 
-			// assumes only one type is recipeOutput
-			var recipeOutput = recipeOutputKey[0];
-			var recipeOutputQuantity = recipeOutputObj[ recipeOutput ];
+			// assumes only one type is craftableOutput.
+			var craftableOutput = craftableOutputKey[0];
+			var craftableOutputQuantity = craftableOutputObj[ craftableOutput ];
 			
-			// add output to bank
-			if (!(recipeOutput in fsFactory.bank)) {
-				fsFactory.bank[recipeOutput] = new FSObject( {'category':fsFactory.gameItems[recipeKey].category});
+			// add output to bank.
+			if (!(craftableOutput in thisFactory.bank)) {
+				thisFactory.bank[craftableOutput] = new FSObject( {'category':thisFactory.gameItems[craftableKey].category});
 			}
-			fsFactory.bank[recipeOutput].increment( recipeOutputQuantity);
+			thisFactory.bank[craftableOutput].increment( craftableOutputQuantity);
 
 			this.activity.splice(0, 1);
-			this.activityCompletedCallback.splice(0, 1);
 			this.bgcolor = '#FFFFFF';
 			this.ctrllerScope.$apply();
+		};
+
+		// Gatherables
+        var Gatherable = function( obj) { 
+        	this.bgcolor =  function( ) {				
+				return  (this.gatherers > 0) ? '#FF0000' : '#FFFFFF';				
+			};
+			this.quantity = obj.quantity;
+			this.gatherBaseTimeS = obj.gatherBaseTimeS;
+			this.hardness = 1; //todo: datadrive	
+			this.gatherers = obj.gatherers;
 		};
 
   		//GameItem
@@ -94,9 +102,10 @@ angular.module('craftyApp')
 			this.thisFactory = thisFactory;
 			this.input = obj.input;
 			this.output = obj.output;
-			this.basetime = obj.basetime;
+			this.craftBaseTimeS = obj.basetime;
 			this.category = obj.category;
 			this.construction = obj.construction;
+			this.toughness = 1; //todo: datadrive	
 			console.log('GameItem category:' + obj.category);
 
 		};
@@ -160,6 +169,7 @@ angular.module('craftyApp')
 			return  (hasResources === true) ? '#00FF00' : '#FF0000';
 		};
 
+
 		// FSFactory
 	    this.initialize = function() {
 	
@@ -170,14 +180,6 @@ angular.module('craftyApp')
 	        }).bind(this)); 
 
 	        // Gatherables
-	        var Gatherable = function( obj) { 
-	        	this.bgcolor =  function( ) {				
-					return  (this.gatherers > 0) ? '#FF0000' : '#FFFFFF';				
-				};
-				this.quantity = obj.quantity;
-				this.gatherers = obj.gatherers;
-			};
-
 	        this.gatherables = {};  
 	        json['gatherables'].forEach( ( function(thisGatherables) {
 	        	var obj = thisGatherables;
@@ -241,7 +243,7 @@ angular.module('craftyApp')
 			}.bind(this)));
 	
 			if ( assignedCharacter !== null) {
-			    assignedCharacter.startGathering( gatherableType, { context: this} );
+			    assignedCharacter.startGathering( gatherableType);
 			    this.gatherables[gatherableType].gatherers ++;
 			}
 		};
@@ -250,7 +252,7 @@ angular.module('craftyApp')
 		 * @desc 
 		 * @return 
 		 */
-		this.startRecipe = function (recipeKey) {
+		this.startCrafting = function (recipeKey) {
 		   	// determine if has reqiored ingredients in bank
 		   	var hasIngredients = true;
 		    var recipeInputObj = this.gameItems[recipeKey].input;
@@ -287,7 +289,7 @@ angular.module('craftyApp')
 
 			    if ( assignedCharacter !== null) {
 
-		          	assignedCharacter.startRecipe( recipeKey, { context: this} );
+		          	assignedCharacter.startCrafting( recipeKey);
 
 		          	// subtract resources from bank.
 		          	recipeInputKeys.forEach( function ( recipeKey ){

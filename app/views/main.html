@@ -10,7 +10,7 @@
   <p>To initialize, upload a JSON description to <a href="http://myjson.com/">http://myjson.com/</a> and copy the generated URL in to this input dialog.<p>
   <form novalidate>
     <button ng-click="loadJson()">Load:</button> <input size="45" type="text" ng-model="user.input">
-    <b>{{myStopwatch.data.hours}}:{{myStopwatch.data.minutes}}:{{myStopwatch.data.seconds}}</b>
+    <b>{{myStopwatch.data.pad(myStopwatch.data.hours)}}:{{myStopwatch.data.pad(myStopwatch.data.minutes)}}:{{myStopwatch.data.pad(myStopwatch.data.seconds)}}</b>
   </form>
   </br>
 
@@ -44,26 +44,25 @@
 
 <table class="table">
 
-   <thead>
-        <tr class="noselect">
-            <th><h4>GATHERABLES</h4>click to gather</th>
-            <th><h4>BANK</h4> select workstation type</th>
-   
-        </tr>
-    </thead>
-
+<thead>
+    <tr class="noselect">
+        <th><h4>GATHERABLES</h4>click to gather</th>
+        <th><h4>BANK</h4> select workstation type</th>
+    </tr>
+</thead>
 <tbody>
 
 <tr>     
-
 
 <td valign="top"> 
 
    <table class="table table-bordered table-condensed">
     <thead>
         <tr class="noselect">
-            <th width="25%">Resoure</th>
-            <th width="25%">Quantity</th>
+            <th width="25%">Resource</br> &nbsp</th>
+            <th width="25%">Gather </br>Time (S)</th>
+            <th width="25%">Hardness</br> &nbsp</th>
+            <th width="25%">Quantity</br> &nbsp</th>
         </tr>
     </thead>
    </table>   
@@ -73,6 +72,8 @@
         <tbody>
           <tr ng-repeat="(k,v) in simulation.gatherables" ng-click="onClickGatherables(k)" class="noselect" >
             <td width="25%" bgcolor={{v.bgcolor()}} > {{k}}</td> 
+            <td width="25%"> {{v.gatherBaseTimeS}}</td>
+            <td width="25%"> {{v.hardness}}</td> 
             <td width="25%"> {{v.quantity}}</td> 
           </tr>
         </tbody>
@@ -87,8 +88,8 @@
    <table class="table table-bordered table-condensed">
     <thead>
         <tr class="noselect" >
-            <th width="25%">Resoure</th>
-            <th width="25%">Quantity</th>
+            <th width="25%">Resource</br> &nbsp</th>
+            <th width="25%">Quantity</br> &nbsp</th>
         </tr>
     </thead>
    </table>  
@@ -131,7 +132,7 @@
   <table class="table table-bordered table-condensed table-scrollable">
 
     <tbody>
-      <tr ng-repeat="(k,v)  in simulation.viewedConstructor" ng-click="onClickRecipe(k)" class="noselect" >
+      <tr ng-repeat="(k,v)  in simulation.viewedConstructor" ng-click="onClickCraftable(k)" class="noselect" >
         <td width="25%" bgcolor={{v.bgcolor()}} > {{v.name}}</td> 
       </tr>
     </tbody>
@@ -141,26 +142,30 @@
 
 <h4>KNOWN RECIPES</h4>
 
+<div class="bodycontainer scrollable">
 <table class="table table-bordered table-condensed">
-<thead>
-    <tr class="noselect" >
-        <th width="25%">Item</th>
-        <th width="50%">Ingredients</th>
-        <th width="15%">Constructor</th>
-        <th width="10%">Crafting Time</th>
-    </tr>
-</thead>
+  <tbody>
+      <tr class="noselect" >
+          <th class="col-sm-2">Item</th>
+          <th class="col-sm-1">T</th>
+          <th class="col-sm-3">Ingredients</th>
+          <th class="col-sm-2">Constructor</th>
+          <th class="col-sm-1">Crafting Time (S)</th>
+      </tr>
+  </tbody>
 </table>  
+</div>
 
 <div class="bodycontainer scrollable">
   <table class="table table-bordered table-condensed table-scrollable">
 
     <tbody>
       <tr ng-repeat="(k,v)  in simulation.gameItems" class="noselect" >
-        <td width="25%"> {{v.output}}</td> 
-        <td width="50%"> {{v.input}}</td> 
-        <td width="15%"> {{v.construction}}</td> 
-        <td width="10%"> {{v.basetime}}</td> 
+        <td class="col-sm-2">{{v.output}}</td> 
+        <td class="col-sm-1">{{v.toughness}}</td> 
+        <td class="col-sm-3">{{v.input}}</td> 
+        <td class="col-sm-2">{{v.construction}}</td> 
+        <td class="col-sm-1">{{v.craftBaseTimeS}}</td> 
       </tr>
     </tbody>
   </table>

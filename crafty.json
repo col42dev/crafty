@@ -18,166 +18,202 @@
   "gatherables": [
     {
       "name": "Earth",
+      "gatherBaseTimeS":1,
       "quantity": "100"
     },
     {
       "name": "Sand",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Shale",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Clay",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Limestone",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Granite",
+      "gatherBaseTimeS":3,
       "quantity": "100"
     },
     {
       "name": "Slates",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Marble",
+      "gatherBaseTimeS":3,
       "quantity": "100"
     },
     {
       "name": "Obsidian",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Salt",
+      "gatherBaseTimeS":1,
       "quantity": "100"
     },
     {
       "name": "Coal",
+      "gatherBaseTimeS":1,
       "quantity": "100"
     },
     {
       "name": "Iron",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Copper",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Tin",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Silver",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Gold",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Platinum",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Water",
+      "gatherBaseTimeS":1,
       "quantity": "100"
     },
     {
       "name": "Wood",
+      "gatherBaseTimeS":1,
       "quantity": "100"
     },
     {
       "name": "Wool",
+      "gatherBaseTimeS":1,
       "quantity": "100"
     },
     {
       "name": "Leaves",
+      "gatherBaseTimeS":1,
       "quantity": "100"
     },
     {
       "name": "Roots",
+      "gatherBaseTimeS":1,
       "quantity": "100"
     },
     {
       "name": "Apples",
+      "gatherBaseTimeS":1,
       "quantity": "100"
     },
     {
       "name": "Berries",
+      "gatherBaseTimeS":1,
       "quantity": "100"
     },
     {
       "name": "Wheat",
+      "gatherBaseTimeS":1,
       "quantity": "100"
     },
     {
       "name": "Grain",
+      "gatherBaseTimeS":1,
       "quantity": "100"
     },
     {
       "name": "Leather",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Fur",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Meat",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Bones",
+      "gatherBaseTimeS":2,
       "quantity": "100"
     },
     {
       "name": "Topaz",
+      "gatherBaseTimeS":3,
       "quantity": "100"
     },
     {
       "name": "Ruby",
+      "gatherBaseTimeS":3,
       "quantity": "100"
     },
     {
       "name": "Diamonds",
+      "gatherBaseTimeS":5,
       "quantity": "100"
     },
     {
       "name": "Amethyst",
+      "gatherBaseTimeS":5,
       "quantity": "100"
     },
     {
       "name": "Saphire",
+      "gatherBaseTimeS":5,
       "quantity": "100"
     },
     {
       "name": "Emerald",
+      "gatherBaseTimeS":5,
       "quantity": "100"
     },
     {
       "name": "Tourmaline",
+      "gatherBaseTimeS":5,
       "quantity": "100"
     },
     {
       "name": "Aquamarine",
+      "gatherBaseTimeS":5,
       "quantity": "100"
     },
     {
       "name": "Opal",
+      "gatherBaseTimeS":5,
       "quantity": "100"
     },
     {
       "name": "Turquoise",
-      "quantity": "100"
-    },
-    {
-      "name": "Workstation",
+      "gatherBaseTimeS":5,
       "quantity": "100"
     }
   ],
