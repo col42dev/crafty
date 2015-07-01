@@ -7,40 +7,34 @@
 </div>
 
 
-  <p>To initialize, upload a JSON description to <a href="http://myjson.com/">http://myjson.com/</a> and copy the generated URL in to this input dialog.<p>
-  <form novalidate>
-    <button ng-click="loadJson()">Load:</button> <input size="45" type="text" ng-model="user.input">
-    <b>{{myStopwatch.data.pad(myStopwatch.data.hours)}}:{{myStopwatch.data.pad(myStopwatch.data.minutes)}}:{{myStopwatch.data.pad(myStopwatch.data.seconds)}}</b>
-  </form>
-  </br>
+<p>To initialize, upload a JSON description to <a href="http://myjson.com/">http://myjson.com/</a> and copy the generated URL in to this input dialog.<p>
+<form novalidate>
+  <button ng-click="loadJson()">Load:</button> <input size="45" type="text" ng-model="user.input">
+  <b>{{myStopwatch.data.pad(myStopwatch.data.hours)}}:{{myStopwatch.data.pad(myStopwatch.data.minutes)}}:{{myStopwatch.data.pad(myStopwatch.data.seconds)}}</b>
+</form>
+</br>
 
 
 
 
-  <h4>CHARACTERS</h4> 
+<h4>CHARACTERS</h4> 
 
-  <table class="table table-bordered table-condensed table-scrollable noselect">
-    <thead>
-      <tr class="noselect">
-        <th width="25%">Name</th>
-        <th width="25%">Activity</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="item in simulation.characterArray" class="noselect">
-        <td width="25%" bgcolor={{item.bgcolor}}> {{item.firstName}} {{item.lastName}}</td> 
-        <td width="25%"> {{item.activity}}</td> 
-      </tr>
-    </tbody>
-  </table>
-
-
+<table class="table table-bordered table-condensed table-scrollable noselect">
+  <thead>
+    <tr class="noselect">
+      <th width="25%">Name</th>
+      <th width="25%">Activity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="(k,v) in simulation.characterObjs" class="noselect" ng-click="onClickCharacter(v)">
+      <td width="25%"  bgcolor={{v.getbgcolor()}} > {{v.firstName}} {{v.lastName}}</td> 
+      <td width="25%"> {{v.activity}}</td> 
+    </tr>
+  </tbody>
+</table>
 
 
-
-
- 
- 
 
 <table class="table">
 
@@ -62,7 +56,7 @@
             <th width="25%" ng-click="onClickGatherablesHeader('name')">Resource</br> &nbsp</th>
             <th width="25%" ng-click="onClickGatherablesHeader('gatherBaseTimeS')">Gather </br>Time (S)</th>
             <th width="25%" ng-click="onClickGatherablesHeader('hardness')">Hardness</br> &nbsp</th>
-            <th width="25%" ng-click="onClickGatherablesHeader('quantity')">Quantity</br> &nbsp</th>
+            <th width="25%" ng-click="onClickGatherablesHeader('quantity')">#</br> &nbsp</th>
         </tr>
     </thead>
    </table>   
@@ -88,9 +82,9 @@
    <table class="table table-bordered table-condensed">
     <thead>
         <tr class="noselect" >
-            <th width="25%" ng-click="onClickBankHeader('name')">Resource</br> &nbsp</th>
-            <th width="25%" ng-click="onClickBankHeader('category')">Category</br> &nbsp</th>
-            <th width="25%" ng-click="onClickBankHeader('quantity')">Quantity</br> &nbsp</th>
+            <th class="col-sm-3" ng-click="onClickBankHeader('name')">Resource</br> &nbsp</th>
+            <th class="col-sm-2" ng-click="onClickBankHeader('category')">Category</br> &nbsp</th>
+            <th class="col-sm-1" ng-click="onClickBankHeader('quantity')">#</br> &nbsp</th>
         </tr>
     </thead>
    </table>  
@@ -100,9 +94,9 @@
      <table class="table table-bordered table-condensed table-scrollable" >
         <tbody> 
           <tr ng-repeat="v in simulation.bankArray | orderBy:simulation.orderBankBy" ng-click="onClickBank(v)" class="noselect" >
-            <td width="25%" bgcolor={{v.bgcolor()}}>{{ v.name }}</td>
-            <td width="25%">{{ v.category}}</td>
-            <td width="25%">{{ v.quantity.length }}</td>
+            <td class="col-sm-3"  bgcolor={{v.bgcolor()}}>{{ v.name }}</td>
+            <td class="col-sm-2"> {{ v.category}}</td>
+            <td class="col-sm-1"> {{ v.quantity.length }}</td>
           </tr>
         </tbody>
       </table>

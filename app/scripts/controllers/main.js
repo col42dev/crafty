@@ -24,7 +24,7 @@ angular.module('craftyApp')
 
     //reset
     //$scope.master = {input: 'https://api.myjson.com/bins/3bd0c?pretty=1'};
-    $scope.master = {input: 'https://api.myjson.com/bins/42h6a?pretty=1'};
+    $scope.master = {input: 'https://api.myjson.com/bins/1nwnu?pretty=1'};
     $scope.user = angular.copy($scope.master);
     $scope.loadJson = function() {
 
@@ -62,6 +62,10 @@ angular.module('craftyApp')
       $scope.myStopwatch.start();
     };
 
+
+    $scope.onClickCharacter = function( character) {
+      $scope.simulation.onClickCharacter( character);
+    };
 
     $scope.onClickGatherables = function(gatherableKey) {
   		$scope.simulation.startGathering( gatherableKey.name);

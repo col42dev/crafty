@@ -27,14 +27,12 @@ angular.module('craftyApp')
 			this.ctrllerScope = ctrllerScope;
 			this.bgcolor = '#FFFFFF';
 		};
-	 
-		/**
-		* Public method, assigned to prototype
-		*/
+		FSCharacter.prototype.getbgcolor =  function( ) {			
+			return  ((thisFactory.selectedCharacter  !== null) && (this.getFullName() === thisFactory.selectedCharacter.getFullName())) ? '#00FF00' : '#FFFFFF';				
+		};
 		FSCharacter.prototype.getFullName = function () {
 			return this.firstName + ' ' + this.lastName;
 		};
-
 		FSCharacter.prototype.startGathering = function ( gatherablesName) {
 			this.activity.push( gatherablesName);
 			setTimeout(this.stopGathering.bind(this), thisFactory.gatherables[gatherablesName].gatherBaseTimeS * 1000);
@@ -179,10 +177,18 @@ angular.module('craftyApp')
 	    this.initialize = function() {
 	
 	     	// Characters
-		    this.characterArray = [];  
+		    this.characterObjs = {};  
  			json['characters'].forEach( ( function(thisCharacter) {
-	          	this.characterArray.push( new FSCharacter(thisCharacter, ctrllerScope));
+ 				var characterName = thisCharacter.firstName + ' ' + thisCharacter.lastName;
+	          	this.characterObjs[characterName] = new FSCharacter(thisCharacter, ctrllerScope);
+	          	this.selectedCharacter = this.characterObjs[characterName];
 	        }).bind(this)); 
+
+	       	this.onClickCharacter = function ( character) {
+	       		//console.log(JSON.stringify(character));
+	        	this.selectedCharacter = character;
+	        };
+
 
 	        // Gatherables
 	        this.gatherables = {};  
@@ -259,18 +265,9 @@ angular.module('craftyApp')
 		 * @return 
 		 */
 		this.startGathering = function (gatherableType) {
-
-			var assignedCharacter = null;
-			var leastActivitiesCount = 1000;
-			angular.forEach(this.characterArray, ( function(thisCharacter) {
-				if ( thisCharacter.activity.length < leastActivitiesCount) {
-					leastActivitiesCount = thisCharacter.activity.length;
-					assignedCharacter = thisCharacter;
-				}
-			}.bind(this)));
 	
-			if ( assignedCharacter !== null) {
-			    assignedCharacter.startGathering( gatherableType);
+			if ( this.selectedCharacter !== null && this.selectedCharacter.activity.length < 4) {
+			    this.selectedCharacter.startGathering( gatherableType);
 			    this.gatherables[gatherableType].gatherers ++;
 			}
 		};
@@ -304,19 +301,9 @@ angular.module('craftyApp')
 
 			if ( hasIngredients === true) {
 
-				var assignedCharacter = null;
-				var leastActivitiesCount = 1000;
-				angular.forEach(this.characterArray, ( function(thisCharacter) {
-					if ( thisCharacter.activity.length < leastActivitiesCount) {
-						leastActivitiesCount = thisCharacter.activity.length;
-						assignedCharacter = thisCharacter;
-					}
-				}.bind(this)));
-	
+			    if ( this.selectedCharacter !== null && this.selectedCharacter.activity.length < 4) {
 
-			    if ( assignedCharacter !== null) {
-
-		          	assignedCharacter.startCrafting( recipeKey);
+		          	this.selectedCharacter.startCrafting( recipeKey);
 
 		          	// subtract resources from bank.
 		          	recipeInputKeys.forEach( function ( recipeKey ){
