@@ -64,18 +64,23 @@ angular.module('craftyApp')
 
 
     $scope.onClickGatherables = function(gatherableKey) {
-  		console.log(gatherableKey);
-  		$scope.simulation.startGathering( gatherableKey);
+  		$scope.simulation.startGathering( gatherableKey.name);
+    };
+
+    $scope.onClickGatherablesHeader = function(fieldName) {
+      $scope.simulation.onClickGatherablesHeader( fieldName);
     };
 
     $scope.onClickBank = function(bankItemKey) {
-      console.log(bankItemKey);
-      $scope.simulation.onClickBank( bankItemKey);
+      $scope.simulation.onClickBank( bankItemKey.name);
+    };
+
+    $scope.onClickBankHeader = function(fieldName) {
+      $scope.simulation.onClickBankHeader( fieldName);
     };
 
     $scope.onClickCraftable = function(recipeKey) {
-      console.log(recipeKey);
-      $scope.simulation.startCrafting( recipeKey);
+      $scope.simulation.startCrafting( recipeKey.name);
     };
 
 

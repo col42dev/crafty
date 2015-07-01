@@ -49,9 +49,10 @@ angular.module('craftyApp')
 			thisFactory.gatherables[gatherableType].gatherers --;
 
 			if (!(gatherableType in thisFactory.bank)) {
-				thisFactory.bank[gatherableType] = new FSObject({'category':'gatherable'});
+				thisFactory.bank[gatherableType] = new FSObject({'category':'gatherable', 'name':gatherableType});
 			}
 			thisFactory.bank[gatherableType].increment(1);
+			thisFactory.updateBank();
 
 			this.activity.splice(0, 1);
 			this.bgcolor = '#FFFFFF';
@@ -77,9 +78,10 @@ angular.module('craftyApp')
 			
 			// add output to bank.
 			if (!(craftableOutput in thisFactory.bank)) {
-				thisFactory.bank[craftableOutput] = new FSObject( {'category':thisFactory.gameItems[craftableKey].category});
+				thisFactory.bank[craftableOutput] = new FSObject( {'category':thisFactory.gameItems[craftableKey].category, 'name':craftableOutput});
 			}
 			thisFactory.bank[craftableOutput].increment( craftableOutputQuantity);
+			thisFactory.updateBank();
 
 			this.activity.splice(0, 1);
 			this.bgcolor = '#FFFFFF';
@@ -88,14 +90,17 @@ angular.module('craftyApp')
 
 		// Gatherables
         var Gatherable = function( obj) { 
-        	this.bgcolor =  function( ) {				
-				return  (this.gatherers > 0) ? '#FF0000' : '#FFFFFF';				
-			};
+
+        	this.name = obj.name;
 			this.quantity = obj.quantity;
 			this.gatherBaseTimeS = obj.gatherBaseTimeS;
 			this.hardness = 1; //todo: datadrive	
 			this.gatherers = obj.gatherers;
 		};
+		Gatherable.prototype.bgcolor =  function( ) {				
+			return  (this.gatherers > 0) ? '#FF0000' : '#FFFFFF';				
+		};
+
 
   		//GameItem
 		var GameItem = function( obj, thisFactory) { 
@@ -130,7 +135,7 @@ angular.module('craftyApp')
     	var FSObject = function(obj) { 
     		this.quantity = [];
     		this.category = obj.category;
-    		console.log('FSObject category:' + obj.category);
+    		this.name = obj.name;
 		};
 		FSObject.prototype.increment = function( amount) {
 			for (var i = 0; i < amount; i ++) {
@@ -186,11 +191,33 @@ angular.module('craftyApp')
 	        	obj.gatherers = 0;
 	          	this.gatherables[thisGatherables.name] = new Gatherable(obj);
 	        }).bind(this)); 
+	        this.gatherablesArray = Object.keys(thisFactory.gatherables).map(function (key) {
+	        		return thisFactory.gatherables[key];
+	        	});
+	        this.orderGatherablesBy = 'name';
+	        this.orderGatherablesByOrder = '+';
+	        this.onClickGatherablesHeader = function ( fieldName) {
+	        	this.orderGatherablesByOrder = (this.orderGatherablesByOrder==='+') ? '-' : '+';
+	        	this.orderGatherablesBy = this.orderGatherablesByOrder + fieldName;
+	        };	
+
 
 			// Bank
 	        this.bank = {};  
-	        this.bank['Workstation'] = new FSObject({'category':'constructor'});
+	        this.bank['Workstation'] = new FSObject({'category':'constructor', 'name':'Workstation'});
 	        this.bank['Workstation'].increment(1);
+	        this.updateBank = function() {
+		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {
+		        		return thisFactory.bank[key];
+		        	});
+	    	};
+	    	this.updateBank();
+	        this.orderBankBy = 'name';
+	        this.orderBankByOrder = '+';
+	        this.onClickBankHeader = function ( fieldName) {
+	        	this.orderBankByOrder = (this.orderBankByOrder==='+') ? '-' : '+';
+	        	this.orderBankBy = this.orderBankByOrder + fieldName;
+	        };	
 
 	        // Know Recipes
 	        this.knownRecipes = json['knownRecipes'];  
@@ -203,7 +230,7 @@ angular.module('craftyApp')
 	        }).bind(this)); 
 
 	        // CraftStationa
-	        this.viewedConstructor = {};
+	        this.viewedConstructor = [];
 	        this.viewedConstructorName = null;
 	    };
 
@@ -213,13 +240,13 @@ angular.module('craftyApp')
 		 */
 		this.onClickBank = function (bankItemKey) {
 
-			this.viewedConstructor = {};
+			this.viewedConstructor = [];
 			if ( this.bank[bankItemKey].category === 'constructor') {
 				this.viewedConstructorName = bankItemKey;
 				Object.keys( this.gameItems ).forEach( ( function(thisGameItemKey) {
 					var thisGameItem = this.gameItems[thisGameItemKey];
 	        		if (thisGameItem.construction === bankItemKey) {
-	          			this.viewedConstructor[thisGameItemKey] = new FSRecipe( thisGameItemKey, this);
+	          			this.viewedConstructor.push( new FSRecipe( thisGameItemKey, this));
 	          		}
 	        	}).bind(this)); 
 			} else {
