@@ -24,7 +24,7 @@ angular.module('craftyApp')
 
     //reset
     //$scope.master = {input: 'https://api.myjson.com/bins/3bd0c?pretty=1'};
-    $scope.master = {input: 'https://api.myjson.com/bins/1nwnu?pretty=1'};
+    $scope.master = {input: 'https://api.myjson.com/bins/4lg1m?pretty=1'};
     $scope.user = angular.copy($scope.master);
     $scope.loadJson = function() {
 
@@ -68,7 +68,7 @@ angular.module('craftyApp')
     };
 
     $scope.onClickGatherables = function(gatherableKey) {
-  		$scope.simulation.startGathering( gatherableKey.name);
+  		$scope.simulation.onClickGatherables( gatherableKey.name);
     };
 
     $scope.onClickGatherablesHeader = function(fieldName) {

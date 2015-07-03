@@ -18,30 +18,38 @@ angular.module('craftyApp')
 
   		var thisFactory = this;
 
+ 		// FStask
+		var FSTask = function(taskObj) {
+			this.name = taskObj.name;
+			this.category = taskObj.category;
+		};
+
   		// FSCharacter
 		var FSCharacter = function(characaterObj, ctrllerScope) {
 			this.firstName = characaterObj.firstName;
 			this.lastName = characaterObj.lastName;
+			this.profession = characaterObj.profession;
 			this.activity = [];
+			this.tools = [];
 			this.activityCompletedCallback = [];
 			this.ctrllerScope = ctrllerScope;
-			this.bgcolor = '#FFFFFF';
 		};
 		FSCharacter.prototype.getbgcolor =  function( ) {			
-			return  ((thisFactory.selectedCharacter  !== null) && (this.getFullName() === thisFactory.selectedCharacter.getFullName())) ? '#00FF00' : '#FFFFFF';				
+			return  ((thisFactory.selectedCharacter  !== null) && (this.getFullName() === thisFactory.selectedCharacter.getFullName())) ? '#00FF00' : null;				
 		};
 		FSCharacter.prototype.getFullName = function () {
 			return this.firstName + ' ' + this.lastName;
 		};
 		FSCharacter.prototype.startGathering = function ( gatherablesName) {
-			this.activity.push( gatherablesName);
-			setTimeout(this.stopGathering.bind(this), thisFactory.gatherables[gatherablesName].gatherBaseTimeS * 1000);
-			this.bgcolor = '#FF0000';
+			this.activity.push( new FSTask( {'name':gatherablesName, 'category':'gathering'}));
+			if (this.activity.length === 1) {
+				this.startNextActivity();
+				//setTimeout(this.stopGathering.bind(this), thisFactory.gatherables[gatherablesName].gatherBaseTimeS * 1000);
+			}
 		};
 
 		FSCharacter.prototype.stopGathering = function () {
-			//var fsFactory = this.activityCompletedCallback[0].context;
-			var gatherableType = this.activity[0];
+			var gatherableType = this.activity[0].name;
 
 			thisFactory.gatherables[gatherableType].quantity -= 1;
 			thisFactory.gatherables[gatherableType].gatherers --;
@@ -53,18 +61,28 @@ angular.module('craftyApp')
 			thisFactory.updateBank();
 
 			this.activity.splice(0, 1);
-			this.bgcolor = '#FFFFFF';
+
+			// start next activity
+			if (this.activity.length > 0) {
+				this.startNextActivity();
+			}
+
 			this.ctrllerScope.$apply();
 		};
 
+
+
+
 		FSCharacter.prototype.startCrafting = function ( craftableKey) {
-			this.activity.push(craftableKey);
-			setTimeout(this.stopCrafting.bind(this), thisFactory.gameItems[craftableKey].craftBaseTimeS * 1000);
-			this.bgcolor = '#FF0000';
+			this.activity.push( new FSTask({'name':craftableKey, 'category':'crafting'}));
+			if (this.activity.length === 1) {
+				this.startNextActivity();
+				//setTimeout(this.stopCrafting.bind(this), thisFactory.gameItems[craftableKey].craftBaseTimeS * 1000);
+			}
 		};
 
 		FSCharacter.prototype.stopCrafting = function () {
-			var craftableKey = this.activity[0];
+			var craftableKey = this.activity[0].name;
 
 			// generate output in bank.
 			var craftableOutputObj = thisFactory.gameItems[craftableKey].output;
@@ -82,8 +100,31 @@ angular.module('craftyApp')
 			thisFactory.updateBank();
 
 			this.activity.splice(0, 1);
-			this.bgcolor = '#FFFFFF';
+
+			// start next activity
+			if (this.activity.length > 0) {
+				this.startNextActivity();
+			}
+
 			this.ctrllerScope.$apply();
+		};
+
+		FSCharacter.prototype.startNextActivity = function () {			
+			var taskName = this.activity[0].name;
+
+			console.log('startNextActivity:' + taskName);
+
+			switch ( this.activity[0].category){
+				case 'gathering':
+					setTimeout(this.stopGathering.bind(this), thisFactory.gatherables[taskName].gatherBaseTimeS * 1000);
+					console.log('setTimeout:' + thisFactory.gatherables[taskName].gatherBaseTimeS * 1000);
+					break;
+				case 'crafting':
+					setTimeout(this.stopCrafting.bind(this),  thisFactory.gameItems[taskName].craftBaseTimeS * 1000);
+					console.log('setTimeout:' + thisFactory.gameItems[taskName].craftBaseTimeS * 1000);
+					break;
+			}
+
 		};
 
 		// Gatherables
@@ -95,8 +136,8 @@ angular.module('craftyApp')
 			this.hardness = 1; //todo: datadrive	
 			this.gatherers = obj.gatherers;
 		};
-		Gatherable.prototype.bgcolor =  function( ) {				
-			return  (this.gatherers > 0) ? '#FF0000' : '#FFFFFF';				
+		Gatherable.prototype.bgcolor =  function( ) {					
+			return  (this.gatherers > 0) ? '#FF0000' : null;				
 		};
 
 
@@ -147,7 +188,13 @@ angular.module('craftyApp')
 		};
 
 		FSObject.prototype.bgcolor = function( ) {
-			return  (this.category  === 'constructor') ? '#00FF00' : '#FFFFFF';
+			switch (this.category) {
+				case 'constructor':
+					return '#00FF00';
+				case 'tool':
+					return '#00FFFF';
+			}
+			return  null;
 		};
 
 		// FSRecipe
@@ -257,6 +304,19 @@ angular.module('craftyApp')
 	        	}).bind(this)); 
 			} else {
 	        	this.viewedConstructorName = null;
+
+	        	if ( this.bank[bankItemKey].category === 'tool') { // add to character inventory
+	        		if (this.bank[bankItemKey].quantity.length > 0) {
+	        			this.bank[bankItemKey].decrement(1) ;
+	        			this.selectedCharacter.tools.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
+
+	        			if ( this.bank[bankItemKey].quantity.length === 0) {
+	        				delete  this.bank[bankItemKey];
+	        				this.updateBank();
+	        			}
+	        		}
+	        	}
+		
 			}
 		};
 
@@ -264,7 +324,7 @@ angular.module('craftyApp')
 		 * @desc 
 		 * @return 
 		 */
-		this.startGathering = function (gatherableType) {
+		this.onClickGatherables = function (gatherableType) {
 	
 			if ( this.selectedCharacter !== null && this.selectedCharacter.activity.length < 4) {
 			    this.selectedCharacter.startGathering( gatherableType);
@@ -312,6 +372,11 @@ angular.module('craftyApp')
 						var recipeInputQuantity = recipeInputObj[ recipeKey];
 
 						this.bank[ recipeInput ].decrement( recipeInputQuantity);
+
+						if ( this.bank[recipeInput].quantity.length === 0) {
+	        				delete  this.bank[recipeInput];
+	        				this.updateBank();
+	        			}
 	
 					}.bind(this));
 			    }

@@ -87,6 +87,7 @@ body {
 .bodycontainer { max-height: 250px; width: 100%; margin: 0; overflow-y: auto; }
 .table-scrollable { margin: 0; padding: 0; }
 
+
 /* scrollable tables http://stackoverflow.com/questions/826782/css-rule-to-disable-text-selection-highlighting */
 .noselect {
     -webkit-touch-callout: none;
@@ -96,3 +97,11 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
+
+
+.fadedbackground {
+    background: rgb(54, 25, 25); /* Fall-back for browsers that don't
+                                    support rgba */
+    background: rgba(54, 25, 25, .1);
+}
+

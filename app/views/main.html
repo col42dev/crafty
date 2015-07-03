@@ -15,33 +15,87 @@
 </br>
 
 
-
+<div class="fadedbackground">
 
 <h4>CHARACTERS</h4> 
 
 <table class="table table-bordered table-condensed table-scrollable noselect">
   <thead>
-    <tr class="noselect">
-      <th width="25%">Name</th>
-      <th width="25%">Activity</th>
-    </tr>
   </thead>
   <tbody>
     <tr ng-repeat="(k,v) in simulation.characterObjs" class="noselect" ng-click="onClickCharacter(v)">
       <td width="25%"  bgcolor={{v.getbgcolor()}} > {{v.firstName}} {{v.lastName}}</td> 
-      <td width="25%"> {{v.activity}}</td> 
     </tr>
   </tbody>
 </table>
 
+</div> <!--fadedbackground-->
 
 
+
+<div class="fadedbackground">
+
+  
+<h4>CHARACTER SHEET: {{simulation.selectedCharacter.firstName}} {{simulation.selectedCharacter.lastName}}</h4>  
+
+<table class="table table-bordered table-condensed">
+  <thead>
+  </thead>
+  <tbody>
+      <tr>
+      <table class="table table-bordered  table-condensed">
+        <tbody>
+          <tr class="noselect">
+            <td><b>Profession</b></td>
+              <td class="noselect" >
+                {{simulation.selectedCharacter.profession}}
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </tr>
+
+    <tr>
+      <table class="table table-bordered  table-condensed">
+        <tbody>
+          <tr class="noselect">
+            <td><b>Activity</b></td>
+              <td ng-repeat="v in simulation.selectedCharacter.activity" class="noselect" >
+                {{v.name}}
+              </td>
+        
+          </tr>
+        </tbody>
+      </table>
+    </tr>
+
+    <tr>
+      <table class="table table-bordered table-condensed">
+        <tbody>
+         <tr class="noselect">
+            <td><b>Tools</b></td>
+            <td ng-repeat="v in simulation.selectedCharacter.tools" class="noselect" >
+                {{v.name}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </tr>
+  </tbody>
+
+</table> 
+
+
+</div> <!--fadedbackground-->
+
+
+<div class="fadedbackground">
 <table class="table">
 
 <thead>
     <tr class="noselect">
         <th><h4>GATHERABLES</h4>click to gather</th>
-        <th><h4>BANK</h4> select workstation type</th>
+        <th><h4>BANK</h4> select workstation or tools</th>
     </tr>
 </thead>
 <tbody>
@@ -65,7 +119,8 @@
         
         <tbody>
           <tr ng-repeat="v in simulation.gatherablesArray | orderBy:simulation.orderGatherablesBy" ng-click="onClickGatherables(v)" class="noselect" >
-            <td width="25%" bgcolor={{v.bgcolor()}} > {{v.name}}</td> 
+           <td width="25%" bgcolor={{v.bgcolor()}} > {{v.name}}</td> 
+
             <td width="25%"> {{v.gatherBaseTimeS}}</td>
             <td width="25%"> {{v.hardness}}</td> 
             <td width="25%"> {{v.quantity}}</td> 
@@ -108,17 +163,13 @@
 </tbody>
      
 </table>
+</div> <!--fadedbackground-->
 
 
-<br/>
-<br/>
-
-<h4>CRAFTING: {{simulation.viewedConstructorName}}</h4><b>click to craft</b>
+<div class="fadedbackground">
+<h4>CRAFTING: {{simulation.viewedConstructorName}}</h4>
 <table class="table table-bordered table-condensed">
 <thead>
-    <tr class="noselect" >
-        <th width="25%">Item</th>
-    </tr>
 </thead>
 </table>  
 
@@ -132,7 +183,11 @@
     </tbody>
   </table>
 </div>
+</div>
+</div> <!--fadedbackground-->
 
+
+<div class="fadedbackground">
 
 <h4>KNOWN RECIPES</h4>
 
@@ -164,6 +219,8 @@
     </tbody>
   </table>
 </div>
+
+</div><!--fadedbackground-->
 
 
 
