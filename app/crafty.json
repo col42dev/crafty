@@ -16,7 +16,12 @@
       "firstName": "Dorasgrour",
       "lastName": "Drakemaster",
       "profession": "services"
-    }
+    },
+    {
+      "firstName": "Skoveath",
+      "lastName": "Ashrock",
+      "profession": "harvesting"
+    },
   ],
   "gatherables": [
     {
@@ -295,7 +300,7 @@
     },
     {
       "name": "WoodenTable",
-      "category": "tool",
+      "category": "furniture",
       "construction": "Workstation",
       "input": {
         "Wood": 5

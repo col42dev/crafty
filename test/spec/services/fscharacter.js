@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: FSCharacter', function () {
+describe('Service: fsCharacter', function () {
 
   // load the service's module
   beforeEach(module('craftyApp'));
 
   // instantiate service
-  var FSCharacter;
-  beforeEach(inject(function (_FSCharacter_) {
-    FSCharacter = _FSCharacter_;
+  var fsCharacter;
+  beforeEach(inject(function (_fsCharacter_) {
+    fsCharacter = _fsCharacter_;
   }));
 
   it('should do something', function () {
-    expect(!!FSCharacter).toBe(true);
+    expect(!!fsCharacter).toBe(true);
   });
 
 });
