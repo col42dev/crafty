@@ -4,145 +4,55 @@
   "characters": [
     {
       "firstName": "Stroldrin",
-      "lastName": "Granitechest",
+      "lastName": "Harvester",
       "profession": "harvesting"
     },
     {
       "firstName": "Gronderlug",
-      "lastName": "Barbedblade",
+      "lastName": "Crafter",
       "profession": "crafting"
     },
     {
       "firstName": "Dorasgrour",
-      "lastName": "Drakemaster",
+      "lastName": "Server",
       "profession": "services"
     },
     {
       "firstName": "Skoveath",
-      "lastName": "Ashrock",
+      "lastName": "Harvester",
       "profession": "harvesting"
-    },
+    }
   ],
   "gatherables": [
     {
-      "name": "Earth",
-      "gatherBaseTimeS": 1,
-      "quantity": "100"
-    },
-    {
       "name": "Stone",
-      "gatherBaseTimeS": 1,
-      "quantity": "100"
-    },
-    {
-      "name": "Sand",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
-    },
-    {
-      "name": "Shale",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
-    },
-    {
-      "name": "Clay",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
-    },
-    {
-      "name": "Limestone",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
-    },
-    {
-      "name": "Granite",
-      "gatherBaseTimeS": 3,
-      "quantity": "100"
-    },
-    {
-      "name": "Slates",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
-    },
-    {
-      "name": "Marble",
-      "gatherBaseTimeS": 3,
-      "quantity": "100"
-    },
-    {
-      "name": "Obsidian",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
-    },
-    {
-      "name": "Salt",
-      "gatherBaseTimeS": 1,
-      "quantity": "100"
+      "gatherBaseTimeS": 10,
+      "quantity": "20"
     },
     {
       "name": "Coal",
-      "gatherBaseTimeS": 1,
-      "quantity": "100"
+      "gatherBaseTimeS": 20,
+      "quantity": "10"
     },
     {
       "name": "Iron Ore",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
-    },
-    {
-      "name": "Copper Ore",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
-    },
-    {
-      "name": "Tin Ore",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
-    },
-    {
-      "name": "Silver Ore",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
-    },
-    {
-      "name": "Gold Ore",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
-    },
-    {
-      "name": "Titanium Ore",
-      "gatherBaseTimeS": 3,
-      "quantity": "100"
-    },
-    {
-      "name": "Meat",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
-    },
-    {
-      "name": "Eggs",
-      "gatherBaseTimeS": 1,
-      "quantity": "100"
-    },
-    {
-      "name": "Platinum",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
+      "gatherBaseTimeS": 20,
+      "quantity": "30"
     },
     {
       "name": "Water",
-      "gatherBaseTimeS": 1,
+      "gatherBaseTimeS": 10,
       "quantity": "100"
     },
     {
       "name": "Wood",
-      "gatherBaseTimeS": 1,
-      "quantity": "100"
+      "gatherBaseTimeS": 15,
+      "quantity": "50"
     },
     {
       "name": "Wool",
-      "gatherBaseTimeS": 1,
-      "quantity": "100"
+      "gatherBaseTimeS": 30,
+      "quantity": "10"
     },
     {
       "name": "Leaves",
@@ -150,104 +60,24 @@
       "quantity": "100"
     },
     {
-      "name": "Roots",
-      "gatherBaseTimeS": 1,
-      "quantity": "100"
-    },
-    {
-      "name": "Apples",
-      "gatherBaseTimeS": 1,
-      "quantity": "100"
-    },
-    {
-      "name": "Berries",
-      "gatherBaseTimeS": 1,
-      "quantity": "100"
-    },
-    {
-      "name": "Mushroom",
-      "gatherBaseTimeS": 1,
-      "quantity": "100"
-    },
-    {
-      "name": "Wheat",
-      "gatherBaseTimeS": 1,
-      "quantity": "100"
-    },
-    {
       "name": "Grain",
-      "gatherBaseTimeS": 1,
-      "quantity": "100"
-    },
-    {
-      "name": "Leather",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
-    },
-    {
-      "name": "Fur",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
-    },
-    {
-      "name": "Meat",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
+      "gatherBaseTimeS": 20,
+      "quantity": "20"
     },
     {
       "name": "Bones",
-      "gatherBaseTimeS": 2,
-      "quantity": "100"
+      "gatherBaseTimeS": 120,
+      "quantity": "9"
     },
     {
-      "name": "Topaz",
-      "gatherBaseTimeS": 3,
-      "quantity": "100"
+      "name": "Sand",
+      "gatherBaseTimeS": 30,
+      "quantity": "20"
     },
     {
-      "name": "Ruby",
-      "gatherBaseTimeS": 3,
-      "quantity": "100"
-    },
-    {
-      "name": "Diamond",
-      "gatherBaseTimeS": 5,
-      "quantity": "100"
-    },
-    {
-      "name": "Amethyst",
-      "gatherBaseTimeS": 5,
-      "quantity": "100"
-    },
-    {
-      "name": "Saphire",
-      "gatherBaseTimeS": 5,
-      "quantity": "100"
-    },
-    {
-      "name": "Emerald",
-      "gatherBaseTimeS": 5,
-      "quantity": "100"
-    },
-    {
-      "name": "Tourmaline",
-      "gatherBaseTimeS": 5,
-      "quantity": "100"
-    },
-    {
-      "name": "Aquamarine",
-      "gatherBaseTimeS": 5,
-      "quantity": "100"
-    },
-    {
-      "name": "Opal",
-      "gatherBaseTimeS": 5,
-      "quantity": "100"
-    },
-    {
-      "name": "Turquoise",
-      "gatherBaseTimeS": 5,
-      "quantity": "100"
+      "name": "Feather",
+      "gatherBaseTimeS": 60,
+      "quantity": "5"
     }
   ],
   "knownRecipes": [
@@ -261,28 +91,58 @@
       "name": "Workbench"
     },
     {
-      "name": "Bow"
-    },
-    {
       "name": "Forge"
     },
     {
-      "name": "SteelClub"
+      "name": "BonePickaxe"
     },
     {
-      "name": "SteelBar"
+      "name": "Paper"
     },
     {
-      "name": "SteelSword"
+      "name": "Books"
     },
     {
-      "name": "StonePickaxe"
+      "name": "FineHat"
     },
     {
-      "name": "SteelPickaxe"
+      "name": "FlagonOfAle"
     },
     {
-      "name": "SteelAxe"
+      "name": "WoodenPlanks"
+    },
+    {
+      "name": "DiceTable"
+    },
+    {
+      "name": "MineCart"
+    },
+    {
+      "name": "Loom"
+    },
+    {
+      "name": "Glass"
+    },
+    {
+      "name": "Shovel"
+    },
+    {
+      "name": "Cloth"
+    },
+    {
+      "name": "Nails"
+    },
+    {
+      "name": "BackPack"
+    },
+    {
+      "name": "Saw"
+    },
+    {
+      "name": "Bucket"
+    },
+    {
+      "name": "Ale"
     }
   ],
   "items": [
@@ -296,19 +156,19 @@
       "output": {
         "Rope": 3
       },
-      "basetime": 1
+      "basetime": 15
     },
     {
       "name": "WoodenTable",
-      "category": "furniture",
+      "category": "constructor",
       "construction": "Workstation",
       "input": {
-        "Wood": 5
+        "Wood": 4
       },
       "output": {
         "WoodenTable": 1
       },
-      "basetime": 2
+      "basetime": 30
     },
     {
       "name": "Workbench",
@@ -321,20 +181,20 @@
       "output": {
         "Workbench": 1
       },
-      "basetime": 3
+      "basetime": 30
     },
     {
-      "name": "Bow",
-      "category": "weapon",
-      "construction": "Workbench",
+      "name": "BackPack",
+      "category": "tool",
+      "construction": "Workstation",
       "input": {
-        "Wood": 3,
+        "Cloth": 3,
         "Rope": 1
       },
       "output": {
-        "Bow": 1
+        "BackPack": 1
       },
-      "basetime": 2
+      "basetime": 30
     },
     {
       "name": "Forge",
@@ -344,91 +204,219 @@
         "Water": 3,
         "Coal": 1,
         "Iron Ore": 3,
-        "Granite": 2
+        "Stone": 2
       },
       "output": {
         "Forge": 1
       },
-      "basetime": 4
+      "basetime": 60
     },
     {
-      "name": "SteelClub",
-      "category": "weapon",
-      "construction": "Forge",
+      "name": "Paper",
+      "category": "unclassified",
+      "construction": "WoodenTable",
       "input": {
-        "Wood": 2,
-        "Iron Ore": 1,
-        "Granite": 2
+        "Leaves": 1
       },
       "output": {
-        "SteelClub": 1
+        "Paper": 1
       },
-      "basetime": 2
+      "basetime": 15
     },
     {
-      "name": "SteelBar",
+      "name": "Books",
+      "category": "tool",
+      "construction": "WoodenTable",
+      "input": {
+        "Paper": 12,
+        "Rope": 1,
+        "Feather": 2
+      },
+      "output": {
+        "Books": 1
+      },
+      "basetime": 45
+    },
+    {
+      "name": "FineHat",
+      "category": "tool",
+      "construction": "WoodenTable",
+      "input": {
+        "Cloth": 2,
+        "Feather": 1
+      },
+      "output": {
+        "FineHat": 1
+      },
+      "basetime": 15
+    },
+    {
+      "name": "BonePickaxe",
+      "category": "tool",
+      "construction": "Workstation",
+      "input": {
+        "Wood": 2,
+        "Bones": 2
+      },
+      "output": {
+        "BonePickaxe": 1
+      },
+      "basetime": 15
+    },
+    {
+      "name": "FlagonOfAle",
+      "category": "tool",
+      "construction": "WoodenTable",
+      "input": {
+        "Ale": 6,
+        "Glass": 1,
+        "Cloth": 1,
+        "Bones": 6
+      },
+      "output": {
+        "FlagonOfAle": 1
+      },
+      "basetime": 15
+    },
+    {
+      "name": "WoodenPlanks",
+      "category": "unclassified",
+      "construction": "Workbench",
+      "input": {
+        "Wood": 2
+      },
+      "output": {
+        "WoodenPlanks": 1
+      },
+      "basetime": 15
+    },
+    {
+      "name": "DiceTable",
+      "category": "tool",
+      "construction": "Workbench",
+      "input": {
+        "WoodenTable": 1,
+        "Bones": 3,
+        "Cloth": 1
+      },
+      "output": {
+        "DiceTable": 1
+      },
+      "basetime": 45
+    },
+    {
+      "name": "MineCart",
+      "category": "tool",
+      "construction": "Workbench",
+      "input": {
+        "WoodenPlanks": 4,
+        "Nails": 10
+      },
+      "output": {
+        "MineCart": 1
+      },
+      "basetime": 60
+    },
+    {
+      "name": "Loom",
+      "category": "constructor",
+      "construction": "Workbench",
+      "input": {
+        "Wood": 5,
+        "Rope": 2
+      },
+      "output": {
+        "Loom": 1
+      },
+      "basetime": 30
+    },
+    {
+      "name": "Glass",
       "category": "unclassified",
       "construction": "Forge",
       "input": {
-        "Coal": 2,
+        "Sand": 4
+      },
+      "output": {
+        "Glass": 1
+      },
+      "basetime": 45
+    },
+    {
+      "name": "Shovel",
+      "category": "tool",
+      "construction": "Forge",
+      "input": {
+        "Wood": 2,
         "Iron Ore": 2
       },
       "output": {
-        "SteelBar": 1
+        "Shovel": 1
       },
-      "basetime": 1
+      "basetime": 15
     },
     {
-      "name": "SteelSword",
-      "category": "weapon",
-      "construction": "Forge",
+      "name": "Cloth",
+      "category": "unclassified",
+      "construction": "Loom",
       "input": {
-        "Wood": 1,
-        "SteelBar": 2
+        "Wool": 1
       },
       "output": {
-        "SteelSword": 1
+        "Cloth": 1
       },
-      "basetime": 2
+      "basetime": 15
     },
     {
-      "name": "StonePickaxe",
+      "name": "Ale",
+      "category": "unclassified",
+      "construction": "WoodenTable",
+      "input": {
+        "Water": 6,
+        "Grain": 3
+      },
+      "output": {
+        "Ale": 1
+      },
+      "basetime": 45
+    },
+    {
+      "name": "Saw",
+      "category": "tool",
+      "construction": "Forge",
+      "input": {
+        "Iron Ore": 3,
+        "Wood": 1
+      },
+      "output": {
+        "Saw": 1
+      },
+      "basetime": 45
+    },
+    {
+      "name": "Bucket",
       "category": "tool",
       "construction": "Workstation",
       "input": {
-        "Wood": 2,
-        "Granite": 3
+        "Wood": 3,
+        "Rope": 1
       },
       "output": {
-        "StonePickaxe": 1
+        "Bucket": 1
       },
-      "basetime": 2
+      "basetime": 30
     },
     {
-      "name": "SteelPickaxe",
-      "category": "tool",
-      "construction": "Workstation",
-      "input": {
-        "Wood": 2,
-        "SteelBar": 3
-      },
-      "output": {
-        "SteelPickaxe": 1
-      },
-      "basetime": 2
-    },
-    {
-      "name": "SteelAxe",
-      "category": "weapon",
+      "name": "Nails",
+      "category": "unclassified",
       "construction": "Forge",
       "input": {
-        "Wood": 2,
-        "SteelBar": 2
+        "Iron Ore": 1
       },
       "output": {
-        "SteelAxe": 1
+        "Nails": 5
       },
-      "basetime": 2
+      "basetime": 10
     }
   ]
 }

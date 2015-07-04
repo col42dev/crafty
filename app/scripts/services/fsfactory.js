@@ -17,6 +17,9 @@ angular.module('craftyApp')
 
 	    this.initialize = function() {
 	
+			this.taskTimeScalar ='1';
+		
+
 	     	// Characters
 		    this.characterObjs = {};  
  			json['characters'].forEach( ( function(thisCharacter) {
@@ -52,6 +55,14 @@ angular.module('craftyApp')
 	        this.bank = {};  
 	        this.bank['Workstation'] = new FSObject({'category':'constructor', 'name':'Workstation'});
 	        this.bank['Workstation'].increment(1);
+	        this.bank['saw'] = new FSObject({'category':'tool', 'name':'saw'});
+	        this.bank['saw'].increment(4);
+	        this.bank['shovel'] = new FSObject({'category':'tool', 'name':'shovel'});
+	        this.bank['shovel'].increment(4);
+	        this.bank['bigaxe'] = new FSObject({'category':'weapon', 'name':'bigaxe'});
+	        this.bank['bigaxe'].increment(4);
+	        this.bank['sword'] = new FSObject({'category':'weapon', 'name':'sword'});
+	        this.bank['sword'].increment(4);
 	        this.updateBank = function() {
 		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {
 		        		return thisFactory.bank[key];
@@ -80,6 +91,43 @@ angular.module('craftyApp')
 	        this.viewedConstructorName = null;
 	    };
 
+
+		/**
+		 * @desc 
+		 * @return 
+		 */
+		 this.onClickCharacterTool = function ( toolObj) {
+
+		      var indexOf = this.selectedCharacter.tools.indexOf(toolObj);
+		      if ( indexOf !== -1) {
+		      	this.selectedCharacter.tools.splice(indexOf, 1);
+
+		      	 if (!(toolObj.name in thisFactory.bank)) {
+        			thisFactory.bank[toolObj.name] = new FSObject({'category':'tool', 'name':toolObj.name});
+			      }
+			      thisFactory.bank[toolObj.name].increment(1);
+			      thisFactory.updateBank();
+		      }
+		 };
+
+		 		/**
+		 * @desc 
+		 * @return 
+		 */
+		 this.onClickCharacterWeapon = function ( weaponObj) {
+
+		      var indexOf = this.selectedCharacter.weapons.indexOf(weaponObj);
+		      if ( indexOf !== -1) {
+		      	this.selectedCharacter.weapons.splice(indexOf, 1);
+
+		      	 if (!(weaponObj.name in thisFactory.bank)) {
+        			thisFactory.bank[weaponObj.name] = new FSObject({'category':'weapon', 'name':weaponObj.name});
+			      }
+			      thisFactory.bank[weaponObj.name].increment(1);
+			      thisFactory.updateBank();
+		      }
+		 };
+
 		/**
 		 * @desc 
 		 * @return 
@@ -98,16 +146,32 @@ angular.module('craftyApp')
 			} else {
 	        	this.viewedConstructorName = null;
 
-	        	if ( this.bank[bankItemKey].category === 'tool') { // add to character inventory
-	        		if (this.bank[bankItemKey].quantity.length > 0) {
-	        			this.bank[bankItemKey].decrement(1) ;
-	        			this.selectedCharacter.tools.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
+	        	switch ( this.bank[bankItemKey].category ) {
+	        		case 'tool': { // add to character inventory 
+		        		if (this.bank[bankItemKey].quantity.length > 0) {
+		        			this.bank[bankItemKey].decrement(1) ;
+		        			this.selectedCharacter.tools.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
 
-	        			if ( this.bank[bankItemKey].quantity.length === 0) {
-	        				delete  this.bank[bankItemKey];
-	        				this.updateBank();
-	        			}
+		        			if ( this.bank[bankItemKey].quantity.length === 0) {
+		        				delete  this.bank[bankItemKey];
+		        				this.updateBank();
+		        			}
+		        		}
 	        		}
+	        		break;
+
+	        		case 'weapon': { // add to character inventory 
+		        		if (this.bank[bankItemKey].quantity.length > 0) {
+		        			this.bank[bankItemKey].decrement(1) ;
+		        			this.selectedCharacter.weapons.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
+
+		        			if ( this.bank[bankItemKey].quantity.length === 0) {
+		        				delete  this.bank[bankItemKey];
+		        				this.updateBank();
+		        			}
+		        		}
+	        		}
+	        		break;
 	        	}
 		
 			}
@@ -124,6 +188,8 @@ angular.module('craftyApp')
 			    this.gatherables[gatherableType].gatherers ++;
 			}
 		};
+
+		
 
 		/**
 		 * @desc 

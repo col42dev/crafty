@@ -13,7 +13,6 @@ angular.module('craftyApp')
     // ...
     var thisFactory = null;
 
-
     var FSCharacter = function(characaterObj, simFactory, ctrllerScope) {
         thisFactory = simFactory;
         this.firstName = characaterObj.firstName;
@@ -21,21 +20,24 @@ angular.module('craftyApp')
         this.profession = characaterObj.profession;
         this.activity = [];
         this.tools = [];
+        this.weapons = [];
         this.activityCompletedCallback = [];
         this.ctrllerScope = ctrllerScope;
       };
 
-  FSCharacter.prototype.getbgcolor =  function( ) {     
+
+    FSCharacter.prototype.getbgcolor =  function( ) {     
       return  ((thisFactory.selectedCharacter  !== null) && (this.getFullName() === thisFactory.selectedCharacter.getFullName())) ? '#00FF00' : null;       
     };
+
     FSCharacter.prototype.getFullName = function () {
       return this.firstName + ' ' + this.lastName;
     };
+
     FSCharacter.prototype.startGathering = function ( gatherablesName) {
       this.activity.push( new FSTask( {'name':gatherablesName, 'category':'gathering'}));
       if (this.activity.length === 1) {
-        this.startNextActivity();
-        //setTimeout(this.stopGathering.bind(this), thisFactory.gatherables[gatherablesName].gatherBaseTimeS * 1000);
+        this.startNextTask();
       }
     };
 
@@ -55,20 +57,16 @@ angular.module('craftyApp')
 
       // start next activity
       if (this.activity.length > 0) {
-        this.startNextActivity();
+        this.startNextTask();
       }
 
       this.ctrllerScope.$apply();
     };
 
-
-
-
     FSCharacter.prototype.startCrafting = function ( craftableKey) {
       this.activity.push( new FSTask({'name':craftableKey, 'category':'crafting'}));
       if (this.activity.length === 1) {
-        this.startNextActivity();
-        //setTimeout(this.stopCrafting.bind(this), thisFactory.gameItems[craftableKey].craftBaseTimeS * 1000);
+        this.startNextTask();
       }
     };
 
@@ -94,28 +92,29 @@ angular.module('craftyApp')
 
       // start next activity
       if (this.activity.length > 0) {
-        this.startNextActivity();
+        this.startNextTask();
       }
 
       this.ctrllerScope.$apply();
     };
 
-    FSCharacter.prototype.startNextActivity = function () {     
+    FSCharacter.prototype.startNextTask = function () {     
       var taskName = this.activity[0].name;
 
-      console.log('startNextActivity:' + taskName);
+      console.log('startNextTask:' + taskName);
 
       switch ( this.activity[0].category){
         case 'gathering':
-          setTimeout(this.stopGathering.bind(this), thisFactory.gatherables[taskName].gatherBaseTimeS * 1000);
+          var duration = (thisFactory.gatherables[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
+          setTimeout(this.stopGathering.bind(this), duration);
           console.log('setTimeout:' + thisFactory.gatherables[taskName].gatherBaseTimeS * 1000);
           break;
         case 'crafting':
-          setTimeout(this.stopCrafting.bind(this),  thisFactory.gameItems[taskName].craftBaseTimeS * 1000);
+          var duration = (thisFactory.gatherables[taskName].craftBaseTimeS * 1000) / thisFactory.taskTimeScalar;
+          setTimeout(this.stopCrafting.bind(this),  duration);
           console.log('setTimeout:' + thisFactory.gameItems[taskName].craftBaseTimeS * 1000);
           break;
       }
-
     };
 
     /**

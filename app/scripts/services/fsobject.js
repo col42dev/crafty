@@ -29,14 +29,23 @@ angular.module('craftyApp')
     };
 
     FSObject.prototype.bgcolor = function( ) {
+      var color = null;
       switch (this.category) {
         case 'constructor':
-          return '#00FF00';
+          color= '#00FF00';
+          break;
         case 'tool':
-          return '#00FFFF';
+          color= '#00FFFF';
+          break;
+        case 'weapon':
+          color= '#FFFF00';
+          break;
       }
-      return  null;
+      return  color;
     };
+
+
+  
 
     return FSObject;
   });

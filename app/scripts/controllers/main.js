@@ -18,13 +18,12 @@ angular.module('craftyApp')
     ];
 
     $scope.myStopwatch = stopwatch;
-
-
+    $scope.taskTimeScalarDivVis ='hidden';
 
 
     //reset
     //$scope.master = {input: 'https://api.myjson.com/bins/3bd0c?pretty=1'};
-    $scope.master = {input: 'https://api.myjson.com/bins/4lg1m?pretty=1'};
+    $scope.master = {input: 'https://api.myjson.com/bins/3sq3e?pretty=1'};
     $scope.user = angular.copy($scope.master);
     $scope.loadJson = function() {
 
@@ -55,6 +54,7 @@ angular.module('craftyApp')
  
     $scope.createSim = function() {
       console.log('Load JSON success'  + JSON.stringify($scope.data));
+      $scope.taskTimeScalarDivVis ='';
       FSService.createSimulation($scope, $scope.data);
       $scope.simulation = FSService.simulation;
       $scope.$apply();

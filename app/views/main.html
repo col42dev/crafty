@@ -15,9 +15,17 @@
 </br>
 
 
-<div class="fadedbackground">
+
+
+
+
+<div class="fadedbackground" style="visibility: {{taskTimeScalarDivVis}}">
 
 <h4>CHARACTERS</h4> 
+
+<b>Task Speed-Up Factor: {{simulation.taskTimeScalar}}</b>
+
+<input type="range"  min="1" max="20" step="1" ng-model="simulation.taskTimeScalar" style="width: 100%">
 
 <table class="table table-bordered table-condensed table-scrollable noselect">
   <thead>
@@ -74,7 +82,20 @@
         <tbody>
          <tr class="noselect">
             <td><b>Tools</b></td>
-            <td ng-repeat="v in simulation.selectedCharacter.tools" class="noselect" >
+            <td ng-repeat="v in simulation.selectedCharacter.tools" class="noselect" ng-click="simulation.onClickCharacterTool(v)" bgcolor={{v.bgcolor()}} >
+                {{v.name}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </tr>
+
+    <tr>
+      <table class="table table-bordered table-condensed">
+        <tbody>
+         <tr class="noselect">
+            <td><b>Weapons</b></td>
+            <td  ng-repeat="v in simulation.selectedCharacter.weapons" class="noselect" ng-click="simulation.onClickCharacterWeapon(v)" bgcolor={{v.bgcolor()}} >
                 {{v.name}}
             </td>
           </tr>
