@@ -62,6 +62,7 @@ angular.module('craftyApp')
 	        this.bank = {};  
 	        this.bank['Workstation'] = new FSObject({'category':'constructor', 'name':'Workstation'});
 	        this.bank['Workstation'].increment(1);
+	        
 	        /*
 	        this.bank['saw'] = new FSObject({'category':'tool', 'name':'saw'});
 	        this.bank['saw'].increment(4);
@@ -72,6 +73,7 @@ angular.module('craftyApp')
 	        this.bank['sword'] = new FSObject({'category':'weapon', 'name':'sword'});
 	        this.bank['sword'].increment(4);
 	        */
+	        
 	        this.updateBank = function() {
 		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {
 		        		return thisFactory.bank[key];

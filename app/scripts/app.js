@@ -27,6 +27,14 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/character', {
+        templateUrl: 'views/character.html',
+        controller: 'MainCtrl'
+      })
+      .when('/reference', {
+        templateUrl: 'views/reference.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -4,105 +4,15 @@
 
 <p>To initialize, upload a JSON description to <a href="http://myjson.com/">http://myjson.com/</a> and copy the generated URL in to this input dialog.<p>
 <form novalidate>
-  <button ng-click="loadJson()">Load:</button> <input size="45" type="text" ng-model="user.input">
-  <b>{{myStopwatch.data.pad(myStopwatch.data.hours)}}:{{myStopwatch.data.pad(myStopwatch.data.minutes)}}:{{myStopwatch.data.pad(myStopwatch.data.seconds)}}</b>
+  <button ng-click="getFSService().loadJson()">Load:</button> <input size="45" type="text" ng-model="getFSService().user.input">
+  <b>{{getFSService().myStopwatch.data.pad(getFSService().myStopwatch.data.hours)}}:{{getFSService().myStopwatch.data.pad(getFSService().myStopwatch.data.minutes)}}:{{getFSService().myStopwatch.data.pad(getFSService().myStopwatch.data.seconds)}}</b>
 </form>
 </br>
 
 
 
+<div ng-include src="'views/characterselect.html'"></div>
 
-
-
-<div class="fadedbackground" style="visibility: {{taskTimeScalarDivVis}}">
-
-<h4>CHARACTERS</h4> 
-
-<b>Task Speed-Up Factor: {{simulation.taskTimeScalar}}</b>
-
-<input type="range"  min="1" max="20" step="1" ng-model="simulation.taskTimeScalar" style="width: 100%">
-
-<table class="table table-bordered table-condensed table-scrollable noselect">
-  <thead>
-  </thead>
-  <tbody>
-    <tr ng-repeat="(k,v) in simulation.characterObjs" class="noselect" ng-click="onClickCharacter(v)">
-      <td width="25%"  bgcolor={{v.getbgcolor()}} > {{v.firstName}} {{v.lastName}}</td> 
-    </tr>
-  </tbody>
-</table>
-
-</div> <!--fadedbackground-->
-
-
-
-<div class="fadedbackground">
-
-  
-<h4>CHARACTER SHEET: {{simulation.selectedCharacter.firstName}} {{simulation.selectedCharacter.lastName}}</h4>  
-
-<table class="table table-bordered table-condensed">
-  <thead>
-  </thead>
-  <tbody>
-      <tr>
-      <table class="table table-bordered  table-condensed">
-        <tbody>
-          <tr class="noselect">
-            <td><b>Profession</b></td>
-              <td class="noselect" >
-                {{simulation.selectedCharacter.profession}}
-              </td>
-          </tr>
-        </tbody>
-      </table>
-    </tr>
-
-    <tr>
-      <table class="table table-bordered  table-condensed">
-        <tbody>
-          <tr class="noselect">
-            <td><b>Activity</b></td>
-              <td ng-repeat="v in simulation.selectedCharacter.activity" class="noselect" >
-                {{v.name}}
-              </td>
-        
-          </tr>
-        </tbody>
-      </table>
-    </tr>
-
-    <tr>
-      <table class="table table-bordered table-condensed">
-        <tbody>
-         <tr class="noselect">
-            <td><b>Tools</b></td>
-            <td ng-repeat="v in simulation.selectedCharacter.tools" class="noselect" ng-click="simulation.onClickCharacterTool(v)" bgcolor={{v.bgcolor()}} >
-                {{v.name}}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </tr>
-
-    <tr>
-      <table class="table table-bordered table-condensed">
-        <tbody>
-         <tr class="noselect">
-            <td><b>Weapons</b></td>
-            <td  ng-repeat="v in simulation.selectedCharacter.weapons" class="noselect" ng-click="simulation.onClickCharacterWeapon(v)" bgcolor={{v.bgcolor()}} >
-                {{v.name}}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </tr>
-  </tbody>
-
-</table> 
-
-
-</div> <!--fadedbackground-->
 
 
 <div class="fadedbackground">
@@ -129,8 +39,8 @@
     <table class="table table-bordered table-condensed">
     <thead>
         <tr class="noselect" >
-            <th width="50%" ng-click="onClickGatherablesHeader('name')">Resource</br> &nbsp</th>
-            <th width="50%" ng-click="onClickGatherablesHeader('quantity')">#</br> &nbsp</th>
+            <th width="50%" ng-click="getFSService().onClickGatherablesHeader('name')">Resource</br> &nbsp</th>
+            <th width="50%" ng-click="getFSService().onClickGatherablesHeader('quantity')">#</br> &nbsp</th>
         </tr>
     </thead>
    </table>   
@@ -138,7 +48,7 @@
       <table class="table table-bordered table-condensed table-scrollable">
         
         <tbody>
-          <tr ng-repeat="v in simulation.gatherablesArray | orderBy:simulation.orderGatherablesBy" ng-click="onClickGatherables(v)" class="noselect" >
+          <tr ng-repeat="v in getFSService().simulation.gatherablesArray | orderBy:getFSService().simulation.orderGatherablesBy" ng-click="getFSService().onClickGatherables(v)" class="noselect" >
            <td width="50%" bgcolor={{v.bgcolor()}} > {{v.name}}</td> 
            <td width="50%"> {{v.quantity}}</td> 
           </tr>
@@ -162,7 +72,7 @@
 <thead>
     <tr class="noselect">
         <th width="50%"><h4>BANK</h4></th>
-        <th width="50%"><h4>CRAFTING: {{simulation.viewedConstructorName}}</h4></th>
+        <th width="50%"><h4>CRAFTING: {{getFSService().simulation.viewedConstructorName}}</h4></th>
     </tr>
 </thead>
 <tbody>
@@ -172,9 +82,9 @@
   <table class="table table-bordered table-condensed">
     <thead>
         <tr class="noselect" >
-            <th class="col-sm-3" ng-click="onClickBankHeader('name')">Resource</br> &nbsp</th>
-            <th class="col-sm-2" ng-click="onClickBankHeader('category')">Category</br> &nbsp</th>
-            <th class="col-sm-1" ng-click="onClickBankHeader('quantity')">#</br> &nbsp</th>
+            <th class="col-sm-3" ng-click="getFSService().onClickBankHeader('name')">Resource</br> &nbsp</th>
+            <th class="col-sm-2" ng-click="getFSService().onClickBankHeader('category')">Category</br> &nbsp</th>
+            <th class="col-sm-1" ng-click="getFSService().onClickBankHeader('quantity')">#</br> &nbsp</th>
         </tr>
     </thead>
   </table>  
@@ -182,7 +92,7 @@
   <div class="bodycontainer scrollable">
      <table class="table table-bordered table-condensed table-scrollable" >
         <tbody> 
-          <tr ng-repeat="v in simulation.bankArray | orderBy:simulation.orderBankBy" ng-click="onClickBank(v)" class="noselect" >
+          <tr ng-repeat="v in getFSService().simulation.bankArray | orderBy:getFSService().simulation.orderBankBy" ng-click="getFSService().onClickBank(v)" class="noselect" >
             <td class="col-sm-3"  bgcolor={{v.bgcolor()}}>{{ v.name }}</td>
             <td class="col-sm-2"> {{ v.category}}</td>
             <td class="col-sm-1"> {{ v.quantity.length }}</td>
@@ -198,7 +108,7 @@
  <div class="bodycontainer scrollable">
     <table class="table table-bordered table-condensed table-scrollable">
       <tbody>
-        <tr ng-repeat="v  in simulation.viewedConstructor | orderBy:'name'" ng-click="onClickCraftable(v)" class="noselect" >
+        <tr ng-repeat="v  in getFSService().simulation.viewedConstructor | orderBy:'name'" ng-click="getFSService().onClickCraftable(v)" class="noselect" >
           <td width="25%" bgcolor={{v.bgcolor()}}> {{v.name}}</td> 
         </tr>
       </tbody>
@@ -215,73 +125,6 @@
 
 
 
-
-
-<div class="fadedbackground">
-
-<h4>KNOWN RECIPES (reference)</h4>
-
-<div class="bodycontainer scrollable">
-<table class="table table-bordered table-condensed table-scrollable">
-  <tbody>
-      <tr class="noselect" >
-          <td class="col-sm-3">Item</td>
-          <td class="col-sm-1">T</td>
-          <td class="col-sm-5">Ingredients</td>
-          <td class="col-sm-2">Constructor</td>
-          <td class="col-sm-1">Crafting Time (S)</td>
-      </tr>
-  </tbody>
-</table>  
-</div>
-
-<div class="bodycontainer scrollable">
-  <table class="table table-bordered table-condensed table-scrollable">
-
-    <tbody>
-      <tr ng-repeat="(k,v)  in simulation.gameItems" class="noselect" >
-        <td class="col-sm-3">{{v.output}}</td> 
-        <td class="col-sm-1">{{v.toughness}}</td> 
-        <td class="col-sm-5">{{v.input}}</td> 
-        <td class="col-sm-2">{{v.construction}}</td> 
-        <td class="col-sm-1">{{v.craftBaseTimeS}}</td> 
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-</div><!--fadedbackground-->
-
-<div class="fadedbackground">
-
-<h4>GATHER DEFINES (reference)</h4>
-
-<div class="bodycontainer scrollable">
-<table class="table table-bordered table-condensed table-scrollable">
-  <tbody>
-      <tr class="noselect" >
-          <td class="col-sm-1">Type</td>
-          <td class="col-sm-1">Gather Time</td>
-          <td class="col-sm-1">Dependencies</td>
-      </tr>
-  </tbody>
-</table>  
-</div>
-
-<div class="bodycontainer scrollable">
-  <table class="table table-bordered table-condensed table-scrollable">
-
-    <tbody>
-      <tr ng-repeat="(k,v)  in simulation.gatherableDefines" class="noselect" >
-        <td class="col-sm-1">{{k}}</td> 
-        <td class="col-sm-1">{{v.gatherBaseTimeS}}</td> 
-        <td class="col-sm-1">{{v.dependencies}}</td> 
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-</div><!--fadedbackground-->
 
 
 

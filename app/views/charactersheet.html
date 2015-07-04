@@ -1,0 +1,69 @@
+
+<div class="fadedbackground">
+
+  
+<h4>CHARACTER SHEET: {{getFSService().simulation.selectedCharacter.firstName}} {{getFSService().simulation.selectedCharacter.lastName}}</h4>  
+
+<table class="table table-bordered table-condensed">
+  <thead>
+  </thead>
+  <tbody>
+      <tr>
+      <table class="table table-bordered  table-condensed">
+        <tbody>
+          <tr class="noselect">
+            <td><b>Profession</b></td>
+              <td class="noselect" >
+                {{getFSService().simulation.selectedCharacter.profession}}
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </tr>
+
+    <tr>
+      <table class="table table-bordered  table-condensed">
+        <tbody>
+          <tr class="noselect">
+            <td><b>Activity</b></td>
+              <td ng-repeat="v in getFSService().simulation.selectedCharacter.activity" class="noselect" >
+                {{v.name}}
+              </td>
+        
+          </tr>
+        </tbody>
+      </table>
+    </tr>
+
+    <tr>
+      <table class="table table-bordered table-condensed">
+        <tbody>
+         <tr class="noselect">
+            <td><b>Tools</b></td>
+            <td ng-repeat="v in getFSService().simulation.selectedCharacter.tools" class="noselect" ng-click="getFSService().simulation.onClickCharacterTool(v)" bgcolor={{v.bgcolor()}} >
+                {{v.name}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </tr>
+
+    <tr>
+      <table class="table table-bordered table-condensed">
+        <tbody>
+         <tr class="noselect">
+            <td><b>Weapons</b></td>
+            <td  ng-repeat="v in getFSService().simulation.selectedCharacter.weapons" class="noselect" ng-click="getFSService().simulation.onClickCharacterWeapon(v)" bgcolor={{v.bgcolor()}} >
+                {{v.name}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </tr>
+  </tbody>
+
+</table> 
+
+
+</div> <!--fadedbackground-->
+

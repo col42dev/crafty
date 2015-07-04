@@ -1,0 +1,20 @@
+
+
+<div class="fadedbackground" style="visibility: {{taskTimeScalarDivVis}}">
+
+<h4>CHARACTERS</h4> 
+
+<table class="table table-bordered table-condensed table-scrollable noselect">
+  <thead>
+  </thead>
+  <tbody>
+    <tr ng-repeat="(k,v) in getFSService().simulation.characterObjs" class="noselect" ng-click="getFSService().onClickCharacter(v)">
+      <td width="25%"  bgcolor={{v.getbgcolor()}} > {{v.firstName}} {{v.lastName}}</td> 
+    </tr>
+  </tbody>
+</table>
+
+</div> <!--fadedbackground-->
+
+
+
