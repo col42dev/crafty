@@ -32,6 +32,10 @@ angular.module('craftyApp')
 	        	this.selectedCharacter = character;
 	        };
 
+    		// GatherableDefines
+	        this.gatherableDefines = json['gatherableDefines'];  
+	        
+
 
 	        // Gatherables
 	        this.gatherables = {};  

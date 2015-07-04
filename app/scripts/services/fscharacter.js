@@ -115,22 +115,26 @@ angular.module('craftyApp')
 
       switch ( this.activity[0].category){
         case 'gathering':
-          if (taskName in thisFactory.gatherables && thisFactory.gatherables[taskName].quantity > 0) {
-            var duration = (thisFactory.gatherables[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
-            setTimeout(this.stopGathering.bind(this), duration);
-            thisFactory.gatherables[taskName].gatherers ++;
-            console.log('setTimeout:' + thisFactory.gatherables[taskName].gatherBaseTimeS * 1000);
-          } else {
-            this.activity.splice(0, 1);
-            if (this.activity.length > 0) {
-              this.startNextTask();
+          {
+            if (taskName in thisFactory.gatherables && thisFactory.gatherables[taskName].quantity > 0) {
+              var gDuration = (thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
+              setTimeout(this.stopGathering.bind(this), gDuration);
+              thisFactory.gatherables[taskName].gatherers ++;
+              console.log('setTimeout:' + thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000);
+            } else {
+              this.activity.splice(0, 1);
+              if (this.activity.length > 0) {
+                this.startNextTask();
+              }
             }
           }
           break;
         case 'crafting':
-          var duration = (thisFactory.gameItems[taskName].craftBaseTimeS * 1000) / thisFactory.taskTimeScalar;
-          setTimeout(this.stopCrafting.bind(this),  duration);
-          console.log('setTimeout:' + thisFactory.gameItems[taskName].craftBaseTimeS * 1000);
+          {
+            var duration = (thisFactory.gameItems[taskName].craftBaseTimeS * 1000) / thisFactory.taskTimeScalar;
+            setTimeout(this.stopCrafting.bind(this),  duration);
+            console.log('setTimeout:' + thisFactory.gameItems[taskName].craftBaseTimeS * 1000);
+          }
           break;
       }
     };

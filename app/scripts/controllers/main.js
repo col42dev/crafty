@@ -22,8 +22,7 @@ angular.module('craftyApp')
 
 
     //reset
-    //$scope.master = {input: 'https://api.myjson.com/bins/3bd0c?pretty=1'};
-    $scope.master = {input: 'https://api.myjson.com/bins/3sq3e?pretty=1'};
+    $scope.master = {input: 'https://api.myjson.com/bins/2z5a2?pretty=1'};
     $scope.user = angular.copy($scope.master);
     $scope.loadJson = function() {
 

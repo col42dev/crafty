@@ -23,63 +23,100 @@
       "profession": "harvesting"
     }
   ],
+ "gatherableDefines": {
+    "Stone" :{
+      "gatherBaseTimeS": 10,
+      "dependancies":[]
+    },
+    "Coal" : {
+      "gatherBaseTimeS": 20,
+      "dependancies":["MineCart"]
+    },
+    "Iron Ore" : {
+      "gatherBaseTimeS": 20,
+      "dependancies":[]
+    },
+    "Water" : {
+      "gatherBaseTimeS": 10,
+      "dependancies":["Bucket"]
+    },
+    "Wood" : {
+      "gatherBaseTimeS": 15,
+      "dependancies":[]
+    },
+    "Wool" : {
+      "gatherBaseTimeS": 30,
+      "dependancies":[]
+    },
+    "Leaves": {
+      "gatherBaseTimeS": 1,
+      "dependancies":[]
+    },
+    "Grain" : {
+      "gatherBaseTimeS": 20,
+      "dependancies":[]
+    },
+    "Bones" : {
+      "gatherBaseTimeS": 120,
+      "dependancies":[]
+    },
+    "Sand" : {
+      "gatherBaseTimeS": 30,
+      "dependancies":[]
+    },
+    "Feather" : {
+      "gatherBaseTimeS": 60,
+      "dependancies":[]
+    }
+  },
   "gatherables": [
     {
       "name": "Stone",
-      "gatherBaseTimeS": 10,
       "quantity": "20"
     },
     {
       "name": "Coal",
-      "gatherBaseTimeS": 20,
       "quantity": "10"
     },
     {
       "name": "Iron Ore",
-      "gatherBaseTimeS": 20,
       "quantity": "30"
     },
     {
       "name": "Water",
-      "gatherBaseTimeS": 10,
       "quantity": "100"
     },
     {
       "name": "Wood",
-      "gatherBaseTimeS": 15,
       "quantity": "50"
     },
     {
       "name": "Wool",
-      "gatherBaseTimeS": 30,
       "quantity": "10"
     },
     {
       "name": "Leaves",
-      "gatherBaseTimeS": 1,
       "quantity": "100"
     },
     {
       "name": "Grain",
-      "gatherBaseTimeS": 20,
       "quantity": "20"
     },
     {
       "name": "Bones",
-      "gatherBaseTimeS": 120,
       "quantity": "9"
     },
     {
       "name": "Sand",
-      "gatherBaseTimeS": 30,
       "quantity": "20"
     },
     {
       "name": "Feather",
-      "gatherBaseTimeS": 60,
       "quantity": "5"
     }
   ],
+
+
   "knownRecipes": [
     {
       "name": "Rope"

@@ -110,8 +110,8 @@
 
 <thead>
     <tr class="noselect">
-        <th><h4>RESOURCES</h4>click to mine</th>
-        <th><h4>GATHERABLES</h4> click to gather</th>
+        <th width="50%"><h4>RESOURCES</h4>click to mine</th>
+        <th width="50%"><h4>GATHERABLES</h4> click to gather</th>
     </tr>
 </thead>
 <tbody>
@@ -129,10 +129,8 @@
     <table class="table table-bordered table-condensed">
     <thead>
         <tr class="noselect" >
-            <th width="25%" ng-click="onClickGatherablesHeader('name')">Resource</br> &nbsp</th>
-            <th width="25%" ng-click="onClickGatherablesHeader('gatherBaseTimeS')">Gather </br>Time (S)</th>
-            <th width="25%" ng-click="onClickGatherablesHeader('hardness')">Hardness</br> &nbsp</th>
-            <th width="25%" ng-click="onClickGatherablesHeader('quantity')">#</br> &nbsp</th>
+            <th width="50%" ng-click="onClickGatherablesHeader('name')">Resource</br> &nbsp</th>
+            <th width="50%" ng-click="onClickGatherablesHeader('quantity')">#</br> &nbsp</th>
         </tr>
     </thead>
    </table>   
@@ -141,11 +139,8 @@
         
         <tbody>
           <tr ng-repeat="v in simulation.gatherablesArray | orderBy:simulation.orderGatherablesBy" ng-click="onClickGatherables(v)" class="noselect" >
-           <td width="25%" bgcolor={{v.bgcolor()}} > {{v.name}}</td> 
-
-            <td width="25%"> {{v.gatherBaseTimeS}}</td>
-            <td width="25%"> {{v.hardness}}</td> 
-            <td width="25%"> {{v.quantity}}</td> 
+           <td width="50%" bgcolor={{v.bgcolor()}} > {{v.name}}</td> 
+           <td width="50%"> {{v.quantity}}</td> 
           </tr>
         </tbody>
      
@@ -166,8 +161,8 @@
 
 <thead>
     <tr class="noselect">
-        <th><h4>BANK</h4></th>
-        <th><h4>CRAFTING: {{simulation.viewedConstructorName}}</h4></th>
+        <th width="50%"><h4>BANK</h4></th>
+        <th width="50%"><h4>CRAFTING: {{simulation.viewedConstructorName}}</h4></th>
     </tr>
 </thead>
 <tbody>
@@ -224,7 +219,7 @@
 
 <div class="fadedbackground">
 
-<h4>KNOWN RECIPES</h4>
+<h4>KNOWN RECIPES (reference)</h4>
 
 <div class="bodycontainer scrollable">
 <table class="table table-bordered table-condensed table-scrollable">
@@ -250,6 +245,37 @@
         <td class="col-sm-5">{{v.input}}</td> 
         <td class="col-sm-2">{{v.construction}}</td> 
         <td class="col-sm-1">{{v.craftBaseTimeS}}</td> 
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!--fadedbackground-->
+
+<div class="fadedbackground">
+
+<h4>GATHER DEFINES (reference)</h4>
+
+<div class="bodycontainer scrollable">
+<table class="table table-bordered table-condensed table-scrollable">
+  <tbody>
+      <tr class="noselect" >
+          <td class="col-sm-1">Type</td>
+          <td class="col-sm-1">Gather Time</td>
+          <td class="col-sm-1">Dependancies</td>
+      </tr>
+  </tbody>
+</table>  
+</div>
+
+<div class="bodycontainer scrollable">
+  <table class="table table-bordered table-condensed table-scrollable">
+
+    <tbody>
+      <tr ng-repeat="(k,v)  in simulation.gatherableDefines" class="noselect" >
+        <td class="col-sm-1">{{k}}</td> 
+        <td class="col-sm-1">{{v.gatherBaseTimeS}}</td> 
+        <td class="col-sm-1">{{v.dependancies}}</td> 
       </tr>
     </tbody>
   </table>
