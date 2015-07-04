@@ -113,10 +113,13 @@ angular.module('craftyApp')
 
       console.log('startNextTask:' + taskName);
 
-      switch ( this.activity[0].category){
+      switch ( this.activity[0].category) {
         case 'gathering':
           {
-            if (taskName in thisFactory.gatherables && thisFactory.gatherables[taskName].quantity > 0) {
+            var hasGatherables = (taskName in thisFactory.gatherables && thisFactory.gatherables[taskName].quantity > 0) ? true : false;
+            var hasDependencies = this.hasGatheringDependencies(taskName);
+            console.log('hasDependencies =' + hasDependencies);
+            if (hasGatherables === true && hasDependencies === true) {
               var gDuration = (thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
               setTimeout(this.stopGathering.bind(this), gDuration);
               thisFactory.gatherables[taskName].gatherers ++;
@@ -138,6 +141,36 @@ angular.module('craftyApp')
           break;
       }
     };
+
+
+    FSCharacter.prototype.hasGatheringDependencies = function ( gatheringName) {
+      var hasDependencies = true;
+
+      thisFactory.gatherableDefines[gatheringName].dependencies.forEach( ( function(thisDependency) {
+
+        if ( this.hasTool(thisDependency) === false) {
+          hasDependencies = false;
+        }
+
+      }).bind(this)); 
+
+      return hasDependencies;
+    };
+
+
+    FSCharacter.prototype.hasTool = function ( toolName) {
+      var bHasTool = false;
+
+      this.tools.forEach( ( function(thisTool) {
+        if ( thisTool.name === toolName) {
+          bHasTool = true;
+        }
+      }).bind(this)); 
+
+      return bHasTool;
+    };
+
+
 
     /**
     * Return the constructor function.

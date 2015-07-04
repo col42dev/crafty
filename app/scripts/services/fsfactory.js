@@ -42,7 +42,7 @@ angular.module('craftyApp')
 	        json['gatherables'].forEach( ( function(thisGatherables) {
 	        	var obj = thisGatherables;
 	        	obj.gatherers = 0;
-	          	this.gatherables[thisGatherables.name] = new FSGatherable(obj);
+	          	this.gatherables[thisGatherables.name] = new FSGatherable(obj, this);
 	        }).bind(this)); 
 	        this.updateGatherables = function() {
 	        	thisFactory.gatherablesArray = Object.keys(thisFactory.gatherables).map(function (key) {

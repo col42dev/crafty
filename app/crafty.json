@@ -26,47 +26,47 @@
  "gatherableDefines": {
     "Stone" :{
       "gatherBaseTimeS": 10,
-      "dependancies":[]
+      "dependencies":[]
     },
     "Coal" : {
       "gatherBaseTimeS": 20,
-      "dependancies":["MineCart"]
+      "dependencies":[]
     },
     "Iron Ore" : {
       "gatherBaseTimeS": 20,
-      "dependancies":[]
+      "dependencies":[]
     },
     "Water" : {
       "gatherBaseTimeS": 10,
-      "dependancies":["Bucket"]
+      "dependencies":["Bucket"]
     },
     "Wood" : {
       "gatherBaseTimeS": 15,
-      "dependancies":[]
+      "dependencies":[]
     },
     "Wool" : {
       "gatherBaseTimeS": 30,
-      "dependancies":[]
+      "dependencies":[]
     },
     "Leaves": {
       "gatherBaseTimeS": 1,
-      "dependancies":[]
+      "dependencies":[]
     },
     "Grain" : {
       "gatherBaseTimeS": 20,
-      "dependancies":[]
+      "dependencies":[]
     },
     "Bones" : {
       "gatherBaseTimeS": 120,
-      "dependancies":[]
+      "dependencies":[]
     },
     "Sand" : {
       "gatherBaseTimeS": 30,
-      "dependancies":[]
+      "dependencies":[]
     },
     "Feather" : {
       "gatherBaseTimeS": 60,
-      "dependancies":[]
+      "dependencies":[]
     }
   },
   "gatherables": [
