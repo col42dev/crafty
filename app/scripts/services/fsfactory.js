@@ -40,9 +40,12 @@ angular.module('craftyApp')
 	        	obj.gatherers = 0;
 	          	this.gatherables[thisGatherables.name] = new FSGatherable(obj);
 	        }).bind(this)); 
-	        this.gatherablesArray = Object.keys(thisFactory.gatherables).map(function (key) {
+	        this.updateGatherables = function() {
+	        	thisFactory.gatherablesArray = Object.keys(thisFactory.gatherables).map(function (key) {
 	        		return thisFactory.gatherables[key];
 	        	});
+	    	};
+	    	this.updateGatherables();
 	        this.orderGatherablesBy = 'name';
 	        this.orderGatherablesByOrder = '+';
 	        this.onClickGatherablesHeader = function ( fieldName) {
@@ -55,6 +58,7 @@ angular.module('craftyApp')
 	        this.bank = {};  
 	        this.bank['Workstation'] = new FSObject({'category':'constructor', 'name':'Workstation'});
 	        this.bank['Workstation'].increment(1);
+	        /*
 	        this.bank['saw'] = new FSObject({'category':'tool', 'name':'saw'});
 	        this.bank['saw'].increment(4);
 	        this.bank['shovel'] = new FSObject({'category':'tool', 'name':'shovel'});
@@ -63,6 +67,7 @@ angular.module('craftyApp')
 	        this.bank['bigaxe'].increment(4);
 	        this.bank['sword'] = new FSObject({'category':'weapon', 'name':'sword'});
 	        this.bank['sword'].increment(4);
+	        */
 	        this.updateBank = function() {
 		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {
 		        		return thisFactory.bank[key];
@@ -183,9 +188,8 @@ angular.module('craftyApp')
 		 */
 		this.onClickGatherables = function (gatherableType) {
 	
-			if ( this.selectedCharacter !== null && this.selectedCharacter.activity.length < 4) {
+			if ( this.selectedCharacter !== null) {
 			    this.selectedCharacter.startGathering( gatherableType);
-			    this.gatherables[gatherableType].gatherers ++;
 			}
 		};
 

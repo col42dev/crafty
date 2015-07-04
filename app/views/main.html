@@ -1,10 +1,5 @@
 
-<div class="jumbotron">
-  <p>
-    <img src="images/harvestandcraft.jpg" alt="" width="100%" height="100%"><br>
-  </p>
-  <a href="https://ptown.hackpad.com/Crafting-WojTOaMPxGR">Design Doc</a>
-</div>
+
 
 
 <p>To initialize, upload a JSON description to <a href="http://myjson.com/">http://myjson.com/</a> and copy the generated URL in to this input dialog.<p>
@@ -115,8 +110,8 @@
 
 <thead>
     <tr class="noselect">
-        <th><h4>GATHERABLES</h4>click to gather</th>
-        <th><h4>BANK</h4> select workstation or tools</th>
+        <th><h4>RESOURCES</h4>click to mine</th>
+        <th><h4>GATHERABLES</h4> click to gather</th>
     </tr>
 </thead>
 <tbody>
@@ -125,7 +120,13 @@
 
 <td valign="top"> 
 
-   <table class="table table-bordered table-condensed">
+ 
+
+</td> 
+
+<td valign="top"> 
+
+    <table class="table table-bordered table-condensed">
     <thead>
         <tr class="noselect" >
             <th width="25%" ng-click="onClickGatherablesHeader('name')">Resource</br> &nbsp</th>
@@ -153,9 +154,27 @@
 
 </td> 
 
-<td valign="top"> 
+</tr>
+</tbody>
+     
+</table>
+</div> <!--fadedbackground-->
 
-   <table class="table table-bordered table-condensed">
+
+<div class="fadedbackground">
+<table class="table">
+
+<thead>
+    <tr class="noselect">
+        <th><h4>BANK</h4></th>
+        <th><h4>CRAFTING: {{simulation.viewedConstructorName}}</h4></th>
+    </tr>
+</thead>
+<tbody>
+<tr>     
+<td valign="top"> 
+ 
+  <table class="table table-bordered table-condensed">
     <thead>
         <tr class="noselect" >
             <th class="col-sm-3" ng-click="onClickBankHeader('name')">Resource</br> &nbsp</th>
@@ -163,10 +182,9 @@
             <th class="col-sm-1" ng-click="onClickBankHeader('quantity')">#</br> &nbsp</th>
         </tr>
     </thead>
-   </table>  
+  </table>  
 
   <div class="bodycontainer scrollable">
-   
      <table class="table table-bordered table-condensed table-scrollable" >
         <tbody> 
           <tr ng-repeat="v in simulation.bankArray | orderBy:simulation.orderBankBy" ng-click="onClickBank(v)" class="noselect" >
@@ -180,6 +198,20 @@
 
 </td> 
 
+<td valign="top"> 
+
+ <div class="bodycontainer scrollable">
+    <table class="table table-bordered table-condensed table-scrollable">
+      <tbody>
+        <tr ng-repeat="v  in simulation.viewedConstructor | orderBy:'name'" ng-click="onClickCraftable(v)" class="noselect" >
+          <td width="25%" bgcolor={{v.bgcolor()}}> {{v.name}}</td> 
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</td> 
 </tr>
 </tbody>
      
@@ -187,25 +219,7 @@
 </div> <!--fadedbackground-->
 
 
-<div class="fadedbackground">
-<h4>CRAFTING: {{simulation.viewedConstructorName}}</h4>
-<table class="table table-bordered table-condensed">
-<thead>
-</thead>
-</table>  
 
-<div class="bodycontainer scrollable">
-  <table class="table table-bordered table-condensed table-scrollable">
-
-    <tbody>
-      <tr ng-repeat="v  in simulation.viewedConstructor | orderBy:'name'" ng-click="onClickCraftable(v)" class="noselect" >
-        <td width="25%" bgcolor={{v.bgcolor()}} > {{v.name}}</td> 
-      </tr>
-    </tbody>
-  </table>
-</div>
-</div>
-</div> <!--fadedbackground-->
 
 
 <div class="fadedbackground">

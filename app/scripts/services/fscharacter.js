@@ -35,9 +35,14 @@ angular.module('craftyApp')
     };
 
     FSCharacter.prototype.startGathering = function ( gatherablesName) {
-      this.activity.push( new FSTask( {'name':gatherablesName, 'category':'gathering'}));
-      if (this.activity.length === 1) {
-        this.startNextTask();
+
+      if ( this.activity.length < 4 ) {
+        if (thisFactory.gatherables[gatherablesName].quantity > 0) {
+          this.activity.push( new FSTask( {'name':gatherablesName, 'category':'gathering'}));
+          if (this.activity.length === 1) {
+            this.startNextTask();
+          }
+        }
       }
     };
 
@@ -46,6 +51,11 @@ angular.module('craftyApp')
 
       thisFactory.gatherables[gatherableType].quantity -= 1;
       thisFactory.gatherables[gatherableType].gatherers --;
+
+      if ( thisFactory.gatherables[gatherableType].quantity === 0) {
+        delete thisFactory.gatherables[gatherableType];
+        thisFactory.updateGatherables();
+      }
 
       if (!(gatherableType in thisFactory.bank)) {
         thisFactory.bank[gatherableType] = new FSObject({'category':'gatherable', 'name':gatherableType});
@@ -105,12 +115,20 @@ angular.module('craftyApp')
 
       switch ( this.activity[0].category){
         case 'gathering':
-          var duration = (thisFactory.gatherables[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
-          setTimeout(this.stopGathering.bind(this), duration);
-          console.log('setTimeout:' + thisFactory.gatherables[taskName].gatherBaseTimeS * 1000);
+          if (taskName in thisFactory.gatherables && thisFactory.gatherables[taskName].quantity > 0) {
+            var duration = (thisFactory.gatherables[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
+            setTimeout(this.stopGathering.bind(this), duration);
+            thisFactory.gatherables[taskName].gatherers ++;
+            console.log('setTimeout:' + thisFactory.gatherables[taskName].gatherBaseTimeS * 1000);
+          } else {
+            this.activity.splice(0, 1);
+            if (this.activity.length > 0) {
+              this.startNextTask();
+            }
+          }
           break;
         case 'crafting':
-          var duration = (thisFactory.gatherables[taskName].craftBaseTimeS * 1000) / thisFactory.taskTimeScalar;
+          var duration = (thisFactory.gameItems[taskName].craftBaseTimeS * 1000) / thisFactory.taskTimeScalar;
           setTimeout(this.stopCrafting.bind(this),  duration);
           console.log('setTimeout:' + thisFactory.gameItems[taskName].craftBaseTimeS * 1000);
           break;
