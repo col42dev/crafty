@@ -69,6 +69,24 @@
       "quantity": "5"
     }
   ],
+  "harvestables": [
+    {
+      "name": "Stone",
+      "quantity": "100"
+    },
+    {
+      "name": "Coal",
+      "quantity": "100"
+    },
+    {
+      "name": "Iron Ore",
+      "quantity": "100"
+    },
+    {
+      "name": "Wood",
+      "quantity": "100"
+    }
+  ],
   "recipes": [
     {
       "name": "Rope"
@@ -216,6 +234,20 @@
       "dependencies": [
 
       ]
+    }
+  },
+  "harvestableDefines": {
+    "Stone": {
+      "toughness": 10
+    },
+    "Coal": {
+      "toughness": 10
+    },
+    "Iron Ore": {
+      "toughness": 10
+    },
+    "Wood": {
+      "toughness": 10
     }
   },
   "toolDefines": [

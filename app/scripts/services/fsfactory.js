@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSFactory', function ( FSCharacter, FSTask, FSObject, FSGatherable, FSRecipeDef, FSRecipe, FSReward) {
+  .factory('FSFactory', function ( FSCharacter, FSTask, FSObject, FSGatherable, FSRecipeDef, FSRecipe, FSReward, FSHarvestable) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
   	var FSFactory = function(ctrllerScope, json) {
@@ -52,6 +52,24 @@ angular.module('craftyApp')
 	        this.onClickGatherablesHeader = function ( fieldName) {
 	        	this.orderGatherablesByOrder = (this.orderGatherablesByOrder==='+') ? '-' : '+';
 	        	this.orderGatherablesBy = this.orderGatherablesByOrder + fieldName;
+	        };	
+
+	        // Harvestables
+	        this.harvestables = {};  
+	        json['harvestables'].forEach( ( function(thisHarvestable) {
+	          	this.harvestables[thisHarvestable.name] = new FSHarvestable(thisHarvestable, this);
+	        }).bind(this)); 
+	        this.updateHarvestables = function() {
+	        	thisFactory.harvestablesArray = Object.keys(thisFactory.harvestables).map(function (key) {
+	        		return thisFactory.harvestables[key];
+	        	});
+	    	};
+	    	this.updateHarvestables();
+	        this.orderHarvestablesBy = 'name';
+	        this.orderHarvestablesByOrder = '+';
+	        this.onClickHarvestablesHeader = function ( fieldName) {
+	        	this.orderHarvestablesByOrder = (this.orderHarvestablesByOrder==='+') ? '-' : '+';
+	        	this.orderHarvestablesBy = this.orderHarvestablesByOrder + fieldName;
 	        };	
 
 
@@ -225,6 +243,17 @@ angular.module('craftyApp')
 	
 			if ( this.selectedCharacter !== null) {
 			    this.selectedCharacter.startGathering( gatherableType);
+			}
+		};
+
+		/**
+		 * @desc 
+		 * @return 
+		 */
+		this.onClickHarvestables = function (gatherableType) {
+	
+			if ( this.selectedCharacter !== null) {
+			    this.selectedCharacter.startHarvesting( gatherableType);
 			}
 		};
 

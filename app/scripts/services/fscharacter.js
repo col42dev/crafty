@@ -8,7 +8,7 @@
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSCharacter', function (FSTask, FSObject) {
+  .factory('FSCharacter', function (FSTask, FSObject, FSGatherable) {
     // Service logic
     // ...
     var thisFactory = null;
@@ -48,6 +48,60 @@ angular.module('craftyApp')
       return this.firstName + ' ' + this.lastName;
     };
 
+    /**
+     * @desc 
+     * @return 
+     */
+    FSCharacter.prototype.startHarvesting = function ( harvestablesName) {
+
+      if ( this.activity.length < 4 ) {
+        if (thisFactory.harvestables[harvestablesName].quantity > 0) {
+          this.activity.push( new FSTask( {'name':harvestablesName, 'category':'harvesting'}));
+          if (this.activity.length === 1) {
+            this.startNextTask();
+          }
+        }
+      }
+    };
+
+     /**
+     * @desc 
+     * @return 
+     */
+    FSCharacter.prototype.stopHarvesting = function () {
+
+      clearInterval(this.updateActiveTaskInterval);
+
+      var harvestableType = this.activity[0].name;
+
+      thisFactory.harvestables[harvestableType].quantity -= 1;
+
+
+      if ( thisFactory.harvestables[harvestableType].quantity === 0) {
+        delete thisFactory.harvestables[harvestableType];
+        thisFactory.updateHarvestables();
+      }
+
+/*
+      if (!(harvestableType in thisFactory.gatherables)) { //todo: debug this condition!
+          var obj = {"name": harvestableType, "quantity": "1"};
+          obj.gatherers = 0;
+
+        thisFactory.gatherables[harvestableType] = new FSGatherable(obj, thisFactory);
+      }
+      */
+      thisFactory.gatherables[harvestableType].quantity ++;
+      thisFactory.updateGatherables();
+
+      this.activity.splice(0, 1);
+
+      // start next activity
+      if (this.activity.length > 0) {
+        this.startNextTask();
+      }
+
+      this.ctrllerScope.$apply();
+    };
 
     /**
      * @desc 
@@ -64,7 +118,6 @@ angular.module('craftyApp')
         }
       }
     };
-
 
     /**
      * @desc 
@@ -177,6 +230,32 @@ angular.module('craftyApp')
               
               thisFactory.gatherables[taskName].gatherers ++;
               //console.log('setTimeout:' + thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000);
+            } else {
+              this.activity.splice(0, 1);
+              if (this.activity.length > 0) {
+                this.startNextTask();
+              }
+            }
+          }
+          break;
+        case 'harvesting':
+          {
+            var hasHarvestables = (taskName in thisFactory.harvestables && thisFactory.harvestables[taskName].quantity > 0) ? true : false;
+
+            if (hasHarvestables === true) {
+              var duration = 10000 / thisFactory.taskTimeScalar;
+              setTimeout(this.stopHarvesting.bind(this), duration);
+
+              var thisCharacter = this;
+              this.updateActiveTaskRemainingPercent = 100;
+              this.updateActiveTaskInterval =  setInterval( function() {
+                    thisCharacter.updateActiveTaskRemainingPercent --;
+                    if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
+                       clearInterval(thisCharacter.updateActiveTaskInterval);
+                       console.log("clearInterval" );
+                    }
+                }, duration / 100);
+              
             } else {
               this.activity.splice(0, 1);
               if (this.activity.length > 0) {

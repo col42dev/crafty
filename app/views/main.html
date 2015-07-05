@@ -20,8 +20,8 @@
 
 <thead>
     <tr class="noselect">
-        <th width="50%"><h4>RESOURCES</h4>click to mine</th>
-        <th width="50%"><h4>GATHERABLES</h4> click to gather</th>
+        <th width="50%"><h4>HARVESTABLES</h4>click to harvest</th>
+        <th width="50%"><h4>GATHERABLES</h4>click to gather</th>
     </tr>
 </thead>
 <tbody>
@@ -30,7 +30,26 @@
 
 <td valign="top"> 
 
- 
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr class="noselect" >
+          <th width="50%" ng-click="getFSService().onClickHarvestablesHeader('name')">Name</br> &nbsp</th>
+          <th width="50%" ng-click="getFSService().onClickHarvestablesHeader('quantity')">#</br> &nbsp</th>
+      </tr>
+    </thead>
+  </table>   
+  <div class="bodycontainer scrollable">
+  <table class="table table-bordered table-condensed table-scrollable">
+    
+    <tbody>
+      <tr ng-repeat="v in getFSService().simulation.harvestablesArray | orderBy:getFSService().simulation.orderHarvestablesBy" ng-click="getFSService().onClickHarvestables(v)" class="noselect" >
+       <td width="50%" bgcolor={{v.bgcolor()}} > {{v.name}}</td> 
+       <td width="50%"> {{v.quantity}}</td> 
+      </tr>
+    </tbody>
+
+  </table>
+  </div>
 
 </td> 
 
@@ -39,7 +58,7 @@
     <table class="table table-bordered table-condensed">
     <thead>
         <tr class="noselect" >
-            <th width="50%" ng-click="getFSService().onClickGatherablesHeader('name')">Resource</br> &nbsp</th>
+            <th width="50%" ng-click="getFSService().onClickGatherablesHeader('name')">Name</br> &nbsp</th>
             <th width="50%" ng-click="getFSService().onClickGatherablesHeader('quantity')">#</br> &nbsp</th>
         </tr>
     </thead>
@@ -72,7 +91,7 @@
 <thead>
     <tr class="noselect">
         <th width="50%"><h4>BANK</h4></th>
-        <th width="50%"><h4>CRAFTING: {{getFSService().simulation.viewedConstructorName}}</h4></th>
+        <th width="50%"><h4>CRAFTABLES: {{getFSService().simulation.viewedConstructorName}}</h4></th>
     </tr>
 </thead>
 <tbody>
@@ -82,7 +101,7 @@
   <table class="table table-bordered table-condensed">
     <thead>
         <tr class="noselect" >
-            <th class="col-sm-3" ng-click="getFSService().onClickBankHeader('name')">Resource</br> &nbsp</th>
+            <th class="col-sm-3" ng-click="getFSService().onClickBankHeader('name')">Name</br> &nbsp</th>
             <th class="col-sm-2" ng-click="getFSService().onClickBankHeader('category')">Category</br> &nbsp</th>
             <th class="col-sm-1" ng-click="getFSService().onClickBankHeader('quantity')">#</br> &nbsp</th>
         </tr>

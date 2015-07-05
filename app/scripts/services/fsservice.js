@@ -24,7 +24,7 @@ angular.module('craftyApp')
 	      this.taskTimeScalarDivVis ='hidden';
 
 	      //reset
-	      this.master = {input: 'https://api.myjson.com/bins/2yb9i?pretty=1'};
+	      this.master = {input: 'https://api.myjson.com/bins/49oie?pretty=1'};
 	      this.user = angular.copy(this.master);
   	  }
     };
@@ -49,8 +49,6 @@ angular.module('craftyApp')
             } else {
               window.alert('Validation failed for ' + thisService.user.input);
             }
-
-
 
         }).error(function(data) {
             data = data;
@@ -82,8 +80,16 @@ angular.module('craftyApp')
   		thisService.simulation.onClickGatherables( gatherableKey.name);
     };
 
+    this.onClickHarvestables = function(harvestablesKey) {
+      thisService.simulation.onClickHarvestables( harvestablesKey.name);
+    };
+
     this.onClickGatherablesHeader = function(fieldName) {
       thisService.simulation.onClickGatherablesHeader( fieldName);
+    };
+
+    this.onClickHarvestablesHeader = function(fieldName) {
+      thisService.simulation.onClickHarvestablesHeader( fieldName);
     };
 
     this.onClickBank = function(bankItemKey) {
