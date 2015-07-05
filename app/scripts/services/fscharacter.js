@@ -121,7 +121,7 @@ angular.module('craftyApp')
       var craftableKey = this.activity[0].name;
 
       // generate output in bank.
-      var craftableOutputObj = thisFactory.gameItems[craftableKey].output;
+      var craftableOutputObj = thisFactory.recipeDef[craftableKey].output;
       var craftableOutputKey = Object.keys( craftableOutputObj );
 
       // assumes only one type is craftableOutput.
@@ -130,7 +130,7 @@ angular.module('craftyApp')
       
       // add output to bank.
       if (!(craftableOutput in thisFactory.bank)) {
-        thisFactory.bank[craftableOutput] = new FSObject( {'category':thisFactory.gameItems[craftableKey].category, 'name':craftableOutput});
+        thisFactory.bank[craftableOutput] = new FSObject( {'category':thisFactory.recipeDef[craftableKey].category, 'name':craftableOutput});
       }
       thisFactory.bank[craftableOutput].increment( craftableOutputQuantity);
       thisFactory.updateBank();
@@ -187,9 +187,9 @@ angular.module('craftyApp')
           break;
         case 'crafting':
           {
-            var duration = (thisFactory.gameItems[taskName].craftBaseTimeS * 1000) / thisFactory.taskTimeScalar;
+            var duration = (thisFactory.recipeDef[taskName].craftBaseTimeS * 1000) / thisFactory.taskTimeScalar;
             setTimeout(this.stopCrafting.bind(this),  duration);
-            console.log('setTimeout:' + thisFactory.gameItems[taskName].craftBaseTimeS * 1000);
+            console.log('setTimeout:' + thisFactory.recipeDef[taskName].craftBaseTimeS * 1000);
           }
           break;
       }

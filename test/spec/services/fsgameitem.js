@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: FSGameItem', function () {
+describe('Service: FSRecipeDef', function () {
 
   // load the service's module
   beforeEach(module('craftyApp'));
 
   // instantiate service
-  var FSGameItem;
-  beforeEach(inject(function (_FSGameItem_) {
-    FSGameItem = _FSGameItem_;
+  var FSRecipeDef;
+  beforeEach(inject(function (_FSRecipeDef_) {
+    FSRecipeDef = _FSRecipeDef_;
   }));
 
   it('should do something', function () {
-    expect(!!FSGameItem).toBe(true);
+    expect(!!FSRecipeDef).toBe(true);
   });
 
 });

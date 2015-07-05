@@ -20,11 +20,11 @@ angular.module('craftyApp')
 
     FSRecipe.prototype.bgcolor = function( ) {
       var hasResources = true;
-      for (var key in this.thisFactory.gameItems[this.name].input) {
+      for (var key in this.thisFactory.recipeDef[this.name].input) {
 
-          if (this.thisFactory.gameItems[this.name].input.hasOwnProperty(key)) {
+          if (this.thisFactory.recipeDef[this.name].input.hasOwnProperty(key)) {
               if (key in this.thisFactory.bank) {
-                if ( this.thisFactory.bank[key].quantity.length < this.thisFactory.gameItems[this.name].input[key] ) {
+                if ( this.thisFactory.bank[key].quantity.length < this.thisFactory.recipeDef[this.name].input[key] ) {
                   hasResources = false;
                 }
             } else {

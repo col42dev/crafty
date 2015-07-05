@@ -2,18 +2,18 @@
 
 /**
  * @ngdoc service
- * @name craftyApp.FSGameItem
+ * @name craftyApp.FSRecipeDef
  * @description
- * # FSGameItem
+ * # FSRecipeDef
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSGameItem', function () {
+  .factory('FSRecipeDef', function () {
     // Service logic
     // ...
 
     // GameItem
-    var FSGameItem = function( obj, thisFactory) { 
+    var FSRecipeDef = function( obj, thisFactory) { 
       this.thisFactory = thisFactory;
       this.input = obj.input;
       this.output = obj.output;
@@ -25,7 +25,7 @@ angular.module('craftyApp')
 
     };
 
-    FSGameItem.prototype.bgcolor = function( ) {
+    FSRecipeDef.prototype.bgcolor = function( ) {
       var hasResources = true;
       for (var key in this.input) {
           if (this.input.hasOwnProperty(key)) {
@@ -42,6 +42,6 @@ angular.module('craftyApp')
       return  (hasResources === true) ? '#00FF00' : '#FF0000';
     };
 
-    return FSGameItem;
+    return FSRecipeDef;
     
   });

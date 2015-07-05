@@ -1,13 +1,12 @@
 <div class="fadedbackground">
 
-<h4>KNOWN RECIPES (reference)</h4>
+<h4>RECIPES DEFINITIONS (reference)</h4>
 
 <div class="bodycontainer scrollable">
 <table class="table table-bordered table-condensed table-scrollable">
   <tbody>
       <tr class="noselect" >
           <td class="col-sm-3">Item</td>
-          <td class="col-sm-1">T</td>
           <td class="col-sm-5">Ingredients</td>
           <td class="col-sm-2">Constructor</td>
           <td class="col-sm-1">Crafting Time (S)</td>
@@ -20,9 +19,8 @@
   <table class="table table-bordered table-condensed table-scrollable">
 
     <tbody>
-      <tr ng-repeat="(k,v)  in getFSService().simulation.gameItems" class="noselect" >
+      <tr ng-repeat="(k,v)  in getFSService().simulation.recipeDef" class="noselect" >
         <td class="col-sm-3">{{v.output}}</td> 
-        <td class="col-sm-1">{{v.toughness}}</td> 
         <td class="col-sm-5">{{v.input}}</td> 
         <td class="col-sm-2">{{v.construction}}</td> 
         <td class="col-sm-1">{{v.craftBaseTimeS}}</td> 
@@ -33,9 +31,11 @@
 
 </div><!--fadedbackground-->
 
+
+
 <div class="fadedbackground">
 
-<h4>GATHER DEFINES (reference)</h4>
+<h4>GATHER DEFINITIONS (reference)</h4>
 
 <div class="bodycontainer scrollable">
 <table class="table table-bordered table-condensed table-scrollable">

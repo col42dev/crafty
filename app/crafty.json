@@ -228,6 +228,10 @@
       "strength": 1
     },
     {
+      "name": "FlagonOfAle",
+      "strength": 1
+    },
+    {
       "name": "BonePickaxe",
       "strength": 1
     },
@@ -364,7 +368,7 @@
     },
     {
       "name": "FlagonOfAle",
-      "category": "unclassified",
+      "category": "tool",
       "construction": "WoodenTable",
       "input": {
         "Ale": 6,

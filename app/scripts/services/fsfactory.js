@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSFactory', function ( FSCharacter, FSTask, FSObject, FSGatherable, FSGameItem, FSRecipe, FSReward) {
+  .factory('FSFactory', function ( FSCharacter, FSTask, FSObject, FSGatherable, FSRecipeDef, FSRecipe, FSReward) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
   	var FSFactory = function(ctrllerScope, json) {
@@ -18,7 +18,6 @@ angular.module('craftyApp')
 	    this.initialize = function() {
 	
 			this.taskTimeScalar ='1';
-		
 
 	     	// Characters
 		    this.characterObjs = {};  
@@ -35,8 +34,6 @@ angular.module('craftyApp')
     		// GatherableDefines
 	        this.gatherableDefines = json['gatherableDefines'];  
 	        
-
-
 	        // Gatherables
 	        this.gatherables = {};  
 	        json['gatherables'].forEach( ( function(thisGatherables) {
@@ -95,11 +92,11 @@ angular.module('craftyApp')
 	        // Know Recipes
 	        this.knownRecipes = json['recipes'];  
 
-			// Game Items
-	        this.gameItems = {};  
+			// Recipes Defines
+	        this.recipeDef = {};  
 	       	json['recipesDefines'].forEach( ( function(thisGameItem) {
 	        	var obj = thisGameItem;
-	          	this.gameItems[thisGameItem.name] = new FSGameItem(obj, this);
+	          	this.recipeDef[thisGameItem.name] = new FSRecipeDef(obj, this);
 	        }).bind(this)); 
 
 	        // CraftStation
@@ -108,9 +105,11 @@ angular.module('craftyApp')
 
 	        // Rewards
 	        this.rewards = {};  
+	        
 	        json['rewardDefines'].forEach( ( function(thisReward) {
 	          	this.rewards[thisReward.name] = new FSReward(thisReward, this);
 	        }).bind(this)); 
+
 	    };
 
 		/**
@@ -152,7 +151,7 @@ angular.module('craftyApp')
 		      }
 		 };
 
-		 		/**
+		 /**
 		 * @desc 
 		 * @return 
 		 */
@@ -179,8 +178,8 @@ angular.module('craftyApp')
 			this.viewedConstructor = [];
 			if ( this.bank[bankItemKey].category === 'constructor') {
 				this.viewedConstructorName = bankItemKey;
-				Object.keys( this.gameItems ).forEach( ( function(thisGameItemKey) {
-					var thisGameItem = this.gameItems[thisGameItemKey];
+				Object.keys( this.recipeDef ).forEach( ( function(thisGameItemKey) {
+					var thisGameItem = this.recipeDef[thisGameItemKey];
 	        		if (thisGameItem.construction === bankItemKey) {
 	          			this.viewedConstructor.push( new FSRecipe( thisGameItemKey, this));
 	          		}
@@ -215,7 +214,6 @@ angular.module('craftyApp')
 	        		}
 	        		break;
 	        	}
-		
 			}
 		};
 
@@ -230,8 +228,6 @@ angular.module('craftyApp')
 			}
 		};
 
-		
-
 		/**
 		 * @desc 
 		 * @return 
@@ -239,7 +235,7 @@ angular.module('craftyApp')
 		this.startCrafting = function (recipeKey) {
 		   	// determine if has reqiored ingredients in bank
 		   	var hasIngredients = true;
-		    var recipeInputObj = this.gameItems[recipeKey].input;
+		    var recipeInputObj = this.recipeDef[recipeKey].input;
 			var recipeInputKeys = Object.keys( recipeInputObj );
 
 			recipeInputKeys.forEach( function ( recipeKey ) {

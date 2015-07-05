@@ -124,6 +124,21 @@
 </div> <!--fadedbackground-->
 
 
+<div class="fadedbackground">
+<h4>KNOWN RECIPES</h4>
+<div class="bodycontainer scrollable">
+  <table class="table table-bordered table-condensed table-scrollable">
+    <tbody>
+      <tr ng-repeat="(k,v)  in getFSService().simulation.knownRecipes" class="noselect" >
+        <td class="col-sm-1">{{v.name}}</td> 
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!--fadedbackground-->
+
+
 
 
 
