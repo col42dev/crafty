@@ -23,6 +23,22 @@
       "profession": "harvesting"
     }
   ],
+ "rewards": [
+      { 
+        "name":"Liquidated",
+        "desc":"Craft a FlagonOfAle",
+        "completed": 0,
+        "action": "craft",
+        "target": "FlagonOfAle"
+      },
+      { 
+        "name":"Quench",
+        "desc":"Craft a Bucket",
+        "completed": 0,
+        "action": "craft",
+        "target": "Bucket"
+      }
+  ],
  "gatherableDefines": {
     "Stone" :{
       "gatherBaseTimeS": 10,

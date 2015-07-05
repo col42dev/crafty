@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSFactory', function ( FSCharacter, FSTask, FSObject, FSGatherable, FSGameItem, FSRecipe) {
+  .factory('FSFactory', function ( FSCharacter, FSTask, FSObject, FSGatherable, FSGameItem, FSRecipe, FSReward) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
   	var FSFactory = function(ctrllerScope, json) {
@@ -72,6 +72,10 @@ angular.module('craftyApp')
 	        this.bank['bigaxe'].increment(4);
 	        this.bank['sword'] = new FSObject({'category':'weapon', 'name':'sword'});
 	        this.bank['sword'].increment(4);
+	       	this.bank['Wood'] = new FSObject({'category':'gatherable', 'name':'Wood'});
+	        this.bank['Wood'].increment(4);
+	       	this.bank['Rope'] = new FSObject({'category':'tool', 'name':'Rope'});
+	        this.bank['Rope'].increment(4);
 	        */
 	        
 	        this.updateBank = function() {
@@ -97,11 +101,37 @@ angular.module('craftyApp')
 	          	this.gameItems[thisGameItem.name] = new FSGameItem(obj, this);
 	        }).bind(this)); 
 
-	        // CraftStationa
+	        // CraftStation
 	        this.viewedConstructor = [];
 	        this.viewedConstructorName = null;
+
+	        // Rewards
+	        this.rewards = {};  
+	        json['rewards'].forEach( ( function(thisReward) {
+	          	this.rewards[thisReward.name] = new FSReward(thisReward, this);
+	        }).bind(this)); 
 	    };
 
+		/**
+		 * @desc 
+		 * @return 
+		 */
+		this.checkRewards  = function ( checkDesc ) {
+
+			console.log('checkRewards down');
+
+			for (var thisReward in this.rewards) {
+  				if (this.rewards.hasOwnProperty(thisReward)) {
+  					if (this.rewards[thisReward].serializable.action === checkDesc.action) {
+						if (this.rewards[thisReward].serializable.target === checkDesc.target) {
+							this.rewards[thisReward].serializable.completed = 1;
+						}
+					}
+  				}
+			}
+
+			console.log('checkRewards down');
+		};
 
 		/**
 		 * @desc 

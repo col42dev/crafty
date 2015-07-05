@@ -31,127 +31,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/crafty.json",
-			"settings":
-			{
-				"buffer_size": 7816,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/styles/main.css",
-			"settings":
-			{
-				"buffer_size": 2127,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsrecipe.js",
-			"settings":
-			{
-				"buffer_size": 1008,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsgameitem.js",
-			"settings":
-			{
-				"buffer_size": 1187,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsgatherable.js",
-			"settings":
-			{
-				"buffer_size": 790,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsobject.js",
-			"settings":
-			{
-				"buffer_size": 1038,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/index.html",
-			"settings":
-			{
-				"buffer_size": 3996,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fstask.js",
-			"settings":
-			{
-				"buffer_size": 443,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsservice.js",
-			"settings":
-			{
-				"buffer_size": 484,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "crafty prototype build update\nhttps://ptown.hackpad.com/Crafty-Prototype-QVTq6hv53Jk\nhttp://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/#/\n+Added Character sheet for currently selected character. Shows profession and current activities, profession is currently unused.  \n+Crafted tools can now be assigned to the currently selected character by selecting them in bank.\n+Fixed queuing of activities - they now occur in sequence.\n+UI pass to display each table distinctly.\n\nNext:\nCharacter assign tools back to bank.\nImplement tools in mining resources.\nSeparate mining and gathering activities.",
-			"settings":
-			{
-				"buffer_size": 607,
-				"line_ending": "Unix",
-				"name": "crafty prototype build update"
-			}
-		},
-		{
-			"file": "app/scripts/controllers/main.js",
-			"settings":
-			{
-				"buffer_size": 2459,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/app.js",
-			"settings":
-			{
-				"buffer_size": 655,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsfactory.js",
-			"settings":
-			{
-				"buffer_size": 8344,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/main.html",
-			"settings":
-			{
-				"buffer_size": 7609,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fscharacter.js",
-			"settings":
-			{
-				"buffer_size": 5765,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -177,7 +56,26 @@
 	},
 	"file_history":
 	[
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fstask.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js",
+		"/Users/colinmoore/Dev/crafty/app/views/reference.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/characterctrlr.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/app.js",
+		"/Users/colinmoore/Dev/crafty/app/views/main.html",
+		"/Users/colinmoore/Dev/crafty/app/views/character.html",
+		"/Users/colinmoore/Dev/crafty/app/views/charactersheet.html",
+		"/Users/colinmoore/Dev/crafty/app/views/characterselect.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsfactory.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/main.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsservice.js",
 		"/Users/colinmoore/Dev/crafty/app/index.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsobject.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsgatherable.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsgameitem.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js",
+		"/Users/colinmoore/Dev/crafty/app/styles/main.css",
+		"/Users/colinmoore/Dev/crafty/app/crafty.json",
+		"/Users/colinmoore/Dropbox (MagicFuelGames)/MagicFuelGames Team Folder/Software/Prototypes/Web/crafty/smallerdataset.json",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsgatherables.js",
 		"/Users/colinmoore/Dev/crafty/publishToEC2.sh",
 		"/Users/colinmoore/Dev/col42dev.github.com/index.im",
@@ -186,7 +84,6 @@
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/stopwatch.js",
 		"/Users/colinmoore/{",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsbank.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/main.js",
 		"/Users/colinmoore/Dev/site/fonts/snneonoire-regular-webfont.svg",
 		"/Users/colinmoore/Dev/site/css/styles.css",
 		"/Users/colinmoore/Dev/dungeoneering/publishToEC2.sh",
@@ -196,15 +93,12 @@
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/crafty.json",
 		"/Users/colinmoore/Dev/crafty/crafty.json",
 		"/Users/colinmoore/crafty",
-		"/Users/colinmoore/Dev/crafty/app/styles/main.css",
 		"/Users/colinmoore/Dev/crafty/bower.json",
 		"/Users/colinmoore/Dev/crafty/package.json",
 		"/Users/colinmoore/Dev/crafty/Gruntfile.js",
 		"/Users/colinmoore/Dev/crafty/.gitignore",
 		"/Users/colinmoore/publishToEC2.sh",
 		"/Users/colinmoore/Downloads/publishToEC2.sh",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsservice.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/app.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/about.js"
 	],
 	"find":
@@ -304,425 +198,8 @@
 	"groups":
 	[
 		{
-			"selected": 13,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/crafty.json",
-					"settings":
-					{
-						"buffer_size": 7816,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								7816
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 221.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/styles/main.css",
-					"settings":
-					{
-						"buffer_size": 2127,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1943,
-								1943
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/scripts/services/fsrecipe.js",
-					"settings":
-					{
-						"buffer_size": 1008,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								93,
-								93
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/scripts/services/fsgameitem.js",
-					"settings":
-					{
-						"buffer_size": 1187,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								93,
-								93
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/scripts/services/fsgatherable.js",
-					"settings":
-					{
-						"buffer_size": 790,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								706,
-								706
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/scripts/services/fsobject.js",
-					"settings":
-					{
-						"buffer_size": 1038,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								923,
-								923
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/index.html",
-					"settings":
-					{
-						"buffer_size": 3996,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/scripts/services/fstask.js",
-					"settings":
-					{
-						"buffer_size": 443,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								362,
-								362
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/scripts/services/fsservice.js",
-					"settings":
-					{
-						"buffer_size": 484,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								193,
-								202
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"settings":
-					{
-						"buffer_size": 607,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								565,
-								0
-							]
-						],
-						"settings":
-						{
-							"auto_name": "crafty prototype build update",
-							"spell_check": true,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "app/scripts/controllers/main.js",
-					"settings":
-					{
-						"buffer_size": 2459,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								544,
-								544
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "app/scripts/app.js",
-					"settings":
-					{
-						"buffer_size": 655,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								149,
-								158
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "app/scripts/services/fsfactory.js",
-					"settings":
-					{
-						"buffer_size": 8344,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6551,
-								6568
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2494.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "app/views/main.html",
-					"settings":
-					{
-						"buffer_size": 7609,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7116,
-								7116
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3799.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "app/scripts/services/fscharacter.js",
-					"settings":
-					{
-						"buffer_size": 5765,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3892,
-								3967
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 5.0,
-						"translation.y": 1513.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],

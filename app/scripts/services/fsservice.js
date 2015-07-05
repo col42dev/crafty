@@ -19,14 +19,12 @@ angular.module('craftyApp')
 
       if (inited === false) {
 	      $scope = ctrlscope;
-	      console.log('>>>>>>>>>>'); 
 
 	      this.myStopwatch = stopwatch;
 	      this.taskTimeScalarDivVis ='hidden';
 
-
 	      //reset
-	      this.master = {input: 'https://api.myjson.com/bins/255vq?pretty=1'};
+	      this.master = {input: 'https://api.myjson.com/bins/5bm92?pretty=1'};
 	      this.user = angular.copy(this.master);
   	  }
     };
@@ -34,8 +32,6 @@ angular.module('craftyApp')
 
 
     this.loadJson = function() {
-     	console.log('<<<<<');
-
         console.log('input:' + this.user.input); 
 
         $http.get(this.user.input,{
@@ -61,8 +57,6 @@ angular.module('craftyApp')
             window.alert('JSON load failed for' + thisService.user.input);
         });
     };
-
-
 
  
     this.createSim = function() {

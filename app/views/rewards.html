@@ -1,0 +1,31 @@
+<div class="fadedbackground">
+
+<h4>Rewards</h4>
+
+
+<div class="bodycontainer scrollable">
+  <table class="table table-bordered table-condensed table-scrollable">
+    <theader>
+        <tr class="noselect" >
+            <td class="col-sm-1">Name</td>
+            <td class="col-sm-1">Description</td>
+            <td class="col-sm-1">Completed</td>
+        </tr>
+    </theader>
+    <tbody>
+      <tr ng-repeat="(k,v)  in getFSService().simulation.rewards" class="noselect" bgcolor={{v.bgcolor()}} >
+        <td >{{v.serializable.name}}</td> 
+        <td >{{v.serializable.desc}}</td> 
+        <td >{{v.serializable.completed}}</td> 
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+</div><!--fadedbackground-->
+
+
+
+
+ 

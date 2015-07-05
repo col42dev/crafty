@@ -98,6 +98,9 @@ angular.module('craftyApp')
       thisFactory.bank[craftableOutput].increment( craftableOutputQuantity);
       thisFactory.updateBank();
 
+      //Rewards
+      thisFactory.checkRewards( {'action':'craft', 'target':craftableOutput});
+
       this.activity.splice(0, 1);
 
       // start next activity
@@ -170,6 +173,9 @@ angular.module('craftyApp')
       return bHasTool;
     };
 
+    FSCharacter.prototype.queuedTaskCount = function ( ) {
+      return Math.max(this.activity.length - 1, 0);
+    };
 
 
     /**
