@@ -77,6 +77,8 @@ angular.module('craftyApp')
 	       	this.bank['Rope'] = new FSObject({'category':'tool', 'name':'Rope'});
 	        this.bank['Rope'].increment(4);
 	        */
+	        this.bank['Bucket'] = new FSObject({'category':'tool', 'name':'Bucket'});
+	        this.bank['Bucket'].increment(4);
 	        
 	        this.updateBank = function() {
 		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {

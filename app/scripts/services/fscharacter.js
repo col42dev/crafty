@@ -13,6 +13,11 @@ angular.module('craftyApp')
     // ...
     var thisFactory = null;
 
+
+    /**
+     * @desc 
+     * @return 
+     */
     var FSCharacter = function(characaterObj, simFactory, ctrllerScope) {
         thisFactory = simFactory;
         this.firstName = characaterObj.firstName;
@@ -23,17 +28,31 @@ angular.module('craftyApp')
         this.weapons = [];
         this.activityCompletedCallback = [];
         this.ctrllerScope = ctrllerScope;
+        this.updateActiveTaskRemainingPercent = 100;
       };
 
-
+    /**
+     * @desc 
+     * @return 
+     */
     FSCharacter.prototype.getbgcolor =  function( ) {     
       return  ((thisFactory.selectedCharacter  !== null) && (this.getFullName() === thisFactory.selectedCharacter.getFullName())) ? '#00FF00' : null;       
     };
 
+
+    /**
+     * @desc 
+     * @return 
+     */
     FSCharacter.prototype.getFullName = function () {
       return this.firstName + ' ' + this.lastName;
     };
 
+
+    /**
+     * @desc 
+     * @return 
+     */
     FSCharacter.prototype.startGathering = function ( gatherablesName) {
 
       if ( this.activity.length < 4 ) {
@@ -46,7 +65,15 @@ angular.module('craftyApp')
       }
     };
 
+
+    /**
+     * @desc 
+     * @return 
+     */
     FSCharacter.prototype.stopGathering = function () {
+
+      clearInterval(this.updateActiveTaskInterval);
+
       var gatherableType = this.activity[0].name;
 
       thisFactory.gatherables[gatherableType].quantity -= 1;
@@ -73,6 +100,11 @@ angular.module('craftyApp')
       this.ctrllerScope.$apply();
     };
 
+
+    /**
+     * @desc 
+     * @return 
+     */
     FSCharacter.prototype.startCrafting = function ( craftableKey) {
       this.activity.push( new FSTask({'name':craftableKey, 'category':'crafting'}));
       if (this.activity.length === 1) {
@@ -80,6 +112,11 @@ angular.module('craftyApp')
       }
     };
 
+
+    /**
+     * @desc 
+     * @return 
+     */
     FSCharacter.prototype.stopCrafting = function () {
       var craftableKey = this.activity[0].name;
 
@@ -111,22 +148,35 @@ angular.module('craftyApp')
       this.ctrllerScope.$apply();
     };
 
+
+    /**
+     * @desc 
+     * @return 
+     */
     FSCharacter.prototype.startNextTask = function () {     
       var taskName = this.activity[0].name;
-
-      console.log('startNextTask:' + taskName);
 
       switch ( this.activity[0].category) {
         case 'gathering':
           {
             var hasGatherables = (taskName in thisFactory.gatherables && thisFactory.gatherables[taskName].quantity > 0) ? true : false;
             var hasDependencies = this.hasGatheringDependencies(taskName);
-            console.log('hasDependencies =' + hasDependencies);
             if (hasGatherables === true && hasDependencies === true) {
-              var gDuration = (thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
-              setTimeout(this.stopGathering.bind(this), gDuration);
+              var duration = (thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
+              setTimeout(this.stopGathering.bind(this), duration);
+
+              var thisCharacter = this;
+              this.updateActiveTaskRemainingPercent = 100;
+              this.updateActiveTaskInterval =  setInterval( function() {
+                    thisCharacter.updateActiveTaskRemainingPercent --;
+                    if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
+                       clearInterval(thisCharacter.updateActiveTaskInterval);
+                       console.log("clearInterval" );
+                    }
+                }, duration / 100);
+              
               thisFactory.gatherables[taskName].gatherers ++;
-              console.log('setTimeout:' + thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000);
+              //console.log('setTimeout:' + thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000);
             } else {
               this.activity.splice(0, 1);
               if (this.activity.length > 0) {
@@ -146,6 +196,10 @@ angular.module('craftyApp')
     };
 
 
+    /**
+     * @desc 
+     * @return 
+     */
     FSCharacter.prototype.hasGatheringDependencies = function ( gatheringName) {
       var hasDependencies = true;
 
@@ -161,6 +215,10 @@ angular.module('craftyApp')
     };
 
 
+    /**
+     * @desc : is character equipped with this tool.
+     * @return 
+     */
     FSCharacter.prototype.hasTool = function ( toolName) {
       var bHasTool = false;
 
@@ -173,10 +231,34 @@ angular.module('craftyApp')
       return bHasTool;
     };
 
+    /**
+     * @desc 
+     * @return 
+     */
     FSCharacter.prototype.queuedTaskCount = function ( ) {
       return Math.max(this.activity.length - 1, 0);
     };
 
+    /**
+     * @desc 
+     * @return 
+     */
+    FSCharacter.prototype.updateActiveTask = function () {
+      this.updateActiveTaskRemainingPercent --;
+      if ( this.updateActiveTaskRemainingPercent <= 0) {
+         clearInterval(this.updateActiveTask);
+      }
+
+      console.log(this.updateActiveTaskRemainingPercent );
+    };
+
+    /**
+     * @desc 
+     * @return 
+     */
+    FSCharacter.prototype.activityPercentRemaining = function ( ) {
+      return this.updateActiveTaskRemainingPercent +'%';
+    };
 
     /**
     * Return the constructor function.
