@@ -75,10 +75,9 @@ angular.module('craftyApp')
 	       	this.bank['Wood'] = new FSObject({'category':'gatherable', 'name':'Wood'});
 	        this.bank['Wood'].increment(4);
 	       	this.bank['Rope'] = new FSObject({'category':'tool', 'name':'Rope'});
-	        this.bank['Rope'].increment(4);
-	        */
 	        this.bank['Bucket'] = new FSObject({'category':'tool', 'name':'Bucket'});
 	        this.bank['Bucket'].increment(4);
+	        */
 	        
 	        this.updateBank = function() {
 		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {
@@ -94,11 +93,11 @@ angular.module('craftyApp')
 	        };	
 
 	        // Know Recipes
-	        this.knownRecipes = json['knownRecipes'];  
+	        this.knownRecipes = json['recipes'];  
 
 			// Game Items
 	        this.gameItems = {};  
-	       	json['items'].forEach( ( function(thisGameItem) {
+	       	json['recipesDefines'].forEach( ( function(thisGameItem) {
 	        	var obj = thisGameItem;
 	          	this.gameItems[thisGameItem.name] = new FSGameItem(obj, this);
 	        }).bind(this)); 
@@ -109,7 +108,7 @@ angular.module('craftyApp')
 
 	        // Rewards
 	        this.rewards = {};  
-	        json['rewards'].forEach( ( function(thisReward) {
+	        json['rewardDefines'].forEach( ( function(thisReward) {
 	          	this.rewards[thisReward.name] = new FSReward(thisReward, this);
 	        }).bind(this)); 
 	    };

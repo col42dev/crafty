@@ -23,68 +23,6 @@
       "profession": "harvesting"
     }
   ],
- "rewards": [
-      { 
-        "name":"Liquidated",
-        "desc":"Craft a FlagonOfAle",
-        "completed": 0,
-        "action": "craft",
-        "target": "FlagonOfAle"
-      },
-      { 
-        "name":"Quench",
-        "desc":"Craft a Bucket",
-        "completed": 0,
-        "action": "craft",
-        "target": "Bucket"
-      }
-  ],
- "gatherableDefines": {
-    "Stone" :{
-      "gatherBaseTimeS": 10,
-      "dependencies":[]
-    },
-    "Coal" : {
-      "gatherBaseTimeS": 20,
-      "dependencies":[]
-    },
-    "Iron Ore" : {
-      "gatherBaseTimeS": 20,
-      "dependencies":[]
-    },
-    "Water" : {
-      "gatherBaseTimeS": 10,
-      "dependencies":["Bucket"]
-    },
-    "Wood" : {
-      "gatherBaseTimeS": 15,
-      "dependencies":[]
-    },
-    "Wool" : {
-      "gatherBaseTimeS": 30,
-      "dependencies":[]
-    },
-    "Leaves": {
-      "gatherBaseTimeS": 1,
-      "dependencies":[]
-    },
-    "Grain" : {
-      "gatherBaseTimeS": 20,
-      "dependencies":[]
-    },
-    "Bones" : {
-      "gatherBaseTimeS": 120,
-      "dependencies":[]
-    },
-    "Sand" : {
-      "gatherBaseTimeS": 30,
-      "dependencies":[]
-    },
-    "Feather" : {
-      "gatherBaseTimeS": 60,
-      "dependencies":[]
-    }
-  },
   "gatherables": [
     {
       "name": "Stone",
@@ -131,9 +69,7 @@
       "quantity": "5"
     }
   ],
-
-
-  "knownRecipes": [
+  "recipes": [
     {
       "name": "Rope"
     },
@@ -198,7 +134,117 @@
       "name": "Ale"
     }
   ],
-  "items": [
+  "rewardDefines": [
+    {
+      "name": "Liquidated",
+      "desc": "Craft a FlagonOfAle",
+      "completed": 0,
+      "action": "craft",
+      "target": "FlagonOfAle"
+    },
+    {
+      "name": "Quench",
+      "desc": "Craft a Bucket",
+      "completed": 0,
+      "action": "craft",
+      "target": "Bucket"
+    }
+  ],
+  "gatherableDefines": {
+    "Stone": {
+      "gatherBaseTimeS": 10,
+      "dependencies": [
+
+      ]
+    },
+    "Coal": {
+      "gatherBaseTimeS": 20,
+      "dependencies": [
+
+      ]
+    },
+    "Iron Ore": {
+      "gatherBaseTimeS": 20,
+      "dependencies": [
+
+      ]
+    },
+    "Water": {
+      "gatherBaseTimeS": 10,
+      "dependencies": [
+        "Bucket"
+      ]
+    },
+    "Wood": {
+      "gatherBaseTimeS": 15,
+      "dependencies": [
+
+      ]
+    },
+    "Wool": {
+      "gatherBaseTimeS": 30,
+      "dependencies": [
+
+      ]
+    },
+    "Leaves": {
+      "gatherBaseTimeS": 1,
+      "dependencies": [
+
+      ]
+    },
+    "Grain": {
+      "gatherBaseTimeS": 20,
+      "dependencies": [
+
+      ]
+    },
+    "Bones": {
+      "gatherBaseTimeS": 120,
+      "dependencies": [
+
+      ]
+    },
+    "Sand": {
+      "gatherBaseTimeS": 30,
+      "dependencies": [
+
+      ]
+    },
+    "Feather": {
+      "gatherBaseTimeS": 60,
+      "dependencies": [
+
+      ]
+    }
+  },
+  "toolDefines": [
+    {
+      "name": "Rope",
+      "strength": 1
+    },
+    {
+      "name": "BackPack",
+      "strength": 1
+    },
+    {
+      "name": "BonePickaxe",
+      "strength": 1
+    },
+    {
+      "name": "Shovel",
+      "strength": 1
+    },
+    {
+      "name": "Saw",
+      "strength": 1
+    },
+    {
+      "name": "Bucket",
+      "strength": 1
+    }
+  ],
+  "recipesDefines": [
     {
       "name": "Rope",
       "category": "tool",
@@ -278,7 +324,7 @@
     },
     {
       "name": "Books",
-      "category": "tool",
+      "category": "unclassified",
       "construction": "WoodenTable",
       "input": {
         "Paper": 12,
@@ -292,7 +338,7 @@
     },
     {
       "name": "FineHat",
-      "category": "tool",
+      "category": "unclassified",
       "construction": "WoodenTable",
       "input": {
         "Cloth": 2,
@@ -318,7 +364,7 @@
     },
     {
       "name": "FlagonOfAle",
-      "category": "tool",
+      "category": "unclassified",
       "construction": "WoodenTable",
       "input": {
         "Ale": 6,
@@ -345,7 +391,7 @@
     },
     {
       "name": "DiceTable",
-      "category": "tool",
+      "category": "furniture",
       "construction": "Workbench",
       "input": {
         "WoodenTable": 1,
@@ -359,7 +405,7 @@
     },
     {
       "name": "MineCart",
-      "category": "tool",
+      "category": "unclassified",
       "construction": "Workbench",
       "input": {
         "WoodenPlanks": 4,
