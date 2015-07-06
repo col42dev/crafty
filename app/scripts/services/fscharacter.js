@@ -20,8 +20,7 @@ angular.module('craftyApp')
      */
     var FSCharacter = function(characaterObj, simFactory, ctrllerScope) {
         thisFactory = simFactory;
-        this.firstName = characaterObj.firstName;
-        this.lastName = characaterObj.lastName;
+        this.name = characaterObj.name;
         this.profession = characaterObj.profession;
         this.activity = [];
         this.tools = [];
@@ -45,7 +44,7 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.getFullName = function () {
-      return this.firstName + ' ' + this.lastName;
+      return this.name;
     };
 
     /**

@@ -22,7 +22,7 @@ angular.module('craftyApp')
 	     	// Characters
 		    this.characterObjs = {};  
  			json['characters'].forEach( ( function(thisCharacter) {
- 				var characterName = thisCharacter.firstName + ' ' + thisCharacter.lastName;
+ 				var characterName = thisCharacter.name;
 	          	this.characterObjs[characterName] = new FSCharacter(thisCharacter, thisFactory, ctrllerScope);
 	          	this.selectedCharacter = this.characterObjs[characterName];
 	        }).bind(this)); 
@@ -30,6 +30,9 @@ angular.module('craftyApp')
 	       	this.onClickCharacter = function ( character) {
 	        	this.selectedCharacter = character;
 	        };
+
+	         // HarvestableDefines
+	        this.harvestableDefines = json['harvestableDefines'];  
 
     		// GatherableDefines
 	        this.gatherableDefines = json['gatherableDefines'];  
@@ -250,10 +253,9 @@ angular.module('craftyApp')
 		 * @desc 
 		 * @return 
 		 */
-		this.onClickHarvestables = function (gatherableType) {
-	
+		this.onClickHarvestables = function (harvestableType) {
 			if ( this.selectedCharacter !== null) {
-			    this.selectedCharacter.startHarvesting( gatherableType);
+			    this.selectedCharacter.startHarvesting( harvestableType);
 			}
 		};
 

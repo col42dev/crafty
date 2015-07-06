@@ -3,23 +3,19 @@
   "version": "0.0.0",
   "characters": [
     {
-      "firstName": "Stroldrin",
-      "lastName": "Harvester",
+      "name" : "Stroldrin Harvester",
       "profession": "harvesting"
     },
     {
-      "firstName": "Gronderlug",
-      "lastName": "Crafter",
+      "name": "Gronderlug Crafter",
       "profession": "crafting"
     },
     {
-      "firstName": "Dorasgrour",
-      "lastName": "Server",
+      "name": "Dorasgrour Server",
       "profession": "services"
     },
     {
-      "firstName": "Skoveath",
-      "lastName": "Harvester",
+      "name": "Skoveath Harvester",
       "profession": "harvesting"
     }
   ],
@@ -238,15 +234,19 @@
   },
   "harvestableDefines": {
     "Stone": {
+      "harvestBaseTimeS": 20,
       "toughness": 10
     },
     "Coal": {
+      "harvestBaseTimeS": 20,
       "toughness": 10
     },
     "Iron Ore": {
+      "harvestBaseTimeS": 20,
       "toughness": 10
     },
     "Wood": {
+      "harvestBaseTimeS": 20,
       "toughness": 10
     }
   },

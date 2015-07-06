@@ -32,6 +32,37 @@
 </div><!--fadedbackground-->
 
 
+<div class="fadedbackground">
+
+<h4>HARVEST DEFINITIONS (reference)</h4>
+
+<div class="bodycontainer scrollable">
+<table class="table table-bordered table-condensed table-scrollable">
+  <tbody>
+      <tr class="noselect" >
+          <td class="col-sm-1">Type</td>
+          <td class="col-sm-1">Harvest Time</td>
+          <td class="col-sm-1">Toughness</td>
+      </tr>
+  </tbody>
+</table>  
+</div>
+
+<div class="bodycontainer scrollable">
+  <table class="table table-bordered table-condensed table-scrollable">
+
+    <tbody>
+      <tr ng-repeat="(k,v)  in getFSService().simulation.harvestableDefines" class="noselect" >
+        <td class="col-sm-1">{{k}}</td> 
+        <td class="col-sm-1">{{v.harvestBaseTimeS}}</td> 
+        <td class="col-sm-1">{{v.toughness}}</td> 
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!--fadedbackground-->
+
 
 <div class="fadedbackground">
 

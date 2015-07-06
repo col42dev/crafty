@@ -15,7 +15,7 @@
 	</thead>
 	<tbody>
 	<tr ng-repeat="(k,v) in getFSService().simulation.characterObjs" class="noselect" ng-click="getFSService().onClickCharacter(v)">
-		<td width="50%"  bgcolor={{v.getbgcolor()}} > {{v.firstName}} {{v.lastName}}</td> 
+		<td width="50%"  bgcolor={{v.getbgcolor()}} > {{v.name}}</td> 
 		<td width="50%" > 
 			<div style = "background:rgb(128, 177, 133); overflow:visible" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].activityPercentRemaining()}">
 		        {{v.activity[0].name}}
