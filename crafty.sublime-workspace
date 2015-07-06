@@ -31,6 +31,57 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/views/main.html",
+			"settings":
+			{
+				"buffer_size": 4935,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/crafty.json",
+			"settings":
+			{
+				"buffer_size": 9168,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsservice.js",
+			"settings":
+			{
+				"buffer_size": 2868,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "'use strict';\n\n/**\n * @ngdoc service\n * @name craftyApp.FSFactory\n * @description\n * # FSFactory\n * Service in the craftyApp.\n */\nangular.module('craftyApp')\n  .factory('FSFactory', function ( FSCharacter, FSTask, FSObject, FSGatherable, FSRecipeDef, FSRecipe, FSReward, FSHarvestable) {\n    // AngularJS will instantiate a singleton by calling \"new\" on this function\n\n  	var FSFactory = function(ctrllerScope, json) {\n\n  		var thisFactory = this;\n\n	    this.initialize = function() {\n	\n			this.taskTimeScalar ='1';\n\n	     	// Characters\n		    this.characterObjs = {};  \n 			json['characters'].forEach( ( function(thisCharacter) {\n 				var characterName = thisCharacter.firstName + ' ' + thisCharacter.lastName;\n	          	this.characterObjs[characterName] = new FSCharacter(thisCharacter, thisFactory, ctrllerScope);\n	          	this.selectedCharacter = this.characterObjs[characterName];\n	        }).bind(this)); \n\n	       	this.onClickCharacter = function ( character) {\n	        	this.selectedCharacter = character;\n	        };\n\n    		// GatherableDefines\n	        this.gatherableDefines = json['gatherableDefines'];  \n	        \n	        // Gatherables\n	        this.gatherables = {};  \n	        json['gatherables'].forEach( ( function(thisGatherables) {\n	        	var obj = thisGatherables;\n	        	obj.gatherers = 0;\n	          	this.gatherables[thisGatherables.name] = new FSGatherable(obj, this);\n	        }).bind(this)); \n	        this.updateGatherables = function() {\n	        	thisFactory.gatherablesArray = Object.keys(thisFactory.gatherables).map(function (key) {\n	        		return thisFactory.gatherables[key];\n	        	});\n	    	};\n	    	this.updateGatherables();\n	        this.orderGatherablesBy = 'name';\n	        this.orderGatherablesByOrder = '+';\n	        this.onClickGatherablesHeader = function ( fieldName) {\n	        	this.orderGatherablesByOrder = (this.orderGatherablesByOrder==='+') ? '-' : '+';\n	        	this.orderGatherablesBy = this.orderGatherablesByOrder + fieldName;\n	        };	\n\n	        // Harvestables\n	        this.harvestables = {};  \n	        json['harvestables'].forEach( ( function(thisHarvestable) {\n	          	this.harvestables[thisHarvestable.name] = new FSHarvestable(thisHarvestable, this);\n	        }).bind(this)); \n	        this.updateHarvestables = function() {\n	        	thisFactory.harvestablesArray = Object.keys(thisFactory.harvestables).map(function (key) {\n	        		return thisFactory.harvestables[key];\n	        	});\n	    	};\n	    	this.updateHarvestables();\n	        this.orderHarvestablesBy = 'name';\n	        this.orderHarvestablesByOrder = '+';\n	        this.onClickHarvestablesHeader = function ( fieldName) {\n	        	this.orderHarvestablesByOrder = (this.orderHarvestablesByOrder==='+') ? '-' : '+';\n	        	this.orderHarvestablesBy = this.orderHarvestablesByOrder + fieldName;\n	        };	\n\n\n			// Bank\n	        this.bank = {};  \n	        this.bank['Workstation'] = new FSObject({'category':'constructor', 'name':'Workstation'});\n	        this.bank['Workstation'].increment(1);\n	        \n	        /*\n	        this.bank['saw'] = new FSObject({'category':'tool', 'name':'saw'});\n	        this.bank['saw'].increment(4);\n	        this.bank['shovel'] = new FSObject({'category':'tool', 'name':'shovel'});\n	        this.bank['shovel'].increment(4);\n	        this.bank['bigaxe'] = new FSObject({'category':'weapon', 'name':'bigaxe'});\n	        this.bank['bigaxe'].increment(4);\n	        this.bank['sword'] = new FSObject({'category':'weapon', 'name':'sword'});\n	        this.bank['sword'].increment(4);\n	       	this.bank['Wood'] = new FSObject({'category':'gatherable', 'name':'Wood'});\n	        this.bank['Wood'].increment(4);\n	       	this.bank['Rope'] = new FSObject({'category':'tool', 'name':'Rope'});\n	        this.bank['Bucket'] = new FSObject({'category':'tool', 'name':'Bucket'});\n	        this.bank['Bucket'].increment(4);\n	        */\n	        \n	        this.updateBank = function() {\n		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {\n		        		return thisFactory.bank[key];\n		        	});\n	    	};\n	    	this.updateBank();\n	        this.orderBankBy = 'name';\n	        this.orderBankByOrder = '+';\n	        this.onClickBankHeader = function ( fieldName) {\n	        	this.orderBankByOrder = (this.orderBankByOrder==='+') ? '-' : '+';\n	        	this.orderBankBy = this.orderBankByOrder + fieldName;\n	        };	\n\n	        // Know Recipes\n	        this.knownRecipes = json['recipes'];  \n\n			// Recipes Defines\n	        this.recipeDef = {};  \n	       	json['recipesDefines'].forEach( ( function(thisGameItem) {\n	        	var obj = thisGameItem;\n	          	this.recipeDef[thisGameItem.name] = new FSRecipeDef(obj, this);\n	        }).bind(this)); \n\n	        // CraftStation\n	        this.viewedConstructor = [];\n	        this.viewedConstructorName = null;\n\n	        // Rewards\n	        this.rewards = {};  \n	        \n	        json['rewardDefines'].forEach( ( function(thisReward) {\n	          	this.rewards[thisReward.name] = new FSReward(thisReward, this);\n	        }).bind(this)); \n\n	    };\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.checkRewards  = function ( checkDesc ) {\n\n			console.log('checkRewards down');\n\n			for (var thisReward in this.rewards) {\n  				if (this.rewards.hasOwnProperty(thisReward)) {\n  					if (this.rewards[thisReward].serializable.action === checkDesc.action) {\n						if (this.rewards[thisReward].serializable.target === checkDesc.target) {\n							this.rewards[thisReward].serializable.completed = 1;\n						}\n					}\n  				}\n			}\n\n			console.log('checkRewards down');\n		};\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		 this.onClickCharacterTool = function ( toolObj) {\n\n		      var indexOf = this.selectedCharacter.tools.indexOf(toolObj);\n		      if ( indexOf !== -1) {\n		      	this.selectedCharacter.tools.splice(indexOf, 1);\n\n		      	 if (!(toolObj.name in thisFactory.bank)) {\n        			thisFactory.bank[toolObj.name] = new FSObject({'category':'tool', 'name':toolObj.name});\n			      }\n			      thisFactory.bank[toolObj.name].increment(1);\n			      thisFactory.updateBank();\n		      }\n		 };\n\n		 /**\n		 * @desc \n		 * @return \n		 */\n		 this.onClickCharacterWeapon = function ( weaponObj) {\n\n		      var indexOf = this.selectedCharacter.weapons.indexOf(weaponObj);\n		      if ( indexOf !== -1) {\n		      	this.selectedCharacter.weapons.splice(indexOf, 1);\n\n		      	 if (!(weaponObj.name in thisFactory.bank)) {\n        			thisFactory.bank[weaponObj.name] = new FSObject({'category':'weapon', 'name':weaponObj.name});\n			      }\n			      thisFactory.bank[weaponObj.name].increment(1);\n			      thisFactory.updateBank();\n		      }\n		 };\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.onClickBank = function (bankItemKey) {\n\n			this.viewedConstructor = [];\n			if ( this.bank[bankItemKey].category === 'constructor') {\n				this.viewedConstructorName = bankItemKey;\n				Object.keys( this.recipeDef ).forEach( ( function(thisGameItemKey) {\n					var thisGameItem = this.recipeDef[thisGameItemKey];\n	        		if (thisGameItem.construction === bankItemKey) {\n	          			this.viewedConstructor.push( new FSRecipe( thisGameItemKey, this));\n	          		}\n	        	}).bind(this)); \n			} else {\n	        	this.viewedConstructorName = null;\n\n	        	switch ( this.bank[bankItemKey].category ) {\n	        		case 'tool': { // add to character inventory \n		        		if (this.bank[bankItemKey].quantity.length > 0) {\n		        			this.bank[bankItemKey].decrement(1) ;\n		        			this.selectedCharacter.tools.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));\n\n		        			if ( this.bank[bankItemKey].quantity.length === 0) {\n		        				delete  this.bank[bankItemKey];\n		        				this.updateBank();\n		        			}\n		        		}\n	        		}\n	        		break;\n\n	        		case 'weapon': { // add to character inventory \n		        		if (this.bank[bankItemKey].quantity.length > 0) {\n		        			this.bank[bankItemKey].decrement(1) ;\n		        			this.selectedCharacter.weapons.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));\n\n		        			if ( this.bank[bankItemKey].quantity.length === 0) {\n		        				delete  this.bank[bankItemKey];\n		        				this.updateBank();\n		        			}\n		        		}\n	        		}\n	        		break;\n	        	}\n			}\n		};\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.onClickGatherables = function (gatherableType) {\n	\n			if ( this.selectedCharacter !== null) {\n			    this.selectedCharacter.startGathering( gatherableType);\n			}\n		};\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.onClickHarvestables = function (harvestableType) {\n			if ( this.selectedCharacter !== null) {\n			    this.selectedCharacter.startHarvesting( harvestableType);\n			}\n		};\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.startCrafting = function (recipeKey) {\n		   	// determine if has reqiored ingredients in bank\n		   	var hasIngredients = true;\n		    var recipeInputObj = this.recipeDef[recipeKey].input;\n			var recipeInputKeys = Object.keys( recipeInputObj );\n\n			recipeInputKeys.forEach( function ( recipeKey ) {\n				var recipeInput = recipeKey;\n				var recipeInputQuantity = recipeInputObj[ recipeKey];\n\n				if (recipeInput in this.bank) {\n					if ( this.bank[ recipeInput ].quantity.length < recipeInputQuantity) {\n						hasIngredients = false;\n						console.log('does not have ingredient quantity:' + recipeInput + ', ' + recipeInputQuantity);\n					}\n				} else {\n					console.log('does not have ingredient:' + recipeInput);\n					hasIngredients = false;\n				}\n			}.bind(this));\n\n			console.log('has ingredients:' + hasIngredients);\n\n			if ( hasIngredients === true) {\n\n			    if ( this.selectedCharacter !== null && this.selectedCharacter.activity.length < 4) {\n\n		          	this.selectedCharacter.startCrafting( recipeKey);\n\n		          	// subtract resources from bank.\n		          	recipeInputKeys.forEach( function ( recipeKey ){\n\n						var recipeInput = recipeKey;\n						var recipeInputQuantity = recipeInputObj[ recipeKey];\n\n						this.bank[ recipeInput ].decrement( recipeInputQuantity);\n\n						if ( this.bank[recipeInput].quantity.length === 0) {\n	        				delete  this.bank[recipeInput];\n	        				this.updateBank();\n	        			}\n	\n					}.bind(this));\n			    }\n			}\n		};\n\n	   \n	    // Call the initialize function for every new instance\n	    this.initialize();\n  	};\n\n	/**\n	* Return the constructor function.\n	*/\n	return FSFactory;\n});\n",
+			"file": "app/scripts/services/fsfactory.js",
+			"file_size": 10518,
+			"file_write_time": 1436135291000000,
+			"settings":
+			{
+				"buffer_size": 10518,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsharvestable.js",
+			"settings":
+			{
+				"buffer_size": 529,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fscharacter.js",
+			"settings":
+			{
+				"buffer_size": 10141,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -56,26 +107,33 @@
 	},
 	"file_history":
 	[
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fstask.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js",
-		"/Users/colinmoore/Dev/crafty/app/views/reference.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/characterctrlr.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/app.js",
 		"/Users/colinmoore/Dev/crafty/app/views/main.html",
-		"/Users/colinmoore/Dev/crafty/app/views/character.html",
-		"/Users/colinmoore/Dev/crafty/app/views/charactersheet.html",
-		"/Users/colinmoore/Dev/crafty/app/views/characterselect.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsfactory.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/main.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsservice.js",
+		"/Users/colinmoore/Dev/crafty/.tmp/concat/scripts/scripts.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsreward.js",
+		"/Users/colinmoore/Dev/crafty/app/views/rewards.html",
 		"/Users/colinmoore/Dev/crafty/app/index.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/app.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsservice.js",
+		"/Users/colinmoore/Dev/crafty/app/views/charactersheet.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js",
+		"/Users/colinmoore/Dev/crafty/app/views/characterselect.html",
+		"/Users/colinmoore/Dropbox (MagicFuelGames)/MagicFuelGames Team Folder/Software/Prototypes/Web/crafty/smallerdataset.json",
+		"/Users/colinmoore/Dev/crafty/app/crafty.json",
+		"/Users/colinmoore/Dev/crafty/test/spec/services/fsgameitem.js",
+		"/Users/colinmoore/Dev/crafty/dist/scripts/scripts.4a49449a.js",
+		"/Users/colinmoore/Dev/crafty/crafty.sublime-workspace",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipedef.js",
+		"/Users/colinmoore/Dev/crafty/app/views/reference.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsfactory.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fstask.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/characterctrlr.js",
+		"/Users/colinmoore/Dev/crafty/app/views/character.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/main.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsobject.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsgatherable.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/FSRecipeDef.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsgameitem.js",
 		"/Users/colinmoore/Dev/crafty/app/styles/main.css",
-		"/Users/colinmoore/Dev/crafty/app/crafty.json",
-		"/Users/colinmoore/Dropbox (MagicFuelGames)/MagicFuelGames Team Folder/Software/Prototypes/Web/crafty/smallerdataset.json",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsgatherables.js",
 		"/Users/colinmoore/Dev/crafty/publishToEC2.sh",
 		"/Users/colinmoore/Dev/col42dev.github.com/index.im",
@@ -107,9 +165,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
+			"/Users/colinmoore/Dev/crafty"
 		]
 	},
 	"find_state":
@@ -117,13 +176,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"reward",
+			"gameItems",
+			"FSReward",
+			"FSGameItem",
+			");\n",
+			"has dep",
+			"updateActiveTaskRemainingPercent",
+			"%';\n",
 			"FSGatherable",
 			"danc",
 			"hasGatheringDependencies",
 			"FSObject",
 			"style",
 			"thisFactory",
-			"FSRecipeDefGameItem",
+			"FSGameItemGameItem",
 			"GameItem",
 			"FSGatherable",
 			"gather",
@@ -188,6 +255,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"recipeDef",
+			"FSRecipeDef"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -198,8 +267,176 @@
 	"groups":
 	[
 		{
+			"selected": 5,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/views/main.html",
+					"settings":
+					{
+						"buffer_size": 4935,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3200,
+								3200
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 249.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/crafty.json",
+					"settings":
+					{
+						"buffer_size": 9168,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								9168
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 814.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/scripts/services/fsservice.js",
+					"settings":
+					{
+						"buffer_size": 2868,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2482,
+								2482
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 938.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/scripts/services/fsfactory.js",
+					"settings":
+					{
+						"buffer_size": 10518,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1270,
+								1325
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 403.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/scripts/services/fsharvestable.js",
+					"settings":
+					{
+						"buffer_size": 529,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								178,
+								191
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/scripts/services/fscharacter.js",
+					"settings":
+					{
+						"buffer_size": 10141,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2506,
+								2506
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 969.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],

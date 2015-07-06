@@ -8,7 +8,7 @@
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSCharacter', function (FSTask, FSObject, FSGatherable) {
+  .factory('FSCharacter', function (FSTask, FSObject) {
     // Service logic
     // ...
     var thisFactory = null;
@@ -171,6 +171,9 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.stopCrafting = function () {
+
+      clearInterval(this.updateActiveTaskInterval);
+
       var craftableKey = this.activity[0].name;
 
       // generate output in bank.
@@ -209,27 +212,27 @@ angular.module('craftyApp')
     FSCharacter.prototype.startNextTask = function () {     
       var taskName = this.activity[0].name;
 
+      var thisCharacter = this;
+ 
+
       switch ( this.activity[0].category) {
         case 'gathering':
           {
             var hasGatherables = (taskName in thisFactory.gatherables && thisFactory.gatherables[taskName].quantity > 0) ? true : false;
             var hasDependencies = this.hasGatheringDependencies(taskName);
             if (hasGatherables === true && hasDependencies === true) {
-              var duration = (thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
-              setTimeout(this.stopGathering.bind(this), duration);
+              var gatheringDuration = (thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
+              setTimeout(this.stopGathering.bind(this), gatheringDuration);
 
-              var thisCharacter = this;
               this.updateActiveTaskRemainingPercent = 100;
               this.updateActiveTaskInterval =  setInterval( function() {
                     thisCharacter.updateActiveTaskRemainingPercent --;
                     if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
                        clearInterval(thisCharacter.updateActiveTaskInterval);
-                       console.log("clearInterval" );
+                       console.log('clearInterval' );
                     }
-                }, duration / 100);
-              
+                }, gatheringDuration / 100);            
               thisFactory.gatherables[taskName].gatherers ++;
-              //console.log('setTimeout:' + thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000);
             } else {
               this.activity.splice(0, 1);
               if (this.activity.length > 0) {
@@ -243,18 +246,17 @@ angular.module('craftyApp')
             var hasHarvestables = (taskName in thisFactory.harvestables && thisFactory.harvestables[taskName].quantity > 0) ? true : false;
 
             if (hasHarvestables === true) {
-              var duration = 10000 / thisFactory.taskTimeScalar;
-              setTimeout(this.stopHarvesting.bind(this), duration);
+              var harvestingDuration = 10000 / thisFactory.taskTimeScalar;
+              setTimeout(this.stopHarvesting.bind(this), harvestingDuration);
 
-              var thisCharacter = this;
               this.updateActiveTaskRemainingPercent = 100;
               this.updateActiveTaskInterval =  setInterval( function() {
                     thisCharacter.updateActiveTaskRemainingPercent --;
                     if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
                        clearInterval(thisCharacter.updateActiveTaskInterval);
-                       console.log("clearInterval" );
+                       console.log('clearInterval' );
                     }
-                }, duration / 100);
+                }, harvestingDuration / 100);
               
             } else {
               this.activity.splice(0, 1);
@@ -266,9 +268,17 @@ angular.module('craftyApp')
           break;
         case 'crafting':
           {
-            var duration = (thisFactory.recipeDef[taskName].craftBaseTimeS * 1000) / thisFactory.taskTimeScalar;
-            setTimeout(this.stopCrafting.bind(this),  duration);
-            console.log('setTimeout:' + thisFactory.recipeDef[taskName].craftBaseTimeS * 1000);
+            var craftingDuration = (thisFactory.recipeDef[taskName].craftBaseTimeS * 1000) / thisFactory.taskTimeScalar;
+            setTimeout(this.stopCrafting.bind(this),  craftingDuration);
+
+            this.updateActiveTaskRemainingPercent = 100;
+            this.updateActiveTaskInterval =  setInterval( function() {
+                  thisCharacter.updateActiveTaskRemainingPercent --;
+                  if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
+                     clearInterval(thisCharacter.updateActiveTaskInterval);
+                     console.log('clearInterval' );
+                  }
+              }, craftingDuration / 100);   
           }
           break;
       }
@@ -283,11 +293,9 @@ angular.module('craftyApp')
       var hasDependencies = true;
 
       thisFactory.gatherableDefines[gatheringName].dependencies.forEach( ( function(thisDependency) {
-
         if ( this.hasTool(thisDependency) === false) {
           hasDependencies = false;
         }
-
       }).bind(this)); 
 
       return hasDependencies;
@@ -327,8 +335,6 @@ angular.module('craftyApp')
       if ( this.updateActiveTaskRemainingPercent <= 0) {
          clearInterval(this.updateActiveTask);
       }
-
-      console.log(this.updateActiveTaskRemainingPercent );
     };
 
     /**
