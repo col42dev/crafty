@@ -8,7 +8,7 @@
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSCharacter', function (FSTask, FSObject) {
+  .factory('FSCharacter', function (FSTask, FSObject, FSGatherable) {
     // Service logic
     // ...
     var thisFactory = null;
@@ -81,14 +81,13 @@ angular.module('craftyApp')
         thisFactory.updateHarvestables();
       }
 
-/*
       if (!(harvestableType in thisFactory.gatherables)) { //todo: debug this condition!
-          var obj = {"name": harvestableType, "quantity": "1"};
+          var obj = {'name': harvestableType, 'quantity': '0'};
           obj.gatherers = 0;
 
         thisFactory.gatherables[harvestableType] = new FSGatherable(obj, thisFactory);
       }
-      */
+      
       thisFactory.gatherables[harvestableType].quantity ++;
       thisFactory.updateGatherables();
 

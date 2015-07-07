@@ -36,6 +36,9 @@ angular.module('craftyApp')
 
     		// GatherableDefines
 	        this.gatherableDefines = json['gatherableDefines'];  
+	  
+	 		// GatherableDefines
+	        this.toolDefines = json['toolDefines'];  
 	        
 	        // Gatherables
 	        this.gatherables = {};  
@@ -115,10 +118,12 @@ angular.module('craftyApp')
 
 			// Recipes Defines
 	        this.recipeDef = {};  
-	       	json['recipesDefines'].forEach( ( function(thisGameItem) {
-	        	var obj = thisGameItem;
-	          	this.recipeDef[thisGameItem.name] = new FSRecipeDef(obj, this);
-	        }).bind(this)); 
+	        var jsonRecipesDefines = json['recipesDefines'];
+	        for (var key in jsonRecipesDefines) {
+	        	if (jsonRecipesDefines.hasOwnProperty(key)) {
+	          		this.recipeDef[key] = new FSRecipeDef(jsonRecipesDefines[key], this);
+	         	}
+	        }
 
 	        // CraftStation
 	        this.viewedConstructor = [];

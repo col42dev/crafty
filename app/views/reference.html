@@ -32,6 +32,38 @@
 </div><!--fadedbackground-->
 
 
+
+<div class="fadedbackground">
+
+<h4>TOOL DEFINITIONS (reference)</h4>
+
+<div class="bodycontainer scrollable">
+<table class="table table-bordered table-condensed table-scrollable">
+  <tbody>
+      <tr class="noselect" >
+          <td class="col-sm-1">Name</td>
+          <td class="col-sm-1">Strength</td>
+      </tr>
+  </tbody>
+</table>  
+</div>
+
+<div class="bodycontainer scrollable">
+  <table class="table table-bordered table-condensed table-scrollable">
+
+    <tbody>
+      <tr ng-repeat="(k,v)  in getFSService().simulation.toolDefines" class="noselect" >
+        <td class="col-sm-1">{{k}}</td> 
+        <td class="col-sm-1">{{v.strength}}</td> 
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!--fadedbackground-->
+
+
+
 <div class="fadedbackground">
 
 <h4>HARVEST DEFINITIONS (reference)</h4>
