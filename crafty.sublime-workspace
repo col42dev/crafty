@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"this",
+				"thisActionable"
+			],
+			[
 				"u",
 				"updateGatherables"
 			],
@@ -32,18 +36,46 @@
 	"buffers":
 	[
 		{
-			"file": "app/views/main.html",
+			"file": "/Users/colinmoore/Dropbox (MagicFuelGames)/MagicFuelGames Team Folder/Software/Prototypes/Web/crafty/smallerdataset.json",
 			"settings":
 			{
-				"buffer_size": 4935,
+				"buffer_size": 10629,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/crafty.json",
+			"file": "/Users/colinmoore/Perforce/cmoore_MBP/crafty/smallerdataset.json",
 			"settings":
 			{
-				"buffer_size": 9168,
+				"buffer_size": 13092,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "=IF(INDEX(G10:G25,MATCH(B3,E10:E25,0))<=INDEX(C10:C25,MATCH(B2,A10:A25,0)),\n\nINDEX(H10:H25,MATCH(B3,E10:E25,0))-INDEX(C10:C25,MATCH(B2,A10:A25,0)),\"Can't Dig\")//ST_Prototypes/ML/crafty/smallerdataset.json",
+			"settings":
+			{
+				"buffer_size": 204,
+				"line_ending": "Unix",
+				"name": "=IF(INDEX(G10:G25,MATCH(B3,E10:E25,0))<=INDEX(C10:"
+			}
+		},
+		{
+			"contents": "{\n  \"app\": \"crafty\",\n  \"version\": \"0.0.0\",\n  \"characters\": [\n    {\n      \"name\": \"Stroldrin Harvester\",\n      \"profession\": \"harvesting\"\n    },\n    {\n      \"name\": \"Gronderlug Crafter\",\n      \"profession\": \"crafting\"\n    },\n    {\n      \"name\": \"Dorasgrour Server\",\n      \"profession\": \"services\"\n    },\n    {\n      \"name\": \"Skoveath Harvester\",\n      \"profession\": \"harvesting\"\n    }\n  ],\n  \"gatherables\": [\n    {\n      \"name\": \"Stone\",\n      \"quantity\": \"1\"\n    },\n    {\n      \"name\": \"Coal\",\n      \"quantity\": \"1\"\n    },\n    {\n      \"name\": \"Iron Ore\",\n      \"quantity\": \"3\"\n    },\n    {\n      \"name\": \"Water\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Wood\",\n      \"quantity\": \"5\"\n    },\n    {\n      \"name\": \"Wool\",\n      \"quantity\": \"10\"\n    },\n    {\n      \"name\": \"Leaves\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Grain\",\n      \"quantity\": \"20\"\n    },\n    {\n      \"name\": \"Antler\",\n      \"quantity\": \"9\"\n    },\n    {\n      \"name\": \"Sand\",\n      \"quantity\": \"20\"\n    },\n    {\n      \"name\": \"Feather\",\n      \"quantity\": \"5\"\n    }\n  ],\n  \"harvestables\": [\n    {\n      \"name\": \"Stone\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Coal\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Iron Ore\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Wood\",\n      \"quantity\": \"100\"\n    }\n  ],\n  \"recipes\": [\n    {\n      \"name\": \"Rope\"\n    },\n    {\n      \"name\": \"WoodenTable\"\n    },\n    {\n      \"name\": \"Workbench\"\n    },\n    {\n      \"name\": \"Forge\"\n    },\n    {\n      \"name\": \"AntlerPickaxe\"\n    },\n    {\n      \"name\": \"Paper\"\n    },\n    {\n      \"name\": \"Books\"\n    },\n    {\n      \"name\": \"FineHat\"\n    },\n    {\n      \"name\": \"FlagonOfAle\"\n    },\n    {\n      \"name\": \"WoodenPlanks\"\n    },\n    {\n      \"name\": \"DiceTable\"\n    },\n    {\n      \"name\": \"MineCart\"\n    },\n    {\n      \"name\": \"Loom\"\n    },\n    {\n      \"name\": \"Glass\"\n    },\n    {\n      \"name\": \"Shovel\"\n    },\n    {\n      \"name\": \"Cloth\"\n    },\n    {\n      \"name\": \"Nails\"\n    },\n    {\n      \"name\": \"BackPack\"\n    },\n    {\n      \"name\": \"Saw\"\n    },\n    {\n      \"name\": \"Bucket\"\n    },\n    {\n      \"name\": \"Ale\"\n    },\n    {\n      \"name\": \"FermentingVat\"\n    },\n    {\n      \"name\": \"BucketPump\"\n    },\n    {\n      \"name\": \"Scythe\"\n    },\n    {\n      \"name\": \"StoneAxe\"\n    },\n    {\n      \"name\": \"BulkAle\"\n    },\n    {\n      \"name\": \"PumpedWater\"\n    }\n  ],\n  \"rewardDefines\": [\n    {\n      \"name\": \"Liquidated\",\n      \"desc\": \"Craft a FlagonOfAle\",\n      \"completed\": 0,\n      \"action\": \"craft\",\n      \"target\": \"FlagonOfAle\"\n    },\n    {\n      \"name\": \"Quench\",\n      \"desc\": \"Craft a Bucket\",\n      \"completed\": 0,\n      \"action\": \"craft\",\n      \"target\": \"Bucket\"\n    },\n    {\n      \"name\": \"Master Brewer\",\n      \"desc\": \"Craft a FermentingVat\",\n      \"completed\": 0,\n      \"action\": \"craft\",\n      \"target\": \"FermentingVat\"\n    }\n  ],\n  \"gatherableDefines\": {\n    \"Stone\": {\n      \"gatherBaseTimeS\": 10,\n      \"dependencies\": [\n\n      ]\n    },\n    \"Coal\": {\n      \"gatherBaseTimeS\": 20,\n      \"dependencies\": [\n\n      ]\n    },\n    \"Iron Ore\": {\n      \"gatherBaseTimeS\": 20,\n      \"dependencies\": [\n\n      ]\n    },\n    \"Water\": {\n      \"gatherBaseTimeS\": 10,\n      \"dependencies\": [\n        \"Bucket\"\n      ]\n    },\n    \"Wood\": {\n      \"gatherBaseTimeS\": 15,\n      \"dependencies\": [\n\n      ]\n    },\n    \"Wool\": {\n      \"gatherBaseTimeS\": 30,\n      \"dependencies\": [\n\n      ]\n    },\n    \"Leaves\": {\n      \"gatherBaseTimeS\": 10,\n      \"dependencies\": [\n        \"Bucket\"\n      ]\n    },\n    \"Grain\": {\n      \"gatherBaseTimeS\": 20,\n      \"dependencies\": [\n\n      ]\n    },\n    \"Antler\": {\n      \"gatherBaseTimeS\": 120,\n      \"dependencies\": [\n\n      ]\n    },\n    \"Sand\": {\n      \"gatherBaseTimeS\": 30,\n      \"dependencies\": [\n        \"Shovel\"\n      ]\n    },\n    \"Feather\": {\n      \"gatherBaseTimeS\": 60,\n      \"dependencies\": [\n\n      ]\n    }\n  },\n  \"harvestableDefines\": {\n    \"Earth\": {\n      \"toolCategories\" : [\"Pickaxe\", \"Hands\"],\n      \"hardness\": 1,\n      \"harvestBaseTimeS\": 10\n    },\n    \"Stone\": {\n      \"toolCategories\" : [\"Pickaxe\", \"Hands\"],\n      \"hardness\": 2,\n      \"harvestBaseTimeS\": 18\n    },\n    \"Hard Stone\": {\n      \"toolCategories\" : [\"Pickaxe\", \"Hands\"],\n      \"hardness\": 8,\n      \"harvestBaseTimeS\": 64\n    },\n    \"Quartzstone\": {\n      \"toolCategories\" : [\"Pickaxe\", \"Hands\"],\n      \"hardness\": 20,\n      \"harvestBaseTimeS\": 140\n    },\n    \"Limestone\": {\n      \"toolCategories\" : [\"Pickaxe\", \"Hands\"],\n      \"hardness\": 5,\n      \"harvestBaseTimeS\": 45\n    },\n    \"Marble\": {\n      \"toolCategories\" : [\"Pickaxe\", \"Hands\"],\n      \"hardness\": 12,\n      \"harvestBaseTimeS\": 96\n    },\n    \"Granite\": {\n      \"toolCategories\" : [\"Pickaxe\", \"Hands\"],\n      \"hardness\": 16,\n      \"harvestBaseTimeS\": 112\n    },\n    \"Coal\": {\n      \"toolCategories\" : [\"Pickaxe\", \"Hands\"],\n      \"hardness\": 2,\n      \"harvestBaseTimeS\": 50\n    },\n    \"Iron Ore\": {\n      \"toolCategories\" : [\"Pickaxe\", \"Hands\"],\n      \"hardness\": 2,\n      \"harvestBaseTimeS\": 50\n    },\n    \"Wood\": {\n      \"toolCategories\" : [\"Axe\"],\n      \"hardness\": 2,\n      \"harvestBaseTimeS\": 10\n    }\n  },\n  \"toolDefines\": {\n    \"Hands\": {\n      \"strength\": 1,\n      \"category\": \"Hands\"\n    },\n    \"Stone Pickaxe\": {\n      \"strength\": 1,\n      \"category\": \"Pickaxe\"\n    },\n    \"Bronze Pickaxe\": {\n      \"strength\": 1,\n      \"category\": \"Pickaxe\"\n    },\n    \"Iron Pickaxe\": {\n      \"strength\": 1,\n      \"category\": \"Pickaxe\"\n    },\n    \"Steel Pickaxe\": {\n      \"strength\": 1,\n      \"category\": \"Pickaxe\"\n    },\n    \"Silver Pickaxe\": {\n      \"strength\": 1,\n      \"category\": \"Pickaxe\"\n    },\n    \"Gold Pickaxe\": {\n      \"strength\": 1,\n      \"category\": \"Pickaxe\"\n    },\n    \"Titanium Pickaxe\": {\n      \"strength\": 1,\n      \"category\": \"Pickaxe\"\n    },\n    \"Rope\": {\n      \"strength\": 1,\n      \"category\": \"Pickaxe\"\n    },\n    \"BackPack\": {\n      \"strength\": 1,\n      \"category\": \"Pickaxe\"\n    },\n    \"AntlerPickaxe\": {\n      \"strength\": 4,\n      \"category\": \"Pickaxe\"\n    },\n    \"Shovel\": {\n      \"strength\": 1,\n      \"category\": \"Pickaxe\"\n    },\n    \"Saw\": {\n      \"strength\": 1,\n      \"category\": \"Pickaxe\"\n    },\n    \"Bucket\": {\n      \"strength\": 1,\n      \"category\": \"Pickaxe\"\n    }\n  },\n  \"recipesDefines\": {\n    \"Rope\": {\n      \"category\": \"tool\",\n      \"construction\": \"Workstation\",\n      \"input\": {\n        \"Wool\": 1\n      },\n      \"output\": {\n        \"Rope\": 3\n      },\n      \"basetime\": 15\n    },\n    \"WoodenTable\": {\n      \"category\": \"constructor\",\n      \"construction\": \"Workstation\",\n      \"input\": {\n        \"Wood\": 4\n      },\n      \"output\": {\n        \"WoodenTable\": 1\n      },\n      \"basetime\": 30\n    },\n    \"Workbench\": {\n      \"category\": \"constructor\",\n      \"construction\": \"Workstation\",\n      \"input\": {\n        \"Wood\": 3,\n        \"WoodenTable\": 1\n      },\n      \"output\": {\n        \"Workbench\": 1\n      },\n      \"basetime\": 30\n    },\n    \"BackPack\": {\n      \"category\": \"tool\",\n      \"construction\": \"Workstation\",\n      \"input\": {\n        \"Cloth\": 3,\n        \"Rope\": 1\n      },\n      \"output\": {\n        \"BackPack\": 1\n      },\n      \"basetime\": 30\n    },\n    \"Forge\": {\n      \"category\": \"constructor\",\n      \"construction\": \"Workbench\",\n      \"input\": {\n        \"Water\": 3,\n        \"Coal\": 1,\n        \"Iron Ore\": 3,\n        \"Stone\": 2\n      },\n      \"output\": {\n        \"Forge\": 1\n      },\n      \"basetime\": 60\n    },\n    \"Paper\": {\n      \"category\": \"unclassified\",\n      \"construction\": \"WoodenTable\",\n      \"input\": {\n        \"Leaves\": 1\n      },\n      \"output\": {\n        \"Paper\": 1\n      },\n      \"basetime\": 15\n    },\n    \"Books\": {\n      \"category\": \"unclassified\",\n      \"construction\": \"WoodenTable\",\n      \"input\": {\n        \"Paper\": 12,\n        \"Rope\": 1,\n        \"Feather\": 2\n      },\n      \"output\": {\n        \"Books\": 1\n      },\n      \"basetime\": 45\n    },\n    \"FineHat\": {\n      \"category\": \"unclassified\",\n      \"construction\": \"WoodenTable\",\n      \"input\": {\n        \"Cloth\": 2,\n        \"Feather\": 1\n      },\n      \"output\": {\n        \"FineHat\": 1\n      },\n      \"basetime\": 15\n    },\n    \"AntlerPickaxe\": {\n      \"category\": \"tool\",\n      \"construction\": \"Workstation\",\n      \"input\": {\n        \"Wood\": 2,\n        \"Antler\": 2\n      },\n      \"output\": {\n        \"AntlerPickaxe\": 1\n      },\n      \"basetime\": 15\n    },\n    \"FlagonOfAle\": {\n      \"category\": \"food\",\n      \"construction\": \"WoodenTable\",\n      \"input\": {\n        \"Ale\": 6,\n        \"Glass\": 1,\n        \"Cloth\": 1,\n        \"Antler\": 6\n      },\n      \"output\": {\n        \"FlagonOfAle\": 1\n      },\n      \"basetime\": 15\n    },\n    \"WoodenPlanks\": {\n      \"category\": \"unclassified\",\n      \"construction\": \"Workbench\",\n      \"input\": {\n        \"Wood\": 2\n      },\n      \"output\": {\n        \"WoodenPlanks\": 1\n      },\n      \"basetime\": 15\n    },\n    \"DiceTable\": {\n      \"category\": \"furniture\",\n      \"construction\": \"Workbench\",\n      \"input\": {\n        \"WoodenTable\": 1,\n        \"Antler\": 3,\n        \"Cloth\": 1\n      },\n      \"output\": {\n        \"DiceTable\": 1\n      },\n      \"basetime\": 45\n    },\n    \"MineCart\": {\n      \"category\": \"unclassified\",\n      \"construction\": \"Workbench\",\n      \"input\": {\n        \"WoodenPlanks\": 4,\n        \"Nails\": 10\n      },\n      \"output\": {\n        \"MineCart\": 1\n      },\n      \"basetime\": 60\n    },\n    \"Loom\": {\n      \"category\": \"constructor\",\n      \"construction\": \"Workbench\",\n      \"input\": {\n        \"Wood\": 5,\n        \"Rope\": 2\n      },\n      \"output\": {\n        \"Loom\": 1\n      },\n      \"basetime\": 30\n    },\n    \"Glass\": {\n      \"category\": \"unclassified\",\n      \"construction\": \"Forge\",\n      \"input\": {\n        \"Sand\": 4\n      },\n      \"output\": {\n        \"Glass\": 1\n      },\n      \"basetime\": 45\n    },\n    \"Shovel\": {\n      \"category\": \"tool\",\n      \"construction\": \"Workbench\",\n      \"input\": {\n        \"Wood\": 3\n      },\n      \"output\": {\n        \"Shovel\": 1\n      },\n      \"basetime\": 15\n    },\n    \"Cloth\": {\n      \"category\": \"unclassified\",\n      \"construction\": \"Loom\",\n      \"input\": {\n        \"Wool\": 1\n      },\n      \"output\": {\n        \"Cloth\": 1\n      },\n      \"basetime\": 15\n    },\n    \"Ale\": {\n      \"category\": \"food\",\n      \"construction\": \"WoodenTable\",\n      \"input\": {\n        \"Water\": 6,\n        \"Grain\": 3\n      },\n      \"output\": {\n        \"Ale\": 1\n      },\n      \"basetime\": 45\n    },\n    \"Saw\": {\n      \"category\": \"tool\",\n      \"construction\": \"Forge\",\n      \"input\": {\n        \"Iron Ore\": 3,\n        \"Wood\": 1\n      },\n      \"output\": {\n        \"Saw\": 1\n      },\n      \"basetime\": 45\n    },\n    \"Bucket\": {\n      \"category\": \"tool\",\n      \"construction\": \"Workstation\",\n      \"input\": {\n        \"Wood\": 3,\n        \"Rope\": 1\n      },\n      \"output\": {\n        \"Bucket\": 1\n      },\n      \"basetime\": 30\n    },\n    \"Nails\": {\n      \"category\": \"unclassified\",\n      \"construction\": \"Forge\",\n      \"input\": {\n        \"Iron Ore\": 1\n      },\n      \"output\": {\n        \"Nails\": 5\n      },\n      \"basetime\": 10\n    },\n    \"FermentingVat\": {\n      \"category\": \"constructor\",\n      \"construction\": \"Forge\",\n      \"input\": {\n        \"Iron Ore\": 3,\n        \"Wood\": 1\n      },\n      \"output\": {\n        \"FermentingVat\": 1\n      },\n      \"basetime\": 45\n    },\n    \"BulkAle\": {\n      \"category\": \"food\",\n      \"construction\": \"FermentingVat\",\n      \"input\": {\n        \"Grain\": 3,\n        \"Water\": 6\n      },\n      \"output\": {\n        \"Ale\": 2\n      },\n      \"basetime\": 60\n    },\n    \"BucketPump\": {\n      \"category\": \"constructor\",\n      \"construction\": \"Workstation\",\n      \"input\": {\n        \"Bucket\": 2,\n        \"Rope\": 4,\n        \"Wood\": 2\n      },\n      \"output\": {\n        \"BucketPump\": 1\n      },\n      \"basetime\": 30\n    },\n    \"Scythe\": {\n      \"category\": \"tool\",\n      \"construction\": \"Forge\",\n      \"input\": {\n        \"Iron Ore\": 2,\n        \"Wood\": 2\n      },\n      \"output\": {\n        \"Scythe\": 1\n      },\n      \"basetime\": 45\n    },\n    \"StoneAxe\": {\n      \"category\": \"tool\",\n      \"construction\": \"Workstation\",\n      \"input\": {\n        \"Stone\": 1,\n        \"Wood\": 1\n      },\n      \"output\": {\n        \"StoneAxe\": 1\n      },\n      \"basetime\": 60\n    },\n    \"PumpedWater\": {\n      \"category\": \"unclassified\",\n      \"construction\": \"BucketPump\",\n      \"input\": {\n        \"Water\": 1\n      },\n      \"output\": {\n        \"Water\": 3\n      },\n      \"basetime\": 10\n    }\n  }\n}",
+			"file": "/private/tmp/colinmoore(p4v)/Colins-MBP.home_ec2-54-67-81-203.us-west-1.compute.amazonaws.com_1666/ST_Prototypes/ML/crafty/smallerdataset#1.json",
+			"file_size": 10629,
+			"file_write_time": 1436346172000000,
+			"settings":
+			{
+				"buffer_size": 12212,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fscharacter.js",
+			"settings":
+			{
+				"buffer_size": 10622,
 				"line_ending": "Unix"
 			}
 		},
@@ -56,13 +88,26 @@
 			}
 		},
 		{
-			"contents": "'use strict';\n\n/**\n * @ngdoc service\n * @name craftyApp.FSFactory\n * @description\n * # FSFactory\n * Service in the craftyApp.\n */\nangular.module('craftyApp')\n  .factory('FSFactory', function ( FSCharacter, FSTask, FSObject, FSGatherable, FSRecipeDef, FSRecipe, FSReward, FSHarvestable) {\n    // AngularJS will instantiate a singleton by calling \"new\" on this function\n\n  	var FSFactory = function(ctrllerScope, json) {\n\n  		var thisFactory = this;\n\n	    this.initialize = function() {\n	\n			this.taskTimeScalar ='1';\n\n	     	// Characters\n		    this.characterObjs = {};  \n 			json['characters'].forEach( ( function(thisCharacter) {\n 				var characterName = thisCharacter.firstName + ' ' + thisCharacter.lastName;\n	          	this.characterObjs[characterName] = new FSCharacter(thisCharacter, thisFactory, ctrllerScope);\n	          	this.selectedCharacter = this.characterObjs[characterName];\n	        }).bind(this)); \n\n	       	this.onClickCharacter = function ( character) {\n	        	this.selectedCharacter = character;\n	        };\n\n    		// GatherableDefines\n	        this.gatherableDefines = json['gatherableDefines'];  \n	        \n	        // Gatherables\n	        this.gatherables = {};  \n	        json['gatherables'].forEach( ( function(thisGatherables) {\n	        	var obj = thisGatherables;\n	        	obj.gatherers = 0;\n	          	this.gatherables[thisGatherables.name] = new FSGatherable(obj, this);\n	        }).bind(this)); \n	        this.updateGatherables = function() {\n	        	thisFactory.gatherablesArray = Object.keys(thisFactory.gatherables).map(function (key) {\n	        		return thisFactory.gatherables[key];\n	        	});\n	    	};\n	    	this.updateGatherables();\n	        this.orderGatherablesBy = 'name';\n	        this.orderGatherablesByOrder = '+';\n	        this.onClickGatherablesHeader = function ( fieldName) {\n	        	this.orderGatherablesByOrder = (this.orderGatherablesByOrder==='+') ? '-' : '+';\n	        	this.orderGatherablesBy = this.orderGatherablesByOrder + fieldName;\n	        };	\n\n	        // Harvestables\n	        this.harvestables = {};  \n	        json['harvestables'].forEach( ( function(thisHarvestable) {\n	          	this.harvestables[thisHarvestable.name] = new FSHarvestable(thisHarvestable, this);\n	        }).bind(this)); \n	        this.updateHarvestables = function() {\n	        	thisFactory.harvestablesArray = Object.keys(thisFactory.harvestables).map(function (key) {\n	        		return thisFactory.harvestables[key];\n	        	});\n	    	};\n	    	this.updateHarvestables();\n	        this.orderHarvestablesBy = 'name';\n	        this.orderHarvestablesByOrder = '+';\n	        this.onClickHarvestablesHeader = function ( fieldName) {\n	        	this.orderHarvestablesByOrder = (this.orderHarvestablesByOrder==='+') ? '-' : '+';\n	        	this.orderHarvestablesBy = this.orderHarvestablesByOrder + fieldName;\n	        };	\n\n\n			// Bank\n	        this.bank = {};  \n	        this.bank['Workstation'] = new FSObject({'category':'constructor', 'name':'Workstation'});\n	        this.bank['Workstation'].increment(1);\n	        \n	        /*\n	        this.bank['saw'] = new FSObject({'category':'tool', 'name':'saw'});\n	        this.bank['saw'].increment(4);\n	        this.bank['shovel'] = new FSObject({'category':'tool', 'name':'shovel'});\n	        this.bank['shovel'].increment(4);\n	        this.bank['bigaxe'] = new FSObject({'category':'weapon', 'name':'bigaxe'});\n	        this.bank['bigaxe'].increment(4);\n	        this.bank['sword'] = new FSObject({'category':'weapon', 'name':'sword'});\n	        this.bank['sword'].increment(4);\n	       	this.bank['Wood'] = new FSObject({'category':'gatherable', 'name':'Wood'});\n	        this.bank['Wood'].increment(4);\n	       	this.bank['Rope'] = new FSObject({'category':'tool', 'name':'Rope'});\n	        this.bank['Bucket'] = new FSObject({'category':'tool', 'name':'Bucket'});\n	        this.bank['Bucket'].increment(4);\n	        */\n	        \n	        this.updateBank = function() {\n		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {\n		        		return thisFactory.bank[key];\n		        	});\n	    	};\n	    	this.updateBank();\n	        this.orderBankBy = 'name';\n	        this.orderBankByOrder = '+';\n	        this.onClickBankHeader = function ( fieldName) {\n	        	this.orderBankByOrder = (this.orderBankByOrder==='+') ? '-' : '+';\n	        	this.orderBankBy = this.orderBankByOrder + fieldName;\n	        };	\n\n	        // Know Recipes\n	        this.knownRecipes = json['recipes'];  \n\n			// Recipes Defines\n	        this.recipeDef = {};  \n	       	json['recipesDefines'].forEach( ( function(thisGameItem) {\n	        	var obj = thisGameItem;\n	          	this.recipeDef[thisGameItem.name] = new FSRecipeDef(obj, this);\n	        }).bind(this)); \n\n	        // CraftStation\n	        this.viewedConstructor = [];\n	        this.viewedConstructorName = null;\n\n	        // Rewards\n	        this.rewards = {};  \n	        \n	        json['rewardDefines'].forEach( ( function(thisReward) {\n	          	this.rewards[thisReward.name] = new FSReward(thisReward, this);\n	        }).bind(this)); \n\n	    };\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.checkRewards  = function ( checkDesc ) {\n\n			console.log('checkRewards down');\n\n			for (var thisReward in this.rewards) {\n  				if (this.rewards.hasOwnProperty(thisReward)) {\n  					if (this.rewards[thisReward].serializable.action === checkDesc.action) {\n						if (this.rewards[thisReward].serializable.target === checkDesc.target) {\n							this.rewards[thisReward].serializable.completed = 1;\n						}\n					}\n  				}\n			}\n\n			console.log('checkRewards down');\n		};\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		 this.onClickCharacterTool = function ( toolObj) {\n\n		      var indexOf = this.selectedCharacter.tools.indexOf(toolObj);\n		      if ( indexOf !== -1) {\n		      	this.selectedCharacter.tools.splice(indexOf, 1);\n\n		      	 if (!(toolObj.name in thisFactory.bank)) {\n        			thisFactory.bank[toolObj.name] = new FSObject({'category':'tool', 'name':toolObj.name});\n			      }\n			      thisFactory.bank[toolObj.name].increment(1);\n			      thisFactory.updateBank();\n		      }\n		 };\n\n		 /**\n		 * @desc \n		 * @return \n		 */\n		 this.onClickCharacterWeapon = function ( weaponObj) {\n\n		      var indexOf = this.selectedCharacter.weapons.indexOf(weaponObj);\n		      if ( indexOf !== -1) {\n		      	this.selectedCharacter.weapons.splice(indexOf, 1);\n\n		      	 if (!(weaponObj.name in thisFactory.bank)) {\n        			thisFactory.bank[weaponObj.name] = new FSObject({'category':'weapon', 'name':weaponObj.name});\n			      }\n			      thisFactory.bank[weaponObj.name].increment(1);\n			      thisFactory.updateBank();\n		      }\n		 };\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.onClickBank = function (bankItemKey) {\n\n			this.viewedConstructor = [];\n			if ( this.bank[bankItemKey].category === 'constructor') {\n				this.viewedConstructorName = bankItemKey;\n				Object.keys( this.recipeDef ).forEach( ( function(thisGameItemKey) {\n					var thisGameItem = this.recipeDef[thisGameItemKey];\n	        		if (thisGameItem.construction === bankItemKey) {\n	          			this.viewedConstructor.push( new FSRecipe( thisGameItemKey, this));\n	          		}\n	        	}).bind(this)); \n			} else {\n	        	this.viewedConstructorName = null;\n\n	        	switch ( this.bank[bankItemKey].category ) {\n	        		case 'tool': { // add to character inventory \n		        		if (this.bank[bankItemKey].quantity.length > 0) {\n		        			this.bank[bankItemKey].decrement(1) ;\n		        			this.selectedCharacter.tools.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));\n\n		        			if ( this.bank[bankItemKey].quantity.length === 0) {\n		        				delete  this.bank[bankItemKey];\n		        				this.updateBank();\n		        			}\n		        		}\n	        		}\n	        		break;\n\n	        		case 'weapon': { // add to character inventory \n		        		if (this.bank[bankItemKey].quantity.length > 0) {\n		        			this.bank[bankItemKey].decrement(1) ;\n		        			this.selectedCharacter.weapons.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));\n\n		        			if ( this.bank[bankItemKey].quantity.length === 0) {\n		        				delete  this.bank[bankItemKey];\n		        				this.updateBank();\n		        			}\n		        		}\n	        		}\n	        		break;\n	        	}\n			}\n		};\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.onClickGatherables = function (gatherableType) {\n	\n			if ( this.selectedCharacter !== null) {\n			    this.selectedCharacter.startGathering( gatherableType);\n			}\n		};\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.onClickHarvestables = function (harvestableType) {\n			if ( this.selectedCharacter !== null) {\n			    this.selectedCharacter.startHarvesting( harvestableType);\n			}\n		};\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.startCrafting = function (recipeKey) {\n		   	// determine if has reqiored ingredients in bank\n		   	var hasIngredients = true;\n		    var recipeInputObj = this.recipeDef[recipeKey].input;\n			var recipeInputKeys = Object.keys( recipeInputObj );\n\n			recipeInputKeys.forEach( function ( recipeKey ) {\n				var recipeInput = recipeKey;\n				var recipeInputQuantity = recipeInputObj[ recipeKey];\n\n				if (recipeInput in this.bank) {\n					if ( this.bank[ recipeInput ].quantity.length < recipeInputQuantity) {\n						hasIngredients = false;\n						console.log('does not have ingredient quantity:' + recipeInput + ', ' + recipeInputQuantity);\n					}\n				} else {\n					console.log('does not have ingredient:' + recipeInput);\n					hasIngredients = false;\n				}\n			}.bind(this));\n\n			console.log('has ingredients:' + hasIngredients);\n\n			if ( hasIngredients === true) {\n\n			    if ( this.selectedCharacter !== null && this.selectedCharacter.activity.length < 4) {\n\n		          	this.selectedCharacter.startCrafting( recipeKey);\n\n		          	// subtract resources from bank.\n		          	recipeInputKeys.forEach( function ( recipeKey ){\n\n						var recipeInput = recipeKey;\n						var recipeInputQuantity = recipeInputObj[ recipeKey];\n\n						this.bank[ recipeInput ].decrement( recipeInputQuantity);\n\n						if ( this.bank[recipeInput].quantity.length === 0) {\n	        				delete  this.bank[recipeInput];\n	        				this.updateBank();\n	        			}\n	\n					}.bind(this));\n			    }\n			}\n		};\n\n	   \n	    // Call the initialize function for every new instance\n	    this.initialize();\n  	};\n\n	/**\n	* Return the constructor function.\n	*/\n	return FSFactory;\n});\n",
-			"file": "app/scripts/services/fsfactory.js",
-			"file_size": 10518,
-			"file_write_time": 1436135291000000,
+			"file": "app/views/reference.html",
 			"settings":
 			{
-				"buffer_size": 10518,
+				"buffer_size": 3560,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsfactory.js",
+			"settings":
+			{
+				"buffer_size": 11140,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/crafty.json",
+			"settings":
+			{
+				"buffer_size": 13092,
 				"line_ending": "Unix"
 			}
 		},
@@ -70,15 +115,31 @@
 			"file": "app/scripts/services/fsharvestable.js",
 			"settings":
 			{
-				"buffer_size": 529,
+				"buffer_size": 2842,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/services/fscharacter.js",
+			"file": "app/scripts/services/fsgatherable.js",
 			"settings":
 			{
-				"buffer_size": 10141,
+				"buffer_size": 790,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/characterselect.html",
+			"settings":
+			{
+				"buffer_size": 1131,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/main.html",
+			"settings":
+			{
+				"buffer_size": 5176,
 				"line_ending": "Unix"
 			}
 		}
@@ -107,25 +168,27 @@
 	},
 	"file_history":
 	[
+		"/Users/colinmoore/Dev/crafty/app/crafty.json",
 		"/Users/colinmoore/Dev/crafty/app/views/main.html",
+		"/Users/colinmoore/Dev/crafty/app/views/charactersheet.html",
+		"/Users/colinmoore/Dev/crafty/app/views/characterselect.html",
+		"/Users/colinmoore/Dev/crafty/app/views/reference.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsharvestable.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsservice.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsfactory.js",
+		"/Users/colinmoore/Dropbox (MagicFuelGames)/MagicFuelGames Team Folder/Software/Prototypes/Web/crafty/smallerdataset2.json",
+		"/Users/colinmoore/Dropbox (MagicFuelGames)/MagicFuelGames Team Folder/Software/Prototypes/Web/crafty/smallerdataset.json",
 		"/Users/colinmoore/Dev/crafty/.tmp/concat/scripts/scripts.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsreward.js",
 		"/Users/colinmoore/Dev/crafty/app/views/rewards.html",
 		"/Users/colinmoore/Dev/crafty/app/index.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/app.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsservice.js",
-		"/Users/colinmoore/Dev/crafty/app/views/charactersheet.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js",
-		"/Users/colinmoore/Dev/crafty/app/views/characterselect.html",
-		"/Users/colinmoore/Dropbox (MagicFuelGames)/MagicFuelGames Team Folder/Software/Prototypes/Web/crafty/smallerdataset.json",
-		"/Users/colinmoore/Dev/crafty/app/crafty.json",
 		"/Users/colinmoore/Dev/crafty/test/spec/services/fsgameitem.js",
 		"/Users/colinmoore/Dev/crafty/dist/scripts/scripts.4a49449a.js",
 		"/Users/colinmoore/Dev/crafty/crafty.sublime-workspace",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipedef.js",
-		"/Users/colinmoore/Dev/crafty/app/views/reference.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsfactory.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fstask.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/characterctrlr.js",
 		"/Users/colinmoore/Dev/crafty/app/views/character.html",
@@ -165,7 +228,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"/Users/colinmoore/Dev/crafty"
@@ -176,6 +239,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"},\n",
+			"FlagonOfAle",
+			"},\n",
+			"lastNa",
+			"gatherableDefines",
 			"reward",
 			"gameItems",
 			"FSReward",
@@ -267,51 +335,23 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 9,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/main.html",
+					"file": "/Users/colinmoore/Dropbox (MagicFuelGames)/MagicFuelGames Team Folder/Software/Prototypes/Web/crafty/smallerdataset.json",
 					"settings":
 					{
-						"buffer_size": 4935,
+						"buffer_size": 10629,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3200,
-								3200
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 249.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/crafty.json",
-					"settings":
-					{
-						"buffer_size": 9168,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								9168
+								10629,
+								10629
 							]
 						],
 						"settings":
@@ -321,13 +361,123 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 814.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/colinmoore/Perforce/cmoore_MBP/crafty/smallerdataset.json",
+					"settings":
+					{
+						"buffer_size": 13092,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13092,
+								13092
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6310.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"settings":
+					{
+						"buffer_size": 204,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								159,
+								204
+							]
+						],
+						"settings":
+						{
+							"auto_name": "=IF(INDEX(G10:G25,MATCH(B3,E10:E25,0))<=INDEX(C10:",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/private/tmp/colinmoore(p4v)/Colins-MBP.home_ec2-54-67-81-203.us-west-1.compute.amazonaws.com_1666/ST_Prototypes/ML/crafty/smallerdataset#1.json",
+					"settings":
+					{
+						"buffer_size": 12212,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								12212
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4194.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/scripts/services/fscharacter.js",
+					"settings":
+					{
+						"buffer_size": 10622,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7450,
+								7450
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3209.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "app/scripts/services/fsservice.js",
 					"settings":
 					{
@@ -338,8 +488,8 @@
 						"selection":
 						[
 							[
-								2482,
-								2482
+								639,
+								639
 							]
 						],
 						"settings":
@@ -349,25 +499,53 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 938.0,
+						"translation.y": 110.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "app/scripts/services/fsfactory.js",
+					"buffer": 6,
+					"file": "app/views/reference.html",
 					"settings":
 					{
-						"buffer_size": 10518,
+						"buffer_size": 3560,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1270,
-								1325
+								2016,
+								2000
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 664.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/scripts/services/fsfactory.js",
+					"settings":
+					{
+						"buffer_size": 11140,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4088,
+								4073
 							]
 						],
 						"settings":
@@ -376,25 +554,81 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 403.0,
+						"translation.y": 1062.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "app/scripts/services/fsharvestable.js",
+					"buffer": 8,
+					"file": "app/crafty.json",
 					"settings":
 					{
-						"buffer_size": 529,
+						"buffer_size": 13092,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								178,
-								191
+								4753,
+								4769
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4361.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/scripts/services/fsharvestable.js",
+					"settings":
+					{
+						"buffer_size": 2842,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2254,
+								2254
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 939.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/scripts/services/fsgatherable.js",
+					"settings":
+					{
+						"buffer_size": 790,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								505,
+								505
 							]
 						],
 						"settings":
@@ -410,29 +644,56 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "app/scripts/services/fscharacter.js",
+					"buffer": 11,
+					"file": "app/views/characterselect.html",
 					"settings":
 					{
-						"buffer_size": 10141,
+						"buffer_size": 1131,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2506,
-								2506
+								338,
+								338
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "app/views/main.html",
+					"settings":
+					{
+						"buffer_size": 5176,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1928,
+								1928
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 969.0,
+						"translation.y": 510.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -496,6 +757,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 277.0,
 	"status_bar_visible": true
 }
