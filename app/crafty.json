@@ -67,7 +67,31 @@
   ],
   "harvestables": [
     {
+      "name": "Earth",
+      "quantity": "100"
+    },
+    {
       "name": "Stone",
+      "quantity": "100"
+    },
+    {
+      "name": "Hard Stone",
+      "quantity": "100"
+    },
+    {
+      "name": "Quartzstone",
+      "quantity": "100"
+    },
+    {
+      "name": "Limestone",
+      "quantity": "100"
+    },
+    {
+      "name": "Marble",
+      "quantity": "100"
+    },
+    {
+      "name": "Granite",
       "quantity": "100"
     },
     {
@@ -190,7 +214,37 @@
     }
   ],
   "gatherableDefines": {
+    "Earth": {
+      "gatherBaseTimeS": 10,
+      "dependencies": [
+
+      ]
+    },
     "Stone": {
+      "gatherBaseTimeS": 10,
+      "dependencies": [
+
+      ]
+    },
+    "Hard Stone": {
+      "gatherBaseTimeS": 10,
+      "dependencies": [
+
+      ]
+    },
+    "Quartzstone": {
+      "gatherBaseTimeS": 10,
+      "dependencies": [
+
+      ]
+    },
+    "Limestone": {
+      "gatherBaseTimeS": 10,
+      "dependencies": [
+
+      ]
+    },
+    "Marble": {
       "gatherBaseTimeS": 10,
       "dependencies": [
 
@@ -258,52 +312,147 @@
     }
   },
   "harvestableDefines": {
-    "Granite" : {
-      "harvestBaseTimeS": 20,
-      "toughness": 10
+    "Earth": {
+      "actionable": ["Dig"],
+      "hardness": 1,
+      "harvestBaseTimeS": 10
     },
     "Stone": {
-      "harvestBaseTimeS": 20,
-      "toughness": 4
+      "actionable": ["Dig"],
+      "hardness": 2,
+      "harvestBaseTimeS": 18
+    },
+    "Hard Stone": {
+      "actionable": ["Dig"],
+      "hardness": 8,
+      "harvestBaseTimeS": 64
+    },
+    "Quartzstone": {
+      "actionable": ["Dig"],
+      "hardness": 20,
+      "harvestBaseTimeS": 140
+    },
+    "Limestone": {
+      "actionable": ["Dig"],
+      "hardness": 5,
+      "harvestBaseTimeS": 45
+    },
+    "Marble": {
+      "actionable": ["Dig"],
+      "hardness": 12,
+      "harvestBaseTimeS": 96
+    },
+    "Granite": {
+      "actionable": ["Dig"],
+      "hardness": 16,
+      "harvestBaseTimeS": 112
     },
     "Coal": {
-      "harvestBaseTimeS": 20,
-      "toughness": 2,
+      "actionable": ["Dig"],
+      "hardness": 3,
+      "harvestBaseTimeS": 50
     },
     "Iron Ore": {
-      "harvestBaseTimeS": 20,
-      "toughness": 2
+      "actionable": ["Dig"],
+      "hardness": 3,
+      "harvestBaseTimeS": 50
     },
     "Wood": {
-      "harvestBaseTimeS": 20,
-      "toughness": 2
+      "actionable": ["Chop", "Saw"],
+      "hardness": 2,
+      "harvestBaseTimeS": 10
     }
   },
   "toolDefines": {
-    "Rope" : {
-      "strength": 1
+    "Hands": {
+      "strength": 2,
+      "actions": [
+        "Dig",
+        "Chop",
+        "Carry"
+      ]
     },
-    "BackPack" : {
-      "strength": 1
+    "Stone Pickaxe": {
+      "strength": 3,
+      "actions": [
+        "Dig"
+      ]
     },
-    "FlagonOfAle" : {
-      "strength": 1
+    "Bronze Pickaxe": {
+      "strength": 5,
+      "actions": [
+        "Dig"
+      ]
     },
-    "AntlerPickaxe" : {
-      "strength": 4
+    "Iron Pickaxe": {
+      "strength": 8,
+      "actions": [
+        "Dig"
+      ]
     },
-    "Shovel" : {
-      "strength": 1
+    "Steel Pickaxe": {
+      "strength": 12,
+      "actions": [
+        "Dig"
+      ]
     },
-    "Saw" : {
-      "strength": 1
+    "Silver Pickaxe": {
+      "strength": 17,
+      "actions": [
+        "Dig"
+      ]
     },
-    "Bucket" : {
-      "strength": 1
+    "Gold Pickaxe": {
+      "strength": 23,
+      "actions": [
+        "Dig"
+      ]
+    },
+    "Titanium Pickaxe": {
+      "strength": 32,
+      "actions": [
+        "Dig"
+      ]
+    },
+    "AntlerPickaxe": {
+      "strength": 3,
+      "actions": [
+        "Dig"
+      ]
+    },
+    "Rope": {
+      "strength": 2,
+      "actions": [
+        "Tie"
+      ]
+    },
+    "BackPack": {
+      "strength": 3,
+      "actions": [
+        "Carry"
+      ]
+    },
+    "Shovel": {
+      "strength": 3,
+      "actions": [
+        "Dig"
+      ]
+    },
+    "Saw": {
+      "strength": 3,
+      "actions": [
+        "Saw"
+      ]
+    },
+    "Bucket": {
+      "strength": 4,
+      "actions": [
+        "Carry"
+      ]
     }
   },
   "recipesDefines": {
-    "Rope" : {
+    "Rope": {
       "category": "tool",
       "construction": "Workstation",
       "input": {
@@ -314,7 +463,7 @@
       },
       "basetime": 15
     },
-    "WoodenTable" : {
+    "WoodenTable": {
       "category": "constructor",
       "construction": "Workstation",
       "input": {
@@ -325,7 +474,7 @@
       },
       "basetime": 30
     },
-    "Workbench" : {
+    "Workbench": {
       "category": "constructor",
       "construction": "Workstation",
       "input": {
@@ -337,7 +486,7 @@
       },
       "basetime": 30
     },
-    "BackPack" : {
+    "BackPack": {
       "category": "tool",
       "construction": "Workstation",
       "input": {
@@ -349,7 +498,7 @@
       },
       "basetime": 30
     },
-    "Forge" : {
+    "Forge": {
       "category": "constructor",
       "construction": "Workbench",
       "input": {
@@ -363,7 +512,7 @@
       },
       "basetime": 60
     },
-    "Paper" : {
+    "Paper": {
       "category": "unclassified",
       "construction": "WoodenTable",
       "input": {
@@ -374,7 +523,7 @@
       },
       "basetime": 15
     },
-    "Books" : {
+    "Books": {
       "category": "unclassified",
       "construction": "WoodenTable",
       "input": {
@@ -387,7 +536,7 @@
       },
       "basetime": 45
     },
-    "FineHat" : {
+    "FineHat": {
       "category": "unclassified",
       "construction": "WoodenTable",
       "input": {
@@ -399,7 +548,7 @@
       },
       "basetime": 15
     },
-    "AntlerPickaxe" : {
+    "AntlerPickaxe": {
       "category": "tool",
       "construction": "Workstation",
       "input": {
@@ -411,7 +560,7 @@
       },
       "basetime": 15
     },
-    "FlagonOfAle" : {
+    "FlagonOfAle": {
       "category": "food",
       "construction": "WoodenTable",
       "input": {
@@ -425,7 +574,7 @@
       },
       "basetime": 15
     },
-    "WoodenPlanks" : {
+    "WoodenPlanks": {
       "category": "unclassified",
       "construction": "Workbench",
       "input": {
@@ -436,7 +585,7 @@
       },
       "basetime": 15
     },
-    "DiceTable" : {
+    "DiceTable": {
       "category": "furniture",
       "construction": "Workbench",
       "input": {
@@ -449,7 +598,7 @@
       },
       "basetime": 45
     },
-    "MineCart" : {
+    "MineCart": {
       "category": "unclassified",
       "construction": "Workbench",
       "input": {
@@ -461,7 +610,7 @@
       },
       "basetime": 60
     },
-    "Loom" : {
+    "Loom": {
       "category": "constructor",
       "construction": "Workbench",
       "input": {
@@ -473,7 +622,7 @@
       },
       "basetime": 30
     },
-    "Glass" : {
+    "Glass": {
       "category": "unclassified",
       "construction": "Forge",
       "input": {
@@ -484,7 +633,7 @@
       },
       "basetime": 45
     },
-    "Shovel" : {
+    "Shovel": {
       "category": "tool",
       "construction": "Workbench",
       "input": {
@@ -495,7 +644,7 @@
       },
       "basetime": 15
     },
-    "Cloth" : {
+    "Cloth": {
       "category": "unclassified",
       "construction": "Loom",
       "input": {
@@ -506,7 +655,7 @@
       },
       "basetime": 15
     },
-    "Ale" : {
+    "Ale": {
       "category": "food",
       "construction": "WoodenTable",
       "input": {
@@ -518,7 +667,7 @@
       },
       "basetime": 45
     },
-    "Saw" : {
+    "Saw": {
       "category": "tool",
       "construction": "Forge",
       "input": {
@@ -530,7 +679,7 @@
       },
       "basetime": 45
     },
-    "Bucket" : {
+    "Bucket": {
       "category": "tool",
       "construction": "Workstation",
       "input": {
@@ -542,7 +691,7 @@
       },
       "basetime": 30
     },
-    "Nails" : {
+    "Nails": {
       "category": "unclassified",
       "construction": "Forge",
       "input": {
@@ -553,7 +702,7 @@
       },
       "basetime": 10
     },
-    "FermentingVat" : {
+    "FermentingVat": {
       "category": "constructor",
       "construction": "Forge",
       "input": {
@@ -565,7 +714,7 @@
       },
       "basetime": 45
     },
-    "BulkAle" : {
+    "BulkAle": {
       "category": "food",
       "construction": "FermentingVat",
       "input": {
@@ -577,7 +726,7 @@
       },
       "basetime": 60
     },
-    "BucketPump" : {
+    "BucketPump": {
       "category": "constructor",
       "construction": "Workstation",
       "input": {
@@ -590,7 +739,7 @@
       },
       "basetime": 30
     },
-    "Scythe" : {
+    "Scythe": {
       "category": "tool",
       "construction": "Forge",
       "input": {
@@ -602,7 +751,7 @@
       },
       "basetime": 45
     },
-    "StoneAxe" : {
+    "StoneAxe": {
       "category": "tool",
       "construction": "Workstation",
       "input": {
@@ -614,7 +763,7 @@
       },
       "basetime": 60
     },
-    "PumpedWater" : {
+    "PumpedWater": {
       "category": "unclassified",
       "construction": "BucketPump",
       "input": {
