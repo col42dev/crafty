@@ -33,18 +33,19 @@
   <table class="table table-bordered table-condensed">
     <thead>
       <tr class="noselect" >
-          <th width="50%" ng-click="getFSService().onClickHarvestablesHeader('name')">Name</br> &nbsp</th>
-          <th width="50%" ng-click="getFSService().onClickHarvestablesHeader('quantity')">#</br> &nbsp</th>
+          <th class="col-sm-3" ng-click="getFSService().onClickHarvestablesHeader('name')">Name</br> &nbsp</th>
+          <th class="col-sm-1" ng-click="getFSService().onClickHarvestablesHeader('quantity')">#</br> &nbsp</th>
+          <th class="col-sm-1" ng-click="getFSService().onClickHarvestablesHeader('duration')">Duration</br> &nbsp</th>
       </tr>
     </thead>
   </table>   
   <div class="bodycontainer scrollable">
   <table class="table table-bordered table-condensed table-scrollable">
-    
     <tbody>
       <tr ng-repeat="v in getFSService().simulation.harvestablesArray | orderBy:getFSService().simulation.orderHarvestablesBy" ng-click="getFSService().onClickHarvestables(v)" class="noselect" >
-       <td width="50%" bgcolor={{v.bgcolor()}} > {{v.name}}</td> 
-       <td width="50%"> {{v.quantity}}</td> 
+       <td class="col-sm-3" bgcolor={{v.bgcolor()}} > {{v.name}}</td> 
+       <td class="col-sm-1"> {{v.quantity}}</td> 
+       <td class="col-sm-1"> {{v.harvestableDuration(getFSService().simulation.selectedCharacter)}}</td> 
       </tr>
     </tbody>
 

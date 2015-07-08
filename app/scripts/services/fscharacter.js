@@ -53,11 +53,14 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.startHarvesting = function ( harvestablesName) {
 
+      
       if ( this.activity.length < 4 ) {
         if (thisFactory.harvestables[harvestablesName].quantity > 0) {
-          this.activity.push( new FSTask( {'name':harvestablesName, 'category':'harvesting'}));
-          if (this.activity.length === 1) {
-            this.startNextTask();
+          if ( thisFactory.harvestables[harvestablesName].isHarvestableBy( thisFactory.selectedCharacter) === true) {
+            this.activity.push( new FSTask( {'name':harvestablesName, 'category':'harvesting'}));
+            if (this.activity.length === 1) {
+              this.startNextTask();
+            }
           }
         }
       }
@@ -244,7 +247,9 @@ angular.module('craftyApp')
             var hasHarvestables = (taskName in thisFactory.harvestables && thisFactory.harvestables[taskName].quantity > 0) ? true : false;
 
             if (hasHarvestables === true) {
-              var harvestingDuration = 10000 / thisFactory.taskTimeScalar;
+
+              var harvestingDuration = (thisFactory.harvestables[taskName].harvestableDuration( thisCharacter) * 1000) / thisFactory.taskTimeScalar;
+              console.log('harvestingDuration' + harvestingDuration);
               setTimeout(this.stopHarvesting.bind(this), harvestingDuration);
 
               this.updateActiveTaskRemainingPercent = 100;

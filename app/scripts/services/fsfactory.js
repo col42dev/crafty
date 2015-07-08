@@ -99,6 +99,16 @@ angular.module('craftyApp')
 	        this.bank['Bucket'] = new FSObject({'category':'tool', 'name':'Bucket'});
 	        this.bank['Bucket'].increment(4);
 	        */
+
+ 			this.bank['Bronze Pickaxe'] = new FSObject({'category':'tool', 'name':'Bronze Pickaxe'});
+	        this.bank['Bronze Pickaxe'].increment(1);
+
+			this.bank['Titanium Pickaxe'] = new FSObject({'category':'tool', 'name':'Titanium Pickaxe'});
+	        this.bank['Titanium Pickaxe'].increment(1);
+
+	        this.bank['Saw'] = new FSObject({'category':'tool', 'name':'Saw'});
+	        this.bank['Saw'].increment(1);
+
 	        
 	        this.updateBank = function() {
 		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {

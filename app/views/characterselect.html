@@ -7,22 +7,22 @@
 <table class="table table-bordered table-condensed table-scrollable noselect">
 	<thead>
 		<tr class="noselect">
-		    <th width="50%"><h4>Name</h4></th>
-		    <th width="50%"><h4>Task</h4></th>
-		    <th width="50%"><h4>Queued Tasks #</h4></th>
-		    <th width="50%"><h4>Equip</h4></th>
+		    <th lass="col-sm-3"><h4>Name</h4></th>
+		    <th lass="col-sm-7"><h4>Task</h4></th>
+		    <th lass="col-sm-1"><h4>Queued</h4></th>
+		    <th lass="col-sm-3"><h4>Equip</h4></th>
 		</tr>
 	</thead>
 	<tbody>
 	<tr ng-repeat="(k,v) in getFSService().simulation.characterObjs" class="noselect" ng-click="getFSService().onClickCharacter(v)">
-		<td width="50%"  bgcolor={{v.getbgcolor()}} > {{v.name}}</td> 
-		<td width="50%" > 
+		<td lass="col-sm-3"  bgcolor={{v.getbgcolor()}} > {{v.name}}</td> 
+		<td lass="col-sm-7" > 
 			<div style = "background:rgb(128, 177, 133); overflow:visible" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].activityPercentRemaining()}">
 		        {{v.activity[0].name}}
 			</div>
 		</td> 
-		<td width="50%"  > {{v.queuedTaskCount()}} </td> 
-		<td width="50%"  bgcolor={{v.tools[0].bgcolor()}}  ng-click="getFSService().simulation.onClickCharacterTool(v.tools[0])" > {{v.tools[0].name}} </td> 
+		<td lass="col-sm-1"  > {{v.queuedTaskCount()}} </td> 
+		<td lass="col-sm-3"  bgcolor={{v.tools[0].bgcolor()}}  ng-click="getFSService().simulation.onClickCharacterTool(v.tools[0])" > {{v.tools[0].name}} </td> 
 	</tr>
 	</tbody>
 </table>
