@@ -81,38 +81,11 @@ angular.module('craftyApp')
 
 			// Bank
 	        this.bank = {};  
-	        this.bank['Workstation'] = new FSObject({'category':'constructor', 'name':'Workstation'});
-	        this.bank['Workstation'].increment(1);
-	        
-	        /*
-	        this.bank['saw'] = new FSObject({'category':'tool', 'name':'saw'});
-	        this.bank['saw'].increment(4);
-	        this.bank['bigaxe'] = new FSObject({'category':'weapon', 'name':'bigaxe'});
-	        this.bank['bigaxe'].increment(4);
-	        this.bank['sword'] = new FSObject({'category':'weapon', 'name':'sword'});
-	        this.bank['sword'].increment(4);
-	       	this.bank['Wood'] = new FSObject({'category':'gatherable', 'name':'Wood'});
-	        this.bank['Wood'].increment(4);
-	       	this.bank['Rope'] = new FSObject({'category':'tool', 'name':'Rope'});
-	        */
 
-	        /*
-
-	        this.bank['Shovel'] = new FSObject({'category':'tool', 'name':'Shovel'});
-	        this.bank['Shovel'].increment(1);
-	
-    		this.bank['Bucket'] = new FSObject({'category':'tool', 'name':'Bucket'});
-	        this.bank['Bucket'].increment(1);
-	    
- 			this.bank['Bronze Pickaxe'] = new FSObject({'category':'tool', 'name':'Bronze Pickaxe'});
-	        this.bank['Bronze Pickaxe'].increment(1);
-
-			this.bank['Titanium Pickaxe'] = new FSObject({'category':'tool', 'name':'Titanium Pickaxe'});
-	        this.bank['Titanium Pickaxe'].increment(1);
-
-	        this.bank['Saw'] = new FSObject({'category':'tool', 'name':'Saw'});
-	        this.bank['Saw'].increment(1);
-	        */
+	        json['bank'].forEach( ( function(item) {
+	          	this.bank[item.name] = new FSObject({'category':item.category, 'name':item.name});
+	       		this.bank[item.name].increment( item.quantity );
+	        }).bind(this)); 
 
 	        
 	        this.updateBank = function() {

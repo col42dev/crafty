@@ -23,13 +23,11 @@ angular.module('craftyApp')
 	      this.myStopwatch = stopwatch;
 	      this.taskTimeScalarDivVis ='hidden';
 
-	      //reset
-	      this.master = {input: 'https://api.myjson.com/bins/1fbbq?pretty=1'};
+	      // reset
+	      this.master = {input: 'https://api.myjson.com/bins/1f55i?pretty=1'};
 	      this.user = angular.copy(this.master);
   	  }
     };
-
-
 
     this.loadJson = function() {
         console.log('input:' + this.user.input); 
@@ -56,7 +54,6 @@ angular.module('craftyApp')
         });
     };
 
- 
     this.createSim = function() {
       console.log('Load JSON success'  + JSON.stringify(thisService.data));
       this.taskTimeScalarDivVis ='';

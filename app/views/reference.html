@@ -110,7 +110,7 @@
       <tr class="noselect" >
           <td class="col-sm-1">Type</td>
           <td class="col-sm-1">Gather Time</td>
-          <td class="col-sm-1">Dependencies</td>
+          <td class="col-sm-1">Actionable</td>
       </tr>
   </tbody>
 </table>  
@@ -123,7 +123,7 @@
       <tr ng-repeat="(k,v)  in getFSService().simulation.gatherableDefines" class="noselect" >
         <td class="col-sm-1">{{k}}</td> 
         <td class="col-sm-1">{{v.gatherBaseTimeS}}</td> 
-        <td class="col-sm-1">{{v.dependencies}}</td> 
+        <td class="col-sm-1">{{v.actionable}}</td> 
       </tr>
     </tbody>
   </table>

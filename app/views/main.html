@@ -2,7 +2,9 @@
 
 
 
-<p>To initialize, upload a JSON description to <a href="http://myjson.com/">http://myjson.com/</a> and copy the generated URL in to this input dialog.<p>
+
+
+<p>To initialize, upload a JSON description to <a href="http://myjson.com/">http://myjson.com/</a> and copy the generated URL in to this input dialog. Master version of this data set is stored in Perforce. //ST_Prototypes/ML/crafty/smallerdataset.json<p>
 <form novalidate>
   <button ng-click="getFSService().loadJson()">Load:</button> <input size="45" type="text" ng-model="getFSService().user.input">
   <b>{{getFSService().myStopwatch.data.pad(getFSService().myStopwatch.data.hours)}}:{{getFSService().myStopwatch.data.pad(getFSService().myStopwatch.data.minutes)}}:{{getFSService().myStopwatch.data.pad(getFSService().myStopwatch.data.seconds)}}</b>

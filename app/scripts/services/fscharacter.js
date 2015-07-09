@@ -293,11 +293,11 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.hasGatheringDependencies = function ( gatheringName) {
-      var hasDependencies = true;
+      var hasDependencies = false;
 
-      thisFactory.gatherableDefines[gatheringName].dependencies.forEach( ( function(thisDependency) {
-        if ( this.hasTool(thisDependency) === false) {
-          hasDependencies = false;
+      thisFactory.gatherableDefines[gatheringName].actionable.forEach( ( function(thisActionable) {
+        if ( this.hasToolAction(thisActionable) === true) {
+          hasDependencies = true;
         }
       }).bind(this)); 
 
@@ -306,19 +306,21 @@ angular.module('craftyApp')
 
 
     /**
-     * @desc : is character equipped with this tool.
+     * @desc : is this character equipped with a tool which has the specified action.
      * @return 
      */
-    FSCharacter.prototype.hasTool = function ( toolName) {
-      var bHasTool = false;
+    FSCharacter.prototype.hasToolAction = function ( toolAction) {
+      var bHasToolAction = false;
 
-      this.tools.forEach( ( function(thisTool) {
-        if ( thisTool.name === toolName) {
-          bHasTool = true;
+      var equippedToolName = (this.tools.length > 0) ? this.tools[0].name : 'Hands';
+
+      thisFactory.toolDefines[equippedToolName].actions.forEach( ( function ( action) {
+        if ( toolAction === action) {
+          bHasToolAction = true;
         }
       }).bind(this)); 
 
-      return bHasTool;
+      return bHasToolAction;
     };
 
     /**

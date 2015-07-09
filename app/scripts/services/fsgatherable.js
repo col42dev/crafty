@@ -22,16 +22,14 @@ angular.module('craftyApp')
     };
 
     FSGatherable.prototype.bgcolor =  function( ) {         
-      if (this.gatherers > 0) {
-        return  '#00FF00';     
-      }
+      var color =  '#00FF00';     
 
       if( this.simulation.selectedCharacter.hasGatheringDependencies(this.name) === false) {
-        return  '#FF0000'; 
+        color  = '#FF0000'; 
       }
       
 
-      return null;   
+      return color;   
     };
 
     return FSGatherable;

@@ -89,7 +89,7 @@ angular.module('craftyApp')
       var tools = [];
       
       if ( character.tools.length > 0) {
-        tools.push(this.simulation.selectedCharacter.tools[0].name);
+        tools.push(character.tools[0].name);
       } else {
         tools.push('Hands');
       }

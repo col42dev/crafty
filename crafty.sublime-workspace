@@ -99,7 +99,7 @@
 			"file": "app/scripts/services/fsfactory.js",
 			"settings":
 			{
-				"buffer_size": 11140,
+				"buffer_size": 11170,
 				"line_ending": "Unix"
 			}
 		},
@@ -139,7 +139,15 @@
 			"file": "app/views/main.html",
 			"settings":
 			{
-				"buffer_size": 5176,
+				"buffer_size": 5425,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/styles/main.css",
+			"settings":
+			{
+				"buffer_size": 2128,
 				"line_ending": "Unix"
 			}
 		}
@@ -335,7 +343,7 @@
 	"groups":
 	[
 		{
-			"selected": 9,
+			"selected": 12,
 			"sheets":
 			[
 				{
@@ -470,8 +478,8 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 3209.0,
+						"translation.x": 22.0,
+						"translation.y": 1434.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -537,15 +545,15 @@
 					"file": "app/scripts/services/fsfactory.js",
 					"settings":
 					{
-						"buffer_size": 11140,
+						"buffer_size": 11170,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4088,
-								4073
+								4501,
+								4501
 							]
 						],
 						"settings":
@@ -554,7 +562,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1062.0,
+						"translation.y": 1069.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -675,15 +683,15 @@
 					"file": "app/views/main.html",
 					"settings":
 					{
-						"buffer_size": 5176,
+						"buffer_size": 5425,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1928,
-								1928
+								203,
+								203
 							]
 						],
 						"settings":
@@ -693,7 +701,35 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 510.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "app/styles/main.css",
+					"settings":
+					{
+						"buffer_size": 2128,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1092,
+								1092
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 626.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

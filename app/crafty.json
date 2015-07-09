@@ -107,6 +107,28 @@
       "quantity": "100"
     }
   ],
+  "bank": [
+    {
+      "name": "Workstation",
+      "category": "constructor",
+      "quantity": "1"
+    },    
+    {
+      "name": "Titanium Pickaxe",
+      "category": "tool",
+      "quantity": "1"
+    },
+    {
+      "name": "Bucket",
+      "category": "tool",
+      "quantity": "1"
+    },
+    {
+      "name": "Minecart",
+      "category": "tool",
+      "quantity": "1"
+    }
+  ],
   "recipes": [
     {
       "name": "Rope"
@@ -142,7 +164,7 @@
       "name": "DiceTable"
     },
     {
-      "name": "MineCart"
+      "name": "Minecart"
     },
     {
       "name": "Loom"
@@ -216,99 +238,71 @@
   "gatherableDefines": {
     "Earth": {
       "gatherBaseTimeS": 10,
-      "dependencies": [
-
-      ]
+      "actionable": ["Carry"]
     },
     "Stone": {
       "gatherBaseTimeS": 10,
-      "dependencies": [
-
-      ]
+      "actionable": ["Carry"]
     },
     "Hard Stone": {
       "gatherBaseTimeS": 10,
-      "dependencies": [
-
-      ]
+      "actionable": ["Carry"]
     },
     "Quartzstone": {
       "gatherBaseTimeS": 10,
-      "dependencies": [
-
-      ]
+      "actionable": ["Carry"]
     },
     "Limestone": {
       "gatherBaseTimeS": 10,
-      "dependencies": [
-
-      ]
+      "actionable": ["Carry"]
     },
     "Marble": {
       "gatherBaseTimeS": 10,
-      "dependencies": [
-
-      ]
+      "actionable": ["Cart"]
+    },
+    "Granite": {
+      "gatherBaseTimeS": 10,
+      "actionable": ["Cart"]
     },
     "Coal": {
       "gatherBaseTimeS": 20,
-      "dependencies": [
-
-      ]
+      "actionable": ["Carry"]
     },
     "Iron Ore": {
       "gatherBaseTimeS": 20,
-      "dependencies": [
-
-      ]
+      "actionable": ["Carry"]
     },
     "Water": {
       "gatherBaseTimeS": 10,
-      "dependencies": [
-        "Bucket"
-      ]
+      "actionable": ["CarryLiquid"]
     },
     "Wood": {
       "gatherBaseTimeS": 15,
-      "dependencies": [
-
-      ]
+      "actionable": ["Carry"]
     },
     "Wool": {
       "gatherBaseTimeS": 30,
-      "dependencies": [
-
-      ]
+      "actionable": ["Carry"]
     },
     "Leaves": {
       "gatherBaseTimeS": 10,
-      "dependencies": [
-        "Bucket"
-      ]
+      "actionable": ["Carry"]
     },
     "Grain": {
       "gatherBaseTimeS": 20,
-      "dependencies": [
-
-      ]
+      "actionable": ["Carry"]
     },
     "Antler": {
       "gatherBaseTimeS": 120,
-      "dependencies": [
-
-      ]
+      "actionable": ["Carry"]
     },
     "Sand": {
       "gatherBaseTimeS": 30,
-      "dependencies": [
-        "Shovel"
-      ]
+      "actionable": ["Carry"]
     },
     "Feather": {
       "gatherBaseTimeS": 60,
-      "dependencies": [
-
-      ]
+      "actionable": ["Carry"]
     }
   },
   "harvestableDefines": {
@@ -438,6 +432,13 @@
         "Dig"
       ]
     },
+    "Minecart": {
+      "strength": 3,
+      "actions": [
+        "Cart",
+        "Carry"
+      ]
+    },
     "Saw": {
       "strength": 3,
       "actions": [
@@ -447,7 +448,8 @@
     "Bucket": {
       "strength": 4,
       "actions": [
-        "Carry"
+        "Carry",
+        "CarryLiquid"
       ]
     }
   },
@@ -598,7 +600,7 @@
       },
       "basetime": 45
     },
-    "MineCart": {
+    "Minecart": {
       "category": "unclassified",
       "construction": "Workbench",
       "input": {
@@ -606,7 +608,7 @@
         "Nails": 10
       },
       "output": {
-        "MineCart": 1
+        "Minecart": 1
       },
       "basetime": 60
     },
