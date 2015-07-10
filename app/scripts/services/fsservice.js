@@ -24,7 +24,7 @@ angular.module('craftyApp')
 	      this.taskTimeScalarDivVis ='hidden';
 
 	      // reset
-	      this.master = {input: 'https://api.myjson.com/bins/1f55i?pretty=1'};
+	      this.master = {input: 'https://api.myjson.com/bins/2s1ye?pretty=1'};
 	      this.user = angular.copy(this.master);
   	  }
     };
@@ -58,16 +58,12 @@ angular.module('craftyApp')
       console.log('Load JSON success'  + JSON.stringify(thisService.data));
       this.taskTimeScalarDivVis ='';
      
-  
       thisService.simulation = new FSFactory( $scope , thisService.data);
    
-
-
       $scope.$apply();
       thisService.myStopwatch.reset();
       thisService.myStopwatch.start();
     };
-
 
     this.onClickCharacter = function( character) {
       thisService.simulation.onClickCharacter( character);
@@ -98,7 +94,7 @@ angular.module('craftyApp')
     };
 
     this.onClickCraftable = function(recipeKey) {
-      thisService.simulation.startCrafting( recipeKey.name);
+      thisService.simulation.onClickCraftable( recipeKey.name);
     };
     
   });

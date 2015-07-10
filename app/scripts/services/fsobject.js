@@ -32,13 +32,13 @@ angular.module('craftyApp')
       var color = null;
       switch (this.category) {
         case 'constructor':
-          color= '#00FF00';
+          color= '#FFFFFF';
           break;
         case 'tool':
-          color= '#00FFFF';
+          color= '#00FF00';
           break;
         case 'weapon':
-          color= '#FFFF00';
+          color= '#00FF00';
           break;
       }
       return  color;

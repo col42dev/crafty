@@ -102,7 +102,11 @@ angular.module('craftyApp')
 	        };	
 
 	        // Know Recipes
-	        this.knownRecipes = json['recipes'];  
+	        this.knownRecipes = {}; //json['recipes'];  
+	        json['recipes'].forEach( ( function( recipeName ) {
+	          		this.knownRecipes[recipeName] =  new FSRecipe( recipeName, this);
+	        	}).bind(this)); 
+
 
 			// Recipes Defines
 	        this.recipeDef = {};  
@@ -112,10 +116,6 @@ angular.module('craftyApp')
 	          		this.recipeDef[key] = new FSRecipeDef(jsonRecipesDefines[key], this);
 	         	}
 	        }
-
-	        // CraftStation
-	        this.viewedConstructor = [];
-	        this.viewedConstructorName = null;
 
 	        // Rewards
 	        this.rewards = {};  
@@ -189,46 +189,34 @@ angular.module('craftyApp')
 		 */
 		this.onClickBank = function (bankItemKey) {
 
-			this.viewedConstructor = [];
-			if ( this.bank[bankItemKey].category === 'constructor') {
-				this.viewedConstructorName = bankItemKey;
-				Object.keys( this.recipeDef ).forEach( ( function(thisGameItemKey) {
-					var thisGameItem = this.recipeDef[thisGameItemKey];
-	        		if (thisGameItem.construction === bankItemKey) {
-	          			this.viewedConstructor.push( new FSRecipe( thisGameItemKey, this));
-	          		}
-	        	}).bind(this)); 
-			} else {
-	        	this.viewedConstructorName = null;
+        	switch ( this.bank[bankItemKey].category ) {
+        		case 'tool': { // add to character inventory 
+	        		if (this.bank[bankItemKey].quantity.length > 0) {
+	        			this.bank[bankItemKey].decrement(1) ;
+	        			this.selectedCharacter.tools.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
 
-	        	switch ( this.bank[bankItemKey].category ) {
-	        		case 'tool': { // add to character inventory 
-		        		if (this.bank[bankItemKey].quantity.length > 0) {
-		        			this.bank[bankItemKey].decrement(1) ;
-		        			this.selectedCharacter.tools.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
-
-		        			if ( this.bank[bankItemKey].quantity.length === 0) {
-		        				delete  this.bank[bankItemKey];
-		        				this.updateBank();
-		        			}
-		        		}
+	        			if ( this.bank[bankItemKey].quantity.length === 0) {
+	        				delete  this.bank[bankItemKey];
+	        				this.updateBank();
+	        			}
 	        		}
-	        		break;
+        		}
+        		break;
 
-	        		case 'weapon': { // add to character inventory 
-		        		if (this.bank[bankItemKey].quantity.length > 0) {
-		        			this.bank[bankItemKey].decrement(1) ;
-		        			this.selectedCharacter.weapons.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
+        		case 'weapon': { // add to character inventory 
+	        		if (this.bank[bankItemKey].quantity.length > 0) {
+	        			this.bank[bankItemKey].decrement(1) ;
+	        			this.selectedCharacter.weapons.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
 
-		        			if ( this.bank[bankItemKey].quantity.length === 0) {
-		        				delete  this.bank[bankItemKey];
-		        				this.updateBank();
-		        			}
-		        		}
+	        			if ( this.bank[bankItemKey].quantity.length === 0) {
+	        				delete  this.bank[bankItemKey];
+	        				this.updateBank();
+	        			}
 	        		}
-	        		break;
-	        	}
-			}
+        		}
+        		break;
+        	}
+
 		};
 
 		/**
@@ -256,7 +244,7 @@ angular.module('craftyApp')
 		 * @desc 
 		 * @return 
 		 */
-		this.startCrafting = function (recipeKey) {
+		this.onClickCraftable = function (recipeKey) {
 		   	// determine if has reqiored ingredients in bank
 		   	var hasIngredients = true;
 		    var recipeInputObj = this.recipeDef[recipeKey].input;
@@ -279,6 +267,18 @@ angular.module('craftyApp')
 
 			console.log('has ingredients:' + hasIngredients);
 
+
+			if ( this.recipeDef[recipeKey].construction.length > 0) {
+
+				var constructor = this.recipeDef[recipeKey].construction[0];
+				if ( this.bank.hasOwnProperty(constructor) === false) {
+					hasIngredients = false;
+					console.log('does not have constructor:' + constructor);
+				} else {
+					console.log('has constructor :' + constructor);
+				}
+			}
+			
 			if ( hasIngredients === true) {
 
 			    if ( this.selectedCharacter !== null && this.selectedCharacter.activity.length < 4) {

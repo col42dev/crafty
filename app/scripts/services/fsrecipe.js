@@ -32,6 +32,14 @@ angular.module('craftyApp')
             }
           }
       }
+
+      if ( this.thisFactory.recipeDef[this.name].construction.length > 0) {
+        var constructor = this.thisFactory.recipeDef[this.name].construction[0];
+        if ( this.thisFactory.bank.hasOwnProperty(constructor) === false) {
+          hasResources = false;
+        }
+      }
+      
       return  (hasResources === true) ? '#00FF00' : '#FF0000';
     };
 

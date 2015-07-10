@@ -107,12 +107,7 @@
       "quantity": "100"
     }
   ],
-  "bank": [
-    {
-      "name": "Workstation",
-      "category": "constructor",
-      "quantity": "1"
-    },    
+  "bank": [ 
     {
       "name": "Titanium Pickaxe",
       "category": "tool",
@@ -130,87 +125,33 @@
     }
   ],
   "recipes": [
-    {
-      "name": "Rope"
-    },
-    {
-      "name": "WoodenTable"
-    },
-    {
-      "name": "Workbench"
-    },
-    {
-      "name": "Forge"
-    },
-    {
-      "name": "AntlerPickaxe"
-    },
-    {
-      "name": "Paper"
-    },
-    {
-      "name": "Books"
-    },
-    {
-      "name": "FineHat"
-    },
-    {
-      "name": "FlagonOfAle"
-    },
-    {
-      "name": "WoodenPlanks"
-    },
-    {
-      "name": "DiceTable"
-    },
-    {
-      "name": "Minecart"
-    },
-    {
-      "name": "Loom"
-    },
-    {
-      "name": "Glass"
-    },
-    {
-      "name": "Shovel"
-    },
-    {
-      "name": "Cloth"
-    },
-    {
-      "name": "Nails"
-    },
-    {
-      "name": "BackPack"
-    },
-    {
-      "name": "Saw"
-    },
-    {
-      "name": "Bucket"
-    },
-    {
-      "name": "Ale"
-    },
-    {
-      "name": "FermentingVat"
-    },
-    {
-      "name": "BucketPump"
-    },
-    {
-      "name": "Scythe"
-    },
-    {
-      "name": "StoneAxe"
-    },
-    {
-      "name": "BulkAle"
-    },
-    {
-      "name": "PumpedWater"
-    }
+      "Rope",
+      "WoodenTable",
+      "Workbench",
+      "Forge",
+      "AntlerPickaxe",
+      "Paper",
+      "Books",
+      "FineHat",
+      "FlagonOfAle",
+      "WoodenPlanks",
+      "DiceTable",
+      "Minecart",
+      "Loom",
+      "Glass",
+      "Shovel",
+      "Cloth",
+      "Nails",
+      "BackPack",
+      "Saw",
+      "Bucket",
+      "Ale",
+      "FermentingVat",
+      "BucketPump",
+      "Scythe",
+      "StoneAxe",
+      "BulkAle",
+      "PumpedWater"
   ],
   "rewardDefines": [
     {
@@ -456,7 +397,7 @@
   "recipesDefines": {
     "Rope": {
       "category": "tool",
-      "construction": "Workstation",
+      "construction": [],
       "input": {
         "Wool": 1
       },
@@ -467,7 +408,7 @@
     },
     "WoodenTable": {
       "category": "constructor",
-      "construction": "Workstation",
+      "construction": [],
       "input": {
         "Wood": 4
       },
@@ -478,7 +419,7 @@
     },
     "Workbench": {
       "category": "constructor",
-      "construction": "Workstation",
+      "construction": [],
       "input": {
         "Wood": 3,
         "WoodenTable": 1
@@ -490,7 +431,7 @@
     },
     "BackPack": {
       "category": "tool",
-      "construction": "Workstation",
+      "construction": [],
       "input": {
         "Cloth": 3,
         "Rope": 1
@@ -502,7 +443,7 @@
     },
     "Forge": {
       "category": "constructor",
-      "construction": "Workbench",
+      "construction": ["Workbench"],
       "input": {
         "Water": 3,
         "Coal": 1,
@@ -516,7 +457,7 @@
     },
     "Paper": {
       "category": "unclassified",
-      "construction": "WoodenTable",
+      "construction": ["WoodenTable"],
       "input": {
         "Leaves": 1
       },
@@ -527,7 +468,7 @@
     },
     "Books": {
       "category": "unclassified",
-      "construction": "WoodenTable",
+      "construction": ["WoodenTable"],
       "input": {
         "Paper": 12,
         "Rope": 1,
@@ -540,7 +481,7 @@
     },
     "FineHat": {
       "category": "unclassified",
-      "construction": "WoodenTable",
+      "construction": ["WoodenTable"],
       "input": {
         "Cloth": 2,
         "Feather": 1
@@ -552,7 +493,7 @@
     },
     "AntlerPickaxe": {
       "category": "tool",
-      "construction": "Workstation",
+      "construction": [],
       "input": {
         "Wood": 2,
         "Antler": 2
@@ -564,7 +505,7 @@
     },
     "FlagonOfAle": {
       "category": "food",
-      "construction": "WoodenTable",
+      "construction": ["WoodenTable"],
       "input": {
         "Ale": 6,
         "Glass": 1,
@@ -578,7 +519,7 @@
     },
     "WoodenPlanks": {
       "category": "unclassified",
-      "construction": "Workbench",
+      "construction": ["Workbench"],
       "input": {
         "Wood": 2
       },
@@ -589,7 +530,7 @@
     },
     "DiceTable": {
       "category": "furniture",
-      "construction": "Workbench",
+      "construction": ["Workbench"],
       "input": {
         "WoodenTable": 1,
         "Antler": 3,
@@ -602,7 +543,7 @@
     },
     "Minecart": {
       "category": "unclassified",
-      "construction": "Workbench",
+      "construction": ["Workbench"],
       "input": {
         "WoodenPlanks": 4,
         "Nails": 10
@@ -614,7 +555,7 @@
     },
     "Loom": {
       "category": "constructor",
-      "construction": "Workbench",
+      "construction": ["Workbench"],
       "input": {
         "Wood": 5,
         "Rope": 2
@@ -626,7 +567,7 @@
     },
     "Glass": {
       "category": "unclassified",
-      "construction": "Forge",
+      "construction": ["Forge"],
       "input": {
         "Sand": 4
       },
@@ -637,7 +578,7 @@
     },
     "Shovel": {
       "category": "tool",
-      "construction": "Workbench",
+      "construction": ["Workbench"],
       "input": {
         "Wood": 3
       },
@@ -648,7 +589,7 @@
     },
     "Cloth": {
       "category": "unclassified",
-      "construction": "Loom",
+      "construction": ["Loom"],
       "input": {
         "Wool": 1
       },
@@ -659,7 +600,7 @@
     },
     "Ale": {
       "category": "food",
-      "construction": "WoodenTable",
+      "construction": ["WoodenTable"],
       "input": {
         "Water": 6,
         "Grain": 3
@@ -671,7 +612,7 @@
     },
     "Saw": {
       "category": "tool",
-      "construction": "Forge",
+      "construction": ["Forge"],
       "input": {
         "Iron Ore": 3,
         "Wood": 1
@@ -683,7 +624,7 @@
     },
     "Bucket": {
       "category": "tool",
-      "construction": "Workstation",
+      "construction": [],
       "input": {
         "Wood": 3,
         "Rope": 1
@@ -695,7 +636,7 @@
     },
     "Nails": {
       "category": "unclassified",
-      "construction": "Forge",
+      "construction": ["Forge"],
       "input": {
         "Iron Ore": 1
       },
@@ -706,7 +647,7 @@
     },
     "FermentingVat": {
       "category": "constructor",
-      "construction": "Forge",
+      "construction": ["Forge"],
       "input": {
         "Iron Ore": 3,
         "Wood": 1
@@ -718,7 +659,7 @@
     },
     "BulkAle": {
       "category": "food",
-      "construction": "FermentingVat",
+      "construction": ["FermentingVat"],
       "input": {
         "Grain": 3,
         "Water": 6
@@ -730,7 +671,7 @@
     },
     "BucketPump": {
       "category": "constructor",
-      "construction": "Workstation",
+      "construction": [],
       "input": {
         "Bucket": 2,
         "Rope": 4,
@@ -743,7 +684,7 @@
     },
     "Scythe": {
       "category": "tool",
-      "construction": "Forge",
+      "construction": ["Forge"],
       "input": {
         "Iron Ore": 2,
         "Wood": 2
@@ -755,7 +696,7 @@
     },
     "StoneAxe": {
       "category": "tool",
-      "construction": "Workstation",
+      "construction": [],
       "input": {
         "Stone": 1,
         "Wood": 1
@@ -767,7 +708,7 @@
     },
     "PumpedWater": {
       "category": "unclassified",
-      "construction": "BucketPump",
+      "construction": ["BucketPump"],
       "input": {
         "Water": 1
       },

@@ -26,8 +26,9 @@
 
 <thead>
     <tr class="noselect">
-        <th width="50%"><h4>HARVESTABLES</h4>click to harvest</th>
-        <th width="50%"><h4>GATHERABLES</h4>click to gather</th>
+        <th class="col-sm-1"><h4>HARVESTABLES</h4>click to harvest</th>
+        <th class="col-sm-1"><h4>GATHERABLES</h4>click to gather</th>
+        <th class="col-sm-1"><h4>BANK</h4>click to equip</th>
     </tr>
 </thead>
 <tbody>
@@ -35,7 +36,6 @@
 <tr>     
 
 <td valign="top"> 
-
   <table class="table table-bordered table-condensed">
     <thead>
       <tr class="noselect" >
@@ -57,10 +57,10 @@
 
   </table>
   </div>
-
 </td> 
-<td valign="top"> 
 
+
+<td valign="top"> 
     <table class="table table-bordered table-condensed">
     <thead>
         <tr class="noselect" >
@@ -81,41 +81,10 @@
      
       </table>
   </div>
-
 </td> 
 
-</tr>
-</tbody>
-     
-</table>
-</div> <!--fadedbackground-->
 
-
-
-
-
-</td> 
-<td> *
-</td> 
-<td valign="top" width="50%"> 
-
-
-
-
-
-<div class="fadedbackground">
-<table class="table">
-
-<thead>
-    <tr class="noselect">
-        <th width="50%"><h4>BANK</h4></br></th>
-        <th width="50%"><h4>CRAFTABLES:{{getFSService().simulation.viewedConstructorName}}</h4></br></th>
-    </tr>
-</thead>
-<tbody>
-<tr>     
 <td valign="top"> 
- 
   <table class="table table-bordered table-condensed">
     <thead>
         <tr class="noselect" >
@@ -137,45 +106,27 @@
         </tbody>
       </table>
   </div>
-
 </td> 
 
-<td valign="top"> 
 
- <div class="bodycontainer scrollable">
-    <table class="table table-bordered table-condensed table-scrollable">
-      <tbody>
-        <tr ng-repeat="v  in getFSService().simulation.viewedConstructor | orderBy:'name'" ng-click="getFSService().onClickCraftable(v)" class="noselect" >
-          <td width="25%" bgcolor={{v.bgcolor()}}> {{v.name}}</td> 
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-
-</td> 
 </tr>
 </tbody>
-     
 </table>
 </div> <!--fadedbackground-->
 
 
 
-</td> 
-</tr> 
-</table>
   
 
 
 
 <div class="fadedbackground">
-<h4>KNOWN RECIPES</h4>
+<h4>KNOWN RECIPES / CRAFTING</h4>
 <div class="bodycontainer scrollable">
   <table class="table table-bordered table-condensed table-scrollable">
     <tbody>
       <tr ng-repeat="(k,v)  in getFSService().simulation.knownRecipes" class="noselect" >
-        <td class="col-sm-1">{{v.name}}</td> 
+        <td bgcolor={{v.bgcolor()}} class="col-sm-1" ng-click="getFSService().onClickCraftable(v)">{{v.name}}</td> 
       </tr>
     </tbody>
   </table>
