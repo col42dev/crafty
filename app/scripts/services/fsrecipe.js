@@ -33,9 +33,6 @@ angular.module('craftyApp')
           }
       }
 
-       if ( this.thisFactory.recipeDef.hasOwnProperty(this.name) === false) {
-        window.alert('>' +this.name);
-       }
 
       if ( this.thisFactory.recipeDef[this.name].construction.length > 0) {
         var constructor = this.thisFactory.recipeDef[this.name].construction[0];

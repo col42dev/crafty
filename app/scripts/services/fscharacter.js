@@ -27,7 +27,23 @@ angular.module('craftyApp')
         this.activityCompletedCallback = [];
         this.ctrllerScope = ctrllerScope;
         this.updateActiveTaskRemainingPercent = 100;
+
+        setInterval( (function () {
+            this.modifyStat( 'health', 'current', 1);
+        }).bind(this), this.json.stats.health.regeneratePeriod * 1000);
+
+
+        setInterval( (function () {
+            this.modifyStat( 'energy', 'current', 1);
+        }).bind(this), this.json.stats.energy.regeneratePeriod * 1000);
+
+
+        setInterval( (function () {
+            this.modifyStat( 'mind', 'current', 1);
+        }).bind(this), this.json.stats.mind.regeneratePeriod * 1000);
+
       };
+
 
     /**
      * @desc 
@@ -51,8 +67,6 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.startHarvesting = function ( harvestablesName) {
-
-      
       if ( this.activity.length < 4 ) {
         if (thisFactory.harvestables[harvestablesName].quantity > 0) {
           if ( thisFactory.harvestables[harvestablesName].isHarvestableBy( thisFactory.selectedCharacter) === true) {
@@ -355,7 +369,7 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.getStatPercentage = function ( type) {
       var stats = this.json['stats'][type];
-      return ((stats['current'] /  stats['max']) * 100) +'%';
+      return Math.floor(100 * parseInt(stats['current'], 10) /  parseInt(stats['max'], 10)) +'%';
     };
 
 
