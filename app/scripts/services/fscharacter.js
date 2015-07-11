@@ -69,10 +69,12 @@ angular.module('craftyApp')
     FSCharacter.prototype.startHarvesting = function ( harvestablesName) {
       if ( this.activity.length < 4 ) {
         if (thisFactory.harvestables[harvestablesName].quantity > 0) {
-          if ( thisFactory.harvestables[harvestablesName].isHarvestableBy( thisFactory.selectedCharacter) === true) {
-            this.activity.push( new FSTask( {'name':harvestablesName, 'category':'harvesting'}));
-            if (this.activity.length === 1) {
-              this.startNextTask();
+          if ( this.hasStatsFor('harvesting') === true) {
+            if ( thisFactory.harvestables[harvestablesName].isHarvestableBy( thisFactory.selectedCharacter) === true) {
+              this.activity.push( new FSTask( {'name':harvestablesName, 'category':'harvesting'}));
+              if (this.activity.length === 1) {
+                this.startNextTask();
+              }
             }
           }
         }
@@ -125,9 +127,11 @@ angular.module('craftyApp')
 
       if ( this.activity.length < 4 ) {
         if (thisFactory.gatherables[gatherablesName].quantity > 0) {
-          this.activity.push( new FSTask( {'name':gatherablesName, 'category':'gathering'}));
-          if (this.activity.length === 1) {
-            this.startNextTask();
+          if ( this.hasStatsFor('gathering') === true) {
+            this.activity.push( new FSTask( {'name':gatherablesName, 'category':'gathering'}));
+            if (this.activity.length === 1) {
+              this.startNextTask();
+            }
           }
         }
       }
@@ -235,6 +239,9 @@ angular.module('craftyApp')
             var hasGatherables = (taskName in thisFactory.gatherables && thisFactory.gatherables[taskName].quantity > 0) ? true : false;
             var hasDependencies = this.hasGatheringDependencies(taskName);
             if (hasGatherables === true && hasDependencies === true) {
+
+              this.modifyStat( 'energy', 'current', -10);
+
               var gatheringDuration = (thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
               setTimeout(this.stopGathering.bind(this), gatheringDuration);
 
@@ -260,6 +267,8 @@ angular.module('craftyApp')
             var hasHarvestables = (taskName in thisFactory.harvestables && thisFactory.harvestables[taskName].quantity > 0) ? true : false;
 
             if (hasHarvestables === true) {
+
+              this.modifyStat( 'energy', 'current', -10);
 
               var harvestingDuration = (thisFactory.harvestables[taskName].harvestableDuration( thisCharacter) * 1000) / thisFactory.taskTimeScalar;
               console.log('harvestingDuration' + harvestingDuration);
@@ -317,6 +326,27 @@ angular.module('craftyApp')
       return hasDependencies;
     };
 
+    /**
+     * @desc 
+     * @return 
+     */
+    FSCharacter.prototype.hasStatsFor = function ( taskCategory) {
+
+      switch (taskCategory) {
+        case 'gathering':
+          if ( parseInt( this.json.stats.energy.current, 10) > 20) {
+            return true;
+          }
+          break;
+        case 'harvesting':
+          if ( parseInt( this.json.stats.energy.current, 10) > 20) {
+            return true;
+          }
+          break;
+      }
+      return false;
+    };
+  
 
     /**
      * @desc : is this character equipped with a tool which has the specified action.

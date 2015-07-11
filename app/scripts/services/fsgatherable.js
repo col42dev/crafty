@@ -27,7 +27,10 @@ angular.module('craftyApp')
       if( this.simulation.selectedCharacter.hasGatheringDependencies(this.name) === false) {
         color  = '#FF0000'; 
       }
-      
+
+      if ( this.simulation.selectedCharacter.hasStatsFor('gathering') === false) {
+          color  = '#FF0000'; 
+      }
 
       return color;   
     };

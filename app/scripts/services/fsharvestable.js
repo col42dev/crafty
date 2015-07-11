@@ -13,19 +13,23 @@ angular.module('craftyApp')
     // ...
 
     var FSHarvestable = function( obj, simulation) { 
-
       this.simulation = simulation;
       this.name = obj.name;
       this.quantity = obj.quantity;
     };
 
     FSHarvestable.prototype.bgcolor =  function( ) {   
+      var color =  '#00FF00';  
 
-      if ( this.isHarvestableBy( this.simulation.selectedCharacter)) {
-        return '#00FF00';
+      if ( this.isHarvestableBy( this.simulation.selectedCharacter) === false) {
+        color = '#FF0000';
       }
 
-      return '#FF0000';   
+      if ( this.simulation.selectedCharacter.hasStatsFor('harvesting') === false) {
+        color = '#FF0000';
+      }
+
+      return color;   
     };
 
     FSHarvestable.prototype.isHarvestableBy =  function( character) {  
