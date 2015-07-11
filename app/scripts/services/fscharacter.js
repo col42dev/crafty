@@ -126,7 +126,7 @@ angular.module('craftyApp')
     FSCharacter.prototype.startGathering = function ( gatherablesName) {
 
       if ( this.activity.length < 4 ) {
-        if (thisFactory.gatherables[gatherablesName].quantity > 0) {
+        if (thisFactory.gatherables.hasOwnProperty(gatherablesName) && thisFactory.gatherables[gatherablesName].quantity > 0) {
           if ( this.hasStatsFor('gathering') === true) {
             this.activity.push( new FSTask( {'name':gatherablesName, 'category':'gathering'}));
             if (this.activity.length === 1) {
@@ -177,9 +177,11 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.startCrafting = function ( craftableKey) {
-      this.activity.push( new FSTask({'name':craftableKey, 'category':'crafting'}));
-      if (this.activity.length === 1) {
-        this.startNextTask();
+      if ( this.hasStatsFor('crafting') === true) {
+        this.activity.push( new FSTask({'name':craftableKey, 'category':'crafting'}));
+        if (this.activity.length === 1) {
+          this.startNextTask();
+        }
       }
     };
 
@@ -236,7 +238,15 @@ angular.module('craftyApp')
       switch ( this.activity[0].category) {
         case 'gathering':
           {
-            var hasGatherables = (taskName in thisFactory.gatherables && thisFactory.gatherables[taskName].quantity > 0) ? true : false;
+            var hasGatherables = false;
+            if (taskName in thisFactory.gatherables) {
+              if (thisFactory.gatherables[taskName].quantity > 0) {
+                if ( thisFactory.gatherables[taskName].quantity > thisFactory.gatherables[taskName].gatherers) { // too many cooks?
+                  hasGatherables = true;
+                }
+              }
+            }
+
             var hasDependencies = this.hasGatheringDependencies(taskName);
             if (hasGatherables === true && hasDependencies === true) {
 
@@ -334,12 +344,17 @@ angular.module('craftyApp')
 
       switch (taskCategory) {
         case 'gathering':
-          if ( parseInt( this.json.stats.energy.current, 10) > 20) {
+          if ( parseInt( this.json.stats.energy.current, 10) >= 20) {
             return true;
           }
           break;
         case 'harvesting':
-          if ( parseInt( this.json.stats.energy.current, 10) > 20) {
+          if ( parseInt( this.json.stats.energy.current, 10) >= 20) {
+            return true;
+          }
+          break;
+        case 'crafting':
+          if ( parseInt( this.json.stats.energy.current, 10) >= 20) {
             return true;
           }
           break;

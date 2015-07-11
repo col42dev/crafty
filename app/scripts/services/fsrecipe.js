@@ -19,29 +19,36 @@ angular.module('craftyApp')
     };
 
     FSRecipe.prototype.bgcolor = function( ) {
-      var hasResources = true;
-      for (var key in this.thisFactory.recipeDef[this.name].input) {
 
+      var enabled = true;
+
+      // has ingredients
+      for (var key in this.thisFactory.recipeDef[this.name].input) {
           if (this.thisFactory.recipeDef[this.name].input.hasOwnProperty(key)) {
               if (key in this.thisFactory.bank) {
                 if ( this.thisFactory.bank[key].quantity.length < this.thisFactory.recipeDef[this.name].input[key] ) {
-                  hasResources = false;
+                  enabled = false;
                 }
             } else {
-              hasResources = false;
+              enabled = false;
             }
           }
       }
 
-
+      // has construct if one is needed
       if ( this.thisFactory.recipeDef[this.name].construction.length > 0) {
         var constructor = this.thisFactory.recipeDef[this.name].construction[0];
         if ( this.thisFactory.bank.hasOwnProperty(constructor) === false) {
-          hasResources = false;
+          enabled = false;
         }
       }
+
+      // has stat level
+      if ( this.thisFactory.selectedCharacter.hasStatsFor('crafting') === false) {
+        enabled = false;
+      }
       
-      return  (hasResources === true) ? '#00FF00' : '#FF0000';
+      return  (enabled === true) ? '#00FF00' : '#FF0000';
     };
 
     return FSRecipe;
