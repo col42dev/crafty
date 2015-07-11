@@ -1,721 +1,925 @@
 {
-  "app": "crafty",
-  "version": "0.0.0",
-  "characters": [
-    {
-      "name": "Stroldrin Harvester",
-      "profession": "harvesting"
+    "app": "crafty",
+    "version": "0.0.0",
+    "characters": [
+        {
+            "name": "Stroldrin Harvester",
+            "profession": "harvesting",
+            "stats": {
+                "health": {
+                    "current": "100",
+                    "max": "100",
+                    "regeneratePeriod": "5"
+                },
+                "energy": {
+                    "current": "50",
+                    "max": "100",
+                    "regeneratePeriod": "5"
+                },
+                "mind": {
+                    "current": "20",
+                    "max": "100",
+                    "regeneratePeriod": "5"
+                }
+            }
+        },
+        {
+            "name": "Gronderlug Crafter",
+            "profession": "crafting",
+            "stats": {
+                "health": {
+                    "current": "10",
+                    "max": "100",
+                    "regeneratePeriod": "5"
+                },
+                "energy": {
+                    "current": "100",
+                    "max": "100",
+                    "regeneratePeriod": "5"
+                },
+                "mind": {
+                    "current": "100",
+                    "max": "100",
+                    "regeneratePeriod": "5"
+                }
+            }
+        },
+        {
+            "name": "Dorasgrour Server",
+            "profession": "services",
+            "stats": {
+                "health": {
+                    "current": "100",
+                    "max": "100",
+                    "regeneratePeriod": "5"
+                },
+                "energy": {
+                    "current": "100",
+                    "max": "100",
+                    "regeneratePeriod": "5"
+                },
+                "mind": {
+                    "current": "20",
+                    "max": "100",
+                    "regeneratePeriod": "5"
+                }
+            }
+        },
+        {
+            "name": "Skoveath Harvester",
+            "profession": "harvesting",
+            "stats": {
+                "health": {
+                    "current": "100",
+                    "max": "100",
+                    "regeneratePeriod": "5"
+                },
+                "energy": {
+                    "current": "100",
+                    "max": "100",
+                    "regeneratePeriod": "5"
+                },
+                "mind": {
+                    "current": "100",
+                    "max": "100",
+                    "regeneratePeriod": "5"
+                }
+            }
+        }
+    ],
+    "gatherables": [
+        {
+            "name": "Stone",
+            "quantity": "1"
+        },
+        {
+            "name": "Coal",
+            "quantity": "1"
+        },
+        {
+            "name": "Iron Ore",
+            "quantity": "3"
+        },
+        {
+            "name": "Water",
+            "quantity": "100"
+        },
+        {
+            "name": "Wood",
+            "quantity": "5"
+        },
+        {
+            "name": "Wool",
+            "quantity": "10"
+        },
+        {
+            "name": "Leaves",
+            "quantity": "100"
+        },
+        {
+            "name": "Grain",
+            "quantity": "20"
+        },
+        {
+            "name": "Antler",
+            "quantity": "9"
+        },
+        {
+            "name": "Sand",
+            "quantity": "20"
+        },
+        {
+            "name": "Feather",
+            "quantity": "5"
+        }
+    ],
+    "harvestables": [
+        {
+            "name": "Earth",
+            "quantity": "100"
+        },
+        {
+            "name": "Stone",
+            "quantity": "100"
+        },
+        {
+            "name": "Hard Stone",
+            "quantity": "100"
+        },
+        {
+            "name": "Quartzstone",
+            "quantity": "100"
+        },
+        {
+            "name": "Limestone",
+            "quantity": "100"
+        },
+        {
+            "name": "Marble",
+            "quantity": "100"
+        },
+        {
+            "name": "Granite",
+            "quantity": "100"
+        },
+        {
+            "name": "Coal",
+            "quantity": "100"
+        },
+        {
+            "name": "Iron Ore",
+            "quantity": "100"
+        },
+        {
+            "name": "Wood",
+            "quantity": "100"
+        }
+    ],
+    "bank": [
+        {
+            "name": "Titanium Pickaxe",
+            "quantity": 1
+        },
+        {
+            "name": "Bucket",
+            "quantity": 1
+        },
+        {
+            "name": "Minecart",
+            "quantity": 1
+        },
+        {
+            "name": "FlagonOfAle",
+            "quantity": 3
+        }
+
+    ],
+    "recipes": [
+        "Rope",
+        "WoodenTable",
+        "Workbench",
+        "Forge",
+        "AntlerPickaxe",
+        "Paper",
+        "Books",
+        "FineHat",
+        "FlagonOfAle",
+        "WoodenPlanks",
+        "DiceTable",
+        "Minecart",
+        "Loom",
+        "Glass",
+        "Shovel",
+        "Cloth",
+        "Nails",
+        "BackPack",
+        "Saw",
+        "Bucket",
+        "Ale",
+        "FermentingVat",
+        "BucketPump",
+        "Scythe",
+        "StoneAxe",
+        "BulkAle",
+        "PumpedWater"
+    ],
+    "rewardDefines": [
+        {
+            "name": "Liquidated",
+            "desc": "Craft a FlagonOfAle",
+            "completed": "0",
+            "action": "craft",
+            "target": "FlagonOfAle"
+        },
+        {
+            "name": "Quench",
+            "desc": "Craft a Bucket",
+            "completed": "0",
+            "action": "craft",
+            "target": "Bucket"
+        },
+        {
+            "name": "Master Brewer",
+            "desc": "Craft a FermentingVat",
+            "completed": "0",
+            "action": "craft",
+            "target": "FermentingVat"
+        }
+    ],
+    "gatherableDefines": {
+        "Earth": {
+            "gatherBaseTimeS": "10",
+            "actionable": [
+                "Carry"
+            ]
+        },
+        "Stone": {
+            "gatherBaseTimeS": "10",
+            "actionable": [
+                "Carry"
+            ]
+        },
+        "Hard Stone": {
+            "gatherBaseTimeS": "10",
+            "actionable": [
+                "Carry"
+            ]
+        },
+        "Quartzstone": {
+            "gatherBaseTimeS": "10",
+            "actionable": [
+                "Carry"
+            ]
+        },
+        "Limestone": {
+            "gatherBaseTimeS": "10",
+            "actionable": [
+                "Carry"
+            ]
+        },
+        "Marble": {
+            "gatherBaseTimeS": "10",
+            "actionable": [
+                "Cart"
+            ]
+        },
+        "Granite": {
+            "gatherBaseTimeS": "10",
+            "actionable": [
+                "Cart"
+            ]
+        },
+        "Coal": {
+            "gatherBaseTimeS": "20",
+            "actionable": [
+                "Carry"
+            ]
+        },
+        "Iron Ore": {
+            "gatherBaseTimeS": "20",
+            "actionable": [
+                "Carry"
+            ]
+        },
+        "Water": {
+            "gatherBaseTimeS": "10",
+            "actionable": [
+                "CarryLiquid"
+            ]
+        },
+        "Wood": {
+            "gatherBaseTimeS": "15",
+            "actionable": [
+                "Carry"
+            ]
+        },
+        "Wool": {
+            "gatherBaseTimeS": "30",
+            "actionable": [
+                "Carry"
+            ]
+        },
+        "Leaves": {
+            "gatherBaseTimeS": "10",
+            "actionable": [
+                "Carry"
+            ]
+        },
+        "Grain": {
+            "gatherBaseTimeS": "20",
+            "actionable": [
+                "Carry"
+            ]
+        },
+        "Antler": {
+            "gatherBaseTimeS": "120",
+            "actionable": [
+                "Carry"
+            ]
+        },
+        "Sand": {
+            "gatherBaseTimeS": "30",
+            "actionable": [
+                "Carry"
+            ]
+        },
+        "Feather": {
+            "gatherBaseTimeS": "60",
+            "actionable": [
+                "Carry"
+            ]
+        }
     },
-    {
-      "name": "Gronderlug Crafter",
-      "profession": "crafting"
+    "harvestableDefines": {
+        "Earth": {
+            "actionable": [
+                "Dig"
+            ],
+            "hardness": "1",
+            "harvestBaseTimeS": "10"
+        },
+        "Stone": {
+            "actionable": [
+                "Dig"
+            ],
+            "hardness": "2",
+            "harvestBaseTimeS": "18"
+        },
+        "Hard Stone": {
+            "actionable": [
+                "Dig"
+            ],
+            "hardness": "8",
+            "harvestBaseTimeS": "64"
+        },
+        "Quartzstone": {
+            "actionable": [
+                "Dig"
+            ],
+            "hardness": "20",
+            "harvestBaseTimeS": "140"
+        },
+        "Limestone": {
+            "actionable": [
+                "Dig"
+            ],
+            "hardness": "5",
+            "harvestBaseTimeS": "45"
+        },
+        "Marble": {
+            "actionable": [
+                "Dig"
+            ],
+            "hardness": "12",
+            "harvestBaseTimeS": "96"
+        },
+        "Granite": {
+            "actionable": [
+                "Dig"
+            ],
+            "hardness": "16",
+            "harvestBaseTimeS": "112"
+        },
+        "Coal": {
+            "actionable": [
+                "Dig"
+            ],
+            "hardness": "3",
+            "harvestBaseTimeS": "50"
+        },
+        "Iron Ore": {
+            "actionable": [
+                "Dig"
+            ],
+            "hardness": "3",
+            "harvestBaseTimeS": "50"
+        },
+        "Wood": {
+            "actionable": [
+                "Chop",
+                "Saw"
+            ],
+            "hardness": "2",
+            "harvestBaseTimeS": "10"
+        }
     },
-    {
-      "name": "Dorasgrour Server",
-      "profession": "services"
+    "toolDefines": {
+        "Hands": {
+            "strength": "2",
+            "actions": [
+                "Dig",
+                "Chop",
+                "Carry"
+            ]
+        },
+        "Stone Pickaxe": {
+            "strength": "3",
+            "actions": [
+                "Dig"
+            ]
+        },
+        "Bronze Pickaxe": {
+            "strength": "5",
+            "actions": [
+                "Dig"
+            ]
+        },
+        "Iron Pickaxe": {
+            "strength": "8",
+            "actions": [
+                "Dig"
+            ]
+        },
+        "Steel Pickaxe": {
+            "strength": "12",
+            "actions": [
+                "Dig"
+            ]
+        },
+        "Silver Pickaxe": {
+            "strength": "17",
+            "actions": [
+                "Dig"
+            ]
+        },
+        "Gold Pickaxe": {
+            "strength": "23",
+            "actions": [
+                "Dig"
+            ]
+        },
+        "Titanium Pickaxe": {
+            "strength": "32",
+            "actions": [
+                "Dig"
+            ]
+        },
+        "AntlerPickaxe": {
+            "strength": "3",
+            "actions": [
+                "Dig"
+            ]
+        },
+        "Rope": {
+            "strength": "2",
+            "actions": [
+                "Tie"
+            ]
+        },
+        "BackPack": {
+            "strength": "3",
+            "actions": [
+                "Carry"
+            ]
+        },
+        "Shovel": {
+            "strength": "3",
+            "actions": [
+                "Dig"
+            ]
+        },
+        "Minecart": {
+            "strength": "3",
+            "actions": [
+                "Cart",
+                "Carry"
+            ]
+        },
+        "Saw": {
+            "strength": "3",
+            "actions": [
+                "Saw"
+            ]
+        },
+        "Bucket": {
+            "strength": "4",
+            "actions": [
+                "Carry",
+                "CarryLiquid"
+            ]
+        }
     },
-    {
-      "name": "Skoveath Harvester",
-      "profession": "harvesting"
+    "recipesDefines": {
+        "Rope": {
+            "category": "tool",
+            "construction": [],
+            "input": {
+                "Wool": "1"
+            },
+            "output": {
+                "Rope": "3"
+            },
+            "basetime": "15"
+        },
+        "WoodenTable": {
+            "category": "constructor",
+            "construction": [],
+            "input": {
+                "Wood": "4"
+            },
+            "output": {
+                "WoodenTable": "1"
+            },
+            "basetime": "30"
+        },
+        "Workbench": {
+            "category": "constructor",
+             "construction": [],
+            "input": {
+                "Wood": "3",
+                "WoodenTable": "1"
+            },
+            "output": {
+                "Workbench": "1"
+            },
+            "basetime": "30"
+        },
+        "BackPack": {
+            "category": "tool",
+             "construction": [],
+            "input": {
+                "Cloth": "3",
+                "Rope": "1"
+            },
+            "output": {
+                "BackPack": "1"
+            },
+            "basetime": "30"
+        },
+        "Forge": {
+            "category": "constructor",
+            "construction": [
+                "Workbench"
+            ],
+            "input": {
+                "Water": "3",
+                "Coal": "1",
+                "Iron Ore": "3",
+                "Stone": "2"
+            },
+            "output": {
+                "Forge": "1"
+            },
+            "basetime": "60"
+        },
+        "Paper": {
+            "category": "unclassified",
+            "construction": [
+                "WoodenTable"
+            ],
+            "input": {
+                "Leaves": "1"
+            },
+            "output": {
+                "Paper": "1"
+            },
+            "basetime": "15"
+        },
+        "Books": {
+            "category": "unclassified",
+            "construction": [
+                "WoodenTable"
+            ],
+            "input": {
+                "Paper": "12",
+                "Rope": "1",
+                "Feather": "2"
+            },
+            "output": {
+                "Books": "1"
+            },
+            "basetime": "45"
+        },
+        "FineHat": {
+            "category": "unclassified",
+            "construction": [
+                "WoodenTable"
+            ],
+            "input": {
+                "Cloth": "2",
+                "Feather": "1"
+            },
+            "output": {
+                "FineHat": "1"
+            },
+            "basetime": "15"
+        },
+        "AntlerPickaxe": {
+            "category": "tool",
+             "construction": [],
+            "input": {
+                "Wood": "2",
+                "Antler": "2"
+            },
+            "output": {
+                "AntlerPickaxe": "1"
+            },
+            "basetime": "15"
+        },
+        "FlagonOfAle": {
+            "category": "food",
+            "construction": [
+                "WoodenTable"
+            ],
+            "input": {
+                "Ale": "6",
+                "Glass": "1",
+                "Cloth": "1",
+                "Antler": "6"
+            },
+            "output": {
+                "FlagonOfAle": "1"
+            },
+            "basetime": "15"
+        },
+        "WoodenPlanks": {
+            "category": "unclassified",
+            "construction": [
+                "Workbench"
+            ],
+            "input": {
+                "Wood": "2"
+            },
+            "output": {
+                "WoodenPlanks": "1"
+            },
+            "basetime": "15"
+        },
+        "DiceTable": {
+            "category": "furniture",
+            "construction": [
+                "Workbench"
+            ],
+            "input": {
+                "WoodenTable": "1",
+                "Antler": "3",
+                "Cloth": "1"
+            },
+            "output": {
+                "DiceTable": "1"
+            },
+            "basetime": "45"
+        },
+        "Minecart": {
+            "category": "unclassified",
+            "construction": [
+                "Workbench"
+            ],
+            "input": {
+                "WoodenPlanks": "4",
+                "Nails": "10"
+            },
+            "output": {
+                "Minecart": "1"
+            },
+            "basetime": "60"
+        },
+        "Loom": {
+            "category": "constructor",
+            "construction": [
+                "Workbench"
+            ],
+            "input": {
+                "Wood": "5",
+                "Rope": "2"
+            },
+            "output": {
+                "Loom": "1"
+            },
+            "basetime": "30"
+        },
+        "Glass": {
+            "category": "unclassified",
+            "construction": [
+                "Forge"
+            ],
+            "input": {
+                "Sand": "4"
+            },
+            "output": {
+                "Glass": "1"
+            },
+            "basetime": "45"
+        },
+        "Shovel": {
+            "category": "tool",
+            "construction": [
+                "Workbench"
+            ],
+            "input": {
+                "Wood": "3"
+            },
+            "output": {
+                "Shovel": "1"
+            },
+            "basetime": "15"
+        },
+        "Cloth": {
+            "category": "unclassified",
+            "construction": [
+                "Loom"
+            ],
+            "input": {
+                "Wool": "1"
+            },
+            "output": {
+                "Cloth": "1"
+            },
+            "basetime": "15"
+        },
+        "Ale": {
+            "category": "food",
+            "construction": [
+                "WoodenTable"
+            ],
+            "input": {
+                "Water": "6",
+                "Grain": "3"
+            },
+            "output": {
+                "Ale": "1"
+            },
+            "basetime": "45"
+        },
+        "Saw": {
+            "category": "tool",
+            "construction": [
+                "Forge"
+            ],
+            "input": {
+                "Iron Ore": "3",
+                "Wood": "1"
+            },
+            "output": {
+                "Saw": "1"
+            },
+            "basetime": "45"
+        },
+        "Bucket": {
+            "category": "tool",
+            "construction": [],
+            "input": {
+                "Wood": "3",
+                "Rope": "1"
+            },
+            "output": {
+                "Bucket": "1"
+            },
+            "basetime": "30"
+        },
+        "Nails": {
+            "category": "unclassified",
+            "construction": [
+                "Forge"
+            ],
+            "input": {
+                "Iron Ore": "1"
+            },
+            "output": {
+                "Nails": "5"
+            },
+            "basetime": "10"
+        },
+        "FermentingVat": {
+            "category": "constructor",
+            "construction": [
+                "Forge"
+            ],
+            "input": {
+                "Iron Ore": "3",
+                "Wood": "1"
+            },
+            "output": {
+                "FermentingVat": "1"
+            },
+            "basetime": "45"
+        },
+        "BulkAle": {
+            "category": "food",
+            "construction": [
+                "FermentingVat"
+            ],
+            "input": {
+                "Grain": "3",
+                "Water": "6"
+            },
+            "output": {
+                "Ale": "2"
+            },
+            "basetime": "60"
+        },
+        "BucketPump": {
+            "category": "constructor",
+            "construction": [],
+            "input": {
+                "Bucket": "2",
+                "Rope": "4",
+                "Wood": "2"
+            },
+            "output": {
+                "BucketPump": "1"
+            },
+            "basetime": "30"
+        },
+        "Scythe": {
+            "category": "tool",
+            "construction": [
+                "Forge"
+            ],
+            "input": {
+                "Iron Ore": "2",
+                "Wood": "2"
+            },
+            "output": {
+                "Scythe": "1"
+            },
+            "basetime": "45"
+        },
+        "StoneAxe": {
+            "category": "tool",
+            "construction": [],
+            "input": {
+                "Stone": "1",
+                "Wood": "1"
+            },
+            "output": {
+                "StoneAxe": "1"
+            },
+            "basetime": "60"
+        },
+        "PumpedWater": {
+            "category": "unclassified",
+            "construction": [
+                "BucketPump"
+            ],
+            "input": {
+                "Water": "1"
+            },
+            "output": {
+                "Water": "3"
+            },
+            "basetime": "10"
+        }
+    },
+    "foodDefines" : {
+        "BulkAle": {
+            "onConsume" : { 
+                "stat" : {
+                    "energy" : {
+                        "current" : 50
+                    },
+                    "mind" : {
+                        "current" : -50
+                    }
+                }
+            }
+        },
+        "FlagonOfAle": {
+              "onConsume" : { 
+                "stat" : {
+                    "energy" : {
+                        "current" : 50
+                    },
+                    "mind" : {
+                        "current" : -50
+                    }
+                }
+            }
+        },
+        "Ale": {
+             "onConsume" : { 
+                "stat" : {
+                    "energy" : {
+                        "current" : 50
+                    },
+                    "mind" : {
+                        "current" : -50
+                    }
+                }
+            }
+        }
+     
+
     }
-  ],
-  "gatherables": [
-    {
-      "name": "Stone",
-      "quantity": "1"
-    },
-    {
-      "name": "Coal",
-      "quantity": "1"
-    },
-    {
-      "name": "Iron Ore",
-      "quantity": "3"
-    },
-    {
-      "name": "Water",
-      "quantity": "100"
-    },
-    {
-      "name": "Wood",
-      "quantity": "5"
-    },
-    {
-      "name": "Wool",
-      "quantity": "10"
-    },
-    {
-      "name": "Leaves",
-      "quantity": "100"
-    },
-    {
-      "name": "Grain",
-      "quantity": "20"
-    },
-    {
-      "name": "Antler",
-      "quantity": "9"
-    },
-    {
-      "name": "Sand",
-      "quantity": "20"
-    },
-    {
-      "name": "Feather",
-      "quantity": "5"
-    }
-  ],
-  "harvestables": [
-    {
-      "name": "Earth",
-      "quantity": "100"
-    },
-    {
-      "name": "Stone",
-      "quantity": "100"
-    },
-    {
-      "name": "Hard Stone",
-      "quantity": "100"
-    },
-    {
-      "name": "Quartzstone",
-      "quantity": "100"
-    },
-    {
-      "name": "Limestone",
-      "quantity": "100"
-    },
-    {
-      "name": "Marble",
-      "quantity": "100"
-    },
-    {
-      "name": "Granite",
-      "quantity": "100"
-    },
-    {
-      "name": "Coal",
-      "quantity": "100"
-    },
-    {
-      "name": "Iron Ore",
-      "quantity": "100"
-    },
-    {
-      "name": "Wood",
-      "quantity": "100"
-    }
-  ],
-  "bank": [ 
-    {
-      "name": "Titanium Pickaxe",
-      "category": "tool",
-      "quantity": "1"
-    },
-    {
-      "name": "Bucket",
-      "category": "tool",
-      "quantity": "1"
-    },
-    {
-      "name": "Minecart",
-      "category": "tool",
-      "quantity": "1"
-    }
-  ],
-  "recipes": [
-      "Rope",
-      "WoodenTable",
-      "Workbench",
-      "Forge",
-      "AntlerPickaxe",
-      "Paper",
-      "Books",
-      "FineHat",
-      "FlagonOfAle",
-      "WoodenPlanks",
-      "DiceTable",
-      "Minecart",
-      "Loom",
-      "Glass",
-      "Shovel",
-      "Cloth",
-      "Nails",
-      "BackPack",
-      "Saw",
-      "Bucket",
-      "Ale",
-      "FermentingVat",
-      "BucketPump",
-      "Scythe",
-      "StoneAxe",
-      "BulkAle",
-      "PumpedWater"
-  ],
-  "rewardDefines": [
-    {
-      "name": "Liquidated",
-      "desc": "Craft a FlagonOfAle",
-      "completed": 0,
-      "action": "craft",
-      "target": "FlagonOfAle"
-    },
-    {
-      "name": "Quench",
-      "desc": "Craft a Bucket",
-      "completed": 0,
-      "action": "craft",
-      "target": "Bucket"
-    },
-    {
-      "name": "Master Brewer",
-      "desc": "Craft a FermentingVat",
-      "completed": 0,
-      "action": "craft",
-      "target": "FermentingVat"
-    }
-  ],
-  "gatherableDefines": {
-    "Earth": {
-      "gatherBaseTimeS": 10,
-      "actionable": ["Carry"]
-    },
-    "Stone": {
-      "gatherBaseTimeS": 10,
-      "actionable": ["Carry"]
-    },
-    "Hard Stone": {
-      "gatherBaseTimeS": 10,
-      "actionable": ["Carry"]
-    },
-    "Quartzstone": {
-      "gatherBaseTimeS": 10,
-      "actionable": ["Carry"]
-    },
-    "Limestone": {
-      "gatherBaseTimeS": 10,
-      "actionable": ["Carry"]
-    },
-    "Marble": {
-      "gatherBaseTimeS": 10,
-      "actionable": ["Cart"]
-    },
-    "Granite": {
-      "gatherBaseTimeS": 10,
-      "actionable": ["Cart"]
-    },
-    "Coal": {
-      "gatherBaseTimeS": 20,
-      "actionable": ["Carry"]
-    },
-    "Iron Ore": {
-      "gatherBaseTimeS": 20,
-      "actionable": ["Carry"]
-    },
-    "Water": {
-      "gatherBaseTimeS": 10,
-      "actionable": ["CarryLiquid"]
-    },
-    "Wood": {
-      "gatherBaseTimeS": 15,
-      "actionable": ["Carry"]
-    },
-    "Wool": {
-      "gatherBaseTimeS": 30,
-      "actionable": ["Carry"]
-    },
-    "Leaves": {
-      "gatherBaseTimeS": 10,
-      "actionable": ["Carry"]
-    },
-    "Grain": {
-      "gatherBaseTimeS": 20,
-      "actionable": ["Carry"]
-    },
-    "Antler": {
-      "gatherBaseTimeS": 120,
-      "actionable": ["Carry"]
-    },
-    "Sand": {
-      "gatherBaseTimeS": 30,
-      "actionable": ["Carry"]
-    },
-    "Feather": {
-      "gatherBaseTimeS": 60,
-      "actionable": ["Carry"]
-    }
-  },
-  "harvestableDefines": {
-    "Earth": {
-      "actionable": ["Dig"],
-      "hardness": 1,
-      "harvestBaseTimeS": 10
-    },
-    "Stone": {
-      "actionable": ["Dig"],
-      "hardness": 2,
-      "harvestBaseTimeS": 18
-    },
-    "Hard Stone": {
-      "actionable": ["Dig"],
-      "hardness": 8,
-      "harvestBaseTimeS": 64
-    },
-    "Quartzstone": {
-      "actionable": ["Dig"],
-      "hardness": 20,
-      "harvestBaseTimeS": 140
-    },
-    "Limestone": {
-      "actionable": ["Dig"],
-      "hardness": 5,
-      "harvestBaseTimeS": 45
-    },
-    "Marble": {
-      "actionable": ["Dig"],
-      "hardness": 12,
-      "harvestBaseTimeS": 96
-    },
-    "Granite": {
-      "actionable": ["Dig"],
-      "hardness": 16,
-      "harvestBaseTimeS": 112
-    },
-    "Coal": {
-      "actionable": ["Dig"],
-      "hardness": 3,
-      "harvestBaseTimeS": 50
-    },
-    "Iron Ore": {
-      "actionable": ["Dig"],
-      "hardness": 3,
-      "harvestBaseTimeS": 50
-    },
-    "Wood": {
-      "actionable": ["Chop", "Saw"],
-      "hardness": 2,
-      "harvestBaseTimeS": 10
-    }
-  },
-  "toolDefines": {
-    "Hands": {
-      "strength": 2,
-      "actions": [
-        "Dig",
-        "Chop",
-        "Carry"
-      ]
-    },
-    "Stone Pickaxe": {
-      "strength": 3,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "Bronze Pickaxe": {
-      "strength": 5,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "Iron Pickaxe": {
-      "strength": 8,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "Steel Pickaxe": {
-      "strength": 12,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "Silver Pickaxe": {
-      "strength": 17,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "Gold Pickaxe": {
-      "strength": 23,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "Titanium Pickaxe": {
-      "strength": 32,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "AntlerPickaxe": {
-      "strength": 3,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "Rope": {
-      "strength": 2,
-      "actions": [
-        "Tie"
-      ]
-    },
-    "BackPack": {
-      "strength": 3,
-      "actions": [
-        "Carry"
-      ]
-    },
-    "Shovel": {
-      "strength": 3,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "Minecart": {
-      "strength": 3,
-      "actions": [
-        "Cart",
-        "Carry"
-      ]
-    },
-    "Saw": {
-      "strength": 3,
-      "actions": [
-        "Saw"
-      ]
-    },
-    "Bucket": {
-      "strength": 4,
-      "actions": [
-        "Carry",
-        "CarryLiquid"
-      ]
-    }
-  },
-  "recipesDefines": {
-    "Rope": {
-      "category": "tool",
-      "construction": [],
-      "input": {
-        "Wool": 1
-      },
-      "output": {
-        "Rope": 3
-      },
-      "basetime": 15
-    },
-    "WoodenTable": {
-      "category": "constructor",
-      "construction": [],
-      "input": {
-        "Wood": 4
-      },
-      "output": {
-        "WoodenTable": 1
-      },
-      "basetime": 30
-    },
-    "Workbench": {
-      "category": "constructor",
-      "construction": [],
-      "input": {
-        "Wood": 3,
-        "WoodenTable": 1
-      },
-      "output": {
-        "Workbench": 1
-      },
-      "basetime": 30
-    },
-    "BackPack": {
-      "category": "tool",
-      "construction": [],
-      "input": {
-        "Cloth": 3,
-        "Rope": 1
-      },
-      "output": {
-        "BackPack": 1
-      },
-      "basetime": 30
-    },
-    "Forge": {
-      "category": "constructor",
-      "construction": ["Workbench"],
-      "input": {
-        "Water": 3,
-        "Coal": 1,
-        "Iron Ore": 3,
-        "Stone": 2
-      },
-      "output": {
-        "Forge": 1
-      },
-      "basetime": 60
-    },
-    "Paper": {
-      "category": "unclassified",
-      "construction": ["WoodenTable"],
-      "input": {
-        "Leaves": 1
-      },
-      "output": {
-        "Paper": 1
-      },
-      "basetime": 15
-    },
-    "Books": {
-      "category": "unclassified",
-      "construction": ["WoodenTable"],
-      "input": {
-        "Paper": 12,
-        "Rope": 1,
-        "Feather": 2
-      },
-      "output": {
-        "Books": 1
-      },
-      "basetime": 45
-    },
-    "FineHat": {
-      "category": "unclassified",
-      "construction": ["WoodenTable"],
-      "input": {
-        "Cloth": 2,
-        "Feather": 1
-      },
-      "output": {
-        "FineHat": 1
-      },
-      "basetime": 15
-    },
-    "AntlerPickaxe": {
-      "category": "tool",
-      "construction": [],
-      "input": {
-        "Wood": 2,
-        "Antler": 2
-      },
-      "output": {
-        "AntlerPickaxe": 1
-      },
-      "basetime": 15
-    },
-    "FlagonOfAle": {
-      "category": "food",
-      "construction": ["WoodenTable"],
-      "input": {
-        "Ale": 6,
-        "Glass": 1,
-        "Cloth": 1,
-        "Antler": 6
-      },
-      "output": {
-        "FlagonOfAle": 1
-      },
-      "basetime": 15
-    },
-    "WoodenPlanks": {
-      "category": "unclassified",
-      "construction": ["Workbench"],
-      "input": {
-        "Wood": 2
-      },
-      "output": {
-        "WoodenPlanks": 1
-      },
-      "basetime": 15
-    },
-    "DiceTable": {
-      "category": "furniture",
-      "construction": ["Workbench"],
-      "input": {
-        "WoodenTable": 1,
-        "Antler": 3,
-        "Cloth": 1
-      },
-      "output": {
-        "DiceTable": 1
-      },
-      "basetime": 45
-    },
-    "Minecart": {
-      "category": "unclassified",
-      "construction": ["Workbench"],
-      "input": {
-        "WoodenPlanks": 4,
-        "Nails": 10
-      },
-      "output": {
-        "Minecart": 1
-      },
-      "basetime": 60
-    },
-    "Loom": {
-      "category": "constructor",
-      "construction": ["Workbench"],
-      "input": {
-        "Wood": 5,
-        "Rope": 2
-      },
-      "output": {
-        "Loom": 1
-      },
-      "basetime": 30
-    },
-    "Glass": {
-      "category": "unclassified",
-      "construction": ["Forge"],
-      "input": {
-        "Sand": 4
-      },
-      "output": {
-        "Glass": 1
-      },
-      "basetime": 45
-    },
-    "Shovel": {
-      "category": "tool",
-      "construction": ["Workbench"],
-      "input": {
-        "Wood": 3
-      },
-      "output": {
-        "Shovel": 1
-      },
-      "basetime": 15
-    },
-    "Cloth": {
-      "category": "unclassified",
-      "construction": ["Loom"],
-      "input": {
-        "Wool": 1
-      },
-      "output": {
-        "Cloth": 1
-      },
-      "basetime": 15
-    },
-    "Ale": {
-      "category": "food",
-      "construction": ["WoodenTable"],
-      "input": {
-        "Water": 6,
-        "Grain": 3
-      },
-      "output": {
-        "Ale": 1
-      },
-      "basetime": 45
-    },
-    "Saw": {
-      "category": "tool",
-      "construction": ["Forge"],
-      "input": {
-        "Iron Ore": 3,
-        "Wood": 1
-      },
-      "output": {
-        "Saw": 1
-      },
-      "basetime": 45
-    },
-    "Bucket": {
-      "category": "tool",
-      "construction": [],
-      "input": {
-        "Wood": 3,
-        "Rope": 1
-      },
-      "output": {
-        "Bucket": 1
-      },
-      "basetime": 30
-    },
-    "Nails": {
-      "category": "unclassified",
-      "construction": ["Forge"],
-      "input": {
-        "Iron Ore": 1
-      },
-      "output": {
-        "Nails": 5
-      },
-      "basetime": 10
-    },
-    "FermentingVat": {
-      "category": "constructor",
-      "construction": ["Forge"],
-      "input": {
-        "Iron Ore": 3,
-        "Wood": 1
-      },
-      "output": {
-        "FermentingVat": 1
-      },
-      "basetime": 45
-    },
-    "BulkAle": {
-      "category": "food",
-      "construction": ["FermentingVat"],
-      "input": {
-        "Grain": 3,
-        "Water": 6
-      },
-      "output": {
-        "Ale": 2
-      },
-      "basetime": 60
-    },
-    "BucketPump": {
-      "category": "constructor",
-      "construction": [],
-      "input": {
-        "Bucket": 2,
-        "Rope": 4,
-        "Wood": 2
-      },
-      "output": {
-        "BucketPump": 1
-      },
-      "basetime": 30
-    },
-    "Scythe": {
-      "category": "tool",
-      "construction": ["Forge"],
-      "input": {
-        "Iron Ore": 2,
-        "Wood": 2
-      },
-      "output": {
-        "Scythe": 1
-      },
-      "basetime": 45
-    },
-    "StoneAxe": {
-      "category": "tool",
-      "construction": [],
-      "input": {
-        "Stone": 1,
-        "Wood": 1
-      },
-      "output": {
-        "StoneAxe": 1
-      },
-      "basetime": 60
-    },
-    "PumpedWater": {
-      "category": "unclassified",
-      "construction": ["BucketPump"],
-      "input": {
-        "Water": 1
-      },
-      "output": {
-        "Water": 3
-      },
-      "basetime": 10
-    }
-  }
+
 }

@@ -18,10 +18,9 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    var FSCharacter = function(characaterObj, simFactory, ctrllerScope) {
+    var FSCharacter = function(json, simFactory, ctrllerScope) {
         thisFactory = simFactory;
-        this.name = characaterObj.name;
-        this.profession = characaterObj.profession;
+        this.json = json;
         this.activity = [];
         this.tools = [];
         this.weapons = [];
@@ -44,7 +43,7 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.getFullName = function () {
-      return this.name;
+      return this.json.name;
     };
 
     /**
@@ -348,6 +347,36 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.activityPercentRemaining = function ( ) {
       return this.updateActiveTaskRemainingPercent +'%';
+    };
+
+    /**
+     * @desc 
+     * @return 
+     */
+    FSCharacter.prototype.getStatPercentage = function ( type) {
+      var stats = this.json['stats'][type];
+      return ((stats['current'] /  stats['max']) * 100) +'%';
+    };
+
+
+    /**
+     * @desc 
+     * @return 
+     */
+    FSCharacter.prototype.modifyStat = function ( type, subtype, amount) {
+
+      var newValue = parseInt(this.json['stats'][type][subtype], 10) + amount;
+      if (subtype === 'current') {
+        if ( parseInt(this.json['stats'][type]['current'], 10) + amount > parseInt(this.json['stats'][type]['max'], 10)) {
+            newValue = parseInt( this.json['stats'][type]['max'], 10);
+        }
+        if ( parseInt(this.json['stats'][type]['current'], 10) + amount < 0) {
+            newValue = 0;
+        }
+      }
+
+      this.json['stats'][type][subtype] = newValue;
+      return this.json['stats'][type][subtype];
     };
 
     /**

@@ -7,22 +7,40 @@
 <table class="table table-bordered table-condensed table-scrollable noselect">
 	<thead>
 		<tr class="noselect">
-		    <th lass="col-sm-3"><h4>Name</h4></th>
-		    <th lass="col-sm-7"><h4>Task</h4></th>
-		    <th lass="col-sm-1"><h4>Queued</h4></th>
-		    <th lass="col-sm-3"><h4>Equip</h4></th>
+		    <th class="col-sm-3"><h4>Name</h4></th>
+		    <th class="col-sm-1"><h4>H</h4></th>
+		    <th class="col-sm-1"><h4>E</h4></th>
+		    <th class="col-sm-1"><h4>M</h4></th>
+		    <th class="col-sm-7"><h4>Task</h4></th>
+		    <th class="col-sm-1"><h4>Queued</h4></th>
+		    <th class="col-sm-3"><h4>Equip</h4></th>
 		</tr>
 	</thead>
 	<tbody>
 	<tr ng-repeat="(k,v) in getFSService().simulation.characterObjs" class="noselect" ng-click="getFSService().onClickCharacter(v)">
-		<td lass="col-sm-3"  bgcolor={{v.getbgcolor()}} > {{v.name}}</td> 
-		<td lass="col-sm-7" > 
+		<td class="col-sm-3"  bgcolor={{v.getbgcolor()}} > {{v.json.name}}</td> 
+
+
+		<td class="col-sm-1" > 
+			<div style = "background:rgb(128, 177, 133); overflow:visible" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].getStatPercentage('health')}">{{getFSService().simulation.characterObjs[k].getStatPercentage('health')}}
+			</div>
+		</td> 
+		<td class="col-sm-1" > 
+			<div style = "background:rgb(128, 177, 133); overflow:visible" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].getStatPercentage('energy')}">{{getFSService().simulation.characterObjs[k].getStatPercentage('energy')}}
+			</div>
+		</td> 
+		<td class="col-sm-1" > 
+			<div style = "background:rgb(128, 177, 133); overflow:visible" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].getStatPercentage('mind')}">{{getFSService().simulation.characterObjs[k].getStatPercentage('mind')}}
+			</div>
+		</td> 
+
+		<td class="col-sm-7" > 
 			<div style = "background:rgb(128, 177, 133); overflow:visible" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].activityPercentRemaining()}">
 		        {{v.activity[0].name}}
 			</div>
 		</td> 
-		<td lass="col-sm-1"  > {{v.queuedTaskCount()}} </td> 
-		<td lass="col-sm-3"  bgcolor={{v.tools[0].bgcolor()}}  ng-click="getFSService().simulation.onClickCharacterTool(v.tools[0])" > {{v.tools[0].name}} </td> 
+		<td class="col-sm-1"  > {{v.queuedTaskCount()}} </td> 
+		<td class="col-sm-3"  bgcolor={{v.tools[0].bgcolor()}}  ng-click="getFSService().simulation.onClickCharacterTool(v.tools[0])" > {{v.tools[0].name}} </td> 
 	</tr>
 	</tbody>
 </table>

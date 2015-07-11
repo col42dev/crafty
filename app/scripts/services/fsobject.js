@@ -31,10 +31,13 @@ angular.module('craftyApp')
     FSObject.prototype.bgcolor = function( ) {
       var color = null;
       switch (this.category) {
-        case 'constructor':
-          color= '#FFFFFF';
-          break;
+       // case 'constructor':
+       //   color= '#FFFFFF';
+       //   break;
         case 'tool':
+          color= '#00FF00';
+          break;
+        case 'food':
           color= '#00FF00';
           break;
         case 'weapon':

@@ -19,6 +19,21 @@ angular.module('craftyApp')
 	
 			this.taskTimeScalar ='1';
 
+	         // Defines
+	        this.harvestableDefines = json['harvestableDefines'];  
+	        this.gatherableDefines = json['gatherableDefines'];  
+	        this.toolDefines = json['toolDefines'];  
+	        this.foodDefines = json['foodDefines'];  
+
+			// Recipes Defines
+	        this.recipeDef = {};  
+	        var jsonRecipesDefines = json['recipesDefines'];
+	        for (var key in jsonRecipesDefines) {
+	        	if (jsonRecipesDefines.hasOwnProperty(key)) {
+	          		this.recipeDef[key] = new FSRecipeDef(jsonRecipesDefines[key], this);
+	         	}
+	        }
+
 	     	// Characters
 		    this.characterObjs = {};  
  			json['characters'].forEach( ( function(thisCharacter) {
@@ -31,15 +46,6 @@ angular.module('craftyApp')
 	        	this.selectedCharacter = character;
 	        };
 
-	         // HarvestableDefines
-	        this.harvestableDefines = json['harvestableDefines'];  
-
-    		// GatherableDefines
-	        this.gatherableDefines = json['gatherableDefines'];  
-	  
-	 		// GatherableDefines
-	        this.toolDefines = json['toolDefines'];  
-	        
 	        // Gatherables
 	        this.gatherables = {};  
 	        json['gatherables'].forEach( ( function(thisGatherables) {
@@ -83,11 +89,17 @@ angular.module('craftyApp')
 	        this.bank = {};  
 
 	        json['bank'].forEach( ( function(item) {
-	          	this.bank[item.name] = new FSObject({'category':item.category, 'name':item.name});
+
+	        	var category = 'unknown';
+	        	if ( this.toolDefines.hasOwnProperty(item.name) === true) 
+	        	{
+	        		category = 'tool';
+	        	} else if ( this.foodDefines.hasOwnProperty(item.name) === true) {
+	        		category = 'food';
+	        	}
+	          	this.bank[item.name] = new FSObject({'category':category, 'name':item.name});
 	       		this.bank[item.name].increment( item.quantity );
 	        }).bind(this)); 
-
-	        
 	        this.updateBank = function() {
 		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {
 		        		return thisFactory.bank[key];
@@ -102,20 +114,12 @@ angular.module('craftyApp')
 	        };	
 
 	        // Know Recipes
-	        this.knownRecipes = {}; //json['recipes'];  
+	        this.knownRecipes = {}; 
 	        json['recipes'].forEach( ( function( recipeName ) {
 	          		this.knownRecipes[recipeName] =  new FSRecipe( recipeName, this);
 	        	}).bind(this)); 
 
 
-			// Recipes Defines
-	        this.recipeDef = {};  
-	        var jsonRecipesDefines = json['recipesDefines'];
-	        for (var key in jsonRecipesDefines) {
-	        	if (jsonRecipesDefines.hasOwnProperty(key)) {
-	          		this.recipeDef[key] = new FSRecipeDef(jsonRecipesDefines[key], this);
-	         	}
-	        }
 
 	        // Rewards
 	        this.rewards = {};  
@@ -197,6 +201,28 @@ angular.module('craftyApp')
 
 	        			if ( this.bank[bankItemKey].quantity.length === 0) {
 	        				delete  this.bank[bankItemKey];
+	        				this.updateBank();
+	        			}
+	        		}
+        		}
+        		break;
+
+        		case 'food': { // consume
+	        		if (this.bank[bankItemKey].quantity.length > 0) {
+	        			this.bank[bankItemKey].decrement(1) ;
+
+						for (var statType in this.foodDefines[bankItemKey].onConsume.stat) {
+							for (var statSubType in this.foodDefines[bankItemKey].onConsume.stat[statType]) {
+								var delta = parseInt(this.foodDefines[bankItemKey].onConsume.stat[statType][statSubType], 10);
+								//this.selectedCharacter.json.stats[statType][statSubType] = parseInt(this.selectedCharacter.json.stats[statType][statSubType]);
+
+								this.selectedCharacter.modifyStat( statType, statSubType, delta);
+								//this.selectedCharacter.json.stats[statType][statSubType] += parseInt(delta, 10);
+							}
+						}
+
+	        			if ( this.bank[bankItemKey].quantity.length === 0) {
+	        				delete this.bank[bankItemKey];
 	        				this.updateBank();
 	        			}
 	        		}
