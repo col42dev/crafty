@@ -8,7 +8,7 @@
  * Simulation factory
  */
 angular.module('craftyApp')
-  .factory('FSSimFactory', function ( FSCharacter, FSTask, FSObject, FSGatherable, FSRecipeDef, FSRecipe, FSReward, FSHarvestable) {
+  .factory('FSSimFactory', function ( FSCharacter, FSTask, FSBackpack, FSGatherable, FSRecipeDef, FSRecipe, FSReward, FSHarvestable) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -85,7 +85,7 @@ angular.module('craftyApp')
 	        	} else if ( this.foodDefines.hasOwnProperty(item.name) === true) {
 	        		category = 'food';
 	        	}
-	          	this.bank[item.name] = new FSObject({'category':category, 'name':item.name});
+	          	this.bank[item.name] = new FSBackpack({'category':category, 'name':item.name});
 	       		this.bank[item.name].increment( item.quantity );
 	        }).bind(this)); 
 	        this.updateBank = function() {
@@ -114,6 +114,65 @@ angular.module('craftyApp')
 	        }).bind(this)); 
 
 	    };
+
+
+
+	      /**
+		 * @desc 
+		 * @return 
+		 */
+    	this.deserialize = function ( ) {
+
+    		var buildjson = {};
+
+    		buildjson.harvestableDefines = this.harvestableDefines;  
+	        buildjson.gatherableDefines = this.gatherableDefines;  
+	        buildjson.toolDefines = this.toolDefines;  
+	        buildjson.foodDefines = this.foodDefines;  
+	        buildjson.recipeDef = this.recipesDefines;  
+
+
+	     	// Characters
+		    buildjson.characters = [];  
+	        for ( var thisCharacter in this.characterObjs) {
+	        	buildjson.characters.push( this.characterObjs[thisCharacter].json);
+	        }
+
+	        // Gatherables
+	        buildjson.gatherables = [];  
+	        for ( var thisGatherables in this.gatherables) {
+	        	buildjson.gatherables.push( this.gatherables[thisGatherables].json);
+	        } 
+	
+	        // Harvestables
+	        buildjson.harvestables = [];  
+	        for ( var thisHarvestable in this.harvestables) {
+	        	var obj = { 'name' : this.harvestables[thisHarvestable].name, 'quantity' : this.harvestables[thisHarvestable].quantity};
+	          	buildjson.harvestables.push(obj);
+	        }
+
+			// Bank
+	        buildjson.bank = [];  
+	        for ( var item in this.bank) {
+	        	var obj = { 'name' : this.bank[item].name, 'quantity' : this.bank[item].quantity.length};
+	        	buildjson.bank.push(obj);
+	        }
+
+	        // Know Recipes
+	        buildjson.recipes = []; 
+	        for ( var recipeName in this.knownRecipes) {
+	        	buildjson.recipes.push(this.knownRecipes[recipeName].name);
+	        }
+
+	        // Rewards
+	        buildjson.rewardDefines = [];  
+	        for ( var thisReward in this.rewards) {
+	        	buildjson.rewardDefines.push(this.rewards[thisReward].serializable);
+	        }
+
+
+	        this.jsonSerialized = JSON.stringify(buildjson, undefined, 2);
+    	};
 
 	      /**
 		 * @desc 
@@ -221,7 +280,7 @@ angular.module('craftyApp')
 		      	this.selectedCharacter.json.tools.splice(indexOf, 1);
 
 		      	 if (!(toolObj.name in thisFactory.bank)) {
-        			thisFactory.bank[toolObj.name] = new FSObject({'category':'tool', 'name':toolObj.name});
+        			thisFactory.bank[toolObj.name] = new FSBackpack({'category':'tool', 'name':toolObj.name});
 			      }
 			      thisFactory.bank[toolObj.name].increment(1);
 			      thisFactory.updateBank();
@@ -239,7 +298,7 @@ angular.module('craftyApp')
 		      	this.selectedCharacter.json.weapons.splice(indexOf, 1);
 
 		      	 if (!(weaponObj.name in thisFactory.bank)) {
-        			thisFactory.bank[weaponObj.name] = new FSObject({'category':'weapon', 'name':weaponObj.name});
+        			thisFactory.bank[weaponObj.name] = new FSBackpack({'category':'weapon', 'name':weaponObj.name});
 			      }
 			      thisFactory.bank[weaponObj.name].increment(1);
 			      thisFactory.updateBank();
@@ -256,7 +315,7 @@ angular.module('craftyApp')
         		case 'tool': { // add to character inventory 
 	        		if (this.bank[bankItemKey].quantity.length > 0) {
 	        			this.bank[bankItemKey].decrement(1) ;
-	        			this.selectedCharacter.json.tools.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
+	        			this.selectedCharacter.json.tools.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
 
 	        			if ( this.bank[bankItemKey].quantity.length === 0) {
 	        				delete  this.bank[bankItemKey];
@@ -291,7 +350,7 @@ angular.module('craftyApp')
         		case 'weapon': { // add to character inventory 
 	        		if (this.bank[bankItemKey].quantity.length > 0) {
 	        			this.bank[bankItemKey].decrement(1) ;
-	        			this.selectedCharacter.json.weapons.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
+	        			this.selectedCharacter.json.weapons.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
 
 	        			if ( this.bank[bankItemKey].quantity.length === 0) {
 	        				delete  this.bank[bankItemKey];

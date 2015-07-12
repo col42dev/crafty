@@ -8,7 +8,7 @@
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSCharacter', function (FSTask, FSObject, FSGatherable) {
+  .factory('FSCharacter', function (FSTask, FSBackpack, FSGatherable) {
     // Service logic
     // ...
     var thisFactory = null;
@@ -151,7 +151,7 @@ angular.module('craftyApp')
       }
 
       if (!(gatherableType in thisFactory.bank)) {
-        thisFactory.bank[gatherableType] = new FSObject({'category':'gatherable', 'name':gatherableType});
+        thisFactory.bank[gatherableType] = new FSBackpack({'category':'gatherable', 'name':gatherableType});
       }
       thisFactory.bank[gatherableType].increment(1);
       thisFactory.updateBank();
@@ -201,7 +201,7 @@ angular.module('craftyApp')
       
       // add output to bank.
       if (!(craftableOutput in thisFactory.bank)) {
-        thisFactory.bank[craftableOutput] = new FSObject( {'category':thisFactory.recipeDef[craftableKey].category, 'name':craftableOutput});
+        thisFactory.bank[craftableOutput] = new FSBackpack( {'category':thisFactory.recipeDef[craftableKey].category, 'name':craftableOutput});
       }
       thisFactory.bank[craftableOutput].increment( craftableOutputQuantity);
       thisFactory.updateBank();

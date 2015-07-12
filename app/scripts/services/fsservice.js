@@ -62,6 +62,17 @@ angular.module('craftyApp')
         });
     };
 
+      /**
+     * @desc 
+     * @return 
+     */
+    this.saveJson = function() {
+        console.log('input:' + this.user.input); 
+
+       thisService.simulation.deserialize();
+   
+    };
+
     this.createSim = function() {
       console.log('Load JSON success'  + JSON.stringify(thisService.data));
       this.taskTimeScalarDivVis ='';

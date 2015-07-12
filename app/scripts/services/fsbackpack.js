@@ -2,17 +2,17 @@
 
 /**
  * @ngdoc service
- * @name craftyApp.FSObject
+ * @name craftyApp.FSBackpack
  * @description
- * # FSObject
+ * # FSBackpack
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSObject', function () {
+  .factory('FSBackpack', function () {
     // Service logic
     
-    // FSObject
-    var FSObject = function(obj) { 
+    // FSBackpack
+    var FSBackpack = function(obj) { 
         this.quantity = [];
         this.category = obj.category;
         this.name = obj.name;
@@ -22,7 +22,7 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSObject.prototype.increment = function( amount) {
+    FSBackpack.prototype.increment = function( amount) {
       for (var i = 0; i < amount; i ++) {
         this.quantity.push({});
       }
@@ -32,7 +32,7 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSObject.prototype.decrement = function( amount) {
+    FSBackpack.prototype.decrement = function( amount) {
       for (var i = 0; i < amount; i ++) {
         this.quantity.pop();
       }
@@ -42,7 +42,7 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSObject.prototype.bgcolor = function( ) {
+    FSBackpack.prototype.bgcolor = function( ) {
       var color = null;
       switch (this.category) {
        // case 'constructor':
@@ -64,5 +64,5 @@ angular.module('craftyApp')
 
   
 
-    return FSObject;
+    return FSBackpack;
   });
