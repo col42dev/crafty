@@ -28,7 +28,7 @@ angular.module('craftyApp')
 	      this.taskTimeScalarDivVis ='hidden';
 
 	      // reset
-	      this.master = {input: 'https://api.myjson.com/bins/16mtq?pretty=1'};
+	      this.master = {input: 'https://api.myjson.com/bins/2hdru?pretty=1'};
 	      this.user = angular.copy(this.master);
   	  }
     };
@@ -83,7 +83,7 @@ angular.module('craftyApp')
     };
 
     this.onClickBody = function(tableName, key) {
-      thisService.simulation.onClickBody( tableName, key['name']);
+      thisService.simulation.onClickBody( tableName, key.name);
     };
 
     

@@ -5,6 +5,7 @@
         {
             "name": "Stroldrin Harvester",
             "profession": "harvesting",
+            "image" : "http://www.3drt.com/3dm/characters/dark-knights/dark-knight-fantasy-character-lowpoly_05.jpg",
             "stats": {
                 "health": {
                     "current": "100",
@@ -26,6 +27,7 @@
         {
             "name": "Gronderlug Crafter",
             "profession": "crafting",
+            "image" : "https://s-media-cache-ak0.pinimg.com/originals/f9/f3/d4/f9f3d4e8af9671c04c53351de58f1173.jpg",
             "stats": {
                 "health": {
                     "current": "10",
@@ -47,6 +49,7 @@
         {
             "name": "Dorasgrour Server",
             "profession": "services",
+            "image" : "http://3drt.com/store/images/detailed/5/thief-3d-character-fantasy-lowpoly_06.jpg?t=1431440642",
             "stats": {
                 "health": {
                     "current": "100",
@@ -68,6 +71,7 @@
         {
             "name": "Skoveath Harvester",
             "profession": "harvesting",
+            "image" : "http://3drt.com/store/images/detailed/5/thief-3d-character-fantasy-lowpoly_05.jpg?t=1431440642",
             "stats": {
                 "health": {
                     "current": "100",

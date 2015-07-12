@@ -24,14 +24,14 @@ angular.module('craftyApp')
 			this.taskTimeScalar ='1';
 
 	         // Defines
-	        this.harvestableDefines = json['harvestableDefines'];  
-	        this.gatherableDefines = json['gatherableDefines'];  
-	        this.toolDefines = json['toolDefines'];  
-	        this.foodDefines = json['foodDefines'];  
+	        this.harvestableDefines = json.harvestableDefines;  
+	        this.gatherableDefines = json.gatherableDefines;  
+	        this.toolDefines = json.toolDefines;  
+	        this.foodDefines = json.foodDefines;  
 
 			// Recipes Defines
 	        this.recipeDef = {};  
-	        var jsonRecipesDefines = json['recipesDefines'];
+	        var jsonRecipesDefines = json.recipesDefines;
 	        for (var key in jsonRecipesDefines) {
 	        	if (jsonRecipesDefines.hasOwnProperty(key)) {
 	          		this.recipeDef[key] = new FSRecipeDef(jsonRecipesDefines[key], this);
@@ -40,7 +40,7 @@ angular.module('craftyApp')
 
 	     	// Characters
 		    this.characterObjs = {};  
- 			json['characters'].forEach( ( function(thisCharacter) {
+ 			json.characters.forEach( ( function(thisCharacter) {
  				var characterName = thisCharacter.name;
 	          	this.characterObjs[characterName] = new FSCharacter(thisCharacter, thisFactory, ctrllerScope);
 	          	this.selectedCharacter = this.characterObjs[characterName];
@@ -51,7 +51,7 @@ angular.module('craftyApp')
 
 	        // Gatherables
 	        this.gatherables = {};  
-	        json['gatherables'].forEach( ( function(thisGatherables) {
+	        json.gatherables.forEach( ( function(thisGatherables) {
 	        	var obj = thisGatherables;
 	        	obj.gatherers = 0;
 	          	this.gatherables[thisGatherables.name] = new FSGatherable(obj, this);
@@ -65,7 +65,7 @@ angular.module('craftyApp')
 
 	        // Harvestables
 	        this.harvestables = {};  
-	        json['harvestables'].forEach( ( function(thisHarvestable) {
+	        json.harvestables.forEach( ( function(thisHarvestable) {
 	          	this.harvestables[thisHarvestable.name] = new FSHarvestable(thisHarvestable, this);
 	        }).bind(this)); 
 	        this.updateHarvestables = function() {
@@ -77,7 +77,7 @@ angular.module('craftyApp')
 
 			// Bank
 	        this.bank = {};  
-	        json['bank'].forEach( ( function(item) {
+	        json.bank.forEach( ( function(item) {
 	        	var category = 'unknown';
 	        	if ( this.toolDefines.hasOwnProperty(item.name) === true) 
 	        	{
@@ -97,7 +97,7 @@ angular.module('craftyApp')
 
 	        // Know Recipes
 	        this.knownRecipes = {}; 
-	        json['recipes'].forEach( ( function( recipeName ) {
+	        json.recipes.forEach( ( function( recipeName ) {
 	          		this.knownRecipes[recipeName] =  new FSRecipe( recipeName, this);
 	        	}).bind(this)); 
 	        this.updateRecipes = function() {
@@ -109,7 +109,7 @@ angular.module('craftyApp')
 
 	        // Rewards
 	        this.rewards = {};  
-	        json['rewardDefines'].forEach( ( function(thisReward) {
+	        json.rewardDefines.forEach( ( function(thisReward) {
 	          	this.rewards[thisReward.name] = new FSReward(thisReward, this);
 	        }).bind(this)); 
 

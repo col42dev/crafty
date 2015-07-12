@@ -1,67 +1,26 @@
 
 <div class="fadedbackground">
 
-  
-<h4>CHARACTER SHEET: {{getFSService().simulation.selectedCharacter.name}}</h4>  
 
 <table class="table table-bordered table-condensed">
   <thead>
+      <td class="col-sm-7">
+        <h4>{{getFSService().simulation.selectedCharacter.json.name}}</h4>
+      </td>
+      <td class="col-sm-6">
+         
+      </td>
   </thead>
   <tbody>
-      <tr>
-      <table class="table table-bordered  table-condensed">
-        <tbody>
-          <tr class="noselect">
-            <td><b>Profession</b></td>
-              <td class="noselect" >
-                {{getFSService().simulation.selectedCharacter.json.profession}}
-              </td>
-          </tr>
-        </tbody>
-      </table>
-    </tr>
-
     <tr>
-      <table class="table table-bordered  table-condensed">
-        <tbody>
-          <tr class="noselect">
-            <td><b>Activity</b></td>
-              <td ng-repeat="v in getFSService().simulation.selectedCharacter.activity" class="noselect" >
-                {{v.name}}
-              </td>
-        
-          </tr>
-        </tbody>
-      </table>
-    </tr>
-
-    <tr>
-      <table class="table table-bordered table-condensed">
-        <tbody>
-         <tr class="noselect">
-            <td><b>Tools</b></td>
-            <td ng-repeat="v in getFSService().simulation.selectedCharacter.tools" class="noselect" ng-click="getFSService().simulation.onClickCharacterTool(v)" bgcolor={{v.bgcolor()}} >
-                {{v.name}}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </tr>
-
-    <tr>
-      <table class="table table-bordered table-condensed">
-        <tbody>
-         <tr class="noselect">
-            <td><b>Weapons</b></td>
-            <td  ng-repeat="v in getFSService().simulation.selectedCharacter.weapons" class="noselect" ng-click="getFSService().simulation.onClickCharacterWeapon(v)" bgcolor={{v.bgcolor()}} >
-                {{v.name}}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <td class="col-sm-7">
+        <image src="{{getFSService().simulation.selectedCharacter.json.image}}"></image>
+      </td>
+      <td class="col-sm-6">
+         <div ng-include src="'views/charactersheetstats.html'"></div>
+      </td>
     </tr>
   </tbody>
-
 </table> 
 
 

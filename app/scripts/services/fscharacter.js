@@ -413,8 +413,8 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.getStatPercentage = function ( type) {
-      var stats = this.json['stats'][type];
-      return Math.floor(100 * parseInt(stats['current'], 10) /  parseInt(stats['max'], 10)) +'%';
+      var stats = this.json.stats[type];
+      return Math.floor(100 * parseInt(stats.current, 10) /  parseInt(stats.max, 10)) +'%';
     };
 
 
@@ -424,18 +424,18 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.modifyStat = function ( type, subtype, amount) {
 
-      var newValue = parseInt(this.json['stats'][type][subtype], 10) + amount;
+      var newValue = parseInt(this.json.stats[type][subtype], 10) + amount;
       if (subtype === 'current') {
-        if ( parseInt(this.json['stats'][type]['current'], 10) + amount > parseInt(this.json['stats'][type]['max'], 10)) {
-            newValue = parseInt( this.json['stats'][type]['max'], 10);
+        if ( parseInt(this.json.stats[type].current, 10) + amount > parseInt(this.json.stats[type].max, 10)) {
+            newValue = parseInt( this.json.stats[type].max, 10);
         }
-        if ( parseInt(this.json['stats'][type]['current'], 10) + amount < 0) {
+        if ( parseInt(this.json.stats[type].current, 10) + amount < 0) {
             newValue = 0;
         }
       }
 
-      this.json['stats'][type][subtype] = newValue;
-      return this.json['stats'][type][subtype];
+      this.json.stats[type][subtype] = newValue;
+      return this.json.stats[type][subtype];
     };
 
     /**

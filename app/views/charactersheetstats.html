@@ -1,0 +1,88 @@
+
+<table class="table table-bordered table-condensed">
+  <tbody>
+
+    <tr>
+      <table class="table table-bordered  table-condensed">
+        <tbody>
+          <tr class="noselect">
+            <td><b>Profession</b></td>
+              <td class="noselect" >
+                {{getFSService().simulation.selectedCharacter.json.profession}}
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </tr>
+
+    <tr>
+      <table class="table table-bordered  table-condensed">
+        <thead>
+          <tr class="noselect">
+            <td class="col-sm-1"><b>Health</b></td>
+            <td class="col-sm-1"><b>Energy</b></td>
+            <td class="col-sm-1"><b>Mind</b></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="noselect">
+              <td  class="noselect" >
+                {{getFSService().simulation.selectedCharacter.json.stats.health.current}} / {{getFSService().simulation.selectedCharacter.json.stats.health.max}} 
+              </td>
+              <td  class="noselect" >
+                {{getFSService().simulation.selectedCharacter.json.stats.energy.current}} / {{getFSService().simulation.selectedCharacter.json.stats.energy.max}} 
+              </td>
+              <td  class="noselect" >
+                {{getFSService().simulation.selectedCharacter.json.stats.mind.current}} /  {{getFSService().simulation.selectedCharacter.json.stats.mind.max}}
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </tr>
+
+
+
+    <tr>
+      <table class="table table-bordered  table-condensed">
+        <tbody>
+          <tr class="noselect">
+            <td><b>Activity</b></td>
+              <td ng-repeat="v in getFSService().simulation.selectedCharacter.activity" class="noselect" >
+                {{v.name}}
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </tr>
+
+    <tr>
+      <table class="table table-bordered table-condensed">
+        <tbody>
+         <tr class="noselect">
+            <td><b>Tools</b></td>
+            <td ng-repeat="v in getFSService().simulation.selectedCharacter.tools" class="noselect" ng-click="getFSService().simulation.onClickCharacterTool(v)" bgcolor={{v.bgcolor()}} >
+                {{v.name}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </tr>
+
+    <tr>
+      <table class="table table-bordered table-condensed">
+        <tbody>
+         <tr class="noselect">
+            <td><b>Weapons</b></td>
+            <td  ng-repeat="v in getFSService().simulation.selectedCharacter.weapons" class="noselect" ng-click="getFSService().simulation.onClickCharacterWeapon(v)" bgcolor={{v.bgcolor()}} >
+                {{v.name}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </tr>
+
+
+
+  </tbody>
+</table>
+      
