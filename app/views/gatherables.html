@@ -14,9 +14,9 @@
 <table class="table table-bordered table-condensed table-scrollable">
   
   <tbody>
-    <tr ng-repeat="v in getFSService().simulation.gatherablesArray | orderBy:getFSService().simulation.orderGatherablesBy" ng-click="getFSService().onClickBody('Gatherables', v)" class="noselect" >
-     <td class="col-sm-4" bgcolor={{v.bgcolor()}} > {{v.name}}</td> 
-     <td class="col-sm-1"> {{v.quantity}}</td> 
+    <tr ng-repeat="v in getFSService().simulation.gatherablesArray | orderBy:getFSService().simulation.orderGatherablesBy" ng-click="getFSService().onClickBody('Gatherables', v.json)" class="noselect" >
+     <td class="col-sm-4" bgcolor={{v.bgcolor()}} > {{v.json.name}}</td> 
+     <td class="col-sm-1"> {{v.json.quantity}}</td> 
     </tr>
   </tbody>
 

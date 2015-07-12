@@ -16,9 +16,11 @@ angular.module('craftyApp')
     var FSGatherable = function( obj, simulation) { 
 
       this.simulation = simulation;
-      this.name = obj.name;
-      this.quantity = obj.quantity;
-      this.gatherers = obj.gatherers;
+      //this.name = obj.name;
+      //this.quantity = obj.quantity;
+      //this.gatherers = obj.gatherers;
+
+      this.json = obj;
     };
 
     /**
@@ -28,7 +30,7 @@ angular.module('craftyApp')
     FSGatherable.prototype.bgcolor =  function( ) {         
       var color =  '#00FF00';     
 
-      if( this.simulation.selectedCharacter.hasGatheringDependencies(this.name) === false) {
+      if( this.simulation.selectedCharacter.hasGatheringDependencies(this.json.name) === false) {
         color  = '#FF0000'; 
       }
 

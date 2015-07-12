@@ -36,8 +36,8 @@ angular.module('craftyApp')
 
       var tools = [];
       
-      if ( character.tools.length > 0) {
-        tools.push(character.tools[0].name);
+      if ( character.json.tools.length > 0) {
+        tools.push(character.json.tools[0].name);
       } else {
         tools.push('Hands');
       }
@@ -92,8 +92,8 @@ angular.module('craftyApp')
       }
       var tools = [];
       
-      if ( character.tools.length > 0) {
-        tools.push(character.tools[0].name);
+      if ( character.json.tools.length > 0) {
+        tools.push(character.json.tools[0].name);
       } else {
         tools.push('Hands');
       }

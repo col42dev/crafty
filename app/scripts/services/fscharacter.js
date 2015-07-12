@@ -18,14 +18,10 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    var FSCharacter = function(json, simFactory, ctrllerScope) {
+    var FSCharacter = function(json, simFactory) {
         thisFactory = simFactory;
         this.json = json;
-        this.activity = [];
-        this.tools = [];
-        this.weapons = [];
-        this.activityCompletedCallback = [];
-        this.ctrllerScope = ctrllerScope;
+
         this.updateActiveTaskRemainingPercent = 100;
 
         setInterval( (function () {
@@ -67,12 +63,12 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.startHarvesting = function ( harvestablesName) {
-      if ( this.activity.length < 4 ) {
+      if ( this.json.activity.length < 4 ) {
         if (thisFactory.harvestables[harvestablesName].quantity > 0) {
           if ( this.hasStatsFor('harvesting') === true) {
             if ( thisFactory.harvestables[harvestablesName].isHarvestableBy( thisFactory.selectedCharacter) === true) {
-              this.activity.push( new FSTask( {'name':harvestablesName, 'category':'harvesting'}));
-              if (this.activity.length === 1) {
+              this.json.activity.push( new FSTask( {'name':harvestablesName, 'category':'harvesting'}));
+              if (this.json.activity.length === 1) {
                 this.startNextTask();
               }
             }
@@ -89,7 +85,7 @@ angular.module('craftyApp')
 
       clearInterval(this.updateActiveTaskInterval);
 
-      var harvestableType = this.activity[0].name;
+      var harvestableType = this.json.activity[0].name;
 
       thisFactory.harvestables[harvestableType].quantity -= 1;
 
@@ -99,24 +95,25 @@ angular.module('craftyApp')
         thisFactory.updateHarvestables();
       }
 
-      if (!(harvestableType in thisFactory.gatherables)) { //todo: debug this condition!
+      // need to ensure there is an instance in gatherables before it can be incremented.
+      if (!(harvestableType in thisFactory.gatherables)) { 
           var obj = {'name': harvestableType, 'quantity': '0'};
           obj.gatherers = 0;
 
-        thisFactory.gatherables[harvestableType] = new FSGatherable(obj, thisFactory);
+          thisFactory.gatherables[harvestableType] = new FSGatherable(obj, thisFactory);
       }
       
-      thisFactory.gatherables[harvestableType].quantity ++;
+      thisFactory.gatherables[harvestableType].json.quantity ++;
       thisFactory.updateGatherables();
 
-      this.activity.splice(0, 1);
+      this.json.activity.splice(0, 1);
 
       // start next activity
-      if (this.activity.length > 0) {
+      if (this.json.activity.length > 0) {
         this.startNextTask();
       }
 
-      this.ctrllerScope.$apply();
+      thisFactory.ctrllrScopeApply();
     };
 
     /**
@@ -125,11 +122,11 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.startGathering = function ( gatherablesName) {
 
-      if ( this.activity.length < 4 ) {
-        if (thisFactory.gatherables.hasOwnProperty(gatherablesName) && thisFactory.gatherables[gatherablesName].quantity > 0) {
+      if ( this.json.activity.length < 4 ) {
+        if (thisFactory.gatherables.hasOwnProperty(gatherablesName) && thisFactory.gatherables[gatherablesName].json.quantity > 0) {
           if ( this.hasStatsFor('gathering') === true) {
-            this.activity.push( new FSTask( {'name':gatherablesName, 'category':'gathering'}));
-            if (this.activity.length === 1) {
+            this.json.activity.push( new FSTask( {'name':gatherablesName, 'category':'gathering'}));
+            if (this.json.activity.length === 1) {
               this.startNextTask();
             }
           }
@@ -145,12 +142,12 @@ angular.module('craftyApp')
 
       clearInterval(this.updateActiveTaskInterval);
 
-      var gatherableType = this.activity[0].name;
+      var gatherableType = this.json.activity[0].name;
 
-      thisFactory.gatherables[gatherableType].quantity -= 1;
-      thisFactory.gatherables[gatherableType].gatherers --;
+      thisFactory.gatherables[gatherableType].json.quantity -= 1;
+      thisFactory.gatherables[gatherableType].json.gatherers --;
 
-      if ( thisFactory.gatherables[gatherableType].quantity === 0) {
+      if ( thisFactory.gatherables[gatherableType].json.quantity === 0) {
         delete thisFactory.gatherables[gatherableType];
         thisFactory.updateGatherables();
       }
@@ -161,14 +158,14 @@ angular.module('craftyApp')
       thisFactory.bank[gatherableType].increment(1);
       thisFactory.updateBank();
 
-      this.activity.splice(0, 1);
+      this.json.activity.splice(0, 1);
 
       // start next activity
-      if (this.activity.length > 0) {
+      if (this.json.activity.length > 0) {
         this.startNextTask();
       }
 
-      this.ctrllerScope.$apply();
+       thisFactory.ctrllrScopeApply();
     };
 
 
@@ -178,8 +175,8 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.startCrafting = function ( craftableKey) {
       if ( this.hasStatsFor('crafting') === true) {
-        this.activity.push( new FSTask({'name':craftableKey, 'category':'crafting'}));
-        if (this.activity.length === 1) {
+        this.json.activity.push( new FSTask({'name':craftableKey, 'category':'crafting'}));
+        if (this.json.activity.length === 1) {
           this.startNextTask();
         }
       }
@@ -194,7 +191,7 @@ angular.module('craftyApp')
 
       clearInterval(this.updateActiveTaskInterval);
 
-      var craftableKey = this.activity[0].name;
+      var craftableKey = this.json.activity[0].name;
 
       // generate output in bank.
       var craftableOutputObj = thisFactory.recipeDef[craftableKey].output;
@@ -214,14 +211,14 @@ angular.module('craftyApp')
       //Rewards
       thisFactory.checkRewards( {'action':'craft', 'target':craftableOutput});
 
-      this.activity.splice(0, 1);
+      this.json.activity.splice(0, 1);
 
       // start next activity
-      if (this.activity.length > 0) {
+      if (this.json.activity.length > 0) {
         this.startNextTask();
       }
 
-      this.ctrllerScope.$apply();
+       thisFactory.ctrllrScopeApply();
     };
 
 
@@ -230,18 +227,18 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.startNextTask = function () {     
-      var taskName = this.activity[0].name;
+      var taskName = this.json.activity[0].name;
 
       var thisCharacter = this;
  
 
-      switch ( this.activity[0].category) {
+      switch ( this.json.activity[0].category) {
         case 'gathering':
           {
             var hasGatherables = false;
             if (taskName in thisFactory.gatherables) {
-              if (thisFactory.gatherables[taskName].quantity > 0) {
-                if ( thisFactory.gatherables[taskName].quantity > thisFactory.gatherables[taskName].gatherers) { // too many cooks?
+              if (thisFactory.gatherables[taskName].json.quantity > 0) {
+                if ( thisFactory.gatherables[taskName].json.quantity > thisFactory.gatherables[taskName].json.gatherers) { // too many cooks?
                   hasGatherables = true;
                 }
               }
@@ -263,10 +260,10 @@ angular.module('craftyApp')
                        console.log('clearInterval' );
                     }
                 }, gatheringDuration / 100);            
-              thisFactory.gatherables[taskName].gatherers ++;
+              thisFactory.gatherables[taskName].json.gatherers ++;
             } else {
-              this.activity.splice(0, 1);
-              if (this.activity.length > 0) {
+              this.json.activity.splice(0, 1);
+              if (this.json.activity.length > 0) {
                 this.startNextTask();
               }
             }
@@ -294,8 +291,8 @@ angular.module('craftyApp')
                 }, harvestingDuration / 100);
               
             } else {
-              this.activity.splice(0, 1);
-              if (this.activity.length > 0) {
+              this.json.activity.splice(0, 1);
+              if (this.json.activity.length > 0) {
                 this.startNextTask();
               }
             }
@@ -370,7 +367,7 @@ angular.module('craftyApp')
     FSCharacter.prototype.hasToolAction = function ( toolAction) {
       var bHasToolAction = false;
 
-      var equippedToolName = (this.tools.length > 0) ? this.tools[0].name : 'Hands';
+      var equippedToolName = (this.json.tools.length > 0) ? this.json.tools[0].name : 'Hands';
 
       thisFactory.toolDefines[equippedToolName].actions.forEach( ( function ( action) {
         if ( toolAction === action) {
@@ -386,7 +383,7 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.queuedTaskCount = function ( ) {
-      return Math.max(this.activity.length - 1, 0);
+      return Math.max(this.json.activity.length - 1, 0);
     };
 
     /**

@@ -60,7 +60,7 @@
         <tbody>
          <tr class="noselect">
             <td><b>Tools</b></td>
-            <td ng-repeat="v in getFSService().simulation.selectedCharacter.tools" class="noselect" ng-click="getFSService().simulation.onClickCharacterTool(v)" bgcolor={{v.bgcolor()}} >
+            <td ng-repeat="v in getFSService().simulation.selectedCharacter.json.tools" class="noselect" ng-click="getFSService().simulation.onClickCharacterTool(v)" bgcolor={{v.bgcolor()}} >
                 {{v.name}}
             </td>
           </tr>
@@ -73,7 +73,7 @@
         <tbody>
          <tr class="noselect">
             <td><b>Weapons</b></td>
-            <td  ng-repeat="v in getFSService().simulation.selectedCharacter.weapons" class="noselect" ng-click="getFSService().simulation.onClickCharacterWeapon(v)" bgcolor={{v.bgcolor()}} >
+            <td  ng-repeat="v in getFSService().simulation.selectedCharacter.json.weapons" class="noselect" ng-click="getFSService().simulation.onClickCharacterWeapon(v)" bgcolor={{v.bgcolor()}} >
                 {{v.name}}
             </td>
           </tr>

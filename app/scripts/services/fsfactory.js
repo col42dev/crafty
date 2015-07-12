@@ -11,13 +11,15 @@ angular.module('craftyApp')
   .factory('FSFactory', function ( FSCharacter, FSTask, FSObject, FSGatherable, FSRecipeDef, FSRecipe, FSReward, FSHarvestable) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
+
     /**
      * @desc 
      * @return 
      */
-  	var FSFactory = function(ctrllerScope, json) {
+  	var FSFactory = function(scope, json) {
 
   		var thisFactory = this;
+  		var ctrllerScope = scope;
 
 	    this.initialize = function() {
 	
@@ -42,7 +44,7 @@ angular.module('craftyApp')
 		    this.characterObjs = {};  
  			json.characters.forEach( ( function(thisCharacter) {
  				var characterName = thisCharacter.name;
-	          	this.characterObjs[characterName] = new FSCharacter(thisCharacter, thisFactory, ctrllerScope);
+	          	this.characterObjs[characterName] = new FSCharacter(thisCharacter, thisFactory);
 	          	this.selectedCharacter = this.characterObjs[characterName];
 	        }).bind(this)); 
 	       	this.onClickCharacter = function ( character) {
@@ -114,6 +116,15 @@ angular.module('craftyApp')
 	        }).bind(this)); 
 
 	    };
+
+	      /**
+		 * @desc 
+		 * @return 
+		 */
+    	this.ctrllrScopeApply = function ( ) {
+    		 ctrllerScope.$apply();
+    	};
+	
 
 	    /**
 		 * @desc - order table by field values
@@ -207,9 +218,9 @@ angular.module('craftyApp')
 		 */
 		 this.onClickCharacterTool = function ( toolObj) {
 
-		      var indexOf = this.selectedCharacter.tools.indexOf(toolObj);
+		      var indexOf = this.selectedCharacter.json.tools.indexOf(toolObj);
 		      if ( indexOf !== -1) {
-		      	this.selectedCharacter.tools.splice(indexOf, 1);
+		      	this.selectedCharacter.json.tools.splice(indexOf, 1);
 
 		      	 if (!(toolObj.name in thisFactory.bank)) {
         			thisFactory.bank[toolObj.name] = new FSObject({'category':'tool', 'name':toolObj.name});
@@ -225,9 +236,9 @@ angular.module('craftyApp')
 		 */
 		 this.onClickCharacterWeapon = function ( weaponObj) {
 
-		      var indexOf = this.selectedCharacter.weapons.indexOf(weaponObj);
+		      var indexOf = this.selectedCharacter.json.weapons.indexOf(weaponObj);
 		      if ( indexOf !== -1) {
-		      	this.selectedCharacter.weapons.splice(indexOf, 1);
+		      	this.selectedCharacter.json.weapons.splice(indexOf, 1);
 
 		      	 if (!(weaponObj.name in thisFactory.bank)) {
         			thisFactory.bank[weaponObj.name] = new FSObject({'category':'weapon', 'name':weaponObj.name});
@@ -247,7 +258,7 @@ angular.module('craftyApp')
         		case 'tool': { // add to character inventory 
 	        		if (this.bank[bankItemKey].quantity.length > 0) {
 	        			this.bank[bankItemKey].decrement(1) ;
-	        			this.selectedCharacter.tools.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
+	        			this.selectedCharacter.json.tools.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
 
 	        			if ( this.bank[bankItemKey].quantity.length === 0) {
 	        				delete  this.bank[bankItemKey];
@@ -282,7 +293,7 @@ angular.module('craftyApp')
         		case 'weapon': { // add to character inventory 
 	        		if (this.bank[bankItemKey].quantity.length > 0) {
 	        			this.bank[bankItemKey].decrement(1) ;
-	        			this.selectedCharacter.weapons.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
+	        			this.selectedCharacter.json.weapons.push( new FSObject( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
 
 	        			if ( this.bank[bankItemKey].quantity.length === 0) {
 	        				delete  this.bank[bankItemKey];
@@ -357,7 +368,7 @@ angular.module('craftyApp')
 			
 			if ( hasIngredients === true) {
 
-			    if ( this.selectedCharacter !== null && this.selectedCharacter.activity.length < 4) {
+			    if ( this.selectedCharacter !== null && this.selectedCharacter.json.activity.length < 4) {
 
 		          	this.selectedCharacter.startCrafting( recipeKey);
 
