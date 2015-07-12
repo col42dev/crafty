@@ -13,14 +13,10 @@ angular.module('craftyApp')
     // ...
 
     // Gatherables
-    var FSGatherable = function( obj, simulation) { 
+    var FSGatherable = function( json, simulation) { 
 
       this.simulation = simulation;
-      //this.name = obj.name;
-      //this.quantity = obj.quantity;
-      //this.gatherers = obj.gatherers;
-
-      this.json = obj;
+      this.json = json;
     };
 
     /**

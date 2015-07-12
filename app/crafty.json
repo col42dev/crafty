@@ -106,47 +106,58 @@
     "gatherables": [
         {
             "name": "Stone",
-            "quantity": "1"
+            "quantity": "1",
+            "gatherers": "0"
         },
         {
             "name": "Coal",
-            "quantity": "1"
+            "quantity": "1",
+            "gatherers": "0"
         },
         {
             "name": "Iron Ore",
-            "quantity": "3"
+            "quantity": "3",
+            "gatherers": "0"
         },
         {
             "name": "Water",
-            "quantity": "100"
+            "quantity": "100",
+            "gatherers": "0"
         },
         {
             "name": "Wood",
-            "quantity": "5"
+            "quantity": "5",
+            "gatherers": "0"
         },
         {
             "name": "Wool",
-            "quantity": "10"
+            "quantity": "10",
+            "gatherers": "0"
         },
         {
             "name": "Leaves",
-            "quantity": "100"
+            "quantity": "100",
+            "gatherers": "0"
         },
         {
             "name": "Grain",
-            "quantity": "20"
+            "quantity": "20",
+            "gatherers": "0"
         },
         {
             "name": "Antler",
-            "quantity": "9"
+            "quantity": "9",
+            "gatherers": "0"
         },
         {
             "name": "Sand",
-            "quantity": "20"
+            "quantity": "20",
+            "gatherers": "0"
         },
         {
             "name": "Feather",
-            "quantity": "5"
+            "quantity": "5",
+            "gatherers": "0"
         }
     ],
     "harvestables": [

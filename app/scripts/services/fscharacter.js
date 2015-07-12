@@ -97,9 +97,7 @@ angular.module('craftyApp')
 
       // need to ensure there is an instance in gatherables before it can be incremented.
       if (!(harvestableType in thisFactory.gatherables)) { 
-          var obj = {'name': harvestableType, 'quantity': '0'};
-          obj.gatherers = 0;
-
+          var obj = {'name': harvestableType, 'quantity': '0', 'gatherers' : 0};
           thisFactory.gatherables[harvestableType] = new FSGatherable(obj, thisFactory);
       }
       
