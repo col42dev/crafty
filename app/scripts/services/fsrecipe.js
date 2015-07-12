@@ -16,8 +16,13 @@ angular.module('craftyApp')
     var FSRecipe = function( name, thisFactory) { 
       this.name = name;
       this.thisFactory = thisFactory;
+      this.category = this.getCategory();
     };
 
+    /**
+     * @desc 
+     * @return 
+     */
     FSRecipe.prototype.bgcolor = function( ) {
 
       var enabled = true;
@@ -51,5 +56,21 @@ angular.module('craftyApp')
       return  (enabled === true) ? '#00FF00' : '#FF0000';
     };
 
+
+    /**
+     * @desc 
+     * @return 
+     */
+    FSRecipe.prototype.getCategory = function( ) {
+      //console.log('getCategory');
+      if (this.thisFactory.recipeDef.hasOwnProperty(this.name) === true) {
+          return this.thisFactory.recipeDef[this.name].category;
+      }
+      return 'bug';
+    };
+
     return FSRecipe;
   });
+
+
+

@@ -5,12 +5,16 @@
  * @name craftyApp.FSFactory
  * @description
  * # FSFactory
- * Service in the craftyApp.
+ * Simulation factory
  */
 angular.module('craftyApp')
   .factory('FSFactory', function ( FSCharacter, FSTask, FSObject, FSGatherable, FSRecipeDef, FSRecipe, FSReward, FSHarvestable) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
+    /**
+     * @desc 
+     * @return 
+     */
   	var FSFactory = function(ctrllerScope, json) {
 
   		var thisFactory = this;
@@ -41,7 +45,6 @@ angular.module('craftyApp')
 	          	this.characterObjs[characterName] = new FSCharacter(thisCharacter, thisFactory, ctrllerScope);
 	          	this.selectedCharacter = this.characterObjs[characterName];
 	        }).bind(this)); 
-
 	       	this.onClickCharacter = function ( character) {
 	        	this.selectedCharacter = character;
 	        };
@@ -59,12 +62,6 @@ angular.module('craftyApp')
 	        	});
 	    	};
 	    	this.updateGatherables();
-	        this.orderGatherablesBy = 'name';
-	        this.orderGatherablesByOrder = '+';
-	        this.onClickGatherablesHeader = function ( fieldName) {
-	        	this.orderGatherablesByOrder = (this.orderGatherablesByOrder==='+') ? '-' : '+';
-	        	this.orderGatherablesBy = this.orderGatherablesByOrder + fieldName;
-	        };	
 
 	        // Harvestables
 	        this.harvestables = {};  
@@ -77,19 +74,10 @@ angular.module('craftyApp')
 	        	});
 	    	};
 	    	this.updateHarvestables();
-	        this.orderHarvestablesBy = 'name';
-	        this.orderHarvestablesByOrder = '+';
-	        this.onClickHarvestablesHeader = function ( fieldName) {
-	        	this.orderHarvestablesByOrder = (this.orderHarvestablesByOrder==='+') ? '-' : '+';
-	        	this.orderHarvestablesBy = this.orderHarvestablesByOrder + fieldName;
-	        };	
-
 
 			// Bank
 	        this.bank = {};  
-
 	        json['bank'].forEach( ( function(item) {
-
 	        	var category = 'unknown';
 	        	if ( this.toolDefines.hasOwnProperty(item.name) === true) 
 	        	{
@@ -106,29 +94,91 @@ angular.module('craftyApp')
 		        	});
 	    	};
 	    	this.updateBank();
-	        this.orderBankBy = 'name';
-	        this.orderBankByOrder = '+';
-	        this.onClickBankHeader = function ( fieldName) {
-	        	this.orderBankByOrder = (this.orderBankByOrder==='+') ? '-' : '+';
-	        	this.orderBankBy = this.orderBankByOrder + fieldName;
-	        };	
 
 	        // Know Recipes
 	        this.knownRecipes = {}; 
 	        json['recipes'].forEach( ( function( recipeName ) {
 	          		this.knownRecipes[recipeName] =  new FSRecipe( recipeName, this);
 	        	}).bind(this)); 
-
-
+	        this.updateRecipes = function() {
+		        thisFactory.knownRecipesArray = Object.keys(thisFactory.knownRecipes).map(function (key) {
+		        		return thisFactory.knownRecipes[key];
+		        	});
+	    	};
+	    	this.updateRecipes();
 
 	        // Rewards
 	        this.rewards = {};  
-	        
 	        json['rewardDefines'].forEach( ( function(thisReward) {
 	          	this.rewards[thisReward.name] = new FSReward(thisReward, this);
 	        }).bind(this)); 
 
 	    };
+
+	    /**
+		 * @desc - order table by field values
+		 * @return 
+		 */
+    	this.onClickHeader = function ( tableName, fieldName) {
+			switch ( tableName) {
+				case 'Bank':
+					if ( this.hasOwnProperty('orderBankBy') === false) {
+						this.orderBankBy = 'name';
+		        		this.orderBankByOrder = '+';
+	        		}
+        			this.orderBankByOrder = (this.orderBankByOrder==='+') ? '-' : '+';
+        			this.orderBankBy = this.orderBankByOrder + fieldName;
+        			break;
+        		case 'Gatherables':
+					if ( this.hasOwnProperty('orderGatherablesBy') === false) {
+        			    this.orderGatherablesBy = 'name';
+	        			this.orderGatherablesByOrder = '+';
+	    			}
+        			this.orderGatherablesByOrder = (this.orderGatherablesByOrder==='+') ? '-' : '+';
+        			this.orderGatherablesBy = this.orderGatherablesByOrder + fieldName;
+        			break;
+        		case 'Harvestables':
+        			if ( this.hasOwnProperty('orderHarvestablesBy') === false) {
+	        			this.orderHarvestablesBy = 'name';
+		        		this.orderHarvestablesByOrder = '+';
+	        		}
+        			this.orderHarvestablesByOrder = (this.orderHarvestablesByOrder==='+') ? '-' : '+';
+        			this.orderHarvestablesBy = this.orderHarvestablesByOrder + fieldName;
+        			break;
+        		 case 'Recipes':
+        			if ( this.hasOwnProperty('orderRecipesBy') === false) {
+	        			this.orderRecipesBy = 'name';
+		        		this.orderRecipesByOrder = '+';
+	        		}
+        			this.orderRecipesByOrder = (this.orderRecipesByOrder==='+') ? '-' : '+';
+        			this.orderRecipesBy = this.orderRecipesByOrder + fieldName;
+        			break;
+        	}
+	     };
+
+
+		/**
+		 * @desc 
+		 * @return 
+		 */
+		 this.onClickBody = function ( tableName, keyName) {
+	     	switch (tableName) {
+	     		case 'Bank':
+	     			this.onClickBank(keyName);
+	     			break;
+	     		case 'Gatherables':
+	     			this.onClickGatherables(keyName);
+	     			break;
+	     		case 'Harvestables':
+	     			this.onClickHarvestables(keyName);
+	     			break;
+	     		case 'Recipes':
+	     			this.onClickRecipes(keyName);
+	     			break;
+	     	}
+	 	 };
+
+
 
 		/**
 		 * @desc 
@@ -270,7 +320,7 @@ angular.module('craftyApp')
 		 * @desc 
 		 * @return 
 		 */
-		this.onClickCraftable = function (recipeKey) {
+		this.onClickRecipes = function (recipeKey) {
 		   	// determine if has reqiored ingredients in bank
 		   	var hasIngredients = true;
 		    var recipeInputObj = this.recipeDef[recipeKey].input;

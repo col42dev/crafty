@@ -12,7 +12,10 @@ angular.module('craftyApp')
     // Service logic
     // ...
 
-    // GameItem
+    /**
+     * @desc 
+     * @return 
+     */
     var FSRecipeDef = function( obj, thisFactory) { 
       this.thisFactory = thisFactory;
       this.input = obj.input;
@@ -25,6 +28,10 @@ angular.module('craftyApp')
 
     };
 
+    /**
+     * @desc 
+     * @return 
+     */
     FSRecipeDef.prototype.bgcolor = function( ) {
       var hasResources = true;
       for (var key in this.input) {

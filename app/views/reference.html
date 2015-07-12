@@ -133,5 +133,35 @@
 
 
 
+<div class="fadedbackground">
+
+<h4>FOOD DEFINITIONS (reference)</h4>
+
+<div class="bodycontainer scrollable">
+<table class="table table-bordered table-condensed table-scrollable">
+  <tbody>
+      <tr class="noselect" >
+          <td class="col-sm-1">Name</td>
+          <td class="col-sm-1">Effect</td>
+      </tr>
+  </tbody>
+</table>  
+</div>
+
+<div class="bodycontainer scrollable">
+  <table class="table table-bordered table-condensed table-scrollable">
+
+    <tbody>
+      <tr ng-repeat="(k,v)  in getFSService().simulation.foodDefines" class="noselect" >
+        <td class="col-sm-1">{{k}}</td> 
+        <td class="col-sm-1">{{v.onConsume.stat}}</td> 
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!--fadedbackground-->
+
+
 
  

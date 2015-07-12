@@ -17,17 +17,31 @@ angular.module('craftyApp')
         this.category = obj.category;
         this.name = obj.name;
     };
+
+    /**
+     * @desc 
+     * @return 
+     */
     FSObject.prototype.increment = function( amount) {
       for (var i = 0; i < amount; i ++) {
         this.quantity.push({});
       }
     };
+    
+    /**
+     * @desc 
+     * @return 
+     */
     FSObject.prototype.decrement = function( amount) {
       for (var i = 0; i < amount; i ++) {
         this.quantity.pop();
       }
     };
 
+    /**
+     * @desc 
+     * @return 
+     */
     FSObject.prototype.bgcolor = function( ) {
       var color = null;
       switch (this.category) {

@@ -1,0 +1,34 @@
+
+
+
+
+  <table class="table table-bordered table-condensed">
+    <thead>
+        <tr class="noselect" >
+            <th class="col-sm-3" ng-click="getFSService().onClickHeader('Bank', 'name')">Name</br> &nbsp</th>
+            <th class="col-sm-2" ng-click="getFSService().onClickHeader('Bank', 'category')">Category</br> &nbsp</th>
+            <th class="col-sm-1" ng-click="getFSService().onClickHeader('Bank', 'quantity')">#</br> &nbsp</th>
+        </tr>
+    </thead>
+  </table>  
+
+  <div class="bodycontainer scrollable">
+     <table class="table table-bordered table-condensed table-scrollable" >
+        <tbody> 
+          <tr ng-repeat="v in getFSService().simulation.bankArray | orderBy:getFSService().simulation.orderBankBy" ng-click="getFSService().onClickBody('Bank', v)" class="noselect" >
+            <td class="col-sm-3"  bgcolor={{v.bgcolor()}}>{{ v.name }}</td>
+            <td class="col-sm-2"> {{ v.category}}</td>
+            <td class="col-sm-1"> {{ v.quantity.length }}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+
+
+
+
+
+
+
+ 

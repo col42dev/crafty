@@ -14,11 +14,11 @@ angular.module('craftyApp')
 
 
 
-      // FStask
-      var FSTask = function(taskObj) {
-        this.name = taskObj.name;
-        this.category = taskObj.category;
-      };
+    // FStask
+    var FSTask = function(taskObj) {
+      this.name = taskObj.name;
+      this.category = taskObj.category;
+    };
 
 
    /**

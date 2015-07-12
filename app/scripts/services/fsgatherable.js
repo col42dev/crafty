@@ -21,6 +21,10 @@ angular.module('craftyApp')
       this.gatherers = obj.gatherers;
     };
 
+    /**
+     * @desc 
+     * @return 
+     */
     FSGatherable.prototype.bgcolor =  function( ) {         
       var color =  '#00FF00';     
 

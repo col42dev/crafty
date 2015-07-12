@@ -15,6 +15,10 @@ angular.module('craftyApp')
     var thisService = this;
     var inited = false;
 
+    /**
+     * @desc 
+     * @return 
+     */
     this.init = function( ctrlscope) {
 
       if (inited === false) {
@@ -29,6 +33,10 @@ angular.module('craftyApp')
   	  }
     };
 
+    /**
+     * @desc 
+     * @return 
+     */
     this.loadJson = function() {
         console.log('input:' + this.user.input); 
 
@@ -69,32 +77,14 @@ angular.module('craftyApp')
       thisService.simulation.onClickCharacter( character);
     };
 
-    this.onClickGatherables = function(gatherableKey) {
-  		thisService.simulation.onClickGatherables( gatherableKey.name);
+   
+    this.onClickHeader = function(tableName, fieldName) {
+      thisService.simulation.onClickHeader( tableName, fieldName);
     };
 
-    this.onClickHarvestables = function(harvestablesKey) {
-      thisService.simulation.onClickHarvestables( harvestablesKey.name);
+    this.onClickBody = function(tableName, key) {
+      thisService.simulation.onClickBody( tableName, key['name']);
     };
 
-    this.onClickGatherablesHeader = function(fieldName) {
-      thisService.simulation.onClickGatherablesHeader( fieldName);
-    };
-
-    this.onClickHarvestablesHeader = function(fieldName) {
-      thisService.simulation.onClickHarvestablesHeader( fieldName);
-    };
-
-    this.onClickBank = function(bankItemKey) {
-      thisService.simulation.onClickBank( bankItemKey.name);
-    };
-
-    this.onClickBankHeader = function(fieldName) {
-      thisService.simulation.onClickBankHeader( fieldName);
-    };
-
-    this.onClickCraftable = function(recipeKey) {
-      thisService.simulation.onClickCraftable( recipeKey.name);
-    };
     
   });
