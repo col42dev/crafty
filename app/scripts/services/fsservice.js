@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('FSService', function ( FSFactory, $http, stopwatch) {
+  .service('FSService', function ( FSSimFactory, $http, stopwatch) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     var $scope = null;
@@ -66,7 +66,7 @@ angular.module('craftyApp')
       console.log('Load JSON success'  + JSON.stringify(thisService.data));
       this.taskTimeScalarDivVis ='';
      
-      thisService.simulation = new FSFactory( $scope , thisService.data);
+      thisService.simulation = new FSSimFactory( $scope , thisService.data);
    
       $scope.$apply();
       thisService.myStopwatch.reset();

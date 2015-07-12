@@ -14,7 +14,6 @@ angular.module('craftyApp')
 
     // Gatherables
     var FSGatherable = function( json, simulation) { 
-
       this.simulation = simulation;
       this.json = json;
     };

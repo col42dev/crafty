@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc service
- * @name craftyApp.FSFactory
+ * @name craftyApp.FSSimFactory
  * @description
- * # FSFactory
+ * # FSSimFactory
  * Simulation factory
  */
 angular.module('craftyApp')
-  .factory('FSFactory', function ( FSCharacter, FSTask, FSObject, FSGatherable, FSRecipeDef, FSRecipe, FSReward, FSHarvestable) {
+  .factory('FSSimFactory', function ( FSCharacter, FSTask, FSObject, FSGatherable, FSRecipeDef, FSRecipe, FSReward, FSHarvestable) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -16,7 +16,7 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-  	var FSFactory = function(scope, json) {
+  	var FSSimFactory = function(scope, json) {
 
   		var thisFactory = this;
   		var ctrllerScope = scope;
@@ -396,5 +396,5 @@ angular.module('craftyApp')
 	/**
 	* Return the constructor function.
 	*/
-	return FSFactory;
+	return FSSimFactory;
 });

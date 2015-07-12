@@ -18,14 +18,6 @@ angular.module('craftyApp')
 
     FSService.init( $scope);
 
-  
-
-
-
-
-
-
-
 
 
   }]);
