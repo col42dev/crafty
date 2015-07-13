@@ -14,6 +14,9 @@ angular.module('craftyApp')
     var $scope = null;
     var thisService = this;
     var inited = false;
+    var dbdomain = 'localhost';
+
+    dbdomain = 'ec2-54-201-237-107.us-west-2.compute.amazonaws.com';
 
     /**
      * @desc 
@@ -86,7 +89,7 @@ angular.module('craftyApp')
      */
     this.loadAccounts = function() {
 
-        var url = 'http://localhost:8080/';
+        var url = 'http://' + dbdomain + ':8080/';
         $http.get(url,{
             params: {
                 headers: {
@@ -127,7 +130,7 @@ angular.module('craftyApp')
      */
     this.removeAllAccounts = function() {
 
-        var url = 'http://localhost:8080/removealldocuments';
+        var url = 'http://' + dbdomain + ':8080/removealldocuments';
         $http.get(url,{
             params: {
                 headers: {
@@ -159,7 +162,7 @@ angular.module('craftyApp')
         delete $http.defaults.headers.common['X-Requested-With'];          
         $http({
            // url: 'http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com:8080/score',
-           url: 'http://localhost:8080/accounts',
+            url: 'http://' + dbdomain + ':8080/accounts',
             method: 'POST',
             data: jsondata,
             headers: {'Content-Type': 'application/json'}
