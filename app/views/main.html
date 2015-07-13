@@ -60,8 +60,9 @@
 </div> <!--fadedbackground-->
 
 
-
-<button ng-click="getFSService().saveJson()">Save:</button><br/>
+<form novalidate>
+<button ng-click="getFSService().saveJson()">Save: (Enter Document Name)</button><input size="45" type="text" ng-model="getFSService().documentName.input"></input>
+</form>
 <pre>
 {{getFSService().simulation.jsonSerialized}}
 </pre>

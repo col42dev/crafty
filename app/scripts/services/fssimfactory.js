@@ -32,6 +32,7 @@ angular.module('craftyApp')
 	        this.foodDefines = json.foodDefines;  
 
 			// Recipes Defines
+			this.recipesDefines = json.recipesDefines; 
 	        this.recipeDef = {};  
 	        var jsonRecipesDefines = json.recipesDefines;
 	        for (var key in jsonRecipesDefines) {
@@ -129,7 +130,7 @@ angular.module('craftyApp')
 	        buildjson.gatherableDefines = this.gatherableDefines;  
 	        buildjson.toolDefines = this.toolDefines;  
 	        buildjson.foodDefines = this.foodDefines;  
-	        buildjson.recipeDef = this.recipesDefines;  
+	        buildjson.recipesDefines = this.recipesDefines;  
 
 
 	     	// Characters
@@ -147,15 +148,15 @@ angular.module('craftyApp')
 	        // Harvestables
 	        buildjson.harvestables = [];  
 	        for ( var thisHarvestable in this.harvestables) {
-	        	var obj = { 'name' : this.harvestables[thisHarvestable].name, 'quantity' : this.harvestables[thisHarvestable].quantity};
-	          	buildjson.harvestables.push(obj);
+	        	var harvestObj = { 'name' : this.harvestables[thisHarvestable].name, 'quantity' : this.harvestables[thisHarvestable].quantity};
+	          	buildjson.harvestables.push(harvestObj);
 	        }
 
 			// Bank
 	        buildjson.bank = [];  
 	        for ( var item in this.bank) {
-	        	var obj = { 'name' : this.bank[item].name, 'quantity' : this.bank[item].quantity.length};
-	        	buildjson.bank.push(obj);
+	        	var bankobj = { 'name' : this.bank[item].name, 'quantity' : this.bank[item].quantity.length};
+	        	buildjson.bank.push(bankobj);
 	        }
 
 	        // Know Recipes
@@ -172,6 +173,8 @@ angular.module('craftyApp')
 
 
 	        this.jsonSerialized = JSON.stringify(buildjson, undefined, 2);
+
+	        return buildjson;
     	};
 
 	      /**

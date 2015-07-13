@@ -1,0 +1,28 @@
+
+
+<button ng-click="getFSService().loadAccounts()">Refresh</button>
+
+<table class="table table-bordered table-condensed">
+<thead>
+  <tr class="noselect" >
+      <th class="col-sm-1">Name</br> &nbsp</th>
+  </tr>
+</thead>
+</table>   
+
+  <div class="bodycontainer scrollable">
+  <table class="table table-bordered table-condensed table-scrollable">
+    <tbody>
+      <tr ng-repeat="(k,v)  in getFSService().accountsData" ng-click="getFSService().selectAccount($index)" class="noselect" >
+        <td bgcolor="#00FF00" class="col-sm-1">{{v.documentName}}</td> 
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+
+  <button ng-click="getFSService().removeAllAccounts()">Remove All Accounts</button>
+
+
+
+ 

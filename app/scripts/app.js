@@ -39,6 +39,10 @@ angular
         templateUrl: 'views/rewards.html',
         controller: 'MainCtrl'
       })
+      .when('/db', {
+        templateUrl: 'views/db.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

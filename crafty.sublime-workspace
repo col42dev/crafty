@@ -40,6 +40,22 @@
 	"buffers":
 	[
 		{
+			"file": "app/scripts/services/fssimfactory.js",
+			"settings":
+			{
+				"buffer_size": 14428,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/crafty.json",
+			"settings":
+			{
+				"buffer_size": 22713,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "app/index.html",
 			"settings":
 			{
@@ -64,14 +80,6 @@
 			}
 		},
 		{
-			"file": "app/scripts/services/fssimfactory.js",
-			"settings":
-			{
-				"buffer_size": 12525,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/scripts/controllers/about.js",
 			"settings":
 			{
@@ -85,6 +93,48 @@
 			{
 				"buffer_size": 363,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/main.html",
+			"settings":
+			{
+				"buffer_size": 1698,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsservice.js",
+			"settings":
+			{
+				"buffer_size": 3608,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "logs/[ec2-user@ip-172-31-38-189 html]$ npm list -g",
+			"settings":
+			{
+				"buffer_size": 6538,
+				"line_ending": "Unix",
+				"name": "[ec2-user@ip-172-31-38-189 html]$ npm list -g"
+			}
+		},
+		{
+			"file": "/Users/colinmoore/dev/craftydb/craftydbapp.js",
+			"settings":
+			{
+				"buffer_size": 5210,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "db/craftydb.js",
+			"settings":
+			{
+				"buffer_size": 1498,
+				"line_ending": "Unix",
+				"name": "var Db = require('../mongodb').Db;"
 			}
 		}
 	],
@@ -112,6 +162,9 @@
 	},
 	"file_history":
 	[
+		"/Users/colinmoore/Dev/crafty/db/craftydbapp.js",
+		"/Users/colinmoore/dev/craftydb/node_modules/body-parser/package.json",
+		"/Users/colinmoore/dev/crafty/db/package.json",
 		"/Users/colinmoore/dev/crafty/app/scripts/services/fssimfactory.js",
 		"/Users/colinmoore/Dev/crafty/app/views/gatherables.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsgatherable.js",
@@ -189,7 +242,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"/Users/colinmoore/Dev/crafty/app",
@@ -203,6 +256,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"body",
+			"req.b",
+			"mongodb",
+			"databaseUrl",
+			"mongo",
 			"FSObject",
 			"{\n  \"app\": \"crafty\",\n  \"version\": \"0.0.0\",\n  \"characters\": [\n    {\n      \"name\": \"Stroldrin Harvester\",\n      \"profession\": \"harvesting\",\n      \"image\": \"http://www.3drt.com/3dm/characters/dark-knights/dark-knight-fantasy-character-lowpoly_05.jpg\",\n      \"stats\": {\n        \"health\": {\n          \"current\": \"100\",\n          \"max\": \"100\",\n          \"regeneratePeriod\": \"5\"\n        },\n        \"energy\": {\n          \"current\": \"50\",\n          \"max\": \"100\",\n          \"regeneratePeriod\": \"5\"\n        },\n        \"mind\": {\n          \"current\": \"20\",\n          \"max\": \"100\",\n          \"regeneratePeriod\": \"5\"\n        }\n      }\n    },\n    {\n      \"name\": \"Gronderlug Crafter\",\n      \"profession\": \"crafting\",\n      \"image\": \"https://s-media-cache-ak0.pinimg.com/originals/f9/f3/d4/f9f3d4e8af9671c04c53351de58f1173.jpg\",\n      \"stats\": {\n        \"health\": {\n          \"current\": \"10\",\n          \"max\": \"100\",\n          \"regeneratePeriod\": \"5\"\n        },\n        \"energy\": {\n          \"current\": \"100\",\n          \"max\": \"100\",\n          \"regeneratePeriod\": \"5\"\n        },\n        \"mind\": {\n          \"current\": \"100\",\n          \"max\": \"100\",\n          \"regeneratePeriod\": \"5\"\n        }\n      }\n    },\n    {\n      \"name\": \"Dorasgrour Server\",\n      \"profession\": \"services\",\n      \"image\": \"http://3drt.com/store/images/detailed/5/thief-3d-character-fantasy-lowpoly_06.jpg?t=1431440642\",\n      \"stats\": {\n        \"health\": {\n          \"current\": \"100\",\n          \"max\": \"100\",\n          \"regeneratePeriod\": \"5\"\n        },\n        \"energy\": {\n          \"current\": \"100\",\n          \"max\": \"100\",\n          \"regeneratePeriod\": \"5\"\n        },\n        \"mind\": {\n          \"current\": \"20\",\n          \"max\": \"100\",\n          \"regeneratePeriod\": \"5\"\n        }\n      }\n    },\n    {\n      \"name\": \"Skoveath Harvester\",\n      \"profession\": \"harvesting\",\n      \"image\": \"http://3drt.com/store/images/detailed/5/thief-3d-character-fantasy-lowpoly_05.jpg?t=1431440642\",\n      \"stats\": {\n        \"health\": {\n          \"current\": \"100\",\n          \"max\": \"100\",\n          \"regeneratePeriod\": \"5\"\n        },\n        \"energy\": {\n          \"current\": \"100\",\n          \"max\": \"100\",\n          \"regeneratePeriod\": \"5\"\n        },\n        \"mind\": {\n          \"current\": \"100\",\n          \"max\": \"100\",\n          \"regeneratePeriod\": \"5\"\n        }\n      }\n    }\n  ],\n  \"gatherables\": [\n    {\n      \"name\": \"Stone\",\n      \"quantity\": \"1\"\n    },\n    {\n      \"name\": \"Coal\",\n      \"quantity\": \"1\"\n    },\n    {\n      \"name\": \"Iron Ore\",\n      \"quantity\": \"3\"\n    },\n    {\n      \"name\": \"Water\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Wood\",\n      \"quantity\": \"5\"\n    },\n    {\n      \"name\": \"Wool\",\n      \"quantity\": \"10\"\n    },\n    {\n      \"name\": \"Leaves\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Grain\",\n      \"quantity\": \"20\"\n    },\n    {\n      \"name\": \"Antler\",\n      \"quantity\": \"9\"\n    },\n    {\n      \"name\": \"Sand\",\n      \"quantity\": \"20\"\n    },\n    {\n      \"name\": \"Feather\",\n      \"quantity\": \"5\"\n    }\n  ],\n  \"harvestables\": [\n    {\n      \"name\": \"Earth\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Stone\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Hard Stone\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Quartzstone\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Limestone\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Marble\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Granite\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Coal\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Iron Ore\",\n      \"quantity\": \"100\"\n    },\n    {\n      \"name\": \"Wood\",\n      \"quantity\": \"100\"\n    }\n  ],\n  \"bank\": [\n    {\n      \"name\": \"Titanium Pickaxe\",\n      \"quantity\": 1\n    },\n    {\n      \"name\": \"Bucket\",\n      \"quantity\": 1\n    },\n    {\n      \"name\": \"Minecart\",\n      \"quantity\": 1\n    },\n    {\n      \"name\": \"FlagonOfAle\",\n      \"quantity\": 3\n    }\n  ],\n  \"recipes\": [\n    \"Rope\",\n    \"WoodenTable\",\n    \"Workbench\",\n    \"Forge\",\n    \"AntlerPickaxe\",\n    \"Paper\",\n    \"Books\",\n    \"FineHat\",\n    \"FlagonOfAle\",\n    \"WoodenPlanks\",\n    \"DiceTable\",\n    \"Minecart\",\n    \"Loom\",\n    \"Glass\",\n    \"Shovel\",\n    \"Cloth\",\n    \"Nails\",\n    \"BackPack\",\n    \"Saw\",\n    \"Bucket\",\n    \"Ale\",\n    \"FermentingVat\",\n    \"BucketPump\",\n    \"Scythe\",\n    \"StoneAxe\",\n    \"BulkAle\",\n    \"PumpedWater\"\n  ],\n  \"rewardDefines\": [\n    {\n      \"name\": \"Liquidated\",\n      \"desc\": \"Craft a FlagonOfAle\",\n      \"completed\": \"0\",\n      \"action\": \"craft\",\n      \"target\": \"FlagonOfAle\"\n    },\n    {\n      \"name\": \"Quench\",\n      \"desc\": \"Craft a Bucket\",\n      \"completed\": \"0\",\n      \"action\": \"craft\",\n      \"target\": \"Bucket\"\n    },\n    {\n      \"name\": \"Master Brewer\",\n      \"desc\": \"Craft a FermentingVat\",\n      \"completed\": \"0\",\n      \"action\": \"craft\",\n      \"target\": \"FermentingVat\"\n    }\n  ],\n  \"gatherableDefines\": {\n    \"Earth\": {\n      \"gatherBaseTimeS\": \"10\",\n      \"actionable\": [\n        \"Carry\"\n      ]\n    },\n    \"Stone\": {\n      \"gatherBaseTimeS\": \"10\",\n      \"actionable\": [\n        \"Carry\"\n      ]\n    },\n    \"Hard Stone\": {\n      \"gatherBaseTimeS\": \"10\",\n      \"actionable\": [\n        \"Carry\"\n      ]\n    },\n    \"Quartzstone\": {\n      \"gatherBaseTimeS\": \"10\",\n      \"actionable\": [\n        \"Carry\"\n      ]\n    },\n    \"Limestone\": {\n      \"gatherBaseTimeS\": \"10\",\n      \"actionable\": [\n        \"Carry\"\n      ]\n    },\n    \"Marble\": {\n      \"gatherBaseTimeS\": \"10\",\n      \"actionable\": [\n        \"Cart\"\n      ]\n    },\n    \"Granite\": {\n      \"gatherBaseTimeS\": \"10\",\n      \"actionable\": [\n        \"Cart\"\n      ]\n    },\n    \"Coal\": {\n      \"gatherBaseTimeS\": \"20\",\n      \"actionable\": [\n        \"Carry\"\n      ]\n    },\n    \"Iron Ore\": {\n      \"gatherBaseTimeS\": \"20\",\n      \"actionable\": [\n        \"Carry\"\n      ]\n    },\n    \"Water\": {\n      \"gatherBaseTimeS\": \"10\",\n      \"actionable\": [\n        \"CarryLiquid\"\n      ]\n    },\n    \"Wood\": {\n      \"gatherBaseTimeS\": \"15\",\n      \"actionable\": [\n        \"Carry\"\n      ]\n    },\n    \"Wool\": {\n      \"gatherBaseTimeS\": \"30\",\n      \"actionable\": [\n        \"Carry\"\n      ]\n    },\n    \"Leaves\": {\n      \"gatherBaseTimeS\": \"10\",\n      \"actionable\": [\n        \"Carry\"\n      ]\n    },\n    \"Grain\": {\n      \"gatherBaseTimeS\": \"20\",\n      \"actionable\": [\n        \"Carry\"\n      ]\n    },\n    \"Antler\": {\n      \"gatherBaseTimeS\": \"120\",\n      \"actionable\": [\n        \"Carry\"\n      ]\n    },\n    \"Sand\": {\n      \"gatherBaseTimeS\": \"30\",\n      \"actionable\": [\n        \"Carry\"\n      ]\n    },\n    \"Feather\": {\n      \"gatherBaseTimeS\": \"60\",\n      \"actionable\": [\n        \"Carry\"\n      ]\n    }\n  },\n  \"harvestableDefines\": {\n    \"Earth\": {\n      \"actionable\": [\n        \"Dig\"\n      ],\n      \"hardness\": \"1\",\n      \"harvestBaseTimeS\": \"10\"\n    },\n    \"Stone\": {\n      \"actionable\": [\n        \"Dig\"\n      ],\n      \"hardness\": \"2\",\n      \"harvestBaseTimeS\": \"18\"\n    },\n    \"Hard Stone\": {\n      \"actionable\": [\n        \"Dig\"\n      ],\n      \"hardness\": \"8\",\n      \"harvestBaseTimeS\": \"64\"\n    },\n    \"Quartzstone\": {\n      \"actionable\": [\n        \"Dig\"\n      ],\n      \"hardness\": \"20\",\n      \"harvestBaseTimeS\": \"140\"\n    },\n    \"Limestone\": {\n      \"actionable\": [\n        \"Dig\"\n      ],\n      \"hardness\": \"5\",\n      \"harvestBaseTimeS\": \"45\"\n    },\n    \"Marble\": {\n      \"actionable\": [\n        \"Dig\"\n      ],\n      \"hardness\": \"12\",\n      \"harvestBaseTimeS\": \"96\"\n    },\n    \"Granite\": {\n      \"actionable\": [\n        \"Dig\"\n      ],\n      \"hardness\": \"16\",\n      \"harvestBaseTimeS\": \"112\"\n    },\n    \"Coal\": {\n      \"actionable\": [\n        \"Dig\"\n      ],\n      \"hardness\": \"3\",\n      \"harvestBaseTimeS\": \"50\"\n    },\n    \"Iron Ore\": {\n      \"actionable\": [\n        \"Dig\"\n      ],\n      \"hardness\": \"3\",\n      \"harvestBaseTimeS\": \"50\"\n    },\n    \"Wood\": {\n      \"actionable\": [\n        \"Chop\",\n        \"Saw\"\n      ],\n      \"hardness\": \"2\",\n      \"harvestBaseTimeS\": \"10\"\n    }\n  },\n  \"toolDefines\": {\n    \"Hands\": {\n      \"strength\": \"2\",\n      \"actions\": [\n        \"Dig\",\n        \"Chop\",\n        \"Carry\"\n      ]\n    },\n    \"Stone Pickaxe\": {\n      \"strength\": \"3\",\n      \"actions\": [\n        \"Dig\"\n      ]\n    },\n    \"Bronze Pickaxe\": {\n      \"strength\": \"5\",\n      \"actions\": [\n        \"Dig\"\n      ]\n    },\n    \"Iron Pickaxe\": {\n      \"strength\": \"8\",\n      \"actions\": [\n        \"Dig\"\n      ]\n    },\n    \"Steel Pickaxe\": {\n      \"strength\": \"12\",\n      \"actions\": [\n        \"Dig\"\n      ]\n    },\n    \"Silver Pickaxe\": {\n      \"strength\": \"17\",\n      \"actions\": [\n        \"Dig\"\n      ]\n    },\n    \"Gold Pickaxe\": {\n      \"strength\": \"23\",\n      \"actions\": [\n        \"Dig\"\n      ]\n    },\n    \"Titanium Pickaxe\": {\n      \"strength\": \"32\",\n      \"actions\": [\n        \"Dig\"\n      ]\n    },\n    \"AntlerPickaxe\": {\n      \"strength\": \"3\",\n      \"actions\": [\n        \"Dig\"\n      ]\n    },\n    \"Rope\": {\n      \"strength\": \"2\",\n      \"actions\": [\n        \"Tie\"\n      ]\n    },\n    \"BackPack\": {\n      \"strength\": \"3\",\n      \"actions\": [\n        \"Carry\"\n      ]\n    },\n    \"Shovel\": {\n      \"strength\": \"3\",\n      \"actions\": [\n        \"Dig\"\n      ]\n    },\n    \"Minecart\": {\n      \"strength\": \"3\",\n      \"actions\": [\n        \"Cart\",\n        \"Carry\"\n      ]\n    },\n    \"Saw\": {\n      \"strength\": \"3\",\n      \"actions\": [\n        \"Saw\"\n      ]\n    },\n    \"Bucket\": {\n      \"strength\": \"4\",\n      \"actions\": [\n        \"Carry\",\n        \"CarryLiquid\"\n      ]\n    }\n  },\n  \"recipesDefines\": {\n    \"Rope\": {\n      \"category\": \"tool\",\n      \"construction\": [\n\n      ],\n      \"input\": {\n        \"Wool\": \"1\"\n      },\n      \"output\": {\n        \"Rope\": \"3\"\n      },\n      \"basetime\": \"15\"\n    },\n    \"WoodenTable\": {\n      \"category\": \"constructor\",\n      \"construction\": [\n\n      ],\n      \"input\": {\n        \"Wood\": \"4\"\n      },\n      \"output\": {\n        \"WoodenTable\": \"1\"\n      },\n      \"basetime\": \"30\"\n    },\n    \"Workbench\": {\n      \"category\": \"constructor\",\n      \"construction\": [\n\n      ],\n      \"input\": {\n        \"Wood\": \"3\",\n        \"WoodenTable\": \"1\"\n      },\n      \"output\": {\n        \"Workbench\": \"1\"\n      },\n      \"basetime\": \"30\"\n    },\n    \"BackPack\": {\n      \"category\": \"tool\",\n      \"construction\": [\n\n      ],\n      \"input\": {\n        \"Cloth\": \"3\",\n        \"Rope\": \"1\"\n      },\n      \"output\": {\n        \"BackPack\": \"1\"\n      },\n      \"basetime\": \"30\"\n    },\n    \"Forge\": {\n      \"category\": \"constructor\",\n      \"construction\": [\n        \"Workbench\"\n      ],\n      \"input\": {\n        \"Water\": \"3\",\n        \"Coal\": \"1\",\n        \"Iron Ore\": \"3\",\n        \"Stone\": \"2\"\n      },\n      \"output\": {\n        \"Forge\": \"1\"\n      },\n      \"basetime\": \"60\"\n    },\n    \"Paper\": {\n      \"category\": \"unclassified\",\n      \"construction\": [\n        \"WoodenTable\"\n      ],\n      \"input\": {\n        \"Leaves\": \"1\"\n      },\n      \"output\": {\n        \"Paper\": \"1\"\n      },\n      \"basetime\": \"15\"\n    },\n    \"Books\": {\n      \"category\": \"unclassified\",\n      \"construction\": [\n        \"WoodenTable\"\n      ],\n      \"input\": {\n        \"Paper\": \"12\",\n        \"Rope\": \"1\",\n        \"Feather\": \"2\"\n      },\n      \"output\": {\n        \"Books\": \"1\"\n      },\n      \"basetime\": \"45\"\n    },\n    \"FineHat\": {\n      \"category\": \"unclassified\",\n      \"construction\": [\n        \"WoodenTable\"\n      ],\n      \"input\": {\n        \"Cloth\": \"2\",\n        \"Feather\": \"1\"\n      },\n      \"output\": {\n        \"FineHat\": \"1\"\n      },\n      \"basetime\": \"15\"\n    },\n    \"AntlerPickaxe\": {\n      \"category\": \"tool\",\n      \"construction\": [\n\n      ],\n      \"input\": {\n        \"Wood\": \"2\",\n        \"Antler\": \"2\"\n      },\n      \"output\": {\n        \"AntlerPickaxe\": \"1\"\n      },\n      \"basetime\": \"15\"\n    },\n    \"FlagonOfAle\": {\n      \"category\": \"food\",\n      \"construction\": [\n        \"WoodenTable\"\n      ],\n      \"input\": {\n        \"Ale\": \"6\",\n        \"Glass\": \"1\",\n        \"Cloth\": \"1\",\n        \"Antler\": \"6\"\n      },\n      \"output\": {\n        \"FlagonOfAle\": \"1\"\n      },\n      \"basetime\": \"15\"\n    },\n    \"WoodenPlanks\": {\n      \"category\": \"unclassified\",\n      \"construction\": [\n        \"Workbench\"\n      ],\n      \"input\": {\n        \"Wood\": \"2\"\n      },\n      \"output\": {\n        \"WoodenPlanks\": \"1\"\n      },\n      \"basetime\": \"15\"\n    },\n    \"DiceTable\": {\n      \"category\": \"furniture\",\n      \"construction\": [\n        \"Workbench\"\n      ],\n      \"input\": {\n        \"WoodenTable\": \"1\",\n        \"Antler\": \"3\",\n        \"Cloth\": \"1\"\n      },\n      \"output\": {\n        \"DiceTable\": \"1\"\n      },\n      \"basetime\": \"45\"\n    },\n    \"Minecart\": {\n      \"category\": \"unclassified\",\n      \"construction\": [\n        \"Workbench\"\n      ],\n      \"input\": {\n        \"WoodenPlanks\": \"4\",\n        \"Nails\": \"10\"\n      },\n      \"output\": {\n        \"Minecart\": \"1\"\n      },\n      \"basetime\": \"60\"\n    },\n    \"Loom\": {\n      \"category\": \"constructor\",\n      \"construction\": [\n        \"Workbench\"\n      ],\n      \"input\": {\n        \"Wood\": \"5\",\n        \"Rope\": \"2\"\n      },\n      \"output\": {\n        \"Loom\": \"1\"\n      },\n      \"basetime\": \"30\"\n    },\n    \"Glass\": {\n      \"category\": \"unclassified\",\n      \"construction\": [\n        \"Forge\"\n      ],\n      \"input\": {\n        \"Sand\": \"4\"\n      },\n      \"output\": {\n        \"Glass\": \"1\"\n      },\n      \"basetime\": \"45\"\n    },\n    \"Shovel\": {\n      \"category\": \"tool\",\n      \"construction\": [\n        \"Workbench\"\n      ],\n      \"input\": {\n        \"Wood\": \"3\"\n      },\n      \"output\": {\n        \"Shovel\": \"1\"\n      },\n      \"basetime\": \"15\"\n    },\n    \"Cloth\": {\n      \"category\": \"unclassified\",\n      \"construction\": [\n        \"Loom\"\n      ],\n      \"input\": {\n        \"Wool\": \"1\"\n      },\n      \"output\": {\n        \"Cloth\": \"1\"\n      },\n      \"basetime\": \"15\"\n    },\n    \"Ale\": {\n      \"category\": \"food\",\n      \"construction\": [\n        \"WoodenTable\"\n      ],\n      \"input\": {\n        \"Water\": \"6\",\n        \"Grain\": \"3\"\n      },\n      \"output\": {\n        \"Ale\": \"1\"\n      },\n      \"basetime\": \"45\"\n    },\n    \"Saw\": {\n      \"category\": \"tool\",\n      \"construction\": [\n        \"Forge\"\n      ],\n      \"input\": {\n        \"Iron Ore\": \"3\",\n        \"Wood\": \"1\"\n      },\n      \"output\": {\n        \"Saw\": \"1\"\n      },\n      \"basetime\": \"45\"\n    },\n    \"Bucket\": {\n      \"category\": \"tool\",\n      \"construction\": [\n\n      ],\n      \"input\": {\n        \"Wood\": \"3\",\n        \"Rope\": \"1\"\n      },\n      \"output\": {\n        \"Bucket\": \"1\"\n      },\n      \"basetime\": \"30\"\n    },\n    \"Nails\": {\n      \"category\": \"unclassified\",\n      \"construction\": [\n        \"Forge\"\n      ],\n      \"input\": {\n        \"Iron Ore\": \"1\"\n      },\n      \"output\": {\n        \"Nails\": \"5\"\n      },\n      \"basetime\": \"10\"\n    },\n    \"FermentingVat\": {\n      \"category\": \"constructor\",\n      \"construction\": [\n        \"Forge\"\n      ],\n      \"input\": {\n        \"Iron Ore\": \"3\",\n        \"Wood\": \"1\"\n      },\n      \"output\": {\n        \"FermentingVat\": \"1\"\n      },\n      \"basetime\": \"45\"\n    },\n    \"BulkAle\": {\n      \"category\": \"food\",\n      \"construction\": [\n        \"FermentingVat\"\n      ],\n      \"input\": {\n        \"Grain\": \"3\",\n        \"Water\": \"6\"\n      },\n      \"output\": {\n        \"Ale\": \"2\"\n      },\n      \"basetime\": \"60\"\n    },\n    \"BucketPump\": {\n      \"category\": \"constructor\",\n      \"construction\": [\n\n      ],\n      \"input\": {\n        \"Bucket\": \"2\",\n        \"Rope\": \"4\",\n        \"Wood\": \"2\"\n      },\n      \"output\": {\n        \"BucketPump\": \"1\"\n      },\n      \"basetime\": \"30\"\n    },\n    \"Scythe\": {\n      \"category\": \"tool\",\n      \"construction\": [\n        \"Forge\"\n      ],\n      \"input\": {\n        \"Iron Ore\": \"2\",\n        \"Wood\": \"2\"\n      },\n      \"output\": {\n        \"Scythe\": \"1\"\n      },\n      \"basetime\": \"45\"\n    },\n    \"StoneAxe\": {\n      \"category\": \"tool\",\n      \"construction\": [\n\n      ],\n      \"input\": {\n        \"Stone\": \"1\",\n        \"Wood\": \"1\"\n      },\n      \"output\": {\n        \"StoneAxe\": \"1\"\n      },\n      \"basetime\": \"60\"\n    },\n    \"PumpedWater\": {\n      \"category\": \"unclassified\",\n      \"construction\": [\n        \"BucketPump\"\n      ],\n      \"input\": {\n        \"Water\": \"1\"\n      },\n      \"output\": {\n        \"Water\": \"3\"\n      },\n      \"basetime\": \"10\"\n    }\n  },\n  \"foodDefines\": {\n    \"BulkAle\": {\n      \"onConsume\": {\n        \"stat\": {\n          \"energy\": {\n            \"current\": 50\n          },\n          \"mind\": {\n            \"current\": -50\n          }\n        }\n      }\n    },\n    \"FlagonOfAle\": {\n      \"onConsume\": {\n        \"stat\": {\n          \"energy\": {\n            \"current\": 50\n          },\n          \"mind\": {\n            \"current\": -50\n          }\n        }\n      }\n    },\n    \"Ale\": {\n      \"onConsume\": {\n        \"stat\": {\n          \"energy\": {\n            \"current\": 50\n          },\n          \"mind\": {\n            \"current\": -50\n          }\n        }\n      }\n    }\n  }\nFSObject",
 			"FSFactory",
@@ -345,6 +403,61 @@
 			[
 				{
 					"buffer": 0,
+					"file": "app/scripts/services/fssimfactory.js",
+					"settings":
+					{
+						"buffer_size": 14428,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5185,
+								5185
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1815.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/crafty.json",
+					"settings":
+					{
+						"buffer_size": 22713,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10692,
+								10692
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6414.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "app/index.html",
 					"settings":
 					{
@@ -355,8 +468,8 @@
 						"selection":
 						[
 							[
-								3775,
-								3775
+								4085,
+								4085
 							]
 						],
 						"settings":
@@ -366,13 +479,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 856.0,
+						"translation.y": 917.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 3,
 					"file": "app/scripts/services/fscharacter.js",
 					"settings":
 					{
@@ -400,7 +513,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 4,
 					"file": "app/scripts/services/fsbackpack.js",
 					"settings":
 					{
@@ -428,34 +541,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "app/scripts/services/fssimfactory.js",
-					"settings":
-					{
-						"buffer_size": 12525,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "app/scripts/controllers/about.js",
 					"settings":
 					{
@@ -481,7 +567,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "app/scripts/controllers/main.js",
 					"settings":
 					{
@@ -499,6 +585,148 @@
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/views/main.html",
+					"settings":
+					{
+						"buffer_size": 1698,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1628,
+								1628
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 392.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/scripts/services/fsservice.js",
+					"settings":
+					{
+						"buffer_size": 3608,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2853,
+								2853
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 911.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "logs/[ec2-user@ip-172-31-38-189 html]$ npm list -g",
+					"settings":
+					{
+						"buffer_size": 6538,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2615,
+								2615
+							]
+						],
+						"settings":
+						{
+							"auto_name": "[ec2-user@ip-172-31-38-189 html]$ npm list -g",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/Users/colinmoore/dev/craftydb/craftydbapp.js",
+					"settings":
+					{
+						"buffer_size": 5210,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2911,
+								2911
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1187.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "db/craftydb.js",
+					"settings":
+					{
+						"buffer_size": 1498,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								600,
+								600
+							]
+						],
+						"settings":
+						{
+							"auto_name": "var Db = require('../mongodb').Db;",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
