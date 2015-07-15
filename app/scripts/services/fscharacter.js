@@ -408,17 +408,12 @@ angular.module('craftyApp')
 
        for (var statKeyname in thisFactory.taskRules[taskCategory].stat) {
 
-          console.log( parseInt(this.json.stats[statKeyname].current, 10) + '<' + parseInt( thisFactory.taskRules[taskCategory].stat[statKeyname].minRequired, 10));
+         // console.log( parseInt(this.json.stats[statKeyname].current, 10) + '<' + parseInt( thisFactory.taskRules[taskCategory].stat[statKeyname].minRequired, 10));
 
           if ( parseInt( this.json.stats[statKeyname].current, 10) < parseInt( thisFactory.taskRules[taskCategory].stat[statKeyname].minRequired, 10) ) {
               hasStats = false;
-
-
           }
        }
-
-         console.log( hasStats);
-
 
        return hasStats;
 
