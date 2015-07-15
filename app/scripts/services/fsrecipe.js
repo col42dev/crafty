@@ -49,11 +49,9 @@ angular.module('craftyApp')
       }
 
       // has stat level
-      /*
       if ( this.thisFactory.selectedCharacter.hasStatsFor('crafting') === false) {
         enabled = false;
       }
-      */
       
       return  (enabled === true) ? '#00FF00' : '#FF0000';
     };

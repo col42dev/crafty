@@ -25,11 +25,11 @@ angular.module('craftyApp')
         color = '#FF0000';
       }
 
-/*
+
       if ( this.simulation.selectedCharacter.hasStatsFor('harvesting') === false) {
         color = '#FF0000';
       }
-*/
+
       return color;   
     };
 
