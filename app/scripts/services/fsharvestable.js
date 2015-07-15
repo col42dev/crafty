@@ -74,7 +74,7 @@ angular.module('craftyApp')
       // tool strength vs harvestable hardness
       if (isHarvestable === true) {
 
-        if ( this.simulation.toolDefines[ tools[0] ].strength < this.simulation.harvestableDefines[this.name].hardness) {
+        if ( parseInt( this.simulation.toolDefines[ tools[0] ].strength, 10) < parseInt( this.simulation.harvestableDefines[this.name].hardness, 10)) {
           isHarvestable = false;
         }
       }

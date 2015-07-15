@@ -30,14 +30,14 @@ angular.module('craftyApp')
 	      this.myStopwatch = stopwatch;
 	      this.taskTimeScalarDivVis ='hidden';
 
-	      // reset
-	      this.master = {input: 'https://api.myjson.com/bins/1lnsq?pretty=1'};
+        this.master = {
+          rules: 'https://api.myjson.com/bins/4b19y' + '?pretty=1',
+          state: 'https://api.myjson.com/bins/2zn9a' + '?pretty=1',
+        };
 	      this.user = angular.copy(this.master);
-
 
         this.defaultDocumentName = {input: 'My Account Name'};
         this.documentName = angular.copy(this.defaultDocumentName);
-
   	  }
     };
 
@@ -45,10 +45,25 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    this.loadJson = function() {
-        console.log('input:' + this.user.input); 
+    this.loadAndCreateSim = function() {
+      
 
-        $http.get(this.user.input,{
+        thisService.simulation = new FSSimFactory( $scope);
+
+        //load JSON rules
+        this.loadSimRules();
+  
+    };
+
+   /**
+     * @desc 
+     * @return 
+     */
+     this.loadSimRules = function() {
+
+        console.log('rules:' + this.user.rules); 
+
+         $http.get(this.user.rules,{
             params: {
                 headers: {
                     'Access-Control-Allow-Origin': '*',
@@ -57,18 +72,86 @@ angular.module('craftyApp')
             }
         }).success(function(data) {
 
-            if ( data.app === 'crafty') {
-              thisService.data = data;
-              setTimeout(thisService.createSim, 200);
+            if ( data.title === 'craftyrules') {
+              thisService.rulesData = data;
+
+              setTimeout(thisService.createSimRules, 200);
             } else {
-              window.alert('Validation failed for ' + thisService.user.input);
+              window.alert('Validation failed for ' + thisService.user.rules);
             }
 
         }).error(function(data) {
             data = data;
-            window.alert('JSON load failed for' + thisService.user.input);
+            window.alert('JSON load failed for' + thisService.user.rules);
         });
+      };
+
+
+    /**
+     * @desc 
+     * @return 
+     */
+    this.createSimRules = function() {
+
+      console.log('Load JSON success'  + JSON.stringify(thisService.rulesData));
+      this.taskTimeScalarDivVis ='';
+     
+      thisService.simulation.createSimRules( thisService.rulesData);
+
+      thisService.loadSimState();
+
     };
+
+
+     /**
+     * @desc 
+     * @return 
+     */
+     this.loadSimState = function() {
+
+      console.log('state:' + this.user.state); 
+
+      //load JSON state
+      $http.get(this.user.state,{
+          params: {
+              headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Request-Headers' : 'access-control-allow-origin'
+              }
+          }
+      }).success(function(data) {
+
+          if ( data.title === 'craftystate') {
+            thisService.stateData = data;
+            setTimeout(thisService.createSimState, 200);
+          } else {
+            window.alert('Validation failed for ' + thisService.user.stateData);
+          }
+
+      }).error(function(data) {
+          data = data;
+          window.alert('JSON load failed for' + thisService.user.stateData);
+      });
+    };
+
+
+    /**
+     * @desc 
+     * @return 
+     */
+    this.createSimState = function() {
+
+      $location.path('/'); 
+
+      console.log('Load JSON success'  + JSON.stringify(thisService.stateData));
+     
+      thisService.simulation.createSimState(thisService.stateData);
+   
+      $scope.$apply();
+      thisService.myStopwatch.reset();
+      thisService.myStopwatch.start();
+    };
+
 
     /**
      * @desc 
@@ -119,7 +202,7 @@ angular.module('craftyApp')
       thisService.data = thisService.accountsData[Object.keys(thisService.accountsData)[index]];
 
 
-      setTimeout(thisService.createSim, 200);
+     //todo: split in to state and rules: setTimeout(thisService.createSim, 200);
 
    
     };
@@ -178,19 +261,6 @@ angular.module('craftyApp')
     };
 
 
-    this.createSim = function() {
-
-      $location.path('/'); 
-
-      console.log('Load JSON success'  + JSON.stringify(thisService.data));
-      this.taskTimeScalarDivVis ='';
-     
-      thisService.simulation = new FSSimFactory( $scope , thisService.data);
-   
-      $scope.$apply();
-      thisService.myStopwatch.reset();
-      thisService.myStopwatch.start();
-    };
 
     this.onClickCharacter = function( character) {
       thisService.simulation.onClickCharacter( character);

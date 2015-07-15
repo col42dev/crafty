@@ -1,0 +1,305 @@
+{
+  "title": "craftystate",
+  "version": "0.0.0",
+  "characters": [
+    {
+      "name": "Stroldrin Harvester",
+      "profession": "harvesting",
+      "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c1.8d006e6f.jpg",
+      "stats": {
+        "health": {
+          "current": "50",
+          "max": "100",
+          "regeneratePeriod": "10"
+        },
+        "energy": {
+          "current": "50",
+          "max": "100",
+          "regeneratePeriod": "5"
+        },
+        "mind": {
+          "current": "40",
+          "max": "100",
+          "regeneratePeriod": "15"
+        }
+      },
+      "activity": [
+
+      ],
+      "tools": [
+
+      ],
+      "weapons": [
+
+      ]
+    },
+    {
+      "name": "Gronderlug Crafter",
+      "profession": "crafting",
+      "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c2.3a5cb818.png",
+      "stats": {
+        "health": {
+          "current": "50",
+          "max": "100",
+          "regeneratePeriod": "10"
+        },
+        "energy": {
+          "current": "40",
+          "max": "100",
+          "regeneratePeriod": "15"
+        },
+        "mind": {
+          "current": "100",
+          "max": "100",
+          "regeneratePeriod": "5"
+        }
+      },
+      "activity": [
+
+      ],
+      "tools": [
+
+      ],
+      "weapons": [
+
+      ]
+    },
+    {
+      "name": "Dorasgrour Hunter",
+      "profession": "services",
+      "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c3.b9144b93.png",
+      "stats": {
+        "health": {
+          "current": "100",
+          "max": "100",
+          "regeneratePeriod": "10"
+        },
+        "energy": {
+          "current": "100",
+          "max": "100",
+          "regeneratePeriod": "10"
+        },
+        "mind": {
+          "current": "20",
+          "max": "100",
+          "regeneratePeriod": "10"
+        }
+      },
+      "activity": [
+
+      ],
+      "tools": [
+
+      ],
+      "weapons": [
+
+      ]
+    },
+    {
+      "name": "Skoveath Laborer",
+      "profession": "harvesting",
+      "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c4.59c1ea4d.png",
+      "stats": {
+        "health": {
+          "current": "60",
+          "max": "100",
+          "regeneratePeriod": "10"
+        },
+        "energy": {
+          "current": "100",
+          "max": "100",
+          "regeneratePeriod": "5"
+        },
+        "mind": {
+          "current": "40",
+          "max": "100",
+          "regeneratePeriod": "20"
+        }
+      },
+      "activity": [
+
+      ],
+      "tools": [
+
+      ],
+      "weapons": [
+
+      ]
+    }
+  ],
+  "gatherables": [
+    {
+      "name": "Stone",
+      "quantity": "0",
+      "gatherers": "0"
+    },
+    {
+      "name": "Coal",
+      "quantity": "0",
+      "gatherers": "0"
+    },
+    {
+      "name": "Iron Ore",
+      "quantity": "3",
+      "gatherers": "0"
+    },
+    {
+      "name": "Water",
+      "quantity": "100",
+      "gatherers": "0"
+    },
+    {
+      "name": "Wood",
+      "quantity": "5",
+      "gatherers": "0"
+    },
+    {
+      "name": "Wool",
+      "quantity": "10",
+      "gatherers": "0"
+    },
+    {
+      "name": "Leaves",
+      "quantity": "100",
+      "gatherers": "0"
+    },
+    {
+      "name": "Grain",
+      "quantity": "20",
+      "gatherers": "0"
+    },
+    {
+      "name": "Antler",
+      "quantity": "9",
+      "gatherers": "0"
+    },
+    {
+      "name": "Sand",
+      "quantity": "30",
+      "gatherers": "0"
+    },
+    {
+      "name": "Meat",
+      "quantity": "10",
+      "gatherers": "0"
+    },
+    {
+      "name": "Fish",
+      "quantity": "10",
+      "gatherers": "0"
+    },
+    {
+      "name": "Feather",
+      "quantity": "5",
+      "gatherers": "0"
+    }
+  ],
+  "harvestables": [
+    {
+      "name": "Earth",
+      "quantity": "100"
+    },
+    {
+      "name": "Stone",
+      "quantity": "100"
+    },
+    {
+      "name": "Coal",
+      "quantity": "100"
+    },
+    {
+      "name": "Iron Ore",
+      "quantity": "100"
+    },
+    {
+      "name": "Meat",
+      "quantity": "100"
+    },
+    {
+      "name": "Fish",
+      "quantity": "100"
+    },
+    {
+      "name": "Wood",
+      "quantity": "100"
+    }
+  ],
+  "bank": [
+    {
+      "name": "WoodAxe",
+      "quantity": 1
+    },
+    {
+      "name": "Bucket",
+      "quantity": 1
+    },
+    {
+      "name": "Saw",
+      "quantity": 1
+    },
+    {
+      "name": "BasicMeal",
+      "quantity": 4
+    },
+    {
+      "name": "HuntingBow",
+      "quantity": 1
+    },
+    {
+      "name": "Ale",
+      "quantity": 3
+    }
+  ],
+  "recipes": [
+    "Rope",
+    "WoodenTable",
+    "Workbench",
+    "Forge",
+    "AntlerPickaxe",
+    "Paper",
+    "Books",
+    "FineHat",
+    "FlagonOfAle",
+    "WoodenPlanks",
+    "DiceTable",
+    "Minecart",
+    "Loom",
+    "Glass",
+    "Shovel",
+    "Cloth",
+    "Nails",
+    "BackPack",
+    "Saw",
+    "Bucket",
+    "Ale",
+    "FermentingVat",
+    "BucketPump",
+    "Scythe",
+    "StoneAxe",
+    "BulkAle",
+    "PumpedWater",
+    "WoodAxe",
+    "FishingRod",
+    "HuntingBow",
+    "CatapultBase",
+    "CatapultArm",
+    "GreekFireCatapult",
+    "GreekFire",
+    "TwistedRopes",
+    "Steel",
+    "SteelWire",
+    "CartWheel",
+    "Barrel",
+    "BasicMeal",
+    "MeatyMeal",
+    "FishyMeal",
+    "FineMeal",
+    "Bandage",
+    "Medicine",
+    "Potion",
+    "FirstAidStation",
+    "BarrelOfWater",
+    "ImprovedBucketPump",
+    "SteelPickaxe"
+  ]
+}

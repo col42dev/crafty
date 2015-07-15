@@ -25,17 +25,23 @@ angular.module('craftyApp')
         this.updateActiveTaskRemainingPercent = 100;
 
         setInterval( (function () {
+          if ( this.json.activity.length === 0) {
             this.modifyStat( 'health', 'current', 1);
+          }
         }).bind(this), this.json.stats.health.regeneratePeriod * 1000);
 
 
         setInterval( (function () {
+          if ( this.json.activity.length === 0) {
             this.modifyStat( 'energy', 'current', 1);
+          }
         }).bind(this), this.json.stats.energy.regeneratePeriod * 1000);
 
 
         setInterval( (function () {
+          if ( this.json.activity.length === 0) {
             this.modifyStat( 'mind', 'current', 1);
+          }
         }).bind(this), this.json.stats.mind.regeneratePeriod * 1000);
 
       };
@@ -84,6 +90,9 @@ angular.module('craftyApp')
     FSCharacter.prototype.stopHarvesting = function () {
 
       clearInterval(this.updateActiveTaskInterval);
+      for (var statKeyname in thisFactory.taskRules.harvesting.stat) {
+        clearInterval( this.statUpdateInterval[statKeyname]);
+      }
 
       var harvestableType = this.json.activity[0].name;
 
@@ -139,6 +148,9 @@ angular.module('craftyApp')
     FSCharacter.prototype.stopGathering = function () {
 
       clearInterval(this.updateActiveTaskInterval);
+      for (var statKeyname in thisFactory.taskRules.gathering.stat) {
+        clearInterval( this.statUpdateInterval[statKeyname]);
+      }
 
       var gatherableType = this.json.activity[0].name;
 
@@ -188,6 +200,9 @@ angular.module('craftyApp')
     FSCharacter.prototype.stopCrafting = function () {
 
       clearInterval(this.updateActiveTaskInterval);
+      for (var statKeyname in thisFactory.taskRules.crafting.stat) {
+        clearInterval( this.statUpdateInterval[statKeyname]);
+      }
 
       var craftableKey = this.json.activity[0].name;
 
@@ -245,7 +260,22 @@ angular.module('craftyApp')
             var hasDependencies = this.hasGatheringDependencies(taskName);
             if (hasGatherables === true && hasDependencies === true) {
 
-              this.modifyStat( 'energy', 'current', -10);
+
+              //Set modify stat timer intervals
+              this.statUpdateInterval = {};
+              for (var gatheringStatKeyname in thisFactory.taskRules.gathering.stat) {
+                console.log('start statUpdateInterval:' + gatheringStatKeyname + '' + thisFactory.taskRules.gathering.stat[gatheringStatKeyname].secondsPerDecrement);
+
+               (function (thisStatsKeyname) {
+
+                    thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
+                          this.modifyStat( thisStatsKeyname, 'current', -1);
+                          console.log('statUpdateInterval:' + thisStatsKeyname);
+                    }).bind(thisCharacter), thisFactory.taskRules.gathering.stat[thisStatsKeyname].secondsPerDecrement * 1000);
+
+                }(gatheringStatKeyname));
+              }
+
 
               var gatheringDuration = (thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
               setTimeout(this.stopGathering.bind(this), gatheringDuration);
@@ -273,7 +303,22 @@ angular.module('craftyApp')
 
             if (hasHarvestables === true) {
 
-              this.modifyStat( 'energy', 'current', -10);
+
+              //Set modify stat timer intervals
+              this.statUpdateInterval = {};
+              for (var harvestingStatKeyname in thisFactory.taskRules.harvesting.stat) {
+                console.log('start statUpdateInterval:' + harvestingStatKeyname + '' + thisFactory.taskRules.harvesting.stat[harvestingStatKeyname].secondsPerDecrement);
+
+                (function (thisStatsKeyname) {
+
+                    thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
+                          this.modifyStat( thisStatsKeyname, 'current', -1);
+                          console.log('statUpdateInterval:' + thisStatsKeyname);
+                    }).bind(thisCharacter), thisFactory.taskRules.harvesting.stat[thisStatsKeyname].secondsPerDecrement * 1000);
+
+                }(harvestingStatKeyname));
+              }
+
 
               var harvestingDuration = (thisFactory.harvestables[taskName].harvestableDuration( thisCharacter) * 1000) / thisFactory.taskTimeScalar;
               console.log('harvestingDuration' + harvestingDuration);
@@ -300,6 +345,22 @@ angular.module('craftyApp')
           {
             var craftingDuration = (thisFactory.recipeDef[taskName].craftBaseTimeS * 1000) / thisFactory.taskTimeScalar;
             setTimeout(this.stopCrafting.bind(this),  craftingDuration);
+
+              //Set modify stat timer intervals
+              this.statUpdateInterval = {};
+              for (var craftingStatKeyname in thisFactory.taskRules.crafting.stat) {
+                console.log('start statUpdateInterval:' + craftingStatKeyname + '' + thisFactory.taskRules.crafting.stat[craftingStatKeyname].secondsPerDecrement);
+
+                (function (thisStatsKeyname) {
+
+                    thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
+                          this.modifyStat( thisStatsKeyname, 'current', -1);
+                          console.log('statUpdateInterval:' + thisStatsKeyname);
+                    }).bind(thisCharacter), thisFactory.taskRules.crafting.stat[thisStatsKeyname].secondsPerDecrement * 1000);
+
+                }(craftingStatKeyname));
+              }
+
 
             this.updateActiveTaskRemainingPercent = 100;
             this.updateActiveTaskInterval =  setInterval( function() {

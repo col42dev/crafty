@@ -1,6 +1,6 @@
 <div class="fadedbackground">
 
-<h4>RECIPES DEFINITIONS (reference)</h4>
+<h4>RECIPES RULES</h4>
 
 <div class="bodycontainer scrollable">
 <table class="table table-bordered table-condensed table-scrollable">
@@ -35,7 +35,7 @@
 
 <div class="fadedbackground">
 
-<h4>TOOL DEFINITIONS (reference)</h4>
+<h4>TOOL RULES</h4>
 
 <div class="bodycontainer scrollable">
 <table class="table table-bordered table-condensed table-scrollable">
@@ -68,7 +68,7 @@
 
 <div class="fadedbackground">
 
-<h4>HARVEST DEFINITIONS (reference)</h4>
+<h4>HARVEST RULES</h4>
 
 <div class="bodycontainer scrollable">
 <table class="table table-bordered table-condensed table-scrollable">
@@ -102,7 +102,7 @@
 
 <div class="fadedbackground">
 
-<h4>GATHER DEFINITIONS (reference)</h4>
+<h4>GATHER RULES</h4>
 
 <div class="bodycontainer scrollable">
 <table class="table table-bordered table-condensed table-scrollable">
@@ -135,7 +135,7 @@
 
 <div class="fadedbackground">
 
-<h4>FOOD DEFINITIONS (reference)</h4>
+<h4>FOOD RULES</h4>
 
 <div class="bodycontainer scrollable">
 <table class="table table-bordered table-condensed table-scrollable">
@@ -155,6 +155,35 @@
       <tr ng-repeat="(k,v)  in getFSService().simulation.foodDefines" class="noselect" >
         <td class="col-sm-1">{{k}}</td> 
         <td class="col-sm-1">{{v.onConsume.stat}}</td> 
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!--fadedbackground-->
+
+<div class="fadedbackground">
+
+<h4>TASK RULES</h4>
+
+<div class="bodycontainer scrollable">
+<table class="table table-bordered table-condensed table-scrollable">
+  <tbody>
+      <tr class="noselect" >
+          <td class="col-sm-1">Name</td>
+          <td class="col-sm-1">Effect</td>
+      </tr>
+  </tbody>
+</table>  
+</div>
+
+<div class="bodycontainer scrollable">
+  <table class="table table-bordered table-condensed table-scrollable">
+
+    <tbody>
+      <tr ng-repeat="(k,v)  in getFSService().simulation.taskRules" class="noselect" >
+        <td class="col-sm-1">{{k}}</td> 
+        <td class="col-sm-1">{{v.stat}}</td> 
       </tr>
     </tbody>
   </table>

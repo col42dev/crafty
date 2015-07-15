@@ -16,12 +16,16 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-  	var FSSimFactory = function(scope, json) {
+  	var FSSimFactory = function(scope) {
 
   		var thisFactory = this;
   		var ctrllerScope = scope;
 
-	    this.initialize = function() {
+	   /**
+	     * @desc 
+	     * @return 
+	     */
+	    this.createSimRules = function( json) {
 	
 			this.taskTimeScalar ='1';
 
@@ -30,6 +34,7 @@ angular.module('craftyApp')
 	        this.gatherableDefines = json.gatherableDefines;  
 	        this.toolDefines = json.toolDefines;  
 	        this.foodDefines = json.foodDefines;  
+	        this.taskRules = json.taskRules;  
 
 			// Recipes Defines
 			this.recipesDefines = json.recipesDefines; 
@@ -41,6 +46,20 @@ angular.module('craftyApp')
 	         	}
 	        }
 
+	        // Rewards
+	        this.rewards = {};  
+	        json.rewardDefines.forEach( ( function(thisReward) {
+	          	this.rewards[thisReward.name] = new FSReward(thisReward, this);
+	        }).bind(this)); 
+	    };
+
+
+	   /**
+	     * @desc 
+	     * @return 
+	     */
+	    this.createSimState = function( json) {
+	
 	     	// Characters
 		    this.characterObjs = {};  
  			json.characters.forEach( ( function(thisCharacter) {
@@ -107,13 +126,6 @@ angular.module('craftyApp')
 		        	});
 	    	};
 	    	this.updateRecipes();
-
-	        // Rewards
-	        this.rewards = {};  
-	        json.rewardDefines.forEach( ( function(thisReward) {
-	          	this.rewards[thisReward.name] = new FSReward(thisReward, this);
-	        }).bind(this)); 
-
 	    };
 
 
@@ -257,8 +269,6 @@ angular.module('craftyApp')
 		 */
 		this.checkRewards  = function ( checkDesc ) {
 
-			console.log('checkRewards down');
-
 			for (var thisReward in this.rewards) {
   				if (this.rewards.hasOwnProperty(thisReward)) {
   					if (this.rewards[thisReward].serializable.action === checkDesc.action) {
@@ -268,8 +278,6 @@ angular.module('craftyApp')
 					}
   				}
 			}
-
-			console.log('checkRewards down');
 		};
 
 		/**
@@ -451,8 +459,6 @@ angular.module('craftyApp')
 		};
 
 	   
-	    // Call the initialize function for every new instance
-	    this.initialize();
   	};
 
 	/**
