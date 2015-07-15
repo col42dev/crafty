@@ -168,6 +168,9 @@ angular.module('craftyApp')
       thisFactory.bank[gatherableType].increment(1);
       thisFactory.updateBank();
 
+      //Rewards
+      thisFactory.checkRewards( {'action':'gather', 'target':gatherableType});
+
       this.json.activity.splice(0, 1);
 
       // start next activity
@@ -264,13 +267,14 @@ angular.module('craftyApp')
               //Set modify stat timer intervals
               this.statUpdateInterval = {};
               for (var gatheringStatKeyname in thisFactory.taskRules.gathering.stat) {
-                console.log('start statUpdateInterval:' + gatheringStatKeyname + '' + thisFactory.taskRules.gathering.stat[gatheringStatKeyname].secondsPerDecrement);
+                //console.log('start statUpdateInterval:' + gatheringStatKeyname + '' + thisFactory.taskRules.gathering.stat[gatheringStatKeyname].secondsPerDecrement);
 
                (function (thisStatsKeyname) {
+                    thisCharacter.modifyStat( thisStatsKeyname, 'current', -1);
 
                     thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
                           this.modifyStat( thisStatsKeyname, 'current', -1);
-                          console.log('statUpdateInterval:' + thisStatsKeyname);
+                          //console.log('statUpdateInterval:' + thisStatsKeyname);
                     }).bind(thisCharacter), thisFactory.taskRules.gathering.stat[thisStatsKeyname].secondsPerDecrement * 1000);
 
                 }(gatheringStatKeyname));
@@ -285,7 +289,7 @@ angular.module('craftyApp')
                     thisCharacter.updateActiveTaskRemainingPercent --;
                     if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
                        clearInterval(thisCharacter.updateActiveTaskInterval);
-                       console.log('clearInterval' );
+                       //console.log('clearInterval' );
                     }
                 }, gatheringDuration / 100);            
               thisFactory.gatherables[taskName].json.gatherers ++;
@@ -307,13 +311,14 @@ angular.module('craftyApp')
               //Set modify stat timer intervals
               this.statUpdateInterval = {};
               for (var harvestingStatKeyname in thisFactory.taskRules.harvesting.stat) {
-                console.log('start statUpdateInterval:' + harvestingStatKeyname + '' + thisFactory.taskRules.harvesting.stat[harvestingStatKeyname].secondsPerDecrement);
+                //console.log('start statUpdateInterval:' + harvestingStatKeyname + '' + thisFactory.taskRules.harvesting.stat[harvestingStatKeyname].secondsPerDecrement);
 
                 (function (thisStatsKeyname) {
+                    thisCharacter.modifyStat( thisStatsKeyname, 'current', -1);
 
                     thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
                           this.modifyStat( thisStatsKeyname, 'current', -1);
-                          console.log('statUpdateInterval:' + thisStatsKeyname);
+                          //console.log('statUpdateInterval:' + thisStatsKeyname);
                     }).bind(thisCharacter), thisFactory.taskRules.harvesting.stat[thisStatsKeyname].secondsPerDecrement * 1000);
 
                 }(harvestingStatKeyname));
@@ -329,7 +334,7 @@ angular.module('craftyApp')
                     thisCharacter.updateActiveTaskRemainingPercent --;
                     if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
                        clearInterval(thisCharacter.updateActiveTaskInterval);
-                       console.log('clearInterval' );
+                       //console.log('clearInterval' );
                     }
                 }, harvestingDuration / 100);
               
@@ -349,13 +354,14 @@ angular.module('craftyApp')
               //Set modify stat timer intervals
               this.statUpdateInterval = {};
               for (var craftingStatKeyname in thisFactory.taskRules.crafting.stat) {
-                console.log('start statUpdateInterval:' + craftingStatKeyname + '' + thisFactory.taskRules.crafting.stat[craftingStatKeyname].secondsPerDecrement);
+                //console.log('start statUpdateInterval:' + craftingStatKeyname + '' + thisFactory.taskRules.crafting.stat[craftingStatKeyname].secondsPerDecrement);
 
                 (function (thisStatsKeyname) {
+                    thisCharacter.modifyStat( thisStatsKeyname, 'current', -1);
 
                     thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
                           this.modifyStat( thisStatsKeyname, 'current', -1);
-                          console.log('statUpdateInterval:' + thisStatsKeyname);
+                          //console.log('statUpdateInterval:' + thisStatsKeyname);
                     }).bind(thisCharacter), thisFactory.taskRules.crafting.stat[thisStatsKeyname].secondsPerDecrement * 1000);
 
                 }(craftingStatKeyname));
@@ -367,7 +373,7 @@ angular.module('craftyApp')
                   thisCharacter.updateActiveTaskRemainingPercent --;
                   if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
                      clearInterval(thisCharacter.updateActiveTaskInterval);
-                     console.log('clearInterval' );
+                     //console.log('clearInterval' );
                   }
               }, craftingDuration / 100);   
           }
@@ -398,24 +404,24 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.hasStatsFor = function ( taskCategory) {
 
-      switch (taskCategory) {
-        case 'gathering':
-          if ( parseInt( this.json.stats.energy.current, 10) >= 20) {
-            return true;
+        var hasStats = true;
+
+       for (var statKeyname in thisFactory.taskRules[taskCategory].stat) {
+
+          console.log( parseInt(this.json.stats[statKeyname].current, 10) + '<' + parseInt( thisFactory.taskRules[taskCategory].stat[statKeyname].minRequired, 10));
+
+          if ( parseInt( this.json.stats[statKeyname].current, 10) < parseInt( thisFactory.taskRules[taskCategory].stat[statKeyname].minRequired, 10) ) {
+              hasStats = false;
+
+
           }
-          break;
-        case 'harvesting':
-          if ( parseInt( this.json.stats.energy.current, 10) >= 20) {
-            return true;
-          }
-          break;
-        case 'crafting':
-          if ( parseInt( this.json.stats.energy.current, 10) >= 20) {
-            return true;
-          }
-          break;
-      }
-      return false;
+       }
+
+         console.log( hasStats);
+
+
+       return hasStats;
+
     };
   
 

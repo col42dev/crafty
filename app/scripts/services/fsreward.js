@@ -11,7 +11,10 @@ angular.module('craftyApp')
   .service('FSReward', function () {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-     // FSRecipe
+    /**
+     * @desc 
+     * @return 
+     */
     var FSReward = function( json, thisFactory) { 
       this.serializable = json;
       this.thisFactory = thisFactory;

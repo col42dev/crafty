@@ -40,18 +40,10 @@
 	"buffers":
 	[
 		{
-			"file": "/Users/colinmoore/dev/crafty/app/json/rules.json",
-			"settings":
-			{
-				"buffer_size": 20856,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/scripts/services/fscharacter.js",
 			"settings":
 			{
-				"buffer_size": 13457,
+				"buffer_size": 16475,
 				"line_ending": "Unix"
 			}
 		},
@@ -70,7 +62,7 @@
 			"file": "/Users/colinmoore/dev/crafty/app/json/defintions.json",
 			"settings":
 			{
-				"buffer_size": 20505,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -78,15 +70,7 @@
 			"file": "/Users/colinmoore/dev/crafty/app/json/crafty.json",
 			"settings":
 			{
-				"buffer_size": 25854,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/colinmoore/dev/crafty/app/json/state.json",
-			"settings":
-			{
-				"buffer_size": 5408,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -105,7 +89,7 @@
 			"file": "app/scripts/services/fssimfactory.js",
 			"settings":
 			{
-				"buffer_size": 14470,
+				"buffer_size": 14510,
 				"line_ending": "Unix"
 			}
 		},
@@ -121,7 +105,7 @@
 			"file": "app/index.html",
 			"settings":
 			{
-				"buffer_size": 4525,
+				"buffer_size": 4521,
 				"line_ending": "Unix"
 			}
 		},
@@ -161,7 +145,7 @@
 			"file": "app/views/main.html",
 			"settings":
 			{
-				"buffer_size": 1733,
+				"buffer_size": 1865,
 				"line_ending": "Unix"
 			}
 		},
@@ -169,7 +153,23 @@
 			"file": "app/scripts/services/fsservice.js",
 			"settings":
 			{
-				"buffer_size": 5691,
+				"buffer_size": 7249,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/colinmoore/dev/crafty/app/json/state.json",
+			"settings":
+			{
+				"buffer_size": 5410,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/colinmoore/dev/crafty/app/json/rules.json",
+			"settings":
+			{
+				"buffer_size": 20932,
 				"line_ending": "Unix"
 			}
 		},
@@ -260,6 +260,14 @@
 				"buffer_size": 609,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "app/views/reference.html",
+			"settings":
+			{
+				"buffer_size": 4893,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -286,6 +294,8 @@
 	},
 	"file_history":
 	[
+		"/Users/colinmoore/dev/crafty/app/json/rules.json",
+		"/Users/colinmoore/dev/crafty/app/json/state.json",
 		"/Users/colinmoore/dev/Electoral-System-Simulator/app/scripts/services/electionservice.js",
 		"/Users/colinmoore/dev/craftydb/publishToEC2.sh",
 		"/Users/colinmoore/Dev/crafty/logs/[ec2-user@ip-172-31-38-189 html]$ npm list -g",
@@ -383,6 +393,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"checkRewards",
+			"input",
 			"':",
 			"loc",
 			"recipeDef",
@@ -529,51 +541,23 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 26,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/Users/colinmoore/dev/crafty/app/json/rules.json",
-					"settings":
-					{
-						"buffer_size": 20856,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								18358,
-								18358
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 15226.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "app/scripts/services/fscharacter.js",
 					"settings":
 					{
-						"buffer_size": 13457,
+						"buffer_size": 16475,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								6679,
+								6691
 							]
 						],
 						"settings":
@@ -583,13 +567,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3323.0,
+						"translation.y": 2861.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"file": "app/crafty.json",
 					"settings":
 					{
@@ -617,19 +601,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "/Users/colinmoore/dev/crafty/app/json/defintions.json",
 					"settings":
 					{
-						"buffer_size": 20505,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								53,
-								53
+								0,
+								0
 							]
 						],
 						"settings":
@@ -645,11 +629,11 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "/Users/colinmoore/dev/crafty/app/json/crafty.json",
 					"settings":
 					{
-						"buffer_size": 25854,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -673,35 +657,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "/Users/colinmoore/dev/crafty/app/json/state.json",
-					"settings":
-					{
-						"buffer_size": 5408,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5406,
-								5406
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
+					"buffer": 4,
 					"file": "/Users/colinmoore/dev/crafty/app/json/defines.json",
 					"settings":
 					{
@@ -729,19 +685,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 5,
 					"file": "app/scripts/services/fssimfactory.js",
 					"settings":
 					{
-						"buffer_size": 14470,
+						"buffer_size": 14510,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								893,
-								893
+								8884,
+								8884
 							]
 						],
 						"settings":
@@ -750,13 +706,13 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 182.0,
+						"translation.y": 3716.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 6,
 					"file": "/Users/colinmoore/Downloads/sourcetree.license",
 					"settings":
 					{
@@ -782,19 +738,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 7,
 					"file": "app/index.html",
 					"settings":
 					{
-						"buffer_size": 4525,
+						"buffer_size": 4521,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2726,
-								2726
+								1586,
+								1586
 							]
 						],
 						"settings":
@@ -804,13 +760,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 932.0,
+						"translation.y": 160.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 8,
 					"file": "/Users/colinmoore/dev/Electoral-System-Simulator/app/index.html",
 					"settings":
 					{
@@ -838,7 +794,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 9,
 					"file": "app/scripts/services/fsbackpack.js",
 					"settings":
 					{
@@ -866,7 +822,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 10,
 					"file": "app/scripts/controllers/about.js",
 					"settings":
 					{
@@ -892,7 +848,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 11,
 					"file": "app/scripts/controllers/main.js",
 					"settings":
 					{
@@ -918,19 +874,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 12,
 					"file": "app/views/main.html",
 					"settings":
 					{
-						"buffer_size": 1733,
+						"buffer_size": 1865,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								568,
-								568
+								86,
+								86
 							]
 						],
 						"settings":
@@ -940,25 +896,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 6.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 13,
 					"file": "app/scripts/services/fsservice.js",
 					"settings":
 					{
-						"buffer_size": 5691,
+						"buffer_size": 7249,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								787,
-								787
+								798,
+								798
 							]
 						],
 						"settings":
@@ -968,7 +924,63 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 66.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "/Users/colinmoore/dev/crafty/app/json/state.json",
+					"settings":
+					{
+						"buffer_size": 5410,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								455,
+								455
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "/Users/colinmoore/dev/crafty/app/json/rules.json",
+					"settings":
+					{
+						"buffer_size": 20932,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								20932
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 15442.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1221,7 +1233,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 582.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1250,6 +1262,34 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 26,
+					"file": "app/views/reference.html",
+					"settings":
+					{
+						"buffer_size": 4893,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4237,
+								4237
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2287.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

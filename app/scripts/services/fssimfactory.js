@@ -35,6 +35,7 @@ angular.module('craftyApp')
 	        this.toolDefines = json.toolDefines;  
 	        this.foodDefines = json.foodDefines;  
 	        this.taskRules = json.taskRules;  
+	       	this.rewardRules = json.rewardRules;  
 
 			// Recipes Defines
 			this.recipesDefines = json.recipesDefines; 
@@ -46,11 +47,7 @@ angular.module('craftyApp')
 	         	}
 	        }
 
-	        // Rewards
-	        this.rewards = {};  
-	        json.rewardDefines.forEach( ( function(thisReward) {
-	          	this.rewards[thisReward.name] = new FSReward(thisReward, this);
-	        }).bind(this)); 
+
 	    };
 
 
@@ -126,6 +123,14 @@ angular.module('craftyApp')
 		        	});
 	    	};
 	    	this.updateRecipes();
+
+
+	    	//rewards
+	    	this.rewards = [];
+	    	json.rewards.forEach( ( function(thisReward) {
+	          	this.rewards.push(thisReward);
+	        }).bind(this)); 
+
 	    };
 
 
@@ -142,7 +147,8 @@ angular.module('craftyApp')
 	        buildjson.gatherableDefines = this.gatherableDefines;  
 	        buildjson.toolDefines = this.toolDefines;  
 	        buildjson.foodDefines = this.foodDefines;  
-	        buildjson.recipesDefines = this.recipesDefines;  
+	        buildjson.recipesDefines = this.recipesDefines; 
+	        buildjson.rewardRules = this.rewardRules;   
 
 
 	     	// Characters
@@ -177,11 +183,6 @@ angular.module('craftyApp')
 	        	buildjson.recipes.push(this.knownRecipes[recipeName].name);
 	        }
 
-	        // Rewards
-	        buildjson.rewardDefines = [];  
-	        for ( var thisReward in this.rewards) {
-	        	buildjson.rewardDefines.push(this.rewards[thisReward].serializable);
-	        }
 
 
 	        this.jsonSerialized = JSON.stringify(buildjson, undefined, 2);
@@ -269,15 +270,38 @@ angular.module('craftyApp')
 		 */
 		this.checkRewards  = function ( checkDesc ) {
 
-			for (var thisReward in this.rewards) {
-  				if (this.rewards.hasOwnProperty(thisReward)) {
-  					if (this.rewards[thisReward].serializable.action === checkDesc.action) {
-						if (this.rewards[thisReward].serializable.target === checkDesc.target) {
-							this.rewards[thisReward].serializable.completed = 1;
+			for (var thisRewardRule in this.rewardRules) {
+  				if (this.rewardRules.hasOwnProperty(thisRewardRule)) {
+  					if (this.rewardRules[thisRewardRule].action === checkDesc.action) {
+						if (this.rewardRules[thisRewardRule].target === checkDesc.target) {
+							
+							// reward reward
+							if ( this.rewards.indexOf(thisRewardRule) === -1) {
+								console.log('REWARD:' + thisRewardRule);
+								this.rewards.push(thisRewardRule);
+							}
+
+							// recipe unlocks
+							this.rewardRules[thisRewardRule].recipeUnlocks.forEach( function( recipe) {
+
+								if ( this.knownRecipes.hasOwnProperty(recipe) === false) {
+									if (this.hasOwnProperty(recipe) === false) {
+										this.knownRecipes[recipe] =  new FSRecipe( recipe, this);
+										this.updateRecipes();
+										console.log('RECIPE UNLOCK:' + recipe);
+									}
+								}
+
+							}.bind(this));
+
 						}
 					}
   				}
 			}
+		};
+
+		this.rewardbgcolor = function ( rewardName ) {
+		     return  (this.rewards.indexOf(rewardName) === -1) ? '#FF0000' : '#00FF00';
 		};
 
 		/**

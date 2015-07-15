@@ -129,16 +129,6 @@
   ],
   "gatherables": [
     {
-      "name": "Stone",
-      "quantity": "0",
-      "gatherers": "0"
-    },
-    {
-      "name": "Coal",
-      "quantity": "0",
-      "gatherers": "0"
-    },
-    {
       "name": "Iron Ore",
       "quantity": "3",
       "gatherers": "0"
@@ -250,6 +240,8 @@
       "quantity": 3
     }
   ],
+  "rewards": [
+  ],
   "recipes": [
     "Rope",
     "WoodenTable",
@@ -257,16 +249,13 @@
     "Forge",
     "AntlerPickaxe",
     "Paper",
-    "Books",
     "FineHat",
     "FlagonOfAle",
     "WoodenPlanks",
     "DiceTable",
     "Minecart",
     "Loom",
-    "Glass",
     "Shovel",
-    "Cloth",
     "Nails",
     "BackPack",
     "Saw",

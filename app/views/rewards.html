@@ -9,14 +9,14 @@
         <tr class="noselect" >
             <td class="col-sm-1">Name</td>
             <td class="col-sm-1">Description</td>
-            <td class="col-sm-1">Completed</td>
+            <td class="col-sm-1">Recipe Unlock</td>
         </tr>
     </theader>
     <tbody>
-      <tr ng-repeat="(k,v)  in getFSService().simulation.rewards" class="noselect" bgcolor={{v.bgcolor()}} >
-        <td >{{v.serializable.name}}</td> 
-        <td >{{v.serializable.desc}}</td> 
-        <td >{{v.serializable.completed}}</td> 
+      <tr ng-repeat="(k,v)  in getFSService().simulation.rewardRules" class="noselect" bgcolor={{getFSService().simulation.rewardbgcolor(k)}} >
+        <td >{{k}}</td> 
+        <td >{{v.desc}}</td> 
+        <td >{{v.recipeUnlocks}}</td> 
       </tr>
     </tbody>
   </table>

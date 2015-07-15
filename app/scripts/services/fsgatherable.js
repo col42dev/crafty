@@ -29,9 +29,11 @@ angular.module('craftyApp')
         color  = '#FF0000'; 
       }
 
+/*
       if ( this.simulation.selectedCharacter.hasStatsFor('gathering') === false) {
           color  = '#FF0000'; 
       }
+      */
 
       return color;   
     };

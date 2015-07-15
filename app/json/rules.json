@@ -1,29 +1,44 @@
 {
   "title": "craftyrules",
   "version": "0.0.0",
-  "rewardDefines": [
-    {
-      "name": "Liquidated",
+  "rewardRules": {
+    "Liquidated" : {
       "desc": "Craft a FlagonOfAle",
-      "completed": "0",
       "action": "craft",
-      "target": "FlagonOfAle"
+      "target": "FlagonOfAle",
+      "recipeUnlocks" : []
     },
-    {
-      "name": "Quench",
+    "Quench" : {
       "desc": "Craft a Bucket",
-      "completed": "0",
       "action": "craft",
-      "target": "Bucket"
+      "target": "Bucket",
+      "recipeUnlocks" : []
     },
-    {
-      "name": "Master Brewer",
+    "Master Brewer" : {
       "desc": "Craft a FermentingVat",
-      "completed": "0",
       "action": "craft",
-      "target": "FermentingVat"
+      "target": "FermentingVat",
+      "recipeUnlocks" : []
+    },
+    "Literacy" : {
+      "desc": "Craft Some paper",
+      "action": "craft",
+      "target": "Paper",
+      "recipeUnlocks" : ["Books"]
+    },
+    "Warp & Weft" : {
+      "desc": "Craft a Loom",
+      "action": "craft",
+      "target": "Loom",
+      "recipeUnlocks" : ["Cloth"]
+    },
+    "Faience" : {
+      "desc": "Gather Sand",
+      "action": "gather",
+      "target": "Sand",
+      "recipeUnlocks" : ["Glass"]
     }
-  ],
+  },
   "gatherableDefines": {
     "Earth": {
       "gatherBaseTimeS": "10",
@@ -1048,24 +1063,28 @@
     "harvesting": {
       "stat": {
         "energy": {
-          "secondsPerDecrement": 6
+          "secondsPerDecrement": 6,
+          "minRequired": 20
         }
       }
     },
     "gathering": {
       "stat": {
         "energy": {
-          "secondsPerDecrement": 6
+          "secondsPerDecrement": 6,
+          "minRequired": 20
         }
       }
     },
     "crafting": {
       "stat": {
         "mind": {
-          "secondsPerDecrement": 6
+          "secondsPerDecrement": 6,
+          "minRequired": 20
         },
         "energy": {
-          "secondsPerDecrement": 20
+          "secondsPerDecrement": 20,
+          "minRequired": 0
         }
       }
     }
