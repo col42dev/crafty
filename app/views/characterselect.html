@@ -18,8 +18,8 @@
 	</thead>
 	<tbody>
 	<tr ng-repeat="(k,v) in getFSService().simulation.characterObjs" class="noselect" ng-click="getFSService().onClickCharacter(v)">
-		<td class="col-sm-2">
-			<div ng-style="{'width' : '100%', 'background' : v.getbgcolor(), 'overflow' : 'visible'}">{{v.json.name}}</div>
+		<td bgcolor={{v.getbgcolor()}} class="col-sm-2">
+			{{v.json.name}}
 		</td> 
 
 		<td class="col-sm-1" > 

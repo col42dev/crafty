@@ -33,7 +33,7 @@ angular.module('craftyApp')
       return color;   
     };
 
-    FSHarvestable.prototype.isHarvestableBy =  function( character) {  
+    FSHarvestable.prototype.isHarvestableBy =  function( character, log) {  
 
       var tools = [];
       
@@ -70,6 +70,9 @@ angular.module('craftyApp')
         }
       }).bind(this));
 
+      if ( log === true && isHarvestable === false) {
+        this.simulation.contextConsole.log( character.json.name + ' is not equipped with a tool with action(s) (' + this.simulation.harvestableDefines[this.name].actionable +') for harvesting ' + this.name);
+      }
       //console.log('isHarvestable(1):' + isHarvestable);  
 
       // tool strength vs harvestable hardness
@@ -77,6 +80,9 @@ angular.module('craftyApp')
 
         if ( parseInt( this.simulation.toolDefines[ tools[0] ].strength, 10) < parseInt( this.simulation.harvestableDefines[this.name].hardness, 10)) {
           isHarvestable = false;
+          if ( log === true) {
+            this.simulation.contextConsole.log(  tools[0] + ' not strong enough to harvest ' + this.name);
+          }
         }
       }
 

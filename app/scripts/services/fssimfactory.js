@@ -8,7 +8,7 @@
  * Simulation factory
  */
 angular.module('craftyApp')
-  .factory('FSSimFactory', function ( FSCharacter, FSTask, FSBackpack, FSGatherable,  FSRecipe, FSHarvestable) {
+  .factory('FSSimFactory', function ( FSCharacter, FSTask, FSBackpack, FSGatherable,  FSRecipe, FSHarvestable, FSContextConsole) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -37,6 +37,8 @@ angular.module('craftyApp')
 	        this.taskRules = json.taskRules;  
 	       	this.rewardRules = json.rewardRules;  
 			this.recipeDefines = json.recipesDefines; 
+
+			this.contextConsole = new FSContextConsole();
 	    };
 
 
@@ -235,6 +237,7 @@ angular.module('craftyApp')
 		 * @return 
 		 */
 		 this.onClickBody = function ( tableName, keyName) {
+		 	this.contextConsole.clear();
 	     	switch (tableName) {
 	     		case 'Bank':
 	     			this.onClickBank(keyName);
@@ -439,20 +442,21 @@ angular.module('craftyApp')
 		this.onClickRecipes = function (recipeKey) {
 		   	// determine if has reqiored ingredients in bank
 		   	var hasIngredients = true;
+		   	var recipeOutputObj = this.recipeDefines[recipeKey].output;
 		    var recipeInputObj = this.recipeDefines[recipeKey].input;
 			var recipeInputKeys = Object.keys( recipeInputObj );
 
-			recipeInputKeys.forEach( function ( recipeKey ) {
-				var recipeInput = recipeKey;
-				var recipeInputQuantity = recipeInputObj[ recipeKey];
+			recipeInputKeys.forEach( function ( recipeInputKey ) {
+				var recipeInput = recipeInputKey;
+				var recipeInputQuantity = recipeInputObj[ recipeInputKey];
 
 				if (recipeInput in this.bank) {
 					if ( this.bank[ recipeInput ].quantity.length < recipeInputQuantity) {
 						hasIngredients = false;
-						console.log('does not have ingredient quantity:' + recipeInput + ', ' + recipeInputQuantity);
+						this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for ' + recipeKey + ' but only have  ' + this.bank[ recipeInput ].quantity.length);
 					}
 				} else {
-					console.log('does not have ingredient:' + recipeInput);
+					this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for crafting ' +  recipeKey+ ' but have none');
 					hasIngredients = false;
 				}
 			}.bind(this));
@@ -465,7 +469,7 @@ angular.module('craftyApp')
 				var constructor = this.recipeDefines[recipeKey].construction[0];
 				if ( this.bank.hasOwnProperty(constructor) === false) {
 					hasIngredients = false;
-					console.log('does not have constructor:' + constructor);
+					this.contextConsole.log('Require a ' + constructor + ' in the bank for crafting ' + recipeKey);
 				} else {
 					console.log('has constructor :' + constructor);
 				}

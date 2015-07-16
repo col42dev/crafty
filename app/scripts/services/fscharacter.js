@@ -51,7 +51,7 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.getbgcolor =  function( ) {     
-      return  ((thisFactory.selectedCharacter  !== null) && (this.getFullName() === thisFactory.selectedCharacter.getFullName())) ? 'rgba(0, 200, 0, 1.0)' : 'rgba(0, 0, 0, 0.0)';       
+      return  ((thisFactory.selectedCharacter  !== null) && (this.getFullName() === thisFactory.selectedCharacter.getFullName())) ? '#00FF00' : null;       
     };
 
     /**
@@ -62,23 +62,28 @@ angular.module('craftyApp')
       return this.json.name;
     };
 
+
+
+
     /**
      * @desc 
      * @return 
      */
     FSCharacter.prototype.startHarvesting = function ( harvestablesName) {
-      if ( this.json.activity.length < 4 ) {
+      if ( this.hasSpareActivitySlot(true) === true) {
         if (thisFactory.harvestables[harvestablesName].quantity > 0) {
-          if ( this.hasStatsFor('harvesting') === true) {
-            if ( thisFactory.harvestables[harvestablesName].isHarvestableBy( thisFactory.selectedCharacter) === true) {
+          if ( this.hasStatsFor('harvesting', true) === true) {
+            if ( thisFactory.harvestables[harvestablesName].isHarvestableBy( thisFactory.selectedCharacter, true) === true) {
               this.json.activity.push( new FSTask( {'name':harvestablesName, 'category':'harvesting'}));
               if (this.json.activity.length === 1) {
                 this.startNextTask();
               }
-            }
+            } 
           }
+        } else {
+          thisFactory.contextConsole.log('There is no ' + harvestablesName + ' left to harvest');
         }
-      }
+      } 
     };
 
      /**
@@ -127,13 +132,19 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.startGathering = function ( gatherablesName) {
 
-      if ( this.json.activity.length < 4 ) {
-        if (thisFactory.gatherables.hasOwnProperty(gatherablesName) && thisFactory.gatherables[gatherablesName].json.quantity > 0) {
-          if ( this.hasStatsFor('gathering') === true) {
-            this.json.activity.push( new FSTask( {'name':gatherablesName, 'category':'gathering'}));
-            if (this.json.activity.length === 1) {
-              this.startNextTask();
+      if ( this.hasSpareActivitySlot(true) === true) {
+        if (thisFactory.gatherables.hasOwnProperty(gatherablesName)) {
+          if ( thisFactory.gatherables[gatherablesName].json.quantity > 0) {
+            if ( this.hasStatsFor('gathering', true) === true) {
+              if (this.hasGatheringDependencies(gatherablesName, true)) {
+                this.json.activity.push( new FSTask( {'name':gatherablesName, 'category':'gathering'}));
+                if (this.json.activity.length === 1) {
+                  this.startNextTask();
+                }
+              }
             }
+          } else {
+            thisFactory.contextConsole.log('There are no ' + gatherablesName + ' left to gather');
           }
         }
       }
@@ -185,10 +196,12 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.startCrafting = function ( craftableKey) {
-      if ( this.hasStatsFor('crafting') === true) {
-        this.json.activity.push( new FSTask({'name':craftableKey, 'category':'crafting'}));
-        if (this.json.activity.length === 1) {
-          this.startNextTask();
+      if ( this.hasSpareActivitySlot(true) === true) {
+        if ( this.hasStatsFor('crafting', true) === true) {
+          this.json.activity.push( new FSTask({'name':craftableKey, 'category':'crafting'}));
+          if (this.json.activity.length === 1) {
+            this.startNextTask();
+          }
         }
       }
     };
@@ -384,13 +397,30 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSCharacter.prototype.hasGatheringDependencies = function ( gatheringName) {
+    FSCharacter.prototype.hasSpareActivitySlot = function (log) {
+   
+      if ( this.json.activity.length < 4 ) {
+        return true;
+      }
+
+      if ( log === true) {
+        thisFactory.contextConsole.log('Activty queue is full');
+      }
+
+      return false;
+    };
+
+    /**
+     * @desc 
+     * @return 
+     */
+    FSCharacter.prototype.hasGatheringDependencies = function ( gatheringName, log) {
       var hasDependencies = false;
 
       thisFactory.gatherableDefines[gatheringName].actionable.forEach( ( function(thisActionable) {
-        if ( this.hasToolAction(thisActionable) === true) {
+        if ( this.hasToolAction(thisActionable, log) === true) {
           hasDependencies = true;
-        }
+        } 
       }).bind(this)); 
 
       return hasDependencies;
@@ -400,7 +430,7 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSCharacter.prototype.hasStatsFor = function ( taskCategory) {
+    FSCharacter.prototype.hasStatsFor = function ( taskCategory, log) {
 
         var hasStats = true;
 
@@ -408,8 +438,14 @@ angular.module('craftyApp')
 
          // console.log( parseInt(this.json.stats[statKeyname].current, 10) + '<' + parseInt( thisFactory.taskRules[taskCategory].stat[statKeyname].minRequired, 10));
 
-          if ( parseInt( this.json.stats[statKeyname].current, 10) < parseInt( thisFactory.taskRules[taskCategory].stat[statKeyname].minRequired, 10) ) {
+         var required = parseInt( thisFactory.taskRules[taskCategory].stat[statKeyname].minRequired, 10);
+         var current = parseInt( this.json.stats[statKeyname].current, 10) ;
+          if ( current< required) {
               hasStats = false;
+
+            if (log === true) {
+              thisFactory.contextConsole.log( 'Require ' + required + ' ' + statKeyname + ' for ' + taskCategory + ' but ' + this.json.name + ' only has ' + current);
+            }
           }
        }
 
@@ -422,7 +458,7 @@ angular.module('craftyApp')
      * @desc : is this character equipped with a tool which has the specified action.
      * @return 
      */
-    FSCharacter.prototype.hasToolAction = function ( toolAction) {
+    FSCharacter.prototype.hasToolAction = function ( toolAction, log) {
       var bHasToolAction = false;
 
       var equippedToolName = (this.json.tools.length > 0) ? this.json.tools[0].name : 'Hands';
@@ -430,8 +466,12 @@ angular.module('craftyApp')
       thisFactory.toolDefines[equippedToolName].actions.forEach( ( function ( action) {
         if ( toolAction === action) {
           bHasToolAction = true;
-        }
+        } 
       }).bind(this)); 
+
+      if (bHasToolAction === false && log === true)  {
+          thisFactory.contextConsole.log('Equipped tool (' + equippedToolName + ') does not have required action (' + toolAction  + ')');
+      }
 
       return bHasToolAction;
     };
