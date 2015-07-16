@@ -28,10 +28,10 @@ angular.module('craftyApp')
       var enabled = true;
 
       // has ingredients
-      for (var key in this.thisFactory.recipeDef[this.name].input) {
-          if (this.thisFactory.recipeDef[this.name].input.hasOwnProperty(key)) {
+      for (var key in this.thisFactory.recipeDefines[this.name].input) {
+          if (this.thisFactory.recipeDefines[this.name].input.hasOwnProperty(key)) {
               if (key in this.thisFactory.bank) {
-                if ( this.thisFactory.bank[key].quantity.length < this.thisFactory.recipeDef[this.name].input[key] ) {
+                if ( this.thisFactory.bank[key].quantity.length < this.thisFactory.recipeDefines[this.name].input[key] ) {
                   enabled = false;
                 }
             } else {
@@ -41,8 +41,8 @@ angular.module('craftyApp')
       }
 
       // has construct if one is needed
-      if ( this.thisFactory.recipeDef[this.name].construction.length > 0) {
-        var constructor = this.thisFactory.recipeDef[this.name].construction[0];
+      if ( this.thisFactory.recipeDefines[this.name].construction.length > 0) {
+        var constructor = this.thisFactory.recipeDefines[this.name].construction[0];
         if ( this.thisFactory.bank.hasOwnProperty(constructor) === false) {
           enabled = false;
         }
@@ -63,8 +63,8 @@ angular.module('craftyApp')
      */
     FSRecipe.prototype.getCategory = function( ) {
       //console.log('getCategory');
-      if (this.thisFactory.recipeDef.hasOwnProperty(this.name) === true) {
-          return this.thisFactory.recipeDef[this.name].category;
+      if (this.thisFactory.recipeDefines.hasOwnProperty(this.name) === true) {
+          return this.thisFactory.recipeDefines[this.name].category;
       }
       return 'bug';
     };

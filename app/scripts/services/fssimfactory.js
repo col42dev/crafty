@@ -8,7 +8,7 @@
  * Simulation factory
  */
 angular.module('craftyApp')
-  .factory('FSSimFactory', function ( FSCharacter, FSTask, FSBackpack, FSGatherable, FSRecipeDef, FSRecipe, FSReward, FSHarvestable) {
+  .factory('FSSimFactory', function ( FSCharacter, FSTask, FSBackpack, FSGatherable,  FSRecipe, FSHarvestable) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -36,18 +36,7 @@ angular.module('craftyApp')
 	        this.foodDefines = json.foodDefines;  
 	        this.taskRules = json.taskRules;  
 	       	this.rewardRules = json.rewardRules;  
-
-			// Recipes Defines
-			this.recipesDefines = json.recipesDefines; 
-	        this.recipeDef = {};  
-	        var jsonRecipesDefines = json.recipesDefines;
-	        for (var key in jsonRecipesDefines) {
-	        	if (jsonRecipesDefines.hasOwnProperty(key)) {
-	          		this.recipeDef[key] = new FSRecipeDef(jsonRecipesDefines[key], this);
-	         	}
-	        }
-
-
+			this.recipeDefines = json.recipesDefines; 
 	    };
 
 
@@ -147,7 +136,7 @@ angular.module('craftyApp')
 	        buildjson.gatherableDefines = this.gatherableDefines;  
 	        buildjson.toolDefines = this.toolDefines;  
 	        buildjson.foodDefines = this.foodDefines;  
-	        buildjson.recipesDefines = this.recipesDefines; 
+	        buildjson.recipesDefines = this.recipeDefines; 
 	        buildjson.rewardRules = this.rewardRules;   
 
 
@@ -263,7 +252,6 @@ angular.module('craftyApp')
 	 	 };
 
 
-
 		/**
 		 * @desc 
 		 * @return 
@@ -300,9 +288,34 @@ angular.module('craftyApp')
 			}
 		};
 
+		 /**
+	     * @desc 
+	     * @return 
+	     */
 		this.rewardbgcolor = function ( rewardName ) {
 		     return  (this.rewards.indexOf(rewardName) === -1) ? '#FF0000' : '#00FF00';
 		};
+
+		 /**
+	     * @desc 
+	     * @return 
+	     */
+	    this.recipebgcolor = function( recipeName) {
+	      var hasResources = true;
+	      for (var key in this.recipeDefines[recipeName].input) {
+	          if (this.recipeDefines[recipeName].input.hasOwnProperty(key)) {
+
+	              if (key in this.bank) {
+	                if ( this.bank[key].quantity.length < this.recipeDefines[recipeName].input[key] ) {
+	                  hasResources = false;
+	                }
+	            } else {
+	              hasResources = false;
+	            }
+	          }
+	      }
+	      return  (hasResources === true) ? '#00FF00' : '#FF0000';
+	    };
 
 		/**
 		 * @desc 
@@ -426,7 +439,7 @@ angular.module('craftyApp')
 		this.onClickRecipes = function (recipeKey) {
 		   	// determine if has reqiored ingredients in bank
 		   	var hasIngredients = true;
-		    var recipeInputObj = this.recipeDef[recipeKey].input;
+		    var recipeInputObj = this.recipeDefines[recipeKey].input;
 			var recipeInputKeys = Object.keys( recipeInputObj );
 
 			recipeInputKeys.forEach( function ( recipeKey ) {
@@ -447,9 +460,9 @@ angular.module('craftyApp')
 			console.log('has ingredients:' + hasIngredients);
 
 
-			if ( this.recipeDef[recipeKey].construction.length > 0) {
+			if ( this.recipeDefines[recipeKey].construction.length > 0) {
 
-				var constructor = this.recipeDef[recipeKey].construction[0];
+				var constructor = this.recipeDefines[recipeKey].construction[0];
 				if ( this.bank.hasOwnProperty(constructor) === false) {
 					hasIngredients = false;
 					console.log('does not have constructor:' + constructor);

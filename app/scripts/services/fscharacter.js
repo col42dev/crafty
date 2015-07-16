@@ -46,15 +46,13 @@ angular.module('craftyApp')
 
       };
 
-
     /**
      * @desc 
      * @return 
      */
     FSCharacter.prototype.getbgcolor =  function( ) {     
-      return  ((thisFactory.selectedCharacter  !== null) && (this.getFullName() === thisFactory.selectedCharacter.getFullName())) ? '#00FF00' : null;       
+      return  ((thisFactory.selectedCharacter  !== null) && (this.getFullName() === thisFactory.selectedCharacter.getFullName())) ? 'rgba(0, 200, 0, 1.0)' : 'rgba(0, 0, 0, 0.0)';       
     };
-
 
     /**
      * @desc 
@@ -210,7 +208,7 @@ angular.module('craftyApp')
       var craftableKey = this.json.activity[0].name;
 
       // generate output in bank.
-      var craftableOutputObj = thisFactory.recipeDef[craftableKey].output;
+      var craftableOutputObj = thisFactory.recipeDefines[craftableKey].output;
       var craftableOutputKey = Object.keys( craftableOutputObj );
 
       // assumes only one type is craftableOutput.
@@ -219,7 +217,7 @@ angular.module('craftyApp')
       
       // add output to bank.
       if (!(craftableOutput in thisFactory.bank)) {
-        thisFactory.bank[craftableOutput] = new FSBackpack( {'category':thisFactory.recipeDef[craftableKey].category, 'name':craftableOutput});
+        thisFactory.bank[craftableOutput] = new FSBackpack( {'category':thisFactory.recipeDefines[craftableKey].category, 'name':craftableOutput});
       }
       thisFactory.bank[craftableOutput].increment( craftableOutputQuantity);
       thisFactory.updateBank();
@@ -348,7 +346,7 @@ angular.module('craftyApp')
           break;
         case 'crafting':
           {
-            var craftingDuration = (thisFactory.recipeDef[taskName].craftBaseTimeS * 1000) / thisFactory.taskTimeScalar;
+            var craftingDuration = (thisFactory.recipeDefines[taskName].basetime * 1000) / thisFactory.taskTimeScalar;
             setTimeout(this.stopCrafting.bind(this),  craftingDuration);
 
               //Set modify stat timer intervals

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "characters": [
     {
-      "name": "Stroldrin Harvester",
+      "name": "Stroldrin Harvester",
       "profession": "harvesting",
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c1.8d006e6f.jpg",
       "stats": {
@@ -34,7 +34,7 @@
       ]
     },
     {
-      "name": "Gronderlug Crafter",
+      "name": "Gronderlug Crafter",
       "profession": "crafting",
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c2.3a5cb818.png",
       "stats": {
@@ -65,7 +65,7 @@
       ]
     },
     {
-      "name": "Dorasgrour Hunter",
+      "name": "Dorasgrour Hunter",
       "profession": "services",
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c3.b9144b93.png",
       "stats": {
@@ -96,7 +96,7 @@
       ]
     },
     {
-      "name": "Skoveath Laborer",
+      "name": "Skoveath Laborer",
       "profession": "harvesting",
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c4.59c1ea4d.png",
       "stats": {

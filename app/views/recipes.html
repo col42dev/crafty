@@ -14,7 +14,7 @@
   <table class="table table-bordered table-condensed table-scrollable">
     <tbody>
       <tr ng-repeat="(k,v)  in getFSService().simulation.knownRecipesArray | orderBy:getFSService().simulation.orderRecipesBy" class="noselect" >
-        <td bgcolor={{v.bgcolor()}} class="col-sm-1" ng-click="getFSService().onClickBody('Recipes', v)">{{v.name}}</td> 
+        <td bgcolor={{getFSService().simulation.recipebgcolor(v.name)}} class="col-sm-1" ng-click="getFSService().onClickBody('Recipes', v)">{{v.name}}</td> 
         <td class="col-sm-1" >{{v.getCategory()}}</td> 
       </tr>
     </tbody>
