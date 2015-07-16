@@ -14,7 +14,6 @@ angular.module('craftyApp')
         // Gatherables
     var FSContextConsole = function( ) { 
     	this.message = 'click red cell for context info';
-
     };
 
      /**

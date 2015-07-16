@@ -5,25 +5,28 @@
 <div class="bodycontainer scrollable">
 <table class="table table-bordered table-condensed table-scrollable">
   <tbody>
-      <tr class="noselect" >
-          <td class="col-sm-3">Item</td>
-          <td class="col-sm-5">Ingredients</td>
-          <td class="col-sm-2">Constructor</td>
-          <td class="col-sm-1">Crafting Time (S)</td>
-      </tr>
+    <tr class="noselect" >
+      <td width="15%">Item</td>
+      <td width="45%">Ingredients</td>
+      <td width="15%">Constructor</td>
+      <td width="5%">Crafting Time (S)</td>
+      <td width="10%">Proficiency<br>Profession</td>
+      <td width="10%">Proficiency<br>Tier</td>
+    </tr>
   </tbody>
 </table>  
 </div>
 
 <div class="bodycontainer scrollable">
   <table class="table table-bordered table-condensed table-scrollable">
-
     <tbody>
       <tr ng-repeat="(k,v)  in getFSService().simulation.recipeDefines" class="noselect" >
-        <td class="col-sm-3">{{v.output}}</td> 
-        <td class="col-sm-5">{{v.input}}</td> 
-        <td class="col-sm-2">{{v.construction}}</td> 
-        <td class="col-sm-1">{{v.craftBaseTimeS}}</td> 
+        <td width="15%">{{v.output}}</td> 
+        <td width="45%">{{v.input}}</td> 
+        <td width="15%">{{v.construction}}</td> 
+        <td width="5%">{{v.basetime}}</td> 
+        <td width="10%">{{v.proficiency.profession}}</td> 
+        <td width="10%">{{v.proficiency.tier}}</td> 
       </tr>
     </tbody>
   </table>

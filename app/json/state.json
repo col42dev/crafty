@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "characters": [
     {
-      "name": "Stroldrin Harvester",
+      "name": "Stroldrin Harvester",
       "profession": "harvesting",
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c1.8d006e6f.jpg",
       "stats": {
@@ -20,7 +20,7 @@
         "mind": {
           "current": "40",
           "max": "100",
-          "regeneratePeriod": "15"
+          "regeneratePeriod": "30"
         }
       },
       "activity": [
@@ -34,7 +34,7 @@
       ]
     },
     {
-      "name": "Gronderlug Crafter",
+      "name": "Gronderlug Crafter",
       "profession": "crafting",
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c2.3a5cb818.png",
       "stats": {
@@ -46,7 +46,7 @@
         "energy": {
           "current": "40",
           "max": "100",
-          "regeneratePeriod": "15"
+          "regeneratePeriod": "30"
         },
         "mind": {
           "current": "100",
@@ -65,7 +65,7 @@
       ]
     },
     {
-      "name": "Dorasgrour Hunter",
+      "name": "Dorasgrour Hunter",
       "profession": "services",
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c3.b9144b93.png",
       "stats": {
@@ -96,7 +96,7 @@
       ]
     },
     {
-      "name": "Skoveath Laborer",
+      "name": "Skoveath Laborer",
       "profession": "harvesting",
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c4.59c1ea4d.png",
       "stats": {
@@ -113,7 +113,7 @@
         "mind": {
           "current": "40",
           "max": "100",
-          "regeneratePeriod": "20"
+          "regeneratePeriod": "50"
         }
       },
       "activity": [
@@ -129,13 +129,13 @@
   ],
   "gatherables": [
     {
-      "name": "Iron Ore",
+      "name": "IronOre",
       "quantity": "3",
       "gatherers": "0"
     },
     {
       "name": "Water",
-      "quantity": "100",
+      "quantity": "200",
       "gatherers": "0"
     },
     {
@@ -150,12 +150,12 @@
     },
     {
       "name": "Leaves",
-      "quantity": "100",
+      "quantity": "5",
       "gatherers": "0"
     },
     {
       "name": "Grain",
-      "quantity": "20",
+      "quantity": "5",
       "gatherers": "0"
     },
     {
@@ -165,7 +165,7 @@
     },
     {
       "name": "Sand",
-      "quantity": "30",
+      "quantity": "5",
       "gatherers": "0"
     },
     {
@@ -198,7 +198,7 @@
       "quantity": "100"
     },
     {
-      "name": "Iron Ore",
+      "name": "IronOre",
       "quantity": "100"
     },
     {
@@ -207,6 +207,18 @@
     },
     {
       "name": "Fish",
+      "quantity": "100"
+    },
+    {
+      "name": "Leaves",
+      "quantity": "100"
+    },
+    {
+      "name": "Grain",
+      "quantity": "100"
+    },
+    {
+      "name": "Sand",
       "quantity": "100"
     },
     {
@@ -289,6 +301,26 @@
     "FirstAidStation",
     "BarrelOfWater",
     "ImprovedBucketPump",
-    "SteelPickaxe"
-  ]
+    "SteelPickaxe" ,
+    "WickerBasket",
+    "WoodenStatue",
+    "WoodenChair",
+    "SteelShovel",
+    "SteelAxe",
+    "Snares",
+    "HarvestingShears",
+    "WheelBarrow",
+    "AdvancedWorkbench",
+    "Wheel",
+    "SteelMattock",
+    "FishingNet",
+    "Cart",
+    "LargeBarrel",
+    "LeatherBackPack",
+    "BlockAndTackle",
+    "CastingVessel",
+    "MarbleStatue",
+    "MarbleBookshelf",
+    "Books"
+     ]
 }
