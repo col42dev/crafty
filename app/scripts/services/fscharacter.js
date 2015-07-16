@@ -70,20 +70,13 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.startHarvesting = function ( harvestablesName) {
+
       if ( this.hasSpareActivitySlot(true) === true) {
-        if (thisFactory.harvestables[harvestablesName].quantity > 0) {
-          if ( this.hasStatsFor('harvesting', true) === true) {
-            if ( thisFactory.harvestables[harvestablesName].isHarvestableBy( thisFactory.selectedCharacter, true) === true) {
-              this.json.activity.push( new FSTask( {'name':harvestablesName, 'category':'harvesting'}));
-              if (this.json.activity.length === 1) {
-                this.startNextTask();
-              }
-            } 
-          }
-        } else {
-          thisFactory.contextConsole.log('There is no ' + harvestablesName + ' left to harvest');
+        this.json.activity.push( new FSTask( {'name':harvestablesName, 'category':'harvesting'}));
+        if (this.json.activity.length === 1) {
+          this.startNextTask();
         }
-      } 
+      }
     };
 
      /**
@@ -133,21 +126,12 @@ angular.module('craftyApp')
     FSCharacter.prototype.startGathering = function ( gatherablesName) {
 
       if ( this.hasSpareActivitySlot(true) === true) {
-        if (thisFactory.gatherables.hasOwnProperty(gatherablesName)) {
-          if ( thisFactory.gatherables[gatherablesName].json.quantity > 0) {
-            if ( this.hasStatsFor('gathering', true) === true) {
-              if (this.hasGatheringDependencies(gatherablesName, true)) {
-                this.json.activity.push( new FSTask( {'name':gatherablesName, 'category':'gathering'}));
-                if (this.json.activity.length === 1) {
-                  this.startNextTask();
-                }
-              }
-            }
-          } else {
-            thisFactory.contextConsole.log('There are no ' + gatherablesName + ' left to gather');
-          }
+        this.json.activity.push( new FSTask( {'name':gatherablesName, 'category':'gathering'}));
+        if (this.json.activity.length === 1) {
+          this.startNextTask();
         }
       }
+    
     };
 
     /**
@@ -195,15 +179,21 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSCharacter.prototype.startCrafting = function ( craftableKey) {
-      if ( this.hasSpareActivitySlot(true) === true) {
-        if ( this.hasStatsFor('crafting', true) === true) {
-          this.json.activity.push( new FSTask({'name':craftableKey, 'category':'crafting'}));
-          if (this.json.activity.length === 1) {
+    FSCharacter.prototype.startCrafting = function ( recipeKey) {
+
+    if ( this.hasSpareActivitySlot(true) === true) {
+  
+      this.json.activity.push( new FSTask({'name':recipeKey, 'category':'crafting'}));
+      if (this.json.activity.length === 1) {
             this.startNextTask();
-          }
         }
       }
+   
+
+
+  
+
+     
     };
 
 
@@ -262,131 +252,230 @@ angular.module('craftyApp')
       switch ( this.json.activity[0].category) {
         case 'gathering':
           {
-            var hasGatherables = false;
-            if (taskName in thisFactory.gatherables) {
-              if (thisFactory.gatherables[taskName].json.quantity > 0) {
-                if ( thisFactory.gatherables[taskName].json.quantity > thisFactory.gatherables[taskName].json.gatherers) { // too many cooks?
-                  hasGatherables = true;
-                }
+
+            var canStartGathering = true;
+
+            if (thisFactory.gatherables.hasOwnProperty(taskName) !== true) {
+              canStartGathering = false;
+              thisFactory.contextConsole.log('There is no ' + taskName + ' left to gather');
+            } else {
+
+              if ( thisFactory.gatherables[taskName].json.quantity <= thisFactory.gatherables[taskName].json.gatherers) { // too many cooks?
+                thisFactory.contextConsole.log('No ' + taskName + ' left to gather');
+                canStartGathering = false;
+              }
+
+              if ( thisFactory.gatherables[taskName].json.quantity === 0) {
+                thisFactory.contextConsole.log('No ' + taskName + ' left to gather');
+                canStartGathering = false;
+              }
+
+              if ( this.hasStatsFor('gathering', true) !== true) {
+                canStartGathering = false;
+              }
+
+              if (this.hasGatheringDependencies(taskName, true) !== true) {
+                canStartGathering = false;
               }
             }
 
-            var hasDependencies = this.hasGatheringDependencies(taskName);
-            if (hasGatherables === true && hasDependencies === true) {
+            if (canStartGathering === true) {
 
 
-              //Set modify stat timer intervals
-              this.statUpdateInterval = {};
-              for (var gatheringStatKeyname in thisFactory.taskRules.gathering.stat) {
-                //console.log('start statUpdateInterval:' + gatheringStatKeyname + '' + thisFactory.taskRules.gathering.stat[gatheringStatKeyname].secondsPerDecrement);
+                  // Set modify stat timer intervals
+                  this.statUpdateInterval = {};
+                  for (var gatheringStatKeyname in thisFactory.taskRules.gathering.stat) {
+                    //console.log('start statUpdateInterval:' + gatheringStatKeyname + '' + thisFactory.taskRules.gathering.stat[gatheringStatKeyname].secondsPerDecrement);
 
-               (function (thisStatsKeyname) {
-                    thisCharacter.modifyStat( thisStatsKeyname, 'current', -1);
+                   (function (thisStatsKeyname) {
+                        thisCharacter.modifyStat( thisStatsKeyname, 'current', -1);
 
-                    thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
-                          this.modifyStat( thisStatsKeyname, 'current', -1);
-                          //console.log('statUpdateInterval:' + thisStatsKeyname);
-                    }).bind(thisCharacter), thisFactory.taskRules.gathering.stat[thisStatsKeyname].secondsPerDecrement * 1000);
+                        thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
+                              this.modifyStat( thisStatsKeyname, 'current', -1);
+                              //console.log('statUpdateInterval:' + thisStatsKeyname);
+                        }).bind(thisCharacter), thisFactory.taskRules.gathering.stat[thisStatsKeyname].secondsPerDecrement * 1000);
 
-                }(gatheringStatKeyname));
-              }
+                    }(gatheringStatKeyname));
+                  }
 
 
-              var gatheringDuration = (thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
-              setTimeout(this.stopGathering.bind(this), gatheringDuration);
+                  var gatheringDuration = (thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
+                  setTimeout(this.stopGathering.bind(this), gatheringDuration);
 
-              this.updateActiveTaskRemainingPercent = 100;
-              this.updateActiveTaskInterval =  setInterval( function() {
-                    thisCharacter.updateActiveTaskRemainingPercent --;
-                    if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
-                       clearInterval(thisCharacter.updateActiveTaskInterval);
-                       //console.log('clearInterval' );
-                    }
-                }, gatheringDuration / 100);            
-              thisFactory.gatherables[taskName].json.gatherers ++;
+                  this.updateActiveTaskRemainingPercent = 100;
+                  this.updateActiveTaskInterval =  setInterval( function() {
+                        thisCharacter.updateActiveTaskRemainingPercent --;
+                        if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
+                           clearInterval(thisCharacter.updateActiveTaskInterval);
+                           //console.log('clearInterval' );
+                        }
+                    }, gatheringDuration / 100);  
+
+                  thisFactory.gatherables[taskName].json.gatherers ++;
+
             } else {
+
+              // skip to next task in queue?
               this.json.activity.splice(0, 1);
               if (this.json.activity.length > 0) {
-                this.startNextTask();
+                  this.startNextTask();
               }
+
             }
+
           }
           break;
+
         case 'harvesting':
           {
-            var hasHarvestables = (taskName in thisFactory.harvestables && thisFactory.harvestables[taskName].quantity > 0) ? true : false;
 
-            if (hasHarvestables === true) {
+            var canStartHarvesting = true;
 
+            if (thisFactory.harvestables.hasOwnProperty(taskName) !== true) {
 
-              //Set modify stat timer intervals
-              this.statUpdateInterval = {};
-              for (var harvestingStatKeyname in thisFactory.taskRules.harvesting.stat) {
-                //console.log('start statUpdateInterval:' + harvestingStatKeyname + '' + thisFactory.taskRules.harvesting.stat[harvestingStatKeyname].secondsPerDecrement);
+              thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest');
 
-                (function (thisStatsKeyname) {
-                    thisCharacter.modifyStat( thisStatsKeyname, 'current', -1);
+              canStartHarvesting = false;
 
-                    thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
-                          this.modifyStat( thisStatsKeyname, 'current', -1);
-                          //console.log('statUpdateInterval:' + thisStatsKeyname);
-                    }).bind(thisCharacter), thisFactory.taskRules.harvesting.stat[thisStatsKeyname].secondsPerDecrement * 1000);
+            } else {
 
-                }(harvestingStatKeyname));
+              if (thisFactory.harvestables[taskName].quantity === 0) {
+                thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest');
+                canStartHarvesting = false;
               }
 
+              if ( this.hasStatsFor('harvesting', true) !== true) {
+                canStartHarvesting = false;
+              }
 
-              var harvestingDuration = (thisFactory.harvestables[taskName].harvestableDuration( thisCharacter) * 1000) / thisFactory.taskTimeScalar;
-              console.log('harvestingDuration' + harvestingDuration);
-              setTimeout(this.stopHarvesting.bind(this), harvestingDuration);
+              if ( thisFactory.harvestables[taskName].isHarvestableBy( this, true) !== true) {
+                canStartHarvesting = false;
+              }
 
-              this.updateActiveTaskRemainingPercent = 100;
-              this.updateActiveTaskInterval =  setInterval( function() {
-                    thisCharacter.updateActiveTaskRemainingPercent --;
-                    if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
-                       clearInterval(thisCharacter.updateActiveTaskInterval);
-                       //console.log('clearInterval' );
-                    }
-                }, harvestingDuration / 100);
-              
+            }
+
+            if (canStartHarvesting === true) {
+
+                 //Set modify stat timer intervals
+                  this.statUpdateInterval = {};
+                  for (var harvestingStatKeyname in thisFactory.taskRules.harvesting.stat) {
+                    //console.log('start statUpdateInterval:' + harvestingStatKeyname + '' + thisFactory.taskRules.harvesting.stat[harvestingStatKeyname].secondsPerDecrement);
+
+                    (function (thisStatsKeyname) {
+                        thisCharacter.modifyStat( thisStatsKeyname, 'current', -1);
+
+                        thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
+                              this.modifyStat( thisStatsKeyname, 'current', -1);
+                              //console.log('statUpdateInterval:' + thisStatsKeyname);
+                        }).bind(thisCharacter), thisFactory.taskRules.harvesting.stat[thisStatsKeyname].secondsPerDecrement * 1000);
+
+                    }(harvestingStatKeyname));
+                  }
+
+
+                  var harvestingDuration = (thisFactory.harvestables[taskName].duration( thisCharacter) * 1000) / thisFactory.taskTimeScalar;
+                  console.log('harvestingDuration' + harvestingDuration);
+                  setTimeout(this.stopHarvesting.bind(this), harvestingDuration);
+
+                  this.updateActiveTaskRemainingPercent = 100;
+                  this.updateActiveTaskInterval =  setInterval( function() {
+                        thisCharacter.updateActiveTaskRemainingPercent --;
+                        if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
+                           clearInterval(thisCharacter.updateActiveTaskInterval);
+                           //console.log('clearInterval' );
+                        }
+                    }, harvestingDuration / 100);
+
             } else {
+
+              // skip to next task in queue?
               this.json.activity.splice(0, 1);
               if (this.json.activity.length > 0) {
                 this.startNextTask();
               }
+
             }
           }
           break;
+
         case 'crafting':
           {
-            var craftingDuration = (thisFactory.recipeDefines[taskName].basetime * 1000) / thisFactory.taskTimeScalar;
-            setTimeout(this.stopCrafting.bind(this),  craftingDuration);
 
-              //Set modify stat timer intervals
-              this.statUpdateInterval = {};
-              for (var craftingStatKeyname in thisFactory.taskRules.crafting.stat) {
-                //console.log('start statUpdateInterval:' + craftingStatKeyname + '' + thisFactory.taskRules.crafting.stat[craftingStatKeyname].secondsPerDecrement);
+            var canStartCrafting = true;
 
-                (function (thisStatsKeyname) {
-                    thisCharacter.modifyStat( thisStatsKeyname, 'current', -1);
+            if ( thisFactory.hasCraftingIngredients(taskName, true) !== true) {
+              canStartCrafting = false;
+            }
 
-                    thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
-                          this.modifyStat( thisStatsKeyname, 'current', -1);
-                          //console.log('statUpdateInterval:' + thisStatsKeyname);
-                    }).bind(thisCharacter), thisFactory.taskRules.crafting.stat[thisStatsKeyname].secondsPerDecrement * 1000);
 
-                }(craftingStatKeyname));
+            if ( thisFactory.hasCraftingConstructor(taskName, true) !== true) {
+              canStartCrafting = false;
+            }
+
+
+            if ( this.hasStatsFor('crafting', true) !== true) {
+              canStartCrafting = false;
+            }
+
+            if ( canStartCrafting === true) {
+
+                      var craftingDuration = (thisFactory.recipeDefines[taskName].basetime * 1000) / thisFactory.taskTimeScalar;
+                      setTimeout(this.stopCrafting.bind(this),  craftingDuration);
+
+                      //Set modify stat timer intervals
+                      this.statUpdateInterval = {};
+                      for (var craftingStatKeyname in thisFactory.taskRules.crafting.stat) {
+                        //console.log('start statUpdateInterval:' + craftingStatKeyname + '' + thisFactory.taskRules.crafting.stat[craftingStatKeyname].secondsPerDecrement);
+
+                        (function (thisStatsKeyname) {
+                            thisCharacter.modifyStat( thisStatsKeyname, 'current', -1);
+
+                            thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
+                                  this.modifyStat( thisStatsKeyname, 'current', -1);
+                                  //console.log('statUpdateInterval:' + thisStatsKeyname);
+                            }).bind(thisCharacter), thisFactory.taskRules.crafting.stat[thisStatsKeyname].secondsPerDecrement * 1000);
+
+                        }(craftingStatKeyname));
+                      }
+
+
+                      this.updateActiveTaskRemainingPercent = 100;
+                      this.updateActiveTaskInterval =  setInterval( function() {
+                            thisCharacter.updateActiveTaskRemainingPercent --;
+                            if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
+                               clearInterval(thisCharacter.updateActiveTaskInterval);
+                            }
+                        }, craftingDuration / 100);   
+
+
+                      // subtract resources from bank. (refactor in to sim factory class)
+                      var recipeInputObj = thisFactory.recipeDefines[taskName].input;
+                      var recipeInputKeys = Object.keys( recipeInputObj );
+
+                      recipeInputKeys.forEach( function ( recipeKey ){
+
+                        var recipeInput = recipeKey;
+                        var recipeInputQuantity = recipeInputObj[ recipeKey];
+
+                        thisFactory.bank[ recipeInput ].decrement( recipeInputQuantity);
+
+                        if ( thisFactory.bank[recipeInput].quantity.length === 0) {
+                              delete  thisFactory.bank[recipeInput];
+                              thisFactory.updateBank();
+                            }
+              
+                      });
+
+              } else {
+
+                // skip to next task in queue?
+                this.json.activity.splice(0, 1);
+                if (this.json.activity.length > 0) {
+                  this.startNextTask();
+                }
+
               }
 
-
-            this.updateActiveTaskRemainingPercent = 100;
-            this.updateActiveTaskInterval =  setInterval( function() {
-                  thisCharacter.updateActiveTaskRemainingPercent --;
-                  if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
-                     clearInterval(thisCharacter.updateActiveTaskInterval);
-                     //console.log('clearInterval' );
-                  }
-              }, craftingDuration / 100);   
           }
           break;
       }

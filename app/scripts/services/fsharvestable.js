@@ -92,7 +92,7 @@ angular.module('craftyApp')
     };
 
 
-    FSHarvestable.prototype.harvestableDuration =  function(  character) {
+    FSHarvestable.prototype.duration =  function(  character) {
 
       if ( this.isHarvestableBy(character) === false) {
         return '-';

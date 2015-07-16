@@ -36,6 +36,26 @@ angular.module('craftyApp')
       return color;   
     };
 
+     FSGatherable.prototype.duration =  function(  character) {
+
+      character = character;
+
+      if( this.simulation.selectedCharacter.hasGatheringDependencies(this.json.name) === false) {
+        return '-';
+      }
+
+      if ( this.simulation.selectedCharacter.hasStatsFor('gathering') === false) {
+           return '-';
+      }
+
+      var duration = this.simulation.gatherableDefines[this.json.name].gatherBaseTimeS;
+
+   
+      return duration;
+     };
+
+  
+
     return FSGatherable;
 
   });

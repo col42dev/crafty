@@ -211,6 +211,7 @@ angular.module('craftyApp')
 	    			}
         			this.orderGatherablesByOrder = (this.orderGatherablesByOrder==='+') ? '-' : '+';
         			this.orderGatherablesBy = this.orderGatherablesByOrder + fieldName;
+        			console.log(this.orderGatherablesBy);
         			break;
         		case 'Harvestables':
         			if ( this.hasOwnProperty('orderHarvestablesBy') === false) {
@@ -303,6 +304,7 @@ angular.module('craftyApp')
 	     * @desc 
 	     * @return 
 	     */
+	     /*
 	    this.recipebgcolor = function( recipeName) {
 	      var hasResources = true;
 	      for (var key in this.recipeDefines[recipeName].input) {
@@ -318,7 +320,7 @@ angular.module('craftyApp')
 	          }
 	      }
 	      return  (hasResources === true) ? '#00FF00' : '#FF0000';
-	    };
+	    };*/
 
 		/**
 		 * @desc 
@@ -440,64 +442,69 @@ angular.module('craftyApp')
 		 * @return 
 		 */
 		this.onClickRecipes = function (recipeKey) {
-		   	// determine if has reqiored ingredients in bank
-		   	var hasIngredients = true;
-		   	var recipeOutputObj = this.recipeDefines[recipeKey].output;
-		    var recipeInputObj = this.recipeDefines[recipeKey].input;
+			if ( this.selectedCharacter !== null) {
+		        this.selectedCharacter.startCrafting( recipeKey);		
+		    }          	
+		};
+
+
+		/**
+		 * @desc 
+		 * @return 
+		 */
+		this.hasCraftingIngredients = function (recipeKey, log) {
+	
+			// determine if has reqiored ingredients in bank
+			var hasIngredients = true;
+			var recipeInputObj = this.recipeDefines[recipeKey].input;
 			var recipeInputKeys = Object.keys( recipeInputObj );
 
 			recipeInputKeys.forEach( function ( recipeInputKey ) {
-				var recipeInput = recipeInputKey;
-				var recipeInputQuantity = recipeInputObj[ recipeInputKey];
+			var recipeInput = recipeInputKey;
+			var recipeInputQuantity = recipeInputObj[ recipeInputKey];
 
-				if (recipeInput in this.bank) {
-					if ( this.bank[ recipeInput ].quantity.length < recipeInputQuantity) {
-						hasIngredients = false;
-						this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for ' + recipeKey + ' but only have  ' + this.bank[ recipeInput ].quantity.length);
-					}
-				} else {
-					this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for crafting ' +  recipeKey+ ' but have none');
-					hasIngredients = false;
+			if (recipeInput in this.bank) {
+			  if ( this.bank[ recipeInput ].quantity.length < recipeInputQuantity) {
+			    hasIngredients = false;
+			    if (log === true) {
+			    	this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for ' + recipeKey + ' but only have  ' + this.bank[ recipeInput ].quantity.length);
 				}
+			  }
+			} else {
+			  if (log === true) {
+			  	this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for crafting ' +  recipeKey+ ' but have none');
+			  }
+			  hasIngredients = false;
+			}
 			}.bind(this));
 
-			console.log('has ingredients:' + hasIngredients);
+			
+			return hasIngredients;
+		};
 
+
+		/**
+		 * @desc 
+		 * @return 
+		 */
+		this.hasCraftingConstructor = function (recipeKey, log) {
+	
+			var hasIngredients = true;
 
 			if ( this.recipeDefines[recipeKey].construction.length > 0) {
 
-				var constructor = this.recipeDefines[recipeKey].construction[0];
-				if ( this.bank.hasOwnProperty(constructor) === false) {
-					hasIngredients = false;
-					this.contextConsole.log('Require a ' + constructor + ' in the bank for crafting ' + recipeKey);
-				} else {
-					console.log('has constructor :' + constructor);
-				}
-			}
-			
-			if ( hasIngredients === true) {
+        		var constructor = this.recipeDefines[recipeKey].construction[0];
+        		if ( this.bank.hasOwnProperty(constructor) === false) {
+          			hasIngredients = false;
+          			if (log === true) {
+          				this.contextConsole.log('Require a ' + constructor + ' in the bank for crafting ' + recipeKey);
+          			}
+        		} 
+      		}
 
-			    if ( this.selectedCharacter !== null && this.selectedCharacter.json.activity.length < 4) {
+      		return hasIngredients;
+      	};
 
-		          	this.selectedCharacter.startCrafting( recipeKey);
-
-		          	// subtract resources from bank.
-		          	recipeInputKeys.forEach( function ( recipeKey ){
-
-						var recipeInput = recipeKey;
-						var recipeInputQuantity = recipeInputObj[ recipeKey];
-
-						this.bank[ recipeInput ].decrement( recipeInputQuantity);
-
-						if ( this.bank[recipeInput].quantity.length === 0) {
-	        				delete  this.bank[recipeInput];
-	        				this.updateBank();
-	        			}
-	
-					}.bind(this));
-			    }
-			}
-		};
 
 	   
   	};
