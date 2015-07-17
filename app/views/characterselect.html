@@ -37,11 +37,11 @@
 
 		<td class="col-sm-7" >
 			<div style = "background:rgb(128, 177, 133); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].activityPercentRemaining()}">
-		        {{v.json.activity[0].name}}
+		        {{v.json.activity[0].desc()}}
 			</div>
 		</td> 
 		<td class="col-sm-1"  > {{v.queuedTaskCount()}} </td> 
-		<td class="col-sm-3"  bgcolor={{v.json.tools[0].bgcolor()}}  ng-click="getFSService().simulation.onClickCharacterTool(v.json.tools[0].json)" > {{v.json.tools[0].json.name}} </td> 
+		<td class="col-sm-3"  bgcolor={{v.json.tools[0].bgcolor()}}  ng-click="getFSService().simulation.onClickCharacterTool(v, 0)" > {{v.json.tools[0].json.name}} </td> 
 	</tr>
 	</tbody>
 </table>

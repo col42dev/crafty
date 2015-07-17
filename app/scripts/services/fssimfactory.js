@@ -305,19 +305,21 @@ angular.module('craftyApp')
 		 * @desc 
 		 * @return 
 		 */
-		 this.onClickCharacterTool = function ( toolObj) {
+		 this.onClickCharacterTool = function ( character, index) {
 
-		 	 if ( this.selectedCharacter.json.tools.length > 0) {
+		 
+		 	 if ( character.json.tools.length > index) {
+			   
+				var toolName = character.json.tools[index].json.name;
 
-			     var indexOf = 0;
+			    if ( thisFactory.bank.hasOwnProperty(toolName) === false) {
+					thisFactory.bank[toolName] = new FSBackpack({'category':'tool', 'name':toolName});
+			    }
+			    thisFactory.bank[toolName].increment(1);
+			    thisFactory.updateBank();
 
-			     this.selectedCharacter.json.tools.splice(indexOf, 1);
+			    character.json.tools.splice(index, 1);
 
-		      	 if (!(toolObj.json.name in thisFactory.bank)) {
-        			thisFactory.bank[toolObj.json.name] = new FSBackpack({'category':'tool', 'name':toolObj.json.name});
-			     }
-			     thisFactory.bank[toolObj.json.name].increment(1);
-			     thisFactory.updateBank();
 		  	}
 		 };
 
@@ -326,17 +328,8 @@ angular.module('craftyApp')
 		 * @return 
 		 */
 		 this.onClickCharacterWeapon = function ( weaponObj) {
+		 		weaponObj = weaponObj;
 
-		      var indexOf = this.selectedCharacter.json.weapons.indexOf(weaponObj);
-		      if ( indexOf !== -1) {
-		      	this.selectedCharacter.json.weapons.splice(indexOf, 1);
-
-		      	 if (!(weaponObj.name in thisFactory.bank)) {
-        			thisFactory.bank[weaponObj.name] = new FSBackpack({'category':'weapon', 'name':weaponObj.name});
-			      }
-			      thisFactory.bank[weaponObj.name].increment(1);
-			      thisFactory.updateBank();
-		      }
 		 };
 
 		/**

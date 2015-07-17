@@ -47,7 +47,7 @@
 			"file": "app/scripts/services/fsrecipe.js",
 			"settings":
 			{
-				"buffer_size": 1603,
+				"buffer_size": 1697,
 				"line_ending": "Unix"
 			}
 		},
@@ -74,7 +74,111 @@
 			"file": "app/views/reference.html",
 			"settings":
 			{
-				"buffer_size": 5109,
+				"buffer_size": 5190,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/styles/main.css",
+			"settings":
+			{
+				"buffer_size": 2192,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/characterselect.html",
+			"settings":
+			{
+				"buffer_size": 2247,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/gatherables.html",
+			"settings":
+			{
+				"buffer_size": 1168,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsharvestable.js",
+			"settings":
+			{
+				"buffer_size": 3478,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsgatherable.js",
+			"settings":
+			{
+				"buffer_size": 1310,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/harvestables.html",
+			"settings":
+			{
+				"buffer_size": 1249,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fssimfactory.js",
+			"settings":
+			{
+				"buffer_size": 14762,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/main.html",
+			"settings":
+			{
+				"buffer_size": 1903,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/recipes.html",
+			"settings":
+			{
+				"buffer_size": 1188,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsbackpack.js",
+			"settings":
+			{
+				"buffer_size": 1309,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fscharacter.js",
+			"settings":
+			{
+				"buffer_size": 20347,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/bank.html",
+			"settings":
+			{
+				"buffer_size": 1084,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/charactersheetstats.html",
+			"settings":
+			{
+				"buffer_size": 2796,
 				"line_ending": "Unix"
 			}
 		}
@@ -219,6 +323,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"tools",
+			"quant",
+			"quan",
+			"FSRecipe",
+			"name",
+			"FSHarvestable",
 			"Forge",
 			"recipeUnlocks",
 			"gatherablesArray",
@@ -340,13 +450,7 @@
 			"FSGatherable",
 			"gather",
 			"GameItem",
-			"FSCharacter",
-			"table",
-			"startGat",
-			"startgather",
-			"ffffff",
-			"bgcolor",
-			"decrement"
+			"FSCharacter"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -368,6 +472,7 @@
 	"groups":
 	[
 		{
+			"selected": 16,
 			"sheets":
 			[
 				{
@@ -375,15 +480,15 @@
 					"file": "app/scripts/services/fsrecipe.js",
 					"settings":
 					{
-						"buffer_size": 1603,
+						"buffer_size": 1697,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								332,
+								332
 							]
 						],
 						"settings":
@@ -393,7 +498,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 563.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -410,8 +515,8 @@
 						"selection":
 						[
 							[
-								11111,
-								11018
+								5672,
+								5688
 							]
 						],
 						"settings":
@@ -421,7 +526,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 8724.0,
+						"translation.y": 3720.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -438,8 +543,175 @@
 						"selection":
 						[
 							[
-								798,
-								798
+								6683,
+								6683
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3390.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/views/reference.html",
+					"settings":
+					{
+						"buffer_size": 5190,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								579,
+								579
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/styles/main.css",
+					"settings":
+					{
+						"buffer_size": 2192,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2175,
+								2166
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1022.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/views/characterselect.html",
+					"settings":
+					{
+						"buffer_size": 2247,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2104,
+								2124
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 211.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/views/gatherables.html",
+					"settings":
+					{
+						"buffer_size": 1168,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								410,
+								410
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/scripts/services/fsharvestable.js",
+					"settings":
+					{
+						"buffer_size": 3478,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3011,
+								3011
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1253.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/scripts/services/fsgatherable.js",
+					"settings":
+					{
+						"buffer_size": 1310,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								416,
+								416
 							]
 						],
 						"settings":
@@ -455,19 +727,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "app/views/reference.html",
+					"buffer": 9,
+					"file": "app/views/harvestables.html",
 					"settings":
 					{
-						"buffer_size": 5109,
+						"buffer_size": 1249,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								973,
-								973
+								447,
+								447
 							]
 						],
 						"settings":
@@ -478,6 +750,201 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/scripts/services/fssimfactory.js",
+					"settings":
+					{
+						"buffer_size": 14762,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9804,
+								9804
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4421.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/views/main.html",
+					"settings":
+					{
+						"buffer_size": 1903,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1153,
+								1153
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 142.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "app/views/recipes.html",
+					"settings":
+					{
+						"buffer_size": 1188,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								974,
+								974
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "app/scripts/services/fsbackpack.js",
+					"settings":
+					{
+						"buffer_size": 1309,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								289,
+								289
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/scripts/services/fscharacter.js",
+					"settings":
+					{
+						"buffer_size": 20347,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								18282,
+								18287
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 5.0,
+						"translation.y": 8014.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "app/views/bank.html",
+					"settings":
+					{
+						"buffer_size": 1084,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								994,
+								994
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "app/views/charactersheetstats.html",
+					"settings":
+					{
+						"buffer_size": 2796,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2684,
+								2684
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 659.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -4,7 +4,10 @@
   "characters": [
     {
       "name": "Stroldrin Harvester",
-      "profession": "harvesting",
+      "proficiency": {
+        "profession": "Harvester",
+        "tier": 0
+      },
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c1.8d006e6f.jpg",
       "stats": {
         "health": {
@@ -15,12 +18,12 @@
         "energy": {
           "current": "50",
           "max": "100",
-          "regeneratePeriod": "5"
+          "regeneratePeriod": "8"
         },
         "mind": {
           "current": "40",
           "max": "100",
-          "regeneratePeriod": "30"
+          "regeneratePeriod": "20"
         }
       },
       "activity": [
@@ -35,7 +38,10 @@
     },
     {
       "name": "Gronderlug Crafter",
-      "profession": "crafting",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 1
+      },
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c2.3a5cb818.png",
       "stats": {
         "health": {
@@ -46,7 +52,7 @@
         "energy": {
           "current": "40",
           "max": "100",
-          "regeneratePeriod": "30"
+          "regeneratePeriod": "15"
         },
         "mind": {
           "current": "100",
@@ -66,7 +72,10 @@
     },
     {
       "name": "Dorasgrour Hunter",
-      "profession": "services",
+      "proficiency": {
+        "profession": "Hunter",
+        "tier": 0
+      },
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c3.b9144b93.png",
       "stats": {
         "health": {
@@ -77,12 +86,12 @@
         "energy": {
           "current": "100",
           "max": "100",
-          "regeneratePeriod": "10"
+          "regeneratePeriod": "5"
         },
         "mind": {
           "current": "20",
           "max": "100",
-          "regeneratePeriod": "10"
+          "regeneratePeriod": "20"
         }
       },
       "activity": [
@@ -97,7 +106,10 @@
     },
     {
       "name": "Skoveath Laborer",
-      "profession": "harvesting",
+      "proficiency": {
+        "profession": "Laborer",
+        "tier": 0
+      },
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c4.59c1ea4d.png",
       "stats": {
         "health": {
@@ -113,7 +125,7 @@
         "mind": {
           "current": "40",
           "max": "100",
-          "regeneratePeriod": "50"
+          "regeneratePeriod": "30"
         }
       },
       "activity": [
@@ -182,6 +194,21 @@
       "name": "Feather",
       "quantity": "5",
       "gatherers": "0"
+    },
+    {
+      "name": "Marble",
+      "quantity": "1",
+      "gatherers": "0"
+    },
+    {
+      "name": "Lumber",
+      "quantity": "1",
+      "gatherers": "0"
+    },
+    {
+      "name": "ShaolFish",
+      "quantity": "1",
+      "gatherers": "0"
     }
   ],
   "harvestables": [
@@ -224,6 +251,22 @@
     {
       "name": "Wood",
       "quantity": "100"
+    },
+    {
+      "name": "Marble",
+      "quantity": "100"
+    },
+    {
+      "name": "Lumber",
+      "quantity": "100"
+    },
+    {
+      "name": "ShaolFish",
+      "quantity": "100"
+    },
+    {
+      "name": "Wool",
+      "quantity": "100"
     }
   ],
   "bank": [
@@ -244,83 +287,22 @@
       "quantity": 4
     },
     {
-      "name": "HuntingBow",
-      "quantity": 1
-    },
-    {
       "name": "Ale",
       "quantity": 3
     }
   ],
   "rewards": [
+
   ],
   "recipes": [
     "Rope",
     "WoodenTable",
     "Workbench",
-    "Forge",
     "AntlerPickaxe",
-    "Paper",
-    "FineHat",
-    "FlagonOfAle",
-    "WoodenPlanks",
-    "DiceTable",
-    "Minecart",
-    "Loom",
-    "Shovel",
-    "Nails",
     "BackPack",
-    "Saw",
     "Bucket",
-    "Ale",
-    "FermentingVat",
-    "BucketPump",
-    "Scythe",
-    "StoneAxe",
-    "BulkAle",
-    "PumpedWater",
-    "WoodAxe",
-    "FishingRod",
-    "HuntingBow",
-    "CatapultBase",
-    "CatapultArm",
     "GreekFireCatapult",
-    "GreekFire",
-    "TwistedRopes",
-    "Steel",
-    "SteelWire",
-    "CartWheel",
-    "Barrel",
     "BasicMeal",
-    "MeatyMeal",
-    "FishyMeal",
-    "FineMeal",
-    "Bandage",
-    "Medicine",
-    "Potion",
-    "FirstAidStation",
-    "BarrelOfWater",
-    "ImprovedBucketPump",
-    "SteelPickaxe" ,
-    "WickerBasket",
-    "WoodenStatue",
-    "WoodenChair",
-    "SteelShovel",
-    "SteelAxe",
-    "Snares",
-    "HarvestingShears",
-    "WheelBarrow",
-    "AdvancedWorkbench",
-    "Wheel",
-    "SteelMattock",
-    "FishingNet",
-    "Cart",
-    "LargeBarrel",
-    "LeatherBackPack",
-    "BlockAndTackle",
-    "CastingVessel",
-    "MarbleStatue",
-    "MarbleBookshelf",
-    "Books"
-     ]
+    "WickerBasket"
+  ]
 }

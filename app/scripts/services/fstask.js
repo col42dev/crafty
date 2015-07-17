@@ -20,6 +20,9 @@ angular.module('craftyApp')
       this.category = taskObj.category;
     };
 
+    FSTask.prototype.desc = function() {
+      return this.name  + ' ' + this.category;
+    };
 
    /**
     * Return the constructor function.

@@ -2,151 +2,171 @@
   "title": "craftyrules",
   "version": "0.0.0",
   "rewardRules": {
-    "Liquidated" : {
+    "Liquidated": {
       "desc": "Craft a FlagonOfAle",
       "action": "craft",
       "target": "FlagonOfAle",
-      "recipeUnlocks" : []
+      "recipeUnlocks": [
+
+      ]
     },
-    "Quench" : {
+    "Quench": {
       "desc": "Craft a Bucket",
       "action": "craft",
       "target": "Bucket",
-      "recipeUnlocks" : []
+      "recipeUnlocks": [
+
+      ]
     },
-    "Master Brewer" : {
+    "Master Brewer": {
       "desc": "Craft a FermentingVat",
       "action": "craft",
       "target": "FermentingVat",
-      "recipeUnlocks" : ["BulkAle"]
+      "recipeUnlocks": [
+        "BulkAle"
+      ]
     },
-    "Literacy" : {
+    "Lumberjack": {
+      "desc": "Gather Lumber",
+      "action": "gather",
+      "target": "Lumber",
+      "recipeUnlocks": [
+        "BulkWoodenPlank"
+      ]
+    },
+    "Literacy": {
       "desc": "Craft Some paper",
       "action": "craft",
       "target": "Paper",
-      "recipeUnlocks" : ["Books"]
+      "recipeUnlocks": [
+        "Books"
+      ]
     },
-    "Warp & Weft" : {
+    "Warp & Weft": {
       "desc": "Craft a Loom",
       "action": "craft",
       "target": "Loom",
-      "recipeUnlocks" : ["Cloth"]
+      "recipeUnlocks": [
+        "Cloth"
+      ]
     },
-    "Faience" : {
+    "Faience": {
       "desc": "Gather Sand",
       "action": "gather",
       "target": "Sand",
-      "recipeUnlocks" : [
-          "Glass",
-          "Steel",
-          "Cloth"
-          ]
+      "recipeUnlocks": [
+        "Glass",
+        "Steel",
+        "Cloth"
+      ]
     },
-    "Domestication" : {
+    "Domestication": {
       "desc": "Craft a WoodenTable",
       "action": "craft",
       "target": "WoodenTable",
-      "recipeUnlocks" : [
-          "Paper",
-          "FineHat",
-          "FlagonOfAle",
-          "Ale",
-          "FineMeal",
-          "Bandage"
-          ]
+      "recipeUnlocks": [
+        "Paper",
+        "FineHat",
+        "FlagonOfAle",
+        "Ale",
+        "FineMeal",
+        "Bandage"
+      ]
     },
-    "Ready to Work" : {
+    "Ready to Work": {
       "desc": "Craft a Workbench",
       "action": "craft",
       "target": "Workbench",
-      "recipeUnlocks" : [
-          "Forge",
-          "WoodenPlanks",
-          "DiceTable",
-          "Minecart",
-          "Loom",
-          "Shovel",
-          "FishingRod",
-          "HuntingBow",
-          "CartWheel",
-          "Barrel",
-          "FirstAidStation",
-          "WoodenStatue",
-          "WoodenChair",
-          "WheelBarrow",
-          "AdvancedWorkbench",
-          "Wheel",
-          "Cart",
-          "LargeBarrel",
-          "LeatherBackPack"
-          ]
+      "recipeUnlocks": [
+        "Forge",
+        "WoodenPlanks",
+        "DiceTable",
+        "Minecart",
+        "Loom",
+        "Shovel",
+        "FishingRod",
+        "HuntingBow",
+        "CartWheel",
+        "Barrel",
+        "FirstAidStation",
+        "WoodenStatue",
+        "WoodenChair",
+        "WheelBarrow",
+        "AdvancedWorkbench",
+        "Wheel",
+        "Cart",
+        "LargeBarrel",
+        "LeatherBackPack",
+        "BulkWoodenPlank"
+      ]
     },
-    "Forging Ahead" : {
+    "Forging Ahead": {
       "desc": "Craft a Forge",
       "action": "craft",
       "target": "Forge",
-      "recipeUnlocks" : [
-          "Glass",
-          "Saw",
-          "Nails",
-          "FermentingVat",
-          "Scythe",
-          "WoodAxe",
-          "Steel",
-          "SteelWire",
-          "SteelPickaxe",
-          "CastingVessel",
-          "SteelShovel",
-          "SteelAxe",
-          "Snares",
-          "HarvestingShears",
-          "SteelMattock",
-          "BlockAndTackle"
-          ]
+      "recipeUnlocks": [
+        "Glass",
+        "Saw",
+        "Nails",
+        "FermentingVat",
+        "Scythe",
+        "WoodAxe",
+        "Steel",
+        "SteelWire",
+        "SteelPickaxe",
+        "CastingVessel",
+        "SteelShovel",
+        "SteelAxe",
+        "Snares",
+        "HarvestingShears",
+        "SteelMattock",
+        "BlockAndTackle"
+      ]
     },
-    "Onward to Technology" : {
+    "Onward to Technology": {
       "desc": "Craft a AdvancedWorkbench",
       "action": "craft",
       "target": "AdvancedWorkbench",
-      "recipeUnlocks" : [
-          "BucketPump",
-          "CatapultBase",
-          "CatapultArm",
-          "GreekFire",
-          "TwistedRopes",
-          "MarbleStatue",
-          "MarbleBookshelf"
-          ]
+      "recipeUnlocks": [
+        "BucketPump",
+        "CatapultBase",
+        "CatapultArm",
+        "GreekFire",
+        "TwistedRopes",
+        "MarbleStatue",
+        "MarbleBookshelf"
+      ]
     },
-    "Pump it Up" : {
+    "Pump it Up": {
       "desc": "Craft a BucketPump",
       "action": "craft",
       "target": "BucketPump",
-      "recipeUnlocks" : [
-          "PumpedWater",
-          "ImprovedBucketPump",
-          "BarrelOfWater"
-          ]
+      "recipeUnlocks": [
+        "PumpedWater",
+        "ImprovedBucketPump",
+        "BarrelOfWater"
+      ]
     },
-    "St John's Ambulance" : {
+    "St John's Ambulance": {
       "desc": "Craft a FirstAidStation",
       "action": "craft",
       "target": "FirstAidStation",
-      "recipeUnlocks" : [
-          "Medicine",
-          "Potion"
-          ]
+      "recipeUnlocks": [
+        "Medicine",
+        "Potion"
+      ]
     },
-    "Hunting and Fishing" : {
+    "Hunting and Fishing": {
       "desc": "Craft a HuntingBow",
       "action": "craft",
       "target": "HuntingBow",
-      "recipeUnlocks" : [
-          "FishingRod",
-          "FishingNet",
-          "MeatyMeal",
-          "FishyMeal"
-          ]
+      "recipeUnlocks": [
+        "FishingRod",
+        "FishingNet",
+        "MeatyMeal",
+        "FishyMeal",
+        "BulkFish"
+      ]
     }
   },
   "gatherableDefines": {
@@ -157,7 +177,7 @@
       ]
     },
     "Stone": {
-      "gatherBaseTimeS": "20",
+      "gatherBaseTimeS": "40",
       "actionable": [
         "Carry"
       ]
@@ -235,33 +255,45 @@
       ]
     },
     "Antler": {
-      "gatherBaseTimeS": "120",
+      "gatherBaseTimeS": "60",
       "actionable": [
         "Carry"
       ]
     },
     "Sand": {
-      "gatherBaseTimeS": "20",
+      "gatherBaseTimeS": "10",
       "actionable": [
         "CarryLiquid"
       ]
     },
     "Meat": {
-      "gatherBaseTimeS": "20",
+      "gatherBaseTimeS": "15",
       "actionable": [
         "Carry"
       ]
     },
     "Fish": {
-      "gatherBaseTimeS": "20",
+      "gatherBaseTimeS": "15",
       "actionable": [
         "Carry"
       ]
     },
     "Feather": {
-      "gatherBaseTimeS": "60",
+      "gatherBaseTimeS": "5",
       "actionable": [
         "Carry"
+      ]
+    },
+    "Lumber": {
+      "gatherBaseTimeS": "50",
+      "actionable": [
+        "Cart"
+      ]
+    },
+    "ShaolFish": {
+      "gatherBaseTimeS": "50",
+      "actionable": [
+        "Cart"
       ]
     }
   },
@@ -320,7 +352,7 @@
         "Dig"
       ],
       "hardness": "3",
-      "harvestBaseTimeS": "50"
+      "harvestBaseTimeS": "30"
     },
     "IronOre": {
       "actionable": [
@@ -334,21 +366,21 @@
         "Hunt"
       ],
       "hardness": "1",
-      "harvestBaseTimeS": "30"
+      "harvestBaseTimeS": "15"
     },
     "Fish": {
       "actionable": [
         "Fish"
       ],
       "hardness": "1",
-      "harvestBaseTimeS": "30"
+      "harvestBaseTimeS": "10"
     },
     "Leaves": {
       "actionable": [
         "Pick"
       ],
       "hardness": "1",
-      "harvestBaseTimeS": "5"
+      "harvestBaseTimeS": "15"
     },
     "Sand": {
       "actionable": [
@@ -362,7 +394,7 @@
         "Pick"
       ],
       "hardness": "1",
-      "harvestBaseTimeS": "10"
+      "harvestBaseTimeS": "15"
     },
     "Wood": {
       "actionable": [
@@ -371,6 +403,28 @@
       ],
       "hardness": "2",
       "harvestBaseTimeS": "20"
+    },
+    "Lumber": {
+      "actionable": [
+        "Chop",
+        "Saw"
+      ],
+      "hardness": "8",
+      "harvestBaseTimeS": "128"
+    },
+    "ShaolFish": {
+      "actionable": [
+        "Net"
+      ],
+      "hardness": "8",
+      "harvestBaseTimeS": "64"
+    },
+    "Wool": {
+      "actionable": [
+        "Hunt"
+      ],
+      "hardness": "2",
+      "harvestBaseTimeS": "32"
     }
   },
   "toolDefines": {
@@ -378,7 +432,8 @@
       "strength": "2",
       "actions": [
         "Dig",
-        "Carry"
+        "Carry",
+        "Pick"
       ]
     },
     "StonePickaxe": {
@@ -455,14 +510,14 @@
       ]
     },
     "Minecart": {
-      "strength": "3",
+      "strength": "20",
       "actions": [
         "Cart",
         "Carry"
       ]
     },
     "WickerBasket": {
-      "strength": "4",
+      "strength": "8",
       "actions": [
         "Carry"
       ]
@@ -494,7 +549,8 @@
     "WheelBarrow": {
       "strength": "15",
       "actions": [
-        "Carry"
+        "Carry",
+        "Cart"
       ]
     },
     "SteelMattock": {
@@ -506,7 +562,8 @@
     "FishingNet": {
       "strength": "10",
       "actions": [
-        "Fish"
+        "Fish",
+        "Net"
       ]
     },
     "Cart": {
@@ -591,6 +648,10 @@
     },
     "BackPack": {
       "category": "tool",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 1
+      },
       "construction": [
 
       ],
@@ -605,6 +666,10 @@
     },
     "Forge": {
       "category": "constructor",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 1
+      },
       "construction": [
         "Workbench"
       ],
@@ -626,7 +691,7 @@
       ],
       "input": {
         "Wood": "2",
-        "Antler": "2"
+        "Antler": "1"
       },
       "output": {
         "AntlerPickaxe": "1"
@@ -721,6 +786,10 @@
     },
     "Minecart": {
       "category": "tool",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 2
+      },
       "construction": [
         "Workbench"
       ],
@@ -735,6 +804,10 @@
     },
     "Loom": {
       "category": "constructor",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 1
+      },
       "construction": [
         "Workbench"
       ],
@@ -802,6 +875,10 @@
     },
     "Saw": {
       "category": "tool",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 2
+      },
       "construction": [
         "Forge"
       ],
@@ -843,6 +920,10 @@
     },
     "FermentingVat": {
       "category": "constructor",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 2
+      },
       "construction": [
         "Forge"
       ],
@@ -865,12 +946,16 @@
         "Water": "4"
       },
       "output": {
-        "Ale": "2"
+        "Ale": "3"
       },
       "basetime": "60"
     },
     "BucketPump": {
       "category": "constructor",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 2
+      },
       "construction": [
         "AdvancedWorkbench"
       ],
@@ -929,6 +1014,10 @@
     },
     "FishingRod": {
       "category": "tool",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 1
+      },
       "construction": [
         "Workbench"
       ],
@@ -949,7 +1038,7 @@
       ],
       "input": {
         "TwistedRopes": "1",
-        "WoodenPlanks": "10",
+        "WoodenPlanks": "20",
         "CartWheel": "2",
         "Stone": "2"
       },
@@ -1062,6 +1151,10 @@
     },
     "Barrel": {
       "category": "tool",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 1
+      },
       "construction": [
         "Workbench"
       ],
@@ -1181,6 +1274,10 @@
     },
     "FirstAidStation": {
       "category": "constructor",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 1
+      },
       "construction": [
         "Workbench"
       ],
@@ -1235,20 +1332,6 @@
       },
       "basetime": "30"
     },
-    "StoneAxe": {
-      "category": "tool",
-      "construction": [
-
-      ],
-      "input": {
-        "Stone": "1",
-        "Wood": "1"
-      },
-      "output": {
-        "StoneAxe": "1"
-      },
-      "basetime": "60"
-    },
     "PumpedWater": {
       "category": "unclassified",
       "construction": [
@@ -1265,10 +1348,10 @@
     "WickerBasket": {
       "category": "tool",
       "construction": [
-        
+
       ],
       "input": {
-        "Leaves": "10"
+        "Leaves": "5"
       },
       "output": {
         "WickerBasket": "1"
@@ -1317,6 +1400,10 @@
     },
     "SteelAxe": {
       "category": "tool",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 1
+      },
       "construction": [
         "Workbench"
       ],
@@ -1331,6 +1418,10 @@
     },
     "Snares": {
       "category": "tool",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 1
+      },
       "construction": [
         "Workbench"
       ],
@@ -1345,6 +1436,10 @@
     },
     "HarvestingShears": {
       "category": "tool",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 1
+      },
       "construction": [
         "Workbench"
       ],
@@ -1360,6 +1455,10 @@
     },
     "WheelBarrow": {
       "category": "tool",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 1
+      },
       "construction": [
         "Workbench"
       ],
@@ -1374,6 +1473,10 @@
     },
     "AdvancedWorkbench": {
       "category": "constructor",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 1
+      },
       "construction": [
         "Workbench"
       ],
@@ -1403,13 +1506,17 @@
     },
     "SteelMattock": {
       "category": "tool",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 2
+      },
       "construction": [
         "Workbench"
       ],
       "input": {
         "Steel": "2",
         "Wood": "2"
-        },
+      },
       "output": {
         "SteelMattock": "1"
       },
@@ -1417,41 +1524,35 @@
     },
     "FishingNet": {
       "category": "tool",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 2
+      },
       "construction": [
-        
+
       ],
       "input": {
         "Rope": "20"
-        },
+      },
       "output": {
         "FishingNet": "1"
       },
       "basetime": "200"
     },
-    "Cart": {
-      "category": "tool",
-      "construction": [
-        "Workbench"
-      ],
-      "input": {
-        "WoodenPlanks": "10",
-        "Nails": "10"
-        },
-      "output": {
-        "Cart": "1"
-      },
-      "basetime": "200"
-    },
     "LargeBarrel": {
       "category": "tool",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 2
+      },
       "construction": [
         "Workbench"
       ],
       "input": {
         "WoodenPlanks": "6",
-        "Nails": "20",
+        "Nails": "10",
         "Rope": "2"
-        },
+      },
       "output": {
         "LargeBarrel": "1"
       },
@@ -1459,14 +1560,18 @@
     },
     "LeatherBackPack": {
       "category": "tool",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 2
+      },
       "construction": [
         "Workbench"
       ],
       "input": {
         "Cloth": "5",
-        "Meat": "10",
+        "Meat": "2",
         "Rope": "3"
-        },
+      },
       "output": {
         "LeatherBackPack": "1"
       },
@@ -1474,13 +1579,18 @@
     },
     "Cart": {
       "category": "tool",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 2
+      },
       "construction": [
         "Workbench"
       ],
       "input": {
         "WoodenPlanks": "10",
-        "Nails": "10"
-        },
+        "Nails": "10",
+        "CartWheel": "2"
+      },
       "output": {
         "Cart": "1"
       },
@@ -1488,6 +1598,10 @@
     },
     "BlockAndTackle": {
       "category": "tool",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 2
+      },
       "construction": [
         "AdvancedWorkbench"
       ],
@@ -1495,7 +1609,7 @@
         "Rope": "10",
         "Wood": "1",
         "Steel": "1"
-        },
+      },
       "output": {
         "BlockAndTackle": "1"
       },
@@ -1503,6 +1617,10 @@
     },
     "CastingVessel": {
       "category": "constructor",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 2
+      },
       "construction": [
         "Forge"
       ],
@@ -1511,7 +1629,7 @@
         "Wood": "1",
         "SteelWire": "2",
         "Water": "2"
-        },
+      },
       "output": {
         "CastingVessel": "1"
       },
@@ -1524,7 +1642,7 @@
       ],
       "input": {
         "Marble": "5"
-        },
+      },
       "output": {
         "MarbleStatue": "1"
       },
@@ -1538,18 +1656,44 @@
       "input": {
         "Marble": "5",
         "Books": "1"
-        },
+      },
       "output": {
         "MarbleBookshelf": "1"
       },
       "basetime": "200"
+    },
+    "BulkWoodenPlank": {
+      "category": "unclassified",
+      "construction": [
+        "Workbench"
+      ],
+      "input": {
+        "Lumber": "1"
+      },
+      "output": {
+        "WoodenPlanks": "10"
+      },
+      "basetime": "50"
+    },
+    "BulkFish": {
+      "category": "unclassified",
+      "construction": [
+        "Workbench"
+      ],
+      "input": {
+        "ShaolFish": "1"
+      },
+      "output": {
+        "Fish": "10"
+      },
+      "basetime": "50"
     }
   },
   "taskRules": {
     "harvesting": {
       "stat": {
         "energy": {
-          "secondsPerDecrement": 6,
+          "secondsPerDecrement": 2,
           "minRequired": 20
         }
       }
@@ -1557,7 +1701,7 @@
     "gathering": {
       "stat": {
         "energy": {
-          "secondsPerDecrement": 6,
+          "secondsPerDecrement": 3,
           "minRequired": 20
         }
       }
@@ -1565,7 +1709,7 @@
     "crafting": {
       "stat": {
         "mind": {
-          "secondsPerDecrement": 6,
+          "secondsPerDecrement": 4,
           "minRequired": 20
         },
         "energy": {
@@ -1697,7 +1841,7 @@
             "current": 20
           },
           "mind": {
-            "current": -10
+            "current": -5
           }
         }
       }
