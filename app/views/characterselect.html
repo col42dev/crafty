@@ -18,30 +18,30 @@
 	</thead>
 	<tbody>
 	<tr ng-repeat="(k,v) in getFSService().simulation.characterObjs" class="noselect" ng-click="getFSService().onClickCharacter(v)">
-		<td bgcolor={{v.getbgcolor()}} class="col-sm-2">
+		<td bgcolor={{v.getbgcolor()}} class="col-sm-2" >
 			{{v.json.name}}
 		</td> 
 
 		<td class="col-sm-1" > 
-			<div style = "background:rgba(200, 100, 100, 0.5); overflow:visible" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].getStatPercentage('health')}">{{getFSService().simulation.characterObjs[k].getStatPercentage('health')}}
+			<div style = "background:rgba(200, 100, 100, 0.5); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].getStatPercentage('health')}">{{getFSService().simulation.characterObjs[k].getStatPercentage('health')}}
 			</div>
 		</td> 
 		<td class="col-sm-1" > 
-			<div style = "background:rgba(20, 20, 240, 0.5); overflow:visible" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].getStatPercentage('energy')}">{{getFSService().simulation.characterObjs[k].getStatPercentage('energy')}}
+			<div style = "background:rgba(20, 20, 240, 0.5); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].getStatPercentage('energy')}">{{getFSService().simulation.characterObjs[k].getStatPercentage('energy')}}
 			</div>
 		</td> 
 		<td class="col-sm-1" > 
-			<div style = "background:rgba(50, 200, 50, 0.5); overflow:visible" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].getStatPercentage('mind')}">{{getFSService().simulation.characterObjs[k].getStatPercentage('mind')}}
+			<div style = "background:rgba(50, 200, 50, 0.5); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].getStatPercentage('mind')}">{{getFSService().simulation.characterObjs[k].getStatPercentage('mind')}}
 			</div>
 		</td> 
 
-		<td class="col-sm-7" > 
-			<div style = "background:rgb(128, 177, 133); overflow:visible" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].activityPercentRemaining()}">
+		<td class="col-sm-7" >
+			<div style = "background:rgb(128, 177, 133); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].activityPercentRemaining()}">
 		        {{v.json.activity[0].name}}
 			</div>
 		</td> 
 		<td class="col-sm-1"  > {{v.queuedTaskCount()}} </td> 
-		<td class="col-sm-3"  bgcolor={{v.json.tools[0].bgcolor()}}  ng-click="getFSService().simulation.onClickCharacterTool(v.json.tools[0])" > {{v.json.tools[0].name}} </td> 
+		<td class="col-sm-3"  bgcolor={{v.json.tools[0].bgcolor()}}  ng-click="getFSService().simulation.onClickCharacterTool(v.json.tools[0].json)" > {{v.json.tools[0].json.name}} </td> 
 	</tr>
 	</tbody>
 </table>

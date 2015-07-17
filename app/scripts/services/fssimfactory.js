@@ -164,7 +164,7 @@ angular.module('craftyApp')
 			// Bank
 	        buildjson.bank = [];  
 	        for ( var item in this.bank) {
-	        	var bankobj = { 'name' : this.bank[item].name, 'quantity' : this.bank[item].quantity.length};
+	        	var bankobj = { 'name' : this.bank[item].json.name, 'quantity' : this.bank[item].json.quantity.length};
 	        	buildjson.bank.push(bankobj);
 	        }
 
@@ -206,7 +206,7 @@ angular.module('craftyApp')
         			break;
         		case 'Gatherables':
 					if ( this.hasOwnProperty('orderGatherablesBy') === false) {
-        			    this.orderGatherablesBy = 'name';
+        			    this.orderGatherablesBy = 'json.name';
 	        			this.orderGatherablesByOrder = '+';
 	    			}
         			this.orderGatherablesByOrder = (this.orderGatherablesByOrder==='+') ? '-' : '+';
@@ -215,7 +215,7 @@ angular.module('craftyApp')
         			break;
         		case 'Harvestables':
         			if ( this.hasOwnProperty('orderHarvestablesBy') === false) {
-	        			this.orderHarvestablesBy = 'name';
+	        			this.orderHarvestablesBy = 'json.name';
 		        		this.orderHarvestablesByOrder = '+';
 	        		}
         			this.orderHarvestablesByOrder = (this.orderHarvestablesByOrder==='+') ? '-' : '+';
@@ -300,27 +300,6 @@ angular.module('craftyApp')
 		     return  (this.rewards.indexOf(rewardName) === -1) ? '#FF0000' : '#00FF00';
 		};
 
-		 /**
-	     * @desc 
-	     * @return 
-	     */
-	     /*
-	    this.recipebgcolor = function( recipeName) {
-	      var hasResources = true;
-	      for (var key in this.recipeDefines[recipeName].input) {
-	          if (this.recipeDefines[recipeName].input.hasOwnProperty(key)) {
-
-	              if (key in this.bank) {
-	                if ( this.bank[key].quantity.length < this.recipeDefines[recipeName].input[key] ) {
-	                  hasResources = false;
-	                }
-	            } else {
-	              hasResources = false;
-	            }
-	          }
-	      }
-	      return  (hasResources === true) ? '#00FF00' : '#FF0000';
-	    };*/
 
 		/**
 		 * @desc 
@@ -328,16 +307,18 @@ angular.module('craftyApp')
 		 */
 		 this.onClickCharacterTool = function ( toolObj) {
 
-		      var indexOf = this.selectedCharacter.json.tools.indexOf(toolObj);
-		      if ( indexOf !== -1) {
-		      	this.selectedCharacter.json.tools.splice(indexOf, 1);
+		 	 if ( this.selectedCharacter.json.tools.length > 0) {
 
-		      	 if (!(toolObj.name in thisFactory.bank)) {
-        			thisFactory.bank[toolObj.name] = new FSBackpack({'category':'tool', 'name':toolObj.name});
-			      }
-			      thisFactory.bank[toolObj.name].increment(1);
-			      thisFactory.updateBank();
-		      }
+			     var indexOf = 0;
+
+			     this.selectedCharacter.json.tools.splice(indexOf, 1);
+
+		      	 if (!(toolObj.json.name in thisFactory.bank)) {
+        			thisFactory.bank[toolObj.json.name] = new FSBackpack({'category':'tool', 'name':toolObj.json.name});
+			     }
+			     thisFactory.bank[toolObj.json.name].increment(1);
+			     thisFactory.updateBank();
+		  	}
 		 };
 
 		 /**
@@ -366,11 +347,11 @@ angular.module('craftyApp')
 
         	switch ( this.bank[bankItemKey].category ) {
         		case 'tool': { // add to character inventory 
-	        		if (this.bank[bankItemKey].quantity.length > 0) {
+	        		if (this.bank[bankItemKey].json.quantity.length > 0) {
 	        			this.bank[bankItemKey].decrement(1) ;
-	        			this.selectedCharacter.json.tools.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
+	        			this.selectedCharacter.json.tools.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name} ));
 
-	        			if ( this.bank[bankItemKey].quantity.length === 0) {
+	        			if ( this.bank[bankItemKey].json.quantity.length === 0) {
 	        				delete  this.bank[bankItemKey];
 	        				this.updateBank();
 	        			}
@@ -379,20 +360,17 @@ angular.module('craftyApp')
         		break;
 
         		case 'food': { // consume
-	        		if (this.bank[bankItemKey].quantity.length > 0) {
+	        		if (this.bank[bankItemKey].json.quantity.length > 0) {
 	        			this.bank[bankItemKey].decrement(1) ;
 
 						for (var statType in this.foodDefines[bankItemKey].onConsume.stat) {
 							for (var statSubType in this.foodDefines[bankItemKey].onConsume.stat[statType]) {
 								var delta = parseInt(this.foodDefines[bankItemKey].onConsume.stat[statType][statSubType], 10);
-								//this.selectedCharacter.json.stats[statType][statSubType] = parseInt(this.selectedCharacter.json.stats[statType][statSubType]);
-
 								this.selectedCharacter.modifyStat( statType, statSubType, delta);
-								//this.selectedCharacter.json.stats[statType][statSubType] += parseInt(delta, 10);
 							}
 						}
 
-	        			if ( this.bank[bankItemKey].quantity.length === 0) {
+	        			if ( this.bank[bankItemKey].json.quantity.length === 0) {
 	        				delete this.bank[bankItemKey];
 	        				this.updateBank();
 	        			}
@@ -401,11 +379,11 @@ angular.module('craftyApp')
         		break;
 
         		case 'weapon': { // add to character inventory 
-	        		if (this.bank[bankItemKey].quantity.length > 0) {
+	        		if (this.bank[bankItemKey].json.quantity.length > 0) {
 	        			this.bank[bankItemKey].decrement(1) ;
-	        			this.selectedCharacter.json.weapons.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].name} ));
+	        			this.selectedCharacter.json.weapons.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name} ));
 
-	        			if ( this.bank[bankItemKey].quantity.length === 0) {
+	        			if ( this.bank[bankItemKey].json.quantity.length === 0) {
 	        				delete  this.bank[bankItemKey];
 	        				this.updateBank();
 	        			}
@@ -464,10 +442,10 @@ angular.module('craftyApp')
 			var recipeInputQuantity = recipeInputObj[ recipeInputKey];
 
 			if (recipeInput in this.bank) {
-			  if ( this.bank[ recipeInput ].quantity.length < recipeInputQuantity) {
+			  if ( this.bank[ recipeInput ].json.quantity.length < recipeInputQuantity) {
 			    hasIngredients = false;
 			    if (log === true) {
-			    	this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for ' + recipeKey + ' but only have  ' + this.bank[ recipeInput ].quantity.length);
+			    	this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for ' + recipeKey + ' but only have  ' + this.bank[ recipeInput ].json.quantity.length);
 				}
 			  }
 			} else {

@@ -14,9 +14,11 @@ angular.module('craftyApp')
 
     // FSRecipe
     var FSRecipe = function( name, thisFactory) { 
-      this.name = name;
+
       this.thisFactory = thisFactory;
-      this.category = this.getCategory();
+
+      this.json = { 'name' : name, 'category' : 'placeholder'};
+      this.json = { 'name' : name, 'category' : this.getCategory()};
     };
 
     /**
@@ -28,12 +30,12 @@ angular.module('craftyApp')
       var enabled = true;
 
       // has ingredients
-      if ( this.thisFactory.hasCraftingIngredients(this.name) !== true){
+      if ( this.thisFactory.hasCraftingIngredients(this.json.name) !== true){
         enabled = false;
       }
 
       // has constructor if one is needed
-      if ( this.thisFactory.hasCraftingConstructor(this.name) !== true) {
+      if ( this.thisFactory.hasCraftingConstructor(this.json.name) !== true) {
         enabled = false;
       }
 
@@ -52,8 +54,8 @@ angular.module('craftyApp')
      * @return 
      */
     FSRecipe.prototype.getCategory = function( ) {
-      if (this.thisFactory.recipeDefines.hasOwnProperty(this.name) === true) {
-          return this.thisFactory.recipeDefines[this.name].category;
+      if (this.thisFactory.recipeDefines.hasOwnProperty(this.json.name) === true) {
+          return this.thisFactory.recipeDefines[this.json.name].category;
       }
       return 'bug';
     };
@@ -66,7 +68,7 @@ angular.module('craftyApp')
     FSRecipe.prototype.duration =  function(  character) {
 
       character = character;
-      var craftingDuration = this.thisFactory.recipeDefines[this.name].basetime ;
+      var craftingDuration = this.thisFactory.recipeDefines[this.json.name].basetime ;
           
       return craftingDuration;
     };

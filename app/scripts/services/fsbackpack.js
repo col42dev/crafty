@@ -13,9 +13,11 @@ angular.module('craftyApp')
     
     // FSBackpack
     var FSBackpack = function(obj) { 
-        this.quantity = [];
+        obj.quantity = [];
         this.category = obj.category;
-        this.name = obj.name;
+        //this.name = obj.name;
+
+        this.json = obj;
     };
 
     /**
@@ -24,7 +26,7 @@ angular.module('craftyApp')
      */
     FSBackpack.prototype.increment = function( amount) {
       for (var i = 0; i < amount; i ++) {
-        this.quantity.push({});
+        this.json.quantity.push({});
       }
     };
     
@@ -34,7 +36,7 @@ angular.module('craftyApp')
      */
     FSBackpack.prototype.decrement = function( amount) {
       for (var i = 0; i < amount; i ++) {
-        this.quantity.pop();
+        this.json.quantity.pop();
       }
     };
 

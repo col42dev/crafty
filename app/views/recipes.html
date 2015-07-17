@@ -4,9 +4,9 @@
 <table class="table table-bordered table-condensed">
 <thead>
   <tr class="noselect" >
-      <th class="col-sm-3" ng-click="getFSService().onClickHeader('Recipes', 'name')">Name</br> &nbsp</th>
-      <th class="col-sm-3" ng-click="getFSService().onClickHeader('Recipes', 'category')">Category</br> &nbsp</th>
-       <th class="col-sm-1" ng-click="getFSService().onClickHeader('Recipes', 'duration')"><image width="60%" src='http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/clockface.9a46d0f5.png'></br> &nbsp</th>
+      <th class="col-sm-3" ng-click="getFSService().onClickHeader('Recipes', 'json.name')">Name</br> &nbsp</th>
+      <th class="col-sm-3" ng-click="getFSService().onClickHeader('Recipes', 'json.category')">Category</br> &nbsp</th>
+       <th class="col-sm-1" ng-click="getFSService().onClickHeader('Recipes', 'json.duration')"><image width="60%" src='http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/clockface.9a46d0f5.png'></br> &nbsp</th>
   </tr>
 </thead>
 </table>   
@@ -15,7 +15,7 @@
   <table class="table table-bordered table-condensed table-scrollable">
     <tbody>
       <tr ng-repeat="(k,v)  in getFSService().simulation.knownRecipesArray | orderBy:getFSService().simulation.orderRecipesBy" class="noselect" >
-        <td bgcolor={{v.bgcolor()}} class="col-sm-3" ng-click="getFSService().onClickBody('Recipes', v)">{{v.name}}</td> 
+        <td bgcolor={{v.bgcolor()}} class="col-sm-3" ng-click="getFSService().onClickBody('Recipes', v.json)">{{v.json.name}}</td> 
         <td class="col-sm-3" >{{v.getCategory()}}</td> 
         <td class="col-sm-1"> {{v.duration(getFSService().simulation.selectedCharacter)}}</td> 
       </tr>

@@ -459,7 +459,7 @@ angular.module('craftyApp')
 
                         thisFactory.bank[ recipeInput ].decrement( recipeInputQuantity);
 
-                        if ( thisFactory.bank[recipeInput].quantity.length === 0) {
+                        if ( thisFactory.bank[recipeInput].json.quantity.length === 0) {
                               delete  thisFactory.bank[recipeInput];
                               thisFactory.updateBank();
                             }
@@ -550,7 +550,7 @@ angular.module('craftyApp')
     FSCharacter.prototype.hasToolAction = function ( toolAction, log) {
       var bHasToolAction = false;
 
-      var equippedToolName = (this.json.tools.length > 0) ? this.json.tools[0].name : 'Hands';
+      var equippedToolName = (this.json.tools.length > 0) ? this.json.tools[0].json.name : 'Hands';
 
       thisFactory.toolDefines[equippedToolName].actions.forEach( ( function ( action) {
         if ( toolAction === action) {
