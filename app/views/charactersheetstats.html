@@ -8,7 +8,11 @@
           <tr class="noselect">
             <td><b>Profession</b></td>
               <td class="noselect" >
-                {{getFSService().simulation.selectedCharacter.json.proficiency.profession}}  {{getFSService().simulation.selectedCharacter.json.proficiency.tier}}
+                {{getFSService().simulation.selectedCharacter.json.proficiency.profession}}
+              </td>
+                <td class="noselect" >
+                  <input ng-model="getFSService().simulation.selectedCharacter.json.proficiency.tier" width="2">
+                  
               </td>
           </tr>
         </tbody>

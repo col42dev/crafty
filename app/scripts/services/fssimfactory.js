@@ -96,6 +96,10 @@ angular.module('craftyApp')
 	          	this.bank[item.name] = new FSBackpack({'category':category, 'name':item.name});
 	       		this.bank[item.name].increment( item.quantity );
 	        }).bind(this)); 
+
+	        //this.bank['SteelPickaxe'] = new FSBackpack({'category':'tool', 'name':'SteelPickaxe'});
+	       	//this.bank['SteelPickaxe'].increment( 1 );
+
 	        this.updateBank = function() {
 		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {
 		        		return thisFactory.bank[key];
@@ -475,6 +479,10 @@ angular.module('craftyApp')
 
       		return hasIngredients;
       	};
+
+
+
+
 
 
 	   

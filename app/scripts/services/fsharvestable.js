@@ -38,56 +38,70 @@ angular.module('craftyApp')
 
       var tools = [];
       
+      // build combined 'tool actions' array
+      tools.push('Hands');
       if ( character.json.tools.length > 0) {
-        tools.push(character.json.tools[0].json.name);
-      } else {
-        tools.push('Hands');
-      }
-      //console.log('Tools' + JSON.stringify(tools));
+        character.json.tools.forEach( function( thisTool ) {
 
-      var harvestActions = [];
-      tools.forEach( ( function( thisTool) {
-
-        this.simulation.toolDefines[thisTool].actions.forEach( function ( thisAction) {
-
-          if (harvestActions.indexOf(thisAction) === -1) {
-             harvestActions.push(thisAction);
+          if ( tools.indexOf( thisTool.json.name ) === -1) {
+            tools.push( thisTool.json.name);
           }
-
         });
+      } 
 
-      } ).bind(this));   
-
-      //console.log('Actions' + JSON.stringify(harvestActions));  
 
       var isHarvestable = false;
+      var toolStrengthMessage = '';
+      var toolActionMessage = '';
 
-      // action / actionable match
-      this.simulation.harvestableDefines[this.json.name].actionable.forEach( ( function ( thisActionable){
-        if (harvestActions.indexOf( thisActionable) !== -1) {
-          if (isHarvestable === false) {
-           isHarvestable = true; 
+      tools.forEach( ( function( thisTool) {
+
+        this.simulation.toolDefines[thisTool].actions.forEach( ( function ( thisAction) {
+
+
+            var toolHasRequiredAction = false;
+
+            // match harvest actions with actionables.
+            this.simulation.harvestableDefines[this.json.name].actionable.forEach( ( function ( thisActionable){
+
+              if (thisAction === thisActionable) {
+
+                toolHasRequiredAction = true;
+                //
+                if ( parseInt( this.simulation.toolDefines[ thisTool ].strength, 10) >= parseInt( this.simulation.harvestableDefines[this.json.name].hardness, 10)) {
+                  isHarvestable = true;
+                } else {
+                    toolStrengthMessage = thisTool + ' not strong enough to harvest ' + this.json.name;
+                }
+
+              }
+
+
+              if ( toolHasRequiredAction === false) {
+                toolActionMessage =  character.json.name + ' is not equipped with a tool with action(s) (' + this.simulation.harvestableDefines[this.json.name].actionable +') needed for harvesting ' + this.json.name;
+              }
+
+            }).bind(this));
+
+
+        }).bind(this));
+
+      } ).bind(this));   
+ 
+
+      if (isHarvestable=== false) {
+
+        if ( log === true) {
+
+          if ( toolStrengthMessage.length > 0) {
+            this.simulation.contextConsole.log(  toolStrengthMessage);
+          } else if ( toolActionMessage.length > 0) {
+            this.simulation.contextConsole.log(  toolActionMessage);
           }
         }
-      }).bind(this));
 
-      if ( log === true && isHarvestable === false) {
-        this.simulation.contextConsole.log( character.json.name + ' is not equipped with a tool with action(s) (' + this.simulation.harvestableDefines[this.json.name].actionable +') for harvesting ' + this.json.name);
-      }
-      //console.log('isHarvestable(1):' + isHarvestable);  
 
-      // tool strength vs harvestable hardness
-      if (isHarvestable === true) {
-
-        if ( parseInt( this.simulation.toolDefines[ tools[0] ].strength, 10) < parseInt( this.simulation.harvestableDefines[this.json.name].hardness, 10)) {
-          isHarvestable = false;
-          if ( log === true) {
-            this.simulation.contextConsole.log(  tools[0] + ' not strong enough to harvest ' + this.json.name);
-          }
-        }
-      }
-
-    //console.log('isHarvestable(2):' + isHarvestable);  
+      } 
 
       return isHarvestable;
     };

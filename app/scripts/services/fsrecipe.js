@@ -44,6 +44,11 @@ angular.module('craftyApp')
       if ( this.thisFactory.selectedCharacter.hasStatsFor('crafting') === false) {
         enabled = false;
       }
+
+      // crafting proficiency
+      if ( this.thisFactory.selectedCharacter.hasRequiredCraftingProficiency(this.json.name) === false) {
+        enabled = false;
+      }
       
       return  (enabled === true) ? '#00FF00' : '#FF0000';
     };

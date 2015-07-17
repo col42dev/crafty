@@ -24,25 +24,21 @@ angular.module('craftyApp')
 
         this.updateActiveTaskRemainingPercent = 100;
 
-        setInterval( (function () {
-          if ( this.json.activity.length === 0) {
-            this.modifyStat( 'health', 'current', 1);
-          }
-        }).bind(this), this.json.stats.health.regeneratePeriod * 1000);
+        ['health', 'energy', 'mind'].forEach( (function( statName) {
 
+          setInterval( (function () {
+            if ( this.json.activity.length === 0) {
+              this.modifyStat( statName, 'current', 1);
+            } else {
 
-        setInterval( (function () {
-          if ( this.json.activity.length === 0) {
-            this.modifyStat( 'energy', 'current', 1);
-          }
-        }).bind(this), this.json.stats.energy.regeneratePeriod * 1000);
+                  //regen stats if character is paused on current task.
+                  if ( this.hasStatsFor( this.json.activity[0].category ) === false) {
+                        this.modifyStat( statName, 'current', 1);
+                  }
+            }
+           }).bind(this), this.json.stats[statName].regeneratePeriod * 1000);
 
-
-        setInterval( (function () {
-          if ( this.json.activity.length === 0) {
-            this.modifyStat( 'mind', 'current', 1);
-          }
-        }).bind(this), this.json.stats.mind.regeneratePeriod * 1000);
+        }).bind(this));
 
       };
 
@@ -188,11 +184,6 @@ angular.module('craftyApp')
             this.startNextTask();
         }
       }
-   
-
-
-  
-
      
     };
 
@@ -212,21 +203,23 @@ angular.module('craftyApp')
 
       // generate output in bank.
       var craftableOutputObj = thisFactory.recipeDefines[craftableKey].output;
-      var craftableOutputKey = Object.keys( craftableOutputObj );
 
       // assumes only one type is craftableOutput.
-      var craftableOutput = craftableOutputKey[0];
-      var craftableOutputQuantity = craftableOutputObj[ craftableOutput ];
-      
-      // add output to bank.
-      if (!(craftableOutput in thisFactory.bank)) {
-        thisFactory.bank[craftableOutput] = new FSBackpack( {'category':thisFactory.recipeDefines[craftableKey].category, 'name':craftableOutput});
-      }
-      thisFactory.bank[craftableOutput].increment( craftableOutputQuantity);
-      thisFactory.updateBank();
+      for (var outputKey in craftableOutputObj) {
 
-      //Rewards
-      thisFactory.checkRewards( {'action':'craft', 'target':craftableOutput});
+        var craftableOutput = outputKey;
+        var craftableOutputQuantity = craftableOutputObj[ craftableOutput ];
+        
+        // add output to bank.
+        if (!(craftableOutput in thisFactory.bank)) {
+          thisFactory.bank[craftableOutput] = new FSBackpack( {'category':thisFactory.recipeDefines[craftableKey].category, 'name':craftableOutput});
+        }
+        thisFactory.bank[craftableOutput].increment( craftableOutputQuantity);
+        thisFactory.updateBank();
+
+        //Rewards
+        thisFactory.checkRewards( {'action':'craft', 'target':craftableOutput});
+      }
 
       this.json.activity.splice(0, 1);
 
@@ -238,6 +231,33 @@ angular.module('craftyApp')
        thisFactory.ctrllrScopeApply();
     };
 
+    /**
+     * @desc 
+     * @return 
+     */
+    FSCharacter.prototype.hasRequiredCraftingProficiency = function (recipeKey, log) {
+  
+      var hasRequiredProficiency = true;
+
+      if ( thisFactory.recipeDefines[recipeKey].hasOwnProperty('proficiency') === true) {
+
+            hasRequiredProficiency = false;
+
+            if ( this.json.proficiency.profession === thisFactory.recipeDefines[recipeKey].proficiency.profession) {
+                if ( parseInt(this.json.proficiency.tier, 10) >= parseInt(thisFactory.recipeDefines[recipeKey].proficiency.tier, 10)){
+                  hasRequiredProficiency = true;
+                } else if (log === true) {
+                  var requiredProfession = thisFactory.recipeDefines[recipeKey].proficiency.profession;
+                  var requiredTier = parseInt(thisFactory.recipeDefines[recipeKey].proficiency.tier, 10);
+                  thisFactory.contextConsole.log(this.json.name  + ' requires tier ' + requiredTier + ' in ' + requiredProfession + ' but is only tier ' + this.json.proficiency.tier );
+                }
+            } else if (log === true) {
+                  thisFactory.contextConsole.log('A ' + thisFactory.recipeDefines[recipeKey].proficiency.profession + ' is needed to craft a ' + recipeKey);
+            }
+      }
+
+      return hasRequiredProficiency;
+    };
 
     /**
      * @desc 
@@ -291,8 +311,11 @@ angular.module('craftyApp')
                         thisCharacter.modifyStat( thisStatsKeyname, 'current', -1);
 
                         thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
-                              this.modifyStat( thisStatsKeyname, 'current', -1);
-                              //console.log('statUpdateInterval:' + thisStatsKeyname);
+
+                          if ( this.hasStatsFor('gathering') === true) {
+                            this.modifyStat( thisStatsKeyname, 'current', -1);
+                          }
+
                         }).bind(thisCharacter), thisFactory.taskRules.gathering.stat[thisStatsKeyname].secondsPerDecrement * 1000);
 
                     }(gatheringStatKeyname));
@@ -300,14 +323,16 @@ angular.module('craftyApp')
 
 
                   var gatheringDuration = (thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
-                  setTimeout(this.stopGathering.bind(this), gatheringDuration);
+                  //setTimeout(this.stopGathering.bind(this), gatheringDuration);
 
                   this.updateActiveTaskRemainingPercent = 100;
                   this.updateActiveTaskInterval =  setInterval( function() {
-                        thisCharacter.updateActiveTaskRemainingPercent --;
-                        if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
-                           clearInterval(thisCharacter.updateActiveTaskInterval);
-                           //console.log('clearInterval' );
+                        if ( thisCharacter.hasStatsFor('gathering') === true) {
+                          thisCharacter.updateActiveTaskRemainingPercent --;
+                          if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
+                             clearInterval(thisCharacter.updateActiveTaskInterval);
+                             thisCharacter.stopGathering();
+                          }
                         }
                     }, gatheringDuration / 100);  
 
@@ -365,8 +390,11 @@ angular.module('craftyApp')
                         thisCharacter.modifyStat( thisStatsKeyname, 'current', -1);
 
                         thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
+
+                            if ( this.hasStatsFor('harvesting') === true) {
                               this.modifyStat( thisStatsKeyname, 'current', -1);
-                              //console.log('statUpdateInterval:' + thisStatsKeyname);
+                            }
+                              
                         }).bind(thisCharacter), thisFactory.taskRules.harvesting.stat[thisStatsKeyname].secondsPerDecrement * 1000);
 
                     }(harvestingStatKeyname));
@@ -375,14 +403,16 @@ angular.module('craftyApp')
 
                   var harvestingDuration = (thisFactory.harvestables[taskName].duration( thisCharacter) * 1000) / thisFactory.taskTimeScalar;
                   console.log('harvestingDuration' + harvestingDuration);
-                  setTimeout(this.stopHarvesting.bind(this), harvestingDuration);
+                  //setTimeout(this.stopHarvesting.bind(this), harvestingDuration);
 
                   this.updateActiveTaskRemainingPercent = 100;
                   this.updateActiveTaskInterval =  setInterval( function() {
-                        thisCharacter.updateActiveTaskRemainingPercent --;
-                        if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
-                           clearInterval(thisCharacter.updateActiveTaskInterval);
-                           //console.log('clearInterval' );
+                        if ( thisCharacter.hasStatsFor('harvesting') === true) {
+                          thisCharacter.updateActiveTaskRemainingPercent --;
+                          if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
+                             clearInterval(thisCharacter.updateActiveTaskInterval);
+                             thisCharacter.stopHarvesting();
+                          }
                         }
                     }, harvestingDuration / 100);
 
@@ -417,11 +447,13 @@ angular.module('craftyApp')
               canStartCrafting = false;
             }
 
+            if ( this.hasRequiredCraftingProficiency(taskName, true) !== true) {
+              canStartCrafting = false;
+            }
+
             if ( canStartCrafting === true) {
 
-                      var craftingDuration = (thisFactory.recipeDefines[taskName].basetime * 1000) / thisFactory.taskTimeScalar;
-                      setTimeout(this.stopCrafting.bind(this),  craftingDuration);
-
+     
                       //Set modify stat timer intervals
                       this.statUpdateInterval = {};
                       for (var craftingStatKeyname in thisFactory.taskRules.crafting.stat) {
@@ -431,22 +463,29 @@ angular.module('craftyApp')
                             thisCharacter.modifyStat( thisStatsKeyname, 'current', -1);
 
                             thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
+
+                                if ( this.hasStatsFor('crafting') === true) {
                                   this.modifyStat( thisStatsKeyname, 'current', -1);
-                                  //console.log('statUpdateInterval:' + thisStatsKeyname);
+                                }
+
                             }).bind(thisCharacter), thisFactory.taskRules.crafting.stat[thisStatsKeyname].secondsPerDecrement * 1000);
 
                         }(craftingStatKeyname));
                       }
 
+                      var craftingDuration = (thisFactory.recipeDefines[taskName].basetime * 1000) / thisFactory.taskTimeScalar;
+                      //setTimeout(this.stopCrafting.bind(this),  craftingDuration);
 
                       this.updateActiveTaskRemainingPercent = 100;
                       this.updateActiveTaskInterval =  setInterval( function() {
-                            thisCharacter.updateActiveTaskRemainingPercent --;
-                            if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
-                               clearInterval(thisCharacter.updateActiveTaskInterval);
+                            if ( thisCharacter.hasStatsFor('crafting') === true) {
+                              thisCharacter.updateActiveTaskRemainingPercent --;
+                              if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
+                                 clearInterval(thisCharacter.updateActiveTaskInterval);
+                                 thisCharacter.stopCrafting();
+                              }
                             }
                         }, craftingDuration / 100);   
-
 
                       // subtract resources from bank. (refactor in to sim factory class)
                       var recipeInputObj = thisFactory.recipeDefines[taskName].input;
@@ -550,17 +589,34 @@ angular.module('craftyApp')
     FSCharacter.prototype.hasToolAction = function ( toolAction, log) {
       var bHasToolAction = false;
 
-      var equippedToolName = (this.json.tools.length > 0) ? this.json.tools[0].json.name : 'Hands';
 
-      thisFactory.toolDefines[equippedToolName].actions.forEach( ( function ( action) {
-        if ( toolAction === action) {
-          bHasToolAction = true;
-        } 
-      }).bind(this)); 
+      var tools = [];
+      
+      // build combined 'tool actions' array
+      tools.push('Hands');
+      if ( this.json.tools.length > 0) {
+        this.json.tools.forEach( function( thisTool ) {
+
+          if ( tools.indexOf( thisTool.json.name ) === -1) {
+            tools.push( thisTool.json.name);
+          }
+        });
+      } 
+
+      tools.forEach( ( function( thisTool) {
+
+        thisFactory.toolDefines[thisTool].actions.forEach( ( function ( action) {
+          if ( toolAction === action) {
+            bHasToolAction = true;
+          } 
+        }).bind(this)); 
+
+      } ).bind(this));   
 
       if (bHasToolAction === false && log === true)  {
-          thisFactory.contextConsole.log('Equipped tool (' + equippedToolName + ') does not have required action (' + toolAction  + ')');
+          thisFactory.contextConsole.log('Equipped tool(s) (' + tools + ') do not have required action (' + toolAction  + ')');
       }
+
 
       return bHasToolAction;
     };
