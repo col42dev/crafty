@@ -82,6 +82,18 @@ angular.module('craftyApp')
       return craftingDuration;
     };
 
+     /**
+     * @desc 
+     * @return 
+     */
+    FSRecipe.prototype.hasUnlocks =  function(  ) {
+
+      if ( this.thisFactory.hasUnlocks( {'action':'craft', 'target':this.json.name})) {
+        return 'images/unlock.69ea04fd.png';
+      }
+      return 'images/clear.d9e2c8a6.png';
+    };
+
     return FSRecipe;
   });
 

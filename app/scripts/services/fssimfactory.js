@@ -447,6 +447,27 @@ angular.module('craftyApp')
 		 * @desc 
 		 * @return 
 		 */
+		this.hasUnlocks  = function ( checkDesc ) {
+
+			for (var thisRewardRule in this.rewardRules) {
+  				if (this.rewardRules.hasOwnProperty(thisRewardRule)) {
+  					if (this.rewardRules[thisRewardRule].action === checkDesc.action) {
+						if (this.rewardRules[thisRewardRule].target === checkDesc.target) {
+							if ( this.rewards.indexOf(thisRewardRule) === -1) {
+								return true;	
+							}
+						}
+					}
+  				}
+			}
+
+			return false;
+		};
+
+		/**
+		 * @desc 
+		 * @return 
+		 */
 		this.hasCraftingIngredients = function (recipeKey, log) {
 	
 			// determine if has reqiored ingredients in bank

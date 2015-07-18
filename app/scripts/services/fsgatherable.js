@@ -19,9 +19,9 @@ angular.module('craftyApp')
     };
 
     /**
-     * @desc 
-     * @return 
-     */
+    * @desc 
+    * @return 
+    */
     FSGatherable.prototype.bgcolor =  function( ) {         
       var color =  '#00FF00';     
 
@@ -40,16 +40,26 @@ angular.module('craftyApp')
       return color;   
     };
 
-     FSGatherable.prototype.duration =  function(  character) {
-
+    /**
+    * @desc 
+    * @return 
+    */
+    FSGatherable.prototype.duration =  function(  character) {
       character = character;
-
       var duration = this.simulation.gatherableDefines[this.json.name].duration;
-
-   
       return duration;
-     };
+    };
 
+   /**
+     * @desc 
+     * @return 
+     */
+    FSGatherable.prototype.hasUnlocks =  function(  ) {
+      if ( this.simulation.hasUnlocks( {'action':'gather', 'target':this.json.name})) {
+        return 'images/unlock.69ea04fd.png';
+      }
+      return 'images/clear.d9e2c8a6.png';
+    };
   
 
     return FSGatherable;

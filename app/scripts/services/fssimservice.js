@@ -31,8 +31,8 @@ angular.module('craftyApp')
 	      this.taskTimeScalarDivVis ='hidden';
 
         this.master = {
-          rules: 'https://api.myjson.com/bins/1xgc2' + '?pretty=1',
-          state: 'https://api.myjson.com/bins/3nlzm' + '?pretty=1'
+          rules: 'https://api.myjson.com/bins/13nsy' + '?pretty=1',
+          state: 'https://api.myjson.com/bins/2y3s2' + '?pretty=1'
         };
 	      this.user = angular.copy(this.master);
 

@@ -210,7 +210,7 @@ angular.module('craftyApp')
               canStartTask = false;
               thisFactory.contextConsole.log('There is no ' + taskName + ' left to gather');
             } else {
-              if ( thisFactory.gatherables[taskName].json.quantity === 0) {
+              if ( parseInt( thisFactory.gatherables[taskName].json.quantity, 10) === 0) {
                 thisFactory.contextConsole.log('No ' + taskName + ' left to gather');
                 canStartTask = false;
               }
@@ -228,7 +228,7 @@ angular.module('craftyApp')
               thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest');
               canStartTask = false;
             } else {
-              if (thisFactory.harvestables[taskName].quantity === 0) {
+              if ( parseInt(thisFactory.harvestables[taskName].quantity, 10) === 0) {
                 thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest');
                 canStartTask = false;
               }

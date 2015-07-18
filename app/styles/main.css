@@ -60,9 +60,9 @@ body {
 }
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
+@media (min-width: 1500px) {
   .container {
-    max-width: 1500px;
+    max-width: 2700px;
   }
 
   /* Remove the padding we set earlier */
@@ -82,6 +82,11 @@ body {
   }
 }
 
+/* Custom container */
+.container-fixed {
+  margin: 0 auto;
+  max-width: 1400px;
+}
 
 /* scrollable tables  http://stackoverflow.com/questions/10420168/twitter-bootstrap-scrollable-table */
 .bodycontainer { max-height: 250px; width: 100%; margin: 0; overflow-y: auto; }
