@@ -22,8 +22,7 @@ angular.module('craftyApp')
         thisFactory = simFactory;
         this.json = json;
 
-        this.updateActiveTaskRemainingPercent = 100;
-
+  
         // regen stats timers
         ['health', 'energy', 'mind'].forEach( (function( statName) {
 
@@ -87,10 +86,10 @@ angular.module('craftyApp')
 
       var harvestableType = this.json.activity[0].name;
 
-      thisFactory.harvestables[harvestableType].quantity -= 1;
+      thisFactory.harvestables[harvestableType].json.quantity -= 1;
 
 
-      if ( thisFactory.harvestables[harvestableType].quantity === 0) {
+      if ( thisFactory.harvestables[harvestableType].json.quantity === 0) {
         delete thisFactory.harvestables[harvestableType];
         thisFactory.updateHarvestables();
       }
@@ -264,19 +263,19 @@ angular.module('craftyApp')
                   }
 
 
-                  var gatheringDuration = (thisFactory.gatherableDefines[taskName].gatherBaseTimeS * 1000) / thisFactory.taskTimeScalar;
-                  //setTimeout(this.stopGathering.bind(this), gatheringDuration);
-
-                  this.updateActiveTaskRemainingPercent = 100;
+                  // task time remaining timer
+                  this.updateActiveTaskTotalSeconds = thisFactory.gatherableDefines[taskName].gatherBaseTimeS / thisFactory.taskTimeScalar;
+                  this.updateActiveTaskRemainingSeconds = this.updateActiveTaskTotalSeconds;
                   this.updateActiveTaskInterval =  setInterval( function() {
                         if ( thisCharacter.hasStatsFor('gathering') === true) {
-                          thisCharacter.updateActiveTaskRemainingPercent --;
-                          if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
-                             clearInterval(thisCharacter.updateActiveTaskInterval);
-                             thisCharacter.stopGathering();
-                          }
+
+                            thisCharacter.updateActiveTaskRemainingSeconds --;
+                            if ( thisCharacter.updateActiveTaskRemainingSeconds <= 0) {
+                              clearInterval(thisCharacter.updateActiveTaskInterval);
+                              thisCharacter.stopGathering();
+                            }
                         }
-                    }, gatheringDuration / 100);  
+                    }, 1000);
 
                   thisFactory.gatherables[taskName].json.gatherers ++;
 
@@ -342,21 +341,18 @@ angular.module('craftyApp')
                     }(harvestingStatKeyname));
                   }
 
-
-                  var harvestingDuration = (thisFactory.harvestables[taskName].duration( thisCharacter) * 1000) / thisFactory.taskTimeScalar;
-                  console.log('harvestingDuration' + harvestingDuration);
-                  //setTimeout(this.stopHarvesting.bind(this), harvestingDuration);
-
-                  this.updateActiveTaskRemainingPercent = 100;
+                  this.updateActiveTaskTotalSeconds = thisFactory.harvestables[taskName].duration( thisCharacter) / thisFactory.taskTimeScalar;
+                  this.updateActiveTaskRemainingSeconds = this.updateActiveTaskTotalSeconds;
                   this.updateActiveTaskInterval =  setInterval( function() {
                         if ( thisCharacter.hasStatsFor('harvesting') === true) {
-                          thisCharacter.updateActiveTaskRemainingPercent --;
-                          if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
-                             clearInterval(thisCharacter.updateActiveTaskInterval);
-                             thisCharacter.stopHarvesting();
-                          }
+
+                            thisCharacter.updateActiveTaskRemainingSeconds --;
+                            if ( thisCharacter.updateActiveTaskRemainingSeconds <= 0) {
+                              clearInterval(thisCharacter.updateActiveTaskInterval);
+                              thisCharacter.stopHarvesting();
+                            }
                         }
-                    }, harvestingDuration / 100);
+                    }, 1000);
 
             } else {
 
@@ -415,19 +411,19 @@ angular.module('craftyApp')
                         }(craftingStatKeyname));
                       }
 
-                      var craftingDuration = (thisFactory.recipeDefines[taskName].basetime * 1000) / thisFactory.taskTimeScalar;
-                      //setTimeout(this.stopCrafting.bind(this),  craftingDuration);
-
-                      this.updateActiveTaskRemainingPercent = 100;
+                      // task time remaining timer
+                      this.updateActiveTaskTotalSeconds = thisFactory.recipeDefines[taskName].basetime / thisFactory.taskTimeScalar;
+                      this.updateActiveTaskRemainingSeconds = this.updateActiveTaskTotalSeconds;
                       this.updateActiveTaskInterval =  setInterval( function() {
-                            if ( thisCharacter.hasStatsFor('crafting') === true) {
-                              thisCharacter.updateActiveTaskRemainingPercent --;
-                              if ( thisCharacter.updateActiveTaskRemainingPercent <= 0) {
-                                 clearInterval(thisCharacter.updateActiveTaskInterval);
-                                 thisCharacter.stopCrafting();
-                              }
-                            }
-                        }, craftingDuration / 100);   
+                        if ( thisCharacter.hasStatsFor('crafting') === true) {
+
+                          thisCharacter.updateActiveTaskRemainingSeconds --;
+                          if ( thisCharacter.updateActiveTaskRemainingSeconds <= 0) {
+                            clearInterval(thisCharacter.updateActiveTaskInterval);
+                            thisCharacter.stopCrafting();
+                          }
+                        }
+                      }, 1000); 
 
                       // subtract resources from bank. (refactor in to sim factory class)
                       var recipeInputObj = thisFactory.recipeDefines[taskName].input;
@@ -596,23 +592,14 @@ angular.module('craftyApp')
       return Math.max(this.json.activity.length - 1, 0);
     };
 
-    /**
-     * @desc 
-     * @return 
-     */
-    FSCharacter.prototype.updateActiveTask = function () {
-      this.updateActiveTaskRemainingPercent --;
-      if ( this.updateActiveTaskRemainingPercent <= 0) {
-         clearInterval(this.updateActiveTask);
-      }
-    };
 
     /**
      * @desc 
      * @return 
      */
     FSCharacter.prototype.activityPercentRemaining = function ( ) {
-      return this.updateActiveTaskRemainingPercent +'%';
+      var percent = Math.floor( this.updateActiveTaskRemainingSeconds / this.updateActiveTaskTotalSeconds  * 100);
+      return percent+'%';
     };
 
     /**

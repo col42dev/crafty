@@ -97,8 +97,8 @@ angular.module('craftyApp')
 	       		this.bank[item.name].increment( item.quantity );
 	        }).bind(this)); 
 
-	        //this.bank['SteelPickaxe'] = new FSBackpack({'category':'tool', 'name':'SteelPickaxe'});
-	       	//this.bank['SteelPickaxe'].increment( 1 );
+	        this.bank['Wood'] = new FSBackpack({'category':'tool', 'name':'Wood'});
+	       	this.bank['Wood'].increment( 100 );
 
 	        this.updateBank = function() {
 		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {
@@ -418,7 +418,7 @@ angular.module('craftyApp')
 		 */
 		this.onClickRecipes = function (recipeKey) {
 			if ( this.selectedCharacter !== null) {
-		        this.selectedCharacter.addTask( recipeKey, 'crafing');		
+		        this.selectedCharacter.addTask( recipeKey, 'crafting');		
 		    }          	
 		};
 
