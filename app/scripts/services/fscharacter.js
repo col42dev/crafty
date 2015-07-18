@@ -13,7 +13,6 @@ angular.module('craftyApp')
     // ...
     var thisFactory = null;
 
-
     /**
      * @desc 
      * @return 
@@ -37,7 +36,6 @@ angular.module('craftyApp')
            }).bind(this), this.json.stats[statName].regeneratePeriod * 1000);
 
         }).bind(this));
-
     };
 
     /**
@@ -55,8 +53,6 @@ angular.module('craftyApp')
     FSCharacter.prototype.getFullName = function () {
       return this.json.name;
     };
-
-
 
     /**
      * @desc - push task to activity queue and trigger it if queu is empty
@@ -84,33 +80,22 @@ angular.module('craftyApp')
         clearInterval( this.statUpdateInterval[statKeyname]);
       }
 
-      switch ( this.json.activity[0].category) {
-        case 'gathering':
-          this.stopGathering();
-          break;
-        case 'harvesting':
-          this.stopHarvesting();
-          break;
-        case 'crafting':
-          this.stopCrafting();
-          break;
-        }
+      //onStop task
+      this[ this.json.activity[0].category + 'OnStop' ]();
     };
-
 
      /**
      * @desc 
      * @return 
      */
-    FSCharacter.prototype.startharvesting = function () {
+    FSCharacter.prototype.harvestingOnStart = function () {
     };
-
 
      /**
      * @desc 
      * @return 
      */
-    FSCharacter.prototype.stopHarvesting = function () {
+    FSCharacter.prototype.harvestingOnStop = function () {
 
       var harvestableType = this.json.activity[0].name;
 
@@ -144,7 +129,7 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSCharacter.prototype.startgathering = function () {
+    FSCharacter.prototype.gatheringOnStart = function () {
       thisFactory.gatherables[ this.json.activity[0].name ].json.gatherers ++;
     };
 
@@ -152,7 +137,7 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSCharacter.prototype.stopGathering = function () {
+    FSCharacter.prototype.gatheringOnStop = function () {
 
       var gatherableType = this.json.activity[0].name;
 
@@ -170,7 +155,7 @@ angular.module('craftyApp')
       thisFactory.bank[gatherableType].increment(1);
       thisFactory.updateBank();
 
-      //Rewards
+      // Rewards
       thisFactory.checkRewards( {'action':'gather', 'target':gatherableType});
 
       this.json.activity.splice(0, 1);
@@ -188,34 +173,15 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSCharacter.prototype.startcrafting = function () {
-
-      console.log('startCrafting');
-
-      var taskName = this.json.activity[0].name;
-
-      // subtract resources from bank. (todo: refactor this in to sim factory class)
-      var recipeInputObj = thisFactory.craftableDefines[taskName].input;
-      var recipeInputKeys = Object.keys( recipeInputObj );
-
-      recipeInputKeys.forEach( function ( recipeKey ){
-        var recipeInput = recipeKey;
-        var recipeInputQuantity = recipeInputObj[ recipeKey];
-        thisFactory.bank[ recipeInput ].decrement( recipeInputQuantity);
-        if ( thisFactory.bank[recipeInput].json.quantity.length === 0) {
-          delete  thisFactory.bank[recipeInput];
-          thisFactory.updateBank();
-        }
-
-      });
-
+    FSCharacter.prototype.craftingOnStart = function () {
+      thisFactory.bankTransaction( 'startCrafting', this.json.activity[0].name);
     };
 
     /**
      * @desc 
      * @return 
      */
-    FSCharacter.prototype.stopCrafting = function () {
+    FSCharacter.prototype.craftingOnStop = function () {
 
       var craftableKey = this.json.activity[0].name;
 
@@ -260,8 +226,7 @@ angular.module('craftyApp')
       var activityCategory = this.json.activity[0].category;
 
       switch ( activityCategory) {
-        case 'gathering':
-          {
+        case 'gathering': {
             if (thisFactory.gatherables.hasOwnProperty(taskName) !== true) {
               canStartTask = false;
               thisFactory.contextConsole.log('There is no ' + taskName + ' left to gather');
@@ -283,8 +248,7 @@ angular.module('craftyApp')
             } 
           }
           break;
-        case 'harvesting':
-          {
+        case 'harvesting': {
             if (thisFactory.harvestables.hasOwnProperty(taskName) !== true) {
               thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest');
               canStartTask = false;
@@ -303,8 +267,7 @@ angular.module('craftyApp')
           }
           break;
 
-        case 'crafting':
-          {
+        case 'crafting': {  
             if ( thisFactory.hasCraftingIngredients(taskName, true) !== true) {
               canStartTask = false;
             }
@@ -356,11 +319,6 @@ angular.module('craftyApp')
         this.updateActiveTaskRemainingSeconds = this.updateActiveTaskTotalSeconds;
         this.updateActiveTaskInterval =  setInterval( function() {
           if ( thisCharacter.hasStatsFor( activityCategory ) === true) {
-
-            //if (isNaN(thisCharacter.updateActiveTaskRemainingSeconds)) {
-            //  window.alert('startNextTask');
-            //}
-
             thisCharacter.updateActiveTaskRemainingSeconds --;
             if ( thisCharacter.updateActiveTaskRemainingSeconds <= 0) {
               clearInterval(thisCharacter.updateActiveTaskInterval);
@@ -369,15 +327,17 @@ angular.module('craftyApp')
           }
         }, 1000);
 
-        this['start' + activityCategory]();
+        this[activityCategory + 'OnStart' ]();
 
       }  // can start task
       else  {
+
         // skip to next task in queue?
         this.json.activity.splice(0, 1);
         if (this.json.activity.length > 0) {
           this.startNextTask();
         }
+
       }
 
     };
@@ -388,7 +348,6 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.hasCraftingProficiencyFor = function (recipeKey, log) {
-
       var hasRequiredProficiency = true;
 
       if ( thisFactory.craftableDefines[recipeKey].hasOwnProperty('proficiency') === true) {
@@ -450,25 +409,21 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.hasStatsFor = function ( taskCategory, log) {
 
-        var hasStats = true;
+      var hasStats = true;
 
-       for (var statKeyname in thisFactory.taskRules[taskCategory].stat) {
+      for (var statKeyname in thisFactory.taskRules[taskCategory].stat) {
+        var required = parseInt( thisFactory.taskRules[taskCategory].stat[statKeyname].minRequired, 10);
+        var current = parseInt( this.json.stats[statKeyname].current, 10) ;
+        if ( current< required) {
+          hasStats = false;
 
-         // console.log( parseInt(this.json.stats[statKeyname].current, 10) + '<' + parseInt( thisFactory.taskRules[taskCategory].stat[statKeyname].minRequired, 10));
-
-         var required = parseInt( thisFactory.taskRules[taskCategory].stat[statKeyname].minRequired, 10);
-         var current = parseInt( this.json.stats[statKeyname].current, 10) ;
-          if ( current< required) {
-              hasStats = false;
-
-            if (log === true) {
-              thisFactory.contextConsole.log( 'Require ' + required + ' ' + statKeyname + ' for ' + taskCategory + ' but ' + this.json.name + ' only has ' + current);
-            }
+          if (log === true) {
+            thisFactory.contextConsole.log( 'Require ' + required + ' ' + statKeyname + ' for ' + taskCategory + ' but ' + this.json.name + ' only has ' + current);
           }
-       }
+        }
+      }
 
-       return hasStats;
-
+      return hasStats;
     };
 
 
@@ -479,13 +434,11 @@ angular.module('craftyApp')
     FSCharacter.prototype.hasToolAction = function ( toolAction, log) {
       var bHasToolAction = false;
 
-      var tools = [];
-      
+     
       // build combined 'tool actions' array
-      tools.push('Hands');
+      var tools = ['Hands'];
       if ( this.json.tools.length > 0) {
         this.json.tools.forEach( function( thisTool ) {
-
           if ( tools.indexOf( thisTool.json.name ) === -1) {
             tools.push( thisTool.json.name);
           }
@@ -501,7 +454,7 @@ angular.module('craftyApp')
       } ).bind(this));   
 
       if (bHasToolAction === false && log === true)  {
-          thisFactory.contextConsole.log('Equipped tool(s) (' + tools + ') do not have required action (' + toolAction  + ')');
+        thisFactory.contextConsole.log('Equipped tool(s) (' + tools + ') do not have required action (' + toolAction  + ')');
       }
 
       return bHasToolAction;

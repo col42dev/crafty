@@ -260,41 +260,7 @@ angular.module('craftyApp')
 	 	 };
 
 
-		/**
-		 * @desc 
-		 * @return 
-		 */
-		this.checkRewards  = function ( checkDesc ) {
-
-			for (var thisRewardRule in this.rewardRules) {
-  				if (this.rewardRules.hasOwnProperty(thisRewardRule)) {
-  					if (this.rewardRules[thisRewardRule].action === checkDesc.action) {
-						if (this.rewardRules[thisRewardRule].target === checkDesc.target) {
-							
-							// reward reward
-							if ( this.rewards.indexOf(thisRewardRule) === -1) {
-								console.log('REWARD:' + thisRewardRule);
-								this.rewards.push(thisRewardRule);
-							}
-
-							// recipe unlocks
-							this.rewardRules[thisRewardRule].recipeUnlocks.forEach( function( recipe) {
-
-								if ( this.craftables.hasOwnProperty(recipe) === false) {
-									if (this.hasOwnProperty(recipe) === false) {
-										this.craftables[recipe] =  new FSRecipe( recipe, this);
-										this.updateRecipes();
-										console.log('RECIPE UNLOCK:' + recipe);
-									}
-								}
-
-							}.bind(this));
-
-						}
-					}
-  				}
-			}
-		};
+	
 
 		 /**
 	     * @desc 
@@ -422,6 +388,66 @@ angular.module('craftyApp')
 		    }          	
 		};
 
+
+
+		/**
+		 * @desc 
+		 * @return 
+		 */
+		this.bankTransaction  = function ( type,  value) {
+	      	if ( type === 'startCrafting') {
+				// subtract resources from bank. (todo: refactor this in to sim factory class)
+				var recipeInputObj = this.craftableDefines[value].input;
+				var recipeInputKeys = Object.keys( recipeInputObj );
+
+				recipeInputKeys.forEach( function ( recipeKey ){
+					var recipeInput = recipeKey;
+					var recipeInputQuantity = recipeInputObj[ recipeKey];
+					this.bank[ recipeInput ].decrement( recipeInputQuantity);
+					if ( this.bank[recipeInput].json.quantity.length === 0) {
+					  delete  this.bank[recipeInput];
+					  this.updateBank();
+					}
+				});
+			}
+	     };
+
+
+		/**
+		 * @desc 
+		 * @return 
+		 */
+		this.checkRewards  = function ( checkDesc ) {
+
+			for (var thisRewardRule in this.rewardRules) {
+  				if (this.rewardRules.hasOwnProperty(thisRewardRule)) {
+  					if (this.rewardRules[thisRewardRule].action === checkDesc.action) {
+						if (this.rewardRules[thisRewardRule].target === checkDesc.target) {
+							
+							// reward reward
+							if ( this.rewards.indexOf(thisRewardRule) === -1) {
+								console.log('REWARD:' + thisRewardRule);
+								this.rewards.push(thisRewardRule);
+							}
+
+							// recipe unlocks
+							this.rewardRules[thisRewardRule].recipeUnlocks.forEach( function( recipe) {
+
+								if ( this.craftables.hasOwnProperty(recipe) === false) {
+									if (this.hasOwnProperty(recipe) === false) {
+										this.craftables[recipe] =  new FSRecipe( recipe, this);
+										this.updateRecipes();
+										console.log('RECIPE UNLOCK:' + recipe);
+									}
+								}
+
+							}.bind(this));
+
+						}
+					}
+  				}
+			}
+		};
 
 		/**
 		 * @desc 
