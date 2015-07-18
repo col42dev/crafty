@@ -14,7 +14,7 @@
   <div class="bodycontainer scrollable">
   <table class="table table-bordered table-condensed table-scrollable">
     <tbody>
-      <tr ng-repeat="(k,v)  in getFSService().simulation.knownRecipesArray | orderBy:getFSService().simulation.orderRecipesBy" class="noselect" >
+      <tr ng-repeat="(k,v)  in getFSService().simulation.craftablesArray | orderBy:getFSService().simulation.orderRecipesBy" class="noselect" >
         <td bgcolor={{v.bgcolor()}} class="col-sm-3" ng-click="getFSService().onClickBody('Recipes', v.json)">{{v.json.name}}</td> 
         <td class="col-sm-3" >{{v.getCategory()}}</td> 
         <td class="col-sm-1"> {{v.duration(getFSService().simulation.selectedCharacter)}}</td> 

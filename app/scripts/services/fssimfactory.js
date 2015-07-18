@@ -110,14 +110,14 @@ angular.module('craftyApp')
 	    	};
 	    	this.updateBank();
 
-	        // Know Recipes
-	        this.knownRecipes = {}; 
-	        json.recipes.forEach( ( function( recipeName ) {
-	          		this.knownRecipes[recipeName] =  new FSRecipe( recipeName, this);
+	        // Craftables
+	        this.craftables = {}; 
+	        json.craftables.forEach( ( function( recipeName ) {
+	          		this.craftables[recipeName] =  new FSRecipe( recipeName, this);
 	        	}).bind(this)); 
 	        this.updateRecipes = function() {
-		        thisFactory.knownRecipesArray = Object.keys(thisFactory.knownRecipes).map(function (key) {
-		        		return thisFactory.knownRecipes[key];
+		        thisFactory.craftablesArray = Object.keys(thisFactory.craftables).map(function (key) {
+		        		return thisFactory.craftables[key];
 		        	});
 	    	};
 	    	this.updateRecipes();
@@ -176,9 +176,9 @@ angular.module('craftyApp')
 	        }
 
 	        // Know Recipes
-	        buildjson.recipes = []; 
-	        for ( var recipeName in this.knownRecipes) {
-	        	buildjson.recipes.push(this.knownRecipes[recipeName].name);
+	        buildjson.craftables = []; 
+	        for ( var recipeName in this.craftables) {
+	        	buildjson.craftables.push(this.craftables[recipeName].name);
 	        }
 
 
@@ -283,9 +283,9 @@ angular.module('craftyApp')
 							// recipe unlocks
 							this.rewardRules[thisRewardRule].recipeUnlocks.forEach( function( recipe) {
 
-								if ( this.knownRecipes.hasOwnProperty(recipe) === false) {
+								if ( this.craftables.hasOwnProperty(recipe) === false) {
 									if (this.hasOwnProperty(recipe) === false) {
-										this.knownRecipes[recipe] =  new FSRecipe( recipe, this);
+										this.craftables[recipe] =  new FSRecipe( recipe, this);
 										this.updateRecipes();
 										console.log('RECIPE UNLOCK:' + recipe);
 									}
@@ -500,7 +500,7 @@ angular.module('craftyApp')
 	            duration= this.harvestables[taskName].duration(thisCharacter) / this.taskTimeScalar;
 	            break;
 	          case 'crafting':
-	            duration = this.knownRecipes[taskName].duration(thisCharacter) / this.taskTimeScalar;
+	            duration = this.craftables[taskName].duration(thisCharacter) / this.taskTimeScalar;
 	            break;
 	        }
 

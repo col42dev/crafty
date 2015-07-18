@@ -32,7 +32,7 @@ angular.module('craftyApp')
 
         this.master = {
           rules: 'https://api.myjson.com/bins/3n6k2' + '?pretty=1',
-          state: 'https://api.myjson.com/bins/4ufku' + '?pretty=1'
+          state: 'https://api.myjson.com/bins/4heiq' + '?pretty=1'
         };
 	      this.user = angular.copy(this.master);
 

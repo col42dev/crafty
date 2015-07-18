@@ -15,6 +15,15 @@ angular.module('craftyApp')
     var FSHarvestable = function( obj, simulation) { 
       this.simulation = simulation;
       this.json = obj;
+
+
+      // replenish quantity
+      if ( this.simulation.harvestableDefines[this.json.name].hasOwnProperty('replenish') === true ) {
+           setInterval( (function () {
+              this.json.quantity = parseInt( this.json.quantity, 10)  + 1;
+            }).bind(this), this.simulation.harvestableDefines[this.json.name].replenish * 1000);
+      }
+
     };
 
     FSHarvestable.prototype.bgcolor =  function( ) {   
