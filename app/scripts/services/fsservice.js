@@ -61,8 +61,6 @@ angular.module('craftyApp')
      */
      this.loadSimRules = function() {
 
-        console.log('rules:' + this.user.rules); 
-
          $http.get(this.user.rules,{
             params: {
                 headers: {
@@ -93,7 +91,7 @@ angular.module('craftyApp')
      */
     this.createSimRules = function() {
 
-      console.log('Load JSON success'  + JSON.stringify(thisService.rulesData));
+      console.log('Load JSON Rules success');
       this.taskTimeScalarDivVis ='';
      
       thisService.simulation.createSimRules( thisService.rulesData);
@@ -108,8 +106,6 @@ angular.module('craftyApp')
      * @return 
      */
      this.loadSimState = function() {
-
-      console.log('state:' + this.user.state); 
 
       //load JSON state
       $http.get(this.user.state,{
@@ -143,7 +139,7 @@ angular.module('craftyApp')
 
       $location.path('/'); 
 
-      console.log('Load JSON success'  + JSON.stringify(thisService.stateData));
+      console.log('Load JSON State success');
      
       thisService.simulation.createSimState(thisService.stateData);
    

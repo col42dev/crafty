@@ -181,8 +181,6 @@ angular.module('craftyApp')
 	        	buildjson.craftables.push(this.craftables[recipeName].name);
 	        }
 
-
-
 	        this.jsonSerialized = JSON.stringify(buildjson, undefined, 2);
 
 	        return buildjson;
@@ -218,7 +216,6 @@ angular.module('craftyApp')
 	    			}
         			this.orderGatherablesByOrder = (this.orderGatherablesByOrder==='+') ? '-' : '+';
         			this.orderGatherablesBy = this.orderGatherablesByOrder + fieldName;
-        			console.log(this.orderGatherablesBy);
         			break;
         		case 'Harvestables':
         			if ( this.hasOwnProperty('orderHarvestablesBy') === false) {
@@ -503,6 +500,10 @@ angular.module('craftyApp')
 	            duration = this.craftables[taskName].duration(thisCharacter) / this.taskTimeScalar;
 	            break;
 	        }
+
+	       	//if (isNaN(duration)) {
+	       	//	window.alert('getTaskDuration');
+	       	//}
 
 	        return duration;
       	};

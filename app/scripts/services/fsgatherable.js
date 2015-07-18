@@ -33,20 +33,16 @@ angular.module('craftyApp')
           color  = '#FF0000'; 
       }
 
+      if ( this.simulation.selectedCharacter.hasSpareActivitySlot() === false) {
+        color = '#FF0000';
+      }
+
       return color;   
     };
 
      FSGatherable.prototype.duration =  function(  character) {
 
       character = character;
-
-      if( this.simulation.selectedCharacter.hasGatheringDependencies(this.json.name) === false) {
-        return '-';
-      }
-
-      if ( this.simulation.selectedCharacter.hasStatsFor('gathering') === false) {
-           return '-';
-      }
 
       var duration = this.simulation.gatherableDefines[this.json.name].duration;
 

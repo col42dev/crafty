@@ -49,6 +49,10 @@ angular.module('craftyApp')
       if ( this.thisFactory.selectedCharacter.hasCraftingProficiencyFor(this.json.name) === false) {
         enabled = false;
       }
+
+      if ( this.thisFactory.selectedCharacter.hasSpareActivitySlot() === false) {
+        enabled = false;
+      }
       
       return  (enabled === true) ? '#00FF00' : '#FF0000';
     };

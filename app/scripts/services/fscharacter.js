@@ -356,6 +356,11 @@ angular.module('craftyApp')
         this.updateActiveTaskRemainingSeconds = this.updateActiveTaskTotalSeconds;
         this.updateActiveTaskInterval =  setInterval( function() {
           if ( thisCharacter.hasStatsFor( activityCategory ) === true) {
+
+            //if (isNaN(thisCharacter.updateActiveTaskRemainingSeconds)) {
+            //  window.alert('startNextTask');
+            //}
+
             thisCharacter.updateActiveTaskRemainingSeconds --;
             if ( thisCharacter.updateActiveTaskRemainingSeconds <= 0) {
               clearInterval(thisCharacter.updateActiveTaskInterval);

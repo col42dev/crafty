@@ -38,6 +38,10 @@ angular.module('craftyApp')
         color = '#FF0000';
       }
 
+      if ( this.simulation.selectedCharacter.hasSpareActivitySlot() === false) {
+        color = '#FF0000';
+      }
+
       return color;   
     };
 
@@ -110,13 +114,10 @@ angular.module('craftyApp')
 
     FSHarvestable.prototype.duration =  function(  character) {
 
-      if ( this.isHarvestableBy(character) === false) {
-        return '-';
-      }
       var tools = [];
       
       if ( character.json.tools.length > 0) {
-        tools.push(character.json.tools[0].json.name);
+        tools.push(character.json.tools[0].json.name); // bug: only using tool in first slot
       } else {
         tools.push('Hands');
       }
