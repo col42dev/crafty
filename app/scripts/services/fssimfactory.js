@@ -49,7 +49,7 @@ angular.module('craftyApp')
 	    this.createSimState = function( json) {
 	
 	     	// Characters
-		    this.characterObjs = {};  
+			this.characterObjs = {};  
  			json.characters.forEach( ( function(thisCharacter) {
  				var characterName = thisCharacter.name;
 	          	this.characterObjs[characterName] = new FSCharacter(thisCharacter, thisFactory);
@@ -398,7 +398,7 @@ angular.module('craftyApp')
 		this.onClickGatherables = function (gatherableType) {
 	
 			if ( this.selectedCharacter !== null) {
-			    this.selectedCharacter.startGathering( gatherableType);
+				this.selectedCharacter.addTask( gatherableType, 'gathering');	
 			}
 		};
 
@@ -408,7 +408,7 @@ angular.module('craftyApp')
 		 */
 		this.onClickHarvestables = function (harvestableType) {
 			if ( this.selectedCharacter !== null) {
-			    this.selectedCharacter.startHarvesting( harvestableType);
+			    this.selectedCharacter.addTask( harvestableType, 'harvesting');	
 			}
 		};
 
@@ -418,7 +418,7 @@ angular.module('craftyApp')
 		 */
 		this.onClickRecipes = function (recipeKey) {
 			if ( this.selectedCharacter !== null) {
-		        this.selectedCharacter.startCrafting( recipeKey);		
+		        this.selectedCharacter.addTask( recipeKey, 'crafing');		
 		    }          	
 		};
 

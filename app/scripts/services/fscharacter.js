@@ -24,13 +24,13 @@ angular.module('craftyApp')
 
         this.updateActiveTaskRemainingPercent = 100;
 
+        // regen stats timers
         ['health', 'energy', 'mind'].forEach( (function( statName) {
 
           setInterval( (function () {
             if ( this.json.activity.length === 0) {
               this.modifyStat( statName, 'current', 1);
             } else {
-
                   //regen stats if character is paused on current task.
                   if ( this.hasStatsFor( this.json.activity[0].category ) === false) {
                         this.modifyStat( statName, 'current', 1);
@@ -60,15 +60,14 @@ angular.module('craftyApp')
 
 
 
-
     /**
      * @desc 
      * @return 
      */
-    FSCharacter.prototype.startHarvesting = function ( harvestablesName) {
+    FSCharacter.prototype.addTask = function ( taskName, taskCategory) {
 
       if ( this.hasSpareActivitySlot(true) === true) {
-        this.json.activity.push( new FSTask( {'name':harvestablesName, 'category':'harvesting'}));
+        this.json.activity.push( new FSTask( {'name':taskName, 'category':taskCategory}));
         if (this.json.activity.length === 1) {
           this.startNextTask();
         }
@@ -115,20 +114,6 @@ angular.module('craftyApp')
       thisFactory.ctrllrScopeApply();
     };
 
-    /**
-     * @desc 
-     * @return 
-     */
-    FSCharacter.prototype.startGathering = function ( gatherablesName) {
-
-      if ( this.hasSpareActivitySlot(true) === true) {
-        this.json.activity.push( new FSTask( {'name':gatherablesName, 'category':'gathering'}));
-        if (this.json.activity.length === 1) {
-          this.startNextTask();
-        }
-      }
-    
-    };
 
     /**
      * @desc 
@@ -175,23 +160,6 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSCharacter.prototype.startCrafting = function ( recipeKey) {
-
-    if ( this.hasSpareActivitySlot(true) === true) {
-  
-      this.json.activity.push( new FSTask({'name':recipeKey, 'category':'crafting'}));
-      if (this.json.activity.length === 1) {
-            this.startNextTask();
-        }
-      }
-     
-    };
-
-
-    /**
-     * @desc 
-     * @return 
-     */
     FSCharacter.prototype.stopCrafting = function () {
 
       clearInterval(this.updateActiveTaskInterval);
@@ -231,33 +199,7 @@ angular.module('craftyApp')
        thisFactory.ctrllrScopeApply();
     };
 
-    /**
-     * @desc 
-     * @return 
-     */
-    FSCharacter.prototype.hasRequiredCraftingProficiency = function (recipeKey, log) {
-  
-      var hasRequiredProficiency = true;
 
-      if ( thisFactory.recipeDefines[recipeKey].hasOwnProperty('proficiency') === true) {
-
-            hasRequiredProficiency = false;
-
-            if ( this.json.proficiency.profession === thisFactory.recipeDefines[recipeKey].proficiency.profession) {
-                if ( parseInt(this.json.proficiency.tier, 10) >= parseInt(thisFactory.recipeDefines[recipeKey].proficiency.tier, 10)){
-                  hasRequiredProficiency = true;
-                } else if (log === true) {
-                  var requiredProfession = thisFactory.recipeDefines[recipeKey].proficiency.profession;
-                  var requiredTier = parseInt(thisFactory.recipeDefines[recipeKey].proficiency.tier, 10);
-                  thisFactory.contextConsole.log(this.json.name  + ' requires tier ' + requiredTier + ' in ' + requiredProfession + ' but is only tier ' + this.json.proficiency.tier );
-                }
-            } else if (log === true) {
-                  thisFactory.contextConsole.log('A ' + thisFactory.recipeDefines[recipeKey].proficiency.profession + ' is needed to craft a ' + recipeKey);
-            }
-      }
-
-      return hasRequiredProficiency;
-    };
 
     /**
      * @desc 
@@ -525,6 +467,34 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
+    FSCharacter.prototype.hasRequiredCraftingProficiency = function (recipeKey, log) {
+  
+      var hasRequiredProficiency = true;
+
+      if ( thisFactory.recipeDefines[recipeKey].hasOwnProperty('proficiency') === true) {
+
+            hasRequiredProficiency = false;
+
+            if ( this.json.proficiency.profession === thisFactory.recipeDefines[recipeKey].proficiency.profession) {
+                if ( parseInt(this.json.proficiency.tier, 10) >= parseInt(thisFactory.recipeDefines[recipeKey].proficiency.tier, 10)){
+                  hasRequiredProficiency = true;
+                } else if (log === true) {
+                  var requiredProfession = thisFactory.recipeDefines[recipeKey].proficiency.profession;
+                  var requiredTier = parseInt(thisFactory.recipeDefines[recipeKey].proficiency.tier, 10);
+                  thisFactory.contextConsole.log(this.json.name  + ' requires tier ' + requiredTier + ' in ' + requiredProfession + ' but is only tier ' + this.json.proficiency.tier );
+                }
+            } else if (log === true) {
+                  thisFactory.contextConsole.log('A ' + thisFactory.recipeDefines[recipeKey].proficiency.profession + ' is needed to craft a ' + recipeKey);
+            }
+      }
+
+      return hasRequiredProficiency;
+    };
+
+    /**
+     * @desc 
+     * @return 
+     */
     FSCharacter.prototype.hasSpareActivitySlot = function (log) {
    
       if ( this.json.activity.length < 4 ) {
@@ -604,19 +574,16 @@ angular.module('craftyApp')
       } 
 
       tools.forEach( ( function( thisTool) {
-
         thisFactory.toolDefines[thisTool].actions.forEach( ( function ( action) {
           if ( toolAction === action) {
             bHasToolAction = true;
           } 
         }).bind(this)); 
-
       } ).bind(this));   
 
       if (bHasToolAction === false && log === true)  {
           thisFactory.contextConsole.log('Equipped tool(s) (' + tools + ') do not have required action (' + toolAction  + ')');
       }
-
 
       return bHasToolAction;
     };
@@ -656,7 +623,6 @@ angular.module('craftyApp')
       var stats = this.json.stats[type];
       return Math.floor(100 * parseInt(stats.current, 10) /  parseInt(stats.max, 10)) +'%';
     };
-
 
     /**
      * @desc 

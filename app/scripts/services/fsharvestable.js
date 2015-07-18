@@ -83,24 +83,18 @@ angular.module('craftyApp')
 
             }).bind(this));
 
-
         }).bind(this));
 
       } ).bind(this));   
  
-
       if (isHarvestable=== false) {
-
         if ( log === true) {
-
           if ( toolStrengthMessage.length > 0) {
             this.simulation.contextConsole.log(  toolStrengthMessage);
           } else if ( toolActionMessage.length > 0) {
             this.simulation.contextConsole.log(  toolActionMessage);
           }
         }
-
-
       } 
 
       return isHarvestable;
@@ -108,7 +102,6 @@ angular.module('craftyApp')
 
 
     FSHarvestable.prototype.duration =  function(  character) {
-
 
       if ( this.isHarvestableBy(character) === false) {
         return '-';

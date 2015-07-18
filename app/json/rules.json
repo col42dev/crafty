@@ -628,7 +628,9 @@
         "Wood": "4"
       },
       "output": {
-        "WoodenTable": "1"
+        "WoodenTable": "1",
+        "Workbench": "1",
+        "Bucket": "1"
       },
       "basetime": "30"
     },
