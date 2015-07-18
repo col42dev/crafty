@@ -259,10 +259,7 @@ angular.module('craftyApp')
 	     	}
 	 	 };
 
-
-	
-
-		 /**
+		/**
 	     * @desc 
 	     * @return 
 	     */
@@ -388,8 +385,6 @@ angular.module('craftyApp')
 		    }          	
 		};
 
-
-
 		/**
 		 * @desc 
 		 * @return 
@@ -400,7 +395,7 @@ angular.module('craftyApp')
 				var recipeInputObj = this.craftableDefines[value].input;
 				var recipeInputKeys = Object.keys( recipeInputObj );
 
-				recipeInputKeys.forEach( function ( recipeKey ){
+				recipeInputKeys.forEach( ( function ( recipeKey ){
 					var recipeInput = recipeKey;
 					var recipeInputQuantity = recipeInputObj[ recipeKey];
 					this.bank[ recipeInput ].decrement( recipeInputQuantity);
@@ -408,10 +403,9 @@ angular.module('craftyApp')
 					  delete  this.bank[recipeInput];
 					  this.updateBank();
 					}
-				});
+				}).bind(this));
 			}
 	     };
-
 
 		/**
 		 * @desc 

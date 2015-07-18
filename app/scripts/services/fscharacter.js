@@ -59,7 +59,6 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.addTask = function ( taskName, taskCategory) {
-
       if ( this.hasSpareActivitySlot(true) === true) {
         this.json.activity.push( new FSTask( {'name':taskName, 'category':taskCategory}));
         if (this.json.activity.length === 1) {
@@ -82,6 +81,16 @@ angular.module('craftyApp')
 
       //onStop task
       this[ this.json.activity[0].category + 'OnStop' ]();
+
+     
+      this.json.activity.splice(0, 1);
+
+      // start next queued activity
+      if (this.json.activity.length > 0) {
+        this.startNextTask();
+      }
+
+      thisFactory.ctrllrScopeApply();
     };
 
      /**
@@ -108,21 +117,12 @@ angular.module('craftyApp')
 
       // need to ensure there is an instance in gatherables before it can be incremented.
       if (!(harvestableType in thisFactory.gatherables)) { 
-          var obj = {'name': harvestableType, 'quantity': '0', 'gatherers' : 0};
+          var obj = {'name': harvestableType, 'quantity': '0'};
           thisFactory.gatherables[harvestableType] = new FSGatherable(obj, thisFactory);
       }
       
       thisFactory.gatherables[harvestableType].json.quantity ++;
       thisFactory.updateGatherables();
-
-      this.json.activity.splice(0, 1);
-
-      // start next activity
-      if (this.json.activity.length > 0) {
-        this.startNextTask();
-      }
-
-      thisFactory.ctrllrScopeApply();
     };
 
     /**
@@ -130,7 +130,13 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.gatheringOnStart = function () {
-      thisFactory.gatherables[ this.json.activity[0].name ].json.gatherers ++;
+      var gatherableType = this.json.activity[0].name;
+
+      thisFactory.gatherables[gatherableType].json.quantity -= 1;
+      if ( thisFactory.gatherables[gatherableType].json.quantity === 0) {
+        delete thisFactory.gatherables[gatherableType];
+        thisFactory.updateGatherables();
+      }    
     };
 
     /**
@@ -138,16 +144,7 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.gatheringOnStop = function () {
-
       var gatherableType = this.json.activity[0].name;
-
-      thisFactory.gatherables[gatherableType].json.quantity -= 1;
-      thisFactory.gatherables[gatherableType].json.gatherers --;
-
-      if ( thisFactory.gatherables[gatherableType].json.quantity === 0) {
-        delete thisFactory.gatherables[gatherableType];
-        thisFactory.updateGatherables();
-      }
 
       if (!(gatherableType in thisFactory.bank)) {
         thisFactory.bank[gatherableType] = new FSBackpack({'category':'gatherable', 'name':gatherableType});
@@ -157,15 +154,6 @@ angular.module('craftyApp')
 
       // Rewards
       thisFactory.checkRewards( {'action':'gather', 'target':gatherableType});
-
-      this.json.activity.splice(0, 1);
-
-      // start next activity
-      if (this.json.activity.length > 0) {
-        this.startNextTask();
-      }
-
-       thisFactory.ctrllrScopeApply();
     };
 
 
@@ -204,15 +192,6 @@ angular.module('craftyApp')
         //Rewards
         thisFactory.checkRewards( {'action':'craft', 'target':craftableOutput});
       }
-
-      this.json.activity.splice(0, 1);
-
-      // start next activity
-      if (this.json.activity.length > 0) {
-        this.startNextTask();
-      }
-
-       thisFactory.ctrllrScopeApply();
     };
 
 
@@ -231,10 +210,6 @@ angular.module('craftyApp')
               canStartTask = false;
               thisFactory.contextConsole.log('There is no ' + taskName + ' left to gather');
             } else {
-              if ( thisFactory.gatherables[taskName].json.quantity <= thisFactory.gatherables[taskName].json.gatherers) { 
-                thisFactory.contextConsole.log('No ' + taskName + ' left to gather');
-                canStartTask = false;
-              }
               if ( thisFactory.gatherables[taskName].json.quantity === 0) {
                 thisFactory.contextConsole.log('No ' + taskName + ' left to gather');
                 canStartTask = false;
@@ -433,7 +408,6 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.hasToolAction = function ( toolAction, log) {
       var bHasToolAction = false;
-
      
       // build combined 'tool actions' array
       var tools = ['Hands'];
@@ -467,7 +441,6 @@ angular.module('craftyApp')
     FSCharacter.prototype.queuedTaskCount = function ( ) {
       return Math.max(this.json.activity.length - 1, 0);
     };
-
 
     /**
      * @desc 
