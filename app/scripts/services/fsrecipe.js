@@ -46,7 +46,7 @@ angular.module('craftyApp')
       }
 
       // crafting proficiency
-      if ( this.thisFactory.selectedCharacter.hasRequiredCraftingProficiency(this.json.name) === false) {
+      if ( this.thisFactory.selectedCharacter.hasCraftingProficiencyFor(this.json.name) === false) {
         enabled = false;
       }
       

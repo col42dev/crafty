@@ -22,8 +22,7 @@ angular.module('craftyApp')
         thisFactory = simFactory;
         this.json = json;
 
-  
-        // regen stats timers
+        // regenerate stats timers
         ['health', 'energy', 'mind'].forEach( (function( statName) {
 
           setInterval( (function () {
@@ -39,7 +38,7 @@ angular.module('craftyApp')
 
         }).bind(this));
 
-      };
+    };
 
     /**
      * @desc 
@@ -60,7 +59,7 @@ angular.module('craftyApp')
 
 
     /**
-     * @desc 
+     * @desc - push task to activity queue and trigger it if queu is empty
      * @return 
      */
     FSCharacter.prototype.addTask = function ( taskName, taskCategory) {
@@ -73,21 +72,49 @@ angular.module('craftyApp')
       }
     };
 
+
+    /**
+     * @desc 
+     * @return 
+     */
+    FSCharacter.prototype.stopActiveTask = function () {
+
+      //clear task intervals
+      for (var statKeyname in thisFactory.taskRules[this.json.activity[0].category].stat) {
+        clearInterval( this.statUpdateInterval[statKeyname]);
+      }
+
+      switch ( this.json.activity[0].category) {
+        case 'gathering':
+          this.stopGathering();
+          break;
+        case 'harvesting':
+          this.stopHarvesting();
+          break;
+        case 'crafting':
+          this.stopCrafting();
+          break;
+        }
+    };
+
+
+     /**
+     * @desc 
+     * @return 
+     */
+    FSCharacter.prototype.startharvesting = function () {
+    };
+
+
      /**
      * @desc 
      * @return 
      */
     FSCharacter.prototype.stopHarvesting = function () {
 
-      clearInterval(this.updateActiveTaskInterval);
-      for (var statKeyname in thisFactory.taskRules.harvesting.stat) {
-        clearInterval( this.statUpdateInterval[statKeyname]);
-      }
-
       var harvestableType = this.json.activity[0].name;
 
       thisFactory.harvestables[harvestableType].json.quantity -= 1;
-
 
       if ( thisFactory.harvestables[harvestableType].json.quantity === 0) {
         delete thisFactory.harvestables[harvestableType];
@@ -113,17 +140,19 @@ angular.module('craftyApp')
       thisFactory.ctrllrScopeApply();
     };
 
+    /**
+     * @desc 
+     * @return 
+     */
+    FSCharacter.prototype.startgathering = function () {
+      thisFactory.gatherables[ this.json.activity[0].name ].json.gatherers ++;
+    };
 
     /**
      * @desc 
      * @return 
      */
     FSCharacter.prototype.stopGathering = function () {
-
-      clearInterval(this.updateActiveTaskInterval);
-      for (var statKeyname in thisFactory.taskRules.gathering.stat) {
-        clearInterval( this.statUpdateInterval[statKeyname]);
-      }
 
       var gatherableType = this.json.activity[0].name;
 
@@ -159,12 +188,34 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSCharacter.prototype.stopCrafting = function () {
+    FSCharacter.prototype.startcrafting = function () {
 
-      clearInterval(this.updateActiveTaskInterval);
-      for (var statKeyname in thisFactory.taskRules.crafting.stat) {
-        clearInterval( this.statUpdateInterval[statKeyname]);
-      }
+      console.log('startCrafting');
+
+      var taskName = this.json.activity[0].name;
+
+      // subtract resources from bank. (todo: refactor this in to sim factory class)
+      var recipeInputObj = thisFactory.craftableDefines[taskName].input;
+      var recipeInputKeys = Object.keys( recipeInputObj );
+
+      recipeInputKeys.forEach( function ( recipeKey ){
+        var recipeInput = recipeKey;
+        var recipeInputQuantity = recipeInputObj[ recipeKey];
+        thisFactory.bank[ recipeInput ].decrement( recipeInputQuantity);
+        if ( thisFactory.bank[recipeInput].json.quantity.length === 0) {
+          delete  thisFactory.bank[recipeInput];
+          thisFactory.updateBank();
+        }
+
+      });
+
+    };
+
+    /**
+     * @desc 
+     * @return 
+     */
+    FSCharacter.prototype.stopCrafting = function () {
 
       var craftableKey = this.json.activity[0].name;
 
@@ -199,76 +250,56 @@ angular.module('craftyApp')
     };
 
 
-
     /**
-     * @desc 
+     * @desc - can character start the next task in queue.
      * @return 
      */
-    FSCharacter.prototype.startNextTask = function () {     
+    FSCharacter.prototype.canStartNextTask = function () {     
       var taskName = this.json.activity[0].name;
-
-      var thisCharacter = this;
- 
-
       var canStartTask = true;
+      var activityCategory = this.json.activity[0].category;
 
-      switch ( this.json.activity[0].category) {
+      switch ( activityCategory) {
         case 'gathering':
           {
-
             if (thisFactory.gatherables.hasOwnProperty(taskName) !== true) {
               canStartTask = false;
               thisFactory.contextConsole.log('There is no ' + taskName + ' left to gather');
             } else {
-
-              if ( thisFactory.gatherables[taskName].json.quantity <= thisFactory.gatherables[taskName].json.gatherers) { // too many cooks?
+              if ( thisFactory.gatherables[taskName].json.quantity <= thisFactory.gatherables[taskName].json.gatherers) { 
                 thisFactory.contextConsole.log('No ' + taskName + ' left to gather');
                 canStartTask = false;
               }
-
               if ( thisFactory.gatherables[taskName].json.quantity === 0) {
                 thisFactory.contextConsole.log('No ' + taskName + ' left to gather');
                 canStartTask = false;
               }
-
               if ( this.hasStatsFor('gathering', true) !== true) {
                 canStartTask = false;
               }
-
               if (this.hasGatheringDependencies(taskName, true) !== true) {
                 canStartTask = false;
               }
             } 
-
           }
           break;
-
         case 'harvesting':
           {
-
             if (thisFactory.harvestables.hasOwnProperty(taskName) !== true) {
-
               thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest');
-
               canStartTask = false;
-
             } else {
-
               if (thisFactory.harvestables[taskName].quantity === 0) {
                 thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest');
                 canStartTask = false;
               }
-
               if ( this.hasStatsFor('harvesting', true) !== true) {
                 canStartTask = false;
               }
-
               if ( thisFactory.harvestables[taskName].isHarvestableBy( this, true) !== true) {
                 canStartTask = false;
               }
-
             }
-
           }
           break;
 
@@ -277,173 +308,71 @@ angular.module('craftyApp')
             if ( thisFactory.hasCraftingIngredients(taskName, true) !== true) {
               canStartTask = false;
             }
-
-
             if ( thisFactory.hasCraftingConstructor(taskName, true) !== true) {
               canStartTask = false;
             }
-
-
             if ( this.hasStatsFor('crafting', true) !== true) {
               canStartTask = false;
             }
-
-            if ( this.hasRequiredCraftingProficiency(taskName, true) !== true) {
+            if ( this.hasCraftingProficiencyFor(taskName, true) !== true) {
               canStartTask = false;
             }
           }
           break;
       }
 
+      return canStartTask;
+    };
 
-      //
-      if (canStartTask === true) {
+    /**
+     * @desc - execute next queued task.
+     * @return 
+     */
+    FSCharacter.prototype.startNextTask = function () {  
 
-        switch ( this.json.activity[0].category) {
-          case 'gathering':
-          {
+      var taskName = this.json.activity[0].name;
+      var thisCharacter = this;
+      var activityCategory = this.json.activity[0].category;
 
-              // Set modify stat timer intervals
-              this.statUpdateInterval = {};
-              for (var gatheringStatKeyname in thisFactory.taskRules.gathering.stat) {
-              //console.log('start statUpdateInterval:' + gatheringStatKeyname + '' + thisFactory.taskRules.gathering.stat[gatheringStatKeyname].secondsPerDecrement);
+      if (this.canStartNextTask() === true) {
 
-                (function (thisStatsKeyname) {
-                  thisCharacter.modifyStat( thisStatsKeyname, 'current', -1);
+        // Set modify stat timer intervals
+        this.statUpdateInterval = {};
+        for (var statKeyname in thisFactory.taskRules[activityCategory].stat) {
+          thisCharacter.modifyStat( statKeyname, 'current', -1); // start task with immediate stats decrement.
 
-                  thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
-
-                  if ( this.hasStatsFor('gathering') === true) {
-                   this.modifyStat( thisStatsKeyname, 'current', -1);
-                  }
-
-                  }).bind(thisCharacter), thisFactory.taskRules.gathering.stat[thisStatsKeyname].secondsPerDecrement * 1000);
-
-                }(gatheringStatKeyname));
+          (function (thisStatsKeyname) { 
+            thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
+              if ( this.hasStatsFor(activityCategory) === true) {
+                this.modifyStat( thisStatsKeyname, 'current', -1);
               }
+            }).bind(thisCharacter), thisFactory.taskRules[activityCategory].stat[thisStatsKeyname].secondsPerDecrement * 1000);
+          }(statKeyname));
+        }
 
-              // task time remaining timer
-              this.updateActiveTaskTotalSeconds = thisFactory.gatherables[taskName].duration(thisCharacter) / thisFactory.taskTimeScalar;
-              this.updateActiveTaskRemainingSeconds = this.updateActiveTaskTotalSeconds;
-              this.updateActiveTaskInterval =  setInterval( function() {
-              if ( thisCharacter.hasStatsFor('gathering') === true) {
-
-                thisCharacter.updateActiveTaskRemainingSeconds --;
-                  if ( thisCharacter.updateActiveTaskRemainingSeconds <= 0) {
-                    clearInterval(thisCharacter.updateActiveTaskInterval);
-                    thisCharacter.stopGathering();
-                  }
-                }
-              }, 1000);
-
-              thisFactory.gatherables[taskName].json.gatherers ++;
-
-      
+        this.updateActiveTaskTotalSeconds = thisFactory.getTaskDuration(activityCategory, taskName, thisCharacter);    
+     
+        // set task time remaining timer.
+        this.updateActiveTaskRemainingSeconds = this.updateActiveTaskTotalSeconds;
+        this.updateActiveTaskInterval =  setInterval( function() {
+          if ( thisCharacter.hasStatsFor( activityCategory ) === true) {
+            thisCharacter.updateActiveTaskRemainingSeconds --;
+            if ( thisCharacter.updateActiveTaskRemainingSeconds <= 0) {
+              clearInterval(thisCharacter.updateActiveTaskInterval);
+              thisCharacter.stopActiveTask();
+            }
           }
-          break;
+        }, 1000);
 
-
-
-          case 'harvesting':
-          {
-             //Set modify stat timer intervals
-                this.statUpdateInterval = {};
-                for (var harvestingStatKeyname in thisFactory.taskRules.harvesting.stat) {
-                  //console.log('start statUpdateInterval:' + harvestingStatKeyname + '' + thisFactory.taskRules.harvesting.stat[harvestingStatKeyname].secondsPerDecrement);
-
-                  (function (thisStatsKeyname) {
-                      thisCharacter.modifyStat( thisStatsKeyname, 'current', -1);
-
-                      thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
-
-                          if ( this.hasStatsFor('harvesting') === true) {
-                            this.modifyStat( thisStatsKeyname, 'current', -1);
-                          }
-                            
-                      }).bind(thisCharacter), thisFactory.taskRules.harvesting.stat[thisStatsKeyname].secondsPerDecrement * 1000);
-
-                  }(harvestingStatKeyname));
-                }
-
-                this.updateActiveTaskTotalSeconds = thisFactory.harvestables[taskName].duration( thisCharacter) / thisFactory.taskTimeScalar;
-                this.updateActiveTaskRemainingSeconds = this.updateActiveTaskTotalSeconds;
-                this.updateActiveTaskInterval =  setInterval( function() {
-                      if ( thisCharacter.hasStatsFor('harvesting') === true) {
-
-                          thisCharacter.updateActiveTaskRemainingSeconds --;
-                          if ( thisCharacter.updateActiveTaskRemainingSeconds <= 0) {
-                            clearInterval(thisCharacter.updateActiveTaskInterval);
-                            thisCharacter.stopHarvesting();
-                          }
-                      }
-                  }, 1000);
-          }
-          break;
-
-          case 'crafting':
-          {
-                      //Set modify stat timer intervals
-                      this.statUpdateInterval = {};
-                      for (var craftingStatKeyname in thisFactory.taskRules.crafting.stat) {
-   
-                        (function (thisStatsKeyname) {
-                            thisCharacter.modifyStat( thisStatsKeyname, 'current', -1);
-
-                            thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
-
-                                if ( this.hasStatsFor('crafting') === true) {
-                                  this.modifyStat( thisStatsKeyname, 'current', -1);
-                                }
-
-                            }).bind(thisCharacter), thisFactory.taskRules.crafting.stat[thisStatsKeyname].secondsPerDecrement * 1000);
-
-                        }(craftingStatKeyname));
-                      }
-
-                      // task time remaining timer
-                      this.updateActiveTaskTotalSeconds = thisFactory.knownRecipes[taskName].duration(thisCharacter) / thisFactory.taskTimeScalar;
-                      this.updateActiveTaskRemainingSeconds = this.updateActiveTaskTotalSeconds;
-                      this.updateActiveTaskInterval =  setInterval( function() {
-                        if ( thisCharacter.hasStatsFor('crafting') === true) {
-
-                          thisCharacter.updateActiveTaskRemainingSeconds --;
-                          if ( thisCharacter.updateActiveTaskRemainingSeconds <= 0) {
-                            clearInterval(thisCharacter.updateActiveTaskInterval);
-                            thisCharacter.stopCrafting();
-                          }
-                        }
-                      }, 1000); 
-
-                      // subtract resources from bank. (refactor in to sim factory class)
-                      var recipeInputObj = thisFactory.craftableDefines[taskName].input;
-                      var recipeInputKeys = Object.keys( recipeInputObj );
-
-                      recipeInputKeys.forEach( function ( recipeKey ){
-
-                        var recipeInput = recipeKey;
-                        var recipeInputQuantity = recipeInputObj[ recipeKey];
-
-                        thisFactory.bank[ recipeInput ].decrement( recipeInputQuantity);
-
-                        if ( thisFactory.bank[recipeInput].json.quantity.length === 0) {
-                              delete  thisFactory.bank[recipeInput];
-                              thisFactory.updateBank();
-                            }
-              
-                      });
-          }
-          break;
-        } // switch
+        this['start' + activityCategory]();
 
       }  // can start task
-      else 
-      {
+      else  {
         // skip to next task in queue?
         this.json.activity.splice(0, 1);
         if (this.json.activity.length > 0) {
           this.startNextTask();
         }
-
       }
 
     };
@@ -453,8 +382,8 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSCharacter.prototype.hasRequiredCraftingProficiency = function (recipeKey, log) {
-  
+    FSCharacter.prototype.hasCraftingProficiencyFor = function (recipeKey, log) {
+
       var hasRequiredProficiency = true;
 
       if ( thisFactory.craftableDefines[recipeKey].hasOwnProperty('proficiency') === true) {
@@ -482,7 +411,7 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.hasSpareActivitySlot = function (log) {
-   
+
       if ( this.json.activity.length < 4 ) {
         return true;
       }
@@ -536,7 +465,7 @@ angular.module('craftyApp')
        return hasStats;
 
     };
-  
+
 
     /**
      * @desc : is this character equipped with a tool which has the specified action.
@@ -544,7 +473,6 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.hasToolAction = function ( toolAction, log) {
       var bHasToolAction = false;
-
 
       var tools = [];
       
