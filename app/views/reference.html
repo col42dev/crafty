@@ -24,11 +24,11 @@
 <div class="bodycontainer scrollable">
   <table class="table table-bordered table-condensed table-scrollable">
     <tbody>
-      <tr ng-repeat="(k,v)  in getFSService().simulation.recipeDefines" class="noselect" >
+      <tr ng-repeat="(k,v)  in getFSService().simulation.craftableDefines" class="noselect" >
         <td width="15%">{{v.output}}</td> 
         <td width="45%">{{v.input}}</td> 
         <td width="15%">{{v.construction}}</td> 
-        <td width="5%">{{v.basetime}}</td> 
+        <td width="5%">{{v.duration}}</td> 
         <td width="10%">{{v.proficiency.profession}}</td> 
         <td width="10%">{{v.proficiency.tier}}</td> 
       </tr>
@@ -83,7 +83,7 @@
       <tr class="noselect" >
           <td class="col-sm-1">Name</td>
           <td class="col-sm-1">Actionable</td>
-          <td class="col-sm-1">Harvest Base Time</td>
+          <td class="col-sm-1">Harvest Duration</td>
           <td class="col-sm-1">Hardness</td>
       </tr>
   </tbody>
@@ -97,7 +97,7 @@
       <tr ng-repeat="(k,v)  in getFSService().simulation.harvestableDefines" class="noselect" >
         <td class="col-sm-1">{{k}}</td> 
         <td class="col-sm-1">{{v.actionable}}</td> 
-        <td class="col-sm-1">{{v.harvestBaseTimeS}}</td> 
+        <td class="col-sm-1">{{v.duration}}</td> 
         <td class="col-sm-1">{{v.hardness}}</td> 
       </tr>
     </tbody>
@@ -116,7 +116,7 @@
   <tbody>
       <tr class="noselect" >
           <td class="col-sm-1">Type</td>
-          <td class="col-sm-1">Gather Time</td>
+          <td class="col-sm-1">Gather Duration</td>
           <td class="col-sm-1">Actionable</td>
       </tr>
   </tbody>
@@ -129,7 +129,7 @@
     <tbody>
       <tr ng-repeat="(k,v)  in getFSService().simulation.gatherableDefines" class="noselect" >
         <td class="col-sm-1">{{k}}</td> 
-        <td class="col-sm-1">{{v.gatherBaseTimeS}}</td> 
+        <td class="col-sm-1">{{v.duration}}</td> 
         <td class="col-sm-1">{{v.actionable}}</td> 
       </tr>
     </tbody>

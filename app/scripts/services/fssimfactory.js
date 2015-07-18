@@ -31,13 +31,14 @@ angular.module('craftyApp')
 
 	         // Defines
 	        this.harvestableDefines = json.harvestableDefines;  
-	        this.gatherableDefines = json.gatherableDefines;  
+	        this.gatherableDefines = json.gatherableDefines; 
+	        this.craftableDefines = json.craftableDefines; 
+ 
 	        this.toolDefines = json.toolDefines;  
 	        this.foodDefines = json.foodDefines;  
 	        this.taskRules = json.taskRules;  
 	       	this.rewardRules = json.rewardRules;  
-			this.recipeDefines = json.recipesDefines; 
-
+		
 			this.contextConsole = new FSContextConsole();
 	    };
 
@@ -97,8 +98,10 @@ angular.module('craftyApp')
 	       		this.bank[item.name].increment( item.quantity );
 	        }).bind(this)); 
 
+	        /*
 	        this.bank['Wood'] = new FSBackpack({'category':'tool', 'name':'Wood'});
 	       	this.bank['Wood'].increment( 100 );
+	       	*/
 
 	        this.updateBank = function() {
 		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {
@@ -142,7 +145,7 @@ angular.module('craftyApp')
 	        buildjson.gatherableDefines = this.gatherableDefines;  
 	        buildjson.toolDefines = this.toolDefines;  
 	        buildjson.foodDefines = this.foodDefines;  
-	        buildjson.recipesDefines = this.recipeDefines; 
+	        buildjson.craftableDefines = this.craftableDefines; 
 	        buildjson.rewardRules = this.rewardRules;   
 
 
@@ -431,7 +434,7 @@ angular.module('craftyApp')
 	
 			// determine if has reqiored ingredients in bank
 			var hasIngredients = true;
-			var recipeInputObj = this.recipeDefines[recipeKey].input;
+			var recipeInputObj = this.craftableDefines[recipeKey].input;
 			var recipeInputKeys = Object.keys( recipeInputObj );
 
 			recipeInputKeys.forEach( function ( recipeInputKey ) {
@@ -466,9 +469,9 @@ angular.module('craftyApp')
 	
 			var hasIngredients = true;
 
-			if ( this.recipeDefines[recipeKey].construction.length > 0) {
+			if ( this.craftableDefines[recipeKey].construction.length > 0) {
 
-        		var constructor = this.recipeDefines[recipeKey].construction[0];
+        		var constructor = this.craftableDefines[recipeKey].construction[0];
         		if ( this.bank.hasOwnProperty(constructor) === false) {
           			hasIngredients = false;
           			if (log === true) {

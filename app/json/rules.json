@@ -171,127 +171,127 @@
   },
   "gatherableDefines": {
     "Earth": {
-      "gatherBaseTimeS": "20",
+      "duration": "20",
       "actionable": [
         "Carry"
       ]
     },
     "Stone": {
-      "gatherBaseTimeS": "40",
+      "duration": "40",
       "actionable": [
         "Carry"
       ]
     },
     "HardStone": {
-      "gatherBaseTimeS": "30",
+      "duration": "30",
       "actionable": [
         "Carry"
       ]
     },
     "Quartzstone": {
-      "gatherBaseTimeS": "10",
+      "duration": "10",
       "actionable": [
         "Carry"
       ]
     },
     "Limestone": {
-      "gatherBaseTimeS": "10",
+      "duration": "10",
       "actionable": [
         "Carry"
       ]
     },
     "Marble": {
-      "gatherBaseTimeS": "30",
+      "duration": "30",
       "actionable": [
         "Cart"
       ]
     },
     "Granite": {
-      "gatherBaseTimeS": "10",
+      "duration": "10",
       "actionable": [
         "Cart"
       ]
     },
     "Coal": {
-      "gatherBaseTimeS": "20",
+      "duration": "20",
       "actionable": [
         "Carry"
       ]
     },
     "IronOre": {
-      "gatherBaseTimeS": "20",
+      "duration": "20",
       "actionable": [
         "Carry"
       ]
     },
     "Water": {
-      "gatherBaseTimeS": "10",
+      "duration": "10",
       "actionable": [
         "CarryLiquid"
       ]
     },
     "Wood": {
-      "gatherBaseTimeS": "10",
+      "duration": "10",
       "actionable": [
         "Carry"
       ]
     },
     "Wool": {
-      "gatherBaseTimeS": "30",
+      "duration": "30",
       "actionable": [
         "Carry"
       ]
     },
     "Leaves": {
-      "gatherBaseTimeS": "10",
+      "duration": "10",
       "actionable": [
         "CarryLiquid"
       ]
     },
     "Grain": {
-      "gatherBaseTimeS": "20",
+      "duration": "20",
       "actionable": [
         "CarryLiquid"
       ]
     },
     "Antler": {
-      "gatherBaseTimeS": "60",
+      "duration": "60",
       "actionable": [
         "Carry"
       ]
     },
     "Sand": {
-      "gatherBaseTimeS": "10",
+      "duration": "10",
       "actionable": [
         "CarryLiquid"
       ]
     },
     "Meat": {
-      "gatherBaseTimeS": "15",
+      "duration": "15",
       "actionable": [
         "Carry"
       ]
     },
     "Fish": {
-      "gatherBaseTimeS": "15",
+      "duration": "15",
       "actionable": [
         "Carry"
       ]
     },
     "Feather": {
-      "gatherBaseTimeS": "5",
+      "duration": "5",
       "actionable": [
         "Carry"
       ]
     },
     "Lumber": {
-      "gatherBaseTimeS": "50",
+      "duration": "50",
       "actionable": [
         "Cart"
       ]
     },
     "ShaolFish": {
-      "gatherBaseTimeS": "50",
+      "duration": "50",
       "actionable": [
         "Cart"
       ]
@@ -303,98 +303,101 @@
         "Dig"
       ],
       "hardness": "1",
-      "harvestBaseTimeS": "10"
+      "duration": "10"
     },
     "Stone": {
       "actionable": [
         "Dig"
       ],
       "hardness": "2",
-      "harvestBaseTimeS": "18"
+      "duration": "18"
     },
     "HardStone": {
       "actionable": [
         "Dig"
       ],
       "hardness": "8",
-      "harvestBaseTimeS": "64"
+      "duration": "64"
     },
     "Quartzstone": {
       "actionable": [
         "Dig"
       ],
       "hardness": "20",
-      "harvestBaseTimeS": "140"
+      "duration": "140"
     },
     "Limestone": {
       "actionable": [
         "Dig"
       ],
       "hardness": "5",
-      "harvestBaseTimeS": "45"
+      "duration": "45"
     },
     "Marble": {
       "actionable": [
         "Dig"
       ],
       "hardness": "12",
-      "harvestBaseTimeS": "96"
+      "duration": "96"
     },
     "Granite": {
       "actionable": [
         "Dig"
       ],
       "hardness": "16",
-      "harvestBaseTimeS": "112"
+      "duration": "112"
     },
     "Coal": {
       "actionable": [
         "Dig"
       ],
       "hardness": "3",
-      "harvestBaseTimeS": "30"
+      "duration": "30"
     },
     "IronOre": {
       "actionable": [
         "Dig"
       ],
       "hardness": "3",
-      "harvestBaseTimeS": "50"
+      "duration": "50"
     },
     "Meat": {
       "actionable": [
         "Hunt"
       ],
       "hardness": "1",
-      "harvestBaseTimeS": "15"
+      "duration": "15"
     },
     "Fish": {
       "actionable": [
         "Fish"
       ],
       "hardness": "1",
-      "harvestBaseTimeS": "10"
+      "duration": "10",
+      "replenish": "150"
     },
     "Leaves": {
       "actionable": [
         "Pick"
       ],
       "hardness": "1",
-      "harvestBaseTimeS": "15"
+      "duration": "15",
+      "replenish": "150"
     },
     "Sand": {
       "actionable": [
         "Dig"
       ],
       "hardness": "1",
-      "harvestBaseTimeS": "10"
+      "duration": "10"
     },
     "Grain": {
       "actionable": [
         "Pick"
       ],
       "hardness": "1",
-      "harvestBaseTimeS": "15"
+      "duration": "15",
+      "replenish": "15"
     },
     "Wood": {
       "actionable": [
@@ -402,7 +405,7 @@
         "Saw"
       ],
       "hardness": "2",
-      "harvestBaseTimeS": "20"
+      "duration": "20"
     },
     "Lumber": {
       "actionable": [
@@ -410,21 +413,21 @@
         "Saw"
       ],
       "hardness": "8",
-      "harvestBaseTimeS": "128"
+      "duration": "128"
     },
     "ShaolFish": {
       "actionable": [
         "Net"
       ],
       "hardness": "8",
-      "harvestBaseTimeS": "64"
+      "duration": "64"
     },
     "Wool": {
       "actionable": [
         "Hunt"
       ],
       "hardness": "2",
-      "harvestBaseTimeS": "32"
+      "duration": "32"
     }
   },
   "toolDefines": {
@@ -605,7 +608,7 @@
       ]
     }
   },
-  "recipesDefines": {
+  "craftableDefines": {
     "Rope": {
       "category": "tool",
       "construction": [
@@ -617,7 +620,7 @@
       "output": {
         "Rope": "3"
       },
-      "basetime": "15"
+      "duration": "15"
     },
     "WoodenTable": {
       "category": "constructor",
@@ -628,11 +631,9 @@
         "Wood": "4"
       },
       "output": {
-        "WoodenTable": "1",
-        "Workbench": "1",
-        "Bucket": "1"
+        "WoodenTable": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "Workbench": {
       "category": "constructor",
@@ -646,7 +647,7 @@
       "output": {
         "Workbench": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "BackPack": {
       "category": "tool",
@@ -664,7 +665,7 @@
       "output": {
         "BackPack": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "Forge": {
       "category": "constructor",
@@ -684,7 +685,7 @@
       "output": {
         "Forge": "1"
       },
-      "basetime": "60"
+      "duration": "60"
     },
     "AntlerPickaxe": {
       "category": "tool",
@@ -698,7 +699,7 @@
       "output": {
         "AntlerPickaxe": "1"
       },
-      "basetime": "15"
+      "duration": "15"
     },
     "Paper": {
       "category": "unclassified",
@@ -711,7 +712,7 @@
       "output": {
         "Paper": "1"
       },
-      "basetime": "20"
+      "duration": "20"
     },
     "Books": {
       "category": "unclassified",
@@ -726,7 +727,7 @@
       "output": {
         "Books": "1"
       },
-      "basetime": "45"
+      "duration": "45"
     },
     "FineHat": {
       "category": "unclassified",
@@ -740,7 +741,7 @@
       "output": {
         "FineHat": "1"
       },
-      "basetime": "15"
+      "duration": "15"
     },
     "FlagonOfAle": {
       "category": "food",
@@ -756,7 +757,7 @@
       "output": {
         "FlagonOfAle": "1"
       },
-      "basetime": "15"
+      "duration": "15"
     },
     "WoodenPlanks": {
       "category": "unclassified",
@@ -769,7 +770,7 @@
       "output": {
         "WoodenPlanks": "2"
       },
-      "basetime": "15"
+      "duration": "15"
     },
     "DiceTable": {
       "category": "furniture",
@@ -784,7 +785,7 @@
       "output": {
         "DiceTable": "1"
       },
-      "basetime": "45"
+      "duration": "45"
     },
     "Minecart": {
       "category": "tool",
@@ -802,7 +803,7 @@
       "output": {
         "Minecart": "1"
       },
-      "basetime": "60"
+      "duration": "60"
     },
     "Loom": {
       "category": "constructor",
@@ -820,7 +821,7 @@
       "output": {
         "Loom": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "Glass": {
       "category": "unclassified",
@@ -833,7 +834,7 @@
       "output": {
         "Glass": "1"
       },
-      "basetime": "45"
+      "duration": "45"
     },
     "Shovel": {
       "category": "tool",
@@ -846,7 +847,7 @@
       "output": {
         "Shovel": "1"
       },
-      "basetime": "15"
+      "duration": "15"
     },
     "Cloth": {
       "category": "unclassified",
@@ -859,7 +860,7 @@
       "output": {
         "Cloth": "1"
       },
-      "basetime": "15"
+      "duration": "15"
     },
     "Ale": {
       "category": "food",
@@ -873,7 +874,7 @@
       "output": {
         "Ale": "1"
       },
-      "basetime": "45"
+      "duration": "45"
     },
     "Saw": {
       "category": "tool",
@@ -891,7 +892,7 @@
       "output": {
         "Saw": "1"
       },
-      "basetime": "45"
+      "duration": "45"
     },
     "Bucket": {
       "category": "tool",
@@ -905,7 +906,7 @@
       "output": {
         "Bucket": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "Nails": {
       "category": "unclassified",
@@ -918,7 +919,7 @@
       "output": {
         "Nails": "5"
       },
-      "basetime": "10"
+      "duration": "10"
     },
     "FermentingVat": {
       "category": "constructor",
@@ -936,7 +937,7 @@
       "output": {
         "FermentingVat": "1"
       },
-      "basetime": "45"
+      "duration": "45"
     },
     "BulkAle": {
       "category": "food",
@@ -950,7 +951,7 @@
       "output": {
         "Ale": "3"
       },
-      "basetime": "60"
+      "duration": "60"
     },
     "BucketPump": {
       "category": "constructor",
@@ -969,7 +970,7 @@
       "output": {
         "BucketPump": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "Scythe": {
       "category": "tool",
@@ -983,7 +984,7 @@
       "output": {
         "Scythe": "1"
       },
-      "basetime": "45"
+      "duration": "45"
     },
     "WoodAxe": {
       "category": "tool",
@@ -997,7 +998,7 @@
       "output": {
         "WoodAxe": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "HuntingBow": {
       "category": "tool",
@@ -1012,7 +1013,7 @@
       "output": {
         "HuntingBow": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "FishingRod": {
       "category": "tool",
@@ -1031,7 +1032,7 @@
       "output": {
         "FishingRod": "1"
       },
-      "basetime": "45"
+      "duration": "45"
     },
     "CatapultBase": {
       "category": "unclassified",
@@ -1047,7 +1048,7 @@
       "output": {
         "CatapultBase": "1"
       },
-      "basetime": "60"
+      "duration": "60"
     },
     "CatapultArm": {
       "category": "unclassified",
@@ -1062,7 +1063,7 @@
       "output": {
         "CatapultArm": "1"
       },
-      "basetime": "60"
+      "duration": "60"
     },
     "GreekFireCatapult": {
       "category": "unclassified",
@@ -1078,7 +1079,7 @@
       "output": {
         "GreekFireCatapult": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "GreekFire": {
       "category": "unclassified",
@@ -1094,7 +1095,7 @@
       "output": {
         "GreekFire": "1"
       },
-      "basetime": "120"
+      "duration": "120"
     },
     "TwistedRopes": {
       "category": "unclassified",
@@ -1107,7 +1108,7 @@
       "output": {
         "TwistedRopes": "1"
       },
-      "basetime": "15"
+      "duration": "15"
     },
     "Steel": {
       "category": "unclassified",
@@ -1122,7 +1123,7 @@
       "output": {
         "Steel": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "SteelWire": {
       "category": "unclassified",
@@ -1135,7 +1136,7 @@
       "output": {
         "SteelWire": "3"
       },
-      "basetime": "20"
+      "duration": "20"
     },
     "CartWheel": {
       "category": "unclassified",
@@ -1149,7 +1150,7 @@
       "output": {
         "CartWheel": "1"
       },
-      "basetime": "45"
+      "duration": "45"
     },
     "Barrel": {
       "category": "tool",
@@ -1167,7 +1168,7 @@
       "output": {
         "Barrel": "1"
       },
-      "basetime": "45"
+      "duration": "45"
     },
     "BasicMeal": {
       "category": "food",
@@ -1181,7 +1182,7 @@
       "output": {
         "BasicMeal": "2"
       },
-      "basetime": "10"
+      "duration": "10"
     },
     "MeatyMeal": {
       "category": "food",
@@ -1196,7 +1197,7 @@
       "output": {
         "MeatyMeal": "4"
       },
-      "basetime": "10"
+      "duration": "10"
     },
     "FishyMeal": {
       "category": "food",
@@ -1211,7 +1212,7 @@
       "output": {
         "FishyMeal": "4"
       },
-      "basetime": "10"
+      "duration": "10"
     },
     "FineMeal": {
       "category": "food",
@@ -1227,7 +1228,7 @@
       "output": {
         "FineMeal": "4"
       },
-      "basetime": "10"
+      "duration": "10"
     },
     "Bandage": {
       "category": "food",
@@ -1242,7 +1243,7 @@
       "output": {
         "Bandage": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "Medicine": {
       "category": "food",
@@ -1257,7 +1258,7 @@
       "output": {
         "Medicine": "1"
       },
-      "basetime": "200"
+      "duration": "200"
     },
     "Potion": {
       "category": "food",
@@ -1272,7 +1273,7 @@
       "output": {
         "Potion": "1"
       },
-      "basetime": "120"
+      "duration": "120"
     },
     "FirstAidStation": {
       "category": "constructor",
@@ -1291,7 +1292,7 @@
       "output": {
         "FirstAidStation": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "ImprovedBucketPump": {
       "category": "constructor",
@@ -1305,7 +1306,7 @@
       "output": {
         "ImprovedBucketPump": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "BarrelOfWater": {
       "category": "unclassified",
@@ -1318,7 +1319,7 @@
       "output": {
         "Water": "10"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "SteelPickaxe": {
       "category": "tool",
@@ -1332,7 +1333,7 @@
       "output": {
         "SteelPickaxe": "10"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "PumpedWater": {
       "category": "unclassified",
@@ -1345,7 +1346,7 @@
       "output": {
         "Water": "3"
       },
-      "basetime": "10"
+      "duration": "10"
     },
     "WickerBasket": {
       "category": "tool",
@@ -1358,7 +1359,7 @@
       "output": {
         "WickerBasket": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "WoodenStatue": {
       "category": "unclassified",
@@ -1371,7 +1372,7 @@
       "output": {
         "WoodenStatue": "1"
       },
-      "basetime": "300"
+      "duration": "300"
     },
     "WoodenChair": {
       "category": "unclassified",
@@ -1384,7 +1385,7 @@
       "output": {
         "WoodenChair": "1"
       },
-      "basetime": "200"
+      "duration": "200"
     },
     "SteelShovel": {
       "category": "tool",
@@ -1398,7 +1399,7 @@
       "output": {
         "SteelShovel": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "SteelAxe": {
       "category": "tool",
@@ -1416,7 +1417,7 @@
       "output": {
         "SteelAxe": "1"
       },
-      "basetime": "45"
+      "duration": "45"
     },
     "Snares": {
       "category": "tool",
@@ -1434,7 +1435,7 @@
       "output": {
         "Snares": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "HarvestingShears": {
       "category": "tool",
@@ -1453,7 +1454,7 @@
       "output": {
         "HarvestingShears": "1"
       },
-      "basetime": "40"
+      "duration": "40"
     },
     "WheelBarrow": {
       "category": "tool",
@@ -1471,7 +1472,7 @@
       "output": {
         "WheelBarrow": "1"
       },
-      "basetime": "30"
+      "duration": "30"
     },
     "AdvancedWorkbench": {
       "category": "constructor",
@@ -1490,7 +1491,7 @@
       "output": {
         "AdvancedWorkbench": "1"
       },
-      "basetime": "100"
+      "duration": "100"
     },
     "Wheel": {
       "category": "unclassified",
@@ -1504,7 +1505,7 @@
       "output": {
         "Wheel": "1"
       },
-      "basetime": "20"
+      "duration": "20"
     },
     "SteelMattock": {
       "category": "tool",
@@ -1522,7 +1523,7 @@
       "output": {
         "SteelMattock": "1"
       },
-      "basetime": "60"
+      "duration": "60"
     },
     "FishingNet": {
       "category": "tool",
@@ -1539,7 +1540,7 @@
       "output": {
         "FishingNet": "1"
       },
-      "basetime": "200"
+      "duration": "200"
     },
     "LargeBarrel": {
       "category": "tool",
@@ -1558,7 +1559,7 @@
       "output": {
         "LargeBarrel": "1"
       },
-      "basetime": "100"
+      "duration": "100"
     },
     "LeatherBackPack": {
       "category": "tool",
@@ -1577,7 +1578,7 @@
       "output": {
         "LeatherBackPack": "1"
       },
-      "basetime": "100"
+      "duration": "100"
     },
     "Cart": {
       "category": "tool",
@@ -1596,7 +1597,7 @@
       "output": {
         "Cart": "1"
       },
-      "basetime": "200"
+      "duration": "200"
     },
     "BlockAndTackle": {
       "category": "tool",
@@ -1615,7 +1616,7 @@
       "output": {
         "BlockAndTackle": "1"
       },
-      "basetime": "50"
+      "duration": "50"
     },
     "CastingVessel": {
       "category": "constructor",
@@ -1635,7 +1636,7 @@
       "output": {
         "CastingVessel": "1"
       },
-      "basetime": "300"
+      "duration": "300"
     },
     "MarbleStatue": {
       "category": "unclassified",
@@ -1648,7 +1649,7 @@
       "output": {
         "MarbleStatue": "1"
       },
-      "basetime": "400"
+      "duration": "400"
     },
     "MarbleBookshelf": {
       "category": "unclassified",
@@ -1662,7 +1663,7 @@
       "output": {
         "MarbleBookshelf": "1"
       },
-      "basetime": "200"
+      "duration": "200"
     },
     "BulkWoodenPlank": {
       "category": "unclassified",
@@ -1675,7 +1676,7 @@
       "output": {
         "WoodenPlanks": "10"
       },
-      "basetime": "50"
+      "duration": "50"
     },
     "BulkFish": {
       "category": "unclassified",
@@ -1688,7 +1689,7 @@
       "output": {
         "Fish": "10"
       },
-      "basetime": "50"
+      "duration": "50"
     }
   },
   "taskRules": {

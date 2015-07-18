@@ -59,8 +59,8 @@ angular.module('craftyApp')
      * @return 
      */
     FSRecipe.prototype.getCategory = function( ) {
-      if (this.thisFactory.recipeDefines.hasOwnProperty(this.json.name) === true) {
-          return this.thisFactory.recipeDefines[this.json.name].category;
+      if (this.thisFactory.craftableDefines.hasOwnProperty(this.json.name) === true) {
+          return this.thisFactory.craftableDefines[this.json.name].category;
       }
       return 'bug';
     };
@@ -73,7 +73,7 @@ angular.module('craftyApp')
     FSRecipe.prototype.duration =  function(  character) {
 
       character = character;
-      var craftingDuration = this.thisFactory.recipeDefines[this.json.name].basetime ;
+      var craftingDuration = this.thisFactory.craftableDefines[this.json.name].duration ;
           
       return craftingDuration;
     };

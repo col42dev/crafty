@@ -14,8 +14,6 @@ angular.module('craftyApp')
 
     var FSHarvestable = function( obj, simulation) { 
       this.simulation = simulation;
-      //this.name = obj.name;
-      //this.quantity = obj.quantity;
       this.json = obj;
     };
 
@@ -114,7 +112,7 @@ angular.module('craftyApp')
         tools.push('Hands');
       }
 
-      var duration = this.simulation.harvestableDefines[this.json.name].harvestBaseTimeS;
+      var duration = this.simulation.harvestableDefines[this.json.name].duration;
 
       // refactor
       if ( this.simulation.toolDefines[ tools[0] ].strength > duration/2) {

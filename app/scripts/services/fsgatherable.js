@@ -48,7 +48,7 @@ angular.module('craftyApp')
            return '-';
       }
 
-      var duration = this.simulation.gatherableDefines[this.json.name].gatherBaseTimeS;
+      var duration = this.simulation.gatherableDefines[this.json.name].duration;
 
    
       return duration;
