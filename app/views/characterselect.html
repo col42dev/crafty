@@ -7,14 +7,15 @@
 <table class="table table-bordered table-condensed table-scrollable noselect">
 	<thead>
 		<tr class="noselect">
-		    <th class="col-sm-2"><h4>Name</h4></th>
-		    <th class="col-sm-1"><h4>Profession</h4></th>
-		    <th class="col-sm-1"><h4>health</h4></th>
-		    <th class="col-sm-1"><h4>energy</h4></th>
-		    <th class="col-sm-1"><h4>mind</h4></th>
-		    <th class="col-sm-4"><h4>Task</h4></th>
-		    <th class="col-sm-1"><h4>Queued</h4></th>
-		    <th class="col-sm-3"><h4>Equip</h4></th>
+		    <th class="col-sm-4"><h4>Name</h4></th>
+		    <th class="col-sm-4"><h4>Profession</h4></th>
+		    <th class="col-sm-1"><h4>XP</h4></th>
+		    <th class="col-sm-4"><h4>Health</h4></th>
+		    <th class="col-sm-4"><h4>Energy</h4></th>
+		    <th class="col-sm-4"><h4>Mind</h4></th>
+		    <th class="col-sm-8"><h4>Task</h4></th>
+		    <th class="col-sm-1"><h4>Q</h4></th>
+		    <th class="col-sm-4"><h4>Equip</h4></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -27,6 +28,9 @@
 			{{getFSService().simulation.characterObjs[k].json.proficiency.profession}}
 		</td>
 	
+		<td class="col-sm-1" >
+			{{getFSService().simulation.characterObjs[k].json.xp}}
+		</td>
 
 		<td class="col-sm-1" > 
 			<div style = "background:rgba(200, 100, 100, 0.5); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].getStatPercentage('health')}">{{getFSService().simulation.characterObjs[k].getStatPercentage('health')}}

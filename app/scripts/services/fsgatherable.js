@@ -47,7 +47,7 @@ angular.module('craftyApp')
      */
     FSGatherable.prototype.setFlashQuantityTimeout = function( ) {
       setTimeout( (function() {
-        if(typeof this !== "undefined") {
+        if(typeof this !== 'undefined') {
           this.quantitybgcolor = 'rgba(0, 0, 0, .0)';
         }
       }).bind(this), 500);

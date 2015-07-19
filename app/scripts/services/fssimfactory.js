@@ -357,7 +357,6 @@ angular.module('craftyApp')
 				}
 				break;
 			}
-
 		};
 
 		/**
@@ -365,7 +364,6 @@ angular.module('craftyApp')
 		 * @return 
 		 */
 		this.onClickGatherables = function (gatherableType) {
-	
 			if ( this.selectedCharacter !== null) {
 				this.selectedCharacter.addTask( gatherableType, 'gathering');	
 			}
@@ -417,7 +415,9 @@ angular.module('craftyApp')
 		 * @desc 
 		 * @return 
 		 */
-		this.checkRewards  = function ( checkDesc ) {
+		this.checkRewards  = function ( checkDesc) {
+
+			var returnObj = {};
 
 			for (var thisRewardRule in this.rewardRules) {
   				if (this.rewardRules.hasOwnProperty(thisRewardRule)) {
@@ -428,6 +428,8 @@ angular.module('craftyApp')
 							if ( this.rewards.indexOf(thisRewardRule) === -1) {
 								console.log('REWARD:' + thisRewardRule);
 								this.rewards.push(thisRewardRule);
+								returnObj.xp = parseInt(this.rewardRules[thisRewardRule].xp);
+
 							}
 
 							// recipe unlocks
@@ -447,6 +449,8 @@ angular.module('craftyApp')
 					}
   				}
 			}
+
+			return returnObj;
 		};
 
 		/**

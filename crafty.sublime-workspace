@@ -52,42 +52,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/views/recipes.html",
-			"settings":
-			{
-				"buffer_size": 2116,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/harvestables.html",
-			"settings":
-			{
-				"buffer_size": 1435,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/gatherables.html",
-			"settings":
-			{
-				"buffer_size": 2110,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/scripts/services/fsrecipe.js",
 			"settings":
 			{
-				"buffer_size": 2278,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsgatherable.js",
-			"settings":
-			{
-				"buffer_size": 1500,
+				"buffer_size": 2544,
 				"line_ending": "Unix"
 			}
 		},
@@ -95,7 +63,7 @@
 			"file": "app/scripts/services/fscharacter.js",
 			"settings":
 			{
-				"buffer_size": 15397,
+				"buffer_size": 15401,
 				"line_ending": "Unix"
 			}
 		},
@@ -103,7 +71,111 @@
 			"file": "app/views/bank.html",
 			"settings":
 			{
-				"buffer_size": 1051,
+				"buffer_size": 2132,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/characterselect.html",
+			"settings":
+			{
+				"buffer_size": 2441,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "'use strict';\n\n/**\n * @ngdoc service\n * @name craftyApp.FSSimFactory\n * @description\n * # FSSimFactory\n * Simulation factory\n */\nangular.module('craftyApp')\n  .factory('FSSimFactory', function ( FSCharacter, FSTask, FSBackpack, FSGatherable,  FSRecipe, FSHarvestable, FSContextConsole) {\n    // AngularJS will instantiate a singleton by calling \"new\" on this function\n\n\n    /**\n     * @desc \n     * @return \n     */\n  	var FSSimFactory = function(scope) {\n\n  		var thisFactory = this;\n  		var ctrllerScope = scope;\n\n	   /**\n	     * @desc \n	     * @return \n	     */\n	    this.createSimRules = function( json) {\n	\n			this.taskTimeScalar ='1';\n			this.selectedConstructor = '';\n			this.selectedConstructorFilter = 'none';\n\n	         // Defines\n	        this.harvestableDefines = json.harvestableDefines;  \n	        this.gatherableDefines = json.gatherableDefines; \n	        this.craftableDefines = json.craftableDefines; \n \n	        this.toolDefines = json.toolDefines;  \n	        this.foodDefines = json.foodDefines;  \n	        this.taskRules = json.taskRules;  \n	       	this.rewardRules = json.rewardRules;  \n		\n			this.contextConsole = new FSContextConsole();\n	    };\n\n\n	   /**\n	     * @desc \n	     * @return \n	     */\n	    this.createSimState = function( json) {\n	\n	     	// Characters\n			this.characterObjs = {};  \n 			json.characters.forEach( ( function(thisCharacter) {\n 				var characterName = thisCharacter.name;\n	          	this.characterObjs[characterName] = new FSCharacter(thisCharacter, thisFactory);\n	          	this.selectedCharacter = this.characterObjs[characterName];\n	        }).bind(this)); \n	       	this.onClickCharacter = function ( character) {\n	        	this.selectedCharacter = character;\n	        };\n\n	        // Gatherables\n	        this.gatherables = {};  \n	        json.gatherables.forEach( ( function(thisGatherables) {\n	          	this.gatherables[thisGatherables.name] = new FSGatherable(thisGatherables, this);\n	        }).bind(this)); \n	        this.updateGatherables = function() {\n	        	thisFactory.gatherablesArray = Object.keys(thisFactory.gatherables).map(function (key) {\n	        		return thisFactory.gatherables[key];\n	        	});\n	    	};\n	    	this.updateGatherables();\n\n	        // Harvestables\n	        this.harvestables = {};  \n	        json.harvestables.forEach( ( function(thisHarvestable) {\n	          	this.harvestables[thisHarvestable.name] = new FSHarvestable(thisHarvestable, this);\n	        }).bind(this)); \n	        this.updateHarvestables = function() {\n	        	thisFactory.harvestablesArray = Object.keys(thisFactory.harvestables).map(function (key) {\n	        		return thisFactory.harvestables[key];\n	        	});\n	    	};\n	    	this.updateHarvestables();\n\n			// Bank\n	        this.bank = {};  \n	        json.bank.forEach( ( function(item) {\n	        	var category = 'unknown';\n	        	if ( this.toolDefines.hasOwnProperty(item.name) === true) \n	        	{\n	        		category = 'tool';\n	        	} else if ( this.foodDefines.hasOwnProperty(item.name) === true) {\n	        		category = 'food';\n	        	}\n	          	this.bank[item.name] = new FSBackpack({'category':category, 'name':item.name}, thisFactory);\n	       		this.bank[item.name].increment( item.quantity );\n	        }).bind(this)); \n\n	        this.bank[''] = new FSBackpack({'category':'constructor', 'name':''}, thisFactory);\n	       	this.bank[''].increment( 1 );\n\n	        this.updateBank = function() {\n		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {\n		        		return thisFactory.bank[key];\n		        	});\n	    	};\n	    	this.updateBank();\n\n	        // Craftables\n	        this.craftables = {}; \n	        json.craftables.forEach( ( function( recipeName ) {\n	          		this.craftables[recipeName] =  new FSRecipe( recipeName, this);\n	        	}).bind(this)); \n	        this.updateRecipes = function() {\n		        thisFactory.craftablesArray = Object.keys(thisFactory.craftables).map(function (key) {\n		        		return thisFactory.craftables[key];\n		        	});\n	    	};\n	    	this.updateRecipes();\n\n\n	    	//rewards\n	    	this.rewards = [];\n	    	json.rewards.forEach( ( function(thisReward) {\n	          	this.rewards.push(thisReward);\n	        }).bind(this)); \n\n	    };\n\n\n\n	      /**\n		 * @desc \n		 * @return \n		 */\n    	this.deserialize = function ( ) {\n\n    		var buildjson = {};\n\n    		buildjson.harvestableDefines = this.harvestableDefines;  \n	        buildjson.gatherableDefines = this.gatherableDefines;  \n	        buildjson.toolDefines = this.toolDefines;  \n	        buildjson.foodDefines = this.foodDefines;  \n	        buildjson.craftableDefines = this.craftableDefines; \n	        buildjson.rewardRules = this.rewardRules;   \n\n\n	     	// Characters\n		    buildjson.characters = [];  \n	        for ( var thisCharacter in this.characterObjs) {\n	        	buildjson.characters.push( this.characterObjs[thisCharacter].json);\n	        }\n\n	        // Gatherables\n	        buildjson.gatherables = [];  \n	        for ( var thisGatherables in this.gatherables) {\n	        	buildjson.gatherables.push( this.gatherables[thisGatherables].json);\n	        } \n	\n	        // Harvestables\n	        buildjson.harvestables = [];  \n	        for ( var thisHarvestable in this.harvestables) {\n	        	var harvestObj = { 'name' : this.harvestables[thisHarvestable].name, 'quantity' : this.harvestables[thisHarvestable].quantity};\n	          	buildjson.harvestables.push(harvestObj);\n	        }\n\n			// Bank\n	        buildjson.bank = [];  \n	        for ( var item in this.bank) {\n	        	var bankobj = { 'name' : this.bank[item].json.name, 'quantity' : this.bank[item].json.quantity.length};\n	        	buildjson.bank.push(bankobj);\n	        }\n\n	        // Know Recipes\n	        buildjson.craftables = []; \n	        for ( var recipeName in this.craftables) {\n	        	buildjson.craftables.push(this.craftables[recipeName].name);\n	        }\n\n	        this.jsonSerialized = JSON.stringify(buildjson, undefined, 2);\n\n	        return buildjson;\n    	};\n\n	      /**\n		 * @desc \n		 * @return \n		 */\n    	this.ctrllrScopeApply = function ( ) {\n    		 ctrllerScope.$apply();\n    	};\n	\n\n	    /**\n		 * @desc - order table by field values\n		 * @return \n		 */\n    	this.onClickHeader = function ( tableName, fieldName) {\n			switch ( tableName) {\n				case 'Bank':\n					if ( this.hasOwnProperty('orderBankBy') === false) {\n						this.orderBankBy = 'name';\n		        		this.orderBankByOrder = '+';\n	        		}\n        			this.orderBankByOrder = (this.orderBankByOrder==='+') ? '-' : '+';\n        			this.orderBankBy = this.orderBankByOrder + fieldName;\n        			break;\n        		case 'Gatherables':\n					if ( this.hasOwnProperty('orderGatherablesBy') === false) {\n        			    this.orderGatherablesBy = 'json.name';\n	        			this.orderGatherablesByOrder = '+';\n	    			}\n        			this.orderGatherablesByOrder = (this.orderGatherablesByOrder==='+') ? '-' : '+';\n        			this.orderGatherablesBy = this.orderGatherablesByOrder + fieldName;\n        			break;\n        		case 'Harvestables':\n        			if ( this.hasOwnProperty('orderHarvestablesBy') === false) {\n	        			this.orderHarvestablesBy = 'json.name';\n		        		this.orderHarvestablesByOrder = '+';\n	        		}\n        			this.orderHarvestablesByOrder = (this.orderHarvestablesByOrder==='+') ? '-' : '+';\n        			this.orderHarvestablesBy = this.orderHarvestablesByOrder + fieldName;\n        			break;\n        		 case 'Recipes':\n        			if ( this.hasOwnProperty('orderRecipesBy') === false) {\n	        			this.orderRecipesBy = 'name';\n		        		this.orderRecipesByOrder = '+';\n	        		}\n        			this.orderRecipesByOrder = (this.orderRecipesByOrder==='+') ? '-' : '+';\n        			this.orderRecipesBy = this.orderRecipesByOrder + fieldName;\n        			break;\n        	}\n	     };\n\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		 this.onClickBody = function ( tableName, keyName) {\n		 	this.contextConsole.clear();\n	     	switch (tableName) {\n	     		case 'Bank':\n	     			this.onClickBank(keyName);\n	     			break;\n	     		case 'Gatherables':\n	     			this.onClickGatherables(keyName);\n	     			break;\n	     		case 'Harvestables':\n	     			this.onClickHarvestables(keyName);\n	     			break;\n	     		case 'Recipes':\n	     			this.onClickRecipes(keyName);\n	     			break;\n	     	}\n	 	 };\n\n		/**\n	     * @desc \n	     * @return \n	     */\n		this.rewardbgcolor = function ( rewardName ) {\n		     return  (this.rewards.indexOf(rewardName) === -1) ? '#FF0000' : '#00FF00';\n		};\n\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		 this.onClickCharacterTool = function ( character, index) {\n		 	 if ( character.json.tools.length > index) {\n			   \n				var toolName = character.json.tools[index].json.name;\n\n			    if ( thisFactory.bank.hasOwnProperty(toolName) === false) {\n					thisFactory.bank[toolName] = new FSBackpack({'category':'tool', 'name':toolName}, thisFactory);\n			    }\n			    thisFactory.bank[toolName].increment(1);\n			    thisFactory.updateBank();\n\n			    character.json.tools.splice(index, 1);\n		  	}\n		 };\n\n		 /**\n		 * @desc \n		 * @return \n		 */\n		 this.onClickCharacterWeapon = function ( weaponObj) {\n		 		weaponObj = weaponObj;\n\n		 };\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.onClickBank = function (bankItemKey) {\n\n        	switch ( this.bank[bankItemKey].category ) {\n				case 'constructor': { \n					this.selectedConstructor = bankItemKey;\n					this.selectedConstructorFilter = bankItemKey;	\n					if (this.selectedConstructor === '') {\n						this.selectedConstructorFilter = 'none';\n					}\n				}\n				break;\n\n				case 'tool': { // add to character inventory \n					if (this.bank[bankItemKey].json.quantity.length > 0) {\n						this.bank[bankItemKey].decrement(1) ;\n						this.selectedCharacter.json.tools.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name}, thisFactory ));\n\n						if ( this.bank[bankItemKey].json.quantity.length === 0) {\n							delete  this.bank[bankItemKey];\n							this.updateBank();\n						}\n					}\n				}\n				break;\n\n				case 'food': { // consume\n					if (this.bank[bankItemKey].json.quantity.length > 0) {\n						this.bank[bankItemKey].decrement(1) ;\n\n						for (var statType in this.foodDefines[bankItemKey].onConsume.stat) {\n							for (var statSubType in this.foodDefines[bankItemKey].onConsume.stat[statType]) {\n								var delta = parseInt(this.foodDefines[bankItemKey].onConsume.stat[statType][statSubType], 10);\n								this.selectedCharacter.modifyStat( statType, statSubType, delta);\n							}\n						}\n\n						if ( this.bank[bankItemKey].json.quantity.length === 0) {\n							delete this.bank[bankItemKey];\n							this.updateBank();\n						}\n					}\n				}\n				break;\n\n				case 'weapon': { // add to character inventory \n					if (this.bank[bankItemKey].json.quantity.length > 0) {\n						this.bank[bankItemKey].decrement(1) ;\n						this.selectedCharacter.json.weapons.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name}, thisFactory ));\n\n						if ( this.bank[bankItemKey].json.quantity.length === 0) {\n							delete  this.bank[bankItemKey];\n							this.updateBank();\n						}\n					}\n				}\n				break;\n			}\n		};\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.onClickGatherables = function (gatherableType) {\n			if ( this.selectedCharacter !== null) {\n				this.selectedCharacter.addTask( gatherableType, 'gathering');	\n			}\n		};\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.onClickHarvestables = function (harvestableType) {\n			if ( this.selectedCharacter !== null) {\n			    this.selectedCharacter.addTask( harvestableType, 'harvesting');	\n			}\n		};\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.onClickRecipes = function (recipeKey) {\n			if ( this.selectedCharacter !== null) {\n		        this.selectedCharacter.addTask( recipeKey, 'crafting');		\n		    }          	\n		};\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.bankTransaction  = function ( type,  value) {\n	      	if ( type === 'startCrafting') {\n				// subtract resources from bank. (todo: refactor this in to sim factory class)\n				var recipeInputObj = this.craftableDefines[value].input;\n				var recipeInputKeys = Object.keys( recipeInputObj );\n\n				recipeInputKeys.forEach( ( function ( recipeKey ){\n					var recipeInput = recipeKey;\n					var recipeInputQuantity = recipeInputObj[ recipeKey];\n					this.bank[ recipeInput ].decrement( recipeInputQuantity);\n					if ( this.bank[recipeInput].json.quantity.length === 0) {\n					  delete  this.bank[recipeInput];\n					  this.updateBank();\n					}\n				}).bind(this));\n			}\n	     };\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.checkRewards  = function ( checkDesc ) {\n\n			for (var thisRewardRule in this.rewardRules) {\n  				if (this.rewardRules.hasOwnProperty(thisRewardRule)) {\n  					if (this.rewardRules[thisRewardRule].action === checkDesc.action) {\n						if (this.rewardRules[thisRewardRule].target === checkDesc.target) {\n							\n							// reward reward\n							if ( this.rewards.indexOf(thisRewardRule) === -1) {\n								console.log('REWARD:' + thisRewardRule);\n								this.rewards.push(thisRewardRule);\n							}\n\n							// recipe unlocks\n							this.rewardRules[thisRewardRule].recipeUnlocks.forEach( function( recipe) {\n\n								if ( this.craftables.hasOwnProperty(recipe) === false) {\n									if (this.hasOwnProperty(recipe) === false) {\n										this.craftables[recipe] =  new FSRecipe( recipe, this);\n										this.updateRecipes();\n										console.log('RECIPE UNLOCK:' + recipe);\n									}\n								}\n\n							}.bind(this));\n\n						}\n					}\n  				}\n			}\n		};\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.hasUnlocks  = function ( checkDesc ) {\n\n			for (var thisRewardRule in this.rewardRules) {\n  				if (this.rewardRules.hasOwnProperty(thisRewardRule)) {\n  					if (this.rewardRules[thisRewardRule].action === checkDesc.action) {\n						if (this.rewardRules[thisRewardRule].target === checkDesc.target) {\n							if ( this.rewards.indexOf(thisRewardRule) === -1) {\n								return true;	\n							}\n						}\n					}\n  				}\n			}\n\n			return false;\n		};\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.hasCraftingIngredients = function (recipeKey, log) {\n	\n			// determine if has reqiored ingredients in bank\n			var hasIngredients = true;\n			var recipeInputObj = this.craftableDefines[recipeKey].input;\n			var recipeInputKeys = Object.keys( recipeInputObj );\n\n			recipeInputKeys.forEach( function ( recipeInputKey ) {\n			var recipeInput = recipeInputKey;\n			var recipeInputQuantity = recipeInputObj[ recipeInputKey];\n\n			if (recipeInput in this.bank) {\n			  if ( this.bank[ recipeInput ].json.quantity.length < recipeInputQuantity) {\n			    hasIngredients = false;\n			    if (log === true) {\n			    	this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for ' + recipeKey + ' but only have  ' + this.bank[ recipeInput ].json.quantity.length);\n				}\n			  }\n			} else {\n			  if (log === true) {\n			  	this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for crafting ' +  recipeKey+ ' but have none');\n			  }\n			  hasIngredients = false;\n			}\n			}.bind(this));\n\n			\n			return hasIngredients;\n		};\n\n\n		/**\n		 * @desc \n		 * @return \n		 */\n		this.hasCraftingConstructor = function (recipeKey, log) {\n	\n			var hasIngredients = true;\n\n			if ( this.craftableDefines[recipeKey].construction.length > 0) {\n\n        		var constructor = this.craftableDefines[recipeKey].construction[0];\n        		if ( this.bank.hasOwnProperty(constructor) === false) {\n          			hasIngredients = false;\n          			if (log === true) {\n          				this.contextConsole.log('Require a ' + constructor + ' in the bank for crafting ' + recipeKey);\n          			}\n        		} \n      		}\n\n      		return hasIngredients;\n      	};\n\n\n      	/**\n		 * @desc \n		 * @return \n		 */\n		this.getTaskDuration = function (activityCategory, taskName, thisCharacter) {\n	\n	  		var duration = 0;\n\n	        switch ( activityCategory) {\n	          case 'gathering':\n	            duration = this.gatherables[taskName].duration(thisCharacter) / this.taskTimeScalar;\n	            break;\n	          case 'harvesting':\n	            duration= this.harvestables[taskName].duration(thisCharacter) / this.taskTimeScalar;\n	            break;\n	          case 'crafting':\n	            duration = this.craftables[taskName].duration(thisCharacter) / this.taskTimeScalar;\n	            break;\n	        }\n\n	        return duration;\n      	};\n\n\n\n\n\n\n	   \n  	};\n\n	/**\n	* Return the constructor function.\n	*/\n	return FSSimFactory;\n});\n",
+			"file": "app/scripts/services/fssimfactory.js",
+			"file_size": 16501,
+			"file_write_time": 1437318449000000,
+			"settings":
+			{
+				"buffer_size": 16498,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsbackpack.js",
+			"settings":
+			{
+				"buffer_size": 2185,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 45 files for \"FSBackpack\"\n\n/Users/colinmoore/Dev/crafty/app/index.html:\n  100          <script src=\"scripts/services/fscharacter.js\"></script>\n  101          <script src=\"scripts/services/fstask.js\"></script>\n  102:         <script src=\"scripts/services/fsbackpack.js\"></script>\n  103          <script src=\"scripts/services/fsgatherable.js\"></script>\n  104          <script src=\"scripts/services/fsrecipe.js\"></script>\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsbackpack.js:\n    3  /**\n    4   * @ngdoc service\n    5:  * @name craftyApp.FSBackpack\n    6   * @description\n    7:  * # FSBackpack\n    8   * Factory in the craftyApp.\n    9   */\n   10  angular.module('craftyApp')\n   11:   .factory('FSBackpack', function () {\n   12      // Service logic\n   13      \n   14:     // FSBackpack\n   15:     var FSBackpack = function(obj) { \n   16          this.simulation = simulation;\n   17          obj.quantity = [];\n   ..\n   25       * @return \n   26       */\n   27:     FSBackpack.prototype.increment = function( amount) {\n   28        for (var i = 0; i < amount; i ++) {\n   29          this.json.quantity.push({});\n   ..\n   35       * @return \n   36       */\n   37:     FSBackpack.prototype.decrement = function( amount) {\n   38        for (var i = 0; i < amount; i ++) {\n   39          this.json.quantity.pop();\n   ..\n   45       * @return \n   46       */\n   47:     FSBackpack.prototype.bgcolor = function( ) {\n   48        var color = null;\n   49        switch (this.category) {\n   ..\n   67    \n   68  \n   69:     return FSBackpack;\n   70    });\n   71  \n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js:\n    9   */\n   10  angular.module('craftyApp')\n   11:   .factory('FSCharacter', function (FSTask, FSBackpack, FSGatherable) {\n   12      // Service logic\n   13      // ...\n   ..\n  148  \n  149        if (!(gatherableType in thisFactory.bank)) {\n  150:         thisFactory.bank[gatherableType] = new FSBackpack({'category':'gatherable', 'name':gatherableType});\n  151        }\n  152        thisFactory.bank[gatherableType].increment(1);\n  ...\n  185          // add output to bank.\n  186          if (!(craftableOutput in thisFactory.bank)) {\n  187:           thisFactory.bank[craftableOutput] = new FSBackpack( {'category':thisFactory.craftableDefines[craftableKey].category, 'name':craftableOutput});\n  188          }\n  189          thisFactory.bank[craftableOutput].increment( craftableOutputQuantity);\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimfactory.js:\n    9   */\n   10  angular.module('craftyApp')\n   11:   .factory('FSSimFactory', function ( FSCharacter, FSTask, FSBackpack, FSGatherable,  FSRecipe, FSHarvestable, FSContextConsole) {\n   12      // AngularJS will instantiate a singleton by calling \"new\" on this function\n   13  \n   ..\n   96  	        		category = 'food';\n   97  	        	}\n   98: 	          	this.bank[item.name] = new FSBackpack({'category':category, 'name':item.name});\n   99  	       		this.bank[item.name].increment( item.quantity );\n  100  	        }).bind(this)); \n  101  \n  102  \n  103: 	        this.bank[''] = new FSBackpack({'category':'constructor', 'name':''});\n  104  	       	this.bank[''].increment( 100 );\n  105  \n  ...\n  280  \n  281  			    if ( thisFactory.bank.hasOwnProperty(toolName) === false) {\n  282: 					thisFactory.bank[toolName] = new FSBackpack({'category':'tool', 'name':toolName});\n  283  			    }\n  284  			    thisFactory.bank[toolName].increment(1);\n  ...\n  316  					if (this.bank[bankItemKey].json.quantity.length > 0) {\n  317  						this.bank[bankItemKey].decrement(1) ;\n  318: 						this.selectedCharacter.json.tools.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name} ));\n  319  \n  320  						if ( this.bank[bankItemKey].json.quantity.length === 0) {\n  ...\n  348  					if (this.bank[bankItemKey].json.quantity.length > 0) {\n  349  						this.bank[bankItemKey].decrement(1) ;\n  350: 						this.selectedCharacter.json.weapons.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name} ));\n  351  \n  352  						if ( this.bank[bankItemKey].json.quantity.length === 0) {\n\n19 matches across 4 files\n",
+			"settings":
+			{
+				"buffer_size": 4216,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "app/views/recipes.html",
+			"settings":
+			{
+				"buffer_size": 2294,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/styles/main.css",
+			"settings":
+			{
+				"buffer_size": 2266,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsharvestable.js",
+			"settings":
+			{
+				"buffer_size": 5068,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsgatherable.js",
+			"settings":
+			{
+				"buffer_size": 2422,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/harvestables.html",
+			"settings":
+			{
+				"buffer_size": 1652,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/gatherables.html",
+			"settings":
+			{
+				"buffer_size": 2275,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/charactersheetstats.html",
+			"settings":
+			{
+				"buffer_size": 3125,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "'use strict';\n\n/**\n * @ngdoc service\n * @name craftyApp.FSService\n * @description\n * # FSService\n * Service in the craftyApp.\n */\nangular.module('craftyApp')\n  .service('FSService', function ( FSSimFactory, $http, $location, stopwatch) {\n    // AngularJS will instantiate a singleton by calling \"new\" on this function\n\n    var $scope = null;\n    var thisService = this;\n    var inited = false;\n    var dbdomain = 'localhost';\n\n    dbdomain = 'ec2-54-201-237-107.us-west-2.compute.amazonaws.com';\n\n    /**\n     * @desc \n     * @return \n     */\n    this.init = function( ctrlscope) {\n\n      if (inited === false) {\n	      $scope = ctrlscope;\n\n	      this.myStopwatch = stopwatch;\n	      this.taskTimeScalarDivVis ='hidden';\n\n        this.master = {\n          rules: 'https://api.myjson.com/bins/13nsy' + '?pretty=1',\n          state: 'https://api.myjson.com/bins/2y3s2' + '?pretty=1'\n        };\n	      this.user = angular.copy(this.master);\n\n        this.defaultDocumentName = {input: 'My Account Name'};\n        this.documentName = angular.copy(this.defaultDocumentName);\n  	  }\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    this.loadAndCreateSim = function() {\n      \n\n        thisService.simulation = new FSSimFactory( $scope);\n\n        //load JSON rules\n        this.loadSimRules();\n  \n    };\n\n   /**\n     * @desc \n     * @return \n     */\n     this.loadSimRules = function() {\n\n         $http.get(this.user.rules,{\n            params: {\n                headers: {\n                    'Access-Control-Allow-Origin': '*',\n                    'Access-Control-Request-Headers' : 'access-control-allow-origin'\n                }\n            }\n        }).success(function(data) {\n\n            if ( data.title === 'craftyrules') {\n              thisService.rulesData = data;\n\n              setTimeout(thisService.createSimRules, 200);\n            } else {\n              window.alert('Validation failed for ' + thisService.user.rules);\n            }\n\n        }).error(function(data) {\n            data = data;\n            window.alert('JSON load failed for' + thisService.user.rules);\n        });\n      };\n\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createSimRules = function() {\n\n      console.log('Load JSON Rules success');\n      this.taskTimeScalarDivVis ='';\n     \n      thisService.simulation.createSimRules( thisService.rulesData);\n\n      thisService.loadSimState();\n    };\n\n\n     /**\n     * @desc \n     * @return \n     */\n     this.loadSimState = function() {\n\n      //load JSON state\n      $http.get(this.user.state,{\n          params: {\n              headers: {\n                  'Access-Control-Allow-Origin': '*',\n                  'Access-Control-Request-Headers' : 'access-control-allow-origin'\n              }\n          }\n      }).success(function(data) {\n\n          if ( data.title === 'craftystate') {\n            thisService.stateData = data;\n            setTimeout(thisService.createSimState, 200);\n          } else {\n            window.alert('Validation failed for ' + thisService.user.stateData);\n          }\n\n      }).error(function(data) {\n          data = data;\n          window.alert('JSON load failed for' + thisService.user.stateData);\n      });\n    };\n\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createSimState = function() {\n\n      $location.path('/'); \n\n      console.log('Load JSON State success');\n     \n      thisService.simulation.createSimState(thisService.stateData);\n   \n      $scope.$apply();\n      thisService.myStopwatch.reset();\n      thisService.myStopwatch.start();\n    };\n\n\n    /**\n     * @desc \n     * @return \n     */\n    this.saveJson = function() {\n      console.log('input:' + this.user.input); \n\n      var json = thisService.simulation.deserialize();\n      json['documentName'] =  thisService.documentName.input;\n      json = JSON.stringify(json, undefined, 2);\n      this.postjson(json);\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    this.loadAccounts = function() {\n\n        var url = 'http://' + dbdomain + ':8080/';\n        $http.get(url,{\n            params: {\n                headers: {\n                    'Access-Control-Allow-Origin': '*',\n                    'Access-Control-Request-Headers' : 'access-control-allow-origin'\n                }\n            }\n        }).success(function(data) {\n\n          console.log('Load accounts success');\n          thisService.accountsData = data;\n\n        }).error(function(data) {\n            data = data;\n            window.alert('loadAccounts failed for ' + url);\n        });\n\n    };\n\n     /**\n     * @desc \n     * @return \n     */\n    this.selectAccount = function(index) {\n      console.log('selectAccount' + index);\n\n      thisService.data = thisService.accountsData[Object.keys(thisService.accountsData)[index]];\n\n\n     //todo: split in to state and rules: setTimeout(thisService.createSim, 200);\n\n   \n    };\n\n     /**\n     * @desc \n     * @return \n     */\n    this.removeAllAccounts = function() {\n\n        var url = 'http://' + dbdomain + ':8080/removealldocuments';\n        $http.get(url,{\n            params: {\n                headers: {\n                    'Access-Control-Allow-Origin': '*',\n                    'Access-Control-Request-Headers' : 'access-control-allow-origin'\n                }\n            }\n        }).success(function(data) {\n\n          console.log('removeAllAccounts success');\n          thisService.accountsData = data;\n          $scope.$apply();\n\n        }).error(function(data) {\n            data = data;\n            window.alert('removeAllAccounts failed for ' + url);\n        });\n\n    };\n\n\n    /**\n     * @desc \n     * @return \n     */\n    // curl -H \"Accept: application/json\" -H \"Content-type: application/json\" -X POST -d '{\"tag\":\"noob\",\"score\":43,\"date\":\"now\"}' http://ec2-54-213-75-45.us-west-2.compute.amazonaws.com:8080/score\n    this.postjson = function(jsondata) {   \n        $http.defaults.useXDomain = true;  \n        delete $http.defaults.headers.common['X-Requested-With'];          \n        $http({\n           // url: 'http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com:8080/score',\n            url: 'http://' + dbdomain + ':8080/accounts',\n            method: 'POST',\n            data: jsondata,\n            headers: {'Content-Type': 'application/json'}\n        }).success(function (data, status, headers, config) {\n            //$scope.users = data.users; \n            //$location.path('/scores'); \n            window.alert('post success:' + status);\n        }).error(function (data, status, headers, config) {\n            //$scope.status = status + ' ' + headers;\n            window.alert('post error:' + status);\n            window.alert('post error:' + headers);\n        });\n    };\n\n\n\n    this.onClickCharacter = function( character) {\n      thisService.simulation.onClickCharacter( character);\n    };\n\n   \n    this.onClickHeader = function(tableName, fieldName) {\n      thisService.simulation.onClickHeader( tableName, fieldName);\n    };\n\n    this.onClickBody = function(tableName, key) {\n      thisService.simulation.onClickBody( tableName, key.name);\n    };\n\n    \n  });\n",
+			"file": "app/scripts/services/fssimservice.js",
+			"file_size": 7078,
+			"file_write_time": 1437247064000000,
+			"settings":
+			{
+				"buffer_size": 7077,
 				"line_ending": "Unix"
 			}
 		}
@@ -132,9 +204,12 @@
 	},
 	"file_history":
 	[
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js",
+		"/Users/colinmoore/Dev/crafty/app/views/gatherables.html",
+		"/Users/colinmoore/Dev/crafty/app/views/harvestables.html",
 		"/Users/colinmoore/Dev/crafty/app/views/recipes.html",
 		"/Users/colinmoore/Dev/crafty/app/styles/main.css",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsgatherable.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimservice.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimfactory.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js",
@@ -147,7 +222,6 @@
 		"/Users/colinmoore/dev/crafty/bower_components/bootstrap/bower.json",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsservice.js",
 		"/Users/colinmoore/Dev/crafty/app/views/main.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsgatherable.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsharvestable.js",
 		"/Users/colinmoore/Dev/crafty/app/json/state.json",
 		"/Users/colinmoore/Dev/crafty/app/json/rules.json",
@@ -158,8 +232,6 @@
 		"/Users/colinmoore/Dev/crafty/app/views/bank.html",
 		"/Users/colinmoore/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsbackpack.js",
-		"/Users/colinmoore/Dev/crafty/app/views/harvestables.html",
-		"/Users/colinmoore/Dev/crafty/app/views/gatherables.html",
 		"/Users/colinmoore/Dev/crafty/app/views/characterselect.html",
 		"/Users/colinmoore/dev/crafty/app/views/contextinfoconsole.html",
 		"/Users/colinmoore/Dev/crafty/app/views/rewards.html",
@@ -245,6 +317,7 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"/Users/colinmoore/Dev/crafty/app",
 			"/Users/colinmoore/Dev/crafty/bower_components",
 			"/Users/colinmoore/Dev/crafty/app",
 			"/Users/colinmoore/Dev/crafty/app/views",
@@ -257,6 +330,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"selectedConstructorFilter",
+			"timer",
+			"FSBackpack",
+			"onclickban",
+			"onclickbo",
 			"width",
 			"widt",
 			"gatherers",
@@ -379,12 +457,7 @@
 			"recipes",
 			"checkRewards",
 			"input",
-			"':",
-			"loc",
-			"recipeDef",
-			"body",
-			"req.b",
-			"mongodb"
+			"':"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -409,28 +482,28 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 14,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/recipes.html",
+					"file": "app/scripts/services/fsrecipe.js",
 					"settings":
 					{
-						"buffer_size": 2116,
+						"buffer_size": 2544,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1123,
-								1123
+								1607,
+								1607
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -442,46 +515,46 @@
 				},
 				{
 					"buffer": 1,
-					"file": "app/views/harvestables.html",
+					"file": "app/scripts/services/fscharacter.js",
 					"settings":
 					{
-						"buffer_size": 1435,
+						"buffer_size": 15401,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								762,
-								762
+								3422,
+								3422
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 884.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "app/views/gatherables.html",
+					"file": "app/views/bank.html",
 					"settings":
 					{
-						"buffer_size": 2110,
+						"buffer_size": 2132,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1144,
-								1144
+								1061,
+								1061
 							]
 						],
 						"settings":
@@ -491,53 +564,79 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 163.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "app/scripts/services/fsrecipe.js",
+					"file": "app/views/characterselect.html",
 					"settings":
 					{
-						"buffer_size": 2278,
+						"buffer_size": 2441,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2233,
-								2233
+								2380,
+								2173
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 808.0,
+						"translation.y": 332.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "app/scripts/services/fsgatherable.js",
+					"file": "app/scripts/services/fssimfactory.js",
 					"settings":
 					{
-						"buffer_size": 1500,
+						"buffer_size": 16498,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1450,
-								1450
+								683,
+								708
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 146.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/scripts/services/fsbackpack.js",
+					"settings":
+					{
+						"buffer_size": 2185,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1681,
+								1681
 							]
 						],
 						"settings":
@@ -547,53 +646,141 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 304.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/scripts/services/fscharacter.js",
-					"settings":
-					{
-						"buffer_size": 15397,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11860,
-								11884
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 8.0,
-						"translation.y": 5370.0,
+						"translation.y": 743.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "app/views/bank.html",
 					"settings":
 					{
-						"buffer_size": 1051,
+						"buffer_size": 4216,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										264,
+										274
+									],
+									[
+										557,
+										567
+									],
+									[
+										603,
+										613
+									],
+									[
+										715,
+										725
+									],
+									[
+										796,
+										806
+									],
+									[
+										822,
+										832
+									],
+									[
+										986,
+										996
+									],
+									[
+										1187,
+										1197
+									],
+									[
+										1385,
+										1395
+									],
+									[
+										1541,
+										1551
+									],
+									[
+										1738,
+										1748
+									],
+									[
+										1938,
+										1948
+									],
+									[
+										2237,
+										2247
+									],
+									[
+										2623,
+										2633
+									],
+									[
+										2898,
+										2908
+									],
+									[
+										3102,
+										3112
+									],
+									[
+										3342,
+										3352
+									],
+									[
+										3644,
+										3654
+									],
+									[
+										4008,
+										4018
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								4033,
+								4033
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1042.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/views/recipes.html",
+					"settings":
+					{
+						"buffer_size": 2294,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								200,
-								200
+								1708,
+								1708
 							]
 						],
 						"settings":
@@ -603,7 +790,203 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 32.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/styles/main.css",
+					"settings":
+					{
+						"buffer_size": 2266,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2196,
+								2176
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1112.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/scripts/services/fsharvestable.js",
+					"settings":
+					{
+						"buffer_size": 5068,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								761,
+								761
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 105.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/scripts/services/fsgatherable.js",
+					"settings":
+					{
+						"buffer_size": 2422,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								417,
+								417
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 42.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/views/harvestables.html",
+					"settings":
+					{
+						"buffer_size": 1652,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1435,
+								1450
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 7.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "app/views/gatherables.html",
+					"settings":
+					{
+						"buffer_size": 2275,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2144,
+								2016
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 173.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "app/views/charactersheetstats.html",
+					"settings":
+					{
+						"buffer_size": 3125,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2212,
+								2212
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 566.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/scripts/services/fssimservice.js",
+					"settings":
+					{
+						"buffer_size": 7077,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2391,
+								2391
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 69.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -667,6 +1050,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 238.0,
+	"side_bar_width": 348.0,
 	"status_bar_visible": true
 }

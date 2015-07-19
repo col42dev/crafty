@@ -67,7 +67,6 @@ angular.module('craftyApp')
       }
     };
 
-
     /**
      * @desc 
      * @return 
@@ -82,6 +81,8 @@ angular.module('craftyApp')
       //onStop task
       this[ this.json.activity[0].category + 'OnStop' ]();
 
+      //xp gain
+      this.json.xp += parseInt(thisFactory.taskRules[this.json.activity[0].category].xp, 10);
      
       this.json.activity.splice(0, 1);
 
@@ -105,7 +106,6 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.harvestingOnStop = function () {
-
       var harvestableType = this.json.activity[0].name;
 
       thisFactory.harvestables[harvestableType].decrement();
@@ -152,7 +152,10 @@ angular.module('craftyApp')
       thisFactory.updateBank();
 
       // Rewards
-      thisFactory.checkRewards( {'action':'gather', 'target':gatherableType});
+      var rewards = thisFactory.checkRewards( {'action':'gather', 'target':gatherableType});
+      if (rewards.hasOwnProperty('xp')) {
+          this.json.xp += rewards.xp;
+      }
     };
 
 
@@ -189,7 +192,10 @@ angular.module('craftyApp')
         thisFactory.updateBank();
 
         //Rewards
-        thisFactory.checkRewards( {'action':'craft', 'target':craftableOutput});
+        var rewards = thisFactory.checkRewards( {'action':'craft', 'target':craftableOutput});
+        if (rewards.hasOwnProperty('xp')) {//bug: do we want to add xp for each output object?
+          this.json.xp += rewards.xp;
+        }
       }
     };
 

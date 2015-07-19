@@ -52,7 +52,7 @@ angular.module('craftyApp')
      */
     FSBackpack.prototype.setFlashQuantityTimeout = function( ) {
       setTimeout( (function() {
-        if(typeof this !== "undefined") {
+        if(typeof this !== 'undefined') {
           this.quantitybgcolor = 'rgba(0, 0, 0, .0)';
         }
       }).bind(this), 500);
@@ -62,7 +62,7 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSBackpack.prototype.bgcolor = function( type) {
+    FSBackpack.prototype.bgcolor = function() {
       var color = 'rgba(200, 20, 20, 0.25)';
 
         switch (this.category) {
