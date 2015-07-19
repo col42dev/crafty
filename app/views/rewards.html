@@ -7,16 +7,18 @@
   <table class="table table-bordered table-condensed table-scrollable">
     <theader>
         <tr class="noselect" >
-            <td class="col-sm-1">Name</td>
-            <td class="col-sm-1">Description</td>
-            <td class="col-sm-1">Recipe Unlock</td>
+            <td class="col-sm-3">Name</td>
+            <td class="col-sm-6">Description</td>
+            <td class="col-sm-6">Recipe Unlock</td>
+            <td class="col-sm-1">XP</td>
         </tr>
     </theader>
     <tbody>
-      <tr ng-repeat="(k,v)  in getFSService().simulation.rewardRules" class="noselect" bgcolor={{getFSService().simulation.rewardbgcolor(k)}} >
-        <td >{{k}}</td> 
-        <td >{{v.desc}}</td> 
-        <td >{{v.recipeUnlocks}}</td> 
+      <tr ng-repeat="(k,v)  in getFSService().simulation.rewardRules" class="noselect" >
+        <td > <div style = "background:{{getFSService().simulation.rewardbgcolor(k)}}"> {{k}}</div></td> 
+        <td > <div style = "background:{{getFSService().simulation.rewardbgcolor(k)}}">{{v.desc}}</div></td> 
+        <td > <div style = "background:{{getFSService().simulation.rewardbgcolor(k)}}">{{v.recipeUnlocks}}</div></td> 
+        <td > <div style = "background:{{getFSService().simulation.rewardbgcolor(k)}}">{{v.xp}}</div></td> 
       </tr>
     </tbody>
   </table>
@@ -24,8 +26,5 @@
 
 
 </div><!--fadedbackground-->
-
-
-
 
  

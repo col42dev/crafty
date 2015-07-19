@@ -21,17 +21,6 @@ angular.module('craftyApp')
     };
 
 
-    /**
-     * @desc 
-     * @return 
-     */
-  	FSReward.prototype.bgcolor = function( ) {
-        var color = '#FF0000';
-        if (this.serializable.completed===1) {
-            color= '#00FF00';
-        }
-        return  color;
-    };
 
     return FSReward;
   });

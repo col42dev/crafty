@@ -264,7 +264,7 @@ angular.module('craftyApp')
 	     * @return 
 	     */
 		this.rewardbgcolor = function ( rewardName ) {
-		     return  (this.rewards.indexOf(rewardName) === -1) ? '#FF0000' : '#00FF00';
+		     return  (this.rewards.indexOf(rewardName) === -1) ? 'rgba(200, 20, 20, 0.25)' : 'rgba(20, 200, 20, 0.25)';
 		};
 
 
