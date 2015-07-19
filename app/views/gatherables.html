@@ -34,7 +34,9 @@
         </div>
       </td> 
 
-      <td class="col-sm-1"> {{v.json.quantity}}</td> 
+      <td class="col-sm-1"> 
+          <div style = "background:{{v.quantitybgcolor}};">  {{v.json.quantity}}</div>
+      </td> 
       <td class="col-sm-1"> {{v.duration(getFSService().simulation.selectedCharacter)}}</td> 
     </tr>
   </tbody>

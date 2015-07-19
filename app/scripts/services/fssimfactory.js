@@ -548,10 +548,6 @@ angular.module('craftyApp')
 	            break;
 	        }
 
-	       	//if (isNaN(duration)) {
-	       	//	window.alert('getTaskDuration');
-	       	//}
-
 	        return duration;
       	};
 

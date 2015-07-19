@@ -25,11 +25,13 @@
   <table class="table table-bordered table-condensed table-scrollable">
     <tbody>
       <tr ng-repeat="v in getFSService().simulation.harvestablesArray | orderBy:getFSService().simulation.orderHarvestablesBy" ng-click="getFSService().onClickBody('Harvestables', v.json)" class="noselect" style="background-color: rgba(54, 25, 25, .1)" >
-       <td class="col-sm-6"> 
+        <td class="col-sm-6"> 
           <div style = "background:{{v.bgcolor()}};">  {{v.json.name}}</div>
         </td> 
-       <td class="col-sm-1"> {{v.json.quantity}}</td> 
-       <td class="col-sm-1"> {{v.duration(getFSService().simulation.selectedCharacter)}}</td> 
+        <td class="col-sm-1"> 
+          <div style = "background:{{v.quantitybgcolor}};">  {{v.json.quantity}}</div>
+        </td> 
+        <td class="col-sm-1"> {{v.duration(getFSService().simulation.selectedCharacter)}}</td> 
       </tr>
     </tbody>
 

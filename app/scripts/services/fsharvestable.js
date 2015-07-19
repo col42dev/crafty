@@ -15,7 +15,7 @@ angular.module('craftyApp')
     var FSHarvestable = function( obj, simulation) { 
       this.simulation = simulation;
       this.json = obj;
-
+      this.quantitybgcolor = 'rgba(200, 200, 200, 0.0)';
 
       // replenish quantity
       if ( this.simulation.harvestableDefines[this.json.name].hasOwnProperty('replenish') === true ) {
@@ -23,9 +23,46 @@ angular.module('craftyApp')
               this.json.quantity = parseInt( this.json.quantity, 10)  + 1;
             }).bind(this), this.simulation.harvestableDefines[this.json.name].replenish * 1000);
       }
-
     };
 
+     /**
+     * @desc 
+     * @return 
+     */
+    FSHarvestable.prototype.increment = function( ) {
+      this.json.quantity++;
+      this.quantitybgcolor = 'rgba(20, 200, 20, 0.25)';
+      this.setFlashQuantityTimeout();
+    };
+    
+    /**
+     * @desc 
+     * @return 
+     */
+    FSHarvestable.prototype.decrement = function( ) {
+      this.json.quantity--;
+      if ( this.json.quantity !== 0) {
+        this.quantitybgcolor = 'rgba(200, 20, 20, 0.25)';
+        this.setFlashQuantityTimeout();
+      }      
+    };
+
+     /**
+     * @desc 
+     * @return 
+     */
+    FSHarvestable.prototype.setFlashQuantityTimeout = function( ) {
+      setTimeout( (function() {
+        if(typeof this !== "undefined") {
+          this.quantitybgcolor = 'rgba(0, 0, 0, .0)';
+        }
+      }).bind(this), 500);
+    };
+
+     /**
+     * @desc 
+     * @return 
+     */
     FSHarvestable.prototype.bgcolor =  function( ) {   
       var color =  'rgba(20, 200, 20, 0.25)';  
 
@@ -45,6 +82,10 @@ angular.module('craftyApp')
       return color;   
     };
 
+     /**
+     * @desc 
+     * @return 
+     */
     FSHarvestable.prototype.isHarvestableBy =  function( character, log) {  
 
       var tools = [];
@@ -112,6 +153,10 @@ angular.module('craftyApp')
     };
 
 
+     /**
+     * @desc 
+     * @return 
+     */
     FSHarvestable.prototype.duration =  function(  character) {
 
       var tools = [];

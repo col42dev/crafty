@@ -16,8 +16,8 @@ angular.module('craftyApp')
         this.simulation = simulation;
         obj.quantity = [];
         this.category = obj.category;
-
         this.json = obj;
+        this.quantitybgcolor = 'rgba(200, 200, 200, 0.25)';
     };
 
     /**
@@ -28,6 +28,8 @@ angular.module('craftyApp')
       for (var i = 0; i < amount; i ++) {
         this.json.quantity.push({});
       }
+      this.quantitybgcolor = 'rgba(20, 200, 20, 0.25)';
+      this.setFlashQuantityTimeout();
     };
     
     /**
@@ -38,6 +40,22 @@ angular.module('craftyApp')
       for (var i = 0; i < amount; i ++) {
         this.json.quantity.pop();
       }
+      if ( this.json.quantity.length !== 0) {
+        this.quantitybgcolor = 'rgba(200, 20, 20, 0.25)';
+        this.setFlashQuantityTimeout();
+      }  
+    };
+
+    /**
+     * @desc 
+     * @return 
+     */
+    FSBackpack.prototype.setFlashQuantityTimeout = function( ) {
+      setTimeout( (function() {
+        if(typeof this !== "undefined") {
+          this.quantitybgcolor = 'rgba(0, 0, 0, .0)';
+        }
+      }).bind(this), 500);
     };
 
     /**
@@ -45,27 +63,8 @@ angular.module('craftyApp')
      * @return 
      */
     FSBackpack.prototype.bgcolor = function( type) {
-      var color = null;
-      if (type ==='#') {   
-        switch (this.category) {
-          case 'constructor':
-            if ( this.simulation.selectedConstructor === this.json.name) {
-              color= '#00FF00';
-            } else {
-              color = null;
-            }
-          case 'tool':
-            color= '#00FF00';
-            break;
-          case 'food':
-            color= '#00FF00';
-            break;
-          case 'weapon':
-            color= '#00FF00';
-            break;
-        }
-      } else {
-        color = 'rgba(200, 20, 20, 0.25)';
+      var color = 'rgba(200, 20, 20, 0.25)';
+
         switch (this.category) {
           case 'constructor':
             if ( this.simulation.selectedConstructor === this.json.name) {
@@ -84,7 +83,7 @@ angular.module('craftyApp')
             color= 'rgba(20, 200, 20, 0.25)';
             break;
         }
-      }
+
       return  color;
     };
 

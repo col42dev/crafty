@@ -108,7 +108,7 @@ angular.module('craftyApp')
 
       var harvestableType = this.json.activity[0].name;
 
-      thisFactory.harvestables[harvestableType].json.quantity -= 1;
+      thisFactory.harvestables[harvestableType].decrement();
 
       if ( thisFactory.harvestables[harvestableType].json.quantity === 0) {
         delete thisFactory.harvestables[harvestableType];
@@ -121,7 +121,7 @@ angular.module('craftyApp')
           thisFactory.gatherables[harvestableType] = new FSGatherable(obj, thisFactory);
       }
       
-      thisFactory.gatherables[harvestableType].json.quantity ++;
+      thisFactory.gatherables[harvestableType].increment();
       thisFactory.updateGatherables();
     };
 
@@ -131,12 +131,11 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.gatheringOnStart = function () {
       var gatherableType = this.json.activity[0].name;
-
-      thisFactory.gatherables[gatherableType].json.quantity -= 1;
+      thisFactory.gatherables[gatherableType].decrement(); 
       if ( thisFactory.gatherables[gatherableType].json.quantity === 0) {
         delete thisFactory.gatherables[gatherableType];
-        thisFactory.updateGatherables();
-      }    
+        thisFactory.updateGatherables(); 
+      }
     };
 
     /**
