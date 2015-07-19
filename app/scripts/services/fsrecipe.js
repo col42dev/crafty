@@ -19,6 +19,11 @@ angular.module('craftyApp')
 
       this.json = { 'name' : name, 'category' : 'placeholder'};
       this.json = { 'name' : name, 'category' : this.getCategory()};
+
+      this.construction = angular.copy(this.thisFactory.craftableDefines[this.json.name].construction); // needed for table filtering only
+      if (this.construction.length === 0) {
+        this.construction.push( 'none'); 
+      }
     };
 
     /**
@@ -54,7 +59,7 @@ angular.module('craftyApp')
         enabled = false;
       }
       
-      return  (enabled === true) ? '#00FF00' : '#FF0000';
+      return  (enabled === true) ? 'rgba(20, 200, 20, 0.25)' : 'rgba(200, 20, 20, 0.25)';
     };
 
 

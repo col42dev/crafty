@@ -28,6 +28,8 @@ angular.module('craftyApp')
 	    this.createSimRules = function( json) {
 	
 			this.taskTimeScalar ='1';
+			this.selectedConstructor = '';
+			this.selectedConstructorFilter = 'none';
 
 	         // Defines
 	        this.harvestableDefines = json.harvestableDefines;  
@@ -94,14 +96,12 @@ angular.module('craftyApp')
 	        	} else if ( this.foodDefines.hasOwnProperty(item.name) === true) {
 	        		category = 'food';
 	        	}
-	          	this.bank[item.name] = new FSBackpack({'category':category, 'name':item.name});
+	          	this.bank[item.name] = new FSBackpack({'category':category, 'name':item.name}, thisFactory);
 	       		this.bank[item.name].increment( item.quantity );
 	        }).bind(this)); 
 
-	        /*
-	        this.bank['Wood'] = new FSBackpack({'category':'tool', 'name':'Wood'});
-	       	this.bank['Wood'].increment( 100 );
-	       	*/
+	        this.bank[''] = new FSBackpack({'category':'constructor', 'name':''}, thisFactory);
+	       	this.bank[''].increment( 1 );
 
 	        this.updateBank = function() {
 		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {
@@ -273,20 +273,17 @@ angular.module('craftyApp')
 		 * @return 
 		 */
 		 this.onClickCharacterTool = function ( character, index) {
-
-		 
 		 	 if ( character.json.tools.length > index) {
 			   
 				var toolName = character.json.tools[index].json.name;
 
 			    if ( thisFactory.bank.hasOwnProperty(toolName) === false) {
-					thisFactory.bank[toolName] = new FSBackpack({'category':'tool', 'name':toolName});
+					thisFactory.bank[toolName] = new FSBackpack({'category':'tool', 'name':toolName}, thisFactory);
 			    }
 			    thisFactory.bank[toolName].increment(1);
 			    thisFactory.updateBank();
 
 			    character.json.tools.splice(index, 1);
-
 		  	}
 		 };
 
@@ -306,22 +303,31 @@ angular.module('craftyApp')
 		this.onClickBank = function (bankItemKey) {
 
         	switch ( this.bank[bankItemKey].category ) {
-        		case 'tool': { // add to character inventory 
-	        		if (this.bank[bankItemKey].json.quantity.length > 0) {
-	        			this.bank[bankItemKey].decrement(1) ;
-	        			this.selectedCharacter.json.tools.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name} ));
+				case 'constructor': { 
+					this.selectedConstructor = bankItemKey;
+					this.selectedConstructorFilter = bankItemKey;	
+					if (this.selectedConstructor === '') {
+						this.selectedConstructorFilter = 'none';
+					}
+				}
+				break;
 
-	        			if ( this.bank[bankItemKey].json.quantity.length === 0) {
-	        				delete  this.bank[bankItemKey];
-	        				this.updateBank();
-	        			}
-	        		}
-        		}
-        		break;
+				case 'tool': { // add to character inventory 
+					if (this.bank[bankItemKey].json.quantity.length > 0) {
+						this.bank[bankItemKey].decrement(1) ;
+						this.selectedCharacter.json.tools.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name}, thisFactory ));
 
-        		case 'food': { // consume
-	        		if (this.bank[bankItemKey].json.quantity.length > 0) {
-	        			this.bank[bankItemKey].decrement(1) ;
+						if ( this.bank[bankItemKey].json.quantity.length === 0) {
+							delete  this.bank[bankItemKey];
+							this.updateBank();
+						}
+					}
+				}
+				break;
+
+				case 'food': { // consume
+					if (this.bank[bankItemKey].json.quantity.length > 0) {
+						this.bank[bankItemKey].decrement(1) ;
 
 						for (var statType in this.foodDefines[bankItemKey].onConsume.stat) {
 							for (var statSubType in this.foodDefines[bankItemKey].onConsume.stat[statType]) {
@@ -330,27 +336,27 @@ angular.module('craftyApp')
 							}
 						}
 
-	        			if ( this.bank[bankItemKey].json.quantity.length === 0) {
-	        				delete this.bank[bankItemKey];
-	        				this.updateBank();
-	        			}
-	        		}
-        		}
-        		break;
+						if ( this.bank[bankItemKey].json.quantity.length === 0) {
+							delete this.bank[bankItemKey];
+							this.updateBank();
+						}
+					}
+				}
+				break;
 
-        		case 'weapon': { // add to character inventory 
-	        		if (this.bank[bankItemKey].json.quantity.length > 0) {
-	        			this.bank[bankItemKey].decrement(1) ;
-	        			this.selectedCharacter.json.weapons.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name} ));
+				case 'weapon': { // add to character inventory 
+					if (this.bank[bankItemKey].json.quantity.length > 0) {
+						this.bank[bankItemKey].decrement(1) ;
+						this.selectedCharacter.json.weapons.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name}, thisFactory ));
 
-	        			if ( this.bank[bankItemKey].json.quantity.length === 0) {
-	        				delete  this.bank[bankItemKey];
-	        				this.updateBank();
-	        			}
-	        		}
-        		}
-        		break;
-        	}
+						if ( this.bank[bankItemKey].json.quantity.length === 0) {
+							delete  this.bank[bankItemKey];
+							this.updateBank();
+						}
+					}
+				}
+				break;
+			}
 
 		};
 

@@ -52,74 +52,26 @@
 	"buffers":
 	[
 		{
-			"file": "/Users/colinmoore/Perforce/cmoore_MBP/crafty/rules.json",
-			"settings":
-			{
-				"buffer_size": 45147,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/colinmoore/Perforce/cmoore_MBP/crafty/state.json",
-			"settings":
-			{
-				"buffer_size": 5483,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/index.html",
-			"settings":
-			{
-				"buffer_size": 4485,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/colinmoore/dev/crafty/bower_components/bootstrap/dist/css/bootstrap.css",
-			"settings":
-			{
-				"buffer_size": 147430,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fscharacter.js",
-			"settings":
-			{
-				"buffer_size": 15367,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fssimfactory.js",
-			"settings":
-			{
-				"buffer_size": 16446,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fssimservice.js",
-			"settings":
-			{
-				"buffer_size": 7078,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/styles/main.css",
-			"settings":
-			{
-				"buffer_size": 2265,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/views/recipes.html",
 			"settings":
 			{
-				"buffer_size": 1658,
+				"buffer_size": 2116,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/harvestables.html",
+			"settings":
+			{
+				"buffer_size": 1435,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/gatherables.html",
+			"settings":
+			{
+				"buffer_size": 2110,
 				"line_ending": "Unix"
 			}
 		},
@@ -127,7 +79,31 @@
 			"file": "app/scripts/services/fsrecipe.js",
 			"settings":
 			{
-				"buffer_size": 2323,
+				"buffer_size": 2278,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsgatherable.js",
+			"settings":
+			{
+				"buffer_size": 1500,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fscharacter.js",
+			"settings":
+			{
+				"buffer_size": 15397,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/bank.html",
+			"settings":
+			{
+				"buffer_size": 1051,
 				"line_ending": "Unix"
 			}
 		}
@@ -156,21 +132,24 @@
 	},
 	"file_history":
 	[
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js",
+		"/Users/colinmoore/Dev/crafty/app/views/recipes.html",
+		"/Users/colinmoore/Dev/crafty/app/styles/main.css",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimservice.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimfactory.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js",
+		"/Users/colinmoore/dev/crafty/bower_components/bootstrap/dist/css/bootstrap.css",
+		"/Users/colinmoore/Dev/crafty/app/index.html",
+		"/Users/colinmoore/Perforce/cmoore_MBP/crafty/state.json",
+		"/Users/colinmoore/Perforce/cmoore_MBP/crafty/rules.json",
 		"/Users/colinmoore/Dev/crafty/dist/index.html",
 		"/Users/colinmoore/dev/crafty/bower.json",
 		"/Users/colinmoore/dev/crafty/bower_components/bootstrap/bower.json",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimservice.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimfactory.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsservice.js",
 		"/Users/colinmoore/Dev/crafty/app/views/main.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsgatherable.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsharvestable.js",
 		"/Users/colinmoore/Dev/crafty/app/json/state.json",
-		"/Users/colinmoore/Dev/crafty/app/views/recipes.html",
-		"/Users/colinmoore/Perforce/cmoore_MBP/crafty/state.json",
-		"/Users/colinmoore/Perforce/cmoore_MBP/crafty/rules.json",
 		"/Users/colinmoore/Dev/crafty/app/json/rules.json",
 		"/Users/colinmoore/Dev/crafty/app/views/reference.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscontextconsole.js",
@@ -182,8 +161,6 @@
 		"/Users/colinmoore/Dev/crafty/app/views/harvestables.html",
 		"/Users/colinmoore/Dev/crafty/app/views/gatherables.html",
 		"/Users/colinmoore/Dev/crafty/app/views/characterselect.html",
-		"/Users/colinmoore/Dev/crafty/app/styles/main.css",
-		"/Users/colinmoore/Dev/crafty/app/index.html",
 		"/Users/colinmoore/dev/crafty/app/views/contextinfoconsole.html",
 		"/Users/colinmoore/Dev/crafty/app/views/rewards.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsreward.js",
@@ -432,78 +409,79 @@
 	"groups":
 	[
 		{
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/Users/colinmoore/Perforce/cmoore_MBP/crafty/rules.json",
+					"file": "app/views/recipes.html",
 					"settings":
 					{
-						"buffer_size": 45147,
+						"buffer_size": 2116,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								45147
+								1123,
+								1123
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5978.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/Users/colinmoore/Perforce/cmoore_MBP/crafty/state.json",
+					"file": "app/views/harvestables.html",
 					"settings":
 					{
-						"buffer_size": 5483,
+						"buffer_size": 1435,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								5483
+								762,
+								762
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3171.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "app/index.html",
+					"file": "app/views/gatherables.html",
 					"settings":
 					{
-						"buffer_size": 4485,
+						"buffer_size": 2110,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1962,
-								1962
+								1144,
+								1144
 							]
 						],
 						"settings":
@@ -513,192 +491,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 255.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "/Users/colinmoore/dev/crafty/bower_components/bootstrap/dist/css/bootstrap.css",
-					"settings":
-					{
-						"buffer_size": 147430,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3542,
-								3547
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3069.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/scripts/services/fscharacter.js",
-					"settings":
-					{
-						"buffer_size": 15367,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4337,
-								4410
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2006.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/scripts/services/fssimfactory.js",
-					"settings":
-					{
-						"buffer_size": 16446,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13745,
-								13745
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 6560.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/scripts/services/fssimservice.js",
-					"settings":
-					{
-						"buffer_size": 7078,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								866,
-								866
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/styles/main.css",
-					"settings":
-					{
-						"buffer_size": 2265,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1477,
-								1477
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 672.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/views/recipes.html",
-					"settings":
-					{
-						"buffer_size": 1658,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1242,
-								1242
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
 					"file": "app/scripts/services/fsrecipe.js",
 					"settings":
 					{
-						"buffer_size": 2323,
+						"buffer_size": 2278,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2278,
-								2278
+								2233,
+								2233
 							]
 						],
 						"settings":
@@ -709,6 +520,90 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 808.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/scripts/services/fsgatherable.js",
+					"settings":
+					{
+						"buffer_size": 1500,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1450,
+								1450
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 304.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/scripts/services/fscharacter.js",
+					"settings":
+					{
+						"buffer_size": 15397,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11860,
+								11884
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 8.0,
+						"translation.y": 5370.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/views/bank.html",
+					"settings":
+					{
+						"buffer_size": 1051,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								200,
+								200
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

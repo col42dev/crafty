@@ -147,7 +147,7 @@ angular.module('craftyApp')
       var gatherableType = this.json.activity[0].name;
 
       if (!(gatherableType in thisFactory.bank)) {
-        thisFactory.bank[gatherableType] = new FSBackpack({'category':'gatherable', 'name':gatherableType});
+        thisFactory.bank[gatherableType] = new FSBackpack({'category':'gatherable', 'name':gatherableType}, thisFactory);
       }
       thisFactory.bank[gatherableType].increment(1);
       thisFactory.updateBank();
@@ -184,7 +184,7 @@ angular.module('craftyApp')
         
         // add output to bank.
         if (!(craftableOutput in thisFactory.bank)) {
-          thisFactory.bank[craftableOutput] = new FSBackpack( {'category':thisFactory.craftableDefines[craftableKey].category, 'name':craftableOutput});
+          thisFactory.bank[craftableOutput] = new FSBackpack( {'category':thisFactory.craftableDefines[craftableKey].category, 'name':craftableOutput}, thisFactory);
         }
         thisFactory.bank[craftableOutput].increment( craftableOutputQuantity);
         thisFactory.updateBank();

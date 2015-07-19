@@ -89,7 +89,7 @@ body {
 }
 
 /* scrollable tables  http://stackoverflow.com/questions/10420168/twitter-bootstrap-scrollable-table */
-.bodycontainer { max-height: 250px; width: 100%; margin: 0; overflow-y: auto; }
+.bodycontainer { max-height: 400px; width: 100%; margin: 0; overflow-y: auto; }
 .table-scrollable { margin: 0; padding: 0; }
 
 
@@ -115,4 +115,5 @@ table {
     table-layout: fixed;
     word-wrap: break-word;
 }
+
 

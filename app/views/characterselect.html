@@ -8,6 +8,7 @@
 	<thead>
 		<tr class="noselect">
 		    <th class="col-sm-2"><h4>Name</h4></th>
+		    <th class="col-sm-1"><h4>Profession</h4></th>
 		    <th class="col-sm-1"><h4>health</h4></th>
 		    <th class="col-sm-1"><h4>energy</h4></th>
 		    <th class="col-sm-1"><h4>mind</h4></th>
@@ -21,6 +22,11 @@
 		<td bgcolor={{v.getbgcolor()}} class="col-sm-2" >
 			{{v.json.name}}
 		</td> 
+
+		<td class="col-sm-1" >
+			{{getFSService().simulation.characterObjs[k].json.proficiency.profession}}
+		</td>
+	
 
 		<td class="col-sm-1" > 
 			<div style = "background:rgba(200, 100, 100, 0.5); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getFSService().simulation.characterObjs[k].getStatPercentage('health')}">{{getFSService().simulation.characterObjs[k].getStatPercentage('health')}}

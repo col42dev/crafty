@@ -12,10 +12,10 @@ angular.module('craftyApp')
     // Service logic
     
     // FSBackpack
-    var FSBackpack = function(obj) { 
+    var FSBackpack = function(obj, simulation) { 
+        this.simulation = simulation;
         obj.quantity = [];
         this.category = obj.category;
-        //this.name = obj.name;
 
         this.json = obj;
     };
@@ -44,21 +44,42 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSBackpack.prototype.bgcolor = function( ) {
+    FSBackpack.prototype.bgcolor = function( type) {
       var color = null;
-      switch (this.category) {
-       // case 'constructor':
-       //   color= '#FFFFFF';
-       //   break;
-        case 'tool':
-          color= '#00FF00';
-          break;
-        case 'food':
-          color= '#00FF00';
-          break;
-        case 'weapon':
-          color= '#00FF00';
-          break;
+      if (type ==='#') {   
+        switch (this.category) {
+          case 'constructor':
+            if ( this.simulation.selectedConstructor === this.json.name) {
+              color= '#00FF00';
+            }
+          case 'tool':
+            color= '#00FF00';
+            break;
+          case 'food':
+            color= '#00FF00';
+            break;
+          case 'weapon':
+            color= '#00FF00';
+            break;
+        }
+      } else {
+        color = 'rgba(200, 20, 20, 0.25)';
+        switch (this.category) {
+          case 'constructor':
+            if ( this.simulation.selectedConstructor === this.json.name) {
+              color= 'rgba(20, 200, 20, 0.25)';
+            }
+            break;
+          case 'tool':
+            color= 'rgba(20, 200, 20, 0.25)';
+            break;
+          case 'food':
+            color= 'rgba(20, 200, 20, 0.25)';
+            break;
+          case 'weapon':
+            color= 'rgba(20, 200, 20, 0.25)';
+            break;
+      }
       }
       return  color;
     };
