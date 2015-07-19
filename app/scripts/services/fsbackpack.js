@@ -51,6 +51,8 @@ angular.module('craftyApp')
           case 'constructor':
             if ( this.simulation.selectedConstructor === this.json.name) {
               color= '#00FF00';
+            } else {
+              color = null;
             }
           case 'tool':
             color= '#00FF00';
@@ -67,7 +69,9 @@ angular.module('craftyApp')
         switch (this.category) {
           case 'constructor':
             if ( this.simulation.selectedConstructor === this.json.name) {
-              color= 'rgba(20, 200, 20, 0.25)';
+              color= 'rgba(20, 200, 20, 0.55)';
+            } else {
+              color= 'rgba(0, 0, 0, 0.0)';
             }
             break;
           case 'tool':
@@ -79,7 +83,7 @@ angular.module('craftyApp')
           case 'weapon':
             color= 'rgba(20, 200, 20, 0.25)';
             break;
-      }
+        }
       }
       return  color;
     };
