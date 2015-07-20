@@ -2,81 +2,41 @@
   "title": "craftyrules",
   "version": "0.0.0",
   "rewardRules": {
-    "Liquidated": {
-      "desc": "Craft a FlagonOfAle",
-      "action": "craft",
-      "target": "FlagonOfAle",
+    "It's Sheep We're Up Against": {
+      "desc": "Herd some Sheep",
+      "action": "gather",
+      "target": "Sheep",
+      "xp": 2,
       "recipeUnlocks": [
 
-      ]
-    },
-    "Quench": {
-      "desc": "Craft a Bucket",
-      "action": "craft",
-      "target": "Bucket",
-      "recipeUnlocks": [
-
-      ]
-    },
-    "Master Brewer": {
-      "desc": "Craft a FermentingVat",
-      "action": "craft",
-      "target": "FermentingVat",
-      "recipeUnlocks": [
-        "BulkAle"
-      ]
-    },
-    "Lumberjack": {
-      "desc": "Gather Lumber",
-      "action": "gather",
-      "target": "Lumber",
-      "recipeUnlocks": [
-        "BulkWoodenPlank"
-      ]
-    },
-    "Literacy": {
-      "desc": "Craft Some paper",
-      "action": "craft",
-      "target": "Paper",
-      "recipeUnlocks": [
-        "Books"
-      ]
-    },
-    "Warp & Weft": {
-      "desc": "Craft a Loom",
-      "action": "craft",
-      "target": "Loom",
-      "recipeUnlocks": [
-        "Cloth"
-      ]
-    },
-    "Faience": {
-      "desc": "Gather Sand",
-      "action": "gather",
-      "target": "Sand",
-      "recipeUnlocks": [
-        "Glass",
-        "Steel",
-        "Cloth"
       ]
     },
     "Domestication": {
-      "desc": "Craft a WoodenTable",
+      "desc": "Craft a Wooden Table",
       "action": "craft",
       "target": "WoodenTable",
+      "xp": 4,
       "recipeUnlocks": [
         "Paper",
         "FineHat",
         "FlagonOfAle",
         "Ale",
-        "FineMeal",
         "Bandage"
       ]
     },
-    "Ready to Work": {
+    "Eat Your Greens": {
+      "desc": "Craft Cooked Veg",
+      "action": "craft",
+      "target": "CookedVeg",
+      "xp": 4,
+      "recipeUnlocks": [
+      ]
+    },
+   "Ready to Work": {
       "desc": "Craft a Workbench",
       "action": "craft",
       "target": "Workbench",
+      "xp": 4,
       "recipeUnlocks": [
         "Forge",
         "WoodenPlanks",
@@ -100,10 +60,20 @@
         "BulkWoodenPlank"
       ]
     },
-    "Forging Ahead": {
+    "Labours Lost": {
+      "desc": "Craft a WheelBarrow",
+      "action": "craft",
+      "target": "WheelBarrow",
+      "xp": 4,
+      "recipeUnlocks": [
+
+      ]
+    },
+   "Forging Ahead": {
       "desc": "Craft a Forge",
       "action": "craft",
       "target": "Forge",
+      "xp": 12,
       "recipeUnlocks": [
         "Glass",
         "Saw",
@@ -120,13 +90,71 @@
         "Snares",
         "HarvestingShears",
         "SteelMattock",
-        "BlockAndTackle"
+        "BlockAndTackle",
+        "Grill",
+        "Charcoal"
+      ]
+    },
+    "Bloomery": {
+      "desc": "Forge Steel",
+      "action": "craft",
+      "target": "Steel",
+      "xp": 3,
+      "recipeUnlocks": [
+      ]
+    },
+    "Lumberjack": {
+      "desc": "Gather Lumber",
+      "action": "gather",
+      "target": "Lumber",
+      "xp": 6,
+      "recipeUnlocks": [
+        "BulkWoodenPlank"
+      ]
+    },
+    "Catapult" : {
+      "desc": "Craft a GreekFireCatapult",
+      "action": "craft",
+      "target": "GreekFireCatapult",
+      "xp": 6,
+      "recipeUnlocks": [
+        "BulkWoodenPlank"
+      ]
+    },
+    "Liquidated": {
+      "desc": "Craft a FlagonOfAle",
+      "action": "craft",
+      "target": "FlagonOfAle",
+      "xp": 12,
+      "recipeUnlocks": [
+
+      ]
+    },
+    "Master Brewer": {
+      "desc": "Craft a FermentingVat",
+      "action": "craft",
+      "target": "FermentingVat",
+      "xp": 6,
+      "recipeUnlocks": [
+        "BulkAle",
+        "OgreAle",
+        "ElvenWine"
+      ]
+    },
+    "Warp & Weft": {
+      "desc": "Craft a Loom",
+      "action": "craft",
+      "target": "Loom",
+      "xp": 4,
+      "recipeUnlocks": [
+        "Cloth"
       ]
     },
     "Onward to Technology": {
       "desc": "Craft a AdvancedWorkbench",
       "action": "craft",
       "target": "AdvancedWorkbench",
+      "xp": 20,
       "recipeUnlocks": [
         "BucketPump",
         "CatapultBase",
@@ -141,6 +169,7 @@
       "desc": "Craft a BucketPump",
       "action": "craft",
       "target": "BucketPump",
+      "xp": 8,
       "recipeUnlocks": [
         "PumpedWater",
         "ImprovedBucketPump",
@@ -151,6 +180,7 @@
       "desc": "Craft a FirstAidStation",
       "action": "craft",
       "target": "FirstAidStation",
+      "xp": 4,
       "recipeUnlocks": [
         "Medicine",
         "Potion"
@@ -160,12 +190,25 @@
       "desc": "Craft a HuntingBow",
       "action": "craft",
       "target": "HuntingBow",
+      "xp": 6,
       "recipeUnlocks": [
         "FishingRod",
         "FishingNet",
-        "MeatyMeal",
-        "FishyMeal",
-        "BulkFish"
+        "GrilledMeat",
+        "BulkFish",
+        "MeatStew",
+        "GrilledFish",
+        "MilkSheep",
+        "SlaughterSheep"
+      ]
+    },
+    "Bought a Gem to get RedBull": {
+      "desc": "Gather a Gem",
+      "action": "gather",
+      "target": "Gem",
+      "xp": 24,
+      "recipeUnlocks": [
+        "RefineGem2RedBull"
       ]
     }
   },
@@ -295,6 +338,24 @@
       "actionable": [
         "Cart"
       ]
+    },
+    "Sheep": {
+      "duration": "20",
+      "actionable": [
+        "Carry"
+      ]
+    },
+    "Fruit": {
+      "duration": "20",
+      "actionable": [
+        "Carry"
+      ]
+    },
+    "Gem": {
+      "duration": "20",
+      "actionable": [
+        "Carry"
+      ]
     }
   },
   "harvestableDefines": {
@@ -373,16 +434,14 @@
         "Fish"
       ],
       "hardness": "1",
-      "duration": "10",
-      "replenish": "150"
+      "duration": "10"
     },
     "Leaves": {
       "actionable": [
         "Pick"
       ],
       "hardness": "1",
-      "duration": "15",
-      "replenish": "150"
+      "duration": "15"
     },
     "Sand": {
       "actionable": [
@@ -422,12 +481,26 @@
       "hardness": "8",
       "duration": "64"
     },
-    "Wool": {
+    "Sheep": {
       "actionable": [
-        "Hunt"
+        "Tie"
       ],
       "hardness": "2",
       "duration": "32"
+    },
+    "Gem": {
+      "actionable": [
+        "Dig"
+      ],
+      "hardness": "12",
+      "duration": "120"
+    },
+    "Fruit": {
+      "actionable": [
+        "Pick"
+      ],
+      "hardness": "2",
+      "duration": "20"
     }
   },
   "toolDefines": {
@@ -488,7 +561,7 @@
       ]
     },
     "Rope": {
-      "strength": "2",
+      "strength": "4",
       "actions": [
         "Tie"
       ]
@@ -1170,7 +1243,7 @@
       },
       "duration": "45"
     },
-    "BasicMeal": {
+    "RawGreenSalad": {
       "category": "food",
       "construction": [
 
@@ -1180,53 +1253,66 @@
         "Water": "1"
       },
       "output": {
-        "BasicMeal": "2"
+        "RawGreenSalad": "2"
       },
       "duration": "10"
     },
-    "MeatyMeal": {
+    "GrilledMeat": {
       "category": "food",
+      "proficiency": {
+        "profession": "Cook",
+        "tier": 1
+      },
       "construction": [
-
+        "Grill"
       ],
       "input": {
-        "Leaves": "1",
+        "Wood": "1",
         "Water": "1",
         "Meat": "1"
       },
       "output": {
-        "MeatyMeal": "4"
+        "GrilledMeat": "4"
       },
       "duration": "10"
     },
-    "FishyMeal": {
+    "VegSoup": {
       "category": "food",
+      "proficiency": {
+        "profession": "Cook",
+        "tier": 2
+      },
       "construction": [
-
+        "Grill"
       ],
       "input": {
-        "Leaves": "1",
-        "Water": "1",
-        "Fish": "1"
+        "Charcoal": "1",
+        "Leaves": "3",
+        "Grain": "1",
+        "Water": "2"
       },
       "output": {
-        "FishyMeal": "4"
+        "VegSoup": "6"
       },
       "duration": "10"
     },
-    "FineMeal": {
+    "FishSoup": {
       "category": "food",
+      "proficiency": {
+        "profession": "Cook",
+        "tier": 2
+      },
       "construction": [
-        "WoodenTable"
+        "Grill"
       ],
       "input": {
-        "Leaves": "1",
-        "Water": "1",
-        "Fish": "1",
-        "Meat": "1"
+        "Leaves": "2",
+        "Water": "2",
+        "Fish": "2",
+        "Charcoal": "1"
       },
       "output": {
-        "FineMeal": "4"
+        "FishSoup": "4"
       },
       "duration": "10"
     },
@@ -1690,6 +1776,228 @@
         "Fish": "10"
       },
       "duration": "50"
+    },
+    "ShearSheep": {
+      "category": "unclassified",
+      "construction": [
+
+      ],
+      "input": {
+        "Sheep": "1"
+      },
+      "output": {
+        "Wool": "1",
+        "Sheep": "1"
+      },
+      "duration": "20"
+    },
+    "CookedFruit": {
+      "category": "food",
+      "proficiency": {
+        "profession": "Cook",
+        "tier": 1
+      },
+      "construction": [
+        "WoodenTable"
+      ],
+      "input": {
+        "Fruit": "2",
+        "Wood": "1"
+      },
+      "output": {
+        "CookedFruit": "2"
+      },
+      "duration": "30"
+    },
+    "FreshFruit": {
+      "category": "food",
+      "construction": [
+        "WoodenTable"
+      ],
+      "input": {
+        "Fruit": "2"
+      },
+      "output": {
+        "FreshFruit": "2"
+      },
+      "duration": "30"
+    },
+    "CookedVeg": {
+      "category": "food",
+      "proficiency": {
+        "profession": "Cook",
+        "tier": 1
+      },
+      "construction": [
+        "WoodenTable"
+      ],
+      "input": {
+        "Leaves": "2",
+        "Wood": "1"
+      },
+      "output": {
+        "CookedVeg": "4"
+      },
+      "duration": "30"
+    },
+    "FlatBread": {
+      "category": "food",
+      "proficiency": {
+        "profession": "Cook",
+        "tier": 1
+      },
+      "construction": [
+        "Grill"
+      ],
+      "input": {
+        "Grain": "1",
+        "Wood": "1",
+        "Water": "1"
+      },
+      "output": {
+        "FlatBread": "4"
+      },
+      "duration": "30"
+    },
+    "MeatStew": {
+      "category": "food",
+      "proficiency": {
+        "profession": "Cook",
+        "tier": 2
+      },
+      "construction": [
+        "Grill"
+      ],
+      "input": {
+        "Meat": "2",
+        "Leaves": "1",
+        "Grain": "1",
+        "Charcoal": "1"
+      },
+      "output": {
+        "CookedFruit": "2"
+      },
+      "duration": "30"
+    },
+    "GrilledFish": {
+      "category": "food",
+      "proficiency": {
+        "profession": "Cook",
+        "tier": 2
+      },
+      "construction": [
+        "Grill"
+      ],
+      "input": {
+        "Fish": "4",
+        "Charcoal": "1"
+      },
+      "output": {
+        "GrilledFish": "4"
+      },
+      "duration": "30"
+    },
+    "RefineGem2RedBull": {
+      "category": "food",
+      "construction": [
+
+      ],
+      "input": {
+        "Gem": "1"
+      },
+      "output": {
+        "RefineGem2RedBull": "5"
+      },
+      "duration": "30"
+    },
+    "Grill": {
+      "category": "constructor",
+      "proficiency": {
+        "profession": "Toolsmith",
+        "tier": 1
+      },
+      "construction": [
+        "Forge"
+      ],
+      "input": {
+        "IronOre": "3",
+        "Stone": "1",
+        "SteelWire": "1"
+      },
+      "output": {
+        "Grill": "1"
+      },
+      "duration": "40"
+    },
+    "Charcoal": {
+      "category": "unclassified",
+      "construction": [
+        "Forge"
+      ],
+      "input": {
+        "Coal": "1",
+        "Wood": "1"
+      },
+      "output": {
+        "Charcoal": "2"
+      },
+      "duration": "30"
+    },
+    "MilkSheep": {
+      "category": "unclassified",
+      "construction": [
+
+      ],
+      "input": {
+        "Sheep": "1"
+      },
+      "output": {
+        "Ale": "1",
+        "Sheep": "1"
+      },
+      "duration": "20"
+    },
+    "SlaughterSheep": {
+      "category": "unclassified",
+      "construction": [
+
+      ],
+      "input": {
+        "Sheep": "1"
+      },
+      "output": {
+        "Meat": "3"
+      },
+      "duration": "20"
+    },
+    "OgreAle": {
+      "category": "food",
+      "construction": [
+        "FermentingVat"
+      ],
+      "input": {
+        "Water": "3",
+        "Grain": "2",
+        "Leaves": "1"
+      },
+      "output": {
+        "OgreAle": "2"
+      },
+      "duration": "45"
+    },
+    "ElvenWine": {
+      "category": "food",
+      "construction": [
+        "FermentingVat"
+      ],
+      "input": {
+        "Water": "2",
+        "Leaves": "2"
+      },
+      "output": {
+        "ElvenWine": "2"
+      },
+      "duration": "45"
     }
   },
   "taskRules": {
@@ -1699,7 +2007,8 @@
           "secondsPerDecrement": 2,
           "minRequired": 20
         }
-      }
+      },
+      "xp": 1
     },
     "gathering": {
       "stat": {
@@ -1707,7 +2016,8 @@
           "secondsPerDecrement": 3,
           "minRequired": 20
         }
-      }
+      },
+      "xp": 1
     },
     "crafting": {
       "stat": {
@@ -1719,7 +2029,8 @@
           "secondsPerDecrement": 20,
           "minRequired": 0
         }
-      }
+      },
+      "xp": 1
     }
   },
   "foodDefines": {
@@ -1759,50 +2070,47 @@
         }
       }
     },
-    "FineMeal": {
-      "onConsume": {
-        "stat": {
-          "energy": {
-            "current": 60
-          },
-          "mind": {
-            "current": 10
-          }
-        }
-      }
-    },
-    "FishyMeal": {
-      "onConsume": {
-        "stat": {
-          "energy": {
-            "current": 30
-          },
-          "mind": {
-            "current": 0
-          }
-        }
-      }
-    },
-    "MeatyMeal": {
-      "onConsume": {
-        "stat": {
-          "energy": {
-            "current": 30
-          },
-          "mind": {
-            "current": 0
-          }
-        }
-      }
-    },
-    "BasicMeal": {
+    "FishSoup": {
       "onConsume": {
         "stat": {
           "energy": {
             "current": 20
           },
           "mind": {
-            "current": -10
+            "current": 80
+          }
+        }
+      }
+    },
+    "VegSoup": {
+      "onConsume": {
+        "stat": {
+          "energy": {
+            "current": 80
+          },
+          "mind": {
+            "current": -20
+          }
+        }
+      }
+    },
+    "GrilledMeat": {
+      "onConsume": {
+        "stat": {
+          "mind": {
+            "current": 0
+          }
+        }
+      }
+    },
+    "RawGreenSalad": {
+      "onConsume": {
+        "stat": {
+          "energy": {
+            "current": 20
+          },
+          "mind": {
+            "current": 0
           }
         }
       }
@@ -1833,6 +2141,141 @@
           },
           "energy": {
             "current": -10
+          }
+        }
+      }
+    },
+    "FreshFruit": {
+      "onConsume": {
+        "stat": {
+          "health": {
+            "current": 0
+          },
+          "mind": {
+            "current": 0
+          },
+          "energy": {
+            "current": 20
+          }
+        }
+      }
+    },
+    "CookedFruit": {
+      "onConsume": {
+        "stat": {
+          "health": {
+            "current": 0
+          },
+          "mind": {
+            "current": 20
+          },
+          "energy": {
+            "current": 40
+          }
+        }
+      }
+    },
+    "CookedVeg": {
+      "onConsume": {
+        "stat": {
+          "health": {
+            "current": 0
+          },
+          "mind": {
+            "current": -20
+          },
+          "energy": {
+            "current": 60
+          }
+        }
+      }
+    },
+    "FlatBread": {
+      "onConsume": {
+        "stat": {
+          "health": {
+            "current": 0
+          },
+          "mind": {
+            "current": 20
+          },
+          "energy": {
+            "current": 20
+          }
+        }
+      }
+    },
+    "MeatStew": {
+      "onConsume": {
+        "stat": {
+          "health": {
+            "current": 0
+          },
+          "mind": {
+            "current": 40
+          },
+          "energy": {
+            "current": 40
+          }
+        }
+      }
+    },
+    "GrilledFish": {
+      "onConsume": {
+        "stat": {
+          "health": {
+            "current": 0
+          },
+          "mind": {
+            "current": 80
+          },
+          "energy": {
+            "current": 20
+          }
+        }
+      }
+    },
+    "RefineGem2RedBull": {
+      "onConsume": {
+        "stat": {
+          "health": {
+            "current": 100
+          },
+          "mind": {
+            "current": 100
+          },
+          "energy": {
+            "current": 100
+          }
+        }
+      }
+    },
+    "OgreAle": {
+      "onConsume": {
+        "stat": {
+          "health": {
+            "current": -30
+          },
+          "mind": {
+            "current": -30
+          },
+          "energy": {
+            "current": 200
+          }
+        }
+      }
+    },
+    "ElvenWine": {
+      "onConsume": {
+        "stat": {
+          "health": {
+            "current": 10
+          },
+          "mind": {
+            "current": 60
+          },
+          "energy": {
+            "current": 20
           }
         }
       }

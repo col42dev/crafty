@@ -129,6 +129,9 @@ angular.module('craftyApp')
 	          	this.rewards.push(thisReward);
 	        }).bind(this)); 
 
+	    	//Goals
+	        this.updateGoals();
+
 	    };
 
 
@@ -430,6 +433,8 @@ angular.module('craftyApp')
 								this.rewards.push(thisRewardRule);
 								returnObj.xp = parseInt(this.rewardRules[thisRewardRule].xp);
 
+								this.updateGoals();
+
 							}
 
 							// recipe unlocks
@@ -452,6 +457,26 @@ angular.module('craftyApp')
 
 			return returnObj;
 		};
+
+		/**
+		 * @desc 
+		 * @return 
+		 */
+		this.updateGoals  = function ( ) {
+			this.nextGoal = {};
+			for (var thisRewardRule in this.rewardRules) {
+  				if (this.rewardRules.hasOwnProperty(thisRewardRule)) {		
+					if ( this.rewards.indexOf(thisRewardRule) === -1) {
+						console.log('GOAL:' + thisRewardRule);
+
+						this.nextGoal = angular.copy(this.rewardRules[thisRewardRule]);
+						this.nextGoal.name = thisRewardRule;
+						break;
+					}
+  				}
+			}
+		};
+
 
 		/**
 		 * @desc 
