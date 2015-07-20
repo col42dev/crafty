@@ -14,7 +14,6 @@ angular.module('craftyApp')
 
     // FSRecipe
     var FSRecipe = function( name, thisFactory) { 
-
       this.thisFactory = thisFactory;
 
       this.json = { 'name' : name, 'category' : 'placeholder'};
@@ -43,7 +42,6 @@ angular.module('craftyApp')
       if ( this.thisFactory.hasCraftingConstructor(this.json.name) !== true) {
         enabled = false;
       }
-
 
       // has stat level
       if ( this.thisFactory.selectedCharacter.hasStatsFor('crafting') === false) {

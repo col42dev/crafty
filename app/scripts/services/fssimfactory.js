@@ -363,12 +363,41 @@ angular.module('craftyApp')
 		};
 
 		/**
+		 * @desc Select a characater best suited for task.
+		 * @return 
+		 */
+		this.selectCharacter = function (taskName, taskCategory) {
+
+			var validCharacters = [];
+
+			// generate list of characters which can do this task.
+			for ( var character in this.characterObjs ) {
+				if ( this.characterObjs[character].canPerformTask(taskName, taskCategory)) {
+					validCharacters.push( this.characterObjs[character]);
+				}
+			}
+
+			// select character with least queued actions.
+			var leastActionCount = 5;
+			var selectedCharacter = null;
+			validCharacters.forEach( function ( thisCharacter) {
+				if ( thisCharacter.json.activity.length < leastActionCount) {
+					leastActionCount = thisCharacter.json.activity.length;
+					selectedCharacter = thisCharacter;
+				}
+			});
+
+			return selectedCharacter;
+		};
+
+		/**
 		 * @desc 
 		 * @return 
 		 */
 		this.onClickGatherables = function (gatherableType) {
-			if ( this.selectedCharacter !== null) {
-				this.selectedCharacter.addTask( gatherableType, 'gathering');	
+			var selectedCharacter = this.selectCharacter(gatherableType, 'gathering');
+			if ( selectedCharacter !== null) {
+				selectedCharacter.addTask( gatherableType, 'gathering', false);	
 			}
 		};
 
@@ -377,8 +406,9 @@ angular.module('craftyApp')
 		 * @return 
 		 */
 		this.onClickHarvestables = function (harvestableType) {
-			if ( this.selectedCharacter !== null) {
-			    this.selectedCharacter.addTask( harvestableType, 'harvesting');	
+			var selectedCharacter = this.selectCharacter(harvestableType, 'harvesting');
+			if ( selectedCharacter !== null) {
+			    selectedCharacter.addTask( harvestableType, 'harvesting', false);	
 			}
 		};
 
@@ -387,8 +417,9 @@ angular.module('craftyApp')
 		 * @return 
 		 */
 		this.onClickRecipes = function (recipeKey) {
-			if ( this.selectedCharacter !== null) {
-		        this.selectedCharacter.addTask( recipeKey, 'crafting');		
+			var selectedCharacter = this.selectCharacter(recipeKey, 'crafting');
+			if ( selectedCharacter !== null) {
+		        selectedCharacter.addTask( recipeKey, 'crafting', false);		
 		    }          	
 		};
 

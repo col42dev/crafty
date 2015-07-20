@@ -58,11 +58,11 @@ angular.module('craftyApp')
      * @desc - push task to activity queue and trigger it if queu is empty
      * @return 
      */
-    FSCharacter.prototype.addTask = function ( taskName, taskCategory) {
-      if ( this.hasSpareActivitySlot(true) === true) {
+    FSCharacter.prototype.addTask = function ( taskName, taskCategory, log) {
+      if ( this.hasSpareActivitySlot() === true) {
         this.json.activity.push( new FSTask( {'name':taskName, 'category':taskCategory}));
         if (this.json.activity.length === 1) {
-          this.startNextTask();
+          this.startNextTask(log);
         }
       }
     };
@@ -88,7 +88,7 @@ angular.module('craftyApp')
 
       // start next queued activity
       if (this.json.activity.length > 0) {
-        this.startNextTask();
+        this.startNextTask(false);
       }
 
       thisFactory.ctrllrScopeApply();
@@ -204,10 +204,9 @@ angular.module('craftyApp')
      * @desc - can character start the next task in queue.
      * @return 
      */
-    FSCharacter.prototype.canStartNextTask = function () {     
-      var taskName = this.json.activity[0].name;
+    FSCharacter.prototype.canPerformTask = function (taskName, activityCategory, log) {     
+
       var canStartTask = true;
-      var activityCategory = this.json.activity[0].category;
 
       switch ( activityCategory) {
         case 'gathering': {
@@ -219,10 +218,10 @@ angular.module('craftyApp')
                 thisFactory.contextConsole.log('No ' + taskName + ' left to gather');
                 canStartTask = false;
               }
-              if ( this.hasStatsFor('gathering', true) !== true) {
+              if ( this.hasStatsFor('gathering', log) !== true) {
                 canStartTask = false;
               }
-              if (this.hasGatheringDependencies(taskName, true) !== true) {
+              if (this.hasGatheringDependencies(taskName, log) !== true) {
                 canStartTask = false;
               }
             } 
@@ -237,10 +236,10 @@ angular.module('craftyApp')
                 thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest');
                 canStartTask = false;
               }
-              if ( this.hasStatsFor('harvesting', true) !== true) {
+              if ( this.hasStatsFor('harvesting', log) !== true) {
                 canStartTask = false;
               }
-              if ( thisFactory.harvestables[taskName].isHarvestableBy( this, true) !== true) {
+              if ( thisFactory.harvestables[taskName].isHarvestableBy( this, log) !== true) {
                 canStartTask = false;
               }
             }
@@ -248,16 +247,16 @@ angular.module('craftyApp')
           break;
 
         case 'crafting': {  
-            if ( thisFactory.hasCraftingIngredients(taskName, true) !== true) {
+            if ( thisFactory.hasCraftingIngredients(taskName, log) !== true) {
               canStartTask = false;
             }
-            if ( thisFactory.hasCraftingConstructor(taskName, true) !== true) {
+            if ( thisFactory.hasCraftingConstructor(taskName, log) !== true) {
               canStartTask = false;
             }
-            if ( this.hasStatsFor('crafting', true) !== true) {
+            if ( this.hasStatsFor('crafting', log) !== true) {
               canStartTask = false;
             }
-            if ( this.hasCraftingProficiencyFor(taskName, true) !== true) {
+            if ( this.hasCraftingProficiencyFor(taskName, log) !== true) {
               canStartTask = false;
             }
           }
@@ -271,13 +270,13 @@ angular.module('craftyApp')
      * @desc - execute next queued task.
      * @return 
      */
-    FSCharacter.prototype.startNextTask = function () {  
+    FSCharacter.prototype.startNextTask = function (log) {  
 
       var taskName = this.json.activity[0].name;
       var thisCharacter = this;
       var activityCategory = this.json.activity[0].category;
 
-      if (this.canStartNextTask() === true) {
+      if (this.canPerformTask(taskName, activityCategory, log) === true) {
 
         // Set modify stat timer intervals
         this.statUpdateInterval = {};
