@@ -20,10 +20,12 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSContextConsole.prototype.log =  function( message) {         
+    FSContextConsole.prototype.log =  function( message, log) {         
 
-		this.message += message;
-		this.message   += '\n';
+        if ( log === true) {
+		  this.message += message;
+		  this.message   += '\n';
+        }
 	};
 
 	FSContextConsole.prototype.clear =  function() {         

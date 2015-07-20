@@ -58,11 +58,11 @@ angular.module('craftyApp')
      * @desc - push task to activity queue and trigger it if queu is empty
      * @return 
      */
-    FSCharacter.prototype.addTask = function ( taskName, taskCategory, log) {
+    FSCharacter.prototype.addTask = function ( taskName, taskCategory) {
       if ( this.hasSpareActivitySlot() === true) {
         this.json.activity.push( new FSTask( {'name':taskName, 'category':taskCategory}));
         if (this.json.activity.length === 1) {
-          this.startNextTask(log);
+          this.startNextTask();
         }
       }
     };
@@ -88,7 +88,7 @@ angular.module('craftyApp')
 
       // start next queued activity
       if (this.json.activity.length > 0) {
-        this.startNextTask(false);
+        this.startNextTask();
       }
 
       thisFactory.ctrllrScopeApply();
@@ -212,16 +212,16 @@ angular.module('craftyApp')
         case 'gathering': {
             if (thisFactory.gatherables.hasOwnProperty(taskName) !== true) {
               canStartTask = false;
-              thisFactory.contextConsole.log('There is no ' + taskName + ' left to gather');
+              thisFactory.contextConsole.log('There is no ' + taskName + ' left to gather', log);
             } else {
               if ( parseInt( thisFactory.gatherables[taskName].json.quantity, 10) === 0) {
-                thisFactory.contextConsole.log('No ' + taskName + ' left to gather');
+                thisFactory.contextConsole.log('No ' + taskName + ' left to gather', log);
                 canStartTask = false;
               }
-              if ( this.hasStatsFor('gathering', log) !== true) {
+              if ( this.hasStatsFor('gathering') !== true) {
                 canStartTask = false;
               }
-              if (this.hasGatheringDependencies(taskName, log) !== true) {
+              if (this.hasGatheringDependencies(taskName) !== true) {
                 canStartTask = false;
               }
             } 
@@ -229,17 +229,17 @@ angular.module('craftyApp')
           break;
         case 'harvesting': {
             if (thisFactory.harvestables.hasOwnProperty(taskName) !== true) {
-              thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest');
+              thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest', log);
               canStartTask = false;
             } else {
               if ( parseInt(thisFactory.harvestables[taskName].quantity, 10) === 0) {
-                thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest');
+                thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest', log);
                 canStartTask = false;
               }
-              if ( this.hasStatsFor('harvesting', log) !== true) {
+              if ( this.hasStatsFor('harvesting') !== true) {
                 canStartTask = false;
               }
-              if ( thisFactory.harvestables[taskName].isHarvestableBy( this, log) !== true) {
+              if ( thisFactory.harvestables[taskName].isHarvestableBy( this) !== true) {
                 canStartTask = false;
               }
             }
@@ -253,7 +253,7 @@ angular.module('craftyApp')
             if ( thisFactory.hasCraftingConstructor(taskName, log) !== true) {
               canStartTask = false;
             }
-            if ( this.hasStatsFor('crafting', log) !== true) {
+            if ( this.hasStatsFor('crafting') !== true) {
               canStartTask = false;
             }
             if ( this.hasCraftingProficiencyFor(taskName, log) !== true) {
@@ -270,13 +270,13 @@ angular.module('craftyApp')
      * @desc - execute next queued task.
      * @return 
      */
-    FSCharacter.prototype.startNextTask = function (log) {  
+    FSCharacter.prototype.startNextTask = function () {  
 
       var taskName = this.json.activity[0].name;
       var thisCharacter = this;
       var activityCategory = this.json.activity[0].category;
 
-      if (this.canPerformTask(taskName, activityCategory, log) === true) {
+      if (this.canPerformTask(taskName, activityCategory) === true) {
 
         // Set modify stat timer intervals
         this.statUpdateInterval = {};
@@ -370,11 +370,11 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSCharacter.prototype.hasGatheringDependencies = function ( gatheringName, log) {
+    FSCharacter.prototype.hasGatheringDependencies = function ( gatheringName) {
       var hasDependencies = false;
 
       thisFactory.gatherableDefines[gatheringName].actionable.forEach( ( function(thisActionable) {
-        if ( this.hasToolAction(thisActionable, log) === true) {
+        if ( this.hasToolAction(thisActionable) === true) {
           hasDependencies = true;
         } 
       }).bind(this)); 
@@ -386,7 +386,7 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSCharacter.prototype.hasStatsFor = function ( taskCategory, log) {
+    FSCharacter.prototype.hasStatsFor = function ( taskCategory) {
 
       var hasStats = true;
 
@@ -395,10 +395,6 @@ angular.module('craftyApp')
         var current = parseInt( this.json.stats[statKeyname].current, 10) ;
         if ( current< required) {
           hasStats = false;
-
-          if (log === true) {
-            thisFactory.contextConsole.log( 'Require ' + required + ' ' + statKeyname + ' for ' + taskCategory + ' but ' + this.json.name + ' only has ' + current);
-          }
         }
       }
 

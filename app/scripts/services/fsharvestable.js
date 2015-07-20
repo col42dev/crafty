@@ -64,19 +64,9 @@ angular.module('craftyApp')
      * @return 
      */
     FSHarvestable.prototype.bgcolor =  function( ) {   
-      var color =  'rgba(20, 200, 20, 0.25)';  
-
-      if ( this.isHarvestableBy( this.simulation.selectedCharacter) === false) {
-        color = 'rgba(200, 20, 20, 0.25)';
-      }
-
-
-      if ( this.simulation.selectedCharacter.hasStatsFor('harvesting') === false) {
-        color = 'rgba(200, 20, 20, 0.25)';
-      }
-
-      if ( this.simulation.selectedCharacter.hasSpareActivitySlot() === false) {
-        color = 'rgba(200, 20, 20, 0.25)';
+      var color =  'rgba(200, 20, 20, 0.25)';  
+      if ( this.simulation.isHarvestable(this.json.name) === true) {
+        color = 'rgba(20, 200, 20, 0.25)';
       }
 
       return color;   
@@ -86,7 +76,7 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSHarvestable.prototype.isHarvestableBy =  function( character, log) {  
+    FSHarvestable.prototype.isHarvestableBy =  function( character) {  
 
       var tools = [];
       
@@ -103,13 +93,12 @@ angular.module('craftyApp')
 
 
       var isHarvestable = false;
-      var toolStrengthMessage = '';
-      var toolActionMessage = '';
+      //var toolStrengthMessage = '';
+      //var toolActionMessage = '';
 
       tools.forEach( ( function( thisTool) {
 
         this.simulation.toolDefines[thisTool].actions.forEach( ( function ( thisAction) {
-
 
             var toolHasRequiredAction = false;
 
@@ -123,15 +112,14 @@ angular.module('craftyApp')
                 if ( parseInt( this.simulation.toolDefines[ thisTool ].strength, 10) >= parseInt( this.simulation.harvestableDefines[this.json.name].hardness, 10)) {
                   isHarvestable = true;
                 } else {
-                    toolStrengthMessage = thisTool + ' not strong enough to harvest ' + this.json.name;
+                    //toolStrengthMessage = thisTool + ' not strong enough to harvest ' + this.json.name;
                 }
 
               }
 
-
-              if ( toolHasRequiredAction === false) {
-                toolActionMessage =  character.json.name + ' is not equipped with a tool with action(s) (' + this.simulation.harvestableDefines[this.json.name].actionable +') needed for harvesting ' + this.json.name;
-              }
+              //if ( toolHasRequiredAction === false) {
+              //  toolActionMessage =  character.json.name + ' is not equipped with a tool with action(s) (' + this.simulation.harvestableDefines[this.json.name].actionable +') needed for harvesting ' + this.json.name;
+              //}
 
             }).bind(this));
 
@@ -139,6 +127,7 @@ angular.module('craftyApp')
 
       } ).bind(this));   
  
+      /*
       if (isHarvestable=== false) {
         if ( log === true) {
           if ( toolStrengthMessage.length > 0) {
@@ -147,7 +136,7 @@ angular.module('craftyApp')
             this.simulation.contextConsole.log(  toolActionMessage);
           }
         }
-      } 
+      } */
 
       return isHarvestable;
     };

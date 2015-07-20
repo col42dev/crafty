@@ -397,7 +397,31 @@ angular.module('craftyApp')
 		this.onClickGatherables = function (gatherableType) {
 			var selectedCharacter = this.selectCharacter(gatherableType, 'gathering');
 			if ( selectedCharacter !== null) {
-				selectedCharacter.addTask( gatherableType, 'gathering', false);	
+				selectedCharacter.addTask( gatherableType, 'gathering');	
+			} else {
+				var characterKey = null;
+
+				// stats
+				var haveStats = false;
+				for ( characterKey in this.characterObjs ) {
+			         if ( this.characterObjs[characterKey].hasStatsFor('harvesting') === true) {
+		              haveStats = true;
+		            }
+		        }
+		        if ( haveStats === false) {
+		         	this.contextConsole.log('No one has the required stats to start gathering ' + gatherableType, true);
+		     	}
+
+		     	// equipped
+				var hasEquippedTools = false;
+				for ( characterKey in this.characterObjs ) {
+			         if ( this.characterObjs[characterKey].hasGatheringDependencies(gatherableType) === true) {
+		              hasEquippedTools = true;
+		            }
+		        }
+		        if ( hasEquippedTools === false) {
+		         	this.contextConsole.log('No one is equipped with the required tools to start gathering ' + gatherableType, true);
+		     	}
 			}
 		};
 
@@ -408,7 +432,31 @@ angular.module('craftyApp')
 		this.onClickHarvestables = function (harvestableType) {
 			var selectedCharacter = this.selectCharacter(harvestableType, 'harvesting');
 			if ( selectedCharacter !== null) {
-			    selectedCharacter.addTask( harvestableType, 'harvesting', false);	
+			    selectedCharacter.addTask( harvestableType, 'harvesting');	
+			} else {
+				var characterKey = null;
+
+				// stats
+				var haveStats = false;
+				for ( characterKey in this.characterObjs ) {
+			         if ( this.characterObjs[characterKey].hasStatsFor('harvesting') === true) {
+		              haveStats = true;
+		            }
+		        }
+		        if ( haveStats === false) {
+		         	this.contextConsole.log('No one has the required stats to start harvesting ' + harvestableType, true);
+		     	}
+
+		     	// equipped
+				var hasEquippedTools = false;
+				for ( characterKey in this.characterObjs ) {
+			         if ( this.harvestables[harvestableType].isHarvestableBy(this.characterObjs[characterKey]) === true) {
+		              hasEquippedTools = true;
+		            }
+		        }
+		        if ( hasEquippedTools === false) {
+		         	this.contextConsole.log('No one is equipped with the required tools to start harvesting ' + harvestableType, true);
+		     	}
 			}
 		};
 
@@ -419,8 +467,38 @@ angular.module('craftyApp')
 		this.onClickRecipes = function (recipeKey) {
 			var selectedCharacter = this.selectCharacter(recipeKey, 'crafting');
 			if ( selectedCharacter !== null) {
-		        selectedCharacter.addTask( recipeKey, 'crafting', false);		
-		    }          	
+		        selectedCharacter.addTask( recipeKey, 'crafting');		
+		    } else {
+		    	// log to console.
+		    	if ( this.hasCraftingIngredients(recipeKey, true) === true) {
+		    		if ( this.hasCraftingConstructor(recipeKey, true)) {
+		    				var characterKey = null;
+
+		    				//stats
+		    				var haveStats = false;
+		    				for ( characterKey in this.characterObjs ) {
+		    			         if ( this.characterObjs[characterKey].hasStatsFor('crafting') === true) {
+					              haveStats = true;
+					            }
+					        }
+					        if ( haveStats === false) {
+					         	this.contextConsole.log('No one has the required stats to start crafting ' + recipeKey, true);
+					     	}
+
+					     	//proficiency
+							var hasProficiency = false;
+		    				for ( characterKey in this.characterObjs ) {
+		    			         if ( this.characterObjs[characterKey].hasCraftingProficiencyFor(recipeKey, false) === true) {
+					              hasProficiency = true;
+					            }
+					        }
+					        if ( hasProficiency === false) {
+					         	this.contextConsole.log('No one has the required proficiency to start crafting ' + recipeKey, true);
+					     	}
+		    		}
+		    	}
+
+		    }         	
 		};
 
 		/**
@@ -534,6 +612,46 @@ angular.module('craftyApp')
 		 * @desc 
 		 * @return 
 		 */
+		this.isHarvestable = function (harvestableType) {
+			for ( var characterKey in this.characterObjs ) {
+				if ( this.characterObjs[characterKey].canPerformTask(harvestableType, 'harvesting', false)) {
+					return true;
+				}
+			}
+			return false;
+		};
+	
+		/**
+		 * @desc 
+		 * @return 
+		 */
+		this.isGatherable = function (gatherableType) {
+			for ( var characterKey in this.characterObjs ) {
+				if ( this.characterObjs[characterKey].canPerformTask(gatherableType, 'gathering', false)) {
+					return true;
+				}
+			}
+			return false;
+		};
+
+		/**
+		 * @desc 
+		 * @return 
+		 */
+		this.isCraftable = function (craftableType) {
+			for ( var characterKey in this.characterObjs ) {
+				if ( this.characterObjs[characterKey].canPerformTask(craftableType, 'crafting', false)) {
+					return true;
+				}
+			}
+			return false;
+		};
+
+
+		/**
+		 * @desc 
+		 * @return 
+		 */
 		this.hasCraftingIngredients = function (recipeKey, log) {
 	
 			// determine if has reqiored ingredients in bank
@@ -542,58 +660,45 @@ angular.module('craftyApp')
 			var recipeInputKeys = Object.keys( recipeInputObj );
 
 			recipeInputKeys.forEach( function ( recipeInputKey ) {
-			var recipeInput = recipeInputKey;
-			var recipeInputQuantity = recipeInputObj[ recipeInputKey];
+				var recipeInput = recipeInputKey;
+				var recipeInputQuantity = recipeInputObj[ recipeInputKey];
 
-			if (recipeInput in this.bank) {
-			  if ( this.bank[ recipeInput ].json.quantity.length < recipeInputQuantity) {
-			    hasIngredients = false;
-			    if (log === true) {
-			    	this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for ' + recipeKey + ' but only have  ' + this.bank[ recipeInput ].json.quantity.length);
+				if (recipeInput in this.bank) {
+				  if ( this.bank[ recipeInput ].json.quantity.length < recipeInputQuantity) {
+				    hasIngredients = false;
+				    this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for ' + recipeKey + ' but only have  ' + this.bank[ recipeInput ].json.quantity.length, log);
+				  }
+				} else {
+				  this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for crafting ' +  recipeKey+ ' but have none', log);
+				  hasIngredients = false;
 				}
-			  }
-			} else {
-			  if (log === true) {
-			  	this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for crafting ' +  recipeKey+ ' but have none');
-			  }
-			  hasIngredients = false;
-			}
 			}.bind(this));
 
-			
 			return hasIngredients;
 		};
-
 
 		/**
 		 * @desc 
 		 * @return 
 		 */
 		this.hasCraftingConstructor = function (recipeKey, log) {
-	
 			var hasIngredients = true;
-
 			if ( this.craftableDefines[recipeKey].construction.length > 0) {
-
         		var constructor = this.craftableDefines[recipeKey].construction[0];
         		if ( this.bank.hasOwnProperty(constructor) === false) {
           			hasIngredients = false;
-          			if (log === true) {
-          				this.contextConsole.log('Require a ' + constructor + ' in the bank for crafting ' + recipeKey);
-          			}
+          			this.contextConsole.log('Require a ' + constructor + ' in the bank for crafting ' + recipeKey, log);
         		} 
       		}
 
       		return hasIngredients;
       	};
 
-
       	/**
 		 * @desc 
 		 * @return 
 		 */
 		this.getTaskDuration = function (activityCategory, taskName, thisCharacter) {
-	
 	  		var duration = 0;
 
 	        switch ( activityCategory) {

@@ -59,18 +59,10 @@ angular.module('craftyApp')
     * @return 
     */
     FSGatherable.prototype.bgcolor =  function( ) {         
-      var color = 'rgba(20, 200, 20, 0.25)';     
+      var color = 'rgba(200, 20, 20, 0.25)';     
 
-      if( this.simulation.selectedCharacter.hasGatheringDependencies(this.json.name) === false) {
-        color = 'rgba(200, 20, 20, 0.25)'; 
-      }
-
-      if ( this.simulation.selectedCharacter.hasStatsFor('gathering') === false) {
-        color = 'rgba(200, 20, 20, 0.25)'; 
-      }
-
-      if ( this.simulation.selectedCharacter.hasSpareActivitySlot() === false) {
-        color = 'rgba(200, 20, 20, 0.25)';
+      if ( this.simulation.isGatherable(this.json.name) === true) {
+        color = 'rgba(20, 200, 20, 0.25)';
       }
 
       return color;   

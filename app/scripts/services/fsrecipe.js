@@ -30,33 +30,7 @@ angular.module('craftyApp')
      * @return 
      */
     FSRecipe.prototype.bgcolor = function( ) {
-
-      var enabled = true;
-
-      // has ingredients
-      if ( this.thisFactory.hasCraftingIngredients(this.json.name) !== true){
-        enabled = false;
-      }
-
-      // has constructor if one is needed
-      if ( this.thisFactory.hasCraftingConstructor(this.json.name) !== true) {
-        enabled = false;
-      }
-
-      // has stat level
-      if ( this.thisFactory.selectedCharacter.hasStatsFor('crafting') === false) {
-        enabled = false;
-      }
-
-      // crafting proficiency
-      if ( this.thisFactory.selectedCharacter.hasCraftingProficiencyFor(this.json.name) === false) {
-        enabled = false;
-      }
-
-      if ( this.thisFactory.selectedCharacter.hasSpareActivitySlot() === false) {
-        enabled = false;
-      }
-      
+      var enabled = this.thisFactory.isCraftable(this.json.name) ;
       return  (enabled === true) ? 'rgba(20, 200, 20, 0.25)' : 'rgba(200, 20, 20, 0.25)';
     };
 
@@ -69,7 +43,7 @@ angular.module('craftyApp')
       if (this.thisFactory.craftableDefines.hasOwnProperty(this.json.name) === true) {
           return this.thisFactory.craftableDefines[this.json.name].category;
       }
-      return 'bug';
+      return 'unknown category';
     };
 
 
