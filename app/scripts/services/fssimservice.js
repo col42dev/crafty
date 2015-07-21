@@ -256,9 +256,7 @@ angular.module('craftyApp')
 
 
 
-    this.onClickCharacter = function( character) {
-      thisService.simulation.onClickCharacter( character);
-    };
+
 
    
     this.onClickHeader = function(tableName, fieldName) {

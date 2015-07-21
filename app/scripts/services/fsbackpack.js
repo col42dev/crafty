@@ -8,12 +8,11 @@
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSBackpack', function () {
+  .factory('FSBackpack', function (FSSimState) {
     // Service logic
     
     // FSBackpack
-    var FSBackpack = function(obj, simulation) { 
-        this.simulation = simulation;
+    var FSBackpack = function(obj) { 
         obj.quantity = [];
         this.category = obj.category;
         this.json = obj;
@@ -67,7 +66,7 @@ angular.module('craftyApp')
 
         switch (this.category) {
           case 'constructor':
-            if ( this.simulation.selectedConstructor === this.json.name) {
+            if ( FSSimState.selectedConstructor === this.json.name) {
               color= 'rgba(20, 200, 20, 0.55)';
             } else {
               color= 'rgba(0, 0, 0, 0.0)';

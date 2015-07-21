@@ -8,7 +8,7 @@
  * Simulation factory
  */
 angular.module('craftyApp')
-  .factory('FSSimFactory', function ( FSCharacter, FSTask, FSBackpack, FSGatherable,  FSRecipe, FSHarvestable, FSContextConsole, FSSimRules) {
+  .factory('FSSimFactory', function (  FSBackpack,  FSCharacter,  FSGatherable, FSHarvestable, FSRecipe, FSContextConsole, FSSimRules, FSSimState) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -28,8 +28,6 @@ angular.module('craftyApp')
 	    this.createSimRules = function( json) {
 	
 			this.taskTimeScalar ='1';
-			this.selectedConstructor = '';
-			this.selectedConstructorFilter = 'none';
 
 			FSSimRules.set(json);
 
@@ -44,90 +42,56 @@ angular.module('craftyApp')
 	     */
 	    this.createSimState = function( json) {
 	
-	     	// Characters
-			this.characterObjs = {};  
- 			json.characters.forEach( ( function(thisCharacter) {
- 				var characterName = thisCharacter.name;
-	          	this.characterObjs[characterName] = new FSCharacter(thisCharacter, thisFactory);
-	          	this.selectedCharacter = this.characterObjs[characterName];
-	        }).bind(this)); 
-	       	this.onClickCharacter = function ( character) {
-	        	this.selectedCharacter = character;
-	        };
-
-	        // Gatherables
-	        this.gatherables = {};  
-	        json.gatherables.forEach( ( function(thisGatherables) {
-	          	this.gatherables[thisGatherables.name] = new FSGatherable(thisGatherables, this);
-	        }).bind(this)); 
-	        this.updateGatherables = function() {
-	        	thisFactory.gatherablesArray = Object.keys(thisFactory.gatherables).map(function (key) {
-	        		return thisFactory.gatherables[key];
-	        	});
-	    	};
-	    	this.updateGatherables();
-
-	        // Harvestables
-	        this.harvestables = {};  
-	        json.harvestables.forEach( ( function(thisHarvestable) {
-	          	this.harvestables[thisHarvestable.name] = new FSHarvestable(thisHarvestable, this);
-	        }).bind(this)); 
-	        this.updateHarvestables = function() {
-	        	thisFactory.harvestablesArray = Object.keys(thisFactory.harvestables).map(function (key) {
-	        		return thisFactory.harvestables[key];
-	        	});
-	    	};
-	    	this.updateHarvestables();
-
-			// Bank
-	        this.bank = {};  
-	        json.bank.forEach( ( function(item) {
-	        	var category = 'unknown';
-	        	if ( FSSimRules.toolDefines.hasOwnProperty(item.name) === true) 
-	        	{
-	        		category = 'tool';
-	        	} else if ( FSSimRules.foodDefines.hasOwnProperty(item.name) === true) {
-	        		category = 'food';
-	        	}
-	          	this.bank[item.name] = new FSBackpack({'category':category, 'name':item.name}, thisFactory);
-	       		this.bank[item.name].increment( item.quantity );
-	        }).bind(this)); 
-
-	        this.bank[''] = new FSBackpack({'category':'constructor', 'name':''}, thisFactory);
-	       	this.bank[''].increment( 1 );
-
-	        this.updateBank = function() {
-		        thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {
-		        		return thisFactory.bank[key];
-		        	});
-	    	};
-	    	this.updateBank();
-
-	        // Craftables
-	        this.craftables = {}; 
-	        json.craftables.forEach( ( function( recipeName ) {
-	          		this.craftables[recipeName] =  new FSRecipe( recipeName, this);
-	        	}).bind(this)); 
-	        this.updateRecipes = function() {
-		        thisFactory.craftablesArray = Object.keys(thisFactory.craftables).map(function (key) {
-		        		return thisFactory.craftables[key];
-		        	});
-	    	};
-	    	this.updateRecipes();
+	
+			FSSimState.init();
 
 
-	    	//rewards
-	    	this.rewards = [];
-	    	json.rewards.forEach( ( function(thisReward) {
-	          	this.rewards.push(thisReward);
-	        }).bind(this)); 
+    		// Characters
+           json.characters.forEach( function(thisCharacter) {
+                var characterName = thisCharacter.name;
+                FSSimState.characterObjs[characterName] = new FSCharacter(thisCharacter, thisFactory);
+                FSSimState.selectedCharacter = FSSimState.characterObjs[characterName];
+            }); 
+  
+            // Gatherables
+            json.gatherables.forEach( function(thisGatherables) {
+                FSSimState.gatherables[thisGatherables.name] = new FSGatherable(thisGatherables, thisFactory);
+            }); 
+  
+            // Harvestables
+            json.harvestables.forEach( function(thisHarvestable) {
+                FSSimState.harvestables[thisHarvestable.name] = new FSHarvestable(thisHarvestable, thisFactory);
+            }); 
+ 
 
-	    	//Goals
-	        this.updateGoals();
+            // Bank
+            json.bank.forEach( function(item) {
+                var category = 'unknown';
+                if ( FSSimRules.toolDefines.hasOwnProperty(item.name) === true) 
+                {
+                    category = 'tool';
+                } else if ( FSSimRules.foodDefines.hasOwnProperty(item.name) === true) {
+                    category = 'food';
+                }
+                FSSimState.bank[item.name] = new FSBackpack({'category':category, 'name':item.name});
+                FSSimState.bank[item.name].increment( item.quantity );
+            }); 
 
+            FSSimState.bank[''] = new FSBackpack({'category':'constructor', 'name':''});
+            FSSimState.bank[''].increment( 1 );
+
+  
+            // Craftables
+            json.craftables.forEach( function( recipeName ) {
+                    FSSimState.craftables[recipeName] =  new FSRecipe( recipeName, thisFactory);
+                }); 
+
+
+			FSSimState.set(json);
+
+			//Goals
+            this.updateGoals();
 	    };
-
-
 
 	      /**
 		 * @desc 
@@ -262,7 +226,7 @@ angular.module('craftyApp')
 	     * @return 
 	     */
 		this.rewardbgcolor = function ( rewardName ) {
-		     return  (this.rewards.indexOf(rewardName) === -1) ? 'rgba(200, 20, 20, 0.25)' : 'rgba(20, 200, 20, 0.25)';
+		     return  (FSSimState.rewards.indexOf(rewardName) === -1) ? 'rgba(200, 20, 20, 0.25)' : 'rgba(20, 200, 20, 0.25)';
 		};
 
 
@@ -275,11 +239,11 @@ angular.module('craftyApp')
 			   
 				var toolName = character.json.tools[index].json.name;
 
-			    if ( thisFactory.bank.hasOwnProperty(toolName) === false) {
-					thisFactory.bank[toolName] = new FSBackpack({'category':'tool', 'name':toolName}, thisFactory);
+			    if ( FSSimState.bank.hasOwnProperty(toolName) === false) {
+					FSSimState.bank[toolName] = new FSBackpack({'category':'tool', 'name':toolName});
 			    }
-			    thisFactory.bank[toolName].increment(1);
-			    thisFactory.updateBank();
+			    FSSimState.bank[toolName].increment(1);
+			    FSSimState.updateBank();
 
 			    character.json.tools.splice(index, 1);
 		  	}
@@ -299,56 +263,56 @@ angular.module('craftyApp')
 		 */
 		this.onClickBank = function (bankItemKey) {
 
-        	switch ( this.bank[bankItemKey].category ) {
+        	switch ( FSSimState.bank[bankItemKey].category ) {
 				case 'constructor': { 
-					this.selectedConstructor = bankItemKey;
-					this.selectedConstructorFilter = bankItemKey;	
-					if (this.selectedConstructor === '') {
-						this.selectedConstructorFilter = 'none';
+					FSSimState.selectedConstructor = bankItemKey;
+					FSSimState.selectedConstructorFilter = bankItemKey;	
+					if (FSSimState.selectedConstructor === '') {
+						FSSimState.selectedConstructorFilter = 'none';
 					}
 				}
 				break;
 
 				case 'tool': { // add to character inventory 
-					if (this.bank[bankItemKey].json.quantity.length > 0) {
-						this.bank[bankItemKey].decrement(1) ;
-						this.selectedCharacter.json.tools.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name}, thisFactory ));
+					if (FSSimState.bank[bankItemKey].json.quantity.length > 0) {
+						FSSimState.bank[bankItemKey].decrement(1) ;
+						FSSimState.selectedCharacter.json.tools.push( new FSBackpack( {'category':FSSimState.bank[bankItemKey].category, 'name':FSSimState.bank[bankItemKey].json.name} ));
 
-						if ( this.bank[bankItemKey].json.quantity.length === 0) {
-							delete  this.bank[bankItemKey];
-							this.updateBank();
+						if ( FSSimState.bank[bankItemKey].json.quantity.length === 0) {
+							delete  FSSimState.bank[bankItemKey];
+							FSSimState.updateBank();
 						}
 					}
 				}
 				break;
 
 				case 'food': { // consume
-					if (this.bank[bankItemKey].json.quantity.length > 0) {
-						this.bank[bankItemKey].decrement(1) ;
+					if (FSSimState.bank[bankItemKey].json.quantity.length > 0) {
+						FSSimState.bank[bankItemKey].decrement(1) ;
 
 						for (var statType in FSSimRules.foodDefines[bankItemKey].onConsume.stat) {
 							for (var statSubType in FSSimRules.foodDefines[bankItemKey].onConsume.stat[statType]) {
 								var delta = parseInt(FSSimRules.foodDefines[bankItemKey].onConsume.stat[statType][statSubType], 10);
-								this.selectedCharacter.modifyStat( statType, statSubType, delta);
+								FSSimState.selectedCharacter.modifyStat( statType, statSubType, delta);
 							}
 						}
 
-						if ( this.bank[bankItemKey].json.quantity.length === 0) {
-							delete this.bank[bankItemKey];
-							this.updateBank();
+						if ( FSSimState.bank[bankItemKey].json.quantity.length === 0) {
+							delete FSSimState.bank[bankItemKey];
+							FSSimState.updateBank();
 						}
 					}
 				}
 				break;
 
 				case 'weapon': { // add to character inventory 
-					if (this.bank[bankItemKey].json.quantity.length > 0) {
-						this.bank[bankItemKey].decrement(1) ;
-						this.selectedCharacter.json.weapons.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name}, thisFactory ));
+					if (FSSimState.bank[bankItemKey].json.quantity.length > 0) {
+						FSSimState.bank[bankItemKey].decrement(1) ;
+						FSSimState.selectedCharacter.json.weapons.push( new FSBackpack( {'category':FSSimState.bank[bankItemKey].category, 'name':FSSimState.bank[bankItemKey].json.name} ));
 
-						if ( this.bank[bankItemKey].json.quantity.length === 0) {
-							delete  this.bank[bankItemKey];
-							this.updateBank();
+						if ( FSSimState.bank[bankItemKey].json.quantity.length === 0) {
+							delete  FSSimState.bank[bankItemKey];
+							FSSimState.updateBank();
 						}
 					}
 				}
@@ -365,9 +329,9 @@ angular.module('craftyApp')
 			var validCharacters = [];
 
 			// generate list of characters which can do this task.
-			for ( var character in this.characterObjs ) {
-				if ( this.characterObjs[character].canPerformTask(taskName, taskCategory)) {
-					validCharacters.push( this.characterObjs[character]);
+			for ( var character in FSSimState.characterObjs ) {
+				if ( FSSimState.characterObjs[character].canPerformTask(taskName, taskCategory)) {
+					validCharacters.push( FSSimState.characterObjs[character]);
 				}
 			}
 
@@ -397,8 +361,8 @@ angular.module('craftyApp')
 
 				// stats
 				var haveStats = false;
-				for ( characterKey in this.characterObjs ) {
-			         if ( this.characterObjs[characterKey].hasStatsFor('harvesting') === true) {
+				for ( characterKey in FSSimState.characterObjs ) {
+			         if ( FSSimState.characterObjs[characterKey].hasStatsFor('harvesting') === true) {
 		              haveStats = true;
 		            }
 		        }
@@ -408,8 +372,8 @@ angular.module('craftyApp')
 
 		     	// equipped
 				var hasEquippedTools = false;
-				for ( characterKey in this.characterObjs ) {
-			         if ( this.characterObjs[characterKey].hasGatheringDependencies(gatherableType) === true) {
+				for ( characterKey in FSSimState.characterObjs ) {
+			         if ( FSSimState.characterObjs[characterKey].hasGatheringDependencies(gatherableType) === true) {
 		              hasEquippedTools = true;
 		            }
 		        }
@@ -440,8 +404,8 @@ angular.module('craftyApp')
 
 				// stats
 				var haveStats = false;
-				for ( characterKey in this.characterObjs ) {
-			         if ( this.characterObjs[characterKey].hasStatsFor('harvesting') === true) {
+				for ( characterKey in FSSimState.characterObjs ) {
+			         if ( FSSimState.characterObjs[characterKey].hasStatsFor('harvesting') === true) {
 		              haveStats = true;
 		            }
 		        }
@@ -451,8 +415,8 @@ angular.module('craftyApp')
 
 		     	// equipped
 				var hasEquippedTools = false;
-				for ( characterKey in this.characterObjs ) {
-			         if ( this.harvestables[harvestableType].isHarvestableBy(this.characterObjs[characterKey]) === true) {
+				for ( characterKey in FSSimState.characterObjs ) {
+			         if ( FSSimState.harvestables[harvestableType].isHarvestableBy(FSSimState.characterObjs[characterKey]) === true) {
 		              hasEquippedTools = true;
 		            }
 		        }
@@ -488,8 +452,8 @@ angular.module('craftyApp')
 
 		    				//stats
 		    				var haveStats = false;
-		    				for ( characterKey in this.characterObjs ) {
-		    			         if ( this.characterObjs[characterKey].hasStatsFor('crafting') === true) {
+		    				for ( characterKey in FSSimState.characterObjs ) {
+		    			         if ( FSSimState.characterObjs[characterKey].hasStatsFor('crafting') === true) {
 					              haveStats = true;
 					            }
 					        }
@@ -499,8 +463,8 @@ angular.module('craftyApp')
 
 					     	//proficiency
 							var hasProficiency = false;
-		    				for ( characterKey in this.characterObjs ) {
-		    			         if ( this.characterObjs[characterKey].hasCraftingProficiencyFor(recipeKey, false) === true) {
+		    				for ( characterKey in FSSimState.characterObjs ) {
+		    			         if ( FSSimState.characterObjs[characterKey].hasCraftingProficiencyFor(recipeKey, false) === true) {
 					              hasProficiency = true;
 					            }
 					        }
@@ -526,10 +490,10 @@ angular.module('craftyApp')
 				recipeInputKeys.forEach( ( function ( recipeKey ){
 					var recipeInput = recipeKey;
 					var recipeInputQuantity = recipeInputObj[ recipeKey];
-					this.bank[ recipeInput ].decrement( recipeInputQuantity);
-					if ( this.bank[recipeInput].json.quantity.length === 0) {
-					  delete  this.bank[recipeInput];
-					  this.updateBank();
+					FSSimState.bank[ recipeInput ].decrement( recipeInputQuantity);
+					if ( FSSimState.bank[recipeInput].json.quantity.length === 0) {
+					  delete  FSSimState.bank[recipeInput];
+					  FSSimState.updateBank();
 					}
 				}).bind(this));
 			}
@@ -549,9 +513,9 @@ angular.module('craftyApp')
 						if (FSSimRules.rewardRules[thisRewardRule].target === checkDesc.target) {
 							
 							// reward reward
-							if ( this.rewards.indexOf(thisRewardRule) === -1) {
+							if ( FSSimState.rewards.indexOf(thisRewardRule) === -1) {
 								console.log('REWARD:' + thisRewardRule);
-								this.rewards.push(thisRewardRule);
+								FSSimState.rewards.push(thisRewardRule);
 								returnObj.xp = parseInt(FSSimRules.rewardRules[thisRewardRule].xp);
 
 								this.updateGoals();
@@ -561,10 +525,10 @@ angular.module('craftyApp')
 							// recipe unlocks
 							FSSimRules.rewardRules[thisRewardRule].recipeUnlocks.forEach( function( recipe) {
 
-								if ( this.craftables.hasOwnProperty(recipe) === false) {
+								if ( FSSimState.craftables.hasOwnProperty(recipe) === false) {
 									if (this.hasOwnProperty(recipe) === false) {
-										this.craftables[recipe] =  new FSRecipe( recipe, this);
-										this.updateRecipes();
+										FSSimState.craftables[recipe] =  new FSRecipe( recipe, this);
+										FSSimState.updateRecipes();
 										console.log('RECIPE UNLOCK:' + recipe);
 									}
 								}
@@ -587,7 +551,7 @@ angular.module('craftyApp')
 			this.nextGoal = {};
 			for (var thisRewardRule in FSSimRules.rewardRules) {
   				if (FSSimRules.rewardRules.hasOwnProperty(thisRewardRule)) {		
-					if ( this.rewards.indexOf(thisRewardRule) === -1) {
+					if ( FSSimState.rewards.indexOf(thisRewardRule) === -1) {
 						console.log('GOAL:' + thisRewardRule);
 
 						this.nextGoal = angular.copy(FSSimRules.rewardRules[thisRewardRule]);
@@ -609,7 +573,7 @@ angular.module('craftyApp')
   				if (FSSimRules.rewardRules.hasOwnProperty(thisRewardRule)) {
   					if (FSSimRules.rewardRules[thisRewardRule].action === checkDesc.action) {
 						if (FSSimRules.rewardRules[thisRewardRule].target === checkDesc.target) {
-							if ( this.rewards.indexOf(thisRewardRule) === -1) {
+							if ( FSSimState.rewards.indexOf(thisRewardRule) === -1) {
 								return true;	
 							}
 						}
@@ -625,8 +589,8 @@ angular.module('craftyApp')
 		 * @return 
 		 */
 		this.isHarvestable = function (harvestableType) {
-			for ( var characterKey in this.characterObjs ) {
-				if ( this.characterObjs[characterKey].canPerformTask(harvestableType, 'harvesting', false)) {
+			for ( var characterKey in FSSimState.characterObjs ) {
+				if ( FSSimState.characterObjs[characterKey].canPerformTask(harvestableType, 'harvesting', false)) {
 					return true;
 				}
 			}
@@ -638,8 +602,8 @@ angular.module('craftyApp')
 		 * @return 
 		 */
 		this.isGatherable = function (gatherableType) {
-			for ( var characterKey in this.characterObjs ) {
-				if ( this.characterObjs[characterKey].canPerformTask(gatherableType, 'gathering', false)) {
+			for ( var characterKey in FSSimState.characterObjs ) {
+				if ( FSSimState.characterObjs[characterKey].canPerformTask(gatherableType, 'gathering', false)) {
 					return true;
 				}
 			}
@@ -651,8 +615,8 @@ angular.module('craftyApp')
 		 * @return 
 		 */
 		this.isCraftable = function (craftableType) {
-			for ( var characterKey in this.characterObjs ) {
-				if ( this.characterObjs[characterKey].canPerformTask(craftableType, 'crafting', false)) {
+			for ( var characterKey in FSSimState.characterObjs ) {
+				if ( FSSimState.characterObjs[characterKey].canPerformTask(craftableType, 'crafting', false)) {
 					return true;
 				}
 			}
@@ -675,10 +639,10 @@ angular.module('craftyApp')
 				var recipeInput = recipeInputKey;
 				var recipeInputQuantity = recipeInputObj[ recipeInputKey];
 
-				if (recipeInput in this.bank) {
-				  if ( this.bank[ recipeInput ].json.quantity.length < recipeInputQuantity) {
+				if (recipeInput in FSSimState.bank) {
+				  if ( FSSimState.bank[ recipeInput ].json.quantity.length < recipeInputQuantity) {
 				    hasIngredients = false;
-				    this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for ' + recipeKey + ' but only have  ' + this.bank[ recipeInput ].json.quantity.length, log);
+				    this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for ' + recipeKey + ' but only have  ' + FSSimState.bank[ recipeInput ].json.quantity.length, log);
 				  }
 				} else {
 				  this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for crafting ' +  recipeKey+ ' but have none', log);
@@ -696,8 +660,8 @@ angular.module('craftyApp')
 		this.hasCraftingConstructor = function (recipeKey, log) {
 			var hasIngredients = true;
 			if ( FSSimRules.craftableDefines[recipeKey].construction.length > 0) {
-        		var constructor = this.craftableDefines[recipeKey].construction[0];
-        		if ( this.bank.hasOwnProperty(constructor) === false) {
+        		var constructor = FSSimRules.craftableDefines[recipeKey].construction[0];
+        		if ( FSSimState.bank.hasOwnProperty(constructor) === false) {
           			hasIngredients = false;
           			this.contextConsole.log('Require a ' + constructor + ' in the bank for crafting ' + recipeKey, log);
         		} 
@@ -715,13 +679,13 @@ angular.module('craftyApp')
 
 	        switch ( activityCategory) {
 	          case 'gathering':
-	            duration = this.gatherables[taskName].duration(thisCharacter) / this.taskTimeScalar;
+	            duration = FSSimState.gatherables[taskName].duration(thisCharacter) / this.taskTimeScalar;
 	            break;
 	          case 'harvesting':
-	            duration= this.harvestables[taskName].duration(thisCharacter) / this.taskTimeScalar;
+	            duration= FSSimState.harvestables[taskName].duration(thisCharacter) / this.taskTimeScalar;
 	            break;
 	          case 'crafting':
-	            duration = this.craftables[taskName].duration(thisCharacter) / this.taskTimeScalar;
+	            duration = FSSimState.craftables[taskName].duration(thisCharacter) / this.taskTimeScalar;
 	            break;
 	        }
 

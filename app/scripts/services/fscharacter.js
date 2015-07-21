@@ -8,7 +8,7 @@
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSCharacter', function (FSTask, FSBackpack, FSGatherable, FSSimRules) {
+  .factory('FSCharacter', function (FSTask, FSBackpack, FSGatherable, FSSimRules, FSSimState) {
     // Service logic
     // ...
     var thisFactory = null;
@@ -43,7 +43,7 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.getbgcolor =  function( ) {     
-      return  ((thisFactory.selectedCharacter  !== null) && (this.getFullName() === thisFactory.selectedCharacter.getFullName())) ? '#00FF00' : null;       
+      return  ((FSSimState.selectedCharacter  !== null) && (this.getFullName() === FSSimState.selectedCharacter.getFullName())) ? '#00FF00' : null;       
     };
 
     /**
@@ -108,21 +108,21 @@ angular.module('craftyApp')
     FSCharacter.prototype.harvestingOnStop = function () {
       var harvestableType = this.json.activity[0].name;
 
-      thisFactory.harvestables[harvestableType].decrement();
+      FSSimState.harvestables[harvestableType].decrement();
 
-      if ( thisFactory.harvestables[harvestableType].json.quantity === 0) {
-        delete thisFactory.harvestables[harvestableType];
+      if ( FSSimState.harvestables[harvestableType].json.quantity === 0) {
+        delete FSSimState.harvestables[harvestableType];
         thisFactory.updateHarvestables();
       }
 
       // need to ensure there is an instance in gatherables before it can be incremented.
-      if (!(harvestableType in thisFactory.gatherables)) { 
+      if (!(harvestableType in FSSimState.gatherables)) { 
           var obj = {'name': harvestableType, 'quantity': '0'};
-          thisFactory.gatherables[harvestableType] = new FSGatherable(obj, thisFactory);
+          FSSimState.gatherables[harvestableType] = new FSGatherable(obj, thisFactory);
       }
       
-      thisFactory.gatherables[harvestableType].increment();
-      thisFactory.updateGatherables();
+      FSSimState.gatherables[harvestableType].increment();
+      FSSimState.updateGatherables();
     };
 
     /**
@@ -131,10 +131,10 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.gatheringOnStart = function () {
       var gatherableType = this.json.activity[0].name;
-      thisFactory.gatherables[gatherableType].decrement(); 
-      if ( thisFactory.gatherables[gatherableType].json.quantity === 0) {
-        delete thisFactory.gatherables[gatherableType];
-        thisFactory.updateGatherables(); 
+      FSSimState.gatherables[gatherableType].decrement(); 
+      if ( FSSimState.gatherables[gatherableType].json.quantity === 0) {
+        delete FSSimState.gatherables[gatherableType];
+        FSSimState.updateGatherables(); 
       }
     };
 
@@ -145,11 +145,11 @@ angular.module('craftyApp')
     FSCharacter.prototype.gatheringOnStop = function () {
       var gatherableType = this.json.activity[0].name;
 
-      if (!(gatherableType in thisFactory.bank)) {
-        thisFactory.bank[gatherableType] = new FSBackpack({'category':'gatherable', 'name':gatherableType}, thisFactory);
+      if (!(gatherableType in FSSimState.bank)) {
+        FSSimState.bank[gatherableType] = new FSBackpack({'category':'gatherable', 'name':gatherableType});
       }
-      thisFactory.bank[gatherableType].increment(1);
-      thisFactory.updateBank();
+      FSSimState.bank[gatherableType].increment(1);
+      FSSimState.updateBank();
 
       // Rewards
       var rewards = thisFactory.checkRewards( {'action':'gather', 'target':gatherableType});
@@ -185,11 +185,11 @@ angular.module('craftyApp')
         var craftableOutputQuantity = craftableOutputObj[ craftableOutput ];
         
         // add output to bank.
-        if (!(craftableOutput in thisFactory.bank)) {
-          thisFactory.bank[craftableOutput] = new FSBackpack( {'category':FSSimRules.craftableDefines[craftableKey].category, 'name':craftableOutput}, thisFactory);
+        if (!(craftableOutput in FSSimState.bank)) {
+          FSSimState.bank[craftableOutput] = new FSBackpack( {'category':FSSimRules.craftableDefines[craftableKey].category, 'name':craftableOutput});
         }
-        thisFactory.bank[craftableOutput].increment( craftableOutputQuantity);
-        thisFactory.updateBank();
+        FSSimState.bank[craftableOutput].increment( craftableOutputQuantity);
+        FSSimState.updateBank();
 
         //Rewards
         var rewards = thisFactory.checkRewards( {'action':'craft', 'target':craftableOutput});
@@ -210,11 +210,11 @@ angular.module('craftyApp')
 
       switch ( activityCategory) {
         case 'gathering': {
-            if (thisFactory.gatherables.hasOwnProperty(taskName) !== true) {
+            if (FSSimState.gatherables.hasOwnProperty(taskName) !== true) {
               canStartTask = false;
               thisFactory.contextConsole.log('There is no ' + taskName + ' left to gather', log);
             } else {
-              if ( parseInt( thisFactory.gatherables[taskName].json.quantity, 10) === 0) {
+              if ( parseInt( FSSimState.gatherables[taskName].json.quantity, 10) === 0) {
                 thisFactory.contextConsole.log('No ' + taskName + ' left to gather', log);
                 canStartTask = false;
               }
@@ -228,18 +228,18 @@ angular.module('craftyApp')
           }
           break;
         case 'harvesting': {
-            if (thisFactory.harvestables.hasOwnProperty(taskName) !== true) {
+            if (FSSimState.harvestables.hasOwnProperty(taskName) !== true) {
               thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest', log);
               canStartTask = false;
             } else {
-              if ( parseInt(thisFactory.harvestables[taskName].quantity, 10) === 0) {
+              if ( parseInt(FSSimState.harvestables[taskName].quantity, 10) === 0) {
                 thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest', log);
                 canStartTask = false;
               }
               if ( this.hasStatsFor('harvesting') !== true) {
                 canStartTask = false;
               }
-              if ( thisFactory.harvestables[taskName].isHarvestableBy( this) !== true) {
+              if ( FSSimState.harvestables[taskName].isHarvestableBy( this) !== true) {
                 canStartTask = false;
               }
             }

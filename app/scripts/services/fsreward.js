@@ -15,9 +15,8 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    var FSReward = function( json, thisFactory) { 
+    var FSReward = function( json) { 
       this.serializable = json;
-      this.thisFactory = thisFactory;
     };
 
 

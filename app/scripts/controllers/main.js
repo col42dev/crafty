@@ -10,7 +10,7 @@
  * Controller of the craftyApp
  */
 angular.module('craftyApp')
-  .controller('MainCtrl',['$scope', 'FSService', 'FSSimRules', function ($scope, FSService, FSSimRules) {
+  .controller('MainCtrl',['$scope', 'FSService', 'FSSimRules', 'FSSimState', function ($scope, FSService, FSSimRules, FSSimState) {
 
     $scope.getFSService = function() {
       return FSService;
@@ -20,6 +20,9 @@ angular.module('craftyApp')
       return FSSimRules;
     };
 
+    $scope.getFSSimState = function() {
+      return FSSimState;
+    };
 
     FSService.init( $scope);
 
