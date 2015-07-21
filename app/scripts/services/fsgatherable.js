@@ -8,7 +8,7 @@
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSGatherable', function () {
+  .factory('FSGatherable', function (FSSimRules) {
     // Service logic
     // ...
 
@@ -74,7 +74,7 @@ angular.module('craftyApp')
     */
     FSGatherable.prototype.duration =  function(  character) {
       character = character;
-      var duration = this.simulation.gatherableDefines[this.json.name].duration;
+      var duration = FSSimRules.gatherableDefines[this.json.name].duration;
       return duration;
     };
 

@@ -8,7 +8,7 @@
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSHarvestable', function () {
+  .factory('FSHarvestable', function (FSSimRules) {
     // Service logic
     // ...
 
@@ -18,10 +18,10 @@ angular.module('craftyApp')
       this.quantitybgcolor = 'rgba(200, 200, 200, 0.0)';
 
       // replenish quantity
-      if ( this.simulation.harvestableDefines[this.json.name].hasOwnProperty('replenish') === true ) {
+      if ( FSSimRules.harvestableDefines[this.json.name].hasOwnProperty('replenish') === true ) {
            setInterval( (function () {
               this.json.quantity = parseInt( this.json.quantity, 10)  + 1;
-            }).bind(this), this.simulation.harvestableDefines[this.json.name].replenish * 1000);
+            }).bind(this), FSSimRules.harvestableDefines[this.json.name].replenish * 1000);
       }
     };
 
@@ -98,18 +98,18 @@ angular.module('craftyApp')
 
       tools.forEach( ( function( thisTool) {
 
-        this.simulation.toolDefines[thisTool].actions.forEach( ( function ( thisAction) {
+        FSSimRules.toolDefines[thisTool].actions.forEach( ( function ( thisAction) {
 
             var toolHasRequiredAction = false;
 
             // match harvest actions with actionables.
-            this.simulation.harvestableDefines[this.json.name].actionable.forEach( ( function ( thisActionable){
+            FSSimRules.harvestableDefines[this.json.name].actionable.forEach( ( function ( thisActionable){
 
               if (thisAction === thisActionable) {
 
                 toolHasRequiredAction = true;
                 //
-                if ( parseInt( this.simulation.toolDefines[ thisTool ].strength, 10) >= parseInt( this.simulation.harvestableDefines[this.json.name].hardness, 10)) {
+                if ( parseInt( FSSimRules.toolDefines[ thisTool ].strength, 10) >= parseInt( FSSimRules.harvestableDefines[this.json.name].hardness, 10)) {
                   isHarvestable = true;
                 } else {
                     //toolStrengthMessage = thisTool + ' not strong enough to harvest ' + this.json.name;
@@ -156,14 +156,14 @@ angular.module('craftyApp')
         tools.push('Hands');
       }
 
-      var duration = this.simulation.harvestableDefines[this.json.name].duration;
+      var duration = FSSimRules.harvestableDefines[this.json.name].duration;
 
       // refactor
-      if ( this.simulation.toolDefines[ tools[0] ].strength > duration/2) {
+      if ( FSSimRules.toolDefines[ tools[0] ].strength > duration/2) {
         duration /= 2;
         duration = Math.ceil(duration);
       } else {
-        duration -= this.simulation.toolDefines[ tools[0] ].strength;
+        duration -= FSSimRules.toolDefines[ tools[0] ].strength;
       }
 
       return duration;

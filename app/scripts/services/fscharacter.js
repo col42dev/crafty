@@ -8,7 +8,7 @@
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSCharacter', function (FSTask, FSBackpack, FSGatherable) {
+  .factory('FSCharacter', function (FSTask, FSBackpack, FSGatherable, FSSimRules) {
     // Service logic
     // ...
     var thisFactory = null;
@@ -74,7 +74,7 @@ angular.module('craftyApp')
     FSCharacter.prototype.stopActiveTask = function () {
 
       //clear task intervals
-      for (var statKeyname in thisFactory.taskRules[this.json.activity[0].category].stat) {
+      for (var statKeyname in FSSimRules.taskRules[this.json.activity[0].category].stat) {
         clearInterval( this.statUpdateInterval[statKeyname]);
       }
 
@@ -82,7 +82,7 @@ angular.module('craftyApp')
       this[ this.json.activity[0].category + 'OnStop' ]();
 
       //xp gain
-      this.json.xp += parseInt(thisFactory.taskRules[this.json.activity[0].category].xp, 10);
+      this.json.xp += parseInt(FSSimRules.taskRules[this.json.activity[0].category].xp, 10);
      
       this.json.activity.splice(0, 1);
 
@@ -176,7 +176,7 @@ angular.module('craftyApp')
       var craftableKey = this.json.activity[0].name;
 
       // generate output in bank.
-      var craftableOutputObj = thisFactory.craftableDefines[craftableKey].output;
+      var craftableOutputObj = FSSimRules.craftableDefines[craftableKey].output;
 
       // assumes only one type is craftableOutput.
       for (var outputKey in craftableOutputObj) {
@@ -186,7 +186,7 @@ angular.module('craftyApp')
         
         // add output to bank.
         if (!(craftableOutput in thisFactory.bank)) {
-          thisFactory.bank[craftableOutput] = new FSBackpack( {'category':thisFactory.craftableDefines[craftableKey].category, 'name':craftableOutput}, thisFactory);
+          thisFactory.bank[craftableOutput] = new FSBackpack( {'category':FSSimRules.craftableDefines[craftableKey].category, 'name':craftableOutput}, thisFactory);
         }
         thisFactory.bank[craftableOutput].increment( craftableOutputQuantity);
         thisFactory.updateBank();
@@ -280,7 +280,7 @@ angular.module('craftyApp')
 
         // Set modify stat timer intervals
         this.statUpdateInterval = {};
-        for (var statKeyname in thisFactory.taskRules[activityCategory].stat) {
+        for (var statKeyname in FSSimRules.taskRules[activityCategory].stat) {
           thisCharacter.modifyStat( statKeyname, 'current', -1); // start task with immediate stats decrement.
 
           (function (thisStatsKeyname) { 
@@ -288,7 +288,7 @@ angular.module('craftyApp')
               if ( this.hasStatsFor(activityCategory) === true) {
                 this.modifyStat( thisStatsKeyname, 'current', -1);
               }
-            }).bind(thisCharacter), thisFactory.taskRules[activityCategory].stat[thisStatsKeyname].secondsPerDecrement * 1000);
+            }).bind(thisCharacter), FSSimRules.taskRules[activityCategory].stat[thisStatsKeyname].secondsPerDecrement * 1000);
           }(statKeyname));
         }
 
@@ -329,20 +329,20 @@ angular.module('craftyApp')
     FSCharacter.prototype.hasCraftingProficiencyFor = function (recipeKey, log) {
       var hasRequiredProficiency = true;
 
-      if ( thisFactory.craftableDefines[recipeKey].hasOwnProperty('proficiency') === true) {
+      if ( FSSimRules.craftableDefines[recipeKey].hasOwnProperty('proficiency') === true) {
 
             hasRequiredProficiency = false;
 
-            if ( this.json.proficiency.profession === thisFactory.craftableDefines[recipeKey].proficiency.profession) {
-                if ( parseInt(this.json.proficiency.tier, 10) >= parseInt(thisFactory.craftableDefines[recipeKey].proficiency.tier, 10)){
+            if ( this.json.proficiency.profession === FSSimRules.craftableDefines[recipeKey].proficiency.profession) {
+                if ( parseInt(this.json.proficiency.tier, 10) >= parseInt(FSSimRules.craftableDefines[recipeKey].proficiency.tier, 10)){
                   hasRequiredProficiency = true;
                 } else if (log === true) {
-                  var requiredProfession = thisFactory.craftableDefines[recipeKey].proficiency.profession;
-                  var requiredTier = parseInt(thisFactory.craftableDefines[recipeKey].proficiency.tier, 10);
+                  var requiredProfession = FSSimRules.craftableDefines[recipeKey].proficiency.profession;
+                  var requiredTier = parseInt(FSSimRules.craftableDefines[recipeKey].proficiency.tier, 10);
                   thisFactory.contextConsole.log(this.json.name  + ' requires tier ' + requiredTier + ' in ' + requiredProfession + ' but is only tier ' + this.json.proficiency.tier );
                 }
             } else if (log === true) {
-                  thisFactory.contextConsole.log('A ' + thisFactory.craftableDefines[recipeKey].proficiency.profession + ' is needed to craft a ' + recipeKey);
+                  thisFactory.contextConsole.log('A ' + FSSimRules.craftableDefines[recipeKey].proficiency.profession + ' is needed to craft a ' + recipeKey);
             }
       }
 
@@ -373,7 +373,7 @@ angular.module('craftyApp')
     FSCharacter.prototype.hasGatheringDependencies = function ( gatheringName) {
       var hasDependencies = false;
 
-      thisFactory.gatherableDefines[gatheringName].actionable.forEach( ( function(thisActionable) {
+      FSSimRules.gatherableDefines[gatheringName].actionable.forEach( ( function(thisActionable) {
         if ( this.hasToolAction(thisActionable) === true) {
           hasDependencies = true;
         } 
@@ -390,8 +390,8 @@ angular.module('craftyApp')
 
       var hasStats = true;
 
-      for (var statKeyname in thisFactory.taskRules[taskCategory].stat) {
-        var required = parseInt( thisFactory.taskRules[taskCategory].stat[statKeyname].minRequired, 10);
+      for (var statKeyname in FSSimRules.taskRules[taskCategory].stat) {
+        var required = parseInt( FSSimRules.taskRules[taskCategory].stat[statKeyname].minRequired, 10);
         var current = parseInt( this.json.stats[statKeyname].current, 10) ;
         if ( current< required) {
           hasStats = false;
@@ -420,7 +420,7 @@ angular.module('craftyApp')
       } 
 
       tools.forEach( ( function( thisTool) {
-        thisFactory.toolDefines[thisTool].actions.forEach( ( function ( action) {
+        FSSimRules.toolDefines[thisTool].actions.forEach( ( function ( action) {
           if ( toolAction === action) {
             bHasToolAction = true;
           } 

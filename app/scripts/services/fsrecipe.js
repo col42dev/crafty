@@ -8,7 +8,7 @@
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSRecipe', function () {
+  .factory('FSRecipe', function (FSSimRules) {
     // Service logic
     // ...
 
@@ -19,7 +19,7 @@ angular.module('craftyApp')
       this.json = { 'name' : name, 'category' : 'placeholder'};
       this.json = { 'name' : name, 'category' : this.getCategory()};
 
-      this.construction = angular.copy(this.thisFactory.craftableDefines[this.json.name].construction); // needed for table filtering only
+      this.construction = angular.copy(FSSimRules.craftableDefines[this.json.name].construction); // needed for table filtering only
       if (this.construction.length === 0) {
         this.construction.push( 'none'); 
       }
@@ -40,8 +40,8 @@ angular.module('craftyApp')
      * @return 
      */
     FSRecipe.prototype.getCategory = function( ) {
-      if (this.thisFactory.craftableDefines.hasOwnProperty(this.json.name) === true) {
-          return this.thisFactory.craftableDefines[this.json.name].category;
+      if (FSSimRules.craftableDefines.hasOwnProperty(this.json.name) === true) {
+          return FSSimRules.craftableDefines[this.json.name].category;
       }
       return 'unknown category';
     };
@@ -54,7 +54,7 @@ angular.module('craftyApp')
     FSRecipe.prototype.duration =  function(  character) {
 
       character = character;
-      var craftingDuration = this.thisFactory.craftableDefines[this.json.name].duration ;
+      var craftingDuration = FSSimRules.craftableDefines[this.json.name].duration ;
           
       return craftingDuration;
     };

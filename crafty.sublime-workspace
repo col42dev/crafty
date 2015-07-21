@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"in",
+				"indexOf"
+			],
+			[
+				"harves",
+				"harvestableDefines"
+			],
+			[
 				"pr",
 				"proficiency"
 			],
@@ -52,116 +60,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/scripts/services/fsrecipe.js",
+			"file": "app/json/rules.json",
 			"settings":
 			{
-				"buffer_size": 2544,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fscharacter.js",
-			"settings":
-			{
-				"buffer_size": 15768,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/bank.html",
-			"settings":
-			{
-				"buffer_size": 2132,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/characterselect.html",
-			"settings":
-			{
-				"buffer_size": 2571,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fssimfactory.js",
-			"settings":
-			{
-				"buffer_size": 16646,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsbackpack.js",
-			"settings":
-			{
-				"buffer_size": 2181,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 45 files for \"FSBackpack\"\n\n/Users/colinmoore/Dev/crafty/app/index.html:\n  100          <script src=\"scripts/services/fscharacter.js\"></script>\n  101          <script src=\"scripts/services/fstask.js\"></script>\n  102:         <script src=\"scripts/services/fsbackpack.js\"></script>\n  103          <script src=\"scripts/services/fsgatherable.js\"></script>\n  104          <script src=\"scripts/services/fsrecipe.js\"></script>\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsbackpack.js:\n    3  /**\n    4   * @ngdoc service\n    5:  * @name craftyApp.FSBackpack\n    6   * @description\n    7:  * # FSBackpack\n    8   * Factory in the craftyApp.\n    9   */\n   10  angular.module('craftyApp')\n   11:   .factory('FSBackpack', function () {\n   12      // Service logic\n   13      \n   14:     // FSBackpack\n   15:     var FSBackpack = function(obj) { \n   16          this.simulation = simulation;\n   17          obj.quantity = [];\n   ..\n   25       * @return \n   26       */\n   27:     FSBackpack.prototype.increment = function( amount) {\n   28        for (var i = 0; i < amount; i ++) {\n   29          this.json.quantity.push({});\n   ..\n   35       * @return \n   36       */\n   37:     FSBackpack.prototype.decrement = function( amount) {\n   38        for (var i = 0; i < amount; i ++) {\n   39          this.json.quantity.pop();\n   ..\n   45       * @return \n   46       */\n   47:     FSBackpack.prototype.bgcolor = function( ) {\n   48        var color = null;\n   49        switch (this.category) {\n   ..\n   67    \n   68  \n   69:     return FSBackpack;\n   70    });\n   71  \n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js:\n    9   */\n   10  angular.module('craftyApp')\n   11:   .factory('FSCharacter', function (FSTask, FSBackpack, FSGatherable) {\n   12      // Service logic\n   13      // ...\n   ..\n  148  \n  149        if (!(gatherableType in thisFactory.bank)) {\n  150:         thisFactory.bank[gatherableType] = new FSBackpack({'category':'gatherable', 'name':gatherableType});\n  151        }\n  152        thisFactory.bank[gatherableType].increment(1);\n  ...\n  185          // add output to bank.\n  186          if (!(craftableOutput in thisFactory.bank)) {\n  187:           thisFactory.bank[craftableOutput] = new FSBackpack( {'category':thisFactory.craftableDefines[craftableKey].category, 'name':craftableOutput});\n  188          }\n  189          thisFactory.bank[craftableOutput].increment( craftableOutputQuantity);\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimfactory.js:\n    9   */\n   10  angular.module('craftyApp')\n   11:   .factory('FSSimFactory', function ( FSCharacter, FSTask, FSBackpack, FSGatherable,  FSRecipe, FSHarvestable, FSContextConsole) {\n   12      // AngularJS will instantiate a singleton by calling \"new\" on this function\n   13  \n   ..\n   96  	        		category = 'food';\n   97  	        	}\n   98: 	          	this.bank[item.name] = new FSBackpack({'category':category, 'name':item.name});\n   99  	       		this.bank[item.name].increment( item.quantity );\n  100  	        }).bind(this)); \n  101  \n  102  \n  103: 	        this.bank[''] = new FSBackpack({'category':'constructor', 'name':''});\n  104  	       	this.bank[''].increment( 100 );\n  105  \n  ...\n  280  \n  281  			    if ( thisFactory.bank.hasOwnProperty(toolName) === false) {\n  282: 					thisFactory.bank[toolName] = new FSBackpack({'category':'tool', 'name':toolName});\n  283  			    }\n  284  			    thisFactory.bank[toolName].increment(1);\n  ...\n  316  					if (this.bank[bankItemKey].json.quantity.length > 0) {\n  317  						this.bank[bankItemKey].decrement(1) ;\n  318: 						this.selectedCharacter.json.tools.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name} ));\n  319  \n  320  						if ( this.bank[bankItemKey].json.quantity.length === 0) {\n  ...\n  348  					if (this.bank[bankItemKey].json.quantity.length > 0) {\n  349  						this.bank[bankItemKey].decrement(1) ;\n  350: 						this.selectedCharacter.json.weapons.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name} ));\n  351  \n  352  						if ( this.bank[bankItemKey].json.quantity.length === 0) {\n\n19 matches across 4 files\n",
-			"settings":
-			{
-				"buffer_size": 4216,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "app/views/recipes.html",
-			"settings":
-			{
-				"buffer_size": 2294,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/styles/main.css",
-			"settings":
-			{
-				"buffer_size": 2266,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsharvestable.js",
-			"settings":
-			{
-				"buffer_size": 5068,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsgatherable.js",
-			"settings":
-			{
-				"buffer_size": 2422,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/harvestables.html",
-			"settings":
-			{
-				"buffer_size": 1652,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/gatherables.html",
-			"settings":
-			{
-				"buffer_size": 2275,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/charactersheetstats.html",
-			"settings":
-			{
-				"buffer_size": 3125,
+				"buffer_size": 41147,
 				"line_ending": "Unix"
 			}
 		},
@@ -169,12 +71,54 @@
 			"file": "app/scripts/services/fssimservice.js",
 			"settings":
 			{
-				"buffer_size": 7076,
+				"buffer_size": 7040,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/rewards.html",
+			"file": "app/scripts/services/fssimfactory.js",
+			"settings":
+			{
+				"buffer_size": 22657,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 46 files for \"selectedCharacter\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js:\n   44       */\n   45      FSCharacter.prototype.getbgcolor =  function( ) {     \n   46:       return  ((thisFactory.selectedCharacter  !== null) && (this.getFullName() === thisFactory.selectedCharacter.getFullName())) ? '#00FF00' : null;       \n   47      };\n   48  \n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsgatherable.js:\n   62        var color = 'rgba(20, 200, 20, 0.25)';     \n   63  \n   64:       if( this.simulation.selectedCharacter.hasGatheringDependencies(this.json.name) === false) {\n   65          color = 'rgba(200, 20, 20, 0.25)'; \n   66        }\n   67  \n   68:       if ( this.simulation.selectedCharacter.hasStatsFor('gathering') === false) {\n   69          color = 'rgba(200, 20, 20, 0.25)'; \n   70        }\n   71  \n   72:       if ( this.simulation.selectedCharacter.hasSpareActivitySlot() === false) {\n   73          color = 'rgba(200, 20, 20, 0.25)';\n   74        }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsharvestable.js:\n   67        var color =  'rgba(20, 200, 20, 0.25)';  \n   68  \n   69:       if ( this.isHarvestableBy( this.simulation.selectedCharacter) === false) {\n   70          color = 'rgba(200, 20, 20, 0.25)';\n   71        }\n   72  \n   73  \n   74:       if ( this.simulation.selectedCharacter.hasStatsFor('harvesting') === false) {\n   75          color = 'rgba(200, 20, 20, 0.25)';\n   76        }\n   77  \n   78:       if ( this.simulation.selectedCharacter.hasSpareActivitySlot() === false) {\n   79          color = 'rgba(200, 20, 20, 0.25)';\n   80        }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js:\n   47  \n   48        // has stat level\n   49:       if ( this.thisFactory.selectedCharacter.hasStatsFor('crafting') === false) {\n   50          enabled = false;\n   51        }\n   52  \n   53        // crafting proficiency\n   54:       if ( this.thisFactory.selectedCharacter.hasCraftingProficiencyFor(this.json.name) === false) {\n   55          enabled = false;\n   56        }\n   57  \n   58:       if ( this.thisFactory.selectedCharacter.hasSpareActivitySlot() === false) {\n   59          enabled = false;\n   60        }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimfactory.js:\n   57   				var characterName = thisCharacter.name;\n   58  	          	this.characterObjs[characterName] = new FSCharacter(thisCharacter, thisFactory);\n   59: 	          	this.selectedCharacter = this.characterObjs[characterName];\n   60  	        }).bind(this)); \n   61  	       	this.onClickCharacter = function ( character) {\n   62: 	        	this.selectedCharacter = character;\n   63  	        };\n   64  \n   ..\n  319  					if (this.bank[bankItemKey].json.quantity.length > 0) {\n  320  						this.bank[bankItemKey].decrement(1) ;\n  321: 						this.selectedCharacter.json.tools.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name}, thisFactory ));\n  322  \n  323  						if ( this.bank[bankItemKey].json.quantity.length === 0) {\n  ...\n  336  							for (var statSubType in this.foodDefines[bankItemKey].onConsume.stat[statType]) {\n  337  								var delta = parseInt(this.foodDefines[bankItemKey].onConsume.stat[statType][statSubType], 10);\n  338: 								this.selectedCharacter.modifyStat( statType, statSubType, delta);\n  339  							}\n  340  						}\n  ...\n  351  					if (this.bank[bankItemKey].json.quantity.length > 0) {\n  352  						this.bank[bankItemKey].decrement(1) ;\n  353: 						this.selectedCharacter.json.weapons.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name}, thisFactory ));\n  354  \n  355  						if ( this.bank[bankItemKey].json.quantity.length === 0) {\n  ...\n  368  		 */\n  369  		this.onClickGatherables = function (gatherableType) {\n  370: 			if ( this.selectedCharacter !== null) {\n  371: 				this.selectedCharacter.addTask( gatherableType, 'gathering');	\n  372  			}\n  373  		};\n  ...\n  378  		 */\n  379  		this.onClickHarvestables = function (harvestableType) {\n  380: 			if ( this.selectedCharacter !== null) {\n  381: 			    this.selectedCharacter.addTask( harvestableType, 'harvesting');	\n  382  			}\n  383  		};\n  ...\n  388  		 */\n  389  		this.onClickRecipes = function (recipeKey) {\n  390: 			if ( this.selectedCharacter !== null) {\n  391: 		        this.selectedCharacter.addTask( recipeKey, 'crafting');		\n  392  		    }          	\n  393  		};\n\n/Users/colinmoore/Dev/crafty/app/views/charactersheet.html:\n    6    <thead>\n    7        <td class=\"col-sm-7\">\n    8:         <h4>{{getFSService().simulation.selectedCharacter.json.name}}</h4>\n    9        </td>\n   10        <td class=\"col-sm-6\">\n   ..\n   15      <tr>\n   16        <td class=\"col-sm-7\">\n   17:         <image width =\"100%\" src=\"{{getFSService().simulation.selectedCharacter.json.image}}\"></image>\n   18        </td>\n   19        <td class=\"col-sm-6\">\n\n/Users/colinmoore/Dev/crafty/app/views/charactersheetstats.html:\n    9              <td><b>Profession</b></td>\n   10                <td class=\"noselect\" >\n   11:                 {{getFSService().simulation.selectedCharacter.json.proficiency.profession}}\n   12                </td>\n   13                  <td class=\"noselect\" >\n   14:                   <input ng-model=\"getFSService().simulation.selectedCharacter.json.proficiency.tier\" width=\"2\">\n   15                    \n   16                </td>\n   ..\n   32            <tr class=\"noselect\">\n   33                <td  class=\"noselect\" >\n   34:                 {{getFSService().simulation.selectedCharacter.json.stats.health.current}} / {{getFSService().simulation.selectedCharacter.json.stats.health.max}} \n   35                </td>\n   36                <td  class=\"noselect\" >\n   37:                 {{getFSService().simulation.selectedCharacter.json.stats.energy.current}} / {{getFSService().simulation.selectedCharacter.json.stats.energy.max}} \n   38                </td>\n   39                <td  class=\"noselect\" >\n   40:                 {{getFSService().simulation.selectedCharacter.json.stats.mind.current}} /  {{getFSService().simulation.selectedCharacter.json.stats.mind.max}}\n   41                </td>\n   42            </tr>\n   ..\n   52            <tr class=\"noselect\">\n   53              <td><b>Activity</b></td>\n   54:               <td ng-repeat=\"v in getFSService().simulation.selectedCharacter.json.activity\" class=\"noselect\" >\n   55                  {{v.name}}\n   56                </td>\n   ..\n   65           <tr class=\"noselect\">\n   66              <td><b>Tools</b></td>\n   67:             <td ng-repeat=\"v in getFSService().simulation.selectedCharacter.json.tools\" class=\"noselect\" ng-click=\"getFSService().simulation.onClickCharacterTool(getFSService().simulation.selectedCharacter, $index)\"> \n   68                <div style = \"background:{{v.bgcolor()}};\">  {{v.json.name}}</div>\n   69              </td> \n   ..\n   78           <tr class=\"noselect\">\n   79              <td><b>Weapons</b></td>\n   80:             <td  ng-repeat=\"v in getFSService().simulation.selectedCharacter.json.weapons\" class=\"noselect\" ng-click=\"getFSService().simulation.onClickCharacterWeapon(getFSService().simulation.selectedCharacter, $index)\" bgcolor={{v.bgcolor()}} >\n   81                  {{v.json.name}}\n   82              </td>\n\n/Users/colinmoore/Dev/crafty/app/views/gatherables.html:\n   38            <div style = \"background:{{v.quantitybgcolor}};\">  {{v.json.quantity}}</div>\n   39        </td> \n   40:       <td class=\"col-sm-1\"> {{v.duration(getFSService().simulation.selectedCharacter)}}</td> \n   41      </tr>\n   42    </tbody>\n\n/Users/colinmoore/Dev/crafty/app/views/harvestables.html:\n   32            <div style = \"background:{{v.quantitybgcolor}};\">  {{v.json.quantity}}</div>\n   33          </td> \n   34:         <td class=\"col-sm-1\"> {{v.duration(getFSService().simulation.selectedCharacter)}}</td> \n   35        </tr>\n   36      </tbody>\n\n/Users/colinmoore/Dev/crafty/app/views/recipes.html:\n   34          </td> \n   35          <td class=\"col-sm-3\" >{{v.getCategory()}}</td> \n   36:         <td class=\"col-sm-1\"> {{v.duration(getFSService().simulation.selectedCharacter)}}</td> \n   37        </tr>\n   38      </tbody>\n\n40 matches across 10 files\n",
+			"settings":
+			{
+				"buffer_size": 8256,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "app/scripts/services/fsgatherable.js",
+			"settings":
+			{
+				"buffer_size": 2122,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/main.html",
+			"settings":
+			{
+				"buffer_size": 1951,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/colinmoore/dev/crafty/app/views/goals.html",
+			"settings":
+			{
+				"buffer_size": 684,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/colinmoore/dev/crafty/app/views/rewards.html",
 			"settings":
 			{
 				"buffer_size": 1041,
@@ -182,10 +126,53 @@
 			}
 		},
 		{
-			"file": "app/scripts/services/fsreward.js",
+			"file": "app/views/contextinfoconsole.html",
 			"settings":
 			{
-				"buffer_size": 478,
+				"buffer_size": 319,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "'use strict';\n\n/**\n * @ngdoc service\n * @name craftyApp.fsCharacter\n * @description\n * # fsCharacter\n * Factory in the craftyApp.\n */\nangular.module('craftyApp')\n  .factory('FSCharacter', function (FSTask, FSBackpack, FSGatherable) {\n    // Service logic\n    // ...\n    var thisFactory = null;\n\n    /**\n     * @desc \n     * @return \n     */\n    var FSCharacter = function(json, simFactory) {\n        thisFactory = simFactory;\n        this.json = json;\n\n        // regenerate stats timers\n        ['health', 'energy', 'mind'].forEach( (function( statName) {\n\n          setInterval( (function () {\n            if ( this.json.activity.length === 0) {\n              this.modifyStat( statName, 'current', 1);\n            } else {\n                  //regen stats if character is paused on current task.\n                  if ( this.hasStatsFor( this.json.activity[0].category ) === false) {\n                        this.modifyStat( statName, 'current', 1);\n                  }\n            }\n           }).bind(this), this.json.stats[statName].regeneratePeriod * 1000);\n\n        }).bind(this));\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.getbgcolor =  function( ) {     \n      return  ((thisFactory.selectedCharacter  !== null) && (this.getFullName() === thisFactory.selectedCharacter.getFullName())) ? '#00FF00' : null;       \n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.getFullName = function () {\n      return this.json.name;\n    };\n\n    /**\n     * @desc - push task to activity queue and trigger it if queu is empty\n     * @return \n     */\n    FSCharacter.prototype.addTask = function ( taskName, taskCategory) {\n      if ( this.hasSpareActivitySlot() === true) {\n        this.json.activity.push( new FSTask( {'name':taskName, 'category':taskCategory}));\n        if (this.json.activity.length === 1) {\n          this.startNextTask();\n        }\n      }\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.stopActiveTask = function () {\n\n      //clear task intervals\n      for (var statKeyname in thisFactory.taskRules[this.json.activity[0].category].stat) {\n        clearInterval( this.statUpdateInterval[statKeyname]);\n      }\n\n      //onStop task\n      this[ this.json.activity[0].category + 'OnStop' ]();\n\n      //xp gain\n      this.json.xp += parseInt(thisFactory.taskRules[this.json.activity[0].category].xp, 10);\n     \n      this.json.activity.splice(0, 1);\n\n      // start next queued activity\n      if (this.json.activity.length > 0) {\n        this.startNextTask();\n      }\n\n      thisFactory.ctrllrScopeApply();\n    };\n\n     /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.harvestingOnStart = function () {\n    };\n\n     /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.harvestingOnStop = function () {\n      var harvestableType = this.json.activity[0].name;\n\n      thisFactory.harvestables[harvestableType].decrement();\n\n      if ( thisFactory.harvestables[harvestableType].json.quantity === 0) {\n        delete thisFactory.harvestables[harvestableType];\n        thisFactory.updateHarvestables();\n      }\n\n      // need to ensure there is an instance in gatherables before it can be incremented.\n      if (!(harvestableType in thisFactory.gatherables)) { \n          var obj = {'name': harvestableType, 'quantity': '0'};\n          thisFactory.gatherables[harvestableType] = new FSGatherable(obj, thisFactory);\n      }\n      \n      thisFactory.gatherables[harvestableType].increment();\n      thisFactory.updateGatherables();\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.gatheringOnStart = function () {\n      var gatherableType = this.json.activity[0].name;\n      thisFactory.gatherables[gatherableType].decrement(); \n      if ( thisFactory.gatherables[gatherableType].json.quantity === 0) {\n        delete thisF  actory.gatherables[gatherableType];\n        thisFactory.updateGatherables(); \n      }\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.gatheringOnStop = function () {\n      var gatherableType = this.json.activity[0].name;\n\n      if (!(gatherableType in thisFactory.bank)) {\n        thisFactory.bank[gatherableType] = new FSBackpack({'category':'gatherable', 'name':gatherableType}, thisFactory);\n      }\n      thisFactory.bank[gatherableType].increment(1);\n      thisFactory.updateBank();\n\n      // Rewards\n      var rewards = thisFactory.checkRewards( {'action':'gather', 'target':gatherableType});\n      if (rewards.hasOwnProperty('xp')) {\n          this.json.xp += rewards.xp;\n      }\n    };\n\n\n    /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.craftingOnStart = function () {\n      thisFactory.bankTransaction( 'startCrafting', this.json.activity[0].name);\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.craftingOnStop = function () {\n\n      var craftableKey = this.json.activity[0].name;\n\n      // generate output in bank.\n      var craftableOutputObj = thisFactory.craftableDefines[craftableKey].output;\n\n      // assumes only one type is craftableOutput.\n      for (var outputKey in craftableOutputObj) {\n\n        var craftableOutput = outputKey;\n        var craftableOutputQuantity = craftableOutputObj[ craftableOutput ];\n        \n        // add output to bank.\n        if (!(craftableOutput in thisFactory.bank)) {\n          thisFactory.bank[craftableOutput] = new FSBackpack( {'category':thisFactory.craftableDefines[craftableKey].category, 'name':craftableOutput}, thisFactory);\n        }\n        thisFactory.bank[craftableOutput].increment( craftableOutputQuantity);\n        thisFactory.updateBank();\n\n        //Rewards\n        var rewards = thisFactory.checkRewards( {'action':'craft', 'target':craftableOutput});\n        if (rewards.hasOwnProperty('xp')) {//bug: do we want to add xp for each output object?\n          this.json.xp += rewards.xp;\n        }\n      }\n    };\n\n\n    /**\n     * @desc - can character start the next task in queue.\n     * @return \n     */\n    FSCharacter.prototype.canPerformTask = function (taskName, activityCategory, log) {     \n\n      var canStartTask = true;\n\n      switch ( activityCategory) {\n        case 'gathering': {\n            if (thisFactory.gatherables.hasOwnProperty(taskName) !== true) {\n              canStartTask = false;\n              thisFactory.contextConsole.log('There is no ' + taskName + ' left to gather', log);\n            } else {\n              if ( parseInt( thisFactory.gatherables[taskName].json.quantity, 10) === 0) {\n                thisFactory.contextConsole.log('No ' + taskName + ' left to gather', log);\n                canStartTask = false;\n              }\n              if ( this.hasStatsFor('gathering') !== true) {\n                canStartTask = false;\n              }\n              if (this.hasGatheringDependencies(taskName) !== true) {\n                canStartTask = false;\n              }\n            } \n          }\n          break;\n        case 'harvesting': {\n            if (thisFactory.harvestables.hasOwnProperty(taskName) !== true) {\n              thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest', log);\n              canStartTask = false;\n            } else {\n              if ( parseInt(thisFactory.harvestables[taskName].quantity, 10) === 0) {\n                thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest', log);\n                canStartTask = false;\n              }\n              if ( this.hasStatsFor('harvesting') !== true) {\n                canStartTask = false;\n              }\n              if ( thisFactory.harvestables[taskName].isHarvestableBy( this) !== true) {\n                canStartTask = false;\n              }\n            }\n          }\n          break;\n\n        case 'crafting': {  \n            if ( thisFactory.hasCraftingIngredients(taskName, log) !== true) {\n              canStartTask = false;\n            }\n            if ( thisFactory.hasCraftingConstructor(taskName, log) !== true) {\n              canStartTask = false;\n            }\n            if ( this.hasStatsFor('crafting') !== true) {\n              canStartTask = false;\n            }\n            if ( this.hasCraftingProficiencyFor(taskName, log) !== true) {\n              canStartTask = false;\n            }\n          }\n          break;\n      }\n\n      return canStartTask;\n    };\n\n    /**\n     * @desc - execute next queued task.\n     * @return \n     */\n    FSCharacter.prototype.startNextTask = function () {  \n\n      var taskName = this.json.activity[0].name;\n      var thisCharacter = this;\n      var activityCategory = this.json.activity[0].category;\n\n      if (this.canPerformTask(taskName, activityCategory) === true) {\n\n        // Set modify stat timer intervals\n        this.statUpdateInterval = {};\n        for (var statKeyname in thisFactory.taskRules[activityCategory].stat) {\n          thisCharacter.modifyStat( statKeyname, 'current', -1); // start task with immediate stats decrement.\n\n          (function (thisStatsKeyname) { \n            thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {\n              if ( this.hasStatsFor(activityCategory) === true) {\n                this.modifyStat( thisStatsKeyname, 'current', -1);\n              }\n            }).bind(thisCharacter), thisFactory.taskRules[activityCategory].stat[thisStatsKeyname].secondsPerDecrement * 1000);\n          }(statKeyname));\n        }\n\n        this.updateActiveTaskTotalSeconds = thisFactory.getTaskDuration(activityCategory, taskName, thisCharacter);    \n     \n        // set task time remaining timer.\n        this.updateActiveTaskRemainingSeconds = this.updateActiveTaskTotalSeconds;\n        this.updateActiveTaskInterval =  setInterval( function() {\n          if ( thisCharacter.hasStatsFor( activityCategory ) === true) {\n            thisCharacter.updateActiveTaskRemainingSeconds --;\n            if ( thisCharacter.updateActiveTaskRemainingSeconds <= 0) {\n              clearInterval(thisCharacter.updateActiveTaskInterval);\n              thisCharacter.stopActiveTask();\n            }\n          }\n        }, 1000);\n\n        this[activityCategory + 'OnStart' ]();\n\n      }  // can start task\n      else  {\n\n        // skip to next task in queue?\n        this.json.activity.splice(0, 1);\n        if (this.json.activity.length > 0) {\n          this.startNextTask();\n        }\n\n      }\n\n    };\n\n\n    /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.hasCraftingProficiencyFor = function (recipeKey, log) {\n      var hasRequiredProficiency = true;\n\n      if ( thisFactory.craftableDefines[recipeKey].hasOwnProperty('proficiency') === true) {\n\n            hasRequiredProficiency = false;\n\n            if ( this.json.proficiency.profession === thisFactory.craftableDefines[recipeKey].proficiency.profession) {\n                if ( parseInt(this.json.proficiency.tier, 10) >= parseInt(thisFactory.craftableDefines[recipeKey].proficiency.tier, 10)){\n                  hasRequiredProficiency = true;\n                } else if (log === true) {\n                  var requiredProfession = thisFactory.craftableDefines[recipeKey].proficiency.profession;\n                  var requiredTier = parseInt(thisFactory.craftableDefines[recipeKey].proficiency.tier, 10);\n                  thisFactory.contextConsole.log(this.json.name  + ' requires tier ' + requiredTier + ' in ' + requiredProfession + ' but is only tier ' + this.json.proficiency.tier );\n                }\n            } else if (log === true) {\n                  thisFactory.contextConsole.log('A ' + thisFactory.craftableDefines[recipeKey].proficiency.profession + ' is needed to craft a ' + recipeKey);\n            }\n      }\n\n      return hasRequiredProficiency;\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.hasSpareActivitySlot = function (log) {\n\n      if ( this.json.activity.length < 4 ) {\n        return true;\n      }\n\n      if ( log === true) {\n        thisFactory.contextConsole.log('Activty queue is full');\n      }\n\n      return false;\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.hasGatheringDependencies = function ( gatheringName) {\n      var hasDependencies = false;\n\n      thisFactory.gatherableDefines[gatheringName].actionable.forEach( ( function(thisActionable) {\n        if ( this.hasToolAction(thisActionable) === true) {\n          hasDependencies = true;\n        } \n      }).bind(this)); \n\n      return hasDependencies;\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.hasStatsFor = function ( taskCategory) {\n\n      var hasStats = true;\n\n      for (var statKeyname in thisFactory.taskRules[taskCategory].stat) {\n        var required = parseInt( thisFactory.taskRules[taskCategory].stat[statKeyname].minRequired, 10);\n        var current = parseInt( this.json.stats[statKeyname].current, 10) ;\n        if ( current< required) {\n          hasStats = false;\n        }\n      }\n\n      return hasStats;\n    };\n\n\n    /**\n     * @desc : is this character equipped with a tool which has the specified action.\n     * @return \n     */\n    FSCharacter.prototype.hasToolAction = function ( toolAction, log) {\n      var bHasToolAction = false;\n     \n      // build combined 'tool actions' array\n      var tools = ['Hands'];\n      if ( this.json.tools.length > 0) {\n        this.json.tools.forEach( function( thisTool ) {\n          if ( tools.indexOf( thisTool.json.name ) === -1) {\n            tools.push( thisTool.json.name);\n          }\n        });\n      } \n\n      tools.forEach( ( function( thisTool) {\n        thisFactory.toolDefines[thisTool].actions.forEach( ( function ( action) {\n          if ( toolAction === action) {\n            bHasToolAction = true;\n          } \n        }).bind(this)); \n      } ).bind(this));   \n\n      if (bHasToolAction === false && log === true)  {\n        thisFactory.contextConsole.log('Equipped tool(s) (' + tools + ') do not have required action (' + toolAction  + ')');\n      }\n\n      return bHasToolAction;\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.queuedTaskCount = function ( ) {\n      return Math.max(this.json.activity.length - 1, 0);\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.activityPercentRemaining = function ( ) {\n      var percent = Math.floor( this.updateActiveTaskRemainingSeconds / this.updateActiveTaskTotalSeconds  * 100);\n      return percent+'%';\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.getStatPercentage = function ( type) {\n      var stats = this.json.stats[type];\n      return Math.floor(100 * parseInt(stats.current, 10) /  parseInt(stats.max, 10)) +'%';\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    FSCharacter.prototype.modifyStat = function ( type, subtype, amount) {\n\n      var newValue = parseInt(this.json.stats[type][subtype], 10) + amount;\n      if (subtype === 'current') {\n        if ( parseInt(this.json.stats[type].current, 10) + amount > parseInt(this.json.stats[type].max, 10)) {\n            newValue = parseInt( this.json.stats[type].max, 10);\n        }\n        if ( parseInt(this.json.stats[type].current, 10) + amount < 0) {\n            newValue = 0;\n        }\n      }\n\n      this.json.stats[type][subtype] = newValue;\n      return this.json.stats[type][subtype];\n    };\n\n    /**\n    * Return the constructor function.\n    */\n    return FSCharacter;\n  \n  });\n",
+			"file": "app/scripts/services/fscharacter.js",
+			"file_size": 15472,
+			"file_write_time": 1437436445000000,
+			"settings":
+			{
+				"buffer_size": 15474,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsrecipe.js",
+			"settings":
+			{
+				"buffer_size": 1874,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsharvestable.js",
+			"settings":
+			{
+				"buffer_size": 4801,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fscontextconsole.js",
+			"settings":
+			{
+				"buffer_size": 771,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/main.js",
+			"settings":
+			{
+				"buffer_size": 363,
 				"line_ending": "Unix"
 			}
 		}
@@ -214,15 +201,23 @@
 	},
 	"file_history":
 	[
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimdatajson.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsreward.js",
+		"/Users/colinmoore/Dev/crafty/app/views/rewards.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimservice.js",
+		"/Users/colinmoore/Dev/crafty/app/views/charactersheetstats.html",
 		"/Users/colinmoore/Dev/crafty/app/views/gatherables.html",
 		"/Users/colinmoore/Dev/crafty/app/views/harvestables.html",
-		"/Users/colinmoore/Dev/crafty/app/views/recipes.html",
-		"/Users/colinmoore/Dev/crafty/app/styles/main.css",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsgatherable.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimservice.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsharvestable.js",
+		"/Users/colinmoore/Dev/crafty/app/styles/main.css",
+		"/Users/colinmoore/Dev/crafty/app/views/recipes.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsbackpack.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimfactory.js",
+		"/Users/colinmoore/Dev/crafty/app/views/characterselect.html",
+		"/Users/colinmoore/Dev/crafty/app/views/bank.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js",
 		"/Users/colinmoore/dev/crafty/bower_components/bootstrap/dist/css/bootstrap.css",
 		"/Users/colinmoore/Dev/crafty/app/index.html",
 		"/Users/colinmoore/Perforce/cmoore_MBP/crafty/state.json",
@@ -232,20 +227,13 @@
 		"/Users/colinmoore/dev/crafty/bower_components/bootstrap/bower.json",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsservice.js",
 		"/Users/colinmoore/Dev/crafty/app/views/main.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsharvestable.js",
 		"/Users/colinmoore/Dev/crafty/app/json/state.json",
 		"/Users/colinmoore/Dev/crafty/app/json/rules.json",
 		"/Users/colinmoore/Dev/crafty/app/views/reference.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscontextconsole.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fstask.js",
-		"/Users/colinmoore/Dev/crafty/app/views/charactersheetstats.html",
-		"/Users/colinmoore/Dev/crafty/app/views/bank.html",
 		"/Users/colinmoore/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsbackpack.js",
-		"/Users/colinmoore/Dev/crafty/app/views/characterselect.html",
 		"/Users/colinmoore/dev/crafty/app/views/contextinfoconsole.html",
-		"/Users/colinmoore/Dev/crafty/app/views/rewards.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsreward.js",
 		"/Users/colinmoore/dev/crafty/app/json/state.json",
 		"/Users/colinmoore/Dev/crafty/app/crafty.json",
 		"/Users/colinmoore/dev/crafty/app/json/defintions.json",
@@ -324,7 +312,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			"/Users/colinmoore/Dev/crafty/app",
@@ -340,6 +328,42 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"simulation",
+			"OnStart",
+			"gatheringOn",
+			"gatheringOnStart",
+			"thisFactory",
+			"reset",
+			"stopwatchreset",
+			"thisfac",
+			"inited",
+			"myStopwatch",
+			"init",
+			"hasToolAction",
+			"hasGatheringDependencies",
+			"isHarvestableBy",
+			"harvestables",
+			"isHarvestableBy",
+			"hasStats",
+			"hasCra",
+			"hasCraftingIngredients",
+			"startNextTask",
+			"addta",
+			"isGatherable",
+			"startNextTask",
+			"canPerformTask",
+			"startNextTask",
+			"hasSp",
+			"his.characterObjs\nhis.characterObjs\nhasSpare",
+			"canStartNextTask",
+			"perform",
+			"character",
+			"selectedCharacter",
+			"updateGoals",
+			"catapul",
+			"heel",
+			"wheelbar",
+			"wheelbarrow\n",
 			"checkRe",
 			"checkRewards",
 			"taskRules",
@@ -431,43 +455,7 @@
 			"in the ",
 			";\n",
 			"ingredients",
-			"harvestableDuration",
-			"duration\nharvestableDuration",
-			"duration",
-			"does not have re",
-			"actionable tool",
-			"onClickRecipes",
-			"but only have",
-			"onClickRecipes",
-			"hasStatsFor",
-			"hasSta",
-			"startHar",
-			"onClickHarvestables",
-			"FSBackpack",
-			"Grain",
-			"craftBaseTimeS",
-			"recipesDefines",
-			"recipeDef",
-			"FSReward",
-			"statUpdateInt",
-			"startUpdateInt",
-			"gathe",
-			"taskRules",
-			"rewards",
-			"reward",
-			"forEach",
-			"knownRecipes",
-			"rewardRules",
-			"stopCraft",
-			"stopCra",
-			"knownRecipes",
-			"reward",
-			"rewar",
-			"reward",
-			"recipesDefines",
-			"recipeDefines",
-			"recipe",
-			"recipes"
+			"harvestableDuration"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -492,28 +480,27 @@
 	"groups":
 	[
 		{
-			"selected": 16,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/services/fsrecipe.js",
+					"file": "app/json/rules.json",
 					"settings":
 					{
-						"buffer_size": 2544,
+						"buffer_size": 41147,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1607,
-								1607
+								0,
+								41147
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -525,18 +512,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "app/scripts/services/fscharacter.js",
+					"file": "app/scripts/services/fssimservice.js",
 					"settings":
 					{
-						"buffer_size": 15768,
+						"buffer_size": 7040,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5900,
-								5900
+								3494,
+								3494
 							]
 						],
 						"settings":
@@ -546,126 +533,43 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2591.0,
+						"translation.y": 1841.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "app/views/bank.html",
+					"file": "app/scripts/services/fssimfactory.js",
 					"settings":
 					{
-						"buffer_size": 2132,
+						"buffer_size": 22657,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1061,
-								1061
+								18986,
+								18996
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 163.0,
+						"translation.y": 141.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "app/views/characterselect.html",
 					"settings":
 					{
-						"buffer_size": 2571,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								574,
-								574
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/scripts/services/fssimfactory.js",
-					"settings":
-					{
-						"buffer_size": 16646,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8369,
-								8382
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3656.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/scripts/services/fsbackpack.js",
-					"settings":
-					{
-						"buffer_size": 2181,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1508,
-								1508
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 588.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"settings":
-					{
-						"buffer_size": 4216,
+						"buffer_size": 8256,
 						"regions":
 						{
 							"match":
@@ -674,80 +578,164 @@
 								"regions":
 								[
 									[
-										264,
-										274
+										226,
+										243
 									],
 									[
-										557,
-										567
+										294,
+										311
 									],
 									[
-										603,
-										613
+										543,
+										560
 									],
 									[
-										715,
-										725
+										723,
+										740
 									],
 									[
-										796,
-										806
+										887,
+										904
 									],
 									[
-										822,
-										832
+										1194,
+										1211
 									],
 									[
-										986,
-										996
+										1341,
+										1358
 									],
 									[
-										1187,
-										1197
+										1505,
+										1522
 									],
 									[
-										1385,
-										1395
+										1762,
+										1779
 									],
 									[
-										1541,
-										1551
+										1944,
+										1961
 									],
 									[
-										1738,
-										1748
+										2107,
+										2124
 									],
 									[
-										1938,
-										1948
+										2452,
+										2469
 									],
 									[
-										2237,
-										2247
+										2626,
+										2643
 									],
 									[
-										2623,
-										2633
+										2826,
+										2843
 									],
 									[
-										2898,
-										2908
+										3291,
+										3308
 									],
 									[
-										3102,
-										3112
+										3525,
+										3542
 									],
 									[
-										3342,
-										3352
+										3862,
+										3879
 									],
 									[
-										3644,
-										3654
+										3908,
+										3925
 									],
 									[
-										4008,
-										4018
+										4094,
+										4111
+									],
+									[
+										4143,
+										4160
+									],
+									[
+										4320,
+										4337
+									],
+									[
+										4372,
+										4389
+									],
+									[
+										4623,
+										4640
+									],
+									[
+										4838,
+										4855
+									],
+									[
+										5140,
+										5157
+									],
+									[
+										5329,
+										5346
+									],
+									[
+										5575,
+										5592
+									],
+									[
+										5651,
+										5668
+									],
+									[
+										5817,
+										5834
+									],
+									[
+										5893,
+										5910
+									],
+									[
+										6059,
+										6076
+									],
+									[
+										6134,
+										6151
+									],
+									[
+										6380,
+										6397
+									],
+									[
+										6643,
+										6660
+									],
+									[
+										6773,
+										6790
+									],
+									[
+										7070,
+										7087
+									],
+									[
+										7204,
+										7221
+									],
+									[
+										7568,
+										7585
+									],
+									[
+										7881,
+										7898
+									],
+									[
+										8162,
+										8179
 									]
 								],
 								"scope": ""
@@ -756,8 +744,8 @@
 						"selection":
 						[
 							[
-								4033,
-								4033
+								556,
+								556
 							]
 						],
 						"settings":
@@ -772,109 +760,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1042.0,
+						"translation.y": 2201.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "app/views/recipes.html",
-					"settings":
-					{
-						"buffer_size": 2294,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1744,
-								1560
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 98.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/styles/main.css",
-					"settings":
-					{
-						"buffer_size": 2266,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2196,
-								2176
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1112.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "app/scripts/services/fsharvestable.js",
-					"settings":
-					{
-						"buffer_size": 5068,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1477,
-								1477
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 321.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
+					"buffer": 4,
 					"file": "app/scripts/services/fsgatherable.js",
 					"settings":
 					{
-						"buffer_size": 2422,
+						"buffer_size": 2122,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1391,
-								1349
+								1923,
+								1933
 							]
 						],
 						"settings":
@@ -884,137 +788,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 721.0,
+						"translation.y": 788.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "app/views/harvestables.html",
+					"buffer": 5,
+					"file": "app/views/main.html",
 					"settings":
 					{
-						"buffer_size": 1652,
+						"buffer_size": 1951,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1435,
-								1450
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 7.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "app/views/gatherables.html",
-					"settings":
-					{
-						"buffer_size": 2275,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2144,
-								2016
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 173.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "app/views/charactersheetstats.html",
-					"settings":
-					{
-						"buffer_size": 3125,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2212,
-								2212
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 566.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "app/scripts/services/fssimservice.js",
-					"settings":
-					{
-						"buffer_size": 7076,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								504,
-								504
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 69.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "app/views/rewards.html",
-					"settings":
-					{
-						"buffer_size": 1041,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								923,
-								923
+								325,
+								337
 							]
 						],
 						"settings":
@@ -1030,19 +822,101 @@
 					"type": "text"
 				},
 				{
-					"buffer": 16,
-					"file": "app/scripts/services/fsreward.js",
+					"buffer": 6,
+					"file": "/Users/colinmoore/dev/crafty/app/views/goals.html",
 					"settings":
 					{
-						"buffer_size": 478,
+						"buffer_size": 684,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								449,
-								449
+								40,
+								40
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/Users/colinmoore/dev/crafty/app/views/rewards.html",
+					"settings":
+					{
+						"buffer_size": 1041,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1007,
+								50
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/views/contextinfoconsole.html",
+					"settings":
+					{
+						"buffer_size": 319,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								285,
+								285
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/scripts/services/fscharacter.js",
+					"settings":
+					{
+						"buffer_size": 15474,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10183,
+								10190
 							]
 						],
 						"settings":
@@ -1050,6 +924,116 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5211.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/scripts/services/fsrecipe.js",
+					"settings":
+					{
+						"buffer_size": 1874,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1258,
+								1258
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 10.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/scripts/services/fsharvestable.js",
+					"settings":
+					{
+						"buffer_size": 4801,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2432,
+								2432
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 4.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "app/scripts/services/fscontextconsole.js",
+					"settings":
+					{
+						"buffer_size": 771,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								580,
+								580
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "app/scripts/controllers/main.js",
+					"settings":
+					{
+						"buffer_size": 363,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								323,
+								323
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

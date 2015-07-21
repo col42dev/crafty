@@ -24,7 +24,7 @@
 <div class="bodycontainer scrollable">
   <table class="table table-bordered table-condensed table-scrollable">
     <tbody>
-      <tr ng-repeat="(k,v)  in getFSService().simulation.craftableDefines" class="noselect" >
+      <tr ng-repeat="(k,v)  in getFSSimRules().craftableDefines" class="noselect" >
         <td width="15%">{{v.output}}</td> 
         <td width="45%">{{v.input}}</td> 
         <td width="15%">{{v.construction}}</td> 
@@ -60,7 +60,7 @@
   <table class="table table-bordered table-condensed table-scrollable">
 
     <tbody>
-      <tr ng-repeat="(k,v)  in getFSService().simulation.toolDefines" class="noselect" >
+      <tr ng-repeat="(k,v)  in getFSSimRules().toolDefines" class="noselect" >
         <td class="col-sm-1">{{k}}</td> 
         <td class="col-sm-1">{{v.strength}}</td> 
         <td class="col-sm-1">{{v.actions}}</td> 
@@ -94,7 +94,7 @@
   <table class="table table-bordered table-condensed table-scrollable">
 
     <tbody>
-      <tr ng-repeat="(k,v)  in getFSService().simulation.harvestableDefines" class="noselect" >
+      <tr ng-repeat="(k,v)  in getFSSimRules().harvestableDefines" class="noselect" >
         <td class="col-sm-1">{{k}}</td> 
         <td class="col-sm-1">{{v.actionable}}</td> 
         <td class="col-sm-1">{{v.duration}}</td> 
@@ -127,7 +127,7 @@
   <table class="table table-bordered table-condensed table-scrollable">
 
     <tbody>
-      <tr ng-repeat="(k,v)  in getFSService().simulation.gatherableDefines" class="noselect" >
+      <tr ng-repeat="(k,v)  in getFSSimRules().gatherableDefines" class="noselect" >
         <td class="col-sm-1">{{k}}</td> 
         <td class="col-sm-1">{{v.duration}}</td> 
         <td class="col-sm-1">{{v.actionable}}</td> 
@@ -159,7 +159,7 @@
   <table class="table table-bordered table-condensed table-scrollable">
 
     <tbody>
-      <tr ng-repeat="(k,v)  in getFSService().simulation.foodDefines" class="noselect" >
+      <tr ng-repeat="(k,v)  in getFSSimRules().foodDefines" class="noselect" >
         <td class="col-sm-1">{{k}}</td> 
         <td class="col-sm-1">{{v.onConsume.stat}}</td> 
       </tr>
@@ -188,7 +188,7 @@
   <table class="table table-bordered table-condensed table-scrollable">
 
     <tbody>
-      <tr ng-repeat="(k,v)  in getFSService().simulation.taskRules" class="noselect" >
+      <tr ng-repeat="(k,v) in getFSSimRules().taskRules" class="noselect" >
         <td class="col-sm-1">{{k}}</td> 
         <td class="col-sm-1">{{v.stat}}</td> 
       </tr>

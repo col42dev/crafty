@@ -28,7 +28,7 @@ angular.module('craftyApp')
 	      $scope = ctrlscope;
 
 	      this.myStopwatch = stopwatch;
-	      this.taskTimeScalarDivVis ='hidden';
+	      this.taskTimeScalarDivVis = 'hidden';
 
         this.master = {
           rules: 'https://api.myjson.com/bins/nucy' + '?pretty=1',
@@ -47,8 +47,7 @@ angular.module('craftyApp')
      */
     this.loadAndCreateSim = function() {
       
-
-        thisService.simulation = new FSSimFactory( $scope);
+        this.simulation = new FSSimFactory( $scope);
 
         //load JSON rules
         this.loadSimRules();
@@ -143,8 +142,8 @@ angular.module('craftyApp')
       thisService.simulation.createSimState(thisService.stateData);
    
       $scope.$apply();
-      thisService.myStopwatch.reset();
-      thisService.myStopwatch.start();
+      stopwatch.reset();
+      stopwatch.start();
     };
 
 
