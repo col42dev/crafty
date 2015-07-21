@@ -35,8 +35,9 @@ angular.module('craftyApp')
 	        this.harvestableDefines = json.harvestableDefines;  
 	        this.gatherableDefines = json.gatherableDefines; 
 	        this.craftableDefines = json.craftableDefines; 
- 
 	        this.toolDefines = json.toolDefines;  
+
+
 	        this.foodDefines = json.foodDefines;  
 	        this.taskRules = json.taskRules;  
 	       	this.rewardRules = json.rewardRules;  
@@ -295,8 +296,7 @@ angular.module('craftyApp')
 		 * @return 
 		 */
 		 this.onClickCharacterWeapon = function ( weaponObj) {
-		 		weaponObj = weaponObj;
-
+		 	weaponObj = weaponObj;
 		 };
 
 		/**
@@ -420,7 +420,15 @@ angular.module('craftyApp')
 		            }
 		        }
 		        if ( hasEquippedTools === false) {
-		         	this.contextConsole.log('No one is equipped with the required tools to start gathering ' + gatherableType, true);
+		         	this.contextConsole.log('No one is equipped with the required tools for gathering ' + gatherableType, true);
+
+					for ( var toolDefine in this.toolDefines) {
+						this.toolDefines[toolDefine].actions.forEach( ( function ( action) {
+							if ( this.gatherableDefines[gatherableType].actionable.indexOf(action) !== -1) {
+								this.contextConsole.log(toolDefine, true);
+							} 
+						}).bind(this));
+					}
 		     	}
 			}
 		};
@@ -455,7 +463,17 @@ angular.module('craftyApp')
 		            }
 		        }
 		        if ( hasEquippedTools === false) {
-		         	this.contextConsole.log('No one is equipped with the required tools to start harvesting ' + harvestableType, true);
+		         	this.contextConsole.log('No one is equipped with the required tools for harvesting ' + harvestableType, true);
+
+					for ( var toolDefine in this.toolDefines) {
+						this.toolDefines[toolDefine].actions.forEach( ( function ( action) {
+							if ( this.harvestableDefines[harvestableType].actionable.indexOf(action) !== -1) {
+								if ( parseInt(this.toolDefines[toolDefine].strength, 10) >= parseInt( this.harvestableDefines[harvestableType].hardness, 10)) {
+									this.contextConsole.log(toolDefine, true);
+								}
+							} 
+						}).bind(this));
+					}
 		     	}
 			}
 		};
