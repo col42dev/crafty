@@ -113,7 +113,7 @@ angular.module('craftyApp')
 
       if ( FSSimState.harvestables[harvestableType].json.quantity === 0) {
         delete FSSimState.harvestables[harvestableType];
-        thisFactory.updateHarvestables();
+        FSSimState.updateHarvestables();
       }
 
       // need to ensure there is an instance in gatherables before it can be incremented.

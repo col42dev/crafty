@@ -247,10 +247,38 @@ angular.module('craftyApp')
 	    		case 'harvest':
 	    			enabled = this.isHarvestable(type);
 	    			break;
+	    		case 'bank':
+		    		{
+				        switch (FSSimState.bank[type].category) 
+				        {
+							case 'constructor':
+								if ( FSSimState.selectedConstructor === type) {
+									enabled = true;
+								} 
+								break;
+							case 'tool':
+							case 'food':
+							case 'weapons':
+								enabled = true;
+								break;
+				        }
+		    		}
+		    		break;
 	    	}
 	      
 	      return  (enabled === true) ? 'rgba(20, 200, 20, 0.25)' : 'rgba(200, 20, 20, 0.25)';
 	    };
+
+	       /**
+     * @desc 
+     * @return 
+     */
+    FSBackpack.prototype.bgcolor = function() {
+      var color = 'rgba(200, 20, 20, 0.25)';
+
+
+      return  color;
+    };
 
 		/**
 		 * @desc 

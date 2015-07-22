@@ -96,6 +96,6 @@ angular.module('craftyApp')
 
     };
 
-
+ 
 
   });
