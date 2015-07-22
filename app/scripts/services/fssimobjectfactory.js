@@ -23,22 +23,15 @@ angular.module('craftyApp')
                   FSSimState.harvestables[arg.desc.name] = new FSHarvestable(arg.desc);
                   break;
               case 'craftables' :
-                  FSSimState.craftables[arg.desc] =  new FSRecipe( arg.desc);
-                  console.log('onCreateSimObjectHandler' + arg.category + ', ' + JSON.stringify(arg.desc));
-        
+                  FSSimState.craftables[arg.desc] =  new FSRecipe( arg.desc);      
                   break;
               case 'bankable':
                   {
-                    var category = 'unknown';
-                    if ( FSSimRules.toolDefines.hasOwnProperty(arg.desc.name) === true) {
-                      category = 'tool';
-                    } else if ( FSSimRules.foodDefines.hasOwnProperty(arg.desc.name) === true) {
-                      category = 'food';
-                    } else if ( arg.desc.category === 'constructor') {
-                      category = 'constructor';
+
+                    FSSimState.bank[arg.desc.name] = new FSBackpack({'category':arg.desc.category, 'name':arg.desc.name});
+                    if ( parseInt( arg.desc.quantity, 10) > 0) {
+                      FSSimState.bank[arg.desc.name].increment( arg.desc.quantity );
                     }
-                    FSSimState.bank[arg.desc.name] = new FSBackpack({'category':category, 'name':arg.desc.name});
-                    FSSimState.bank[arg.desc.name].increment( arg.desc.quantity );
                   }
                   break;
               case 'character':

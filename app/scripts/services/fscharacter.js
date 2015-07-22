@@ -9,7 +9,7 @@
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSCharacter', function (FSBackpack, FSGatherable, FSTask, FSContextConsole, FSSimRules, FSSimState) {
+  .factory('FSCharacter', function (FSTask, FSContextConsole, FSSimRules, FSSimState, FSSimObjectChannel) {
     // Service logic
     // ...
     var thisFactory = null;
@@ -119,7 +119,7 @@ angular.module('craftyApp')
       // need to ensure there is an instance in gatherables before it can be incremented.
       if (!(harvestableType in FSSimState.gatherables)) { 
           var obj = {'name': harvestableType, 'quantity': '0'};
-          FSSimState.gatherables[harvestableType] = new FSGatherable(obj);
+          FSSimObjectChannel.createSimObject( { category: 'gatherables', desc : obj});
       }
       
       FSSimState.gatherables[harvestableType].increment();
@@ -147,7 +147,7 @@ angular.module('craftyApp')
       var gatherableType = this.json.activity[0].name;
 
       if (!(gatherableType in FSSimState.bank)) {
-        FSSimState.bank[gatherableType] = new FSBackpack({'category':'gatherable', 'name':gatherableType});
+        FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':'gatherable', 'name':gatherableType, quantity : 0} });  
       }
       FSSimState.bank[gatherableType].increment(1);
       FSSimState.updateBank();
@@ -187,7 +187,8 @@ angular.module('craftyApp')
         
         // add output to bank.
         if (!(craftableOutput in FSSimState.bank)) {
-          FSSimState.bank[craftableOutput] = new FSBackpack( {'category':FSSimRules.craftableDefines[craftableKey].category, 'name':craftableOutput});
+           FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':FSSimRules.craftableDefines[craftableKey].category, 'name':craftableOutput, quantity : 0} });  
+ 
         }
         FSSimState.bank[craftableOutput].increment( craftableOutputQuantity);
         FSSimState.updateBank();

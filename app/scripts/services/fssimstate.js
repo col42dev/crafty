@@ -9,7 +9,7 @@
  * Avoid adding Sim implementation.
  */
 angular.module('craftyApp')
-  .service('FSSimState', function (FSSimObjectChannel) {
+  .service('FSSimState', function (FSSimObjectChannel, FSSimRules) {
     // AngularJS will instantiate a singleton by calling "new" on this function.
 
            var simState = this;
@@ -58,6 +58,30 @@ angular.module('craftyApp')
             };
             this.updateHarvestables();
  
+            // Bank
+            this.bank = {};  
+            json.bank.forEach( function(item) {
+
+                var category = 'unknown';
+                if ( FSSimRules.toolDefines.hasOwnProperty(item.name) === true) {
+                  category = 'tool';
+                } else if ( FSSimRules.foodDefines.hasOwnProperty(item.name) === true) {
+                  category = 'food';
+                } else if ( item.category === 'constructor') {
+                  category = 'constructor';
+                }
+                item.category = category;
+
+                FSSimObjectChannel.createSimObject( { category: 'bankable', desc : item});
+            }); 
+            FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':'constructor', 'name':'', quantity : 1} });
+            this.updateBank = function() {
+                simState.bankArray = Object.keys(simState.bank).map(function (key) {
+                        return simState.bank[key];
+                    });
+            };
+            this.updateBank();
+ 
             // Craftables
             this.craftables = {}; 
             json.craftables.forEach( function( recipeName ) {
@@ -71,21 +95,6 @@ angular.module('craftyApp')
             this.updateRecipes();
 
             //console.log( JSON.stringify( simState.craftablesArray));
-
-            // Bank
-            this.bank = {};  
-            json.bank.forEach( function(item) {
-                FSSimObjectChannel.createSimObject( { category: 'bankable', desc : item});
-            }); 
-            FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':'constructor', 'name':'', quantity : 1} });
-            this.updateBank = function() {
-                simState.bankArray = Object.keys(simState.bank).map(function (key) {
-                        return simState.bank[key];
-                    });
-            };
-            this.updateBank();
- 
-           
 
             //rewards
             this.rewards = [];
