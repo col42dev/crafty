@@ -5,94 +5,93 @@
  * @name craftyApp.FSSimState
  * @description
  * # FSSimState
- * Service in the craftyApp.
+ * Stores the raw sim state from JSON and maps its to runtime instances.
+ * Avoid adding Sim implementation.
  */
 angular.module('craftyApp')
-  .service('FSSimState', function () {
+  .service('FSSimState', function (FSSimObjectChannel) {
     // AngularJS will instantiate a singleton by calling "new" on this function.
 
-    this.init = function() {
+           var simState = this;
 
-                    this.selectedConstructor = '';
+
+    this.set = function(json, thisFactory) {
+
+     
+
+            this.selectedConstructor = '';
             this.selectedConstructorFilter = 'none';
 
-
-        // Characters
+            // Characters
             this.characterObjs = {};  
- 
-            // Gatherables
-            this.gatherables = {};  
-  
-            // Harvestables
-            this.harvestables = {};  
- 
-
-            // Bank
-            this.bank = {};  
- 
-
-            // Craftables
-            this.craftables = {}; 
- 
-            //rewards
-            this.rewards = [];
-   
-    };
-
-    this.set = function(json) {
-
-        var thisFactory = this;
-
-
-        // Characters
-   
+            json.characters.forEach( function(thisCharacter) {
+                var obj = { characterDesc : thisCharacter, simfactory : thisFactory};
+                FSSimObjectChannel.createSimObject( { category: 'character', desc : obj});
+            }); 
             this.onClickCharacter = function ( character) {
-                this.selectedCharacter = character;
+                simState.selectedCharacter = character;
             };
 
+ 
+    
             // Gatherables
-     
+            this.gatherables = {};  
+            json.gatherables.forEach( (function(thisGatherables) {
+                FSSimObjectChannel.createSimObject( { category: 'gatherables', desc : thisGatherables});
+            }).bind(this)); 
             this.updateGatherables = function() {
-                thisFactory.gatherablesArray = Object.keys(thisFactory.gatherables).map(function (key) {
-                    return thisFactory.gatherables[key];
+                simState.gatherablesArray = Object.keys(simState.gatherables).map(function (key) {
+                    return simState.gatherables[key];
                 });
             };
             this.updateGatherables();
-
+  
             // Harvestables
+            this.harvestables = {};  
+            json.harvestables.forEach( function(thisHarvestable) {
+                FSSimObjectChannel.createSimObject( { category: 'harvestables', desc : thisHarvestable});
+            }); 
             this.updateHarvestables = function() {
-                this.harvestablesArray = Object.keys(this.harvestables).map(function (key) {
-                    return thisFactory.harvestables[key];
+                simState.harvestablesArray = Object.keys(simState.harvestables).map(function (key) {
+                    return simState.harvestables[key];
                 });
             };
             this.updateHarvestables();
-
-
-            // Bank
-            this.updateBank = function() {
-                thisFactory.bankArray = Object.keys(thisFactory.bank).map(function (key) {
-                        return thisFactory.bank[key];
-                    });
-            };
-            this.updateBank();
-
-
+ 
             // Craftables
+            this.craftables = {}; 
+            json.craftables.forEach( function( recipeName ) {
+                FSSimObjectChannel.createSimObject( { category: 'craftables', desc : recipeName});
+            }); 
             this.updateRecipes = function() {
-                thisFactory.craftablesArray = Object.keys(thisFactory.craftables).map(function (key) {
-                        return thisFactory.craftables[key];
+                simState.craftablesArray = Object.keys(simState.craftables).map(function (key) {
+                        return simState.craftables[key];
                     });
             };
             this.updateRecipes();
 
+            //console.log( JSON.stringify( simState.craftablesArray));
+
+            // Bank
+            this.bank = {};  
+            json.bank.forEach( function(item) {
+                FSSimObjectChannel.createSimObject( { category: 'bankable', desc : item});
+            }); 
+            FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':'constructor', 'name':'', quantity : 1} });
+            this.updateBank = function() {
+                simState.bankArray = Object.keys(simState.bank).map(function (key) {
+                        return simState.bank[key];
+                    });
+            };
+            this.updateBank();
+ 
+           
 
             //rewards
             this.rewards = [];
             json.rewards.forEach( ( function(thisReward) {
                 this.rewards.push(thisReward);
             }).bind(this)); 
-
-         
 
     };
 

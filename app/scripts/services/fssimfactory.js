@@ -8,7 +8,7 @@
  * Simulation factory
  */
 angular.module('craftyApp')
-  .factory('FSSimFactory', function (  FSBackpack,  FSCharacter,  FSGatherable, FSHarvestable, FSRecipe, FSContextConsole, FSSimRules, FSSimState) {
+  .factory('FSSimFactory', function (  FSBackpack,  FSSimObjectChannel,  FSContextConsole, FSSimRules, FSSimState) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -18,22 +18,15 @@ angular.module('craftyApp')
      */
   	var FSSimFactory = function(scope) {
 
-  		var thisFactory = this;
   		var ctrllerScope = scope;
 
 
 	   /**
 	     * @desc 
-	     * @return 
-	     */
+	     * @return	     */
 	    this.createSimRules = function( json) {
-	
 			this.taskTimeScalar ='1';
-
 			FSSimRules.set(json);
-
-		
-			
 	    };
 
 
@@ -42,53 +35,8 @@ angular.module('craftyApp')
 	     * @return 
 	     */
 	    this.createSimState = function( json) {
-	
-	
-			FSSimState.init();
-
-
-    		// Characters
-           json.characters.forEach( function(thisCharacter) {
-                var characterName = thisCharacter.name;
-                FSSimState.characterObjs[characterName] = new FSCharacter(thisCharacter, thisFactory);
-                FSSimState.selectedCharacter = FSSimState.characterObjs[characterName];
-            }); 
-  
-            // Gatherables
-            json.gatherables.forEach( function(thisGatherables) {
-                FSSimState.gatherables[thisGatherables.name] = new FSGatherable(thisGatherables);
-            }); 
-  
-            // Harvestables
-            json.harvestables.forEach( function(thisHarvestable) {
-                FSSimState.harvestables[thisHarvestable.name] = new FSHarvestable(thisHarvestable);
-            }); 
- 
-
-            // Bank
-            json.bank.forEach( function(item) {
-                var category = 'unknown';
-                if ( FSSimRules.toolDefines.hasOwnProperty(item.name) === true) 
-                {
-                    category = 'tool';
-                } else if ( FSSimRules.foodDefines.hasOwnProperty(item.name) === true) {
-                    category = 'food';
-                }
-                FSSimState.bank[item.name] = new FSBackpack({'category':category, 'name':item.name});
-                FSSimState.bank[item.name].increment( item.quantity );
-            }); 
-
-            FSSimState.bank[''] = new FSBackpack({'category':'constructor', 'name':''});
-            FSSimState.bank[''].increment( 1 );
-
-  
-            // Craftables
-            json.craftables.forEach( function( recipeName ) {
-                    FSSimState.craftables[recipeName] =  new FSRecipe( recipeName);
-                }); 
-
-
-			FSSimState.set(json);
+		
+			FSSimState.set(json, this);
 
 			//Goals
             this.updateGoals();
@@ -100,53 +48,7 @@ angular.module('craftyApp')
 		 */
     	this.deserialize = function ( ) {
 
-/*
-    		var buildjson = {};
 
-    		buildjson.harvestableDefines = this.harvestableDefines;  
-	        buildjson.gatherableDefines = this.gatherableDefines;  
-	        buildjson.toolDefines = this.toolDefines;  
-	        buildjson.foodDefines = this.foodDefines;  
-	        buildjson.craftableDefines = this.craftableDefines; 
-	        buildjson.rewardRules = this.rewardRules;   
-
-
-	     	// Characters
-		    buildjson.characters = [];  
-	        for ( var thisCharacter in this.characterObjs) {
-	        	buildjson.characters.push( this.characterObjs[thisCharacter].json);
-	        }
-
-	        // Gatherables
-	        buildjson.gatherables = [];  
-	        for ( var thisGatherables in this.gatherables) {
-	        	buildjson.gatherables.push( this.gatherables[thisGatherables].json);
-	        } 
-	
-	        // Harvestables
-	        buildjson.harvestables = [];  
-	        for ( var thisHarvestable in this.harvestables) {
-	        	var harvestObj = { 'name' : this.harvestables[thisHarvestable].name, 'quantity' : this.harvestables[thisHarvestable].quantity};
-	          	buildjson.harvestables.push(harvestObj);
-	        }
-
-			// Bank
-	        buildjson.bank = [];  
-	        for ( var item in this.bank) {
-	        	var bankobj = { 'name' : this.bank[item].json.name, 'quantity' : this.bank[item].json.quantity.length};
-	        	buildjson.bank.push(bankobj);
-	        }
-
-	        // Know Recipes
-	        buildjson.craftables = []; 
-	        for ( var recipeName in this.craftables) {
-	        	buildjson.craftables.push(this.craftables[recipeName].name);
-	        }
-
-	        this.jsonSerialized = JSON.stringify(buildjson, undefined, 2);
-
-	        return buildjson;
-	        */
     	};
 
 	      /**
@@ -269,16 +171,6 @@ angular.module('craftyApp')
 	      return  (enabled === true) ? 'rgba(20, 200, 20, 0.25)' : 'rgba(200, 20, 20, 0.25)';
 	    };
 
-	       /**
-     * @desc 
-     * @return 
-     */
-    FSBackpack.prototype.bgcolor = function() {
-      var color = 'rgba(200, 20, 20, 0.25)';
-
-
-      return  color;
-    };
 
 		/**
 		 * @desc 
@@ -301,7 +193,7 @@ angular.module('craftyApp')
 				var toolName = character.json.tools[index].json.name;
 
 			    if ( FSSimState.bank.hasOwnProperty(toolName) === false) {
-					FSSimState.bank[toolName] = new FSBackpack({'category':'tool', 'name':toolName});
+					   FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':'tool', 'name':toolName, quantity : 0} });     
 			    }
 			    FSSimState.bank[toolName].increment(1);
 			    FSSimState.updateBank();
@@ -338,6 +230,8 @@ angular.module('craftyApp')
 					if (FSSimState.bank[bankItemKey].json.quantity.length > 0) {
 						FSSimState.bank[bankItemKey].decrement(1) ;
 						FSSimState.selectedCharacter.json.tools.push( new FSBackpack( {'category':FSSimState.bank[bankItemKey].category, 'name':FSSimState.bank[bankItemKey].json.name} ));
+
+
 
 						if ( FSSimState.bank[bankItemKey].json.quantity.length === 0) {
 							delete  FSSimState.bank[bankItemKey];
@@ -588,7 +482,7 @@ angular.module('craftyApp')
 
 								if ( FSSimState.craftables.hasOwnProperty(recipe) === false) {
 									if (this.hasOwnProperty(recipe) === false) {
-										FSSimState.craftables[recipe] =  new FSRecipe( recipe);
+										 FSSimObjectChannel.createSimObject( { category: 'craftables', desc : recipe});
 										FSSimState.updateRecipes();
 										console.log('RECIPE UNLOCK:' + recipe);
 									}

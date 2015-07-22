@@ -8,7 +8,7 @@
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSBackpack', function (FSSimState) {
+  .factory('FSBackpack', function () {
     // Service logic
     
     // FSBackpack
@@ -57,34 +57,7 @@ angular.module('craftyApp')
       }).bind(this), 500);
     };
 
-    /**
-     * @desc 
-     * @return 
-     */
-    FSBackpack.prototype.bgcolor = function() {
-      var color = 'rgba(200, 20, 20, 0.25)';
-
-        switch (this.category) {
-          case 'constructor':
-            if ( FSSimState.selectedConstructor === this.json.name) {
-              color= 'rgba(20, 200, 20, 0.55)';
-            } else {
-              color= 'rgba(0, 0, 0, 0.0)';
-            }
-            break;
-          case 'tool':
-            color= 'rgba(20, 200, 20, 0.25)';
-            break;
-          case 'food':
-            color= 'rgba(20, 200, 20, 0.25)';
-            break;
-          case 'weapon':
-            color= 'rgba(20, 200, 20, 0.25)';
-            break;
-        }
-
-      return  color;
-    };
+ 
 
 
   
