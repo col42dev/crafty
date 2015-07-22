@@ -7,6 +7,7 @@
  * # FSTask
  * Factory in the craftyApp.
  */
+
 angular.module('craftyApp')
   .factory('FSTask', function () {
     // Service logic
@@ -24,9 +25,10 @@ angular.module('craftyApp')
       return this.name  + ' ' + this.category;
     };
 
-   /**
-    * Return the constructor function.
-    */
+
+    //Return the constructor function.
+
     return FSTask;
 
   });
+

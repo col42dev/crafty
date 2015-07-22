@@ -13,8 +13,7 @@ angular.module('craftyApp')
     // ...
 
     // Gatherables
-    var FSGatherable = function( json, simulation) { 
-      this.simulation = simulation;
+    var FSGatherable = function( json) { 
       this.json = json;
       this.quantitybgcolor = 'rgba(200, 200, 200, 0.0)';
     };
@@ -58,36 +57,13 @@ angular.module('craftyApp')
     * @desc 
     * @return 
     */
-    FSGatherable.prototype.bgcolor =  function( ) {         
-      var color = 'rgba(200, 20, 20, 0.25)';     
-
-      if ( this.simulation.isGatherable(this.json.name) === true) {
-        color = 'rgba(20, 200, 20, 0.25)';
-      }
-
-      return color;   
-    };
-
-    /**
-    * @desc 
-    * @return 
-    */
     FSGatherable.prototype.duration =  function(  character) {
       character = character;
       var duration = FSSimRules.gatherableDefines[this.json.name].duration;
       return duration;
     };
 
-   /**
-     * @desc 
-     * @return 
-     */
-    FSGatherable.prototype.hasUnlocks =  function(  ) {
-      if ( this.simulation.hasUnlocks( {'action':'gather', 'target':this.json.name})) {
-        return 'images/unlock.69ea04fd.png';
-      }
-      return 'images/clear.d9e2c8a6.png';
-    };
+
   
 
     return FSGatherable;

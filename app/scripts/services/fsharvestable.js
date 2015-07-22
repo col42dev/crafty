@@ -12,8 +12,7 @@ angular.module('craftyApp')
     // Service logic
     // ...
 
-    var FSHarvestable = function( obj, simulation) { 
-      this.simulation = simulation;
+    var FSHarvestable = function( obj) { 
       this.json = obj;
       this.quantitybgcolor = 'rgba(200, 200, 200, 0.0)';
 
@@ -59,18 +58,6 @@ angular.module('craftyApp')
       }).bind(this), 500);
     };
 
-     /**
-     * @desc 
-     * @return 
-     */
-    FSHarvestable.prototype.bgcolor =  function( ) {   
-      var color =  'rgba(200, 20, 20, 0.25)';  
-      if ( this.simulation.isHarvestable(this.json.name) === true) {
-        color = 'rgba(20, 200, 20, 0.25)';
-      }
-
-      return color;   
-    };
 
      /**
      * @desc 
@@ -93,50 +80,23 @@ angular.module('craftyApp')
 
 
       var isHarvestable = false;
-      //var toolStrengthMessage = '';
-      //var toolActionMessage = '';
 
       tools.forEach( ( function( thisTool) {
-
         FSSimRules.toolDefines[thisTool].actions.forEach( ( function ( thisAction) {
-
             var toolHasRequiredAction = false;
-
             // match harvest actions with actionables.
             FSSimRules.harvestableDefines[this.json.name].actionable.forEach( ( function ( thisActionable){
 
               if (thisAction === thisActionable) {
 
                 toolHasRequiredAction = true;
-                //
                 if ( parseInt( FSSimRules.toolDefines[ thisTool ].strength, 10) >= parseInt( FSSimRules.harvestableDefines[this.json.name].hardness, 10)) {
                   isHarvestable = true;
-                } else {
-                    //toolStrengthMessage = thisTool + ' not strong enough to harvest ' + this.json.name;
-                }
-
+                } 
               }
-
-              //if ( toolHasRequiredAction === false) {
-              //  toolActionMessage =  character.json.name + ' is not equipped with a tool with action(s) (' + this.simulation.harvestableDefines[this.json.name].actionable +') needed for harvesting ' + this.json.name;
-              //}
-
             }).bind(this));
-
         }).bind(this));
-
       } ).bind(this));   
- 
-      /*
-      if (isHarvestable=== false) {
-        if ( log === true) {
-          if ( toolStrengthMessage.length > 0) {
-            this.simulation.contextConsole.log(  toolStrengthMessage);
-          } else if ( toolActionMessage.length > 0) {
-            this.simulation.contextConsole.log(  toolActionMessage);
-          }
-        }
-      } */
 
       return isHarvestable;
     };

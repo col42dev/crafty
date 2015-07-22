@@ -60,76 +60,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/json/rules.json",
+			"file": "app/scripts/services/fstask.js",
 			"settings":
 			{
-				"buffer_size": 41147,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fssimservice.js",
-			"settings":
-			{
-				"buffer_size": 7041,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fssimfactory.js",
-			"settings":
-			{
-				"buffer_size": 22450,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 46 files for \"selectedCharacter\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js:\n   44       */\n   45      FSCharacter.prototype.getbgcolor =  function( ) {     \n   46:       return  ((thisFactory.selectedCharacter  !== null) && (this.getFullName() === thisFactory.selectedCharacter.getFullName())) ? '#00FF00' : null;       \n   47      };\n   48  \n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsgatherable.js:\n   62        var color = 'rgba(20, 200, 20, 0.25)';     \n   63  \n   64:       if( this.simulation.selectedCharacter.hasGatheringDependencies(this.json.name) === false) {\n   65          color = 'rgba(200, 20, 20, 0.25)'; \n   66        }\n   67  \n   68:       if ( this.simulation.selectedCharacter.hasStatsFor('gathering') === false) {\n   69          color = 'rgba(200, 20, 20, 0.25)'; \n   70        }\n   71  \n   72:       if ( this.simulation.selectedCharacter.hasSpareActivitySlot() === false) {\n   73          color = 'rgba(200, 20, 20, 0.25)';\n   74        }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsharvestable.js:\n   67        var color =  'rgba(20, 200, 20, 0.25)';  \n   68  \n   69:       if ( this.isHarvestableBy( this.simulation.selectedCharacter) === false) {\n   70          color = 'rgba(200, 20, 20, 0.25)';\n   71        }\n   72  \n   73  \n   74:       if ( this.simulation.selectedCharacter.hasStatsFor('harvesting') === false) {\n   75          color = 'rgba(200, 20, 20, 0.25)';\n   76        }\n   77  \n   78:       if ( this.simulation.selectedCharacter.hasSpareActivitySlot() === false) {\n   79          color = 'rgba(200, 20, 20, 0.25)';\n   80        }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js:\n   47  \n   48        // has stat level\n   49:       if ( this.thisFactory.selectedCharacter.hasStatsFor('crafting') === false) {\n   50          enabled = false;\n   51        }\n   52  \n   53        // crafting proficiency\n   54:       if ( this.thisFactory.selectedCharacter.hasCraftingProficiencyFor(this.json.name) === false) {\n   55          enabled = false;\n   56        }\n   57  \n   58:       if ( this.thisFactory.selectedCharacter.hasSpareActivitySlot() === false) {\n   59          enabled = false;\n   60        }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimfactory.js:\n   57   				var characterName = thisCharacter.name;\n   58  	          	this.characterObjs[characterName] = new FSCharacter(thisCharacter, thisFactory);\n   59: 	          	this.selectedCharacter = this.characterObjs[characterName];\n   60  	        }).bind(this)); \n   61  	       	this.onClickCharacter = function ( character) {\n   62: 	        	this.selectedCharacter = character;\n   63  	        };\n   64  \n   ..\n  319  					if (this.bank[bankItemKey].json.quantity.length > 0) {\n  320  						this.bank[bankItemKey].decrement(1) ;\n  321: 						this.selectedCharacter.json.tools.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name}, thisFactory ));\n  322  \n  323  						if ( this.bank[bankItemKey].json.quantity.length === 0) {\n  ...\n  336  							for (var statSubType in this.foodDefines[bankItemKey].onConsume.stat[statType]) {\n  337  								var delta = parseInt(this.foodDefines[bankItemKey].onConsume.stat[statType][statSubType], 10);\n  338: 								this.selectedCharacter.modifyStat( statType, statSubType, delta);\n  339  							}\n  340  						}\n  ...\n  351  					if (this.bank[bankItemKey].json.quantity.length > 0) {\n  352  						this.bank[bankItemKey].decrement(1) ;\n  353: 						this.selectedCharacter.json.weapons.push( new FSBackpack( {'category':this.bank[bankItemKey].category, 'name':this.bank[bankItemKey].json.name}, thisFactory ));\n  354  \n  355  						if ( this.bank[bankItemKey].json.quantity.length === 0) {\n  ...\n  368  		 */\n  369  		this.onClickGatherables = function (gatherableType) {\n  370: 			if ( this.selectedCharacter !== null) {\n  371: 				this.selectedCharacter.addTask( gatherableType, 'gathering');	\n  372  			}\n  373  		};\n  ...\n  378  		 */\n  379  		this.onClickHarvestables = function (harvestableType) {\n  380: 			if ( this.selectedCharacter !== null) {\n  381: 			    this.selectedCharacter.addTask( harvestableType, 'harvesting');	\n  382  			}\n  383  		};\n  ...\n  388  		 */\n  389  		this.onClickRecipes = function (recipeKey) {\n  390: 			if ( this.selectedCharacter !== null) {\n  391: 		        this.selectedCharacter.addTask( recipeKey, 'crafting');		\n  392  		    }          	\n  393  		};\n\n/Users/colinmoore/Dev/crafty/app/views/charactersheet.html:\n    6    <thead>\n    7        <td class=\"col-sm-7\">\n    8:         <h4>{{getFSService().simulation.selectedCharacter.json.name}}</h4>\n    9        </td>\n   10        <td class=\"col-sm-6\">\n   ..\n   15      <tr>\n   16        <td class=\"col-sm-7\">\n   17:         <image width =\"100%\" src=\"{{getFSService().simulation.selectedCharacter.json.image}}\"></image>\n   18        </td>\n   19        <td class=\"col-sm-6\">\n\n/Users/colinmoore/Dev/crafty/app/views/charactersheetstats.html:\n    9              <td><b>Profession</b></td>\n   10                <td class=\"noselect\" >\n   11:                 {{getFSService().simulation.selectedCharacter.json.proficiency.profession}}\n   12                </td>\n   13                  <td class=\"noselect\" >\n   14:                   <input ng-model=\"getFSService().simulation.selectedCharacter.json.proficiency.tier\" width=\"2\">\n   15                    \n   16                </td>\n   ..\n   32            <tr class=\"noselect\">\n   33                <td  class=\"noselect\" >\n   34:                 {{getFSService().simulation.selectedCharacter.json.stats.health.current}} / {{getFSService().simulation.selectedCharacter.json.stats.health.max}} \n   35                </td>\n   36                <td  class=\"noselect\" >\n   37:                 {{getFSService().simulation.selectedCharacter.json.stats.energy.current}} / {{getFSService().simulation.selectedCharacter.json.stats.energy.max}} \n   38                </td>\n   39                <td  class=\"noselect\" >\n   40:                 {{getFSService().simulation.selectedCharacter.json.stats.mind.current}} /  {{getFSService().simulation.selectedCharacter.json.stats.mind.max}}\n   41                </td>\n   42            </tr>\n   ..\n   52            <tr class=\"noselect\">\n   53              <td><b>Activity</b></td>\n   54:               <td ng-repeat=\"v in getFSService().simulation.selectedCharacter.json.activity\" class=\"noselect\" >\n   55                  {{v.name}}\n   56                </td>\n   ..\n   65           <tr class=\"noselect\">\n   66              <td><b>Tools</b></td>\n   67:             <td ng-repeat=\"v in getFSService().simulation.selectedCharacter.json.tools\" class=\"noselect\" ng-click=\"getFSService().simulation.onClickCharacterTool(getFSService().simulation.selectedCharacter, $index)\"> \n   68                <div style = \"background:{{v.bgcolor()}};\">  {{v.json.name}}</div>\n   69              </td> \n   ..\n   78           <tr class=\"noselect\">\n   79              <td><b>Weapons</b></td>\n   80:             <td  ng-repeat=\"v in getFSService().simulation.selectedCharacter.json.weapons\" class=\"noselect\" ng-click=\"getFSService().simulation.onClickCharacterWeapon(getFSService().simulation.selectedCharacter, $index)\" bgcolor={{v.bgcolor()}} >\n   81                  {{v.json.name}}\n   82              </td>\n\n/Users/colinmoore/Dev/crafty/app/views/gatherables.html:\n   38            <div style = \"background:{{v.quantitybgcolor}};\">  {{v.json.quantity}}</div>\n   39        </td> \n   40:       <td class=\"col-sm-1\"> {{v.duration(getFSService().simulation.selectedCharacter)}}</td> \n   41      </tr>\n   42    </tbody>\n\n/Users/colinmoore/Dev/crafty/app/views/harvestables.html:\n   32            <div style = \"background:{{v.quantitybgcolor}};\">  {{v.json.quantity}}</div>\n   33          </td> \n   34:         <td class=\"col-sm-1\"> {{v.duration(getFSService().simulation.selectedCharacter)}}</td> \n   35        </tr>\n   36      </tbody>\n\n/Users/colinmoore/Dev/crafty/app/views/recipes.html:\n   34          </td> \n   35          <td class=\"col-sm-3\" >{{v.getCategory()}}</td> \n   36:         <td class=\"col-sm-1\"> {{v.duration(getFSService().simulation.selectedCharacter)}}</td> \n   37        </tr>\n   38      </tbody>\n\n40 matches across 10 files\n",
-			"settings":
-			{
-				"buffer_size": 8256,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "app/scripts/services/fsgatherable.js",
-			"settings":
-			{
-				"buffer_size": 2127,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/main.html",
-			"settings":
-			{
-				"buffer_size": 1951,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/colinmoore/dev/crafty/app/views/goals.html",
-			"settings":
-			{
-				"buffer_size": 684,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/colinmoore/dev/crafty/app/views/rewards.html",
-			"settings":
-			{
-				"buffer_size": 1031,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/contextinfoconsole.html",
-			"settings":
-			{
-				"buffer_size": 319,
+				"buffer_size": 719,
 				"line_ending": "Unix"
 			}
 		},
@@ -137,79 +71,7 @@
 			"file": "app/scripts/services/fscharacter.js",
 			"settings":
 			{
-				"buffer_size": 15468,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsrecipe.js",
-			"settings":
-			{
-				"buffer_size": 1860,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsharvestable.js",
-			"settings":
-			{
-				"buffer_size": 4766,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fscontextconsole.js",
-			"settings":
-			{
-				"buffer_size": 771,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/controllers/main.js",
-			"settings":
-			{
-				"buffer_size": 463,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fssimrules.js",
-			"settings":
-			{
-				"buffer_size": 707,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/reference.html",
-			"settings":
-			{
-				"buffer_size": 5264,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/index.html",
-			"settings":
-			{
-				"buffer_size": 4548,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fstask.js",
-			"settings":
-			{
-				"buffer_size": 528,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsreward.js",
-			"settings":
-			{
-				"buffer_size": 478,
+				"buffer_size": 15450,
 				"line_ending": "Unix"
 			}
 		}
@@ -238,37 +100,44 @@
 	},
 	"file_history":
 	[
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimdatajson.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsreward.js",
-		"/Users/colinmoore/Dev/crafty/app/views/rewards.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimservice.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsbackpack.js",
 		"/Users/colinmoore/Dev/crafty/app/views/charactersheetstats.html",
+		"/Users/colinmoore/Dev/crafty/app/views/charactersheet.html",
+		"/Users/colinmoore/Dev/crafty/app/views/characterselect.html",
+		"/Users/colinmoore/Dev/crafty/app/views/recipes.html",
+		"/Users/colinmoore/Dev/crafty/app/views/bank.html",
 		"/Users/colinmoore/Dev/crafty/app/views/gatherables.html",
 		"/Users/colinmoore/Dev/crafty/app/views/harvestables.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsgatherable.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsharvestable.js",
-		"/Users/colinmoore/Dev/crafty/app/styles/main.css",
-		"/Users/colinmoore/Dev/crafty/app/views/recipes.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsbackpack.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimfactory.js",
-		"/Users/colinmoore/Dev/crafty/app/views/characterselect.html",
-		"/Users/colinmoore/Dev/crafty/app/views/bank.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js",
-		"/Users/colinmoore/dev/crafty/bower_components/bootstrap/dist/css/bootstrap.css",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimstate.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsreward.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fstask.js",
 		"/Users/colinmoore/Dev/crafty/app/index.html",
+		"/Users/colinmoore/Dev/crafty/app/views/reference.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimrules.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/main.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscontextconsole.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsharvestable.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js",
+		"/Users/colinmoore/Dev/crafty/app/views/contextinfoconsole.html",
+		"/Users/colinmoore/dev/crafty/app/views/rewards.html",
+		"/Users/colinmoore/dev/crafty/app/views/goals.html",
+		"/Users/colinmoore/Dev/crafty/app/views/main.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsgatherable.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimfactory.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimservice.js",
+		"/Users/colinmoore/Dev/crafty/app/json/rules.json",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimdatajson.js",
+		"/Users/colinmoore/Dev/crafty/app/views/rewards.html",
+		"/Users/colinmoore/Dev/crafty/app/styles/main.css",
+		"/Users/colinmoore/dev/crafty/bower_components/bootstrap/dist/css/bootstrap.css",
 		"/Users/colinmoore/Perforce/cmoore_MBP/crafty/state.json",
 		"/Users/colinmoore/Perforce/cmoore_MBP/crafty/rules.json",
 		"/Users/colinmoore/Dev/crafty/dist/index.html",
 		"/Users/colinmoore/dev/crafty/bower.json",
 		"/Users/colinmoore/dev/crafty/bower_components/bootstrap/bower.json",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsservice.js",
-		"/Users/colinmoore/Dev/crafty/app/views/main.html",
 		"/Users/colinmoore/Dev/crafty/app/json/state.json",
-		"/Users/colinmoore/Dev/crafty/app/json/rules.json",
-		"/Users/colinmoore/Dev/crafty/app/views/reference.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscontextconsole.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fstask.js",
 		"/Users/colinmoore/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/colinmoore/dev/crafty/app/views/contextinfoconsole.html",
 		"/Users/colinmoore/dev/crafty/app/json/state.json",
@@ -279,7 +148,6 @@
 		"/Users/colinmoore/Downloads/sourcetree.license",
 		"/Users/colinmoore/dev/Electoral-System-Simulator/app/index.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/about.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/main.js",
 		"/Users/colinmoore/dev/crafty/app/json/rules.json",
 		"/Users/colinmoore/dev/craftydb/craftydb.js",
 		"/Users/colinmoore/Perforce/cmoore_MBP/crafty/smallerdataset.json",
@@ -287,7 +155,6 @@
 		"/Users/colinmoore/dev/craftydb/craftydbapp.js",
 		"/Users/colinmoore/Dev/crafty/db/craftydb.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/app.js",
-		"/Users/colinmoore/Dev/crafty/app/views/charactersheet.html",
 		"/Users/colinmoore/dev/Electoral-System-Simulator/app/scripts/services/electionservice.js",
 		"/Users/colinmoore/dev/craftydb/publishToEC2.sh",
 		"/Users/colinmoore/Dev/crafty/logs/[ec2-user@ip-172-31-38-189 html]$ npm list -g",
@@ -365,6 +232,49 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			".js",
+			"FSReward",
+			"thisFactory",
+			"simulation",
+			"fsBa",
+			"thisFactory",
+			"simulation",
+			"selectedCo",
+			"simulation",
+			"onCl",
+			"onClickC",
+			"onClickCharacter",
+			"selectCharacter",
+			"thisFactory",
+			"simfactory",
+			"updateGoals",
+			"FSSimState",
+			"reward",
+			"thisFactory",
+			"FSSimState",
+			"FSGatherable",
+			"FSBackpack",
+			"FSSimRules",
+			"FSHarvestable",
+			"FSRecipe",
+			"FSGatherable",
+			"FSBackpack",
+			"FSTask",
+			"FSSimState",
+			"FSCharacter",
+			"thisFactory",
+			"selectedC",
+			"characterObjs",
+			"this.Cra",
+			"craftables",
+			"bank",
+			"gather",
+			"pdateHarvestable",
+			"harves",
+			"simulation",
+			"isHar",
+			"isHav",
+			"harvestables",
 			"FSReward",
 			"thisFactory",
 			"rewardR",
@@ -449,50 +359,7 @@
 			"replens",
 			"base",
 			"basetime",
-			"crafing",
-			"crafting",
-			"crafing",
-			"percent",
-			"updateActiveTaskRemainingPercent",
-			"updateActiveTaskRemainingSeconds",
-			"updateActiveTask",
-			"crating",
-			"startCrafting",
-			"craftableOutputKey",
-			"craft",
-			"character",
-			"hasGatheringDependencies",
-			"findIndexOf",
-			"harvestActions",
-			"hasRequiredCraftingProficiency",
-			"MineC",
-			"steam",
-			"fishingne",
-			"Fermen",
-			"barr",
-			"base",
-			"bar",
-			"barr",
-			"saw",
-			"bucketpu",
-			"matt",
-			"workben",
-			"yoked",
-			"backpa",
-			"Fish",
-			"steel",
-			"meta",
-			"Firs",
-			"Forge",
-			"StoneA",
-			"stonea",
-			"StoneAxe",
-			"woodAxe",
-			"tools",
-			"quant",
-			"quan",
-			"FSRecipe",
-			"name"
+			"crafing"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -517,28 +384,27 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/json/rules.json",
+					"file": "app/scripts/services/fstask.js",
 					"settings":
 					{
-						"buffer_size": 41147,
+						"buffer_size": 719,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								41147
+								540,
+								540
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -550,411 +416,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "app/scripts/services/fssimservice.js",
-					"settings":
-					{
-						"buffer_size": 7041,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								713,
-								713
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 1.0,
-						"translation.y": 751.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/scripts/services/fssimfactory.js",
-					"settings":
-					{
-						"buffer_size": 22450,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								16530,
-								16530
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1001.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"settings":
-					{
-						"buffer_size": 8256,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										226,
-										243
-									],
-									[
-										294,
-										311
-									],
-									[
-										543,
-										560
-									],
-									[
-										723,
-										740
-									],
-									[
-										887,
-										904
-									],
-									[
-										1194,
-										1211
-									],
-									[
-										1341,
-										1358
-									],
-									[
-										1505,
-										1522
-									],
-									[
-										1762,
-										1779
-									],
-									[
-										1944,
-										1961
-									],
-									[
-										2107,
-										2124
-									],
-									[
-										2452,
-										2469
-									],
-									[
-										2626,
-										2643
-									],
-									[
-										2826,
-										2843
-									],
-									[
-										3291,
-										3308
-									],
-									[
-										3525,
-										3542
-									],
-									[
-										3862,
-										3879
-									],
-									[
-										3908,
-										3925
-									],
-									[
-										4094,
-										4111
-									],
-									[
-										4143,
-										4160
-									],
-									[
-										4320,
-										4337
-									],
-									[
-										4372,
-										4389
-									],
-									[
-										4623,
-										4640
-									],
-									[
-										4838,
-										4855
-									],
-									[
-										5140,
-										5157
-									],
-									[
-										5329,
-										5346
-									],
-									[
-										5575,
-										5592
-									],
-									[
-										5651,
-										5668
-									],
-									[
-										5817,
-										5834
-									],
-									[
-										5893,
-										5910
-									],
-									[
-										6059,
-										6076
-									],
-									[
-										6134,
-										6151
-									],
-									[
-										6380,
-										6397
-									],
-									[
-										6643,
-										6660
-									],
-									[
-										6773,
-										6790
-									],
-									[
-										7070,
-										7087
-									],
-									[
-										7204,
-										7221
-									],
-									[
-										7568,
-										7585
-									],
-									[
-										7881,
-										7898
-									],
-									[
-										8162,
-										8179
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								556,
-								556
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2201.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/scripts/services/fsgatherable.js",
-					"settings":
-					{
-						"buffer_size": 2127,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1423,
-								1433
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 788.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/views/main.html",
-					"settings":
-					{
-						"buffer_size": 1951,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								325,
-								337
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/Users/colinmoore/dev/crafty/app/views/goals.html",
-					"settings":
-					{
-						"buffer_size": 684,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								40,
-								40
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "/Users/colinmoore/dev/crafty/app/views/rewards.html",
-					"settings":
-					{
-						"buffer_size": 1031,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								479,
-								479
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/views/contextinfoconsole.html",
-					"settings":
-					{
-						"buffer_size": 319,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								285,
-								285
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
 					"file": "app/scripts/services/fscharacter.js",
 					"settings":
 					{
-						"buffer_size": 15468,
+						"buffer_size": 15450,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3281,
-								3292
+								1814,
+								1819
 							]
 						],
 						"settings":
@@ -964,255 +437,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1451.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "app/scripts/services/fsrecipe.js",
-					"settings":
-					{
-						"buffer_size": 1860,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1655,
-								1666
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 533.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "app/scripts/services/fsharvestable.js",
-					"settings":
-					{
-						"buffer_size": 4766,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1747,
-								1751
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 686.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "app/scripts/services/fscontextconsole.js",
-					"settings":
-					{
-						"buffer_size": 771,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								580,
-								580
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "app/scripts/controllers/main.js",
-					"settings":
-					{
-						"buffer_size": 463,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								234,
-								234
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "app/scripts/services/fssimrules.js",
-					"settings":
-					{
-						"buffer_size": 707,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								313,
-								313
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "app/views/reference.html",
-					"settings":
-					{
-						"buffer_size": 5264,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5051,
-								5051
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2408.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "app/index.html",
-					"settings":
-					{
-						"buffer_size": 4548,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4442,
-								4442
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1043.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 17,
-					"file": "app/scripts/services/fstask.js",
-					"settings":
-					{
-						"buffer_size": 528,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 18,
-					"file": "app/scripts/services/fsreward.js",
-					"settings":
-					{
-						"buffer_size": 478,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								328,
-								336
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 641.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1276,6 +501,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 348.0,
+	"side_bar_width": 350.0,
 	"status_bar_visible": true
 }

@@ -13,8 +13,7 @@ angular.module('craftyApp')
     // ...
 
     // FSRecipe
-    var FSRecipe = function( name, thisFactory) { 
-      this.thisFactory = thisFactory;
+    var FSRecipe = function( name) { 
 
       this.json = { 'name' : name, 'category' : 'placeholder'};
       this.json = { 'name' : name, 'category' : this.getCategory()};
@@ -25,14 +24,7 @@ angular.module('craftyApp')
       }
     };
 
-    /**
-     * @desc 
-     * @return 
-     */
-    FSRecipe.prototype.bgcolor = function( ) {
-      var enabled = this.thisFactory.isCraftable(this.json.name) ;
-      return  (enabled === true) ? 'rgba(20, 200, 20, 0.25)' : 'rgba(200, 20, 20, 0.25)';
-    };
+
 
 
     /**
@@ -59,17 +51,6 @@ angular.module('craftyApp')
       return craftingDuration;
     };
 
-     /**
-     * @desc 
-     * @return 
-     */
-    FSRecipe.prototype.hasUnlocks =  function(  ) {
-
-      if ( this.thisFactory.hasUnlocks( {'action':'craft', 'target':this.json.name})) {
-        return 'images/unlock.69ea04fd.png';
-      }
-      return 'images/clear.d9e2c8a6.png';
-    };
 
     return FSRecipe;
   });

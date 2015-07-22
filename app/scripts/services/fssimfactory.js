@@ -55,12 +55,12 @@ angular.module('craftyApp')
   
             // Gatherables
             json.gatherables.forEach( function(thisGatherables) {
-                FSSimState.gatherables[thisGatherables.name] = new FSGatherable(thisGatherables, thisFactory);
+                FSSimState.gatherables[thisGatherables.name] = new FSGatherable(thisGatherables);
             }); 
   
             // Harvestables
             json.harvestables.forEach( function(thisHarvestable) {
-                FSSimState.harvestables[thisHarvestable.name] = new FSHarvestable(thisHarvestable, thisFactory);
+                FSSimState.harvestables[thisHarvestable.name] = new FSHarvestable(thisHarvestable);
             }); 
  
 
@@ -83,7 +83,7 @@ angular.module('craftyApp')
   
             // Craftables
             json.craftables.forEach( function( recipeName ) {
-                    FSSimState.craftables[recipeName] =  new FSRecipe( recipeName, thisFactory);
+                    FSSimState.craftables[recipeName] =  new FSRecipe( recipeName);
                 }); 
 
 
@@ -229,6 +229,38 @@ angular.module('craftyApp')
 		     return  (FSSimState.rewards.indexOf(rewardName) === -1) ? 'rgba(200, 20, 20, 0.25)' : 'rgba(20, 200, 20, 0.25)';
 		};
 
+
+	    /**
+	     * @desc 
+	     * @return 
+	     */
+	    this.bgcolor= function( action, type) {
+	    	var enabled = false;
+	    	switch( action) {
+	    		case 'craft':
+	    			enabled = this.isCraftable(type) ;
+	    			break;
+	    		case 'gather':
+	    			enabled = this.isGatherable(type);
+	    			break;
+	    		case 'harvest':
+	    			enabled = this.isHarvestable(type);
+	    			break;
+	    	}
+	      
+	      return  (enabled === true) ? 'rgba(20, 200, 20, 0.25)' : 'rgba(200, 20, 20, 0.25)';
+	    };
+
+		/**
+		 * @desc 
+		 * @return 
+		 */
+		this.getUnlockImage =  function(  action, name) {
+		  if ( this.hasUnlocks( {'action':action, 'target':name})) {
+		    return 'images/unlock.69ea04fd.png';
+		  }
+		  return 'images/clear.d9e2c8a6.png';
+		};
 
 		/**
 		 * @desc 
@@ -527,7 +559,7 @@ angular.module('craftyApp')
 
 								if ( FSSimState.craftables.hasOwnProperty(recipe) === false) {
 									if (this.hasOwnProperty(recipe) === false) {
-										FSSimState.craftables[recipe] =  new FSRecipe( recipe, this);
+										FSSimState.craftables[recipe] =  new FSRecipe( recipe);
 										FSSimState.updateRecipes();
 										console.log('RECIPE UNLOCK:' + recipe);
 									}

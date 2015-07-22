@@ -1,5 +1,6 @@
 'use strict';
 
+
 /**
  * @ngdoc service
  * @name craftyApp.fsCharacter
@@ -8,7 +9,7 @@
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSCharacter', function (FSTask, FSBackpack, FSGatherable, FSSimRules, FSSimState) {
+  .factory('FSCharacter', function (FSBackpack, FSGatherable, FSTask, FSSimRules, FSSimState) {
     // Service logic
     // ...
     var thisFactory = null;
