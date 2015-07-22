@@ -9,7 +9,7 @@
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSCharacter', function (FSBackpack, FSGatherable, FSTask, FSSimRules, FSSimState) {
+  .factory('FSCharacter', function (FSBackpack, FSGatherable, FSTask, FSContextConsole, FSSimRules, FSSimState) {
     // Service logic
     // ...
     var thisFactory = null;
@@ -119,7 +119,7 @@ angular.module('craftyApp')
       // need to ensure there is an instance in gatherables before it can be incremented.
       if (!(harvestableType in FSSimState.gatherables)) { 
           var obj = {'name': harvestableType, 'quantity': '0'};
-          FSSimState.gatherables[harvestableType] = new FSGatherable(obj, thisFactory);
+          FSSimState.gatherables[harvestableType] = new FSGatherable(obj);
       }
       
       FSSimState.gatherables[harvestableType].increment();
@@ -213,10 +213,10 @@ angular.module('craftyApp')
         case 'gathering': {
             if (FSSimState.gatherables.hasOwnProperty(taskName) !== true) {
               canStartTask = false;
-              thisFactory.contextConsole.log('There is no ' + taskName + ' left to gather', log);
+              FSContextConsole.log('There is no ' + taskName + ' left to gather', log);
             } else {
               if ( parseInt( FSSimState.gatherables[taskName].json.quantity, 10) === 0) {
-                thisFactory.contextConsole.log('No ' + taskName + ' left to gather', log);
+                FSContextConsole.log('No ' + taskName + ' left to gather', log);
                 canStartTask = false;
               }
               if ( this.hasStatsFor('gathering') !== true) {
@@ -230,11 +230,11 @@ angular.module('craftyApp')
           break;
         case 'harvesting': {
             if (FSSimState.harvestables.hasOwnProperty(taskName) !== true) {
-              thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest', log);
+              FSContextConsole.log('There is no ' + taskName + ' left to harvest', log);
               canStartTask = false;
             } else {
               if ( parseInt(FSSimState.harvestables[taskName].quantity, 10) === 0) {
-                thisFactory.contextConsole.log('There is no ' + taskName + ' left to harvest', log);
+                FSContextConsole.log('There is no ' + taskName + ' left to harvest', log);
                 canStartTask = false;
               }
               if ( this.hasStatsFor('harvesting') !== true) {
@@ -340,10 +340,10 @@ angular.module('craftyApp')
                 } else if (log === true) {
                   var requiredProfession = FSSimRules.craftableDefines[recipeKey].proficiency.profession;
                   var requiredTier = parseInt(FSSimRules.craftableDefines[recipeKey].proficiency.tier, 10);
-                  thisFactory.contextConsole.log(this.json.name  + ' requires tier ' + requiredTier + ' in ' + requiredProfession + ' but is only tier ' + this.json.proficiency.tier );
+                  FSContextConsole.log(this.json.name  + ' requires tier ' + requiredTier + ' in ' + requiredProfession + ' but is only tier ' + this.json.proficiency.tier );
                 }
             } else if (log === true) {
-                  thisFactory.contextConsole.log('A ' + FSSimRules.craftableDefines[recipeKey].proficiency.profession + ' is needed to craft a ' + recipeKey);
+                  FSContextConsole.log('A ' + FSSimRules.craftableDefines[recipeKey].proficiency.profession + ' is needed to craft a ' + recipeKey);
             }
       }
 
@@ -361,7 +361,7 @@ angular.module('craftyApp')
       }
 
       if ( log === true) {
-        thisFactory.contextConsole.log('Activty queue is full');
+        FSContextConsole.log('Activty queue is full');
       }
 
       return false;
@@ -429,7 +429,7 @@ angular.module('craftyApp')
       } ).bind(this));   
 
       if (bHasToolAction === false && log === true)  {
-        thisFactory.contextConsole.log('Equipped tool(s) (' + tools + ') do not have required action (' + toolAction  + ')');
+        FSContextConsole.log('Equipped tool(s) (' + tools + ') do not have required action (' + toolAction  + ')');
       }
 
       return bHasToolAction;

@@ -21,6 +21,7 @@ angular.module('craftyApp')
   		var thisFactory = this;
   		var ctrllerScope = scope;
 
+
 	   /**
 	     * @desc 
 	     * @return 
@@ -32,7 +33,7 @@ angular.module('craftyApp')
 			FSSimRules.set(json);
 
 		
-			this.contextConsole = new FSContextConsole();
+			
 	    };
 
 
@@ -204,7 +205,7 @@ angular.module('craftyApp')
 		 * @return 
 		 */
 		 this.onClickBody = function ( tableName, keyName) {
-		 	this.contextConsole.clear();
+		 	FSContextConsole.clear();
 	     	switch (tableName) {
 	     		case 'Bank':
 	     			this.onClickBank(keyName);
@@ -399,7 +400,7 @@ angular.module('craftyApp')
 		            }
 		        }
 		        if ( haveStats === false) {
-		         	this.contextConsole.log('No one has the required stats to start gathering ' + gatherableType, true);
+		         	FSContextConsole.log('No one has the required stats to start gathering ' + gatherableType, true);
 		     	}
 
 		     	// equipped
@@ -410,12 +411,12 @@ angular.module('craftyApp')
 		            }
 		        }
 		        if ( hasEquippedTools === false) {
-		         	this.contextConsole.log('No one is equipped with the required tools for gathering ' + gatherableType, true);
+		         	FSContextConsole.log('No one is equipped with the required tools for gathering ' + gatherableType, true);
 
 					for ( var toolDefine in FSSimRules.toolDefines) {
 						FSSimRules.toolDefines[toolDefine].actions.forEach( ( function ( action) {
 							if ( FSSimRules.gatherableDefines[gatherableType].actionable.indexOf(action) !== -1) {
-								this.contextConsole.log(toolDefine, true);
+								FSContextConsole.log(toolDefine, true);
 							} 
 						}).bind(this));
 					}
@@ -442,7 +443,7 @@ angular.module('craftyApp')
 		            }
 		        }
 		        if ( haveStats === false) {
-		         	this.contextConsole.log('No one has the required stats to start harvesting ' + harvestableType, true);
+		         	FSContextConsole.log('No one has the required stats to start harvesting ' + harvestableType, true);
 		     	}
 
 		     	// equipped
@@ -453,13 +454,13 @@ angular.module('craftyApp')
 		            }
 		        }
 		        if ( hasEquippedTools === false) {
-		         	this.contextConsole.log('No one is equipped with the required tools for harvesting ' + harvestableType, true);
+		         	FSContextConsole.log('No one is equipped with the required tools for harvesting ' + harvestableType, true);
 
 					for ( var toolDefine in FSSimRules.toolDefines) {
 						FSSimRules.toolDefines[toolDefine].actions.forEach( ( function ( action) {
 							if ( FSSimRules.harvestableDefines[harvestableType].actionable.indexOf(action) !== -1) {
 								if ( parseInt(FSSimRules.toolDefines[toolDefine].strength, 10) >= parseInt( FSSimRules.harvestableDefines[harvestableType].hardness, 10)) {
-									this.contextConsole.log(toolDefine, true);
+									FSContextConsole.log(toolDefine, true);
 								}
 							} 
 						}).bind(this));
@@ -490,7 +491,7 @@ angular.module('craftyApp')
 					            }
 					        }
 					        if ( haveStats === false) {
-					         	this.contextConsole.log('No one has the required stats to start crafting ' + recipeKey, true);
+					         	FSContextConsole.log('No one has the required stats to start crafting ' + recipeKey, true);
 					     	}
 
 					     	//proficiency
@@ -501,7 +502,7 @@ angular.module('craftyApp')
 					            }
 					        }
 					        if ( hasProficiency === false) {
-					         	this.contextConsole.log('No one has the required proficiency to start crafting ' + recipeKey, true);
+					         	FSContextConsole.log('No one has the required proficiency to start crafting ' + recipeKey, true);
 					     	}
 		    		}
 		    	}
@@ -674,10 +675,10 @@ angular.module('craftyApp')
 				if (recipeInput in FSSimState.bank) {
 				  if ( FSSimState.bank[ recipeInput ].json.quantity.length < recipeInputQuantity) {
 				    hasIngredients = false;
-				    this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for ' + recipeKey + ' but only have  ' + FSSimState.bank[ recipeInput ].json.quantity.length, log);
+				    FSContextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for ' + recipeKey + ' but only have  ' + FSSimState.bank[ recipeInput ].json.quantity.length, log);
 				  }
 				} else {
-				  this.contextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for crafting ' +  recipeKey+ ' but have none', log);
+				  FSContextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for crafting ' +  recipeKey+ ' but have none', log);
 				  hasIngredients = false;
 				}
 			}.bind(this));
@@ -695,7 +696,7 @@ angular.module('craftyApp')
         		var constructor = FSSimRules.craftableDefines[recipeKey].construction[0];
         		if ( FSSimState.bank.hasOwnProperty(constructor) === false) {
           			hasIngredients = false;
-          			this.contextConsole.log('Require a ' + constructor + ' in the bank for crafting ' + recipeKey, log);
+          			FSContextConsole.log('Require a ' + constructor + ' in the bank for crafting ' + recipeKey, log);
         		} 
       		}
 

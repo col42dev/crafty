@@ -12,15 +12,14 @@ angular.module('craftyApp')
     // AngularJS will instantiate a singleton by calling "new" on this function
 
         // Gatherables
-    var FSContextConsole = function( ) { 
     	this.message = 'click red cell for context info';
-    };
+
 
      /**
      * @desc 
      * @return 
      */
-    FSContextConsole.prototype.log =  function( message, log) {         
+    this.log =  function( message, log) {         
 
         if ( log === true) {
 		  this.message += message;
@@ -28,10 +27,10 @@ angular.module('craftyApp')
         }
 	};
 
-	FSContextConsole.prototype.clear =  function() {         
+	this.clear =  function() {         
 		this.message  = '';
 	};
 
 
-     return FSContextConsole;
+
   });
