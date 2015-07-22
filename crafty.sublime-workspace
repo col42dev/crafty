@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"c",
+				"category"
+			],
+			[
 				"in",
 				"indexOf"
 			],
@@ -71,7 +75,7 @@
 			"file": "app/scripts/services/fscharacter.js",
 			"settings":
 			{
-				"buffer_size": 15353,
+				"buffer_size": 15630,
 				"line_ending": "Unix"
 			}
 		},
@@ -95,7 +99,7 @@
 			"file": "app/scripts/services/fssimfactory.js",
 			"settings":
 			{
-				"buffer_size": 22812,
+				"buffer_size": 18448,
 				"line_ending": "Unix"
 			}
 		},
@@ -111,7 +115,7 @@
 			"file": "app/views/recipes.html",
 			"settings":
 			{
-				"buffer_size": 2366,
+				"buffer_size": 2356,
 				"line_ending": "Unix"
 			}
 		},
@@ -143,7 +147,7 @@
 			"file": "app/scripts/controllers/main.js",
 			"settings":
 			{
-				"buffer_size": 684,
+				"buffer_size": 751,
 				"line_ending": "Unix"
 			}
 		},
@@ -159,7 +163,7 @@
 			"file": "app/scripts/services/fssimstate.js",
 			"settings":
 			{
-				"buffer_size": 2450,
+				"buffer_size": 3958,
 				"line_ending": "Unix"
 			}
 		},
@@ -167,7 +171,7 @@
 			"file": "app/scripts/services/fsbackpack.js",
 			"settings":
 			{
-				"buffer_size": 1415,
+				"buffer_size": 1405,
 				"line_ending": "Unix"
 			}
 		},
@@ -183,7 +187,23 @@
 			"file": "app/scripts/services/fssimobjectchannel.js",
 			"settings":
 			{
-				"buffer_size": 1045,
+				"buffer_size": 1941,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fssimobjectfactory.js",
+			"settings":
+			{
+				"buffer_size": 2030,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fssimbank.js",
+			"settings":
+			{
+				"buffer_size": 1401,
 				"line_ending": "Unix"
 			}
 		}
@@ -344,6 +364,28 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"thisFactory",
+			"bankTransaction",
+			"trans",
+			"thisFa",
+			"FSGatherable",
+			"FSBackpack",
+			"FSSimObjectChannel",
+			"FSBackpack",
+			"FSSimRules",
+			"FSSimObjectChannel",
+			"FSBackpack",
+			" \n",
+			"thisFactory",
+			"FSRecipe",
+			"FSBackpack",
+			"craftablesArray",
+			"FSRecipe",
+			"FSHarvestable",
+			"FSGatherable",
+			"FSCharacter",
+			"FSGatherable",
+			"FSSimState",
 			"FSGatherable",
 			"FSBackpack",
 			"thisFactory",
@@ -449,29 +491,7 @@
 			"startNextTask",
 			"hasSp",
 			"his.characterObjs\nhis.characterObjs\nhasSpare",
-			"canStartNextTask",
-			"perform",
-			"character",
-			"selectedCharacter",
-			"updateGoals",
-			"catapul",
-			"heel",
-			"wheelbar",
-			"wheelbarrow\n",
-			"checkRe",
-			"checkRewards",
-			"taskRules",
-			"selectedConstructorFilter",
-			"timer",
-			"FSBackpack",
-			"onclickban",
-			"onclickbo",
-			"width",
-			"widt",
-			"gatherers",
-			"basetime",
-			"harvestBaseTimeS",
-			"gatherBaseTimeS"
+			"canStartNextTask"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -496,7 +516,7 @@
 	"groups":
 	[
 		{
-			"selected": 15,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -532,15 +552,15 @@
 					"file": "app/scripts/services/fscharacter.js",
 					"settings":
 					{
-						"buffer_size": 15353,
+						"buffer_size": 15630,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								375,
-								375
+								5984,
+								5995
 							]
 						],
 						"settings":
@@ -549,8 +569,8 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 9.0,
-						"translation.y": 0.0,
+						"translation.x": 0.0,
+						"translation.y": 2726.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -616,15 +636,15 @@
 					"file": "app/scripts/services/fssimfactory.js",
 					"settings":
 					{
-						"buffer_size": 22812,
+						"buffer_size": 18448,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1456,
-								1456
+								12898,
+								12898
 							]
 						],
 						"settings":
@@ -632,8 +652,8 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 512.0,
+						"translation.x": 11.0,
+						"translation.y": 6955.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -671,15 +691,15 @@
 					"file": "app/views/recipes.html",
 					"settings":
 					{
-						"buffer_size": 2366,
+						"buffer_size": 2356,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1666,
-								1666
+								1267,
+								1267
 							]
 						],
 						"settings":
@@ -689,7 +709,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 35.0,
+						"translation.y": 98.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -783,15 +803,15 @@
 					"file": "app/scripts/controllers/main.js",
 					"settings":
 					{
-						"buffer_size": 684,
+						"buffer_size": 751,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								571,
-								590
+								404,
+								404
 							]
 						],
 						"settings":
@@ -837,15 +857,15 @@
 					"file": "app/scripts/services/fssimstate.js",
 					"settings":
 					{
-						"buffer_size": 2450,
+						"buffer_size": 3958,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2442,
-								2442
+								1727,
+								1818
 							]
 						],
 						"settings":
@@ -855,7 +875,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 716.0,
+						"translation.y": 538.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -865,15 +885,15 @@
 					"file": "app/scripts/services/fsbackpack.js",
 					"settings":
 					{
-						"buffer_size": 1415,
+						"buffer_size": 1405,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1379,
-								1379
+								195,
+								195
 							]
 						],
 						"settings":
@@ -921,15 +941,71 @@
 					"file": "app/scripts/services/fssimobjectchannel.js",
 					"settings":
 					{
-						"buffer_size": 1045,
+						"buffer_size": 1941,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								752,
-								752
+								1820,
+								1820
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 243.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "app/scripts/services/fssimobjectfactory.js",
+					"settings":
+					{
+						"buffer_size": 2030,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								660,
+								663
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 113.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "app/scripts/services/fssimbank.js",
+					"settings":
+					{
+						"buffer_size": 1401,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1013,
+								1013
 							]
 						],
 						"settings":

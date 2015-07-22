@@ -8,7 +8,7 @@
  * Simulation factory
  */
 angular.module('craftyApp')
-  .factory('FSSimFactory', function (  FSBackpack,  FSSimObjectChannel,  FSContextConsole, FSSimRules, FSSimState) {
+  .factory('FSSimFactory', function (  FSBackpack,  FSSimObjectChannel,  FSContextConsole, FSSimRules, FSSimState, FSSimRewards) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -38,8 +38,8 @@ angular.module('craftyApp')
 		
 			FSSimState.set(json, this);
 
-			//Goals
-            this.updateGoals();
+            FSSimObjectChannel.updateGoals();
+   
 	    };
 
 	      /**
@@ -177,7 +177,7 @@ angular.module('craftyApp')
 		 * @return 
 		 */
 		this.getUnlockImage =  function(  action, name) {
-		  if ( this.hasUnlocks( {'action':action, 'target':name})) {
+		  if ( FSSimRewards.hasUnlocks( {'action':action, 'target':name})) {
 		    return 'images/unlock.69ea04fd.png';
 		  }
 		  return 'images/clear.d9e2c8a6.png';
@@ -432,112 +432,13 @@ angular.module('craftyApp')
 		    }         	
 		};
 
-		/**
-		 * @desc 
-		 * @return 
-		 */
-		this.bankTransaction  = function ( type,  value) {
-	      	if ( type === 'startCrafting') {
-				// subtract resources from bank. 
-				var recipeInputObj = FSSimRules.craftableDefines[value].input;
-				var recipeInputKeys = Object.keys( recipeInputObj );
-
-				recipeInputKeys.forEach( ( function ( recipeKey ){
-					var recipeInput = recipeKey;
-					var recipeInputQuantity = recipeInputObj[ recipeKey];
-					FSSimState.bank[ recipeInput ].decrement( recipeInputQuantity);
-					if ( FSSimState.bank[recipeInput].json.quantity.length === 0) {
-					  delete  FSSimState.bank[recipeInput];
-					  FSSimState.updateBank();
-					}
-				}).bind(this));
-			}
-	     };
-
-		/**
-		 * @desc 
-		 * @return 
-		 */
-		this.checkRewards  = function ( checkDesc) {
-
-			var returnObj = {};
-
-			for (var thisRewardRule in FSSimRules.rewardRules) {
-  				if (FSSimRules.rewardRules.hasOwnProperty(thisRewardRule)) {
-  					if (FSSimRules.rewardRules[thisRewardRule].action === checkDesc.action) {
-						if (FSSimRules.rewardRules[thisRewardRule].target === checkDesc.target) {
-							
-							// reward reward
-							if ( FSSimState.rewards.indexOf(thisRewardRule) === -1) {
-								console.log('REWARD:' + thisRewardRule);
-								FSSimState.rewards.push(thisRewardRule);
-								returnObj.xp = parseInt(FSSimRules.rewardRules[thisRewardRule].xp);
-
-								this.updateGoals();
-
-							}
-
-							// recipe unlocks
-							FSSimRules.rewardRules[thisRewardRule].recipeUnlocks.forEach( function( recipe) {
-
-								if ( FSSimState.craftables.hasOwnProperty(recipe) === false) {
-									if (this.hasOwnProperty(recipe) === false) {
-										 FSSimObjectChannel.createSimObject( { category: 'craftables', desc : recipe});
-										FSSimState.updateRecipes();
-										console.log('RECIPE UNLOCK:' + recipe);
-									}
-								}
-
-							}.bind(this));
-
-						}
-					}
-  				}
-			}
-
-			return returnObj;
-		};
-
-		/**
-		 * @desc 
-		 * @return 
-		 */
-		this.updateGoals  = function ( ) {
-			this.nextGoal = {};
-			for (var thisRewardRule in FSSimRules.rewardRules) {
-  				if (FSSimRules.rewardRules.hasOwnProperty(thisRewardRule)) {		
-					if ( FSSimState.rewards.indexOf(thisRewardRule) === -1) {
-						console.log('GOAL:' + thisRewardRule);
-
-						this.nextGoal = angular.copy(FSSimRules.rewardRules[thisRewardRule]);
-						this.nextGoal.name = thisRewardRule;
-						break;
-					}
-  				}
-			}
-		};
 
 
-		/**
-		 * @desc 
-		 * @return 
-		 */
-		this.hasUnlocks  = function ( checkDesc ) {
 
-			for (var thisRewardRule in FSSimRules.rewardRules) {
-  				if (FSSimRules.rewardRules.hasOwnProperty(thisRewardRule)) {
-  					if (FSSimRules.rewardRules[thisRewardRule].action === checkDesc.action) {
-						if (FSSimRules.rewardRules[thisRewardRule].target === checkDesc.target) {
-							if ( FSSimState.rewards.indexOf(thisRewardRule) === -1) {
-								return true;	
-							}
-						}
-					}
-  				}
-			}
+	
 
-			return false;
-		};
+
+
 
 		/**
 		 * @desc 

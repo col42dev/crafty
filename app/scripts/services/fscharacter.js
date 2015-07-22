@@ -146,17 +146,17 @@ angular.module('craftyApp')
     FSCharacter.prototype.gatheringOnStop = function () {
       var gatherableType = this.json.activity[0].name;
 
-      if (!(gatherableType in FSSimState.bank)) {
-        FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':'gatherable', 'name':gatherableType, quantity : 0} });  
-      }
-      FSSimState.bank[gatherableType].increment(1);
-      FSSimState.updateBank();
+      FSSimObjectChannel.bankDeposit( { type: gatherableType, category: 'gatherables'});
+   
 
       // Rewards
+      FSSimObjectChannel.makeRewards( {'action':'gather', 'target':gatherableType});
+      /*
       var rewards = thisFactory.checkRewards( {'action':'gather', 'target':gatherableType});
       if (rewards.hasOwnProperty('xp')) {
           this.json.xp += rewards.xp;
       }
+      */
     };
 
 
@@ -165,7 +165,17 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.craftingOnStart = function () {
-      thisFactory.bankTransaction( 'startCrafting', this.json.activity[0].name);
+
+      var craftableType = this.json.activity[0].name;
+      var recipeInputObj = FSSimRules.craftableDefines[ craftableType ].input;
+      var recipeInputKeys = Object.keys( recipeInputObj );
+
+      recipeInputKeys.forEach( ( function ( recipeKey ){
+        var recipeInput = recipeKey;
+        var recipeInputQuantity = recipeInputObj[ recipeKey];
+        FSSimObjectChannel.bankWithdrawal( { type: recipeInput, quantity: recipeInputQuantity} );
+      }).bind(this));
+
     };
 
     /**
@@ -194,10 +204,13 @@ angular.module('craftyApp')
         FSSimState.updateBank();
 
         //Rewards
+        FSSimObjectChannel.makeRewards( {'action':'craft', 'target':craftableOutput});
+        /*
         var rewards = thisFactory.checkRewards( {'action':'craft', 'target':craftableOutput});
         if (rewards.hasOwnProperty('xp')) {//bug: do we want to add xp for each output object?
           this.json.xp += rewards.xp;
         }
+        */
       }
     };
 

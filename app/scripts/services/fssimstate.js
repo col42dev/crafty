@@ -39,6 +39,7 @@ angular.module('craftyApp')
             json.gatherables.forEach( (function(thisGatherables) {
                 FSSimObjectChannel.createSimObject( { category: 'gatherables', desc : thisGatherables});
             }).bind(this)); 
+            //FSSimObjectChannel.createSimObject( { category: 'gatherables', desc : 'Sheep'});
             this.updateGatherables = function() {
                 simState.gatherablesArray = Object.keys(simState.gatherables).map(function (key) {
                     return simState.gatherables[key];

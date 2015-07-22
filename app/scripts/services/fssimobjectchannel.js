@@ -11,29 +11,77 @@ angular.module('craftyApp')
   .service('FSSimObjectChannel', ['$rootScope', function ($rootScope) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-        this.setScope = function( $scope) {
-            this.$scope = $scope;
-        };
-
         // private notification messages
         var _CREATE_SIM_OBJECT_ = '_CREATE_SIM_OBJECT_';
+        var _BANK_DEPOSIT_ = '_BANK_DEPOSIT_';
+        var _BANK_WITHDRAWAL_ = '_BANK_WITHDRAWAL_';
+        var _UPDATE_GOALS_ = '_UPDATE_GOALS_';
+        var _MAKE_REWARDS_ = '_MAKE_REWARDS_';
 
 
-        // publish 'craete sim object' notification
+        // publish  notifications
         this.createSimObject = function (item) {
              $rootScope.$broadcast( _CREATE_SIM_OBJECT_, {item: item});
         };
-        //subscribe to 'create sim object' notification
+        this.bankDeposit = function (item) {
+             $rootScope.$broadcast( _BANK_DEPOSIT_, {item: item});
+        };
+        this.bankWithdrawal = function (item) {
+             $rootScope.$broadcast( _BANK_WITHDRAWAL_, {item: item});
+        };
+        this.updateGoals = function () {
+             $rootScope.$broadcast( _UPDATE_GOALS_, {item: null});
+        };
+        this.makeRewards = function (item) {
+             $rootScope.$broadcast( _MAKE_REWARDS_, {item: item});
+        };
+
+
+        //subscribe to  notification
         this.onCreateSimObject = function($scope, handler) {
             $scope.$on( _CREATE_SIM_OBJECT_, function(event, args) {
                 handler(args.item);
             });
         };
+        this.onBankDeposit = function($scope, handler) {
+            $scope.$on( _BANK_DEPOSIT_, function(event, args) {
+                handler(args.item);
+            });
+        };
+        this.onBankWithdrawal = function($scope, handler) {
+            $scope.$on( _BANK_WITHDRAWAL_, function(event, args) {
+                handler(args.item);
+            });
+        };
+        this.onUpdateGoals = function($scope, handler) {
+            $scope.$on( _UPDATE_GOALS_, function(event, args) {
+                handler(args.item);
+            });
+        };
+        this.onMakeRewards = function($scope, handler) {
+            $scope.$on( _MAKE_REWARDS_, function(event, args) {
+                handler(args.item);
+            });
+        };
+
+
    
         // return the publicly accessible methods
         return {
             createSimObject: this.createSimObject,
-            onCreateSimObject: this.onCreateSimObject
+            onCreateSimObject: this.onCreateSimObject,
+
+            bankDeposit: this.bankDeposit,
+            onBankDeposit: this.onBankDeposit,
+
+            bankWithdrawal: this.bankWithdrawal,
+            onBankWithdrawal: this.onBankWithdrawal,
+
+            updateGoals: this.updateGoals,
+            onUpdateGoals: this.onUpdateGoals,
+
+            makeRewards: this.makeRewards,
+            onMakeRewards: this.onMakeRewards
         };
 
   }]);
