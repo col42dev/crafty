@@ -15,14 +15,12 @@ angular.module('craftyApp')
     this.activeTasks = [];
     this.pendingTasks = [];
 
-  
     /**
      * @desc 
      * @return 
      */
     this.addTask = function ( tableName, keyName) {
-
-        var task;
+        var task = null;
 
         switch (tableName) {
             case 'Gatherables':
@@ -37,7 +35,6 @@ angular.module('craftyApp')
         }
 
         this.addTaskCatgeory(task);
- 
     };
 
     /**
@@ -45,37 +42,60 @@ angular.module('craftyApp')
      * @return 
      */
     this.onCompletedTaskHandler = function( task) {
-        console.log('onCompletedTaskHandler' + JSON.stringify(task));
-
         var completedTaskIndex = thisService.activeTasks.indexOf(task);
         if (completedTaskIndex !== -1) {
             thisService.activeTasks.splice( completedTaskIndex, 1);
         }
 
-        if (thisService.pendingTasks.length > 0) {
-            var pendingTask = thisService.pendingTasks[0];
+        // look for next task to start.
+        var pendingTasksToRemove = [];
+
+        for (var pendingTaskKey in thisService.pendingTasks ) {
+
+            var pendingTask = thisService.pendingTasks[pendingTaskKey];
 
             var validCharacters = thisService.getValidCharacters(pendingTask.name, pendingTask.category);
             var validCharactersInactive = thisService.getInactiveCharacters(validCharacters);
 
             if ( validCharactersInactive.length > 0) {
+                // start this pending task
                 thisService.activeTasks.push( pendingTask);
                 validCharactersInactive[0].addTask( pendingTask ); 
-                thisService.pendingTasks.splice(0, 1); 
-            }  
+                pendingTasksToRemove.push(pendingTask);
+                break;
+            }  else if (validCharacters.length === 0){
+                // pending task cannot be started by any characters (idle or active) so remove it from pending queue. 
+                pendingTasksToRemove.push(pendingTask);
+
+            } else {
+                // task can be started but by a currebtly active character.
+                // look through remainder of list for a valid task to start.
+            }
         }
+
+        // remove flagged tasks from pendingTasks.
+        pendingTasksToRemove.forEach( function( task) {
+
+                var removeTaskIndex = thisService.pendingTasks.indexOf(task);
+                if (removeTaskIndex !== -1) {
+                    thisService.pendingTasks.splice( removeTaskIndex, 1);
+                }
+        });
     };
 
+
+    /**
+     * @desc 
+     * @return  // TODO: try hoisting - it appeared to break the callback before.
+     */
     FSSimObjectChannel.onCompletedTask($rootScope, this.onCompletedTaskHandler);
 
 
-  
     /**
      * @desc 
      * @return 
      */
     this.getValidCharacters = function (taskName, taskCategory) {
-
         var validCharacters = [];
 
         // generate list of characters which can do this task.
@@ -93,9 +113,7 @@ angular.module('craftyApp')
      * @return 
      */
     this.getInactiveCharacters = function (validCharacters) {
-
         var inactiveCharacters = [];
-    
         validCharacters.forEach( function ( thisCharacter) {
             if ( thisCharacter.json.activity.length === 0) {
                 inactiveCharacters.push( thisCharacter);
@@ -106,15 +124,11 @@ angular.module('craftyApp')
     };
 
 
-
-
     /**
      * @desc 
      * @return 
      */
     this.addTaskCatgeory = function ( task ) {
-  
-
         var validCharacters = this.getValidCharacters(task.name, task.category);
         var validCharactersInactive = this.getInactiveCharacters(validCharacters);
 
@@ -124,9 +138,11 @@ angular.module('craftyApp')
 
         } else if (validCharacters.length > 0) {
             // queue task
-
-            this.pendingTasks.push( task);
-
+            if (this.pendingTasks.length < 4) {
+                this.pendingTasks.push( task);
+            } else {
+                 FSContextConsole.log('Task queue is full', true);
+            }
         }
         else {
             this.logDependencies(task.category, task.name);
@@ -134,6 +150,10 @@ angular.module('craftyApp')
     };
 
 
+    /**
+     * @desc 
+     * @return 
+     */
     this.logDependencies = function ( category, keyName) {
         var characterKey = null;
         var hasEquippedTools = false;

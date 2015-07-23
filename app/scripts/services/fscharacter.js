@@ -62,7 +62,6 @@ angular.module('craftyApp')
       if ( this.hasSpareActivitySlot() === true) {
         if (this.json.activity.length === 0) {
             this.json.activity.push( task);
-
             this.startNextTask();
         }
       }
@@ -91,9 +90,7 @@ angular.module('craftyApp')
       this.json.activity.splice(0, 1);
 
       FSSimObjectChannel.completedTask( activeTask );
-   
   
-      //thisFactory.ctrllrScopeApply();
     };
 
      /**
@@ -288,9 +285,10 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.startNextTask = function () {  
 
-      var taskName = this.json.activity[0].name;
+      var task = this.json.activity[0];
+      var taskName = task.name;
       var thisCharacter = this;
-      var activityCategory = this.json.activity[0].category;
+      var activityCategory = task.category;
 
       if (this.canPerformTask(taskName, activityCategory) === true) {
 
@@ -308,15 +306,15 @@ angular.module('craftyApp')
           }(statKeyname));
         }
 
-        this.updateActiveTaskTotalSeconds = FSSimState.getTaskDuration(activityCategory, taskName, thisCharacter);    
+        task.updateActiveTaskTotalSeconds = FSSimState.getTaskDuration(activityCategory, taskName, thisCharacter);    
      
         // set task time remaining timer.
-        this.updateActiveTaskRemainingSeconds = this.updateActiveTaskTotalSeconds;
-        this.updateActiveTaskInterval =  setInterval( function() {
+        task.updateActiveTaskRemainingSeconds = task.updateActiveTaskTotalSeconds;
+        task.updateActiveTaskInterval =  setInterval( function() {
           if ( thisCharacter.hasStatsFor( activityCategory ) === true) {
-            thisCharacter.updateActiveTaskRemainingSeconds --;
-            if ( thisCharacter.updateActiveTaskRemainingSeconds <= 0) {
-              clearInterval(thisCharacter.updateActiveTaskInterval);
+            task.updateActiveTaskRemainingSeconds --;
+            if ( task.updateActiveTaskRemainingSeconds <= 0) {
+              clearInterval(task.updateActiveTaskInterval);
               thisCharacter.stopActiveTask();
             }
           }
@@ -324,16 +322,7 @@ angular.module('craftyApp')
 
         this[activityCategory + 'OnStart' ]();
 
-      }  // can start task
-      else  {
-
-        // skip to next task in queue?
-        this.json.activity.splice(0, 1);
-        if (this.json.activity.length > 0) {
-          this.startNextTask();
-        }
-
-      }
+      }  
 
     };
 
@@ -463,7 +452,11 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.activityPercentRemaining = function ( ) {
-      var percent = Math.floor( this.updateActiveTaskRemainingSeconds / this.updateActiveTaskTotalSeconds  * 100);
+      var percent = 0;
+      if ( this.json.activity.length > 0) {
+        percent = this.json.activity[0].percentRemaining();
+        return percent;
+      }
       return percent+'%';
     };
 

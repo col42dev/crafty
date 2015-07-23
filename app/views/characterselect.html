@@ -13,7 +13,6 @@
 		    <th class="col-sm-4"><h4>Energy</h4></th>
 		    <th class="col-sm-4"><h4>Mind</h4></th>
 		    <th class="col-sm-8"><h4>Task</h4></th>
-		    <th class="col-sm-1"><h4>Q</h4></th>
 		    <th class="col-sm-4"><h4>Equip</h4></th>
 		</tr>
 	</thead>
@@ -49,7 +48,6 @@
 		        {{v.json.activity[0].desc()}}
 			</div>
 		</td> 
-		<td class="col-sm-1"  > {{v.queuedTaskCount()}} </td> 
 		<td class="col-sm-3" ng-click="getFSUIEventHandler().onClickCharacterTool(v, 0)"> 
         	<div style = "background:{{v.json.tools[0].bgcolor()}};">  {{v.json.tools[0].json.name}}</div>
         </td> 
