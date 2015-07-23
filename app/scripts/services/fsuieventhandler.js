@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('FSUIEventHandler', function ( FSBackpack,  FSSimObjectChannel,  FSContextConsole, FSSimRules, FSSimState, FSSimRewards) {
+  .service('FSUIEventHandler', function ( FSBackpack,  FSSimObjectChannel,  FSContextConsole, FSSimRules, FSSimState, FSSimRewards, FSSimCrafting, FSSimHarvesting, FSSimGathering) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -24,13 +24,13 @@ angular.module('craftyApp')
                     enabled = (FSSimState.rewards.indexOf(type) === -1) ? false : true ;
                     break;
                 case 'craft':
-                    enabled = true; //this.isCraftable(type) ;
+                    enabled = FSSimCrafting.isCraftable(type) ;
                     break;
                 case 'gather':
-                    enabled = true; //this.isGatherable(type);
+                    enabled = FSSimGathering.isGatherable(type);
                     break;
                 case 'harvest':
-                    enabled = true ;//this.isHarvestable(type);
+                    enabled = FSSimHarvesting.isHarvestable(type);
                     break;
                 case 'bank':
                     {
@@ -349,8 +349,8 @@ angular.module('craftyApp')
                 selectedCharacter.addTask( recipeKey, 'crafting');      
             } else {
                 // log to console.
-                if ( this.hasCraftingIngredients(recipeKey, true) === true) {
-                    if ( this.hasCraftingConstructor(recipeKey, true)) {
+                if ( FSSimCrafting.hasCraftingIngredients(recipeKey, true) === true) {
+                    if ( FSSimCrafting.hasCraftingConstructor(recipeKey, true)) {
                             var characterKey = null;
 
                             //stats

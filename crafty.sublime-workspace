@@ -64,18 +64,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/scripts/services/fstask.js",
-			"settings":
-			{
-				"buffer_size": 518,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/scripts/services/fscharacter.js",
 			"settings":
 			{
-				"buffer_size": 15842,
+				"buffer_size": 15789,
 				"line_ending": "Unix"
 			}
 		},
@@ -99,7 +91,7 @@
 			"file": "app/scripts/services/fssimfactory.js",
 			"settings":
 			{
-				"buffer_size": 15998,
+				"buffer_size": 454,
 				"line_ending": "Unix"
 			}
 		},
@@ -107,7 +99,7 @@
 			"file": "app/views/gatherables.html",
 			"settings":
 			{
-				"buffer_size": 2340,
+				"buffer_size": 2371,
 				"line_ending": "Unix"
 			}
 		},
@@ -115,7 +107,7 @@
 			"file": "app/views/recipes.html",
 			"settings":
 			{
-				"buffer_size": 2348,
+				"buffer_size": 2379,
 				"line_ending": "Unix"
 			}
 		},
@@ -131,7 +123,7 @@
 			"file": "app/views/harvestables.html",
 			"settings":
 			{
-				"buffer_size": 1677,
+				"buffer_size": 1701,
 				"line_ending": "Unix"
 			}
 		},
@@ -147,7 +139,7 @@
 			"file": "app/scripts/controllers/main.js",
 			"settings":
 			{
-				"buffer_size": 858,
+				"buffer_size": 949,
 				"line_ending": "Unix"
 			}
 		},
@@ -163,7 +155,7 @@
 			"file": "app/scripts/services/fssimstate.js",
 			"settings":
 			{
-				"buffer_size": 4053,
+				"buffer_size": 4669,
 				"line_ending": "Unix"
 			}
 		},
@@ -179,7 +171,7 @@
 			"file": "app/views/bank.html",
 			"settings":
 			{
-				"buffer_size": 2196,
+				"buffer_size": 2223,
 				"line_ending": "Unix"
 			}
 		},
@@ -195,7 +187,7 @@
 			"file": "app/scripts/services/fssimobjectfactory.js",
 			"settings":
 			{
-				"buffer_size": 2030,
+				"buffer_size": 2003,
 				"line_ending": "Unix"
 			}
 		},
@@ -203,7 +195,7 @@
 			"file": "app/scripts/services/fssimbank.js",
 			"settings":
 			{
-				"buffer_size": 1401,
+				"buffer_size": 1346,
 				"line_ending": "Unix"
 			}
 		},
@@ -220,6 +212,104 @@
 			"settings":
 			{
 				"buffer_size": 668,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsuieventhandler.js",
+			"settings":
+			{
+				"buffer_size": 15799,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fssimservice.js",
+			"settings":
+			{
+				"buffer_size": 6449,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 52 files for \"onClickCharacter\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimstate.js:\n   29                  FSSimObjectChannel.createSimObject( { category: 'character', desc : obj});\n   30              }); \n   31:             this.onClickCharacter = function ( character) {\n   32                  simState.selectedCharacter = character;\n   33              };\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js:\n   85           * @return \n   86           */\n   87:          this.onClickCharacterTool = function ( character, index) {\n   88               if ( character.json.tools.length > index) {\n   89                 \n   ..\n  104           * @return \n  105           */\n  106:          this.onClickCharacterWeapon = function ( weaponObj) {\n  107              weaponObj = weaponObj;\n  108           };\n\n/Users/colinmoore/Dev/crafty/app/views/characterselect.html:\n   20  	</thead>\n   21  	<tbody>\n   22: 	<tr ng-repeat=\"(k,v) in getFSSimState().characterObjs\" class=\"noselect\" ng-click=\"getFSUIEventHandler().onClickCharacter(v)\">\n   23  		<td bgcolor={{v.getbgcolor()}} class=\"col-sm-2\" >\n   24  			{{v.json.name}}\n   ..\n   52  		</td> \n   53  		<td class=\"col-sm-1\"  > {{v.queuedTaskCount()}} </td> \n   54: 		<td class=\"col-sm-3\" ng-click=\"getFSUIEventHandler().onClickCharacterTool(v, 0)\"> \n   55          	<div style = \"background:{{v.json.tools[0].bgcolor()}};\">  {{v.json.tools[0].json.name}}</div>\n   56          </td> \n\n/Users/colinmoore/Dev/crafty/app/views/charactersheetstats.html:\n   65           <tr class=\"noselect\">\n   66              <td><b>Tools</b></td>\n   67:             <td ng-repeat=\"v in getFSSimState().selectedCharacter.json.tools\" class=\"noselect\" ng-click=\"getFSUIEventHandler().onClickCharacterTool(getFSSimState().selectedCharacter, $index)\"> \n   68                <div style = \"background:{{v.bgcolor()}};\">  {{v.json.name}}</div>\n   69              </td> \n\n6 matches across 4 files\n\n\nSearching 53 files for \"hasCraftingIngredients\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js:\n  263  \n  264          case 'crafting': {  \n  265:             if ( thisFactory.hasCraftingIngredients(taskName, log) !== true) {\n  266                canStartTask = false;\n  267              }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimcrafting.js:\n   29           * @return \n   30           */\n   31:         this.hasCraftingIngredients = function (recipeKey, log) {\n   32      \n   33              // determine if has reqiored ingredients in bank\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js:\n  350              } else {\n  351                  // log to console.\n  352:                 if ( this.hasCraftingIngredients(recipeKey, true) === true) {\n  353                      if ( this.hasCraftingConstructor(recipeKey, true)) {\n  354                              var characterKey = null;\n\n3 matches across 3 files\n\n\nSearching 53 files for \"hasCraftingConstructor\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js:\n  266                canStartTask = false;\n  267              }\n  268:             if ( thisFactory.hasCraftingConstructor(taskName, log) !== true) {\n  269                canStartTask = false;\n  270              }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimcrafting.js:\n   58           * @return \n   59           */\n   60:         this.hasCraftingConstructor = function (recipeKey, log) {\n   61              var hasIngredients = true;\n   62              if ( FSSimRules.craftableDefines[recipeKey].construction.length > 0) {\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js:\n  351                  // log to console.\n  352                  if ( FSSimCrafting.hasCraftingIngredients(recipeKey, true) === true) {\n  353:                     if ( this.hasCraftingConstructor(recipeKey, true)) {\n  354                              var characterKey = null;\n  355  \n\n3 matches across 3 files\n\n\nSearching 55 files for \"isHarvestable\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js:\n  255                  canStartTask = false;\n  256                }\n  257:               if ( FSSimState.harvestables[taskName].isHarvestableBy( this) !== true) {\n  258                  canStartTask = false;\n  259                }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsharvestable.js:\n   64       * @return \n   65       */\n   66:     FSHarvestable.prototype.isHarvestableBy =  function( character) {  \n   67  \n   68        var tools = [];\n   ..\n   80  \n   81  \n   82:       var isHarvestable = false;\n   83  \n   84        tools.forEach( ( function( thisTool) {\n   ..\n   92                  toolHasRequiredAction = true;\n   93                  if ( parseInt( FSSimRules.toolDefines[ thisTool ].strength, 10) >= parseInt( FSSimRules.harvestableDefines[this.json.name].hardness, 10)) {\n   94:                   isHarvestable = true;\n   95                  } \n   96                }\n   ..\n   99        } ).bind(this));   \n  100  \n  101:       return isHarvestable;\n  102      };\n  103  \n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimharvesting.js:\n   17           * @return \n   18           */\n   19:         this.isHarvestable = function (harvestableType) {\n   20              for ( var characterKey in FSSimState.characterObjs ) {\n   21                  if ( FSSimState.characterObjs[characterKey].canPerformTask(harvestableType, 'harvesting', false)) {\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimstate.js:\n   48              // Harvestables\n   49              this.harvestables = {};  \n   50:             json.harvestables.forEach( function(thisHarvestable) {\n   51:                 FSSimObjectChannel.createSimObject( { category: 'harvestables', desc : thisHarvestable});\n   52              }); \n   53              this.updateHarvestables = function() {\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js:\n   31                      break;\n   32                  case 'harvest':\n   33:                     enabled = FSSimHarvesting.isHarvestable(type);\n   34                      break;\n   35                  case 'bank':\n   ..\n  320                  var hasEquippedTools = false;\n  321                  for ( characterKey in FSSimState.characterObjs ) {\n  322:                      if ( FSSimState.harvestables[harvestableType].isHarvestableBy(FSSimState.characterObjs[characterKey]) === true) {\n  323                        hasEquippedTools = true;\n  324                      }\n\n10 matches across 5 files\n\n\nSearching 55 files for \"isGatherable\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimgathering.js:\n   16           * @return \n   17           */\n   18:         this.isGatherable = function (gatherableType) {\n   19              for ( var characterKey in FSSimState.characterObjs ) {\n   20                  if ( FSSimState.characterObjs[characterKey].canPerformTask(gatherableType, 'gathering', false)) {\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimstate.js:\n   35              // Gatherables\n   36              this.gatherables = {};  \n   37:             json.gatherables.forEach( (function(thisGatherables) {\n   38:                 FSSimObjectChannel.createSimObject( { category: 'gatherables', desc : thisGatherables});\n   39              }).bind(this)); \n   40              //FSSimObjectChannel.createSimObject( { category: 'gatherables', desc : 'Sheep'});\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js:\n   28                      break;\n   29                  case 'gather':\n   30:                     enabled = FSSimGathering.isGatherable(type);\n   31                      break;\n   32                  case 'harvest':\n\n4 matches across 3 files\n\n\nSearching 55 files for \"getTaskDuration\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js:\n  308          }\n  309  \n  310:         this.updateActiveTaskTotalSeconds = thisFactory.getTaskDuration(activityCategory, taskName, thisCharacter);    \n  311       \n  312          // set task time remaining timer.\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimstate.js:\n  109           * @return \n  110           */\n  111:         this.getTaskDuration = function (activityCategory, taskName, thisCharacter) {\n  112              var duration = 0;\n  113  \n\n2 matches across 2 files\n\n\nSearching 54 files for \"FSSimFactory\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimservice.js:\n    9   */\n   10  angular.module('craftyApp')\n   11:   .service('FSService', function ( FSSimFactory, FSSimRules, FSSimState, FSSimObjectChannel, $http, $location, stopwatch) {\n   12      // AngularJS will instantiate a singleton by calling \"new\" on this function\n   13  \n   ..\n   48      this.loadAndCreateSim = function() {\n   49        \n   50:         this.simulation = new FSSimFactory( $scope);\n   51  \n   52          //load JSON rules\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/stopwatch.js:\n    5   * @name craftyApp.stopwatch\n    6   * @description\n    7:  * # FSSimFactory\n    8   * Service in the craftyApp.\n    9   */\n\n3 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 9107,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "app/views/rewards.html",
+			"settings":
+			{
+				"buffer_size": 1031,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/characterselect.html",
+			"settings":
+			{
+				"buffer_size": 2474,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/charactersheetstats.html",
+			"settings":
+			{
+				"buffer_size": 2764,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fssimcrafting.js",
+			"settings":
+			{
+				"buffer_size": 2693,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fssimharvesting.js",
+			"settings":
+			{
+				"buffer_size": 730,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fssimgathering.js",
+			"settings":
+			{
+				"buffer_size": 718,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/character.html",
+			"settings":
+			{
+				"buffer_size": 314,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/index.html",
+			"settings":
+			{
+				"buffer_size": 5085,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/stopwatch.js",
+			"settings":
+			{
+				"buffer_size": 1288,
 				"line_ending": "Unix"
 			}
 		}
@@ -248,6 +338,7 @@
 	},
 	"file_history":
 	[
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fstask.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsbackpack.js",
 		"/Users/colinmoore/Dev/crafty/app/views/charactersheetstats.html",
 		"/Users/colinmoore/Dev/crafty/app/views/charactersheet.html",
@@ -258,7 +349,6 @@
 		"/Users/colinmoore/Dev/crafty/app/views/harvestables.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimstate.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsreward.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fstask.js",
 		"/Users/colinmoore/Dev/crafty/app/index.html",
 		"/Users/colinmoore/Dev/crafty/app/views/reference.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimrules.js",
@@ -364,7 +454,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			"/Users/colinmoore/Dev/crafty/app",
@@ -380,6 +470,26 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"scope",
+			"FSSimFactory",
+			"createSimRules",
+			"thisFactory",
+			"getTaskDuration",
+			"isGatherable",
+			"isHarvestable",
+			"thisFactory",
+			"isGath",
+			"hasCraftingConstructor",
+			"FSSimCrafting",
+			"hasCraftingIngredients",
+			"isCra",
+			"bgcol",
+			"onClickCharacter",
+			"selectedCharacter",
+			"onClickCharacterWeapon",
+			"onClickBa",
+			"onClickC",
+			"onClic",
 			"unlo",
 			"FSSimRewards",
 			"hasU",
@@ -487,27 +597,7 @@
 			"thisFactory",
 			"rewardR",
 			"taskRule",
-			"foodDe",
-			"toolDe",
-			"craftableDe",
-			"gatherableD",
-			"FSSimRules",
-			"gatherableDe",
-			"harvestableD",
-			"harvestableDefi",
-			"simulation",
-			"OnStart",
-			"gatheringOn",
-			"gatheringOnStart",
-			"thisFactory",
-			"reset",
-			"stopwatchreset",
-			"thisfac",
-			"inited",
-			"myStopwatch",
-			"init",
-			"hasToolAction",
-			"hasGatheringDependencies"
+			"foodDe"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -532,23 +622,23 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/services/fstask.js",
+					"file": "app/scripts/services/fscharacter.js",
 					"settings":
 					{
-						"buffer_size": 518,
+						"buffer_size": 15789,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								517,
-								517
+								4332,
+								4343
 							]
 						],
 						"settings":
@@ -558,41 +648,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1976.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/scripts/services/fscharacter.js",
-					"settings":
-					{
-						"buffer_size": 15842,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6546,
-								6553
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 30.0,
-						"translation.y": 3698.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "app/scripts/services/fsgatherable.js",
 					"settings":
 					{
@@ -620,7 +682,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "app/scripts/services/fsharvestable.js",
 					"settings":
 					{
@@ -648,46 +710,75 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "app/scripts/services/fssimfactory.js",
 					"settings":
 					{
-						"buffer_size": 15998,
+						"buffer_size": 454,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4321,
-								4321
+								369,
+								369
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4931.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/views/gatherables.html",
+					"settings":
+					{
+						"buffer_size": 2371,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								553,
+								553
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "app/views/gatherables.html",
+					"file": "app/views/recipes.html",
 					"settings":
 					{
-						"buffer_size": 2340,
+						"buffer_size": 2379,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1739,
-								1739
+								767,
+								767
 							]
 						],
 						"settings":
@@ -704,34 +795,6 @@
 				},
 				{
 					"buffer": 6,
-					"file": "app/views/recipes.html",
-					"settings":
-					{
-						"buffer_size": 2348,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1981,
-								1996
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 18.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
 					"file": "app/scripts/services/fsrecipe.js",
 					"settings":
 					{
@@ -742,8 +805,8 @@
 						"selection":
 						[
 							[
-								659,
-								659
+								651,
+								651
 							]
 						],
 						"settings":
@@ -759,19 +822,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 7,
 					"file": "app/views/harvestables.html",
 					"settings":
 					{
-						"buffer_size": 1677,
+						"buffer_size": 1701,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1342,
-								1342
+								403,
+								403
 							]
 						],
 						"settings":
@@ -787,7 +850,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 8,
 					"file": "app/scripts/services/fscontextconsole.js",
 					"settings":
 					{
@@ -815,19 +878,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 9,
 					"file": "app/scripts/controllers/main.js",
 					"settings":
 					{
-						"buffer_size": 858,
+						"buffer_size": 949,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								765,
-								765
+								940,
+								940
 							]
 						],
 						"settings":
@@ -843,7 +906,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 10,
 					"file": "app/views/contextinfoconsole.html",
 					"settings":
 					{
@@ -869,19 +932,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 11,
 					"file": "app/scripts/services/fssimstate.js",
 					"settings":
 					{
-						"buffer_size": 4053,
+						"buffer_size": 4669,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1315,
-								1315
+								252,
+								262
 							]
 						],
 						"settings":
@@ -891,13 +954,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 398.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 12,
 					"file": "app/scripts/services/fsbackpack.js",
 					"settings":
 					{
@@ -919,25 +982,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 308.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 13,
 					"file": "app/views/bank.html",
 					"settings":
 					{
-						"buffer_size": 2196,
+						"buffer_size": 2223,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								271,
-								272
+								660,
+								660
 							]
 						],
 						"settings":
@@ -953,7 +1016,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 14,
 					"file": "app/scripts/services/fssimobjectchannel.js",
 					"settings":
 					{
@@ -975,25 +1038,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 463.0,
+						"translation.y": 668.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 15,
 					"file": "app/scripts/services/fssimobjectfactory.js",
 					"settings":
 					{
-						"buffer_size": 2030,
+						"buffer_size": 2003,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								223,
-								210
+								1742,
+								1742
 							]
 						],
 						"settings":
@@ -1002,26 +1065,26 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 9.0,
-						"translation.y": 21.0,
+						"translation.x": 6.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 16,
 					"file": "app/scripts/services/fssimbank.js",
 					"settings":
 					{
-						"buffer_size": 1401,
+						"buffer_size": 1346,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								197,
-								183
+								403,
+								403
 							]
 						],
 						"settings":
@@ -1037,7 +1100,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 17,
 					"file": "app/scripts/services/fssimrewards.js",
 					"settings":
 					{
@@ -1054,7 +1117,9 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 1193.0,
@@ -1063,7 +1128,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 18,
 					"file": "app/views/goals.html",
 					"settings":
 					{
@@ -1074,14 +1139,483 @@
 						"selection":
 						[
 							[
-								459,
-								459
+								324,
+								324
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "app/scripts/services/fsuieventhandler.js",
+					"settings":
+					{
+						"buffer_size": 15799,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12755,
+								12755
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4350.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "app/scripts/services/fssimservice.js",
+					"settings":
+					{
+						"buffer_size": 6449,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								917,
+								917
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 95.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"settings":
+					{
+						"buffer_size": 9107,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										254,
+										270
+									],
+									[
+										521,
+										537
+									],
+									[
+										735,
+										751
+									],
+									[
+										1052,
+										1068
+									],
+									[
+										1307,
+										1323
+									],
+									[
+										1749,
+										1765
+									],
+									[
+										2153,
+										2175
+									],
+									[
+										2402,
+										2424
+									],
+									[
+										2710,
+										2732
+									],
+									[
+										3145,
+										3167
+									],
+									[
+										3394,
+										3416
+									],
+									[
+										3828,
+										3850
+									],
+									[
+										4201,
+										4214
+									],
+									[
+										4446,
+										4459
+									],
+									[
+										4566,
+										4579
+									],
+									[
+										4896,
+										4909
+									],
+									[
+										5034,
+										5047
+									],
+									[
+										5208,
+										5221
+									],
+									[
+										5653,
+										5666
+									],
+									[
+										5766,
+										5779
+									],
+									[
+										6063,
+										6076
+									],
+									[
+										6361,
+										6374
+									],
+									[
+										6715,
+										6727
+									],
+									[
+										7154,
+										7166
+									],
+									[
+										7266,
+										7278
+									],
+									[
+										7617,
+										7629
+									],
+									[
+										7934,
+										7949
+									],
+									[
+										8192,
+										8207
+									],
+									[
+										8532,
+										8544
+									],
+									[
+										8821,
+										8833
+									],
+									[
+										9021,
+										9033
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								8544,
+								8544
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"output_tag": 7,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3180.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "app/views/rewards.html",
+					"settings":
+					{
+						"buffer_size": 1031,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								575,
+								580
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"file": "app/views/characterselect.html",
+					"settings":
+					{
+						"buffer_size": 2474,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								792,
+								797
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 26.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 24,
+					"file": "app/views/charactersheetstats.html",
+					"settings":
+					{
+						"buffer_size": 2764,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2360,
+								2365
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 25,
+					"file": "app/scripts/services/fssimcrafting.js",
+					"settings":
+					{
+						"buffer_size": 2693,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								362,
+								362
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 26,
+					"file": "app/scripts/services/fssimharvesting.js",
+					"settings":
+					{
+						"buffer_size": 730,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								220,
+								220
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 27,
+					"file": "app/scripts/services/fssimgathering.js",
+					"settings":
+					{
+						"buffer_size": 718,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								217,
+								217
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 28,
+					"file": "app/views/character.html",
+					"settings":
+					{
+						"buffer_size": 314,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								139,
+								139
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 29,
+					"file": "app/index.html",
+					"settings":
+					{
+						"buffer_size": 5085,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3803,
+								3803
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1178.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 30,
+					"file": "app/scripts/services/stopwatch.js",
+					"settings":
+					{
+						"buffer_size": 1288,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								81,
+								81
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,

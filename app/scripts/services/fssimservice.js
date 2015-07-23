@@ -8,46 +8,36 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('FSService', function ( FSSimFactory, $http, $location, stopwatch) {
+  .service('FSService', function ( FSSimRules, FSSimState, FSSimObjectChannel, $http, $location, stopwatch) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-    var $scope = null;
     var thisService = this;
-    var inited = false;
+
     var dbdomain = 'localhost';
 
     dbdomain = 'ec2-54-201-237-107.us-west-2.compute.amazonaws.com';
 
-    /**
-     * @desc 
-     * @return 
-     */
-    this.init = function( ctrlscope) {
 
-      if (inited === false) {
-	      $scope = ctrlscope;
 
-	      this.myStopwatch = stopwatch;
-	      this.taskTimeScalarDivVis = 'hidden';
+
+        this.myStopwatch = stopwatch;
+        this.taskTimeScalarDivVis = 'hidden';
 
         this.master = {
           rules: 'https://api.myjson.com/bins/nucy' + '?pretty=1',
           state: 'https://api.myjson.com/bins/1vby2' + '?pretty=1'
         };
-	      this.user = angular.copy(this.master);
+        this.user = angular.copy(this.master);
 
         this.defaultDocumentName = {input: 'My Account Name'};
         this.documentName = angular.copy(this.defaultDocumentName);
-  	  }
-    };
+
 
     /**
      * @desc 
      * @return 
      */
     this.loadAndCreateSim = function() {
-      
-        this.simulation = new FSSimFactory( $scope);
 
         //load JSON rules
         this.loadSimRules();
@@ -93,8 +83,10 @@ angular.module('craftyApp')
       console.log('Load JSON Rules success');
       this.taskTimeScalarDivVis ='';
      
-      thisService.simulation.createSimRules( thisService.rulesData);
 
+      FSSimRules.set(thisService.rulesData);
+
+    
       thisService.loadSimState();
     };
 
@@ -139,9 +131,11 @@ angular.module('craftyApp')
 
       console.log('Load JSON State success');
      
-      thisService.simulation.createSimState(thisService.stateData);
+      FSSimState.set(thisService.stateData);
+
+      FSSimObjectChannel.updateGoals();
    
-      $scope.$apply();
+      //$scope.$apply();
       stopwatch.reset();
       stopwatch.start();
     };
@@ -219,7 +213,7 @@ angular.module('craftyApp')
 
           console.log('removeAllAccounts success');
           thisService.accountsData = data;
-          $scope.$apply();
+          //$scope.$apply();
 
         }).error(function(data) {
             data = data;

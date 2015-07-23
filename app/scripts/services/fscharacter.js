@@ -9,17 +9,16 @@
  * Factory in the craftyApp.
  */
 angular.module('craftyApp')
-  .factory('FSCharacter', function (FSTask, FSContextConsole, FSSimRules, FSSimState, FSSimObjectChannel) {
+  .factory('FSCharacter', function (FSTask, FSContextConsole, FSSimRules, FSSimState, FSSimObjectChannel, FSSimCrafting) {
     // Service logic
     // ...
-    var thisFactory = null;
+
 
     /**
      * @desc 
      * @return 
      */
-    var FSCharacter = function(json, simFactory) {
-        thisFactory = simFactory;
+    var FSCharacter = function(json) {
         this.json = json;
 
         // regenerate stats timers
@@ -92,7 +91,7 @@ angular.module('craftyApp')
         this.startNextTask();
       }
 
-      thisFactory.ctrllrScopeApply();
+      //thisFactory.ctrllrScopeApply();
     };
 
      /**
@@ -262,10 +261,10 @@ angular.module('craftyApp')
           break;
 
         case 'crafting': {  
-            if ( thisFactory.hasCraftingIngredients(taskName, log) !== true) {
+            if ( FSSimCrafting.hasCraftingIngredients(taskName, log) !== true) {
               canStartTask = false;
             }
-            if ( thisFactory.hasCraftingConstructor(taskName, log) !== true) {
+            if ( FSSimCrafting.hasCraftingConstructor(taskName, log) !== true) {
               canStartTask = false;
             }
             if ( this.hasStatsFor('crafting') !== true) {
@@ -307,7 +306,7 @@ angular.module('craftyApp')
           }(statKeyname));
         }
 
-        this.updateActiveTaskTotalSeconds = thisFactory.getTaskDuration(activityCategory, taskName, thisCharacter);    
+        this.updateActiveTaskTotalSeconds = FSSimState.getTaskDuration(activityCategory, taskName, thisCharacter);    
      
         // set task time remaining timer.
         this.updateActiveTaskRemainingSeconds = this.updateActiveTaskTotalSeconds;

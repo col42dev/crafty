@@ -8,14 +8,12 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('FSSimBank', ['$rootScope', 'FSSimObjectChannel', 'FSSimState', 'FSSimRules', 'FSBackpack', function ($rootScope, FSSimObjectChannel, FSSimState, FSSimRules, FSBackpack) {
+  .service('FSSimBank', ['$rootScope', 'FSSimObjectChannel', 'FSSimState', function ($rootScope, FSSimObjectChannel, FSSimState) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
         console.log('FSSimBank');
-
     
         var onBankDepositHandler = function( arg) {
-
             console.log('onBankDepositHandler');
 
             if (!(arg.type in FSSimState.bank)) {
@@ -26,7 +24,6 @@ angular.module('craftyApp')
         };
 
         var onBankWithdrawalHandler = function( arg) {
-
             console.log('onBankWithdrawalHandler');
 
             FSSimState.bank[arg.type].decrement( arg.quantity);

@@ -36,8 +36,5 @@ angular.module('craftyApp')
       return FSUIEventHandler;
     };
 
-    FSService.init( $scope);
-
-
 
   }]);

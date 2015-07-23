@@ -15,17 +15,17 @@ angular.module('craftyApp')
            var simState = this;
 
 
-    this.set = function(json, thisFactory) {
+    this.set = function(json) {
 
      
-
+            this.taskTimeScalar ='1';
             this.selectedConstructor = '';
             this.selectedConstructorFilter = 'none';
 
             // Characters
             this.characterObjs = {};  
             json.characters.forEach( function(thisCharacter) {
-                var obj = { characterDesc : thisCharacter, simfactory : thisFactory};
+                var obj = { characterDesc : thisCharacter};
                 FSSimObjectChannel.createSimObject( { category: 'character', desc : obj});
             }); 
 
@@ -102,6 +102,29 @@ angular.module('craftyApp')
             }).bind(this)); 
 
     };
+
+
+            /**
+         * @desc 
+         * @return 
+         */
+        this.getTaskDuration = function (activityCategory, taskName, thisCharacter) {
+            var duration = 0;
+
+            switch ( activityCategory) {
+              case 'gathering':
+                duration = this.gatherables[taskName].duration(thisCharacter) / this.taskTimeScalar;
+                break;
+              case 'harvesting':
+                duration= this.harvestables[taskName].duration(thisCharacter) / this.taskTimeScalar;
+                break;
+              case 'crafting':
+                duration = this.craftables[taskName].duration(thisCharacter) / this.taskTimeScalar;
+                break;
+            }
+
+            return duration;
+        };
 
  
 

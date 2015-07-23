@@ -4,7 +4,6 @@
  * @ngdoc service
  * @name craftyApp.stopwatch
  * @description
- * # FSSimFactory
  * Service in the craftyApp.
  */
 angular.module('craftyApp')

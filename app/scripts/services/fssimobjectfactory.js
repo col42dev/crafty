@@ -13,7 +13,6 @@ angular.module('craftyApp')
 
         console.log('FSSimObjectFactory');
 
-    
         var onCreateSimObjectHandler = function( arg) {
             switch (arg.category) {
               case 'gatherables' :
@@ -27,7 +26,6 @@ angular.module('craftyApp')
                   break;
               case 'bankable':
                   {
-
                     FSSimState.bank[arg.desc.name] = new FSBackpack({'category':arg.desc.category, 'name':arg.desc.name});
                     if ( parseInt( arg.desc.quantity, 10) > 0) {
                       FSSimState.bank[arg.desc.name].increment( arg.desc.quantity );
@@ -37,7 +35,7 @@ angular.module('craftyApp')
               case 'character':
                 {
                   var characterName = arg.desc.characterDesc.name;
-                  FSSimState.characterObjs[characterName] = new FSCharacter(arg.desc.characterDesc, arg.desc.simfactory);
+                  FSSimState.characterObjs[characterName] = new FSCharacter(arg.desc.characterDesc);
                   FSSimState.selectedCharacter = FSSimState.characterObjs[characterName];
                 }
                 break;
