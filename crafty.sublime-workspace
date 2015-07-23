@@ -75,7 +75,7 @@
 			"file": "app/scripts/services/fscharacter.js",
 			"settings":
 			{
-				"buffer_size": 15630,
+				"buffer_size": 15842,
 				"line_ending": "Unix"
 			}
 		},
@@ -99,7 +99,7 @@
 			"file": "app/scripts/services/fssimfactory.js",
 			"settings":
 			{
-				"buffer_size": 18448,
+				"buffer_size": 15998,
 				"line_ending": "Unix"
 			}
 		},
@@ -107,7 +107,7 @@
 			"file": "app/views/gatherables.html",
 			"settings":
 			{
-				"buffer_size": 2348,
+				"buffer_size": 2340,
 				"line_ending": "Unix"
 			}
 		},
@@ -115,7 +115,7 @@
 			"file": "app/views/recipes.html",
 			"settings":
 			{
-				"buffer_size": 2356,
+				"buffer_size": 2348,
 				"line_ending": "Unix"
 			}
 		},
@@ -147,7 +147,7 @@
 			"file": "app/scripts/controllers/main.js",
 			"settings":
 			{
-				"buffer_size": 751,
+				"buffer_size": 858,
 				"line_ending": "Unix"
 			}
 		},
@@ -163,7 +163,7 @@
 			"file": "app/scripts/services/fssimstate.js",
 			"settings":
 			{
-				"buffer_size": 3958,
+				"buffer_size": 4053,
 				"line_ending": "Unix"
 			}
 		},
@@ -187,7 +187,7 @@
 			"file": "app/scripts/services/fssimobjectchannel.js",
 			"settings":
 			{
-				"buffer_size": 1941,
+				"buffer_size": 2830,
 				"line_ending": "Unix"
 			}
 		},
@@ -204,6 +204,22 @@
 			"settings":
 			{
 				"buffer_size": 1401,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fssimrewards.js",
+			"settings":
+			{
+				"buffer_size": 4316,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/goals.html",
+			"settings":
+			{
+				"buffer_size": 668,
 				"line_ending": "Unix"
 			}
 		}
@@ -364,6 +380,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"unlo",
+			"FSSimRewards",
+			"hasU",
+			"hasUn",
+			"hasUnl",
+			"canPerf",
+			"thisFactory",
+			"makeRewards",
+			"$rootScope",
+			"'$rootScope',",
+			"checkR",
+			"rewar",
+			"updateGoals",
+			"onBankWithdrawal",
+			"updateG",
 			"thisFactory",
 			"bankTransaction",
 			"trans",
@@ -476,22 +507,7 @@
 			"myStopwatch",
 			"init",
 			"hasToolAction",
-			"hasGatheringDependencies",
-			"isHarvestableBy",
-			"harvestables",
-			"isHarvestableBy",
-			"hasStats",
-			"hasCra",
-			"hasCraftingIngredients",
-			"startNextTask",
-			"addta",
-			"isGatherable",
-			"startNextTask",
-			"canPerformTask",
-			"startNextTask",
-			"hasSp",
-			"his.characterObjs\nhis.characterObjs\nhasSpare",
-			"canStartNextTask"
+			"hasGatheringDependencies"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -552,15 +568,15 @@
 					"file": "app/scripts/services/fscharacter.js",
 					"settings":
 					{
-						"buffer_size": 15630,
+						"buffer_size": 15842,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5984,
-								5995
+								6546,
+								6553
 							]
 						],
 						"settings":
@@ -569,8 +585,8 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 2726.0,
+						"translation.x": 30.0,
+						"translation.y": 3698.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -636,15 +652,15 @@
 					"file": "app/scripts/services/fssimfactory.js",
 					"settings":
 					{
-						"buffer_size": 18448,
+						"buffer_size": 15998,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12898,
-								12898
+								4321,
+								4321
 							]
 						],
 						"settings":
@@ -652,8 +668,8 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 11.0,
-						"translation.y": 6955.0,
+						"translation.x": 0.0,
+						"translation.y": 4931.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -663,15 +679,15 @@
 					"file": "app/views/gatherables.html",
 					"settings":
 					{
-						"buffer_size": 2348,
+						"buffer_size": 2340,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1668,
-								1613
+								1739,
+								1739
 							]
 						],
 						"settings":
@@ -691,15 +707,15 @@
 					"file": "app/views/recipes.html",
 					"settings":
 					{
-						"buffer_size": 2356,
+						"buffer_size": 2348,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1267,
-								1267
+								1981,
+								1996
 							]
 						],
 						"settings":
@@ -709,7 +725,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 98.0,
+						"translation.y": 18.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -803,15 +819,15 @@
 					"file": "app/scripts/controllers/main.js",
 					"settings":
 					{
-						"buffer_size": 751,
+						"buffer_size": 858,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								404,
-								404
+								765,
+								765
 							]
 						],
 						"settings":
@@ -857,15 +873,15 @@
 					"file": "app/scripts/services/fssimstate.js",
 					"settings":
 					{
-						"buffer_size": 3958,
+						"buffer_size": 4053,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1727,
-								1818
+								1315,
+								1315
 							]
 						],
 						"settings":
@@ -875,7 +891,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 538.0,
+						"translation.y": 398.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -920,8 +936,8 @@
 						"selection":
 						[
 							[
-								1863,
-								1863
+								271,
+								272
 							]
 						],
 						"settings":
@@ -931,7 +947,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 233.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -941,15 +957,15 @@
 					"file": "app/scripts/services/fssimobjectchannel.js",
 					"settings":
 					{
-						"buffer_size": 1941,
+						"buffer_size": 2830,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1820,
-								1820
+								2119,
+								2126
 							]
 						],
 						"settings":
@@ -959,7 +975,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 243.0,
+						"translation.y": 463.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -976,8 +992,8 @@
 						"selection":
 						[
 							[
-								660,
-								663
+								223,
+								210
 							]
 						],
 						"settings":
@@ -986,8 +1002,8 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 113.0,
+						"translation.x": 9.0,
+						"translation.y": 21.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1004,13 +1020,69 @@
 						"selection":
 						[
 							[
-								1013,
-								1013
+								197,
+								183
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "app/scripts/services/fssimrewards.js",
+					"settings":
+					{
+						"buffer_size": 4316,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4071,
+								4085
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1193.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "app/views/goals.html",
+					"settings":
+					{
+						"buffer_size": 668,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								459,
+								459
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

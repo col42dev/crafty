@@ -15,10 +15,10 @@
     </theader>
     <tbody>
       <tr ng-repeat="(k,v)  in getFSSimRules().rewardRules" class="noselect" >
-        <td > <div style = "background:{{getFSService().simulation.rewardbgcolor(k)}}"> {{k}}</div></td> 
-        <td > <div style = "background:{{getFSService().simulation.rewardbgcolor(k)}}">{{v.desc}}</div></td> 
-        <td > <div style = "background:{{getFSService().simulation.rewardbgcolor(k)}}">{{v.recipeUnlocks}}</div></td> 
-        <td > <div style = "background:{{getFSService().simulation.rewardbgcolor(k)}}">{{v.xp}}</div></td> 
+        <td > <div style = "background:{{getFSUIEventHandler().bgcolor('reward', k)}}"> {{k}}</div></td> 
+        <td > <div style = "background:{{getFSUIEventHandler().bgcolor('reward', k)}}">{{v.desc}}</div></td> 
+        <td > <div style = "background:{{getFSUIEventHandler().bgcolor('reward', k)}}">{{v.recipeUnlocks}}</div></td> 
+        <td > <div style = "background:{{getFSUIEventHandler().bgcolor('reward', k)}}">{{v.xp}}</div></td> 
       </tr>
     </tbody>
   </table>

@@ -28,9 +28,7 @@ angular.module('craftyApp')
                 var obj = { characterDesc : thisCharacter, simfactory : thisFactory};
                 FSSimObjectChannel.createSimObject( { category: 'character', desc : obj});
             }); 
-            this.onClickCharacter = function ( character) {
-                simState.selectedCharacter = character;
-            };
+
 
  
     

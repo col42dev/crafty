@@ -4,14 +4,14 @@
 <table class="table table-bordered table-condensed">
 <thead>
   <tr class="noselect" >
-      <th class="col-sm-4" ng-click="getFSService().onClickHeader('Recipes', 'json.name')">Name</th>
-      <th class="col-sm-1" ng-click="getFSService().onClickHeader('Recipes', 'json.name')">
+      <th class="col-sm-4" ng-click="getFSUIEventHandler().onClickHeader('Recipes', 'json.name')">Name</th>
+      <th class="col-sm-1" ng-click="getFSUIEventHandler().onClickHeader('Recipes', 'json.name')">
           <div style='height:20px; width:90px; display:table-cell; vertical-align:middle'>
             <img src= 'http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/unlock.69ea04fd.png' width="50%" style="max-width: 100%; max-height: 100%; display:block; margin:auto;" />
           </div> 
       </th>
-      <th class="col-sm-3" ng-click="getFSService().onClickHeader('Recipes', 'json.category')">Category</th>
-      <th class="col-sm-1" ng-click="getFSService().onClickHeader('Recipes', 'json.duration')">
+      <th class="col-sm-3" ng-click="getFSUIEventHandler().onClickHeader('Recipes', 'json.category')">Category</th>
+      <th class="col-sm-1" ng-click="getFSUIEventHandler().onClickHeader('Recipes', 'json.duration')">
           <div style='height:30px; width:90px; display:table-cell; vertical-align:middle'>
             <img src= 'http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/clockface.9a46d0f5.png' width="80%" style="max-width: 100%; max-height: 100%; display:block; margin:auto;" />
           </div> 
@@ -25,7 +25,7 @@
     <tbody>
       <tr ng-repeat="(k,v)  in getFSSimState().craftablesArray | orderBy:getFSService().simulation.orderRecipesBy | filter:{ construction:getFSSimState().selectedConstructorFilter  }" class="noselect" style="background-color: rgba(54, 25, 25, .1)">
         <td class="col-sm-4"> 
-              <div style = "background:{{getFSService().simulation.bgcolor('craft', v.json.name)}};" ng-click="getFSService().onClickBody('Recipes', v.json)">   {{v.json.name}}</div>
+              <div style = "background:{{getFSUIEventHandler().bgcolor('craft', v.json.name)}};" ng-click="getFSUIEventHandler().onClickBody('Recipes', v.json)">   {{v.json.name}}</div>
         </td> 
         <td class="col-sm-1" >
           <div style='height:20px; width:90px; display:table-cell; vertical-align:middle'>

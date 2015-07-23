@@ -19,7 +19,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	<tr ng-repeat="(k,v) in getFSSimState().characterObjs" class="noselect" ng-click="getFSSimState().onClickCharacter(v)">
+	<tr ng-repeat="(k,v) in getFSSimState().characterObjs" class="noselect" ng-click="getFSUIEventHandler().onClickCharacter(v)">
 		<td bgcolor={{v.getbgcolor()}} class="col-sm-2" >
 			{{v.json.name}}
 		</td> 
@@ -51,7 +51,7 @@
 			</div>
 		</td> 
 		<td class="col-sm-1"  > {{v.queuedTaskCount()}} </td> 
-		<td class="col-sm-3" ng-click="getFSService().simulation.onClickCharacterTool(v, 0)"> 
+		<td class="col-sm-3" ng-click="getFSUIEventHandler().onClickCharacterTool(v, 0)"> 
         	<div style = "background:{{v.json.tools[0].bgcolor()}};">  {{v.json.tools[0].json.name}}</div>
         </td> 
 	</tr>

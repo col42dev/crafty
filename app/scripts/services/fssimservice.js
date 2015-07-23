@@ -259,13 +259,7 @@ angular.module('craftyApp')
 
 
    
-    this.onClickHeader = function(tableName, fieldName) {
-      thisService.simulation.onClickHeader( tableName, fieldName);
-    };
 
-    this.onClickBody = function(tableName, key) {
-      thisService.simulation.onClickBody( tableName, key.name);
-    };
 
     
   });

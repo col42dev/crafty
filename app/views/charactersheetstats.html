@@ -64,7 +64,7 @@
         <tbody>
          <tr class="noselect">
             <td><b>Tools</b></td>
-            <td ng-repeat="v in getFSSimState().selectedCharacter.json.tools" class="noselect" ng-click="getFSService().simulation.onClickCharacterTool(getFSSimState().selectedCharacter, $index)"> 
+            <td ng-repeat="v in getFSSimState().selectedCharacter.json.tools" class="noselect" ng-click="getFSUIEventHandler().onClickCharacterTool(getFSSimState().selectedCharacter, $index)"> 
               <div style = "background:{{v.bgcolor()}};">  {{v.json.name}}</div>
             </td> 
           </tr>
