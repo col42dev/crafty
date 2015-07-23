@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('FSUIEventHandler', function ( FSBackpack,  FSSimObjectChannel,  FSContextConsole, FSSimRules, FSSimState, FSSimRewards, FSSimCrafting, FSSimHarvesting, FSSimGathering) {
+  .service('FSUIEventHandler', function ( FSBackpack,  FSSimObjectChannel,  FSContextConsole, FSSimRules, FSSimState, FSSimRewards, FSSimCrafting, FSSimHarvesting, FSSimGathering, FSSimTasks) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -54,13 +54,7 @@ angular.module('craftyApp')
           return  (enabled === true) ? 'rgba(20, 200, 20, 0.25)' : 'rgba(200, 20, 20, 0.25)';
         };
 
-        /**
-        * @desc - order table by field values
-        * @return 
-        */
-        this.onClickCharacter = function ( character) {
-            FSSimState.selectedCharacter = character;
-        };
+
 
 
             /**
@@ -113,23 +107,27 @@ angular.module('craftyApp')
 
             var keyName = key.name;
             FSContextConsole.clear();
+
             switch (tableName) {
                 case 'Bank':
                     this.onClickBank(keyName);
                     break;
                 case 'Gatherables':
-                    this.onClickGatherables(keyName);
-                    break;
                 case 'Harvestables':
-                    this.onClickHarvestables(keyName);
-                    break;
                 case 'Recipes':
-                    this.onClickRecipes(keyName);
+                    FSSimTasks.addTask(tableName, keyName);
                     break;
             }
          };
 
 
+        /**
+        * @desc - order table by field values
+        * @return 
+        */
+        this.onClickCharacter = function ( character) {
+            FSSimState.selectedCharacter = character;
+        };
 
                 /**
          * @desc 
@@ -223,161 +221,8 @@ angular.module('craftyApp')
             }
         };
 
-        /**
-         * @desc Select a characater best suited for task.
-         * @return 
-         */
-        this.selectCharacter = function (taskName, taskCategory) {
 
-            var validCharacters = [];
 
-            // generate list of characters which can do this task.
-            for ( var character in FSSimState.characterObjs ) {
-                if ( FSSimState.characterObjs[character].canPerformTask(taskName, taskCategory)) {
-                    validCharacters.push( FSSimState.characterObjs[character]);
-                }
-            }
-
-            // select character with least queued actions.
-            var leastActionCount = 5;
-            var selectedCharacter = null;
-            validCharacters.forEach( function ( thisCharacter) {
-                if ( thisCharacter.json.activity.length < leastActionCount) {
-                    leastActionCount = thisCharacter.json.activity.length;
-                    selectedCharacter = thisCharacter;
-                }
-            });
-
-            return selectedCharacter;
-        };
-
-        /**
-         * @desc 
-         * @return 
-         */
-        this.onClickGatherables = function (gatherableType) {
-            var selectedCharacter = this.selectCharacter(gatherableType, 'gathering');
-            if ( selectedCharacter !== null) {
-                selectedCharacter.addTask( gatherableType, 'gathering');    
-            } else {
-                var characterKey = null;
-
-                // stats
-                var haveStats = false;
-                for ( characterKey in FSSimState.characterObjs ) {
-                     if ( FSSimState.characterObjs[characterKey].hasStatsFor('harvesting') === true) {
-                      haveStats = true;
-                    }
-                }
-                if ( haveStats === false) {
-                    FSContextConsole.log('No one has the required stats to start gathering ' + gatherableType, true);
-                }
-
-                // equipped
-                var hasEquippedTools = false;
-                for ( characterKey in FSSimState.characterObjs ) {
-                     if ( FSSimState.characterObjs[characterKey].hasGatheringDependencies(gatherableType) === true) {
-                      hasEquippedTools = true;
-                    }
-                }
-                if ( hasEquippedTools === false) {
-                    FSContextConsole.log('No one is equipped with the required tools for gathering ' + gatherableType, true);
-
-                    for ( var toolDefine in FSSimRules.toolDefines) {
-                        FSSimRules.toolDefines[toolDefine].actions.forEach( ( function ( action) {
-                            if ( FSSimRules.gatherableDefines[gatherableType].actionable.indexOf(action) !== -1) {
-                                FSContextConsole.log(toolDefine, true);
-                            } 
-                        }).bind(this));
-                    }
-                }
-            }
-        };
-
-        /**
-         * @desc 
-         * @return 
-         */
-        this.onClickHarvestables = function (harvestableType) {
-            var selectedCharacter = this.selectCharacter(harvestableType, 'harvesting');
-            if ( selectedCharacter !== null) {
-                selectedCharacter.addTask( harvestableType, 'harvesting');  
-            } else {
-                var characterKey = null;
-
-                // stats
-                var haveStats = false;
-                for ( characterKey in FSSimState.characterObjs ) {
-                     if ( FSSimState.characterObjs[characterKey].hasStatsFor('harvesting') === true) {
-                      haveStats = true;
-                    }
-                }
-                if ( haveStats === false) {
-                    FSContextConsole.log('No one has the required stats to start harvesting ' + harvestableType, true);
-                }
-
-                // equipped
-                var hasEquippedTools = false;
-                for ( characterKey in FSSimState.characterObjs ) {
-                     if ( FSSimState.harvestables[harvestableType].isHarvestableBy(FSSimState.characterObjs[characterKey]) === true) {
-                      hasEquippedTools = true;
-                    }
-                }
-                if ( hasEquippedTools === false) {
-                    FSContextConsole.log('No one is equipped with the required tools for harvesting ' + harvestableType, true);
-
-                    for ( var toolDefine in FSSimRules.toolDefines) {
-                        FSSimRules.toolDefines[toolDefine].actions.forEach( ( function ( action) {
-                            if ( FSSimRules.harvestableDefines[harvestableType].actionable.indexOf(action) !== -1) {
-                                if ( parseInt(FSSimRules.toolDefines[toolDefine].strength, 10) >= parseInt( FSSimRules.harvestableDefines[harvestableType].hardness, 10)) {
-                                    FSContextConsole.log(toolDefine, true);
-                                }
-                            } 
-                        }).bind(this));
-                    }
-                }
-            }
-        };
-
-        /**
-         * @desc 
-         * @return 
-         */
-        this.onClickRecipes = function (recipeKey) {
-            var selectedCharacter = this.selectCharacter(recipeKey, 'crafting');
-            if ( selectedCharacter !== null) {
-                selectedCharacter.addTask( recipeKey, 'crafting');      
-            } else {
-                // log to console.
-                if ( FSSimCrafting.hasCraftingIngredients(recipeKey, true) === true) {
-                    if ( FSSimCrafting.hasCraftingConstructor(recipeKey, true)) {
-                            var characterKey = null;
-
-                            //stats
-                            var haveStats = false;
-                            for ( characterKey in FSSimState.characterObjs ) {
-                                 if ( FSSimState.characterObjs[characterKey].hasStatsFor('crafting') === true) {
-                                  haveStats = true;
-                                }
-                            }
-                            if ( haveStats === false) {
-                                FSContextConsole.log('No one has the required stats to start crafting ' + recipeKey, true);
-                            }
-
-                            //proficiency
-                            var hasProficiency = false;
-                            for ( characterKey in FSSimState.characterObjs ) {
-                                 if ( FSSimState.characterObjs[characterKey].hasCraftingProficiencyFor(recipeKey, false) === true) {
-                                  hasProficiency = true;
-                                }
-                            }
-                            if ( hasProficiency === false) {
-                                FSContextConsole.log('No one has the required proficiency to start crafting ' + recipeKey, true);
-                            }
-                    }
-                }
-
-            }           
-        };
+ 
 
   });

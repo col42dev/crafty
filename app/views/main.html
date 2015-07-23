@@ -24,7 +24,37 @@
 
 <div ng-include src="'views/goals.html'"></div>
 
-<div ng-include src="'views/characterselect.html'"></div>
+
+<br/>
+
+<div class="fadedbackground">
+<table class="table">
+  <thead>
+    <tr class="noselect">
+        <th class="col-sm-6"><h4>CHARACTERS</h4></th>
+        <th class="col-sm-1"><h4>TASKS</h4></th>
+    </tr>
+</thead>
+  <tbody>
+    <tr>    
+      <td valign="top"> 
+        <div ng-include src="'views/characterselect.html'"></div>
+      </td> 
+      <td valign="top"> 
+        <div ng-include src="'views/tasks.html'"></div>
+      </td> 
+    </tr>
+  </tbody>
+</table>
+</div> <!--fadedbackground-->
+
+
+
+
+
+
+
+
 
 
 

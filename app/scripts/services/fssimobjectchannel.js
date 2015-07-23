@@ -17,6 +17,7 @@ angular.module('craftyApp')
         var _BANK_WITHDRAWAL_ = '_BANK_WITHDRAWAL_';
         var _UPDATE_GOALS_ = '_UPDATE_GOALS_';
         var _MAKE_REWARDS_ = '_MAKE_REWARDS_';
+        var _COMPLETED_TASK_ = '_COMPLETED_TASK_';
 
 
         // publish  notifications
@@ -34,6 +35,9 @@ angular.module('craftyApp')
         };
         this.makeRewards = function (item) {
              $rootScope.$broadcast( _MAKE_REWARDS_, {item: item});
+        };
+        this.completedTask = function (item) {
+             $rootScope.$broadcast( _COMPLETED_TASK_, {item: item});
         };
 
 
@@ -63,6 +67,11 @@ angular.module('craftyApp')
                 handler(args.item);
             });
         };
+        this.onCompletedTask = function($scope, handler) {
+            $scope.$on( _COMPLETED_TASK_, function(event, args) {
+                handler(args.item);
+            });
+        };
 
 
    
@@ -81,7 +90,10 @@ angular.module('craftyApp')
             onUpdateGoals: this.onUpdateGoals,
 
             makeRewards: this.makeRewards,
-            onMakeRewards: this.onMakeRewards
+            onMakeRewards: this.onMakeRewards,
+
+            completedTask: this.completedTask,
+            onCompletedTask: this.onCompletedTask
         };
 
   }]);

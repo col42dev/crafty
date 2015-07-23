@@ -58,11 +58,12 @@ angular.module('craftyApp')
      * @desc - push task to activity queue and trigger it if queu is empty
      * @return 
      */
-    FSCharacter.prototype.addTask = function ( taskName, taskCategory) {
+    FSCharacter.prototype.addTask = function ( task) {
       if ( this.hasSpareActivitySlot() === true) {
-        this.json.activity.push( new FSTask( {'name':taskName, 'category':taskCategory}));
-        if (this.json.activity.length === 1) {
-          this.startNextTask();
+        if (this.json.activity.length === 0) {
+            this.json.activity.push( task);
+
+            this.startNextTask();
         }
       }
     };
@@ -84,13 +85,14 @@ angular.module('craftyApp')
       //xp gain
       this.json.xp += parseInt(FSSimRules.taskRules[this.json.activity[0].category].xp, 10);
      
+
+      var activeTask = this.json.activity[0];
+
       this.json.activity.splice(0, 1);
 
-      // start next queued activity
-      if (this.json.activity.length > 0) {
-        this.startNextTask();
-      }
-
+      FSSimObjectChannel.completedTask( activeTask );
+   
+  
       //thisFactory.ctrllrScopeApply();
     };
 
