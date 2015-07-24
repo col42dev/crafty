@@ -67,7 +67,7 @@
 			"file": "app/scripts/services/fssimobjectchannel.js",
 			"settings":
 			{
-				"buffer_size": 2830,
+				"buffer_size": 3295,
 				"line_ending": "Unix"
 			}
 		},
@@ -75,7 +75,119 @@
 			"file": "app/scripts/services/fscharacter.js",
 			"settings":
 			{
-				"buffer_size": 15796,
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fssimtasks.js",
+			"settings":
+			{
+				"buffer_size": 9749,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/colinmoore/dev/crafty/app/views/tasks.html",
+			"settings":
+			{
+				"buffer_size": 768,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsuieventhandler.js",
+			"settings":
+			{
+				"buffer_size": 8634,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/main.html",
+			"settings":
+			{
+				"buffer_size": 2411,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/characterselect.html",
+			"settings":
+			{
+				"buffer_size": 2353,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/main.js",
+			"settings":
+			{
+				"buffer_size": 1049,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fstask.js",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsbankable.js",
+			"settings":
+			{
+				"buffer_size": 1588,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fssimobjectfactory.js",
+			"settings":
+			{
+				"buffer_size": 2003,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/index.html",
+			"settings":
+			{
+				"buffer_size": 5266,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/gatherables.html",
+			"settings":
+			{
+				"buffer_size": 2367,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/harvestables.html",
+			"settings":
+			{
+				"buffer_size": 1697,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/bank.html",
+			"settings":
+			{
+				"buffer_size": 2425,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fssimbank.js",
+			"settings":
+			{
+				"buffer_size": 1474,
 				"line_ending": "Unix"
 			}
 		}
@@ -229,7 +341,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			"/Users/colinmoore/Dev/crafty/app",
@@ -245,6 +357,29 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"FSBackpack",
+			"+ harvesting",
+			"harvesting +",
+			"call",
+			".call",
+			"eval.call",
+			"apply",
+			"addTaskCatgeory",
+			"updateActiveTaskTotalSeconds",
+			"activity",
+			"startNextTask",
+			"startNext",
+			"FSSimObjectChannel.completedTask",
+			"stopAc",
+			"startNextTask",
+			"pendingTasks",
+			"addTask",
+			"FSSimCrafting",
+			"FSBack",
+			"onClickGatherables",
+			"selectC",
+			"this.Se",
+			"selectCharacter",
 			"FStask",
 			"scope",
 			"FSSimFactory",
@@ -349,30 +484,7 @@
 			"FSGatherable",
 			"FSBackpack",
 			"FSSimRules",
-			"FSHarvestable",
-			"FSRecipe",
-			"FSGatherable",
-			"FSBackpack",
-			"FSTask",
-			"FSSimState",
-			"FSCharacter",
-			"thisFactory",
-			"selectedC",
-			"characterObjs",
-			"this.Cra",
-			"craftables",
-			"bank",
-			"gather",
-			"pdateHarvestable",
-			"harves",
-			"simulation",
-			"isHar",
-			"isHav",
-			"harvestables",
-			"FSReward",
-			"thisFactory",
-			"rewardR",
-			"taskRule"
+			"FSHarvestable"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -380,6 +492,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"FSBankable",
 			"duration",
 			"craftables",
 			"craftableDefines",
@@ -397,6 +510,7 @@
 	"groups":
 	[
 		{
+			"selected": 15,
 			"sheets":
 			[
 				{
@@ -404,15 +518,434 @@
 					"file": "app/scripts/services/fssimobjectchannel.js",
 					"settings":
 					{
-						"buffer_size": 2830,
+						"buffer_size": 3295,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								147,
-								147
+								2657,
+								2657
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 464.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/scripts/services/fscharacter.js",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2162.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/scripts/services/fssimtasks.js",
+					"settings":
+					{
+						"buffer_size": 9749,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4646,
+								4646
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 609.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/colinmoore/dev/crafty/app/views/tasks.html",
+					"settings":
+					{
+						"buffer_size": 768,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								670,
+								670
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/scripts/services/fsuieventhandler.js",
+					"settings":
+					{
+						"buffer_size": 8634,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								184,
+								200
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 2.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/views/main.html",
+					"settings":
+					{
+						"buffer_size": 2411,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								977,
+								977
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 139.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/views/characterselect.html",
+					"settings":
+					{
+						"buffer_size": 2353,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								500,
+								500
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/scripts/controllers/main.js",
+					"settings":
+					{
+						"buffer_size": 1049,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								498,
+								498
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 14.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/scripts/services/fstask.js",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 23.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/scripts/services/fsbankable.js",
+					"settings":
+					{
+						"buffer_size": 1588,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								385,
+								385
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/scripts/services/fssimobjectfactory.js",
+					"settings":
+					{
+						"buffer_size": 2003,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 83.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/index.html",
+					"settings":
+					{
+						"buffer_size": 5266,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5194,
+								5194
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1142.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "app/views/gatherables.html",
+					"settings":
+					{
+						"buffer_size": 2367,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1424,
+								1424
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "app/views/harvestables.html",
+					"settings":
+					{
+						"buffer_size": 1697,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1099,
+								1099
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/views/bank.html",
+					"settings":
+					{
+						"buffer_size": 2425,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2066,
+								2066
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 319.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "app/scripts/services/fssimbank.js",
+					"settings":
+					{
+						"buffer_size": 1474,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1466,
+								1466
 							]
 						],
 						"settings":
@@ -423,34 +956,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/scripts/services/fscharacter.js",
-					"settings":
-					{
-						"buffer_size": 15796,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1753,
-								1753
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 16.0,
-						"translation.y": 4240.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -514,6 +1019,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 350.0,
+	"side_bar_width": 304.0,
 	"status_bar_visible": true
 }

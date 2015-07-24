@@ -11,7 +11,6 @@ angular.module('craftyApp')
   .service('FSSimRewards', [ '$rootScope', 'FSSimObjectChannel', 'FSSimRules', 'FSSimState', function ($rootScope, FSSimObjectChannel, FSSimRules, FSSimState ) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-        console.log('FSSimRewards');
 
         var thisService = this;
 
@@ -20,8 +19,7 @@ angular.module('craftyApp')
          * @desc 
          * @return 
          */
-        this.onUpdateGoalsHandler = function( ) {
-
+        var onUpdateGoalsHandler = function( ) {
             thisService.nextGoal = {};
             for (var thisRewardRule in FSSimRules.rewardRules) {
                 if (FSSimRules.rewardRules.hasOwnProperty(thisRewardRule)) {        
@@ -36,13 +34,15 @@ angular.module('craftyApp')
             }
         };
 
+        // Register 'onUpdateGoalsHandler' callback after handler declaration
+        FSSimObjectChannel.onUpdateGoals($rootScope, onUpdateGoalsHandler);
+
+
         /**
          * @desc 
          * @return 
          */
-        this.onMakeRewardsHandler  = function ( arg) {
-
-            console.log('onMakeRewards');
+        var onMakeRewardsHandler  = function ( arg) {
 
             var returnObj = {};
 
@@ -80,9 +80,8 @@ angular.module('craftyApp')
             //return returnObj;
         };
 
-
-        FSSimObjectChannel.onUpdateGoals($rootScope, this.onUpdateGoalsHandler);
-        FSSimObjectChannel.onMakeRewards($rootScope, this.onMakeRewardsHandler);
+        // Register 'onMakeRewardsHandler' callback after handler declaration
+        FSSimObjectChannel.onMakeRewards($rootScope, onMakeRewardsHandler);
 
 
         /**

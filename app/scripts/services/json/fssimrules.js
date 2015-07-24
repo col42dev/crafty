@@ -5,16 +5,15 @@
  * @name craftyApp.FSSimRules
  * @description
  * # FSSimRules
- * Service in the craftyApp.
+ * Immutable rule data mapped from JSON defines
  */
 angular.module('craftyApp')
   .service('FSSimRules', function () {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-
     this.set = function(json) {
 
-        // Defines
+        // Rule Defines
         this.harvestableDefines = json.harvestableDefines;  
         this.gatherableDefines = json.gatherableDefines; 
         this.craftableDefines = json.craftableDefines; 

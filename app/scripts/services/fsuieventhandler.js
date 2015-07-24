@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('FSUIEventHandler', function ( FSBackpack,  FSSimObjectChannel,  FSContextConsole, FSSimRules, FSSimState, FSSimRewards, FSSimCrafting, FSSimHarvesting, FSSimGathering, FSSimTasks) {
+  .service('FSUIEventHandler', function ( FSBankable,  FSSimObjectChannel,  FSContextConsole, FSSimRules, FSSimState, FSSimRewards, FSSimCrafting, FSSimHarvesting, FSSimGathering, FSSimTasks) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -49,6 +49,7 @@ angular.module('craftyApp')
                         }
                     }
                     break;
+      
             }
           
           return  (enabled === true) ? 'rgba(20, 200, 20, 0.25)' : 'rgba(200, 20, 20, 0.25)';
@@ -175,7 +176,7 @@ angular.module('craftyApp')
                 case 'tool': { // add to character inventory 
                     if (FSSimState.bank[bankItemKey].json.quantity.length > 0) {
                         FSSimState.bank[bankItemKey].decrement(1) ;
-                        FSSimState.selectedCharacter.json.tools.push( new FSBackpack( {'category':FSSimState.bank[bankItemKey].category, 'name':FSSimState.bank[bankItemKey].json.name} ));
+                        FSSimState.selectedCharacter.json.tools.push( new FSBankable( {'category':FSSimState.bank[bankItemKey].category, 'name':FSSimState.bank[bankItemKey].json.name} ));
 
 
 
@@ -209,7 +210,7 @@ angular.module('craftyApp')
                 case 'weapon': { // add to character inventory 
                     if (FSSimState.bank[bankItemKey].json.quantity.length > 0) {
                         FSSimState.bank[bankItemKey].decrement(1) ;
-                        FSSimState.selectedCharacter.json.weapons.push( new FSBackpack( {'category':FSSimState.bank[bankItemKey].category, 'name':FSSimState.bank[bankItemKey].json.name} ));
+                        FSSimState.selectedCharacter.json.weapons.push( new FSBankable( {'category':FSSimState.bank[bankItemKey].category, 'name':FSSimState.bank[bankItemKey].json.name} ));
 
                         if ( FSSimState.bank[bankItemKey].json.quantity.length === 0) {
                             delete  FSSimState.bank[bankItemKey];

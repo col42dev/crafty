@@ -6,13 +6,13 @@
  * @description
  * # FSSimState
  * Stores the raw sim state from JSON and maps its to runtime instances.
- * Avoid adding Sim implementation.
+ * Avoid adding Sim implementation to this class.
  */
 angular.module('craftyApp')
   .service('FSSimState', function (FSSimObjectChannel, FSSimRules) {
     // AngularJS will instantiate a singleton by calling "new" on this function.
 
-           var simState = this;
+    var simState = this;
 
 
     this.set = function(json) {
@@ -30,14 +30,11 @@ angular.module('craftyApp')
             }); 
 
 
- 
-    
             // Gatherables
             this.gatherables = {};  
             json.gatherables.forEach( (function(thisGatherables) {
                 FSSimObjectChannel.createSimObject( { category: 'gatherables', desc : thisGatherables});
             }).bind(this)); 
-            //FSSimObjectChannel.createSimObject( { category: 'gatherables', desc : 'Sheep'});
             this.updateGatherables = function() {
                 simState.gatherablesArray = Object.keys(simState.gatherables).map(function (key) {
                     return simState.gatherables[key];

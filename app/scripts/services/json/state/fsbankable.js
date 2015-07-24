@@ -2,28 +2,37 @@
 
 /**
  * @ngdoc service
- * @name craftyApp.FSBackpack
+ * @name craftyApp.FSBankable
  * @description
- * # FSBackpack
- * Factory in the craftyApp.
+ * # FSBankable
+ * runtime mapping of JSON state 'bank' element.
  */
 angular.module('craftyApp')
-  .factory('FSBackpack', function () {
+  .factory('FSBankable', function () {
     // Service logic
     
-    // FSBackpack
-    var FSBackpack = function(obj) { 
+    // FSBankable
+    var FSBankable = function(obj) { 
         obj.quantity = [];
-        this.category = obj.category;
+        this.category = obj.category; //data duplication?
         this.json = obj;
         this.quantitybgcolor = 'rgba(200, 200, 200, 0.25)';
+    };
+
+
+    /**
+     * @desc 
+     * @return 
+     */
+    FSBankable.prototype.bgcolor = function() {
+      return 'rgba(20, 200, 20, 0.25)';
     };
 
     /**
      * @desc 
      * @return 
      */
-    FSBackpack.prototype.increment = function( amount) {
+    FSBankable.prototype.increment = function( amount) {
       for (var i = 0; i < amount; i ++) {
         this.json.quantity.push({});
       }
@@ -35,7 +44,7 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSBackpack.prototype.decrement = function( amount) {
+    FSBankable.prototype.decrement = function( amount) {
       for (var i = 0; i < amount; i ++) {
         this.json.quantity.pop();
       }
@@ -49,7 +58,7 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSBackpack.prototype.setFlashQuantityTimeout = function( ) {
+    FSBankable.prototype.setFlashQuantityTimeout = function( ) {
       setTimeout( (function() {
         if(typeof this !== 'undefined') {
           this.quantitybgcolor = 'rgba(0, 0, 0, .0)';
@@ -62,5 +71,5 @@ angular.module('craftyApp')
 
   
 
-    return FSBackpack;
+    return FSBankable;
   });

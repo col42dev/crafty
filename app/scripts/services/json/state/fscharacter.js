@@ -90,7 +90,6 @@ angular.module('craftyApp')
       this.json.activity.splice(0, 1);
 
       FSSimObjectChannel.completedTask( activeTask );
-  
     };
 
      /**
@@ -98,6 +97,7 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.harvestingOnStart = function () {
+      // keep stubbed - called by reflection method.
     };
 
      /**

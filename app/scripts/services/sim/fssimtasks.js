@@ -14,6 +14,7 @@ angular.module('craftyApp')
     var thisService = this;
     this.activeTasks = [];
     this.pendingTasks = [];
+    var MAX_QUEUED_TASK_COUNT = 6;
 
     /**
      * @desc 
@@ -138,7 +139,7 @@ angular.module('craftyApp')
 
         } else if (validCharacters.length > 0) {
             // queue task
-            if (this.pendingTasks.length < 4) {
+            if (this.pendingTasks.length < MAX_QUEUED_TASK_COUNT) {
                 this.pendingTasks.push( task);
             } else {
                  FSContextConsole.log('Task queue is full', true);

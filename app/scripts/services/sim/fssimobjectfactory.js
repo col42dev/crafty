@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('FSSimObjectFactory', ['$rootScope', 'FSSimObjectChannel', 'FSSimState', 'FSSimRules', 'FSGatherable', 'FSHarvestable', 'FSCharacter', 'FSRecipe', 'FSBackpack', function ( $rootScope, FSSimObjectChannel, FSSimState, FSSimRules, FSGatherable, FSHarvestable, FSCharacter, FSRecipe, FSBackpack) {
+  .service('FSSimObjectFactory', ['$rootScope', 'FSSimObjectChannel', 'FSSimState', 'FSSimRules', 'FSGatherable', 'FSHarvestable', 'FSCharacter', 'FSRecipe', 'FSBankable', function ( $rootScope, FSSimObjectChannel, FSSimState, FSSimRules, FSGatherable, FSHarvestable, FSCharacter, FSRecipe, FSBankable) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
         console.log('FSSimObjectFactory');
@@ -26,7 +26,7 @@ angular.module('craftyApp')
                   break;
               case 'bankable':
                   {
-                    FSSimState.bank[arg.desc.name] = new FSBackpack({'category':arg.desc.category, 'name':arg.desc.name});
+                    FSSimState.bank[arg.desc.name] = new FSBankable({'category':arg.desc.category, 'name':arg.desc.name});
                     if ( parseInt( arg.desc.quantity, 10) > 0) {
                       FSSimState.bank[arg.desc.name].increment( arg.desc.quantity );
                     }

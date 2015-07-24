@@ -2,26 +2,24 @@
 
 
 
-<div class="bodycontainer scrollable">
   <table class="table table-bordered table-condensed table-scrollable">
 
     <tbody>
+      <!--
       <tr ng-repeat="(k,v)  in getFSSimTasks().activeTasks" class="noselect" >
         <td >
           <div style = "background:rgba(100, 200, 100, 0.5); overflow:visible; word-wrap:normal" ng-style="{ 'width' : v.percentRemaining()}">{{v.name}}</div>
         </td> 
-    
       </tr>
+      -->
       <tr ng-repeat="(k,v)  in getFSSimTasks().pendingTasks" class="noselect" >
         <td>
-          <div style = "background:rgba(200, 100, 100, 0.5); overflow:visible; word-wrap:normal">{{v.name}}</div>
+          <div style = "background:rgba(200, 100, 100, 0.5); overflow:visible; word-wrap:normal">{{v.name}} {{v.category}}</div>
         </td>
-
-
       </tr>
     </tbody>
   </table>
-</div>
+
 
 
 </div><!--fadedbackground-->
