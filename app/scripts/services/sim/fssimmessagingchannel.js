@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc service
- * @name craftyApp.FSSimObjectChannel
+ * @name craftyApp.FSSimMessagingChannel
  * @description
- * # FSSimObjectChannel
+ * # FSSimMessagingChannel
  * Publish/Subscriber pattern channel for sim implementation to operate on JSON rules/state and visa-versa.
  * reference: http://col42dev.github.io/publish%20subscribe%20design%20pattern/
  */
 angular.module('craftyApp')
-  .service('FSSimObjectChannel', ['$rootScope', function ($rootScope) {
+  .service('FSSimMessagingChannel', ['$rootScope', function ($rootScope) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
         // private notification messages
@@ -42,7 +42,7 @@ angular.module('craftyApp')
         };
 
 
-        //subscribe to  notification
+        // subscribe to  notification
         this.onCreateSimObject = function($scope, handler) {
             $scope.$on( _CREATE_SIM_OBJECT_, function(event, args) {
                 handler(args.item);

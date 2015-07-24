@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc service
- * @name craftyApp.FSService
+ * @name craftyApp.FSJSONLoader
  * @description
- * # FSService
- * Service in the craftyApp.
+ * # FSJSONLoader
+ * Load JSON in to sim
  */
 angular.module('craftyApp')
-  .service('FSService', function ( FSSimRules, FSSimState, FSSimObjectChannel, $http, $location, stopwatch) {
+  .service('FSJSONLoader', function ( FSSimRules, FSSimState, FSSimMessagingChannel, $http, $location, stopwatch) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     var thisService = this;
@@ -133,7 +133,7 @@ angular.module('craftyApp')
      
       FSSimState.set(thisService.stateData);
 
-      FSSimObjectChannel.updateGoals();
+      FSSimMessagingChannel.updateGoals();
    
       //$scope.$apply();
       stopwatch.reset();

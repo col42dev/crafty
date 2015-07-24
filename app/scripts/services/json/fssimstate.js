@@ -5,11 +5,11 @@
  * @name craftyApp.FSSimState
  * @description
  * # FSSimState
- * Stores the raw sim state from JSON and maps its to runtime instances.
- * Avoid adding Sim implementation to this class.
+ * Stores the raw sim state data from JSON and maps its to runtime instances.
+ * Data only - co not add implementation.
  */
 angular.module('craftyApp')
-  .service('FSSimState', function (FSSimObjectChannel, FSSimRules) {
+  .service('FSSimState', function (FSSimMessagingChannel, FSSimRules) {
     // AngularJS will instantiate a singleton by calling "new" on this function.
 
     var simState = this;
@@ -23,17 +23,17 @@ angular.module('craftyApp')
             this.selectedConstructorFilter = 'none';
 
             // Characters
-            this.characterObjs = {};  
+            this.characters = {};  
             json.characters.forEach( function(thisCharacter) {
                 var obj = { characterDesc : thisCharacter};
-                FSSimObjectChannel.createSimObject( { category: 'character', desc : obj});
+                FSSimMessagingChannel.createSimObject( { category: 'character', desc : obj});
             }); 
 
 
             // Gatherables
             this.gatherables = {};  
             json.gatherables.forEach( (function(thisGatherables) {
-                FSSimObjectChannel.createSimObject( { category: 'gatherable', desc : thisGatherables});
+                FSSimMessagingChannel.createSimObject( { category: 'gatherable', desc : thisGatherables});
             }).bind(this)); 
             this.updateGatherables = function() {
                 simState.gatherablesArray = Object.keys(simState.gatherables).map(function (key) {
@@ -45,7 +45,7 @@ angular.module('craftyApp')
             // Harvestables
             this.harvestables = {};  
             json.harvestables.forEach( function(thisHarvestable) {
-                FSSimObjectChannel.createSimObject( { category: 'harvestable', desc : thisHarvestable});
+                FSSimMessagingChannel.createSimObject( { category: 'harvestable', desc : thisHarvestable});
             }); 
             this.updateHarvestables = function() {
                 simState.harvestablesArray = Object.keys(simState.harvestables).map(function (key) {
@@ -68,9 +68,9 @@ angular.module('craftyApp')
                 }
                 item.category = category;
 
-                FSSimObjectChannel.createSimObject( { category: 'bankable', desc : item});
+                FSSimMessagingChannel.createSimObject( { category: 'bankable', desc : item});
             }); 
-            FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':'constructor', 'name':'', quantity : 1} });
+            FSSimMessagingChannel.createSimObject( { category: 'bankable', desc : {'category':'constructor', 'name':'', quantity : 1} });
             this.updateBank = function() {
                 simState.bankArray = Object.keys(simState.bank).map(function (key) {
                         return simState.bank[key];
@@ -81,7 +81,7 @@ angular.module('craftyApp')
             // Craftables
             this.craftables = {}; 
             json.craftables.forEach( function( recipeName ) {
-                FSSimObjectChannel.createSimObject( { category: 'craftables', desc : recipeName});
+                FSSimMessagingChannel.createSimObject( { category: 'craftables', desc : recipeName});
             }); 
             this.updateRecipes = function() {
                 simState.craftablesArray = Object.keys(simState.craftables).map(function (key) {

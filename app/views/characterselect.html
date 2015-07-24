@@ -17,34 +17,34 @@
 		</tr>
 	</thead>
 	<tbody>
-	<tr ng-repeat="(k,v) in getFSSimState().characterObjs" class="noselect" ng-click="getFSUIEventHandler().onClickCharacter(v)">
+	<tr ng-repeat="(k,v) in getFSSimState().characters" class="noselect" ng-click="getFSUIEventHandler().onClickCharacter(v)">
 		<td bgcolor={{v.getbgcolor()}} class="col-sm-2" >
 			{{v.json.name}}
 		</td> 
 
 		<td class="col-sm-1" >
-			{{getFSSimState().characterObjs[k].json.proficiency.profession}}
+			{{getFSSimState().characters[k].json.proficiency.profession}}
 		</td>
 	
 		<td class="col-sm-1" >
-			{{getFSSimState().characterObjs[k].json.xp}}
+			{{getFSSimState().characters[k].json.xp}}
 		</td>
 
 		<td class="col-sm-1" > 
-			<div style = "background:rgba(200, 100, 100, 0.5); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getFSSimState().characterObjs[k].getStatPercentage('health')}">{{getFSSimState().characterObjs[k].getStatPercentage('health')}}
+			<div style = "background:rgba(200, 100, 100, 0.5); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getFSSimState().characters[k].getStatPercentage('health')}">{{getFSSimState().characters[k].getStatPercentage('health')}}
 			</div>
 		</td> 
 		<td class="col-sm-1" > 
-			<div style = "background:rgba(20, 20, 240, 0.5); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getFSSimState().characterObjs[k].getStatPercentage('energy')}">{{getFSSimState().characterObjs[k].getStatPercentage('energy')}}
+			<div style = "background:rgba(20, 20, 240, 0.5); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getFSSimState().characters[k].getStatPercentage('energy')}">{{getFSSimState().characters[k].getStatPercentage('energy')}}
 			</div>
 		</td> 
 		<td class="col-sm-1" > 
-			<div style = "background:rgba(50, 200, 50, 0.5); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getFSSimState().characterObjs[k].getStatPercentage('mind')}">{{getFSSimState().characterObjs[k].getStatPercentage('mind')}}
+			<div style = "background:rgba(50, 200, 50, 0.5); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getFSSimState().characters[k].getStatPercentage('mind')}">{{getFSSimState().characters[k].getStatPercentage('mind')}}
 			</div>
 		</td> 
 
 		<td class="col-sm-7" >
-			<div style = "background:rgb(128, 177, 133); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getFSSimState().characterObjs[k].activityPercentRemaining()}">
+			<div style = "background:rgb(128, 177, 133); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getFSSimState().characters[k].activityPercentRemaining()}">
 		        {{v.json.activity[0].desc()}}
 			</div>
 		</td> 

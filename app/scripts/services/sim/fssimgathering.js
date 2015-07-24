@@ -16,8 +16,8 @@ angular.module('craftyApp')
          * @return 
          */
         this.isGatherable = function (gatherableType) {
-            for ( var characterKey in FSSimState.characterObjs ) {
-                if ( FSSimState.characterObjs[characterKey].canPerformTask(gatherableType, 'gathering')) {
+            for ( var characterKey in FSSimState.characters ) {
+                if ( FSSimState.characters[characterKey].canPerformTask(gatherableType, 'gathering')) {
                     return true;
                 }
             }

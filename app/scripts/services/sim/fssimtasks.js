@@ -8,7 +8,7 @@
  * Operate on fstask's.
  */
 angular.module('craftyApp')
-  .service('FSSimTasks', [ '$rootScope',  'FSSimState', 'FSSimRules', 'FSTask', 'FSSimCrafting', 'FSContextConsole', 'FSSimObjectChannel', function ($rootScope , FSSimState, FSSimRules, FSTask, FSSimCrafting, FSContextConsole, FSSimObjectChannel) {
+  .service('FSSimTasks', [ '$rootScope',  'FSSimState', 'FSSimRules', 'FSTask', 'FSSimCrafting', 'FSContextConsole', 'FSSimMessagingChannel', function ($rootScope , FSSimState, FSSimRules, FSTask, FSSimCrafting, FSContextConsole, FSSimMessagingChannel) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     var thisService = this;
@@ -18,24 +18,49 @@ angular.module('craftyApp')
 
     /**
      * @desc 
-     * Add character task.
+     * Create Task and process it for execution by a character.
      */
-    this.addTask = function ( tableName, keyName) {
+    this.createTask = function ( tableName, keyName) {
         var task = null;
 
         switch (tableName) {
-            case 'Gatherables':
+            case 'gatherable':
                 task = new FSTask( {'name':keyName, 'category':'gathering'});
                 break;
-            case 'Harvestables':
+            case 'harvestable':
                 task = new FSTask( {'name':keyName, 'category':'harvesting'});
                 break;
-            case 'Craftables':
+            case 'craftable':
                 task = new FSTask( {'name':keyName, 'category':'crafting'});
                 break;
         }
 
-        this.addTaskCatgeory(task);
+        this.executeTask(task);
+    };
+
+   /**
+     * @desc 
+     * Assign task to character or to pending task queue, discard it if it is inoperable.
+     */
+    this.executeTask = function ( task ) {
+        var validCharacters = this.getValidCharacters(task);
+        var validCharactersInactive = this.getInactiveCharacters(validCharacters);
+
+        if ( validCharactersInactive.length > 0) {
+            this.activeTasks.push( task);
+            validCharactersInactive[0].addTask( task );  
+
+        } else if (validCharacters.length > 0) {
+            // queue task
+            if (this.pendingTasks.length < MAX_QUEUED_TASK_COUNT) {
+                this.pendingTasks.push( task);
+            } else {
+                 FSContextConsole.log('Task queue is full', true);
+            }
+        }
+        else {
+            this.logDependencies(task);
+        }
     };
 
     /**
@@ -85,7 +110,7 @@ angular.module('craftyApp')
     };
 
     // Register 'onCompletedTaskHandler' callback after handler declaration
-    FSSimObjectChannel.onCompletedTask($rootScope, onCompletedTaskHandler);
+    FSSimMessagingChannel.onCompletedTask($rootScope, onCompletedTaskHandler);
 
 
     /**
@@ -97,9 +122,9 @@ angular.module('craftyApp')
         var validCharacters = [];
 
         // generate list of characters which can do this task.
-        for ( var character in FSSimState.characterObjs ) {
-            if ( FSSimState.characterObjs[character].canPerformTask(task.name, task.category)) {
-                validCharacters.push( FSSimState.characterObjs[character]);
+        for ( var character in FSSimState.characters ) {
+            if ( FSSimState.characters[character].canPerformTask(task.name, task.category)) {
+                validCharacters.push( FSSimState.characters[character]);
             }
         }
 
@@ -124,32 +149,6 @@ angular.module('craftyApp')
 
     /**
      * @desc 
-     * @return 
-     */
-    this.addTaskCatgeory = function ( task ) {
-        var validCharacters = this.getValidCharacters(task);
-        var validCharactersInactive = this.getInactiveCharacters(validCharacters);
-
-        if ( validCharactersInactive.length > 0) {
-            this.activeTasks.push( task);
-            validCharactersInactive[0].addTask( task );  
-
-        } else if (validCharacters.length > 0) {
-            // queue task
-            if (this.pendingTasks.length < MAX_QUEUED_TASK_COUNT) {
-                this.pendingTasks.push( task);
-            } else {
-                 FSContextConsole.log('Task queue is full', true);
-            }
-        }
-        else {
-            this.logDependencies(task);
-        }
-    };
-
-
-    /**
-     * @desc 
      * log reasons and/or missing dependencies to console for task.
      */
     this.logDependencies = function ( task ) {
@@ -164,8 +163,8 @@ angular.module('craftyApp')
         switch (category) {
             case 'gathering':
                 // stats
-                for ( characterKey in FSSimState.characterObjs ) {
-                     if ( FSSimState.characterObjs[characterKey].hasStatsFor('gathering') === true) {
+                for ( characterKey in FSSimState.characters ) {
+                     if ( FSSimState.characters[characterKey].hasStatsFor('gathering') === true) {
                       haveStats = true;
                     }
                 }
@@ -174,8 +173,8 @@ angular.module('craftyApp')
                 }
 
                 // equipped
-               for ( characterKey in FSSimState.characterObjs ) {
-                     if ( FSSimState.characterObjs[characterKey].hasGatheringDependencies(keyName) === true) {
+               for ( characterKey in FSSimState.characters ) {
+                     if ( FSSimState.characters[characterKey].hasGatheringDependencies(keyName) === true) {
                       hasEquippedTools = true;
                     }
                 }
@@ -194,8 +193,8 @@ angular.module('craftyApp')
 
             case 'harvesting':
                 // stats
-                for ( characterKey in FSSimState.characterObjs ) {
-                     if ( FSSimState.characterObjs[characterKey].hasStatsFor('harvesting') === true) {
+                for ( characterKey in FSSimState.characters ) {
+                     if ( FSSimState.characters[characterKey].hasStatsFor('harvesting') === true) {
                       haveStats = true;
                     }
                 }
@@ -204,8 +203,8 @@ angular.module('craftyApp')
                 }
 
                 // equipped
-                for ( characterKey in FSSimState.characterObjs ) {
-                     if ( FSSimState.harvestables[keyName].isHarvestableBy(FSSimState.characterObjs[characterKey]) === true) {
+                for ( characterKey in FSSimState.characters ) {
+                     if ( FSSimState.harvestables[keyName].isHarvestableBy(FSSimState.characters[characterKey]) === true) {
                       hasEquippedTools = true;
                     }
                 }
@@ -229,8 +228,8 @@ angular.module('craftyApp')
                     if ( FSSimCrafting.hasCraftingConstructor(keyName, true)) {
 
                             //stats
-                            for ( characterKey in FSSimState.characterObjs ) {
-                                 if ( FSSimState.characterObjs[characterKey].hasStatsFor('crafting') === true) {
+                            for ( characterKey in FSSimState.characters ) {
+                                 if ( FSSimState.characters[characterKey].hasStatsFor('crafting') === true) {
                                   haveStats = true;
                                 }
                             }
@@ -240,8 +239,8 @@ angular.module('craftyApp')
 
                             //proficiency
                             var hasProficiency = false;
-                            for ( characterKey in FSSimState.characterObjs ) {
-                                 if ( FSSimState.characterObjs[characterKey].hasCraftingProficiencyFor(keyName) === true) {
+                            for ( characterKey in FSSimState.characters ) {
+                                 if ( FSSimState.characters[characterKey].hasCraftingProficiencyFor(keyName) === true) {
                                   hasProficiency = true;
                                 }
                             }

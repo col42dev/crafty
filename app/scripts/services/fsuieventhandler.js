@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('FSUIEventHandler', function ( FSBankable,  FSSimObjectChannel,  FSContextConsole, FSSimRules, FSSimState, FSSimRewards, FSSimCrafting, FSSimHarvesting, FSSimGathering, FSSimTasks) {
+  .service('FSUIEventHandler', function ( FSBankable,  FSSimMessagingChannel,  FSContextConsole, FSSimRules, FSSimState, FSSimRewards, FSSimCrafting, FSSimHarvesting, FSSimGathering, FSSimTasks) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -113,10 +113,10 @@ angular.module('craftyApp')
                 case 'Bank':
                     this.onClickBank(keyName);
                     break;
-                case 'Gatherables':
-                case 'Harvestables':
-                case 'Craftables':
-                    FSSimTasks.addTask(tableName, keyName);
+                case 'gatherable':
+                case 'harvestable':
+                case 'craftable':
+                    FSSimTasks.createTask(tableName, keyName);
                     break;
             }
          };
@@ -140,7 +140,7 @@ angular.module('craftyApp')
                 var toolName = character.json.tools[index].json.name;
 
                 if ( FSSimState.bank.hasOwnProperty(toolName) === false) {
-                       FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':'tool', 'name':toolName, quantity : 0} });     
+                       FSSimMessagingChannel.createSimObject( { category: 'bankable', desc : {'category':'tool', 'name':toolName, quantity : 0} });     
                 }
                 FSSimState.bank[toolName].increment(1);
                 FSSimState.updateBank();

@@ -64,84 +64,58 @@
 	"buffers":
 	[
 		{
-			"file": "app/scripts/services/json/state/fscraftable.js",
+			"file": "app/scripts/services/sim/fssimgathering.js",
 			"settings":
 			{
-				"buffer_size": 1313,
+				"buffer_size": 713,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/services/json/state/fscharacter.js",
+			"file": "/Users/colinmoore/dev/crafty/Gruntfile.js",
 			"settings":
 			{
-				"buffer_size": 15561,
+				"buffer_size": 10553,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/services/json/state/fsgatherable.js",
+			"file": "app/scripts/services/fsjsonloader.js",
 			"settings":
 			{
-				"buffer_size": 1509,
+				"buffer_size": 6458,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/services/json/state/fsharvestable.js",
+			"file": "app/views/character.html",
 			"settings":
 			{
-				"buffer_size": 3567,
+				"buffer_size": 317,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/services/json/state/fstask.js",
+			"file": "app/views/charactersheet.html",
 			"settings":
 			{
-				"buffer_size": 881,
+				"buffer_size": 602,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/services/json/fssimstate.js",
+			"file": "app/views/db.html",
 			"settings":
 			{
-				"buffer_size": 4572,
+				"buffer_size": 705,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Searching 57 files for \"'harvestables'\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js:\n   81                      this.orderGatherablesBy = this.orderGatherablesByOrder + fieldName;\n   82                      break;\n   83:                 case 'Harvestables':\n   84                      if ( this.hasOwnProperty('orderHarvestablesBy') === false) {\n   85                          this.orderHarvestablesBy = 'json.name';\n   ..\n  115                      break;\n  116                  case 'Gatherables':\n  117:                 case 'Harvestables':\n  118                  case 'Recipes':\n  119                      FSSimTasks.addTask(tableName, keyName);\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimstate.js:\n   46              this.harvestables = {};  \n   47              json.harvestables.forEach( function(thisHarvestable) {\n   48:                 FSSimObjectChannel.createSimObject( { category: 'harvestables', desc : thisHarvestable});\n   49              }); \n   50              this.updateHarvestables = function() {\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimobjectfactory.js:\n   19                    FSSimState.gatherables[arg.desc.name] = new FSGatherable(arg.desc);\n   20                    break;\n   21:               case 'harvestables' :\n   22                    FSSimState.harvestables[arg.desc.name] = new FSHarvestable(arg.desc);\n   23                    break;\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js:\n   28                  task = new FSTask( {'name':keyName, 'category':'gathering'});\n   29                  break;\n   30:             case 'Harvestables':\n   31                  task = new FSTask( {'name':keyName, 'category':'harvesting'});\n   32                  break;\n\n/Users/colinmoore/Dev/crafty/app/views/harvestables.html:\n    7        <thead>\n    8          <tr class=\"noselect\" >\n    9:             <th class=\"col-sm-6\" ng-click=\"getFSUIEventHandler().onClickHeader('Harvestables', 'json.name')\">Name</th>\n   10:             <th class=\"col-sm-1\" ng-click=\"getFSUIEventHandler().onClickHeader('Harvestables', 'json.quantity')\">#</th>\n   11:             <th class=\"col-sm-1\" ng-click=\"getFSUIEventHandler().onClickHeader('Harvestables', 'json.duration')\">\n   12                <div style='height:30px; width:30px; display:table-cell; vertical-align:middle'>\n   13                  <img src= 'http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/clockface.9a46d0f5.png' width=\"80%\" style=\"max-width: 100%; max-height: 100%; display:block; margin:auto;\" />\n   ..\n   25    <table class=\"table table-bordered table-condensed table-scrollable\">\n   26      <tbody>\n   27:       <tr ng-repeat=\"v in getFSSimState().harvestablesArray | orderBy:getFSUIEventHandler().orderHarvestablesBy\" ng-click=\"getFSUIEventHandler().onClickBody('Harvestables', v.json)\" class=\"noselect\" style=\"background-color: rgba(54, 25, 25, .1)\" >\n   28          <td class=\"col-sm-6\"> \n   29            <div style = \"background:{{getFSUIEventHandler().bgcolor('harvest',v.json.name)}};\">  {{v.json.name}}</div>\n\n9 matches across 5 files\n",
+			"file": "app/views/main.html",
 			"settings":
 			{
-				"buffer_size": 3134,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "app/scripts/services/sim/fssimobjectfactory.js",
-			"settings":
-			{
-				"buffer_size": 2010,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsuieventhandler.js",
-			"settings":
-			{
-				"buffer_size": 8637,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/sim/fssimtasks.js",
-			"settings":
-			{
-				"buffer_size": 9752,
+				"buffer_size": 2450,
 				"line_ending": "Unix"
 			}
 		},
@@ -149,15 +123,137 @@
 			"file": "app/views/recipes.html",
 			"settings":
 			{
-				"buffer_size": 2394,
+				"buffer_size": 2397,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Gruntfile.js",
+			"file": "app/scripts/services/json/fssimrules.js",
 			"settings":
 			{
-				"buffer_size": 10575,
+				"buffer_size": 781,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/json/fssimstate.js",
+			"settings":
+			{
+				"buffer_size": 4526,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/sim/fssimmessagingchannel.js",
+			"settings":
+			{
+				"buffer_size": 3463,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/index.html",
+			"settings":
+			{
+				"buffer_size": 5288,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fssimbank.js",
+			"settings":
+			{
+				"buffer_size": 1489,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/sim/fssimobjectfactory.js",
+			"settings":
+			{
+				"buffer_size": 2213,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/sim/fssimtasks.js",
+			"settings":
+			{
+				"buffer_size": 9838,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 57 files for \"canPerformTask\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n  218       * @return \n  219       */\n  220:     FSCharacter.prototype.canPerformTask = function (taskName, activityCategory, log) {     \n  221  \n  222        var canStartTask = true;\n  ...\n  291        var activityCategory = task.category;\n  292  \n  293:       if (this.canPerformTask(taskName, activityCategory) === true) {\n  294  \n  295          // Set modify stat timer intervals\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js:\n   18          this.isCraftable = function (craftableType) {\n   19              for ( var characterKey in FSSimState.characterObjs ) {\n   20:                 if ( FSSimState.characterObjs[characterKey].canPerformTask(craftableType, 'crafting', false)) {\n   21                      return true;\n   22                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimgathering.js:\n   18          this.isGatherable = function (gatherableType) {\n   19              for ( var characterKey in FSSimState.characterObjs ) {\n   20:                 if ( FSSimState.characterObjs[characterKey].canPerformTask(gatherableType, 'gathering', false)) {\n   21                      return true;\n   22                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimharvesting.js:\n   19          this.isHarvestable = function (harvestableType) {\n   20              for ( var characterKey in FSSimState.characterObjs ) {\n   21:                 if ( FSSimState.characterObjs[characterKey].canPerformTask(harvestableType, 'harvesting', false)) {\n   22                      return true;\n   23                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js:\n   99          // generate list of characters which can do this task.\n  100          for ( var character in FSSimState.characterObjs ) {\n  101:             if ( FSSimState.characterObjs[character].canPerformTask(task.name, task.category)) {\n  102                  validCharacters.push( FSSimState.characterObjs[character]);\n  103              }\n\n6 matches across 5 files\n\n\nSearching 57 files for \"isCraftable\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js:\n   25                      break;\n   26                  case 'craft':\n   27:                     enabled = FSSimCrafting.isCraftable(type) ;\n   28                      break;\n   29                  case 'gather':\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js:\n   16           * @return \n   17           */\n   18:         this.isCraftable = function (craftableType) {\n   19              for ( var characterKey in FSSimState.characterObjs ) {\n   20                  if ( FSSimState.characterObjs[characterKey].canPerformTask(craftableType, 'crafting', false)) {\n\n2 matches across 2 files\n\n\nSearching 57 files for \"hasCraftingIngredients\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n  261  \n  262          case 'crafting': {  \n  263:             if ( FSSimCrafting.hasCraftingIngredients(taskName, log) !== true) {\n  264                canStartTask = false;\n  265              }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js:\n   29           * @return \n   30           */\n   31:         this.hasCraftingIngredients = function (recipeKey, log) {\n   32      \n   33              // determine if has reqiored ingredients in bank\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js:\n  226  \n  227              case 'crafting':\n  228:                 if ( FSSimCrafting.hasCraftingIngredients(keyName, true) === true) {\n  229                      if ( FSSimCrafting.hasCraftingConstructor(keyName, true)) {\n  230  \n\n3 matches across 3 files\n\n\nSearching 57 files for \"canPerformTask\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n  218       * @return \n  219       */\n  220:     FSCharacter.prototype.canPerformTask = function (taskName, activityCategory, log) {     \n  221  \n  222        var canStartTask = true;\n  ...\n  291        var activityCategory = task.category;\n  292  \n  293:       if (this.canPerformTask(taskName, activityCategory) === true) {\n  294  \n  295          // Set modify stat timer intervals\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js:\n   18          this.isCraftable = function (craftableType) {\n   19              for ( var characterKey in FSSimState.characterObjs ) {\n   20:                 if ( FSSimState.characterObjs[characterKey].canPerformTask(craftableType, 'crafting', false)) {\n   21                      return true;\n   22                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimgathering.js:\n   18          this.isGatherable = function (gatherableType) {\n   19              for ( var characterKey in FSSimState.characterObjs ) {\n   20:                 if ( FSSimState.characterObjs[characterKey].canPerformTask(gatherableType, 'gathering', false)) {\n   21                      return true;\n   22                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimharvesting.js:\n   19          this.isHarvestable = function (harvestableType) {\n   20              for ( var characterKey in FSSimState.characterObjs ) {\n   21:                 if ( FSSimState.characterObjs[characterKey].canPerformTask(harvestableType, 'harvesting', false)) {\n   22                      return true;\n   23                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js:\n   99          // generate list of characters which can do this task.\n  100          for ( var character in FSSimState.characterObjs ) {\n  101:             if ( FSSimState.characterObjs[character].canPerformTask(task.name, task.category)) {\n  102                  validCharacters.push( FSSimState.characterObjs[character]);\n  103              }\n\n6 matches across 5 files\n\n\nSearching 57 files for \"hasCraftingIngredients\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n  259  \n  260          case 'crafting': {  \n  261:             if ( FSSimCrafting.hasCraftingIngredients(taskName, false) !== true) {\n  262                canStartTask = false;\n  263              }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js:\n   29           * @return \n   30           */\n   31:         this.hasCraftingIngredients = function (recipeKey, log) {\n   32      \n   33              // determine if has reqiored ingredients in bank\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js:\n  226  \n  227              case 'crafting':\n  228:                 if ( FSSimCrafting.hasCraftingIngredients(keyName, true) === true) {\n  229                      if ( FSSimCrafting.hasCraftingConstructor(keyName, true)) {\n  230  \n\n3 matches across 3 files\n\n\nSearching 57 files for \"hasCraftingProficiencyFor\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n  268                canStartTask = false;\n  269              }\n  270:             if ( this.hasCraftingProficiencyFor(taskName, false) !== true) {\n  271                canStartTask = false;\n  272              }\n  ...\n  330       * @return \n  331       */\n  332:     FSCharacter.prototype.hasCraftingProficiencyFor = function (recipeKey, log) {\n  333        var hasRequiredProficiency = true;\n  334  \n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js:\n  242                              var hasProficiency = false;\n  243                              for ( characterKey in FSSimState.characterObjs ) {\n  244:                                  if ( FSSimState.characterObjs[characterKey].hasCraftingProficiencyFor(keyName, false) === true) {\n  245                                    hasProficiency = true;\n  246                                  }\n\n3 matches across 2 files\n\n\nSearching 57 files for \"hasCraftingProficiencyFor\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n  269                canStartTask = false;\n  270              }\n  271:             if ( this.hasCraftingProficiencyFor(taskName) !== true) {\n  272                canStartTask = false;\n  273              }\n  ...\n  331       * @return \n  332       */\n  333:     FSCharacter.prototype.hasCraftingProficiencyFor = function (recipeKey) {\n  334        var hasRequiredProficiency = true;\n  335  \n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js:\n  242                              var hasProficiency = false;\n  243                              for ( characterKey in FSSimState.characterObjs ) {\n  244:                                  if ( FSSimState.characterObjs[characterKey].hasCraftingProficiencyFor(keyName) === true) {\n  245                                    hasProficiency = true;\n  246                                  }\n\n3 matches across 2 files\n\n\nSearching 57 files for \"startNextTask\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n   64          if (this.json.activity.length === 0) {\n   65              this.json.activity.push( task);\n   66:             this.startNextTask();\n   67          }\n   68        }\n   ..\n  283       * @return \n  284       */\n  285:     FSCharacter.prototype.startNextTask = function () {  \n  286  \n  287        var task = this.json.activity[0];\n\n2 matches in 1 file\n\n\nSearching 57 files for \"queuedTaskCount\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n  423       * @return \n  424       */\n  425:     FSCharacter.prototype.queuedTaskCount = function ( ) {\n  426        return Math.max(this.json.activity.length - 1, 0);\n  427      };\n\n1 match in 1 file\n\n\nSearching 57 files for \"stopActiveTask\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n   89                      if ( thisCharacter.hasStatsFor( task.category ) === true) {\n   90                        if ( task.decrementTimer() === false) {\n   91:                         thisCharacter.stopActiveTask();\n   92                        }\n   93                      }\n   ..\n  106       * @return \n  107       */\n  108:     FSCharacter.prototype.stopActiveTask = function () {\n  109  \n  110        //clear task intervals\n\n2 matches in 1 file\n\n\nSearching 57 files for \"FSSimObjectChannel\"\n\n/Users/colinmoore/Dev/crafty/app/index.html:\n  115          <script src=\"scripts/services/sim/fssimtasks.js\"></script>\n  116  \n  117:         <script src=\"scripts/services/sim/fssimobjectchannel.js\"></script>\n  118          <script src=\"scripts/services/sim/fssimobjectfactory.js\"></script>\n  119          <script src=\"scripts/services/sim/fssimbank.js\"></script>\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimbank.js:\n    9   */\n   10  angular.module('craftyApp')\n   11:   .service('FSSimBank', ['$rootScope', 'FSSimObjectChannel', 'FSSimState', function ($rootScope, FSSimObjectChannel, FSSimState) {\n   12      // AngularJS will instantiate a singleton by calling \"new\" on this function\n   13  \n   ..\n   19          var onBankDepositHandler = function( arg) {\n   20              if (!(arg.type in FSSimState.bank)) {\n   21:                 FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':arg.category, 'name':arg.type, quantity : 0} });  \n   22              }\n   23              FSSimState.bank[arg.type].increment(1);\n   ..\n   26  \n   27          // Register 'onBankDepositHandler' after function declaration\n   28:         FSSimObjectChannel.onBankDeposit($rootScope, onBankDepositHandler);\n   29     \n   30  \n   ..\n   42  \n   43          // Register 'onBankWithdrawalHandler' after function declaration\n   44:         FSSimObjectChannel.onBankWithdrawal($rootScope, onBankWithdrawalHandler);\n   45    \n   46    }]);\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimservice.js:\n    9   */\n   10  angular.module('craftyApp')\n   11:   .service('FSService', function ( FSSimRules, FSSimState, FSSimObjectChannel, $http, $location, stopwatch) {\n   12      // AngularJS will instantiate a singleton by calling \"new\" on this function\n   13  \n   ..\n  134        FSSimState.set(thisService.stateData);\n  135  \n  136:       FSSimObjectChannel.updateGoals();\n  137     \n  138        //$scope.$apply();\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js:\n    9   */\n   10  angular.module('craftyApp')\n   11:   .service('FSUIEventHandler', function ( FSBankable,  FSSimObjectChannel,  FSContextConsole, FSSimRules, FSSimState, FSSimRewards, FSSimCrafting, FSSimHarvesting, FSSimGathering, FSSimTasks) {\n   12      // AngularJS will instantiate a singleton by calling \"new\" on this function\n   13  \n   ..\n  141  \n  142                  if ( FSSimState.bank.hasOwnProperty(toolName) === false) {\n  143:                        FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':'tool', 'name':toolName, quantity : 0} });     \n  144                  }\n  145                  FSSimState.bank[toolName].increment(1);\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimstate.js:\n   10   */\n   11  angular.module('craftyApp')\n   12:   .service('FSSimState', function (FSSimObjectChannel, FSSimRules) {\n   13      // AngularJS will instantiate a singleton by calling \"new\" on this function.\n   14  \n   ..\n   27              json.characters.forEach( function(thisCharacter) {\n   28                  var obj = { characterDesc : thisCharacter};\n   29:                 FSSimObjectChannel.createSimObject( { category: 'character', desc : obj});\n   30              }); \n   31  \n   ..\n   34              this.gatherables = {};  \n   35              json.gatherables.forEach( (function(thisGatherables) {\n   36:                 FSSimObjectChannel.createSimObject( { category: 'gatherable', desc : thisGatherables});\n   37              }).bind(this)); \n   38              this.updateGatherables = function() {\n   ..\n   46              this.harvestables = {};  \n   47              json.harvestables.forEach( function(thisHarvestable) {\n   48:                 FSSimObjectChannel.createSimObject( { category: 'harvestable', desc : thisHarvestable});\n   49              }); \n   50              this.updateHarvestables = function() {\n   ..\n   69                  item.category = category;\n   70  \n   71:                 FSSimObjectChannel.createSimObject( { category: 'bankable', desc : item});\n   72              }); \n   73:             FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':'constructor', 'name':'', quantity : 1} });\n   74              this.updateBank = function() {\n   75                  simState.bankArray = Object.keys(simState.bank).map(function (key) {\n   ..\n   82              this.craftables = {}; \n   83              json.craftables.forEach( function( recipeName ) {\n   84:                 FSSimObjectChannel.createSimObject( { category: 'craftables', desc : recipeName});\n   85              }); \n   86              this.updateRecipes = function() {\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n   10   */\n   11  angular.module('craftyApp')\n   12:   .factory('FSCharacter', function (FSTask, FSContextConsole, FSSimRules, FSSimState, FSSimObjectChannel, FSSimCrafting) {\n   13      // Service logic\n   14      // ...\n   ..\n  125  \n  126        //signal task completion\n  127:       FSSimObjectChannel.completedTask( activeTask );\n  128      };\n  129  \n  ...\n  153        if (!(harvestableType in FSSimState.gatherables)) { \n  154            var obj = {'name': harvestableType, 'quantity': '0'};\n  155:           FSSimObjectChannel.createSimObject( { category: 'gatherable', desc : obj});\n  156        }\n  157        \n  ...\n  180        var gatherableType = this.json.activity[0].name;\n  181  \n  182:       FSSimObjectChannel.bankDeposit( { type: gatherableType, category: 'gatherable'});\n  183     \n  184  \n  185        // Rewards\n  186:       FSSimObjectChannel.makeRewards( {'action':'gather', 'target':gatherableType});\n  187  \n  188        /*\n  ...\n  208          var recipeInput = recipeKey;\n  209          var recipeInputQuantity = recipeInputObj[ recipeKey];\n  210:         FSSimObjectChannel.bankWithdrawal( { type: recipeInput, quantity: recipeInputQuantity} );\n  211        }).bind(this));\n  212  \n  ...\n  232          // add output to bank.\n  233          if (!(craftableOutput in FSSimState.bank)) {\n  234:            FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':FSSimRules.craftableDefines[craftableKey].category, 'name':craftableOutput, quantity : 0} });  \n  235   \n  236          }\n  ...\n  239  \n  240          //Rewards\n  241:         FSSimObjectChannel.makeRewards( {'action':'craft', 'target':craftableOutput});\n  242          /*\n  243          var rewards = thisFactory.checkRewards( {'action':'craft', 'target':craftableOutput});\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimbank.js:\n    9   */\n   10  angular.module('craftyApp')\n   11:   .service('FSSimBank', ['$rootScope', 'FSSimObjectChannel', 'FSSimState', function ($rootScope, FSSimObjectChannel, FSSimState) {\n   12      // AngularJS will instantiate a singleton by calling \"new\" on this function\n   13  \n   ..\n   19          var onBankDepositHandler = function( arg) {\n   20              if (!(arg.type in FSSimState.bank)) {\n   21:                 FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':arg.category, 'name':arg.type, quantity : 0} });  \n   22              }\n   23              FSSimState.bank[arg.type].increment(1);\n   ..\n   26  \n   27          // Register 'onBankDepositHandler' after function declaration\n   28:         FSSimObjectChannel.onBankDeposit($rootScope, onBankDepositHandler);\n   29     \n   30  \n   ..\n   42  \n   43          // Register 'onBankWithdrawalHandler' after function declaration\n   44:         FSSimObjectChannel.onBankWithdrawal($rootScope, onBankWithdrawalHandler);\n   45    \n   46    }]);\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimobjectchannel.js:\n    3  /**\n    4   * @ngdoc service\n    5:  * @name craftyApp.FSSimObjectChannel\n    6   * @description\n    7:  * # FSSimObjectChannel\n    8   * Publish/Subscriber pattern channel for sim implementation to operate on JSON rules/state and visa-versa.\n    9   * reference: http://col42dev.github.io/publish%20subscribe%20design%20pattern/\n   10   */\n   11  angular.module('craftyApp')\n   12:   .service('FSSimObjectChannel', ['$rootScope', function ($rootScope) {\n   13      // AngularJS will instantiate a singleton by calling \"new\" on this function\n   14  \n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimobjectfactory.js:\n    9   */\n   10  angular.module('craftyApp')\n   11:   .service('FSSimObjectFactory', ['$rootScope', 'FSSimObjectChannel', 'FSSimState', 'FSSimRules', 'FSGatherable', 'FSHarvestable', 'FSCharacter', 'FSCraftable', 'FSBankable', function ( $rootScope, FSSimObjectChannel, FSSimState, FSSimRules, FSGatherable, FSHarvestable, FSCharacter, FSCraftable, FSBankable) {\n   12      // AngularJS will instantiate a singleton by calling \"new\" on this function\n   13  \n   ..\n   47  \n   48          // Register 'onCreateSimObjectHandler' after function declaration\n   49:         FSSimObjectChannel.onCreateSimObject($rootScope, onCreateSimObjectHandler);\n   50  \n   51    }]);\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimrewards.js:\n    9   */\n   10  angular.module('craftyApp')\n   11:   .service('FSSimRewards', [ '$rootScope', 'FSSimObjectChannel', 'FSSimRules', 'FSSimState', function ($rootScope, FSSimObjectChannel, FSSimRules, FSSimState ) {\n   12      // AngularJS will instantiate a singleton by calling \"new\" on this function\n   13  \n   ..\n   36  \n   37          // Register 'onUpdateGoalsHandler' callback after handler declaration\n   38:         FSSimObjectChannel.onUpdateGoals($rootScope, onUpdateGoalsHandler);\n   39  \n   40  \n   ..\n   58                                  returnObj.xp = parseInt(FSSimRules.rewardRules[thisRewardRule].xp);\n   59  \n   60:                                 FSSimObjectChannel.updateGoals();\n   61  \n   62  \n   ..\n   66                                      if ( FSSimState.craftables.hasOwnProperty(recipe) === false) {\n   67                                          //if (FSSimState.rewards.hasOwnProperty(recipe) === false) {\n   68:                                             FSSimObjectChannel.createSimObject( { category: 'craftables', desc : recipe});\n   69                                              FSSimState.updateRecipes();\n   70                                              console.log('RECIPE UNLOCK:' + recipe);\n   ..\n   82  \n   83          // Register 'onMakeRewardsHandler' callback after handler declaration\n   84:         FSSimObjectChannel.onMakeRewards($rootScope, onMakeRewardsHandler);\n   85  \n   86  \n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js:\n    9   */\n   10  angular.module('craftyApp')\n   11:   .service('FSSimTasks', [ '$rootScope',  'FSSimState', 'FSSimRules', 'FSTask', 'FSSimCrafting', 'FSContextConsole', 'FSSimObjectChannel', function ($rootScope , FSSimState, FSSimRules, FSTask, FSSimCrafting, FSContextConsole, FSSimObjectChannel) {\n   12      // AngularJS will instantiate a singleton by calling \"new\" on this function\n   13  \n   ..\n   86  \n   87      // Register 'onCompletedTaskHandler' callback after handler declaration\n   88:     FSSimObjectChannel.onCompletedTask($rootScope, onCompletedTaskHandler);\n   89  \n   90  \n\n45 matches across 11 files\n\n\nSearching 57 files for \"FSService\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/controllers/main.js:\n   11   */\n   12  angular.module('craftyApp')\n   13:   .controller('MainCtrl',['$scope', 'FSService', 'FSSimRules', 'FSSimState', 'FSContextConsole', 'FSSimObjectFactory', 'FSSimBank', 'FSSimRewards', 'FSUIEventHandler', 'FSSimTasks', function ($scope, FSService, FSSimRules, FSSimState, FSContextConsole, FSSimObjectFactory, FSSimBank, FSSimRewards, FSUIEventHandler, FSSimTasks) {\n   14  \n   15:     $scope.getFSService = function() {\n   16:       return FSService;\n   17      };\n   18  \n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fssimservice.js:\n    3  /**\n    4   * @ngdoc service\n    5:  * @name craftyApp.FSService\n    6   * @description\n    7:  * # FSService\n    8   * Service in the craftyApp.\n    9   */\n   10  angular.module('craftyApp')\n   11:   .service('FSService', function ( FSSimRules, FSSimState, FSSimMessagingChannel, $http, $location, stopwatch) {\n   12      // AngularJS will instantiate a singleton by calling \"new\" on this function\n   13  \n\n/Users/colinmoore/Dev/crafty/app/views/character.html:\n    3  \n    4  \n    5: <b>Task Speed-Up Factor: {{getFSService().simulation.taskTimeScalar}}</b>\n    6  \n    7  <input type=\"range\"  min=\"1\" max=\"20\" step=\"1\" ng-model=\"getFSSimState().taskTimeScalar\" style=\"width: 100%\">\n\n/Users/colinmoore/Dev/crafty/app/views/charactersheet.html:\n    6    <thead>\n    7        <td class=\"col-sm-7\">\n    8:         <h4>{{getFSService().simulation.selectedCharacter.json.name}}</h4>\n    9        </td>\n   10        <td class=\"col-sm-6\">\n\n/Users/colinmoore/Dev/crafty/app/views/db.html:\n    1  \n    2  \n    3: <button ng-click=\"getFSService().loadAccounts()\">Refresh</button>\n    4  \n    5  <table class=\"table table-bordered table-condensed\">\n    .\n   14    <table class=\"table table-bordered table-condensed table-scrollable\">\n   15      <tbody>\n   16:       <tr ng-repeat=\"(k,v)  in getFSService().accountsData\" ng-click=\"getFSService().selectAccount($index)\" class=\"noselect\" >\n   17          <td bgcolor=\"#00FF00\" class=\"col-sm-1\">{{v.documentName}}</td> \n   18        </tr>\n   ..\n   22  \n   23  \n   24:   <button ng-click=\"getFSService().removeAllAccounts()\">Remove All Accounts</button>\n   25  \n   26  \n\n/Users/colinmoore/Dev/crafty/app/views/main.html:\n    4  \n    5  \n    6: <p  align=\"right\"><b>{{getFSService().myStopwatch.data.pad(getFSService().myStopwatch.data.hours)}}:{{getFSService().myStopwatch.data.pad(getFSService().myStopwatch.data.minutes)}}:{{getFSService().myStopwatch.data.pad(getFSService().myStopwatch.data.seconds)}}</b></p>\n    7  \n    8  \n    9  <form novalidate>\n   10    <p></p>\n   11:   <button ng-click=\"getFSService().loadAndCreateSim()\">Load:</button><br/>\n   12    <ul>\n   13:   <b>rules:</b><input size=\"45\" type=\"text\" ng-model=\"getFSService().user.rules\"><br/>\n   14:   <b>state:</b><input size=\"45\" type=\"text\" ng-model=\"getFSService().user.state\">\n   15  </ul>\n   16   \n   ..\n  109  \n  110  <form novalidate>\n  111: <button ng-click=\"getFSService().saveJson()\">Save: (Enter Document Name)</button><input size=\"45\" type=\"text\" ng-model=\"getFSService().documentName.input\"></input>\n  112  </form>\n  113  <pre>\n  114: {{getFSService().simulation.jsonSerialized}}\n  115  </pre>\n  116  </br>\n\n/Users/colinmoore/Dev/crafty/app/views/recipes.html:\n   24    <table class=\"table table-bordered table-condensed table-scrollable\">\n   25      <tbody>\n   26:       <tr ng-repeat=\"(k,v)  in getFSSimState().craftablesArray | orderBy:getFSService().simulation.orderRecipesBy | filter:{ construction:getFSSimState().selectedConstructorFilter  }\" class=\"noselect\" style=\"background-color: rgba(54, 25, 25, .1)\">\n   27          <td class=\"col-sm-4\"> \n   28                <div style = \"background:{{getFSUIEventHandler().bgcolor('craft', v.json.name)}};\" ng-click=\"getFSUIEventHandler().onClickBody('Craftables', v.json)\">   {{v.json.name}}</div>\n\n26 matches across 7 files\n",
+			"settings":
+			{
+				"buffer_size": 25473,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "app/scripts/controllers/main.js",
+			"settings":
+			{
+				"buffer_size": 1061,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/json/state/fscharacter.js",
+			"settings":
+			{
+				"buffer_size": 14300,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/sim/fssimbank.js",
+			"settings":
+			{
+				"buffer_size": 1488,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsuieventhandler.js",
+			"settings":
+			{
+				"buffer_size": 8643,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/sim/fssimcrafting.js",
+			"settings":
+			{
+				"buffer_size": 2686,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/sim/fssimrewards.js",
+			"settings":
+			{
+				"buffer_size": 4396,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/sim/fssimharvesting.js",
+			"settings":
+			{
+				"buffer_size": 726,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/json/state/fstask.js",
+			"settings":
+			{
+				"buffer_size": 1546,
 				"line_ending": "Unix"
 			}
 		}
@@ -186,15 +282,23 @@
 	},
 	"file_history":
 	[
+		"/Users/colinmoore/Dev/crafty/Gruntfile.js",
+		"/Users/colinmoore/Dev/crafty/app/views/recipes.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimobjectfactory.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimstate.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fstask.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fsharvestable.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fsgatherable.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscraftable.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimbank.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimstate.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimrules.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimrewards.js",
 		"/Users/colinmoore/Dev/crafty/app/views/main.html",
 		"/Users/colinmoore/Dev/crafty/app/views/tasks.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimobjectfactory.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscraftable.js",
 		"/Users/colinmoore/Dev/crafty/app/index.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimbank.js",
 		"/Users/colinmoore/Dev/crafty/app/views/bank.html",
@@ -209,7 +313,6 @@
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimtasks.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimobjectchannel.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/stopwatch.js",
 		"/Users/colinmoore/Dev/crafty/app/views/character.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimgathering.js",
@@ -225,7 +328,6 @@
 		"/Users/colinmoore/Dev/crafty/app/views/contextinfoconsole.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscontextconsole.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js",
-		"/Users/colinmoore/Dev/crafty/app/views/recipes.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimfactory.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsharvestable.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsgatherable.js",
@@ -286,7 +388,6 @@
 		"/Users/colinmoore/Dev/crafty/bower.json",
 		"/Users/colinmoore/Dev/minecraft/pullMinecraft.sh",
 		"/Users/colinmoore/Dev/crafty/publishToEC2.sh",
-		"/Users/colinmoore/Dev/crafty/Gruntfile.js",
 		"/Users/colinmoore/Dev/crafty/.yo-rc.json",
 		"/Users/colinmoore/Dropbox (MagicFuelGames)/MagicFuelGames Team Folder/Software/Prototypes/Web/crafty/smallerdataset.json",
 		"/Users/colinmoore/Dropbox (MagicFuelGames)/MagicFuelGames Team Folder/Software/Prototypes/Web/crafty/smallerdataset2.json",
@@ -308,12 +409,7 @@
 		"/Users/colinmoore/Dev/dungeoneering.QuadTiles/publishToEC2.sh",
 		"/Users/colinmoore/Dev/dungeoneering/.gitignore",
 		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/crafty.json",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/crafty.json",
-		"/Users/colinmoore/Dev/crafty/crafty.json",
-		"/Users/colinmoore/crafty",
-		"/Users/colinmoore/Dev/crafty/package.json",
-		"/Users/colinmoore/Dev/crafty/.gitignore",
-		"/Users/colinmoore/publishToEC2.sh"
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/crafty.json"
 	],
 	"find":
 	{
@@ -337,6 +433,27 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"FSService",
+			"FSSimObjectChannel",
+			"stopActiveTask",
+			"queuedTaskCount",
+			"OPTIONAL_PROPERTY_PROFICIENECY",
+			"        \n",
+			"startNextTask",
+			"hasCraftingProficiencyFor",
+			"profic",
+			"profiv",
+			"hasCraftingProficiencyFor",
+			"hasCraftingIngredients",
+			"canPerformTask",
+			"hasCraftingIngredients",
+			"log",
+			"isCraftable",
+			"canPerformTask",
+			"getValidCharacters",
+			"logDependencies",
+			"serve",
+			"watch",
 			"hint",
 			"'harvestables'",
 			"'gatherables'",
@@ -443,28 +560,7 @@
 			"thisFactory",
 			"simulation",
 			"thisFactory",
-			"unlock",
-			"getUnlockImage",
-			"isGatherable",
-			".js",
-			"FSReward",
-			"thisFactory",
-			"simulation",
-			"fsBa",
-			"thisFactory",
-			"simulation",
-			"selectedCo",
-			"simulation",
-			"onCl",
-			"onClickC",
-			"onClickCharacter",
-			"selectCharacter",
-			"thisFactory",
-			"simfactory",
-			"updateGoals",
-			"FSSimState",
-			"reward",
-			"thisFactory"
+			"unlock"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -472,6 +568,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"FSJSONLoader",
+			"FSSimMessagingChannel",
 			"FSCraftable",
 			"FSBankable",
 			"duration",
@@ -496,18 +594,18 @@
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/services/json/state/fscraftable.js",
+					"file": "app/scripts/services/sim/fssimgathering.js",
 					"settings":
 					{
-						"buffer_size": 1313,
+						"buffer_size": 713,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								159,
-								159
+								591,
+								591
 							]
 						],
 						"settings":
@@ -524,18 +622,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "app/scripts/services/json/state/fscharacter.js",
+					"file": "/Users/colinmoore/dev/crafty/Gruntfile.js",
 					"settings":
 					{
-						"buffer_size": 15561,
+						"buffer_size": 10553,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4148,
-								4148
+								8553,
+								8553
 							]
 						],
 						"settings":
@@ -545,25 +643,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1853.0,
+						"translation.y": 6053.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "app/scripts/services/json/state/fsgatherable.js",
+					"file": "app/scripts/services/fsjsonloader.js",
 					"settings":
 					{
-						"buffer_size": 1509,
+						"buffer_size": 6458,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								147,
-								147
+								946,
+								946
 							]
 						],
 						"settings":
@@ -580,25 +678,23 @@
 				},
 				{
 					"buffer": 3,
-					"file": "app/scripts/services/json/state/fsharvestable.js",
+					"file": "app/views/character.html",
 					"settings":
 					{
-						"buffer_size": 3567,
+						"buffer_size": 317,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								150,
-								150
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -608,23 +704,23 @@
 				},
 				{
 					"buffer": 4,
-					"file": "app/scripts/services/json/state/fstask.js",
+					"file": "app/views/charactersheet.html",
 					"settings":
 					{
-						"buffer_size": 881,
+						"buffer_size": 602,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								128,
-								128
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -636,101 +732,53 @@
 				},
 				{
 					"buffer": 5,
-					"file": "app/scripts/services/json/fssimstate.js",
+					"file": "app/views/db.html",
 					"settings":
 					{
-						"buffer_size": 4572,
+						"buffer_size": 705,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1656,
-								1656
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 174.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 6,
+					"file": "app/views/main.html",
 					"settings":
 					{
-						"buffer_size": 3134,
+						"buffer_size": 2450,
 						"regions":
 						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										269,
-										283
-									],
-									[
-										555,
-										569
-									],
-									[
-										938,
-										952
-									],
-									[
-										1291,
-										1305
-									],
-									[
-										1644,
-										1658
-									],
-									[
-										1980,
-										1994
-									],
-									[
-										2106,
-										2120
-									],
-									[
-										2233,
-										2247
-									],
-									[
-										2854,
-										2868
-									]
-								],
-								"scope": ""
-							}
 						},
 						"selection":
 						[
 							[
-								1307,
-								1307
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"detect_indentation": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -740,23 +788,23 @@
 				},
 				{
 					"buffer": 7,
-					"file": "app/scripts/services/sim/fssimobjectfactory.js",
+					"file": "app/views/recipes.html",
 					"settings":
 					{
-						"buffer_size": 2010,
+						"buffer_size": 2397,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								880,
-								880
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -768,46 +816,18 @@
 				},
 				{
 					"buffer": 8,
-					"file": "app/scripts/services/fsuieventhandler.js",
+					"file": "app/scripts/services/json/fssimrules.js",
 					"settings":
 					{
-						"buffer_size": 8637,
+						"buffer_size": 781,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4034,
-								4034
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 1.0,
-						"translation.y": 1228.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "app/scripts/services/sim/fssimtasks.js",
-					"settings":
-					{
-						"buffer_size": 9752,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1048,
-								1058
+								197,
+								197
 							]
 						],
 						"settings":
@@ -823,19 +843,75 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "app/views/recipes.html",
+					"buffer": 9,
+					"file": "app/scripts/services/json/fssimstate.js",
 					"settings":
 					{
-						"buffer_size": 2394,
+						"buffer_size": 4526,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1763,
-								1763
+								3571,
+								3571
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 903.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/scripts/services/sim/fssimmessagingchannel.js",
+					"settings":
+					{
+						"buffer_size": 3463,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								374,
+								374
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/index.html",
+					"settings":
+					{
+						"buffer_size": 5288,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3878,
+								3878
 							]
 						],
 						"settings":
@@ -845,25 +921,53 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 47.0,
+						"translation.y": 1232.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "Gruntfile.js",
+					"buffer": 12,
+					"file": "app/scripts/services/fssimbank.js",
 					"settings":
 					{
-						"buffer_size": 10575,
+						"buffer_size": 1489,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2979,
-								2979
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "app/scripts/services/sim/fssimobjectfactory.js",
+					"settings":
+					{
+						"buffer_size": 2213,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1308,
+								1308
 							]
 						],
 						"settings":
@@ -873,7 +977,707 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1436.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/scripts/services/sim/fssimtasks.js",
+					"settings":
+					{
+						"buffer_size": 9838,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9285,
+								9285
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3162.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"settings":
+					{
+						"buffer_size": 25473,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										189,
+										203
+									],
+									[
+										389,
+										403
+									],
+									[
+										777,
+										791
+									],
+									[
+										1172,
+										1186
+									],
+									[
+										1572,
+										1586
+									],
+									[
+										1960,
+										1974
+									],
+									[
+										2367,
+										2378
+									],
+									[
+										2598,
+										2609
+									],
+									[
+										3068,
+										3090
+									],
+									[
+										3321,
+										3343
+									],
+									[
+										3610,
+										3632
+									],
+									[
+										3972,
+										3986
+									],
+									[
+										4172,
+										4186
+									],
+									[
+										4560,
+										4574
+									],
+									[
+										4955,
+										4969
+									],
+									[
+										5355,
+										5369
+									],
+									[
+										5743,
+										5757
+									],
+									[
+										6127,
+										6149
+									],
+									[
+										6382,
+										6404
+									],
+									[
+										6671,
+										6693
+									],
+									[
+										7066,
+										7091
+									],
+									[
+										7262,
+										7287
+									],
+									[
+										7677,
+										7702
+									],
+									[
+										8086,
+										8111
+									],
+									[
+										8275,
+										8300
+									],
+									[
+										8685,
+										8710
+									],
+									[
+										9111,
+										9124
+									],
+									[
+										9237,
+										9250
+									],
+									[
+										9537,
+										9552
+									],
+									[
+										9988,
+										10002
+									],
+									[
+										10143,
+										10157
+									],
+									[
+										10462,
+										10480
+									],
+									[
+										10808,
+										10826
+									],
+									[
+										10865,
+										10883
+									],
+									[
+										11139,
+										11157
+									],
+									[
+										11455,
+										11473
+									],
+									[
+										11651,
+										11669
+									],
+									[
+										11929,
+										11947
+									],
+									[
+										12154,
+										12172
+									],
+									[
+										12411,
+										12429
+									],
+									[
+										12771,
+										12789
+									],
+									[
+										13145,
+										13163
+									],
+									[
+										13441,
+										13459
+									],
+									[
+										13695,
+										13713
+									],
+									[
+										14024,
+										14042
+									],
+									[
+										14281,
+										14299
+									],
+									[
+										14399,
+										14417
+									],
+									[
+										14804,
+										14822
+									],
+									[
+										15181,
+										15199
+									],
+									[
+										15329,
+										15347
+									],
+									[
+										15559,
+										15577
+									],
+									[
+										15753,
+										15771
+									],
+									[
+										15891,
+										15909
+									],
+									[
+										16128,
+										16146
+									],
+									[
+										16377,
+										16395
+									],
+									[
+										16632,
+										16650
+									],
+									[
+										16993,
+										17011
+									],
+									[
+										17050,
+										17068
+									],
+									[
+										17324,
+										17342
+									],
+									[
+										17640,
+										17658
+									],
+									[
+										17836,
+										17854
+									],
+									[
+										18074,
+										18092
+									],
+									[
+										18128,
+										18146
+									],
+									[
+										18414,
+										18432
+									],
+									[
+										18749,
+										18767
+									],
+									[
+										18898,
+										18916
+									],
+									[
+										19216,
+										19234
+									],
+									[
+										19483,
+										19501
+									],
+									[
+										19554,
+										19572
+									],
+									[
+										19810,
+										19828
+									],
+									[
+										20054,
+										20072
+									],
+									[
+										20375,
+										20393
+									],
+									[
+										20738,
+										20756
+									],
+									[
+										21063,
+										21081
+									],
+									[
+										21172,
+										21190
+									],
+									[
+										21397,
+										21415
+									],
+									[
+										21703,
+										21712
+									],
+									[
+										21866,
+										21875
+									],
+									[
+										22025,
+										22034
+									],
+									[
+										22070,
+										22079
+									],
+									[
+										22233,
+										22242
+									],
+									[
+										22278,
+										22287
+									],
+									[
+										22389,
+										22398
+									],
+									[
+										22694,
+										22703
+									],
+									[
+										23000,
+										23009
+									],
+									[
+										23205,
+										23214
+									],
+									[
+										23463,
+										23472
+									],
+									[
+										23502,
+										23511
+									],
+									[
+										23706,
+										23715
+									],
+									[
+										23884,
+										23893
+									],
+									[
+										23920,
+										23929
+									],
+									[
+										23963,
+										23972
+									],
+									[
+										23999,
+										24008
+									],
+									[
+										24044,
+										24053
+									],
+									[
+										24080,
+										24089
+									],
+									[
+										24216,
+										24225
+									],
+									[
+										24346,
+										24355
+									],
+									[
+										24440,
+										24449
+									],
+									[
+										24554,
+										24563
+									],
+									[
+										24656,
+										24665
+									],
+									[
+										24737,
+										24746
+									],
+									[
+										25039,
+										25048
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								21515,
+								21515
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"output_tag": 12,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 8943.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "app/scripts/controllers/main.js",
+					"settings":
+					{
+						"buffer_size": 1061,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "app/scripts/services/json/state/fscharacter.js",
+					"settings":
+					{
+						"buffer_size": 14300,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3982,
+								3982
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1394.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "app/scripts/services/sim/fssimbank.js",
+					"settings":
+					{
+						"buffer_size": 1488,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "app/scripts/services/fsuieventhandler.js",
+					"settings":
+					{
+						"buffer_size": 8643,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								803,
+								803
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "app/scripts/services/sim/fssimcrafting.js",
+					"settings":
+					{
+						"buffer_size": 2686,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								799,
+								821
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "app/scripts/services/sim/fssimrewards.js",
+					"settings":
+					{
+						"buffer_size": 4396,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								126,
+								126
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "app/scripts/services/sim/fssimharvesting.js",
+					"settings":
+					{
+						"buffer_size": 726,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								604,
+								604
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"file": "app/scripts/services/json/state/fstask.js",
+					"settings":
+					{
+						"buffer_size": 1546,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								977,
+								991
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 319.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -937,6 +1741,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 304.0,
+	"side_bar_width": 287.0,
 	"status_bar_visible": true
 }

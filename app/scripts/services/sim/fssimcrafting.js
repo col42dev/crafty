@@ -11,13 +11,13 @@ angular.module('craftyApp')
   .service('FSSimCrafting', function (FSSimState, FSSimRules, FSContextConsole) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-            /**
+        /**
          * @desc 
          * @return 
          */
         this.isCraftable = function (craftableType) {
-            for ( var characterKey in FSSimState.characterObjs ) {
-                if ( FSSimState.characterObjs[characterKey].canPerformTask(craftableType, 'crafting')) {
+            for ( var characterKey in FSSimState.characters ) {
+                if ( FSSimState.characters[characterKey].canPerformTask(craftableType, 'crafting')) {
                     return true;
                 }
             }
@@ -25,7 +25,7 @@ angular.module('craftyApp')
         };
 
         /**
-         * @desc 
+         * @desc: Are ingredients for specified craftable available?
          * @return 
          */
         this.hasCraftingIngredients = function (recipeKey, log) {
@@ -54,7 +54,7 @@ angular.module('craftyApp')
         };
 
         /**
-         * @desc 
+         * @desc: is constructor for specified crafable available?
          * @return 
          */
         this.hasCraftingConstructor = function (recipeKey, log) {

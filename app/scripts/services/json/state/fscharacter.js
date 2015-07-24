@@ -9,7 +9,7 @@
  * runtime mapping of JSON state 'character'.
  */
 angular.module('craftyApp')
-  .factory('FSCharacter', function (FSTask, FSContextConsole, FSSimRules, FSSimState, FSSimObjectChannel, FSSimCrafting) {
+  .factory('FSCharacter', function (FSTask, FSContextConsole, FSSimRules, FSSimState, FSSimMessagingChannel, FSSimCrafting) {
     // Service logic
     // ...
 
@@ -124,7 +124,7 @@ angular.module('craftyApp')
       this.json.activity.splice(0, 1);
 
       //signal task completion
-      FSSimObjectChannel.completedTask( activeTask );
+      FSSimMessagingChannel.completedTask( activeTask );
     };
 
      /**
@@ -152,7 +152,7 @@ angular.module('craftyApp')
       // need to ensure there is an instance in gatherables before it can be incremented.
       if (!(harvestableType in FSSimState.gatherables)) { 
           var obj = {'name': harvestableType, 'quantity': '0'};
-          FSSimObjectChannel.createSimObject( { category: 'gatherable', desc : obj});
+          FSSimMessagingChannel.createSimObject( { category: 'gatherable', desc : obj});
       }
       
       FSSimState.gatherables[harvestableType].increment();
@@ -179,11 +179,11 @@ angular.module('craftyApp')
     FSCharacter.prototype.gatheringOnStop = function () {
       var gatherableType = this.json.activity[0].name;
 
-      FSSimObjectChannel.bankDeposit( { type: gatherableType, category: 'gatherable'});
+      FSSimMessagingChannel.bankDeposit( { type: gatherableType, category: 'gatherable'});
    
 
       // Rewards
-      FSSimObjectChannel.makeRewards( {'action':'gather', 'target':gatherableType});
+      FSSimMessagingChannel.makeRewards( {'action':'gather', 'target':gatherableType});
 
       /*
       var rewards = thisFactory.checkRewards( {'action':'gather', 'target':gatherableType});
@@ -207,7 +207,7 @@ angular.module('craftyApp')
       recipeInputKeys.forEach( ( function ( recipeKey ){
         var recipeInput = recipeKey;
         var recipeInputQuantity = recipeInputObj[ recipeKey];
-        FSSimObjectChannel.bankWithdrawal( { type: recipeInput, quantity: recipeInputQuantity} );
+        FSSimMessagingChannel.bankWithdrawal( { type: recipeInput, quantity: recipeInputQuantity} );
       }).bind(this));
 
     };
@@ -231,14 +231,14 @@ angular.module('craftyApp')
         
         // add output to bank.
         if (!(craftableOutput in FSSimState.bank)) {
-           FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':FSSimRules.craftableDefines[craftableKey].category, 'name':craftableOutput, quantity : 0} });  
+           FSSimMessagingChannel.createSimObject( { category: 'bankable', desc : {'category':FSSimRules.craftableDefines[craftableKey].category, 'name':craftableOutput, quantity : 0} });  
  
         }
         FSSimState.bank[craftableOutput].increment( craftableOutputQuantity);
         FSSimState.updateBank();
 
         //Rewards
-        FSSimObjectChannel.makeRewards( {'action':'craft', 'target':craftableOutput});
+        FSSimMessagingChannel.makeRewards( {'action':'craft', 'target':craftableOutput});
         /*
         var rewards = thisFactory.checkRewards( {'action':'craft', 'target':craftableOutput});
         if (rewards.hasOwnProperty('xp')) {//bug: do we want to add xp for each output object?

@@ -10,10 +10,10 @@
  * Controller of the craftyApp
  */
 angular.module('craftyApp')
-  .controller('MainCtrl',['$scope', 'FSService', 'FSSimRules', 'FSSimState', 'FSContextConsole', 'FSSimObjectFactory', 'FSSimBank', 'FSSimRewards', 'FSUIEventHandler', 'FSSimTasks', function ($scope, FSService, FSSimRules, FSSimState, FSContextConsole, FSSimObjectFactory, FSSimBank, FSSimRewards, FSUIEventHandler, FSSimTasks) {
+  .controller('MainCtrl',['$scope', 'FSJSONLoader', 'FSSimRules', 'FSSimState', 'FSContextConsole', 'FSSimObjectFactory', 'FSSimBank', 'FSSimRewards', 'FSUIEventHandler', 'FSSimTasks', function ($scope, FSJSONLoader, FSSimRules, FSSimState, FSContextConsole, FSSimObjectFactory, FSSimBank, FSSimRewards, FSUIEventHandler, FSSimTasks) {
 
-    $scope.getFSService = function() {
-      return FSService;
+    $scope.getFSJSONLoader = function() {
+      return FSJSONLoader;
     };
 
     $scope.getFSSimRules = function() {

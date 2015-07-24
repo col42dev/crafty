@@ -8,7 +8,7 @@
  * Operate on fsrewards's.
  */
 angular.module('craftyApp')
-  .service('FSSimRewards', [ '$rootScope', 'FSSimObjectChannel', 'FSSimRules', 'FSSimState', function ($rootScope, FSSimObjectChannel, FSSimRules, FSSimState ) {
+  .service('FSSimRewards', [ '$rootScope', 'FSSimMessagingChannel', 'FSSimRules', 'FSSimState', function ($rootScope, FSSimMessagingChannel, FSSimRules, FSSimState ) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -35,7 +35,7 @@ angular.module('craftyApp')
         };
 
         // Register 'onUpdateGoalsHandler' callback after handler declaration
-        FSSimObjectChannel.onUpdateGoals($rootScope, onUpdateGoalsHandler);
+        FSSimMessagingChannel.onUpdateGoals($rootScope, onUpdateGoalsHandler);
 
 
         /**
@@ -57,7 +57,7 @@ angular.module('craftyApp')
                                 FSSimState.rewards.push(thisRewardRule);
                                 returnObj.xp = parseInt(FSSimRules.rewardRules[thisRewardRule].xp);
 
-                                FSSimObjectChannel.updateGoals();
+                                FSSimMessagingChannel.updateGoals();
 
 
                                 // recipe unlocks
@@ -65,7 +65,7 @@ angular.module('craftyApp')
 
                                     if ( FSSimState.craftables.hasOwnProperty(recipe) === false) {
                                         //if (FSSimState.rewards.hasOwnProperty(recipe) === false) {
-                                            FSSimObjectChannel.createSimObject( { category: 'craftables', desc : recipe});
+                                            FSSimMessagingChannel.createSimObject( { category: 'craftables', desc : recipe});
                                             FSSimState.updateRecipes();
                                             console.log('RECIPE UNLOCK:' + recipe);
                                         //}
@@ -81,40 +81,30 @@ angular.module('craftyApp')
         };
 
         // Register 'onMakeRewardsHandler' callback after handler declaration
-        FSSimObjectChannel.onMakeRewards($rootScope, onMakeRewardsHandler);
+        FSSimMessagingChannel.onMakeRewards($rootScope, onMakeRewardsHandler);
 
 
         /**
-         * @desc 
+         * @desc : does reward have craftable unlock associated with it.
          * @return 
          */
-        this.hasUnlocks  = function ( checkDesc ) {
+        this.getUnlockImage =  function(  action, name) {
+
+            var checkDesc = {'action':action, 'target':name};
 
             for (var thisRewardRule in FSSimRules.rewardRules) {
                 if (FSSimRules.rewardRules.hasOwnProperty(thisRewardRule)) {
                     if (FSSimRules.rewardRules[thisRewardRule].action === checkDesc.action) {
                         if (FSSimRules.rewardRules[thisRewardRule].target === checkDesc.target) {
                             if ( FSSimState.rewards.indexOf(thisRewardRule) === -1) {
-                                return true;    
+                                return 'images/unlock.69ea04fd.png'; 
                             }
                         }
                     }
                 }
             }
 
-            return false;
-        };
-
-
-        /**
-         * @desc 
-         * @return 
-         */
-        this.getUnlockImage =  function(  action, name) {
-          if ( this.hasUnlocks( {'action':action, 'target':name})) {
-            return 'images/unlock.69ea04fd.png';
-          }
-          return 'images/clear.d9e2c8a6.png';
+            return 'images/clear.d9e2c8a6.png';
         };
     
 

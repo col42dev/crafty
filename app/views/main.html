@@ -3,15 +3,15 @@
 
 
 
-<p  align="right"><b>{{getFSService().myStopwatch.data.pad(getFSService().myStopwatch.data.hours)}}:{{getFSService().myStopwatch.data.pad(getFSService().myStopwatch.data.minutes)}}:{{getFSService().myStopwatch.data.pad(getFSService().myStopwatch.data.seconds)}}</b></p>
+<p  align="right"><b>{{getFSJSONLoader().myStopwatch.data.pad(getFSJSONLoader().myStopwatch.data.hours)}}:{{getFSJSONLoader().myStopwatch.data.pad(getFSJSONLoader().myStopwatch.data.minutes)}}:{{getFSJSONLoader().myStopwatch.data.pad(getFSJSONLoader().myStopwatch.data.seconds)}}</b></p>
 
 
 <form novalidate>
   <p></p>
-  <button ng-click="getFSService().loadAndCreateSim()">Load:</button><br/>
+  <button ng-click="getFSJSONLoader().loadAndCreateSim()">Load:</button><br/>
   <ul>
-  <b>rules:</b><input size="45" type="text" ng-model="getFSService().user.rules"><br/>
-  <b>state:</b><input size="45" type="text" ng-model="getFSService().user.state">
+  <b>rules:</b><input size="45" type="text" ng-model="getFSJSONLoader().user.rules"><br/>
+  <b>state:</b><input size="45" type="text" ng-model="getFSJSONLoader().user.state">
 </ul>
  
 </form>
@@ -108,10 +108,10 @@
 <br/>
 
 <form novalidate>
-<button ng-click="getFSService().saveJson()">Save: (Enter Document Name)</button><input size="45" type="text" ng-model="getFSService().documentName.input"></input>
+<button ng-click="getFSJSONLoader().saveJson()">Save: (Enter Document Name)</button><input size="45" type="text" ng-model="getFSJSONLoader().documentName.input"></input>
 </form>
 <pre>
-{{getFSService().simulation.jsonSerialized}}
+{{getFSJSONLoader().simulation.jsonSerialized}}
 </pre>
 </br>
 

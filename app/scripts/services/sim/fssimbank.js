@@ -8,7 +8,7 @@
  * Operate on fsbankable's.
  */
 angular.module('craftyApp')
-  .service('FSSimBank', ['$rootScope', 'FSSimObjectChannel', 'FSSimState', function ($rootScope, FSSimObjectChannel, FSSimState) {
+  .service('FSSimBank', ['$rootScope', 'FSSimMessagingChannel', 'FSSimState', function ($rootScope, FSSimMessagingChannel, FSSimState) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -18,14 +18,14 @@ angular.module('craftyApp')
         */
         var onBankDepositHandler = function( arg) {
             if (!(arg.type in FSSimState.bank)) {
-                FSSimObjectChannel.createSimObject( { category: 'bankable', desc : {'category':arg.category, 'name':arg.type, quantity : 0} });  
+                FSSimMessagingChannel.createSimObject( { category: 'bankable', desc : {'category':arg.category, 'name':arg.type, quantity : 0} });  
             }
             FSSimState.bank[arg.type].increment(1);
             FSSimState.updateBank();
         };
 
         // Register 'onBankDepositHandler' after function declaration
-        FSSimObjectChannel.onBankDeposit($rootScope, onBankDepositHandler);
+        FSSimMessagingChannel.onBankDeposit($rootScope, onBankDepositHandler);
    
 
         /**
@@ -41,6 +41,6 @@ angular.module('craftyApp')
         };
 
         // Register 'onBankWithdrawalHandler' after function declaration
-        FSSimObjectChannel.onBankWithdrawal($rootScope, onBankWithdrawalHandler);
+        FSSimMessagingChannel.onBankWithdrawal($rootScope, onBankWithdrawalHandler);
   
   }]);

@@ -8,7 +8,7 @@
  * Sim implementation module for object instaniation.
  */
 angular.module('craftyApp')
-  .service('FSSimObjectFactory', ['$rootScope', 'FSSimObjectChannel', 'FSSimState', 'FSSimRules', 'FSGatherable', 'FSHarvestable', 'FSCharacter', 'FSCraftable', 'FSBankable', function ( $rootScope, FSSimObjectChannel, FSSimState, FSSimRules, FSGatherable, FSHarvestable, FSCharacter, FSCraftable, FSBankable) {
+  .service('FSSimObjectFactory', ['$rootScope', 'FSSimMessagingChannel', 'FSSimState', 'FSSimRules', 'FSGatherable', 'FSHarvestable', 'FSCharacter', 'FSCraftable', 'FSBankable', function ( $rootScope, FSSimMessagingChannel, FSSimState, FSSimRules, FSGatherable, FSHarvestable, FSCharacter, FSCraftable, FSBankable) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -38,14 +38,14 @@ angular.module('craftyApp')
               case 'character':
                 {
                   var characterName = arg.desc.characterDesc.name;
-                  FSSimState.characterObjs[characterName] = new FSCharacter(arg.desc.characterDesc);
-                  FSSimState.selectedCharacter = FSSimState.characterObjs[characterName];
+                  FSSimState.characters[characterName] = new FSCharacter(arg.desc.characterDesc);
+                  FSSimState.selectedCharacter = FSSimState.characters[characterName];
                 }
                 break;
             }
         };
 
         // Register 'onCreateSimObjectHandler' after function declaration
-        FSSimObjectChannel.onCreateSimObject($rootScope, onCreateSimObjectHandler);
+        FSSimMessagingChannel.onCreateSimObject($rootScope, onCreateSimObjectHandler);
 
   }]);

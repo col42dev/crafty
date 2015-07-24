@@ -12,13 +12,13 @@ angular.module('craftyApp')
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
-            /**
+        /**
          * @desc 
          * @return 
          */
         this.isHarvestable = function (harvestableType) {
-            for ( var characterKey in FSSimState.characterObjs ) {
-                if ( FSSimState.characterObjs[characterKey].canPerformTask(harvestableType, 'harvesting')) {
+            for ( var characterKey in FSSimState.characters ) {
+                if ( FSSimState.characters[characterKey].canPerformTask(harvestableType, 'harvesting')) {
                     return true;
                 }
             }

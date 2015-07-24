@@ -1,6 +1,6 @@
 
 
-<button ng-click="getFSService().loadAccounts()">Refresh</button>
+<button ng-click="getFSJSONLoader().loadAccounts()">Refresh</button>
 
 <table class="table table-bordered table-condensed">
 <thead>
@@ -13,7 +13,7 @@
   <div class="bodycontainer scrollable">
   <table class="table table-bordered table-condensed table-scrollable">
     <tbody>
-      <tr ng-repeat="(k,v)  in getFSService().accountsData" ng-click="getFSService().selectAccount($index)" class="noselect" >
+      <tr ng-repeat="(k,v)  in getFSJSONLoader().accountsData" ng-click="getFSJSONLoader().selectAccount($index)" class="noselect" >
         <td bgcolor="#00FF00" class="col-sm-1">{{v.documentName}}</td> 
       </tr>
     </tbody>
@@ -21,7 +21,7 @@
   </div>
 
 
-  <button ng-click="getFSService().removeAllAccounts()">Remove All Accounts</button>
+  <button ng-click="getFSJSONLoader().removeAllAccounts()">Remove All Accounts</button>
 
 
 

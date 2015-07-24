@@ -24,7 +24,7 @@
 
   <table class="table table-bordered table-condensed table-scrollable">
     <tbody>
-      <tr ng-repeat="v in getFSSimState().harvestablesArray | orderBy:getFSUIEventHandler().orderHarvestablesBy" ng-click="getFSUIEventHandler().onClickBody('Harvestables', v.json)" class="noselect" style="background-color: rgba(54, 25, 25, .1)" >
+      <tr ng-repeat="v in getFSSimState().harvestablesArray | orderBy:getFSUIEventHandler().orderHarvestablesBy" ng-click="getFSUIEventHandler().onClickBody('harvestable', v.json)" class="noselect" style="background-color: rgba(54, 25, 25, .1)" >
         <td class="col-sm-6"> 
           <div style = "background:{{getFSUIEventHandler().bgcolor('harvest',v.json.name)}};">  {{v.json.name}}</div>
         </td> 
