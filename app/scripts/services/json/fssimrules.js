@@ -5,7 +5,8 @@
  * @name craftyApp.FSSimRules
  * @description
  * # FSSimRules
- * Immutable rule data mapped from JSON defines
+ * Immutable rule data mapped from JSON defines.
+ * For data only - do not add any implementation.
  */
 angular.module('craftyApp')
   .service('FSSimRules', function () {

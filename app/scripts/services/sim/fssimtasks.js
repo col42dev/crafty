@@ -5,7 +5,7 @@
  * @name craftyApp.FSSimTasks
  * @description
  * # FSSimTasks
- * Service in the craftyApp.
+ * Operate on fstask's.
  */
 angular.module('craftyApp')
   .service('FSSimTasks', [ '$rootScope',  'FSSimState', 'FSSimRules', 'FSTask', 'FSSimCrafting', 'FSContextConsole', 'FSSimObjectChannel', function ($rootScope , FSSimState, FSSimRules, FSTask, FSSimCrafting, FSContextConsole, FSSimObjectChannel) {
@@ -18,7 +18,7 @@ angular.module('craftyApp')
 
     /**
      * @desc 
-     * @return 
+     * Add character task.
      */
     this.addTask = function ( tableName, keyName) {
         var task = null;
@@ -30,7 +30,7 @@ angular.module('craftyApp')
             case 'Harvestables':
                 task = new FSTask( {'name':keyName, 'category':'harvesting'});
                 break;
-            case 'Recipes':
+            case 'Craftables':
                 task = new FSTask( {'name':keyName, 'category':'crafting'});
                 break;
         }
@@ -40,9 +40,9 @@ angular.module('craftyApp')
 
     /**
      * @desc 
-     * @return 
+     * callback from state when a character completes a task.
      */
-    this.onCompletedTaskHandler = function( task) {
+    var onCompletedTaskHandler = function( task) {
         var completedTaskIndex = thisService.activeTasks.indexOf(task);
         if (completedTaskIndex !== -1) {
             thisService.activeTasks.splice( completedTaskIndex, 1);
@@ -55,7 +55,7 @@ angular.module('craftyApp')
 
             var pendingTask = thisService.pendingTasks[pendingTaskKey];
 
-            var validCharacters = thisService.getValidCharacters(pendingTask.name, pendingTask.category);
+            var validCharacters = thisService.getValidCharacters(pendingTask);
             var validCharactersInactive = thisService.getInactiveCharacters(validCharacters);
 
             if ( validCharactersInactive.length > 0) {
@@ -84,24 +84,21 @@ angular.module('craftyApp')
         });
     };
 
-
-    /**
-     * @desc 
-     * @return  // TODO: try hoisting - it appeared to break the callback before.
-     */
-    FSSimObjectChannel.onCompletedTask($rootScope, this.onCompletedTaskHandler);
+    // Register 'onCompletedTaskHandler' callback after handler declaration
+    FSSimObjectChannel.onCompletedTask($rootScope, onCompletedTaskHandler);
 
 
     /**
      * @desc 
-     * @return 
+     * @return: array of characters which can perform the task. (ignoring current activities)
      */
-    this.getValidCharacters = function (taskName, taskCategory) {
+    this.getValidCharacters = function (task) {
+
         var validCharacters = [];
 
         // generate list of characters which can do this task.
         for ( var character in FSSimState.characterObjs ) {
-            if ( FSSimState.characterObjs[character].canPerformTask(taskName, taskCategory)) {
+            if ( FSSimState.characterObjs[character].canPerformTask(task.name, task.category)) {
                 validCharacters.push( FSSimState.characterObjs[character]);
             }
         }
@@ -130,7 +127,7 @@ angular.module('craftyApp')
      * @return 
      */
     this.addTaskCatgeory = function ( task ) {
-        var validCharacters = this.getValidCharacters(task.name, task.category);
+        var validCharacters = this.getValidCharacters(task);
         var validCharactersInactive = this.getInactiveCharacters(validCharacters);
 
         if ( validCharactersInactive.length > 0) {
@@ -146,16 +143,19 @@ angular.module('craftyApp')
             }
         }
         else {
-            this.logDependencies(task.category, task.name);
+            this.logDependencies(task);
         }
     };
 
 
     /**
      * @desc 
-     * @return 
+     * log reasons and/or missing dependencies to console for task.
      */
-    this.logDependencies = function ( category, keyName) {
+    this.logDependencies = function ( task ) {
+
+        var category = task.category;
+        var keyName = task.name;
         var characterKey = null;
         var hasEquippedTools = false;
         var haveStats = false;
@@ -191,6 +191,7 @@ angular.module('craftyApp')
                     }
                 }
                 break;
+
             case 'harvesting':
                 // stats
                 for ( characterKey in FSSimState.characterObjs ) {
@@ -222,8 +223,8 @@ angular.module('craftyApp')
                     }
                 }
                 break;
+
             case 'crafting':
-                // log to console.
                 if ( FSSimCrafting.hasCraftingIngredients(keyName, true) === true) {
                     if ( FSSimCrafting.hasCraftingConstructor(keyName, true)) {
 
@@ -240,7 +241,7 @@ angular.module('craftyApp')
                             //proficiency
                             var hasProficiency = false;
                             for ( characterKey in FSSimState.characterObjs ) {
-                                 if ( FSSimState.characterObjs[characterKey].hasCraftingProficiencyFor(keyName, false) === true) {
+                                 if ( FSSimState.characterObjs[characterKey].hasCraftingProficiencyFor(keyName) === true) {
                                   hasProficiency = true;
                                 }
                             }

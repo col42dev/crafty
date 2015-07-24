@@ -5,7 +5,7 @@
  * @name craftyApp.FSGatherable
  * @description
  * # FSGatherable
- * Factory in the craftyApp.
+ * runtime mapping of JSON state 'gatherable' element.
  */
 angular.module('craftyApp')
   .factory('FSGatherable', function (FSSimRules) {

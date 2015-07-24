@@ -5,7 +5,8 @@
  * @name craftyApp.FSSimObjectChannel
  * @description
  * # FSSimObjectChannel
- * Service in the craftyApp.
+ * Publish/Subscriber pattern channel for sim implementation to operate on JSON rules/state and visa-versa.
+ * reference: http://col42dev.github.io/publish%20subscribe%20design%20pattern/
  */
 angular.module('craftyApp')
   .service('FSSimObjectChannel', ['$rootScope', function ($rootScope) {

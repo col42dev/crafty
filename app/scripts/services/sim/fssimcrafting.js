@@ -5,7 +5,7 @@
  * @name craftyApp.FSSimCrafting
  * @description
  * # FSSimCrafting
- * Service in the craftyApp.
+ * Operate on fscraftable's.
  */
 angular.module('craftyApp')
   .service('FSSimCrafting', function (FSSimState, FSSimRules, FSContextConsole) {
@@ -17,7 +17,7 @@ angular.module('craftyApp')
          */
         this.isCraftable = function (craftableType) {
             for ( var characterKey in FSSimState.characterObjs ) {
-                if ( FSSimState.characterObjs[characterKey].canPerformTask(craftableType, 'crafting', false)) {
+                if ( FSSimState.characterObjs[characterKey].canPerformTask(craftableType, 'crafting')) {
                     return true;
                 }
             }

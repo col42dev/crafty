@@ -5,7 +5,7 @@
  * @name craftyApp.FSTask
  * @description
  * # FSTask
- * Factory in the craftyApp.
+ *runtime mapping of JSON state 'task' element.
  */
 
 angular.module('craftyApp')
@@ -25,6 +25,34 @@ angular.module('craftyApp')
 
     FSTask.prototype.desc = function() {
       return this.name  + ' ' + this.category;
+    };
+
+
+        /**
+     * @desc 
+     * @return 
+     */
+    FSTask.prototype.createTimer = function ( duration, onInterval ) {
+      
+      this.updateActiveTaskTotalSeconds = duration;    
+      this.updateActiveTaskRemainingSeconds = duration;
+
+      this.updateActiveTaskInterval =  setInterval( onInterval, 1000);
+    };
+
+       /**
+     * @desc 
+     * @return : true until timed out.
+     */
+    FSTask.prototype.decrementTimer = function ( ) {
+ 
+      this.updateActiveTaskRemainingSeconds --;
+      if ( this.updateActiveTaskRemainingSeconds <= 0) {
+        clearInterval(this.updateActiveTaskInterval);
+        return false;
+      }
+
+      return true;
     };
 
     /**

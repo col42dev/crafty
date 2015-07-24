@@ -5,7 +5,7 @@
  * @name craftyApp.FSSimHarvesting
  * @description
  * # FSSimHarvesting
- * Service in the craftyApp.
+ * Operate on fsharvestables's.
  */
 angular.module('craftyApp')
   .service('FSSimHarvesting', function (FSSimState) {
@@ -18,7 +18,7 @@ angular.module('craftyApp')
          */
         this.isHarvestable = function (harvestableType) {
             for ( var characterKey in FSSimState.characterObjs ) {
-                if ( FSSimState.characterObjs[characterKey].canPerformTask(harvestableType, 'harvesting', false)) {
+                if ( FSSimState.characterObjs[characterKey].canPerformTask(harvestableType, 'harvesting')) {
                     return true;
                 }
             }

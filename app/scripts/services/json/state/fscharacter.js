@@ -6,13 +6,14 @@
  * @name craftyApp.fsCharacter
  * @description
  * # fsCharacter
- * Factory in the craftyApp.
+ * runtime mapping of JSON state 'character'.
  */
 angular.module('craftyApp')
   .factory('FSCharacter', function (FSTask, FSContextConsole, FSSimRules, FSSimState, FSSimObjectChannel, FSSimCrafting) {
     // Service logic
     // ...
 
+    var OPTIONAL_PROPERTY_PROFICIENECY = 'proficiency';
 
     /**
      * @desc 
@@ -21,7 +22,7 @@ angular.module('craftyApp')
     var FSCharacter = function(json) {
         this.json = json;
 
-        // regenerate stats timers
+        // start regenerate stats timers
         ['health', 'energy', 'mind'].forEach( (function( statName) {
 
           setInterval( (function () {
@@ -62,16 +63,49 @@ angular.module('craftyApp')
       if ( this.hasSpareActivitySlot() === true) {
         if (this.json.activity.length === 0) {
             this.json.activity.push( task);
-            this.startNextTask();
+        
+            var thisCharacter = this;
+
+            if (this.canPerformTask(task.name, task.category) === true) {
+
+              // Set modify stat timer intervals
+              this.statUpdateInterval = {};
+              for (var statKeyname in FSSimRules.taskRules[task.category].stat) {
+
+                thisCharacter.modifyStat( statKeyname, 'current', -1); // start each task with an immediate stats decrement.
+
+                (function (thisStatsKeyname) { 
+                  thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
+                    if ( this.hasStatsFor(task.category) === true) {
+                      this.modifyStat( thisStatsKeyname, 'current', -1);
+                    }
+                  }).bind(thisCharacter), FSSimRules.taskRules[task.category].stat[thisStatsKeyname].secondsPerDecrement * 1000);
+                }(statKeyname));
+              }
+
+              // create task interval 
+              var duration = FSSimState.getTaskDuration(task.category, task.name, this) ;
+              task.createTimer( duration , function() {
+                    if ( thisCharacter.hasStatsFor( task.category ) === true) {
+                      if ( task.decrementTimer() === false) {
+                        thisCharacter.completedTask();
+                      }
+                    }
+                  }
+                );
+  
+              //
+              this[task.category + 'OnStart' ]();
+            }
         }
       }
     };
 
     /**
      * @desc 
-     * @return 
+     * Task has been completed. 
      */
-    FSCharacter.prototype.stopActiveTask = function () {
+    FSCharacter.prototype.completedTask = function () {
 
       //clear task intervals
       for (var statKeyname in FSSimRules.taskRules[this.json.activity[0].category].stat) {
@@ -89,6 +123,7 @@ angular.module('craftyApp')
 
       this.json.activity.splice(0, 1);
 
+      //signal task completion
       FSSimObjectChannel.completedTask( activeTask );
     };
 
@@ -97,7 +132,7 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.harvestingOnStart = function () {
-      // keep stubbed - called by reflection method.
+      // keep stubbed - called by reflective method.
     };
 
      /**
@@ -117,7 +152,7 @@ angular.module('craftyApp')
       // need to ensure there is an instance in gatherables before it can be incremented.
       if (!(harvestableType in FSSimState.gatherables)) { 
           var obj = {'name': harvestableType, 'quantity': '0'};
-          FSSimObjectChannel.createSimObject( { category: 'gatherables', desc : obj});
+          FSSimObjectChannel.createSimObject( { category: 'gatherable', desc : obj});
       }
       
       FSSimState.gatherables[harvestableType].increment();
@@ -144,11 +179,12 @@ angular.module('craftyApp')
     FSCharacter.prototype.gatheringOnStop = function () {
       var gatherableType = this.json.activity[0].name;
 
-      FSSimObjectChannel.bankDeposit( { type: gatherableType, category: 'gatherables'});
+      FSSimObjectChannel.bankDeposit( { type: gatherableType, category: 'gatherable'});
    
 
       // Rewards
       FSSimObjectChannel.makeRewards( {'action':'gather', 'target':gatherableType});
+
       /*
       var rewards = thisFactory.checkRewards( {'action':'gather', 'target':gatherableType});
       if (rewards.hasOwnProperty('xp')) {
@@ -217,18 +253,17 @@ angular.module('craftyApp')
      * @desc - can character start the next task in queue.
      * @return 
      */
-    FSCharacter.prototype.canPerformTask = function (taskName, activityCategory, log) {     
+    FSCharacter.prototype.canPerformTask = function (taskName, activityCategory) {     
 
       var canStartTask = true;
 
       switch ( activityCategory) {
+
         case 'gathering': {
             if (FSSimState.gatherables.hasOwnProperty(taskName) !== true) {
               canStartTask = false;
-              FSContextConsole.log('There is no ' + taskName + ' left to gather', log);
             } else {
               if ( parseInt( FSSimState.gatherables[taskName].json.quantity, 10) === 0) {
-                FSContextConsole.log('No ' + taskName + ' left to gather', log);
                 canStartTask = false;
               }
               if ( this.hasStatsFor('gathering') !== true) {
@@ -240,13 +275,12 @@ angular.module('craftyApp')
             } 
           }
           break;
+
         case 'harvesting': {
             if (FSSimState.harvestables.hasOwnProperty(taskName) !== true) {
-              FSContextConsole.log('There is no ' + taskName + ' left to harvest', log);
               canStartTask = false;
             } else {
               if ( parseInt(FSSimState.harvestables[taskName].quantity, 10) === 0) {
-                FSContextConsole.log('There is no ' + taskName + ' left to harvest', log);
                 canStartTask = false;
               }
               if ( this.hasStatsFor('harvesting') !== true) {
@@ -260,16 +294,16 @@ angular.module('craftyApp')
           break;
 
         case 'crafting': {  
-            if ( FSSimCrafting.hasCraftingIngredients(taskName, log) !== true) {
+            if ( FSSimCrafting.hasCraftingIngredients(taskName, false) !== true) {
               canStartTask = false;
             }
-            if ( FSSimCrafting.hasCraftingConstructor(taskName, log) !== true) {
+            if ( FSSimCrafting.hasCraftingConstructor(taskName, false) !== true) {
               canStartTask = false;
             }
             if ( this.hasStatsFor('crafting') !== true) {
               canStartTask = false;
             }
-            if ( this.hasCraftingProficiencyFor(taskName, log) !== true) {
+            if ( this.hasCraftingProficiencyFor(taskName) !== true) {
               canStartTask = false;
             }
           }
@@ -279,75 +313,22 @@ angular.module('craftyApp')
       return canStartTask;
     };
 
-    /**
-     * @desc - execute next queued task.
-     * @return 
-     */
-    FSCharacter.prototype.startNextTask = function () {  
-
-      var task = this.json.activity[0];
-      var taskName = task.name;
-      var thisCharacter = this;
-      var activityCategory = task.category;
-
-      if (this.canPerformTask(taskName, activityCategory) === true) {
-
-        // Set modify stat timer intervals
-        this.statUpdateInterval = {};
-        for (var statKeyname in FSSimRules.taskRules[activityCategory].stat) {
-          thisCharacter.modifyStat( statKeyname, 'current', -1); // start task with immediate stats decrement.
-
-          (function (thisStatsKeyname) { 
-            thisCharacter.statUpdateInterval[thisStatsKeyname] = setInterval( (function () {
-              if ( this.hasStatsFor(activityCategory) === true) {
-                this.modifyStat( thisStatsKeyname, 'current', -1);
-              }
-            }).bind(thisCharacter), FSSimRules.taskRules[activityCategory].stat[thisStatsKeyname].secondsPerDecrement * 1000);
-          }(statKeyname));
-        }
-
-        task.updateActiveTaskTotalSeconds = FSSimState.getTaskDuration(activityCategory, taskName, thisCharacter);    
-     
-        // set task time remaining timer.
-        task.updateActiveTaskRemainingSeconds = task.updateActiveTaskTotalSeconds;
-        task.updateActiveTaskInterval =  setInterval( function() {
-          if ( thisCharacter.hasStatsFor( activityCategory ) === true) {
-            task.updateActiveTaskRemainingSeconds --;
-            if ( task.updateActiveTaskRemainingSeconds <= 0) {
-              clearInterval(task.updateActiveTaskInterval);
-              thisCharacter.stopActiveTask();
-            }
-          }
-        }, 1000);
-
-        this[activityCategory + 'OnStart' ]();
-
-      }  
-
-    };
+   
 
 
     /**
-     * @desc 
+     * @desc Does character have the required proficiency for crafting specified item.
      * @return 
      */
-    FSCharacter.prototype.hasCraftingProficiencyFor = function (recipeKey, log) {
+    FSCharacter.prototype.hasCraftingProficiencyFor = function ( craftableKeyName ) {
       var hasRequiredProficiency = true;
 
-      if ( FSSimRules.craftableDefines[recipeKey].hasOwnProperty('proficiency') === true) {
-
+      if ( FSSimRules.craftableDefines[craftableKeyName].hasOwnProperty( OPTIONAL_PROPERTY_PROFICIENECY ) === true) {
             hasRequiredProficiency = false;
-
-            if ( this.json.proficiency.profession === FSSimRules.craftableDefines[recipeKey].proficiency.profession) {
-                if ( parseInt(this.json.proficiency.tier, 10) >= parseInt(FSSimRules.craftableDefines[recipeKey].proficiency.tier, 10)){
+            if ( this.json.proficiency.profession === FSSimRules.craftableDefines[craftableKeyName].proficiency.profession) {
+                if ( parseInt(this.json.proficiency.tier, 10) >= parseInt(FSSimRules.craftableDefines[craftableKeyName].proficiency.tier, 10)){
                   hasRequiredProficiency = true;
-                } else if (log === true) {
-                  var requiredProfession = FSSimRules.craftableDefines[recipeKey].proficiency.profession;
-                  var requiredTier = parseInt(FSSimRules.craftableDefines[recipeKey].proficiency.tier, 10);
-                  FSContextConsole.log(this.json.name  + ' requires tier ' + requiredTier + ' in ' + requiredProfession + ' but is only tier ' + this.json.proficiency.tier );
                 }
-            } else if (log === true) {
-                  FSContextConsole.log('A ' + FSSimRules.craftableDefines[recipeKey].proficiency.profession + ' is needed to craft a ' + recipeKey);
             }
       }
 
@@ -439,13 +420,6 @@ angular.module('craftyApp')
       return bHasToolAction;
     };
 
-    /**
-     * @desc 
-     * @return 
-     */
-    FSCharacter.prototype.queuedTaskCount = function ( ) {
-      return Math.max(this.json.activity.length - 1, 0);
-    };
 
     /**
      * @desc 

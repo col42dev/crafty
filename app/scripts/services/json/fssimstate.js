@@ -33,7 +33,7 @@ angular.module('craftyApp')
             // Gatherables
             this.gatherables = {};  
             json.gatherables.forEach( (function(thisGatherables) {
-                FSSimObjectChannel.createSimObject( { category: 'gatherables', desc : thisGatherables});
+                FSSimObjectChannel.createSimObject( { category: 'gatherable', desc : thisGatherables});
             }).bind(this)); 
             this.updateGatherables = function() {
                 simState.gatherablesArray = Object.keys(simState.gatherables).map(function (key) {
@@ -45,7 +45,7 @@ angular.module('craftyApp')
             // Harvestables
             this.harvestables = {};  
             json.harvestables.forEach( function(thisHarvestable) {
-                FSSimObjectChannel.createSimObject( { category: 'harvestables', desc : thisHarvestable});
+                FSSimObjectChannel.createSimObject( { category: 'harvestable', desc : thisHarvestable});
             }); 
             this.updateHarvestables = function() {
                 simState.harvestablesArray = Object.keys(simState.harvestables).map(function (key) {
@@ -90,8 +90,7 @@ angular.module('craftyApp')
             };
             this.updateRecipes();
 
-            //console.log( JSON.stringify( simState.craftablesArray));
-
+    
             //rewards
             this.rewards = [];
             json.rewards.forEach( ( function(thisReward) {

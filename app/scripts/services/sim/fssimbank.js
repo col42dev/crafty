@@ -5,7 +5,7 @@
  * @name craftyApp.FSSimBank
  * @description
  * # FSSimBank
- * Service in the craftyApp.
+ * Operate on fsbankable's.
  */
 angular.module('craftyApp')
   .service('FSSimBank', ['$rootScope', 'FSSimObjectChannel', 'FSSimState', function ($rootScope, FSSimObjectChannel, FSSimState) {

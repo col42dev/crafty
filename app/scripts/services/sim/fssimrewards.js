@@ -5,7 +5,7 @@
  * @name craftyApp.FSSimRewards
  * @description
  * # FSSimRewards
- * Service in the craftyApp.
+ * Operate on fsrewards's.
  */
 angular.module('craftyApp')
   .service('FSSimRewards', [ '$rootScope', 'FSSimObjectChannel', 'FSSimRules', 'FSSimState', function ($rootScope, FSSimObjectChannel, FSSimRules, FSSimState ) {

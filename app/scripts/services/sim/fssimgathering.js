@@ -5,7 +5,7 @@
  * @name craftyApp.FSSimGathering
  * @description
  * # FSSimGathering
- * Service in the craftyApp.
+ * Operate on fsgatherables's.
  */
 angular.module('craftyApp')
   .service('FSSimGathering', function (FSSimState) {
@@ -17,7 +17,7 @@ angular.module('craftyApp')
          */
         this.isGatherable = function (gatherableType) {
             for ( var characterKey in FSSimState.characterObjs ) {
-                if ( FSSimState.characterObjs[characterKey].canPerformTask(gatherableType, 'gathering', false)) {
+                if ( FSSimState.characterObjs[characterKey].canPerformTask(gatherableType, 'gathering')) {
                     return true;
                 }
             }

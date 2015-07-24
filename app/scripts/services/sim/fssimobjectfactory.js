@@ -5,24 +5,27 @@
  * @name craftyApp.FSSimObjectFactory
  * @description
  * # FSSimObjectFactory
- * Service in the craftyApp.
+ * Sim implementation module for object instaniation.
  */
 angular.module('craftyApp')
-  .service('FSSimObjectFactory', ['$rootScope', 'FSSimObjectChannel', 'FSSimState', 'FSSimRules', 'FSGatherable', 'FSHarvestable', 'FSCharacter', 'FSRecipe', 'FSBankable', function ( $rootScope, FSSimObjectChannel, FSSimState, FSSimRules, FSGatherable, FSHarvestable, FSCharacter, FSRecipe, FSBankable) {
+  .service('FSSimObjectFactory', ['$rootScope', 'FSSimObjectChannel', 'FSSimState', 'FSSimRules', 'FSGatherable', 'FSHarvestable', 'FSCharacter', 'FSCraftable', 'FSBankable', function ( $rootScope, FSSimObjectChannel, FSSimState, FSSimRules, FSGatherable, FSHarvestable, FSCharacter, FSCraftable, FSBankable) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-        console.log('FSSimObjectFactory');
 
+        /**
+        * @desc 
+        * Wraps instaniation of FS objects, enables loose coupling between FSObject and Sim implmentation.
+        */
         var onCreateSimObjectHandler = function( arg) {
             switch (arg.category) {
-              case 'gatherables' :
+              case 'gatherable' :
                   FSSimState.gatherables[arg.desc.name] = new FSGatherable(arg.desc);
                   break;
-              case 'harvestables' :
+              case 'harvestable' :
                   FSSimState.harvestables[arg.desc.name] = new FSHarvestable(arg.desc);
                   break;
               case 'craftables' :
-                  FSSimState.craftables[arg.desc] =  new FSRecipe( arg.desc);      
+                  FSSimState.craftables[arg.desc] =  new FSCraftable( arg.desc);      
                   break;
               case 'bankable':
                   {
@@ -42,7 +45,7 @@ angular.module('craftyApp')
             }
         };
 
-       
-         FSSimObjectChannel.onCreateSimObject($rootScope, onCreateSimObjectHandler);
+        // Register 'onCreateSimObjectHandler' after function declaration
+        FSSimObjectChannel.onCreateSimObject($rootScope, onCreateSimObjectHandler);
 
   }]);

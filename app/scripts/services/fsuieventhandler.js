@@ -115,7 +115,7 @@ angular.module('craftyApp')
                     break;
                 case 'Gatherables':
                 case 'Harvestables':
-                case 'Recipes':
+                case 'Craftables':
                     FSSimTasks.addTask(tableName, keyName);
                     break;
             }

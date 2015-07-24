@@ -2,18 +2,18 @@
 
 /**
  * @ngdoc service
- * @name craftyApp.FSRecipe
+ * @name craftyApp.FSCraftable
  * @description
- * # FSRecipe
- * Factory in the craftyApp.
- */
+ * # FSCraftable
+ * runtime mapping of JSON state 'craftable' element.
+ */ 
 angular.module('craftyApp')
-  .factory('FSRecipe', function (FSSimRules) {
+  .factory('FSCraftable', function (FSSimRules) {
     // Service logic
     // ...
 
-    // FSRecipe
-    var FSRecipe = function( name) { 
+    // FSCraftable
+    var FSCraftable = function( name) { 
 
       this.json = { 'name' : name, 'category' : 'placeholder'};
       this.json = { 'name' : name, 'category' : this.getCategory()};
@@ -31,7 +31,7 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSRecipe.prototype.getCategory = function( ) {
+    FSCraftable.prototype.getCategory = function( ) {
       if (FSSimRules.craftableDefines.hasOwnProperty(this.json.name) === true) {
           return FSSimRules.craftableDefines[this.json.name].category;
       }
@@ -43,7 +43,7 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    FSRecipe.prototype.duration =  function(  character) {
+    FSCraftable.prototype.duration =  function(  character) {
 
       character = character;
       var craftingDuration = FSSimRules.craftableDefines[this.json.name].duration ;
@@ -52,7 +52,7 @@ angular.module('craftyApp')
     };
 
 
-    return FSRecipe;
+    return FSCraftable;
   });
 
 

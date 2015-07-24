@@ -5,7 +5,7 @@
  * @name craftyApp.FSHarvestable
  * @description
  * # FSHarvestable
- * Factory in the craftyApp.
+ * runtime mapping of JSON state 'harvestable' element.
  */
 angular.module('craftyApp')
   .factory('FSHarvestable', function (FSSimRules) {
