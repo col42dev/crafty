@@ -14,6 +14,7 @@ angular.module('craftyApp')
 
     var FSHarvestable = function( obj) { 
       this.json = obj;
+      this.json.quantity = parseInt( this.json.quantity, 10);
       this.quantitybgcolor = 'rgba(200, 200, 200, 0.0)';
 
       // replenish quantity
@@ -24,24 +25,15 @@ angular.module('craftyApp')
       }
     };
 
-     /**
-     * @desc 
-     * @return 
-     */
-    FSHarvestable.prototype.increment = function( ) {
-      this.json.quantity++;
-      this.quantitybgcolor = 'rgba(20, 200, 20, 0.25)';
-      this.setFlashQuantityTimeout();
-    };
-    
+
     /**
      * @desc 
      * @return 
      */
-    FSHarvestable.prototype.decrement = function( ) {
-      this.json.quantity--;
+    FSHarvestable.prototype.modifyQuantity = function( amount ) {
+      this.json.quantity += parseInt( amount, 10);
       if ( this.json.quantity !== 0) {
-        this.quantitybgcolor = 'rgba(200, 20, 20, 0.25)';
+        this.quantitybgcolor = (amount > 0) ? 'rgba(20, 200, 20, 0.25)' : 'rgba(200, 20, 20, 0.25)';
         this.setFlashQuantityTimeout();
       }      
     };

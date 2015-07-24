@@ -28,12 +28,7 @@ angular.module('craftyApp')
                   FSSimState.craftables[arg.desc] =  new FSCraftable( arg.desc);      
                   break;
               case 'bankable':
-                  {
-                    FSSimState.bank[arg.desc.name] = new FSBankable({'category':arg.desc.category, 'name':arg.desc.name});
-                    if ( parseInt( arg.desc.quantity, 10) > 0) {
-                      FSSimState.bank[arg.desc.name].increment( arg.desc.quantity );
-                    }
-                  }
+                  FSSimState.bank[arg.desc.name] = new FSBankable(arg.desc);
                   break;
               case 'character':
                 {

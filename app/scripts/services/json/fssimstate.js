@@ -9,7 +9,7 @@
  * Data only - co not add implementation.
  */
 angular.module('craftyApp')
-  .service('FSSimState', function (FSSimMessagingChannel, FSSimRules) {
+  .service('FSSimState', function (FSSimMessagingChannel) {
     // AngularJS will instantiate a singleton by calling "new" on this function.
 
     var simState = this;
@@ -57,20 +57,9 @@ angular.module('craftyApp')
             // Bank
             this.bank = {};  
             json.bank.forEach( function(item) {
-
-                var category = 'unknown';
-                if ( FSSimRules.toolDefines.hasOwnProperty(item.name) === true) {
-                  category = 'tool';
-                } else if ( FSSimRules.foodDefines.hasOwnProperty(item.name) === true) {
-                  category = 'food';
-                } else if ( item.category === 'constructor') {
-                  category = 'constructor';
-                }
-                item.category = category;
-
                 FSSimMessagingChannel.createSimObject( { category: 'bankable', desc : item});
             }); 
-            FSSimMessagingChannel.createSimObject( { category: 'bankable', desc : {'category':'constructor', 'name':'', quantity : 1} });
+            FSSimMessagingChannel.createSimObject( { category: 'bankable', desc : {name:'', quantity : 1} });
             this.updateBank = function() {
                 simState.bankArray = Object.keys(simState.bank).map(function (key) {
                         return simState.bank[key];

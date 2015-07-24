@@ -15,7 +15,7 @@ angular.module('craftyApp')
 
         /**
         * @desc 
-        * @return 
+        * Handles transaction requests made to harvestables.
         */
         var onTransactionHandler = function( arg) {
 
@@ -25,9 +25,9 @@ angular.module('craftyApp')
                   var obj = {'name': arg.type, 'quantity': '0'};
                   FSSimMessagingChannel.createSimObject( { category: 'harvestable', desc : obj});
               }
-              FSSimState.harvestables[arg.type].increment(arg.quantity);
+              FSSimState.harvestables[arg.type].modifyQuantity(arg.quantity);
             } else if (arg.quantity < 0) {
-              FSSimState.harvestables[arg.type].decrement( arg.quantity);
+              FSSimState.harvestables[arg.type].modifyQuantity( arg.quantity);
               if ( FSSimState.harvestables[arg.type].json.quantity === 0) {
                 delete FSSimState.harvestables[arg.type];
               }

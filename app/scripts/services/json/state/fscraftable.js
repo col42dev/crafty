@@ -25,8 +25,6 @@ angular.module('craftyApp')
     };
 
 
-
-
     /**
      * @desc 
      * @return 

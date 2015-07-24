@@ -14,7 +14,7 @@ angular.module('craftyApp')
 
         /**
         * @desc 
-        * @return 
+        * Handles transaction requests made to gatherables.
         */
         var onTransactionHandler = function( arg) {
 
@@ -23,16 +23,16 @@ angular.module('craftyApp')
               if (!(arg.type in FSSimState.gatherables)) { 
                   var obj = {'name': arg.type, 'quantity': '0'};
                   FSSimMessagingChannel.createSimObject( { category: 'gatherable', desc : obj});
+                  FSSimState.updateGatherables();
               }
-              FSSimState.gatherables[arg.type].increment(arg.quantity);
+              FSSimState.gatherables[arg.type].modifyQuantity(arg.quantity);
             } else if (arg.quantity < 0) {
-              FSSimState.gatherables[arg.type].decrement( arg.quantity);
+              FSSimState.gatherables[arg.type].modifyQuantity( arg.quantity);
               if ( FSSimState.gatherables[arg.type].json.quantity === 0) {
                   delete FSSimState.gatherables[arg.type];
+                  FSSimState.updateGatherables();
               }
             }
-            
-            FSSimState.updateGatherables();
           }
         };
 
