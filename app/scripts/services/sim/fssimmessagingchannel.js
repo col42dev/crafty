@@ -14,22 +14,15 @@ angular.module('craftyApp')
 
         // private notification messages
         var _CREATE_SIM_OBJECT_ = '_CREATE_SIM_OBJECT_';
-        var _BANK_DEPOSIT_ = '_BANK_DEPOSIT_';
-        var _BANK_WITHDRAWAL_ = '_BANK_WITHDRAWAL_';
         var _UPDATE_GOALS_ = '_UPDATE_GOALS_';
         var _MAKE_REWARDS_ = '_MAKE_REWARDS_';
         var _COMPLETED_TASK_ = '_COMPLETED_TASK_';
+        var _TRANSACTION_ = '_TRANSACTION_';
 
 
         // publish  notifications
         this.createSimObject = function (item) {
              $rootScope.$broadcast( _CREATE_SIM_OBJECT_, {item: item});
-        };
-        this.bankDeposit = function (item) {
-             $rootScope.$broadcast( _BANK_DEPOSIT_, {item: item});
-        };
-        this.bankWithdrawal = function (item) {
-             $rootScope.$broadcast( _BANK_WITHDRAWAL_, {item: item});
         };
         this.updateGoals = function () {
              $rootScope.$broadcast( _UPDATE_GOALS_, {item: null});
@@ -40,21 +33,14 @@ angular.module('craftyApp')
         this.completedTask = function (item) {
              $rootScope.$broadcast( _COMPLETED_TASK_, {item: item});
         };
+        this.transaction = function (item) {
+             $rootScope.$broadcast( _TRANSACTION_, {item: item});
+        };
 
 
         // subscribe to  notification
         this.onCreateSimObject = function($scope, handler) {
             $scope.$on( _CREATE_SIM_OBJECT_, function(event, args) {
-                handler(args.item);
-            });
-        };
-        this.onBankDeposit = function($scope, handler) {
-            $scope.$on( _BANK_DEPOSIT_, function(event, args) {
-                handler(args.item);
-            });
-        };
-        this.onBankWithdrawal = function($scope, handler) {
-            $scope.$on( _BANK_WITHDRAWAL_, function(event, args) {
                 handler(args.item);
             });
         };
@@ -73,6 +59,11 @@ angular.module('craftyApp')
                 handler(args.item);
             });
         };
+        this.onTransaction = function($scope, handler) {
+            $scope.$on( _TRANSACTION_, function(event, args) {
+                handler(args.item);
+            });
+        };
 
 
    
@@ -80,9 +71,6 @@ angular.module('craftyApp')
         return {
             createSimObject: this.createSimObject,
             onCreateSimObject: this.onCreateSimObject,
-
-            bankDeposit: this.bankDeposit,
-            onBankDeposit: this.onBankDeposit,
 
             bankWithdrawal: this.bankWithdrawal,
             onBankWithdrawal: this.onBankWithdrawal,
@@ -94,7 +82,10 @@ angular.module('craftyApp')
             onMakeRewards: this.onMakeRewards,
 
             completedTask: this.completedTask,
-            onCompletedTask: this.onCompletedTask
+            onCompletedTask: this.onCompletedTask,
+
+            transaction: this.transaction,
+            onTransaction: this.onTransaction
         };
 
   }]);

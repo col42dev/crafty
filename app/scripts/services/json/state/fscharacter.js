@@ -140,23 +140,12 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.harvestingOnStop = function () {
-      var harvestableType = this.json.activity[0].name;
+      var thisType = this.json.activity[0].name;
 
-      FSSimState.harvestables[harvestableType].decrement();
+      FSSimMessagingChannel.transaction( { category: 'harvestable', type: thisType,  quantity : -1});
 
-      if ( FSSimState.harvestables[harvestableType].json.quantity === 0) {
-        delete FSSimState.harvestables[harvestableType];
-        FSSimState.updateHarvestables();
-      }
-
-      // need to ensure there is an instance in gatherables before it can be incremented.
-      if (!(harvestableType in FSSimState.gatherables)) { 
-          var obj = {'name': harvestableType, 'quantity': '0'};
-          FSSimMessagingChannel.createSimObject( { category: 'gatherable', desc : obj});
-      }
-      
-      FSSimState.gatherables[harvestableType].increment();
-      FSSimState.updateGatherables();
+      FSSimMessagingChannel.transaction( { category: 'gatherable', type: thisType,  quantity : 1});
+   
     };
 
     /**
@@ -164,12 +153,10 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.gatheringOnStart = function () {
-      var gatherableType = this.json.activity[0].name;
-      FSSimState.gatherables[gatherableType].decrement(); 
-      if ( FSSimState.gatherables[gatherableType].json.quantity === 0) {
-        delete FSSimState.gatherables[gatherableType];
-        FSSimState.updateGatherables(); 
-      }
+      var thisType = this.json.activity[0].name;
+
+      FSSimMessagingChannel.transaction( { category: 'gatherable', type: thisType,  quantity : -1});
+
     };
 
     /**
@@ -177,13 +164,12 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.gatheringOnStop = function () {
-      var gatherableType = this.json.activity[0].name;
+      var thisType = this.json.activity[0].name;
 
-      FSSimMessagingChannel.bankDeposit( { type: gatherableType, category: 'gatherable'});
-   
+      FSSimMessagingChannel.transaction( { category: 'bankable', type: thisType, typeCategory: 'gatherable', quantity : 1});
 
       // Rewards
-      FSSimMessagingChannel.makeRewards( {'action':'gather', 'target':gatherableType});
+      FSSimMessagingChannel.makeRewards( {'action':'gather', 'target':thisType});
 
       /*
       var rewards = thisFactory.checkRewards( {'action':'gather', 'target':gatherableType});
@@ -207,7 +193,7 @@ angular.module('craftyApp')
       recipeInputKeys.forEach( ( function ( recipeKey ){
         var recipeInput = recipeKey;
         var recipeInputQuantity = recipeInputObj[ recipeKey];
-        FSSimMessagingChannel.bankWithdrawal( { type: recipeInput, quantity: recipeInputQuantity} );
+        FSSimMessagingChannel.transaction( { category: 'bankable', type: recipeInput, quantity : -recipeInputQuantity});
       }).bind(this));
 
     };
@@ -224,19 +210,13 @@ angular.module('craftyApp')
       var craftableOutputObj = FSSimRules.craftableDefines[craftableKey].output;
 
       // assumes only one type is craftableOutput.
-      for (var outputKey in craftableOutputObj) {
+      for (var craftableOutput in craftableOutputObj) {
 
-        var craftableOutput = outputKey;
         var craftableOutputQuantity = craftableOutputObj[ craftableOutput ];
         
         // add output to bank.
-        if (!(craftableOutput in FSSimState.bank)) {
-           FSSimMessagingChannel.createSimObject( { category: 'bankable', desc : {'category':FSSimRules.craftableDefines[craftableKey].category, 'name':craftableOutput, quantity : 0} });  
- 
-        }
-        FSSimState.bank[craftableOutput].increment( craftableOutputQuantity);
-        FSSimState.updateBank();
-
+        FSSimMessagingChannel.transaction( { category: 'bankable', type: craftableOutput, typeCategory:FSSimRules.craftableDefines[craftableKey].category, quantity : craftableOutputQuantity});
+  
         //Rewards
         FSSimMessagingChannel.makeRewards( {'action':'craft', 'target':craftableOutput});
         /*

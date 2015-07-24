@@ -12,35 +12,34 @@ angular.module('craftyApp')
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
+
         /**
         * @desc 
         * @return 
         */
-        var onBankDepositHandler = function( arg) {
-            if (!(arg.type in FSSimState.bank)) {
-                FSSimMessagingChannel.createSimObject( { category: 'bankable', desc : {'category':arg.category, 'name':arg.type, quantity : 0} });  
+        var onTransactionHandler = function( arg) {
+
+          if ( arg.category === 'bankable') {
+            if (arg.quantity > 0) { // ensure there is an instance in bank before it can be incremented.
+              if (!(arg.type in FSSimState.bank)) { 
+                  FSSimMessagingChannel.createSimObject(  { category: 'bankable', desc : {'category':arg.typeCategory, 'name':arg.type, quantity : 0} });
+              }
+              FSSimState.bank[arg.type].increment(arg.quantity);
+            } else if (arg.quantity < 0) {
+ 
+                FSSimState.bank[arg.type].decrement( arg.quantity * -1);
+                if ( FSSimState.bank[arg.type].json.quantity.length === 0) {
+                  delete  FSSimState.bank[arg.type];
+                }
             }
-            FSSimState.bank[arg.type].increment(1);
+            
             FSSimState.updateBank();
+          }
         };
 
-        // Register 'onBankDepositHandler' after function declaration
-        FSSimMessagingChannel.onBankDeposit($rootScope, onBankDepositHandler);
-   
+        // Register 'onTransactionHandler' after function declaration
+        FSSimMessagingChannel.onTransaction($rootScope, onTransactionHandler);
 
-        /**
-        * @desc 
-        * @return 
-        */
-        var onBankWithdrawalHandler = function( arg) {
-            FSSimState.bank[arg.type].decrement( arg.quantity);
-            if ( FSSimState.bank[arg.type].json.quantity.length === 0) {
-              delete  FSSimState.bank[arg.type];
-              FSSimState.updateBank();
-            }
-        };
 
-        // Register 'onBankWithdrawalHandler' after function declaration
-        FSSimMessagingChannel.onBankWithdrawal($rootScope, onBankWithdrawalHandler);
   
   }]);

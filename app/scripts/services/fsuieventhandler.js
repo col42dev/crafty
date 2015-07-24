@@ -139,12 +139,8 @@ angular.module('craftyApp')
                
                 var toolName = character.json.tools[index].json.name;
 
-                if ( FSSimState.bank.hasOwnProperty(toolName) === false) {
-                       FSSimMessagingChannel.createSimObject( { category: 'bankable', desc : {'category':'tool', 'name':toolName, quantity : 0} });     
-                }
-                FSSimState.bank[toolName].increment(1);
-                FSSimState.updateBank();
-
+                FSSimMessagingChannel.transaction( { category: 'bankable', type: toolName, typeCategory:'tool', quantity : 1});
+  
                 character.json.tools.splice(index, 1);
             }
          };
@@ -174,49 +170,29 @@ angular.module('craftyApp')
                 break;
 
                 case 'tool': { // add to character inventory 
-                    if (FSSimState.bank[bankItemKey].json.quantity.length > 0) {
-                        FSSimState.bank[bankItemKey].decrement(1) ;
-                        FSSimState.selectedCharacter.json.tools.push( new FSBankable( {'category':FSSimState.bank[bankItemKey].category, 'name':FSSimState.bank[bankItemKey].json.name} ));
 
-
-
-                        if ( FSSimState.bank[bankItemKey].json.quantity.length === 0) {
-                            delete  FSSimState.bank[bankItemKey];
-                            FSSimState.updateBank();
-                        }
-                    }
+                    FSSimState.selectedCharacter.json.tools.push( new FSBankable( {'category':FSSimState.bank[bankItemKey].category, 'name':FSSimState.bank[bankItemKey].json.name} ));
+                    FSSimMessagingChannel.transaction( { category: 'bankable', type: bankItemKey, quantity : -1});
                 }
                 break;
 
                 case 'food': { // consume
-                    if (FSSimState.bank[bankItemKey].json.quantity.length > 0) {
-                        FSSimState.bank[bankItemKey].decrement(1) ;
 
-                        for (var statType in FSSimRules.foodDefines[bankItemKey].onConsume.stat) {
-                            for (var statSubType in FSSimRules.foodDefines[bankItemKey].onConsume.stat[statType]) {
-                                var delta = parseInt(FSSimRules.foodDefines[bankItemKey].onConsume.stat[statType][statSubType], 10);
-                                FSSimState.selectedCharacter.modifyStat( statType, statSubType, delta);
-                            }
-                        }
-
-                        if ( FSSimState.bank[bankItemKey].json.quantity.length === 0) {
-                            delete FSSimState.bank[bankItemKey];
-                            FSSimState.updateBank();
+                    for (var statType in FSSimRules.foodDefines[bankItemKey].onConsume.stat) {
+                        for (var statSubType in FSSimRules.foodDefines[bankItemKey].onConsume.stat[statType]) {
+                            var delta = parseInt(FSSimRules.foodDefines[bankItemKey].onConsume.stat[statType][statSubType], 10);
+                            FSSimState.selectedCharacter.modifyStat( statType, statSubType, delta);
                         }
                     }
+ 
+                    FSSimMessagingChannel.transaction( { category: 'bankable', type: bankItemKey, quantity : -1});
+
                 }
                 break;
 
                 case 'weapon': { // add to character inventory 
-                    if (FSSimState.bank[bankItemKey].json.quantity.length > 0) {
-                        FSSimState.bank[bankItemKey].decrement(1) ;
-                        FSSimState.selectedCharacter.json.weapons.push( new FSBankable( {'category':FSSimState.bank[bankItemKey].category, 'name':FSSimState.bank[bankItemKey].json.name} ));
-
-                        if ( FSSimState.bank[bankItemKey].json.quantity.length === 0) {
-                            delete  FSSimState.bank[bankItemKey];
-                            FSSimState.updateBank();
-                        }
-                    }
+                    FSSimState.selectedCharacter.json.weapons.push( new FSBankable( {'category':FSSimState.bank[bankItemKey].category, 'name':FSSimState.bank[bankItemKey].json.name} ));
+                    FSSimMessagingChannel.transaction( { category: 'bankable', type: bankItemKey, quantity : -1});
                 }
                 break;
             }

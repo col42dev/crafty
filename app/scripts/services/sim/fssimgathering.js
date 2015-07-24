@@ -8,8 +8,38 @@
  * Operate on fsgatherables's.
  */
 angular.module('craftyApp')
-  .service('FSSimGathering', function (FSSimState) {
+  .service('FSSimGathering', ['$rootScope', 'FSSimMessagingChannel', 'FSSimState', function ($rootScope, FSSimMessagingChannel, FSSimState) {
     // AngularJS will instantiate a singleton by calling "new" on this function
+
+
+        /**
+        * @desc 
+        * @return 
+        */
+        var onTransactionHandler = function( arg) {
+
+          if ( arg.category === 'gatherable') {
+            if (arg.quantity > 0) { // ensure there is an instance in gatherables before it can be incremented.
+              if (!(arg.type in FSSimState.gatherables)) { 
+                  var obj = {'name': arg.type, 'quantity': '0'};
+                  FSSimMessagingChannel.createSimObject( { category: 'gatherable', desc : obj});
+              }
+              FSSimState.gatherables[arg.type].increment(arg.quantity);
+            } else if (arg.quantity < 0) {
+              FSSimState.gatherables[arg.type].decrement( arg.quantity);
+              if ( FSSimState.gatherables[arg.type].json.quantity === 0) {
+                  delete FSSimState.gatherables[arg.type];
+              }
+            }
+            
+            FSSimState.updateGatherables();
+          }
+        };
+
+        // Register 'onTransactionHandler' after function declaration
+        FSSimMessagingChannel.onTransaction($rootScope, onTransactionHandler);
+   
+
 
         /**
          * @desc 
@@ -24,4 +54,4 @@ angular.module('craftyApp')
             return false;
         };
         
-  });
+  }]);
