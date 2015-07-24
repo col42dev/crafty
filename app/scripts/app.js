@@ -24,23 +24,23 @@ angular
   
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/pages/main.html',
         controller: 'MainCtrl'
       })
       .when('/character', {
-        templateUrl: 'views/character.html',
+        templateUrl: 'views/pages/character.html',
         controller: 'MainCtrl'
       })
-      .when('/reference', {
-        templateUrl: 'views/reference.html',
+      .when('/rules', {
+        templateUrl: 'views/pages/rules.html',
         controller: 'MainCtrl'
       })
       .when('/rewards', {
-        templateUrl: 'views/rewards.html',
+        templateUrl: 'views/pages/rewards.html',
         controller: 'MainCtrl'
       })
       .when('/db', {
-        templateUrl: 'views/db.html',
+        templateUrl: 'views/pages/db.html',
         controller: 'MainCtrl'
       })
       .otherwise({
