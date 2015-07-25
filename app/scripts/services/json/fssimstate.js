@@ -20,6 +20,14 @@ angular.module('craftyApp')
             //validate
             var errorLog = this.validateJSON(json);
             if ( errorLog.length > 0) {
+
+                console.log(errorLog);
+
+                errorLog.forEach( function( thisErrorMessage ) {
+                    alert(thisErrorMessage);
+                });
+            
+ 
                 return;
             }
 
@@ -211,13 +219,9 @@ angular.module('craftyApp')
         for (  keyName in FSSimRules.craftableDefines) {
 
             FSSimRules.craftableDefines[keyName].construction.forEach( function( constructorName ) {
-            
-                /*
-                if ( FSSimRules.constructorDefines.indexOf(constructorName) === -1) {
-                        console.log('rules.json: craftableDefines['+ keyName +'].construction contains ' + constructorName + ' which was not found in FSSimRules.constructorDefines');
-  
+                if ( FSSimRules.constructorDefines.hasOwnProperty(constructorName) === false) {
+                    errorLog.push('rules.json: craftableDefines['+ keyName +'].construction contains ' + constructorName + ' which was not found in FSSimRules.constructorDefines');
                 }
-                */
             });
 
 
@@ -236,9 +240,7 @@ angular.module('craftyApp')
 
         }
 
-        if (errorLog.length > 0) {
-            console.log('ERROR LOG:\n' + errorLog);
-        }
+
 
         return errorLog;
 

@@ -8,7 +8,7 @@
  * Load JSON in to sim
  */
 angular.module('craftyApp')
-  .service('FSJSONLoader', function ( FSSimRules, FSSimState, FSSimMessagingChannel, $http, $location, stopwatch) {
+  .service('FSJSONLoader', [   'FSSimRules', 'FSSimState', 'FSSimMessagingChannel', '$http', '$location', 'stopwatch', function ( FSSimRules, FSSimState, FSSimMessagingChannel, $http, $location, stopwatch) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     var thisService = this;
@@ -25,10 +25,11 @@ angular.module('craftyApp')
 
         this.master = {
           //rules: 'https://api.myjson.com/bins/nucy' + '?pretty=1',
-          rules: 'http://localhost:9000/json/rules.json',
-
+          //rules: 'http://localhost:9000/json/rules.json',
+          rules: 'http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/rules.json',
+  
           //state: 'https://api.myjson.com/bins/1vby2' + '?pretty=1'
-          state: 'http://localhost:9000/json/state.json'
+          state: 'http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/state.json'
         };
         this.user = angular.copy(this.master);
 
@@ -53,8 +54,10 @@ angular.module('craftyApp')
      */
      this.loadSimRules = function() {
 
+  
          $http.get(this.user.rules,{
             params: {
+                dataType: 'jsonp',
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                     'Access-Control-Request-Headers' : 'access-control-allow-origin'
@@ -103,6 +106,7 @@ angular.module('craftyApp')
       //load JSON state
       $http.get(this.user.state,{
           params: {
+              dataType: 'jsonp',
               headers: {
                   'Access-Control-Allow-Origin': '*',
                   'Access-Control-Request-Headers' : 'access-control-allow-origin'
@@ -138,7 +142,6 @@ angular.module('craftyApp')
 
       FSSimMessagingChannel.updateGoals();
    
-      //$scope.$apply();
       stopwatch.reset();
       stopwatch.start();
     };
@@ -259,4 +262,4 @@ angular.module('craftyApp')
 
 
     
-  });
+  }]);
