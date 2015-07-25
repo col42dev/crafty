@@ -11,6 +11,7 @@
 angular.module('craftyApp')
   .service('FSSimRules', function () {
     // AngularJS will instantiate a singleton by calling "new" on this function
+    var simRules = this;
 
     this.set = function(json) {
 
@@ -23,6 +24,14 @@ angular.module('craftyApp')
         this.constructorDefines = json.constructorDefines;  
         this.taskRules = json.taskRules;  
         this.rewardRules = json.rewardRules;  
+
+
+
+    
+        this.harvestableDefinesKeys = Object.keys(simRules.harvestableDefines).map(function (key) {
+                return key;
+              });
+
     };
 
 

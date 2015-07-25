@@ -20,11 +20,11 @@ angular
   .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
 
 
-        $httpProvider.defaults.useXDomain = true;
+      $httpProvider.defaults.useXDomain = true;
       $httpProvider.defaults.withCredentials = true;
-      delete $httpProvider.defaults.headers.common["X-Requested-With"];
-      $httpProvider.defaults.headers.common["Accept"] = "application/json";
-      $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+      delete $httpProvider.defaults.headers.common['X-Requested-With'];
+      $httpProvider.defaults.headers.common['Accept'] = 'application/json';
+      $httpProvider.defaults.headers.common['Content-Type'] = 'application/json';
 
   
     $routeProvider
@@ -46,6 +46,10 @@ angular
       })
       .when('/db', {
         templateUrl: 'views/pages/db.html',
+        controller: 'MainCtrl'
+      })
+      .when('/mapedit', {
+        templateUrl: 'views/pages/mapedit.html',
         controller: 'MainCtrl'
       })
       .otherwise({

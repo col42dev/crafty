@@ -24,7 +24,7 @@ angular.module('craftyApp')
                 console.log(errorLog);
 
                 errorLog.forEach( function( thisErrorMessage ) {
-                    alert(thisErrorMessage);
+                    window.alert(thisErrorMessage);
                 });
             
  
@@ -125,7 +125,7 @@ angular.module('craftyApp')
                 errorLog.push('state.json: harvestable ' + json.harvestables[keyName].name + ' does not exist in rules.json:harvestableDefines');
             }
             if ( typeof json.harvestables[keyName].quantity !== 'number') {
-                cerrorLog.push('state.json: harvestable ' + json.harvestables[keyName].name + ' requires a number value for it (.quantity) property');
+                errorLog.push('state.json: harvestable ' + json.harvestables[keyName].name + ' requires a number value for it (.quantity) property');
             }
         }
 
@@ -224,7 +224,7 @@ angular.module('craftyApp')
                 }
             });
 
-
+            /*
             for ( var craftableInput in FSSimRules.craftableDefines[keyName].input) {
             
             }
@@ -232,6 +232,7 @@ angular.module('craftyApp')
             for ( var craftableOutput in FSSimRules.craftableDefines[keyName].output) {
             
             }
+            */
 
 
             if ( typeof FSSimRules.craftableDefines[keyName].duration !== 'number') {
