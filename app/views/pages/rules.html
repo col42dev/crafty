@@ -142,7 +142,7 @@
 
 <div class="fadedbackground">
 
-<h4>FOOD RULES</h4>
+<h4>CONSUMABLE RULES</h4>
 
 <div class="bodycontainer scrollable">
 <table class="table table-bordered table-condensed table-scrollable">
@@ -159,7 +159,7 @@
   <table class="table table-bordered table-condensed table-scrollable">
 
     <tbody>
-      <tr ng-repeat="(k,v)  in getFSSimRules().foodDefines" class="noselect" >
+      <tr ng-repeat="(k,v)  in getFSSimRules().consumableDefines" class="noselect" >
         <td class="col-sm-1">{{k}}</td> 
         <td class="col-sm-1">{{v.onConsume.stat}}</td> 
       </tr>
@@ -168,6 +168,37 @@
 </div>
 
 </div><!--fadedbackground-->
+
+
+
+
+<div class="fadedbackground">
+
+<h4>CONSTRUCTORS</h4>
+
+<div class="bodycontainer scrollable">
+<table class="table table-bordered table-condensed table-scrollable">
+  <tbody>
+      <tr class="noselect" >
+          <td class="col-sm-1">Name</td>
+      </tr>
+  </tbody>
+</table>  
+</div>
+
+<div class="bodycontainer scrollable">
+  <table class="table table-bordered table-condensed table-scrollable">
+
+    <tbody>
+      <tr ng-repeat="(k,v)  in getFSSimRules().constructorDefines" class="noselect" >
+        <td class="col-sm-1">{{k}}</td> 
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!--fadedbackground-->
+
 
 <div class="fadedbackground">
 

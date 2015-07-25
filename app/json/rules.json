@@ -216,145 +216,145 @@
   },
   "gatherableDefines": {
     "Earth": {
-      "duration": "20",
+      "duration": 20,
       "actionable": [
         "Carry"
       ]
     },
     "Stone": {
-      "duration": "40",
+      "duration": 40,
       "actionable": [
         "Carry"
       ]
     },
     "HardStone": {
-      "duration": "30",
+      "duration": 30,
       "actionable": [
         "Carry"
       ]
     },
     "Quartzstone": {
-      "duration": "10",
+      "duration": 10,
       "actionable": [
         "Carry"
       ]
     },
     "Limestone": {
-      "duration": "10",
+      "duration": 10,
       "actionable": [
         "Carry"
       ]
     },
     "Marble": {
-      "duration": "30",
+      "duration": 30,
       "actionable": [
         "Cart"
       ]
     },
     "Granite": {
-      "duration": "10",
+      "duration": 10,
       "actionable": [
         "Cart"
       ]
     },
     "Coal": {
-      "duration": "20",
+      "duration": 20,
       "actionable": [
         "Carry"
       ]
     },
     "IronOre": {
-      "duration": "20",
+      "duration": 20,
       "actionable": [
         "Carry"
       ]
     },
     "Water": {
-      "duration": "10",
+      "duration": 10,
       "actionable": [
         "CarryLiquid"
       ]
     },
     "Wood": {
-      "duration": "10",
+      "duration": 10,
       "actionable": [
         "Carry"
       ]
     },
     "Wool": {
-      "duration": "30",
+      "duration": 30,
       "actionable": [
         "Carry"
       ]
     },
     "Leaves": {
-      "duration": "10",
+      "duration": 10,
       "actionable": [
         "CarryLiquid"
       ]
     },
     "Grain": {
-      "duration": "20",
+      "duration": 20,
       "actionable": [
         "CarryLiquid"
       ]
     },
     "Antler": {
-      "duration": "60",
+      "duration": 60,
       "actionable": [
         "Carry"
       ]
     },
     "Sand": {
-      "duration": "10",
+      "duration": 10,
       "actionable": [
         "CarryLiquid"
       ]
     },
     "Meat": {
-      "duration": "15",
+      "duration": 15,
       "actionable": [
         "Carry"
       ]
     },
     "Fish": {
-      "duration": "15",
+      "duration": 15,
       "actionable": [
         "Carry"
       ]
     },
     "Feather": {
-      "duration": "5",
+      "duration": 5,
       "actionable": [
         "Carry"
       ]
     },
     "Lumber": {
-      "duration": "50",
+      "duration": 50,
       "actionable": [
         "Cart"
       ]
     },
     "ShaolFish": {
-      "duration": "50",
+      "duration": 50,
       "actionable": [
         "Cart"
       ]
     },
     "Sheep": {
-      "duration": "20",
+      "duration": 20,
       "actionable": [
         "Carry"
       ]
     },
     "Fruit": {
-      "duration": "20",
+      "duration": 20,
       "actionable": [
         "Carry"
       ]
     },
     "Gem": {
-      "duration": "20",
+      "duration": 20,
       "actionable": [
         "Carry"
       ]
@@ -365,149 +365,149 @@
       "actionable": [
         "Dig"
       ],
-      "hardness": "1",
-      "duration": "10"
+      "hardness": 1,
+      "duration": 10
     },
     "Stone": {
       "actionable": [
         "Dig"
       ],
-      "hardness": "2",
-      "duration": "18"
+      "hardness": 2,
+      "duration": 18
     },
     "HardStone": {
       "actionable": [
         "Dig"
       ],
-      "hardness": "8",
-      "duration": "64"
+      "hardness": 8,
+      "duration": 64
     },
     "Quartzstone": {
       "actionable": [
         "Dig"
       ],
-      "hardness": "20",
-      "duration": "140"
+      "hardness": 20,
+      "duration": 140
     },
     "Limestone": {
       "actionable": [
         "Dig"
       ],
-      "hardness": "5",
-      "duration": "45"
+      "hardness": 5,
+      "duration": 45
     },
     "Marble": {
       "actionable": [
         "Dig"
       ],
-      "hardness": "12",
-      "duration": "96"
+      "hardness": 12,
+      "duration": 96
     },
     "Granite": {
       "actionable": [
         "Dig"
       ],
-      "hardness": "16",
-      "duration": "112"
+      "hardness": 16,
+      "duration": 112
     },
     "Coal": {
       "actionable": [
         "Dig"
       ],
-      "hardness": "3",
-      "duration": "30"
+      "hardness": 3,
+      "duration": 30
     },
     "IronOre": {
       "actionable": [
         "Dig"
       ],
-      "hardness": "3",
-      "duration": "50"
+      "hardness": 3,
+      "duration": 50
     },
     "Meat": {
       "actionable": [
         "Hunt"
       ],
-      "hardness": "1",
-      "duration": "15"
+      "hardness": 1,
+      "duration": 15
     },
     "Fish": {
       "actionable": [
         "Fish"
       ],
-      "hardness": "1",
-      "duration": "10"
+      "hardness": 1,
+      "duration": 10
     },
     "Leaves": {
       "actionable": [
         "Pick"
       ],
-      "hardness": "1",
-      "duration": "15"
+      "hardness": 1,
+      "duration": 15
     },
     "Sand": {
       "actionable": [
         "Dig"
       ],
-      "hardness": "1",
-      "duration": "10"
+      "hardness": 1,
+      "duration": 10
     },
     "Grain": {
       "actionable": [
         "Pick"
       ],
-      "hardness": "1",
-      "duration": "15",
-      "replenish": "15"
+      "hardness": 1,
+      "duration": 15,
+      "replenish": 15
     },
     "Wood": {
       "actionable": [
         "Chop",
         "Saw"
       ],
-      "hardness": "2",
-      "duration": "20"
+      "hardness": 2,
+      "duration": 20
     },
     "Lumber": {
       "actionable": [
         "Chop",
         "Saw"
       ],
-      "hardness": "8",
-      "duration": "128"
+      "hardness": 8,
+      "duration": 128
     },
     "ShaolFish": {
       "actionable": [
         "Net"
       ],
-      "hardness": "8",
-      "duration": "64"
+      "hardness": 8,
+      "duration": 64
     },
     "Sheep": {
       "actionable": [
         "Tie"
       ],
-      "hardness": "2",
-      "duration": "32"
+      "hardness": 2,
+      "duration": 32
     },
     "Gem": {
       "actionable": [
         "Dig"
       ],
-      "hardness": "12",
-      "duration": "120"
+      "hardness": 12,
+      "duration": 120
     },
     "Fruit": {
       "actionable": [
         "Pick"
       ],
-      "hardness": "2",
-      "duration": "20"
+      "hardness": 2,
+      "duration": 20
     }
   },
   "toolDefines": {
     "Hands": {
-      "strength": "2",
+      "strength": 2,
       "actions": [
         "Dig",
         "Carry",
@@ -515,175 +515,175 @@
       ]
     },
     "StonePickaxe": {
-      "strength": "3",
+      "strength": 3,
       "actions": [
         "Dig"
       ]
     },
     "BronzePickaxe": {
-      "strength": "5",
+      "strength": 5,
       "actions": [
         "Dig"
       ]
     },
     "Scythe": {
-      "strength": "8",
+      "strength": 8,
       "actions": [
         "Chop"
       ]
     },
     "SteelPickaxe": {
-      "strength": "12",
+      "strength": 12,
       "actions": [
         "Dig"
       ]
     },
     "HuntingBow": {
-      "strength": "3",
+      "strength": 3,
       "actions": [
         "Hunt"
       ]
     },
     "FishingRod": {
-      "strength": "3",
+      "strength": 3,
       "actions": [
         "Fish"
       ]
     },
     "WoodAxe": {
-      "strength": "3",
+      "strength": 3,
       "actions": [
         "Chop"
       ]
     },
     "AntlerPickaxe": {
-      "strength": "3",
+      "strength": 3,
       "actions": [
         "Dig"
       ]
     },
     "Rope": {
-      "strength": "4",
+      "strength": 4,
       "actions": [
         "Tie"
       ]
     },
     "Barrel": {
-      "strength": "12",
+      "strength": 12,
       "actions": [
         "Carry",
         "CarryLiquid"
       ]
     },
     "BackPack": {
-      "strength": "3",
+      "strength": 3,
       "actions": [
         "Carry"
       ]
     },
     "Shovel": {
-      "strength": "6",
+      "strength": 6,
       "actions": [
         "Dig"
       ]
     },
     "Minecart": {
-      "strength": "20",
+      "strength": 20,
       "actions": [
         "Cart",
         "Carry"
       ]
     },
     "WickerBasket": {
-      "strength": "8",
+      "strength": 8,
       "actions": [
         "Carry"
       ]
     },
     "SteelShovel": {
-      "strength": "10",
+      "strength": 10,
       "actions": [
         "Dig"
       ]
     },
     "SteelAxe": {
-      "strength": "10",
+      "strength": 10,
       "actions": [
         "Chop"
       ]
     },
     "Snares": {
-      "strength": "9",
+      "strength": 9,
       "actions": [
         "Hunt"
       ]
     },
     "HarvestingShears": {
-      "strength": "6",
+      "strength": 6,
       "actions": [
         "Pick"
       ]
     },
     "WheelBarrow": {
-      "strength": "15",
+      "strength": 15,
       "actions": [
         "Carry",
         "Cart"
       ]
     },
     "SteelMattock": {
-      "strength": "20",
+      "strength": 20,
       "actions": [
         "Dig"
       ]
     },
     "FishingNet": {
-      "strength": "10",
+      "strength": 10,
       "actions": [
         "Fish",
         "Net"
       ]
     },
     "Cart": {
-      "strength": "30",
+      "strength": 30,
       "actions": [
         "Carry"
       ]
     },
     "LargeBarrel": {
-      "strength": "20",
+      "strength": 20,
       "actions": [
         "Carry",
         "CarryLiquid"
       ]
     },
     "LeatherBackPack": {
-      "strength": "10",
+      "strength": 10,
       "actions": [
         "Carry"
       ]
     },
     "BlockAndTackle": {
-      "strength": "30",
+      "strength": 30,
       "actions": [
         "Carry"
       ]
     },
     "Saw": {
-      "strength": "30",
+      "strength": 30,
       "actions": [
         "Saw"
       ]
     },
     "Bucket": {
-      "strength": "4",
+      "strength": 4,
       "actions": [
         "Carry",
         "CarryLiquid"
       ]
     }
   },
-   "constructorDefines": {
+  "constructorDefines": {
     "Constructor": {
     },
     "WoodenTable": {
@@ -715,37 +715,37 @@
 
       ],
       "input": {
-        "Wool": "1"
+        "Wool": 1
       },
       "output": {
-        "Rope": "3"
+        "Rope": 3
       },
-      "duration": "15"
+      "duration": 15
     },
     "WoodenTable": {
       "construction": [
 
       ],
       "input": {
-        "Wood": "4"
+        "Wood": 4
       },
       "output": {
-        "WoodenTable": "1"
+        "WoodenTable": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "Workbench": {
       "construction": [
 
       ],
       "input": {
-        "Wood": "3",
-        "WoodenTable": "1"
+        "Wood": 3,
+        "WoodenTable": 1
       },
       "output": {
-        "Workbench": "1"
+        "Workbench": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "BackPack": {
       "proficiency": {
@@ -756,13 +756,13 @@
 
       ],
       "input": {
-        "Cloth": "3",
-        "Rope": "1"
+        "Cloth": 3,
+        "Rope": 1
       },
       "output": {
-        "BackPack": "1"
+        "BackPack": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "Forge": {
       "proficiency": {
@@ -773,108 +773,108 @@
         "Workbench"
       ],
       "input": {
-        "Water": "3",
-        "Coal": "1",
-        "IronOre": "1",
-        "Stone": "2"
+        "Water": 3,
+        "Coal": 1,
+        "IronOre": 1,
+        "Stone": 2
       },
       "output": {
-        "Forge": "1"
+        "Forge": 1
       },
-      "duration": "60"
+      "duration": 60
     },
     "AntlerPickaxe": {
       "construction": [
 
       ],
       "input": {
-        "Wood": "2",
-        "Antler": "1"
+        "Wood": 2,
+        "Antler": 1
       },
       "output": {
-        "AntlerPickaxe": "1"
+        "AntlerPickaxe": 1
       },
-      "duration": "15"
+      "duration": 15
     },
     "Paper": {
       "construction": [
         "WoodenTable"
       ],
       "input": {
-        "Leaves": "1"
+        "Leaves": 1
       },
       "output": {
-        "Paper": "1"
+        "Paper": 1
       },
-      "duration": "20"
+      "duration": 20
     },
     "Books": {
       "construction": [
         "WoodenTable"
       ],
       "input": {
-        "Paper": "12",
-        "Rope": "1",
-        "Feather": "2"
+        "Paper": 12,
+        "Rope": 1,
+        "Feather": 2
       },
       "output": {
-        "Books": "1"
+        "Books": 1
       },
-      "duration": "45"
+      "duration": 45
     },
     "FineHat": {
       "construction": [
         "WoodenTable"
       ],
       "input": {
-        "Cloth": "2",
-        "Feather": "1"
+        "Cloth": 2,
+        "Feather": 1
       },
       "output": {
-        "FineHat": "1"
+        "FineHat": 1
       },
-      "duration": "15"
+      "duration": 15
     },
     "FlagonOfAle": {
       "construction": [
         "WoodenTable"
       ],
       "input": {
-        "Ale": "6",
-        "Glass": "1",
-        "Cloth": "1",
-        "Antler": "1"
+        "Ale": 6,
+        "Glass": 1,
+        "Cloth": 1,
+        "Antler": 1
       },
       "output": {
-        "FlagonOfAle": "1"
+        "FlagonOfAle": 1
       },
-      "duration": "15"
+      "duration": 15
     },
     "WoodenPlanks": {
       "construction": [
         "Workbench"
       ],
       "input": {
-        "Wood": "2"
+        "Wood": 2
       },
       "output": {
-        "WoodenPlanks": "2"
+        "WoodenPlanks": 2
       },
-      "duration": "15"
+      "duration": 15
     },
     "DiceTable": {
       "construction": [
         "Workbench"
       ],
       "input": {
-        "WoodenTable": "1",
-        "Antler": "3",
-        "Cloth": "1"
+        "WoodenTable": 1,
+        "Antler": 3,
+        "Cloth": 1
       },
       "output": {
-        "DiceTable": "1"
+        "DiceTable": 1
       },
-      "duration": "45"
+      "duration": 45
     },
     "Minecart": {
       "proficiency": {
@@ -885,13 +885,13 @@
         "Workbench"
       ],
       "input": {
-        "WoodenPlanks": "4",
-        "Nails": "10"
+        "WoodenPlanks": 4,
+        "Nails": 10
       },
       "output": {
-        "Minecart": "1"
+        "Minecart": 1
       },
-      "duration": "60"
+      "duration": 60
     },
     "Loom": {
       "proficiency": {
@@ -902,62 +902,62 @@
         "Workbench"
       ],
       "input": {
-        "Wood": "2",
-        "Rope": "2"
+        "Wood": 2,
+        "Rope": 2
       },
       "output": {
-        "Loom": "1"
+        "Loom": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "Glass": {
       "construction": [
         "Forge"
       ],
       "input": {
-        "Sand": "2"
+        "Sand": 2
       },
       "output": {
-        "Glass": "1"
+        "Glass": 1
       },
-      "duration": "45"
+      "duration": 45
     },
     "Shovel": {
       "construction": [
         "Workbench"
       ],
       "input": {
-        "Wood": "2"
+        "Wood": 2
       },
       "output": {
-        "Shovel": "1"
+        "Shovel": 1
       },
-      "duration": "15"
+      "duration": 15
     },
     "Cloth": {
       "construction": [
         "Loom"
       ],
       "input": {
-        "Wool": "1"
+        "Wool": 1
       },
       "output": {
-        "Cloth": "1"
+        "Cloth": 1
       },
-      "duration": "15"
+      "duration": 15
     },
     "Ale": {
       "construction": [
         "WoodenTable"
       ],
       "input": {
-        "Water": "3",
-        "Grain": "1"
+        "Water": 3,
+        "Grain": 1
       },
       "output": {
-        "Ale": "1"
+        "Ale": 1
       },
-      "duration": "45"
+      "duration": 45
     },
     "Saw": {
       "proficiency": {
@@ -968,38 +968,38 @@
         "Forge"
       ],
       "input": {
-        "IronOre": "2",
-        "Wood": "1"
+        "IronOre": 2,
+        "Wood": 1
       },
       "output": {
-        "Saw": "1"
+        "Saw": 1
       },
-      "duration": "45"
+      "duration": 45
     },
     "Bucket": {
       "construction": [
 
       ],
       "input": {
-        "Wood": "2",
-        "Rope": "1"
+        "Wood": 2,
+        "Rope": 1
       },
       "output": {
-        "Bucket": "1"
+        "Bucket": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "Nails": {
       "construction": [
         "Forge"
       ],
       "input": {
-        "IronOre": "1"
+        "IronOre": 1
       },
       "output": {
-        "Nails": "5"
+        "Nails": 5
       },
-      "duration": "10"
+      "duration": 10
     },
     "FermentingVat": {
       "proficiency": {
@@ -1010,26 +1010,26 @@
         "Forge"
       ],
       "input": {
-        "IronOre": "3",
-        "Wood": "1"
+        "IronOre": 3,
+        "Wood": 1
       },
       "output": {
-        "FermentingVat": "1"
+        "FermentingVat": 1
       },
-      "duration": "45"
+      "duration": 45
     },
     "BulkAle": {
       "construction": [
         "FermentingVat"
       ],
       "input": {
-        "Grain": "2",
-        "Water": "4"
+        "Grain": 2,
+        "Water": 4
       },
       "output": {
-        "Ale": "3"
+        "Ale": 3
       },
-      "duration": "60"
+      "duration": 60
     },
     "BucketPump": {
       "proficiency": {
@@ -1040,54 +1040,54 @@
         "AdvancedWorkbench"
       ],
       "input": {
-        "Bucket": "2",
-        "Rope": "3",
-        "Wood": "2"
+        "Bucket": 2,
+        "Rope": 3,
+        "Wood": 2
       },
       "output": {
-        "BucketPump": "1"
+        "BucketPump": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "Scythe": {
       "construction": [
         "Forge"
       ],
       "input": {
-        "IronOre": "2",
-        "Wood": "2"
+        "IronOre": 2,
+        "Wood": 2
       },
       "output": {
-        "Scythe": "1"
+        "Scythe": 1
       },
-      "duration": "45"
+      "duration": 45
     },
     "WoodAxe": {
       "construction": [
         "Forge"
       ],
       "input": {
-        "IronOre": "1",
-        "Wood": "1"
+        "IronOre": 1,
+        "Wood": 1
       },
       "output": {
-        "WoodAxe": "1"
+        "WoodAxe": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "HuntingBow": {
       "construction": [
         "Workbench"
       ],
       "input": {
-        "Antler": "1",
-        "Wood": "2",
-        "Rope": "1"
+        "Antler": 1,
+        "Wood": 2,
+        "Rope": 1
       },
       "output": {
-        "HuntingBow": "1"
+        "HuntingBow": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "FishingRod": {
       "proficiency": {
@@ -1098,124 +1098,124 @@
         "Workbench"
       ],
       "input": {
-        "Rope": "2",
-        "Wood": "2",
-        "IronOre": "1"
+        "Rope": 2,
+        "Wood": 2,
+        "IronOre": 1
       },
       "output": {
-        "FishingRod": "1"
+        "FishingRod": 1
       },
-      "duration": "45"
+      "duration": 45
     },
     "CatapultBase": {
       "construction": [
         "AdvancedWorkbench"
       ],
       "input": {
-        "TwistedRopes": "1",
-        "WoodenPlanks": "20",
-        "CartWheel": "2",
-        "Stone": "2"
+        "TwistedRopes": 1,
+        "WoodenPlanks": 20,
+        "CartWheel": 2,
+        "Stone": 2
       },
       "output": {
-        "CatapultBase": "1"
+        "CatapultBase": 1
       },
-      "duration": "60"
+      "duration": 60
     },
     "CatapultArm": {
       "construction": [
         "AdvancedWorkbench"
       ],
       "input": {
-        "Steel": "1",
-        "Antler": "2",
-        "SteelWire": "2"
+        "Steel": 1,
+        "Antler": 2,
+        "SteelWire": 2
       },
       "output": {
-        "CatapultArm": "1"
+        "CatapultArm": 1
       },
-      "duration": "60"
+      "duration": 60
     },
     "GreekFireCatapult": {
       "construction": [
         "AdvancedWorkbench"
       ],
       "input": {
-        "CatapultBase": "1",
-        "CatapultArm": "1",
-        "GreekFire": "1",
-        "TwistedRopes": "3"
+        "CatapultBase": 1,
+        "CatapultArm": 1,
+        "GreekFire": 1,
+        "TwistedRopes": 3
       },
       "output": {
-        "GreekFireCatapult": "1"
+        "GreekFireCatapult": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "GreekFire": {
       "construction": [
         "AdvancedWorkbench"
       ],
       "input": {
-        "Water": "2",
-        "Leaves": "5",
-        "Sand": "2",
-        "Fish": "1"
+        "Water": 2,
+        "Leaves": 5,
+        "Sand": 2,
+        "Fish": 1
       },
       "output": {
-        "GreekFire": "1"
+        "GreekFire": 1
       },
-      "duration": "120"
+      "duration": 120
     },
     "TwistedRopes": {
       "construction": [
         "AdvancedWorkbench"
       ],
       "input": {
-        "Rope": "2"
+        "Rope": 2
       },
       "output": {
-        "TwistedRopes": "1"
+        "TwistedRopes": 1
       },
-      "duration": "15"
+      "duration": 15
     },
     "Steel": {
       "construction": [
         "Forge"
       ],
       "input": {
-        "IronOre": "1",
-        "Coal": "1",
-        "Water": "2"
+        "IronOre": 1,
+        "Coal": 1,
+        "Water": 2
       },
       "output": {
-        "Steel": "1"
+        "Steel": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "SteelWire": {
       "construction": [
         "Forge"
       ],
       "input": {
-        "Steel": "1"
+        "Steel": 1
       },
       "output": {
-        "SteelWire": "3"
+        "SteelWire": 3
       },
-      "duration": "20"
+      "duration": 20
     },
     "CartWheel": {
       "construction": [
         "Workbench"
       ],
       "input": {
-        "Steel": "1",
-        "Wood": "4"
+        "Steel": 1,
+        "Wood": 4
       },
       "output": {
-        "CartWheel": "1"
+        "CartWheel": 1
       },
-      "duration": "45"
+      "duration": 45
     },
     "Barrel": {
       "proficiency": {
@@ -1226,26 +1226,26 @@
         "Workbench"
       ],
       "input": {
-        "IronOre": "1",
-        "Wood": "2"
+        "IronOre": 1,
+        "Wood": 2
       },
       "output": {
-        "Barrel": "1"
+        "Barrel": 1
       },
-      "duration": "45"
+      "duration": 45
     },
     "RawGreenSalad": {
       "construction": [
 
       ],
       "input": {
-        "Leaves": "1",
-        "Water": "1"
+        "Leaves": 1,
+        "Water": 1
       },
       "output": {
-        "RawGreenSalad": "2"
+        "RawGreenSalad": 2
       },
-      "duration": "10"
+      "duration": 10
     },
     "GrilledMeat": {
       "proficiency": {
@@ -1256,14 +1256,14 @@
         "Grill"
       ],
       "input": {
-        "Wood": "1",
-        "Water": "1",
-        "Meat": "1"
+        "Wood": 1,
+        "Water": 1,
+        "Meat": 1
       },
       "output": {
-        "GrilledMeat": "4"
+        "GrilledMeat": 4
       },
-      "duration": "10"
+      "duration": 10
     },
     "VegSoup": {
       "proficiency": {
@@ -1274,15 +1274,15 @@
         "Grill"
       ],
       "input": {
-        "Charcoal": "1",
-        "Leaves": "3",
-        "Grain": "1",
-        "Water": "2"
+        "Charcoal": 1,
+        "Leaves": 3,
+        "Grain": 1,
+        "Water": 2
       },
       "output": {
-        "VegSoup": "6"
+        "VegSoup": 6
       },
-      "duration": "10"
+      "duration": 10
     },
     "FishSoup": {
       "proficiency": {
@@ -1293,57 +1293,57 @@
         "Grill"
       ],
       "input": {
-        "Leaves": "2",
-        "Water": "2",
-        "Fish": "2",
-        "Charcoal": "1"
+        "Leaves": 2,
+        "Water": 2,
+        "Fish": 2,
+        "Charcoal": 1
       },
       "output": {
-        "FishSoup": "4"
+        "FishSoup": 4
       },
-      "duration": "10"
+      "duration": 10
     },
     "Bandage": {
       "construction": [
         "WoodenTable"
       ],
       "input": {
-        "Cloth": "3",
-        "Leaves": "1",
-        "Paper": "1"
+        "Cloth": 3,
+        "Leaves": 1,
+        "Paper": 1
       },
       "output": {
-        "Bandage": "1"
+        "Bandage": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "Medicine": {
       "construction": [
         "FirstAidStation"
       ],
       "input": {
-        "Leaves": "2",
-        "Water": "1",
-        "Paper": "1"
+        "Leaves": 2,
+        "Water": 1,
+        "Paper": 1
       },
       "output": {
-        "Medicine": "1"
+        "Medicine": 1
       },
-      "duration": "200"
+      "duration": 200
     },
     "Potion": {
       "construction": [
         "FirstAidStation"
       ],
       "input": {
-        "Leaves": "1",
-        "Water": "1",
-        "Glass": "1"
+        "Leaves": 1,
+        "Water": 1,
+        "Glass": 1
       },
       "output": {
-        "Potion": "1"
+        "Potion": 1
       },
-      "duration": "120"
+      "duration": 120
     },
     "FirstAidStation": {
       "proficiency": {
@@ -1354,113 +1354,113 @@
         "Workbench"
       ],
       "input": {
-        "WoodenTable": "1",
-        "Cloth": "3",
-        "Glass": "3"
+        "WoodenTable": 1,
+        "Cloth": 3,
+        "Glass": 3
       },
       "output": {
-        "FirstAidStation": "1"
+        "FirstAidStation": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "ImprovedBucketPump": {
       "construction": [
         "Workbench"
       ],
       "input": {
-        "BucketPump": "1",
-        "Barrel": "2"
+        "BucketPump": 1,
+        "Barrel": 2
       },
       "output": {
-        "ImprovedBucketPump": "1"
+        "ImprovedBucketPump": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "BarrelOfWater": {
       "construction": [
         "ImprovedBucketPump"
       ],
       "input": {
-        "Water": "2"
+        "Water": 2
       },
       "output": {
-        "Water": "10"
+        "Water": 10
       },
-      "duration": "30"
+      "duration": 30
     },
     "SteelPickaxe": {
       "construction": [
         "Forge"
       ],
       "input": {
-        "Steel": "1",
-        "Wood": "2"
+        "Steel": 1,
+        "Wood": 2
       },
       "output": {
-        "SteelPickaxe": "10"
+        "SteelPickaxe": 10
       },
-      "duration": "30"
+      "duration": 30
     },
     "PumpedWater": {
       "construction": [
         "BucketPump"
       ],
       "input": {
-        "Water": "1"
+        "Water": 1
       },
       "output": {
-        "Water": "3"
+        "Water": 3
       },
-      "duration": "10"
+      "duration": 10
     },
     "WickerBasket": {
       "construction": [
 
       ],
       "input": {
-        "Leaves": "5"
+        "Leaves": 5
       },
       "output": {
-        "WickerBasket": "1"
+        "WickerBasket": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "WoodenStatue": {
       "construction": [
         "Workbench"
       ],
       "input": {
-        "Wood": "5"
+        "Wood": 5
       },
       "output": {
-        "WoodenStatue": "1"
+        "WoodenStatue": 1
       },
-      "duration": "300"
+      "duration": 300
     },
     "WoodenChair": {
       "construction": [
         "Workbench"
       ],
       "input": {
-        "Wood": "4"
+        "Wood": 4
       },
       "output": {
-        "WoodenChair": "1"
+        "WoodenChair": 1
       },
-      "duration": "200"
+      "duration": 200
     },
     "SteelShovel": {
       "construction": [
         "Workbench"
       ],
       "input": {
-        "Steel": "2",
-        "Wood": "2"
+        "Steel": 2,
+        "Wood": 2
       },
       "output": {
-        "SteelShovel": "1"
+        "SteelShovel": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "SteelAxe": {
       "proficiency": {
@@ -1471,13 +1471,13 @@
         "Workbench"
       ],
       "input": {
-        "Steel": "1",
-        "Wood": "2"
+        "Steel": 1,
+        "Wood": 2
       },
       "output": {
-        "SteelAxe": "1"
+        "SteelAxe": 1
       },
-      "duration": "45"
+      "duration": 45
     },
     "Snares": {
       "proficiency": {
@@ -1488,13 +1488,13 @@
         "Workbench"
       ],
       "input": {
-        "SteelWire": "1",
-        "Wood": "1"
+        "SteelWire": 1,
+        "Wood": 1
       },
       "output": {
-        "Snares": "1"
+        "Snares": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "HarvestingShears": {
       "proficiency": {
@@ -1505,14 +1505,14 @@
         "Workbench"
       ],
       "input": {
-        "SteelWire": "1",
-        "Wood": "1",
-        "Steel": "1"
+        "SteelWire": 1,
+        "Wood": 1,
+        "Steel": 1
       },
       "output": {
-        "HarvestingShears": "1"
+        "HarvestingShears": 1
       },
-      "duration": "40"
+      "duration": 40
     },
     "WheelBarrow": {
       "proficiency": {
@@ -1523,13 +1523,13 @@
         "Workbench"
       ],
       "input": {
-        "Wheel": "1",
-        "WoodenPlanks": "3"
+        "Wheel": 1,
+        "WoodenPlanks": 3
       },
       "output": {
-        "WheelBarrow": "1"
+        "WheelBarrow": 1
       },
-      "duration": "30"
+      "duration": 30
     },
     "AdvancedWorkbench": {
       "proficiency": {
@@ -1540,27 +1540,27 @@
         "Workbench"
       ],
       "input": {
-        "WoodenTable": "2",
-        "Stone": "1",
-        "Steel": "1"
+        "WoodenTable": 2,
+        "Stone": 1,
+        "Steel": 1
       },
       "output": {
-        "AdvancedWorkbench": "1"
+        "AdvancedWorkbench": 1
       },
-      "duration": "100"
+      "duration": 100
     },
     "Wheel": {
       "construction": [
         "Workbench"
       ],
       "input": {
-        "Wood": "1",
-        "Nails": "5"
+        "Wood": 1,
+        "Nails": 5
       },
       "output": {
-        "Wheel": "1"
+        "Wheel": 1
       },
-      "duration": "20"
+      "duration": 20
     },
     "SteelMattock": {
       "proficiency": {
@@ -1571,13 +1571,13 @@
         "Workbench"
       ],
       "input": {
-        "Steel": "2",
-        "Wood": "2"
+        "Steel": 2,
+        "Wood": 2
       },
       "output": {
-        "SteelMattock": "1"
+        "SteelMattock": 1
       },
-      "duration": "60"
+      "duration": 60
     },
     "FishingNet": {
       "proficiency": {
@@ -1588,12 +1588,12 @@
 
       ],
       "input": {
-        "Rope": "20"
+        "Rope": 20
       },
       "output": {
-        "FishingNet": "1"
+        "FishingNet": 1
       },
-      "duration": "200"
+      "duration": 200
     },
     "LargeBarrel": {
       "proficiency": {
@@ -1604,14 +1604,14 @@
         "Workbench"
       ],
       "input": {
-        "WoodenPlanks": "6",
-        "Nails": "10",
-        "Rope": "2"
+        "WoodenPlanks": 6,
+        "Nails": 10,
+        "Rope": 2
       },
       "output": {
-        "LargeBarrel": "1"
+        "LargeBarrel": 1
       },
-      "duration": "100"
+      "duration": 100
     },
     "LeatherBackPack": {
       "proficiency": {
@@ -1622,14 +1622,14 @@
         "Workbench"
       ],
       "input": {
-        "Cloth": "5",
-        "Meat": "2",
-        "Rope": "3"
+        "Cloth": 5,
+        "Meat": 2,
+        "Rope": 3
       },
       "output": {
-        "LeatherBackPack": "1"
+        "LeatherBackPack": 1
       },
-      "duration": "100"
+      "duration": 100
     },
     "Cart": {
       "proficiency": {
@@ -1640,14 +1640,14 @@
         "Workbench"
       ],
       "input": {
-        "WoodenPlanks": "10",
-        "Nails": "10",
-        "CartWheel": "2"
+        "WoodenPlanks": 10,
+        "Nails": 10,
+        "CartWheel": 2
       },
       "output": {
-        "Cart": "1"
+        "Cart": 1
       },
-      "duration": "200"
+      "duration": 200
     },
     "BlockAndTackle": {
       "proficiency": {
@@ -1658,14 +1658,14 @@
         "AdvancedWorkbench"
       ],
       "input": {
-        "Rope": "10",
-        "Wood": "1",
-        "Steel": "1"
+        "Rope": 10,
+        "Wood": 1,
+        "Steel": 1
       },
       "output": {
-        "BlockAndTackle": "1"
+        "BlockAndTackle": 1
       },
-      "duration": "50"
+      "duration": 50
     },
     "CastingVessel": {
       "proficiency": {
@@ -1676,77 +1676,77 @@
         "Forge"
       ],
       "input": {
-        "IronOre": "3",
-        "Wood": "1",
-        "SteelWire": "2",
-        "Water": "2"
+        "IronOre": 3,
+        "Wood": 1,
+        "SteelWire": 2,
+        "Water": 2
       },
       "output": {
-        "CastingVessel": "1"
+        "CastingVessel": 1
       },
-      "duration": "300"
+      "duration": 300
     },
     "MarbleStatue": {
       "construction": [
         "AdvancedWorkbench"
       ],
       "input": {
-        "Marble": "5"
+        "Marble": 5
       },
       "output": {
-        "MarbleStatue": "1"
+        "MarbleStatue": 1
       },
-      "duration": "400"
+      "duration": 400
     },
     "MarbleBookshelf": {
       "construction": [
         "AdvancedWorkbench"
       ],
       "input": {
-        "Marble": "5",
-        "Books": "1"
+        "Marble": 5,
+        "Books": 1
       },
       "output": {
-        "MarbleBookshelf": "1"
+        "MarbleBookshelf": 1
       },
-      "duration": "200"
+      "duration": 200
     },
     "BulkWoodenPlank": {
       "construction": [
         "Workbench"
       ],
       "input": {
-        "Lumber": "1"
+        "Lumber": 1
       },
       "output": {
-        "WoodenPlanks": "10"
+        "WoodenPlanks": 10
       },
-      "duration": "50"
+      "duration": 50
     },
     "BulkFish": {
       "construction": [
         "Workbench"
       ],
       "input": {
-        "ShaolFish": "1"
+        "ShaolFish": 1
       },
       "output": {
-        "Fish": "10"
+        "Fish": 10
       },
-      "duration": "50"
+      "duration": 50
     },
     "ShearSheep": {
       "construction": [
 
       ],
       "input": {
-        "Sheep": "1"
+        "Sheep": 1
       },
       "output": {
-        "Wool": "1",
-        "Sheep": "1"
+        "Wool": 1,
+        "Sheep": 1
       },
-      "duration": "20"
+      "duration": 20
     },
     "CookedFruit": {
       "proficiency": {
@@ -1757,25 +1757,25 @@
         "WoodenTable"
       ],
       "input": {
-        "Fruit": "2",
-        "Wood": "1"
+        "Fruit": 2,
+        "Wood": 1
       },
       "output": {
-        "CookedFruit": "2"
+        "CookedFruit": 2
       },
-      "duration": "30"
+      "duration": 30
     },
     "FreshFruit": {
       "construction": [
         "WoodenTable"
       ],
       "input": {
-        "Fruit": "2"
+        "Fruit": 2
       },
       "output": {
-        "FreshFruit": "2"
+        "FreshFruit": 2
       },
-      "duration": "30"
+      "duration": 30
     },
     "CookedVeg": {
       "proficiency": {
@@ -1786,13 +1786,13 @@
         "WoodenTable"
       ],
       "input": {
-        "Leaves": "2",
-        "Wood": "1"
+        "Leaves": 2,
+        "Wood": 1
       },
       "output": {
-        "CookedVeg": "4"
+        "CookedVeg": 4
       },
-      "duration": "30"
+      "duration": 30
     },
     "FlatBread": {
       "proficiency": {
@@ -1803,14 +1803,14 @@
         "Grill"
       ],
       "input": {
-        "Grain": "1",
-        "Wood": "1",
-        "Water": "1"
+        "Grain": 1,
+        "Wood": 1,
+        "Water": 1
       },
       "output": {
-        "FlatBread": "4"
+        "FlatBread": 4
       },
-      "duration": "30"
+      "duration": 30
     },
     "MeatStew": {
       "proficiency": {
@@ -1821,15 +1821,15 @@
         "Grill"
       ],
       "input": {
-        "Meat": "2",
-        "Leaves": "1",
-        "Grain": "1",
-        "Charcoal": "1"
+        "Meat": 2,
+        "Leaves": 1,
+        "Grain": 1,
+        "Charcoal": 1
       },
       "output": {
-        "CookedFruit": "2"
+        "CookedFruit": 2
       },
-      "duration": "30"
+      "duration": 30
     },
     "GrilledFish": {
       "proficiency": {
@@ -1840,25 +1840,25 @@
         "Grill"
       ],
       "input": {
-        "Fish": "4",
-        "Charcoal": "1"
+        "Fish": 4,
+        "Charcoal": 1
       },
       "output": {
-        "GrilledFish": "4"
+        "GrilledFish": 4
       },
-      "duration": "30"
+      "duration": 30
     },
     "RefineGem2RedBull": {
       "construction": [
 
       ],
       "input": {
-        "Gem": "1"
+        "Gem": 1
       },
       "output": {
-        "RefineGem2RedBull": "5"
+        "RefineGem2RedBull": 5
       },
-      "duration": "30"
+      "duration": 30
     },
     "Grill": {
       "proficiency": {
@@ -1869,79 +1869,79 @@
         "Forge"
       ],
       "input": {
-        "IronOre": "3",
-        "Stone": "1",
-        "SteelWire": "1"
+        "IronOre": 3,
+        "Stone": 1,
+        "SteelWire": 1
       },
       "output": {
-        "Grill": "1"
+        "Grill": 1
       },
-      "duration": "40"
+      "duration": 40
     },
     "Charcoal": {
       "construction": [
         "Forge"
       ],
       "input": {
-        "Coal": "1",
-        "Wood": "1"
+        "Coal": 1,
+        "Wood": 1
       },
       "output": {
-        "Charcoal": "2"
+        "Charcoal": 2
       },
-      "duration": "30"
+      "duration": 30
     },
     "MilkSheep": {
       "construction": [
 
       ],
       "input": {
-        "Sheep": "1"
+        "Sheep": 1
       },
       "output": {
-        "Ale": "1",
-        "Sheep": "1"
+        "Ale": 1,
+        "Sheep": 1
       },
-      "duration": "20"
+      "duration": 20
     },
     "SlaughterSheep": {
       "construction": [
 
       ],
       "input": {
-        "Sheep": "1"
+        "Sheep": 1
       },
       "output": {
-        "Meat": "3"
+        "Meat": 3
       },
-      "duration": "20"
+      "duration": 20
     },
     "OgreAle": {
       "construction": [
         "FermentingVat"
       ],
       "input": {
-        "Water": "3",
-        "Grain": "2",
-        "Leaves": "1"
+        "Water": 3,
+        "Grain": 2,
+        "Leaves": 1
       },
       "output": {
-        "OgreAle": "2"
+        "OgreAle": 2
       },
-      "duration": "45"
+      "duration": 45
     },
     "ElvenWine": {
       "construction": [
         "FermentingVat"
       ],
       "input": {
-        "Water": "2",
-        "Leaves": "2"
+        "Water": 2,
+        "Leaves": 2
       },
       "output": {
-        "ElvenWine": "2"
+        "ElvenWine": 2
       },
-      "duration": "45"
+      "duration": 45
     }
   },
   "taskRules": {
@@ -1977,7 +1977,7 @@
       "xp": 1
     }
   },
-  "foodDefines": {
+  "consumableDefines": {
     "BulkAle": {
       "onConsume": {
         "stat": {

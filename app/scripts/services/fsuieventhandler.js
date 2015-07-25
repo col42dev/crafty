@@ -178,9 +178,9 @@ angular.module('craftyApp')
 
                 case 'food': { // consume
 
-                    for (var statType in FSSimRules.foodDefines[bankItemKey].onConsume.stat) {
-                        for (var statSubType in FSSimRules.foodDefines[bankItemKey].onConsume.stat[statType]) {
-                            var delta = parseInt(FSSimRules.foodDefines[bankItemKey].onConsume.stat[statType][statSubType], 10);
+                    for (var statType in FSSimRules.consumableDefines[bankItemKey].onConsume.stat) {
+                        for (var statSubType in FSSimRules.consumableDefines[bankItemKey].onConsume.stat[statType]) {
+                            var delta = parseInt(FSSimRules.consumableDefines[bankItemKey].onConsume.stat[statType][statSubType], 10);
                             FSSimState.selectedCharacter.modifyStat( statType, statSubType, delta);
                         }
                     }

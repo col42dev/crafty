@@ -29,7 +29,7 @@ angular.module('craftyApp')
       else if (FSSimRules.constructorDefines.hasOwnProperty(this.json.name) === true) {
         this.category = 'constructor';
       }
-      else if (FSSimRules.foodDefines.hasOwnProperty(this.json.name) === true) {
+      else if (FSSimRules.consumableDefines.hasOwnProperty(this.json.name) === true) {
         this.category = 'food';
       }
       else if (FSSimRules.gatherableDefines.hasOwnProperty(this.json.name) === true) {

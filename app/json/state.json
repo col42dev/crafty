@@ -11,19 +11,19 @@
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c1.8d006e6f.jpg",
       "stats": {
         "health": {
-          "current": "50",
-          "max": "100",
-          "regeneratePeriod": "10"
+          "current": 50,
+          "max": 100,
+          "regeneratePeriod": 10
         },
         "energy": {
-          "current": "50",
-          "max": "100",
-          "regeneratePeriod": "8"
+          "current": 50,
+          "max": 100,
+          "regeneratePeriod": 8
         },
         "mind": {
-          "current": "40",
-          "max": "100",
-          "regeneratePeriod": "20"
+          "current": 40,
+          "max": 100,
+          "regeneratePeriod": 20
         }
       },
       "activity": [
@@ -45,19 +45,19 @@
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c2.3a5cb818.png",
       "stats": {
         "health": {
-          "current": "50",
-          "max": "100",
-          "regeneratePeriod": "10"
+          "current": 50,
+          "max": 100,
+          "regeneratePeriod": 10
         },
         "energy": {
-          "current": "40",
-          "max": "100",
-          "regeneratePeriod": "15"
+          "current": 40,
+          "max": 100,
+          "regeneratePeriod": 15
         },
         "mind": {
-          "current": "100",
-          "max": "100",
-          "regeneratePeriod": "5"
+          "current": 100,
+          "max": 100,
+          "regeneratePeriod": 5
         }
       },
       "activity": [
@@ -79,19 +79,19 @@
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c3.b9144b93.png",
       "stats": {
         "health": {
-          "current": "100",
-          "max": "100",
-          "regeneratePeriod": "10"
+          "current": 100,
+          "max": 100,
+          "regeneratePeriod": 10
         },
         "energy": {
-          "current": "100",
-          "max": "100",
-          "regeneratePeriod": "5"
+          "current": 100,
+          "max": 100,
+          "regeneratePeriod": 5
         },
         "mind": {
-          "current": "20",
-          "max": "100",
-          "regeneratePeriod": "20"
+          "current": 20,
+          "max": 100,
+          "regeneratePeriod": 20
         }
       },
       "activity": [
@@ -113,19 +113,19 @@
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c4.59c1ea4d.png",
       "stats": {
         "health": {
-          "current": "60",
-          "max": "100",
-          "regeneratePeriod": "10"
+          "current": 60,
+          "max": 100,
+          "regeneratePeriod": 10
         },
         "energy": {
-          "current": "100",
-          "max": "100",
-          "regeneratePeriod": "5"
+          "current": 100,
+          "max": 100,
+          "regeneratePeriod": 5
         },
         "mind": {
-          "current": "40",
-          "max": "100",
-          "regeneratePeriod": "30"
+          "current": 40,
+          "max": 100,
+          "regeneratePeriod": 30
         }
       },
       "activity": [
@@ -142,127 +142,117 @@
   "gatherables": [
     {
       "name": "IronOre",
-      "quantity": "3",
-      "gatherers": "0"
+      "quantity": 4
     },
     {
       "name": "Water",
-      "quantity": "200",
-      "gatherers": "0"
+      "quantity": 200
     },
     {
       "name": "Wood",
-      "quantity": "5",
-      "gatherers": "0"
+      "quantity": 5
     },
     {
       "name": "Wool",
-      "quantity": "10",
-      "gatherers": "0"
+      "quantity": 10
     },
     {
       "name": "Leaves",
-      "quantity": "5",
-      "gatherers": "0"
+      "quantity": 5
     },
     {
       "name": "Grain",
-      "quantity": "5",
-      "gatherers": "0"
+      "quantity": 5
     },
     {
       "name": "Antler",
-      "quantity": "9",
-      "gatherers": "0"
+      "quantity": 9
     },
     {
       "name": "Sand",
-      "quantity": "5",
-      "gatherers": "0"
+      "quantity": 5
     },
     {
       "name": "Meat",
-      "quantity": "10",
-      "gatherers": "0"
+      "quantity": 10
     },
     {
       "name": "Fish",
-      "quantity": "10",
-      "gatherers": "0"
+      "quantity": 10
     },
     {
       "name": "Feather",
-      "quantity": "5",
-      "gatherers": "0"
+      "quantity": 5
     },
     {
       "name": "Marble",
-      "quantity": "1",
-      "gatherers": "0"
+      "quantity": 1
     },
     {
       "name": "Lumber",
-      "quantity": "1",
-      "gatherers": "0"
+      "quantity": 1
     },
     {
       "name": "ShaolFish",
-      "quantity": "1",
-      "gatherers": "0"
+      "quantity": 1
+    },
+    {
+      "name": "Sheep",
+      "quantity": 1
     }
   ],
   "harvestables": [
     {
       "name": "Earth",
-      "quantity": "100"
+      "quantity": 100
     },
     {
       "name": "Stone",
-      "quantity": "100"
+      "quantity": 100
     },
     {
       "name": "Coal",
-      "quantity": "100"
+      "quantity": 100
     },
     {
       "name": "IronOre",
-      "quantity": "100"
+      "quantity": 100
     },
     {
       "name": "Meat",
-      "quantity": "100"
+      "quantity": 100
     },
     {
       "name": "Fish",
-      "quantity": "100"
+      "quantity": 100
     },
     {
       "name": "Leaves",
-      "quantity": "100"
+      "quantity": 100
     },
     {
       "name": "Grain",
-      "quantity": "100"
+      "quantity": 100
     },
     {
       "name": "Sand",
-      "quantity": "100"
+      "quantity": 100
     },
     {
       "name": "Wood",
-      "quantity": "100"
+      "quantity": 100
     },
     {
       "name": "Marble",
-      "quantity": "100"
+      "quantity": 100
     },
     {
       "name": "Lumber",
-      "quantity": "100"
+      "quantity": 100
     },
     {
       "name": "ShaolFish",
-      "quantity": "100"
+      "quantity": 100
     }
   ],
   "bank": [
