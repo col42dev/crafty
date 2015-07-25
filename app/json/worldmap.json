@@ -1,0 +1,136 @@
+{
+  "title": "craftymap",
+  "version": "0.0.0",
+  "worldMap": [
+    [
+      {
+        "resource": ""
+      },
+      {
+        "resource": ""
+      },
+      {
+        "resource": ""
+      },
+      {
+        "resource": ""
+      },
+      {
+        "resource": ""
+      },
+      {
+        "resource": ""
+      },
+      {
+        "resource": ""
+      },
+      {
+        "resource": ""
+      }
+    ],
+    [
+      {
+        "resource": ""
+      },
+      {
+        "resource": ""
+      },
+      {
+        "resource": ""
+      },
+      {
+        "resource": ""
+      },
+      {
+        "resource": ""
+      },
+      {
+        "resource": ""
+      },
+      {
+        "resource": ""
+      },
+      {
+        "resource": ""
+      }
+    ],
+    [
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "Marble"
+      },
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "Earth"
+      }
+    ],
+    [
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "IronOre"
+      },
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "Coal"
+      },
+      {
+        "resource": "Earth"
+      }
+    ],
+    [
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "IronOre"
+      },
+      {
+        "resource": "Earth"
+      },
+      {
+        "resource": "Coal"
+      },
+      {
+        "resource": "Earth"
+      }
+    ]
+  ]
+}

@@ -2,7 +2,7 @@
 
 
 <form novalidate>
-  <pre><button ng-click="getMapEdit().resize()">resize</button>rows<input type="text" ng-model="getMapEdit().worldMapDim.rows" value="{{getMapEdit().worldMapDim.rows}}" size="4"/>,cols<input type="text" ng-model="getMapEdit().worldMapDim.cols" value="{{getMapEdit().worldMapDim.cols}}" size="4"/>   <button ng-click="getMapEdit().save()">save</button></pre>
+  <pre><button ng-click="getMapEdit().resize()">resize</button> (rows<input type="text" ng-model="getMapEdit().worldMapDim.rows" value="{{getMapEdit().worldMapDim.rows}}" size="4"/>, cols<input type="text" ng-model="getMapEdit().worldMapDim.cols" value="{{getMapEdit().worldMapDim.cols}}" size="4"/>)  <br/><br/> <button ng-click="getMapEdit().save()">save</button></pre>
 </ul>
 <br/>
 
@@ -28,11 +28,6 @@
 
 
 
-
-
-
-</div><!--fadedbackground-->
-
-
-
- 
+<pre>
+{{getMapEdit().json}}
+</pre>
