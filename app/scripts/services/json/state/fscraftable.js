@@ -22,6 +22,21 @@ angular.module('craftyApp')
       if (this.construction.length === 0) {
         this.construction.push( 'none'); 
       }
+
+      if (FSSimRules.toolDefines.hasOwnProperty(this.json.name) === true) {
+        this.category = 'tool';
+      }
+      else if (FSSimRules.constructorDefines.hasOwnProperty(this.json.name) === true) {
+        this.category = 'constructor';
+      }
+      else if (FSSimRules.foodDefines.hasOwnProperty(this.json.name) === true) {
+        this.category = 'food';
+      }
+      else if (FSSimRules.gatherableDefines.hasOwnProperty(this.json.name) === true) {
+        this.category = 'gatherable';
+      } else {
+        this.category = 'unclassified';
+      }
     };
 
 
@@ -30,10 +45,7 @@ angular.module('craftyApp')
      * @return 
      */
     FSCraftable.prototype.getCategory = function( ) {
-      if (FSSimRules.craftableDefines.hasOwnProperty(this.json.name) === true) {
-          return FSSimRules.craftableDefines[this.json.name].category;
-      }
-      return 'unknown category';
+      return this.category;
     };
 
 

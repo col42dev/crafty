@@ -263,16 +263,20 @@
     {
       "name": "ShaolFish",
       "quantity": "100"
-    },
-    {
-      "name": "Wool",
-      "quantity": "100"
     }
   ],
   "bank": [
     {
+      "name": "Constructor",
+      "quantity": 1
+    },
+    {
       "name": "WoodAxe",
       "quantity": 1
+    },
+    {
+      "name": "ElvenWine",
+      "quantity": 5
     },
     {
       "name": "Bucket",
@@ -281,10 +285,6 @@
     {
       "name": "Saw",
       "quantity": 1
-    },
-    {
-      "name": "BasicMeal",
-      "quantity": 4
     },
     {
       "name": "Ale",
@@ -302,7 +302,6 @@
     "BackPack",
     "Bucket",
     "GreekFireCatapult",
-    "BasicMeal",
     "WickerBasket"
   ]
 }

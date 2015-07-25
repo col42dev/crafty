@@ -20,6 +20,7 @@ angular.module('craftyApp')
         this.craftableDefines = json.craftableDefines; 
         this.toolDefines = json.toolDefines;  
         this.foodDefines = json.foodDefines;  
+        this.constructorDefines = json.constructorDefines;  
         this.taskRules = json.taskRules;  
         this.rewardRules = json.rewardRules;  
     };

@@ -37,7 +37,7 @@ angular.module('craftyApp')
                         switch (FSSimState.bank[type].category) 
                         {
                             case 'constructor':
-                                if ( FSSimState.selectedConstructor === type) {
+                                if ( FSSimState.selectedConstructor !== type) {
                                     enabled = true;
                                 } 
                                 break;
@@ -163,7 +163,7 @@ angular.module('craftyApp')
                 case 'constructor': { 
                     FSSimState.selectedConstructor = bankItemKey;
                     FSSimState.selectedConstructorFilter = bankItemKey; 
-                    if (FSSimState.selectedConstructor === '') {
+                    if (FSSimState.selectedConstructor === 'Constructor') {
                         FSSimState.selectedConstructorFilter = 'none';
                     }
                 }

@@ -30,9 +30,10 @@
       "target": "CookedVeg",
       "xp": 4,
       "recipeUnlocks": [
+
       ]
     },
-   "Ready to Work": {
+    "Ready to Work": {
       "desc": "Craft a Workbench",
       "action": "craft",
       "target": "Workbench",
@@ -69,7 +70,7 @@
 
       ]
     },
-   "Forging Ahead": {
+    "Forging Ahead": {
       "desc": "Craft a Forge",
       "action": "craft",
       "target": "Forge",
@@ -101,6 +102,7 @@
       "target": "Steel",
       "xp": 3,
       "recipeUnlocks": [
+
       ]
     },
     "Lumberjack": {
@@ -112,7 +114,7 @@
         "BulkWoodenPlank"
       ]
     },
-    "Catapult" : {
+    "Catapult": {
       "desc": "Craft a GreekFireCatapult",
       "action": "craft",
       "target": "GreekFireCatapult",
@@ -681,9 +683,34 @@
       ]
     }
   },
+   "constructorDefines": {
+    "Constructor": {
+    },
+    "WoodenTable": {
+    },
+    "Workbench": {
+    },
+    "Forge": {
+    },
+    "Loom": {
+    },
+    "FermentingVat": {
+    },
+    "BucketPump": {
+    },
+    "FirstAidStation": {
+    },
+    "ImprovedBucketPump": {
+    },
+    "AdvancedWorkbench": {
+    },
+    "CastingVessel": {
+    },
+    "Grill": {
+    }
+  },
   "craftableDefines": {
     "Rope": {
-      "category": "tool",
       "construction": [
 
       ],
@@ -696,7 +723,6 @@
       "duration": "15"
     },
     "WoodenTable": {
-      "category": "constructor",
       "construction": [
 
       ],
@@ -709,7 +735,6 @@
       "duration": "30"
     },
     "Workbench": {
-      "category": "constructor",
       "construction": [
 
       ],
@@ -723,7 +748,6 @@
       "duration": "30"
     },
     "BackPack": {
-      "category": "tool",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 1
@@ -741,7 +765,6 @@
       "duration": "30"
     },
     "Forge": {
-      "category": "constructor",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 1
@@ -761,7 +784,6 @@
       "duration": "60"
     },
     "AntlerPickaxe": {
-      "category": "tool",
       "construction": [
 
       ],
@@ -775,7 +797,6 @@
       "duration": "15"
     },
     "Paper": {
-      "category": "unclassified",
       "construction": [
         "WoodenTable"
       ],
@@ -788,7 +809,6 @@
       "duration": "20"
     },
     "Books": {
-      "category": "unclassified",
       "construction": [
         "WoodenTable"
       ],
@@ -803,7 +823,6 @@
       "duration": "45"
     },
     "FineHat": {
-      "category": "unclassified",
       "construction": [
         "WoodenTable"
       ],
@@ -817,7 +836,6 @@
       "duration": "15"
     },
     "FlagonOfAle": {
-      "category": "food",
       "construction": [
         "WoodenTable"
       ],
@@ -833,7 +851,6 @@
       "duration": "15"
     },
     "WoodenPlanks": {
-      "category": "unclassified",
       "construction": [
         "Workbench"
       ],
@@ -846,7 +863,6 @@
       "duration": "15"
     },
     "DiceTable": {
-      "category": "furniture",
       "construction": [
         "Workbench"
       ],
@@ -861,7 +877,6 @@
       "duration": "45"
     },
     "Minecart": {
-      "category": "tool",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 2
@@ -879,7 +894,6 @@
       "duration": "60"
     },
     "Loom": {
-      "category": "constructor",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 1
@@ -897,7 +911,6 @@
       "duration": "30"
     },
     "Glass": {
-      "category": "unclassified",
       "construction": [
         "Forge"
       ],
@@ -910,7 +923,6 @@
       "duration": "45"
     },
     "Shovel": {
-      "category": "tool",
       "construction": [
         "Workbench"
       ],
@@ -923,7 +935,6 @@
       "duration": "15"
     },
     "Cloth": {
-      "category": "unclassified",
       "construction": [
         "Loom"
       ],
@@ -936,7 +947,6 @@
       "duration": "15"
     },
     "Ale": {
-      "category": "food",
       "construction": [
         "WoodenTable"
       ],
@@ -950,7 +960,6 @@
       "duration": "45"
     },
     "Saw": {
-      "category": "tool",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 2
@@ -968,7 +977,6 @@
       "duration": "45"
     },
     "Bucket": {
-      "category": "tool",
       "construction": [
 
       ],
@@ -982,7 +990,6 @@
       "duration": "30"
     },
     "Nails": {
-      "category": "unclassified",
       "construction": [
         "Forge"
       ],
@@ -995,7 +1002,6 @@
       "duration": "10"
     },
     "FermentingVat": {
-      "category": "constructor",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 2
@@ -1013,7 +1019,6 @@
       "duration": "45"
     },
     "BulkAle": {
-      "category": "food",
       "construction": [
         "FermentingVat"
       ],
@@ -1027,7 +1032,6 @@
       "duration": "60"
     },
     "BucketPump": {
-      "category": "constructor",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 2
@@ -1046,7 +1050,6 @@
       "duration": "30"
     },
     "Scythe": {
-      "category": "tool",
       "construction": [
         "Forge"
       ],
@@ -1060,7 +1063,6 @@
       "duration": "45"
     },
     "WoodAxe": {
-      "category": "tool",
       "construction": [
         "Forge"
       ],
@@ -1074,7 +1076,6 @@
       "duration": "30"
     },
     "HuntingBow": {
-      "category": "tool",
       "construction": [
         "Workbench"
       ],
@@ -1089,7 +1090,6 @@
       "duration": "30"
     },
     "FishingRod": {
-      "category": "tool",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 1
@@ -1108,7 +1108,6 @@
       "duration": "45"
     },
     "CatapultBase": {
-      "category": "unclassified",
       "construction": [
         "AdvancedWorkbench"
       ],
@@ -1124,7 +1123,6 @@
       "duration": "60"
     },
     "CatapultArm": {
-      "category": "unclassified",
       "construction": [
         "AdvancedWorkbench"
       ],
@@ -1139,7 +1137,6 @@
       "duration": "60"
     },
     "GreekFireCatapult": {
-      "category": "unclassified",
       "construction": [
         "AdvancedWorkbench"
       ],
@@ -1155,7 +1152,6 @@
       "duration": "30"
     },
     "GreekFire": {
-      "category": "unclassified",
       "construction": [
         "AdvancedWorkbench"
       ],
@@ -1171,7 +1167,6 @@
       "duration": "120"
     },
     "TwistedRopes": {
-      "category": "unclassified",
       "construction": [
         "AdvancedWorkbench"
       ],
@@ -1184,7 +1179,6 @@
       "duration": "15"
     },
     "Steel": {
-      "category": "unclassified",
       "construction": [
         "Forge"
       ],
@@ -1199,7 +1193,6 @@
       "duration": "30"
     },
     "SteelWire": {
-      "category": "unclassified",
       "construction": [
         "Forge"
       ],
@@ -1212,7 +1205,6 @@
       "duration": "20"
     },
     "CartWheel": {
-      "category": "unclassified",
       "construction": [
         "Workbench"
       ],
@@ -1226,7 +1218,6 @@
       "duration": "45"
     },
     "Barrel": {
-      "category": "tool",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 1
@@ -1244,7 +1235,6 @@
       "duration": "45"
     },
     "RawGreenSalad": {
-      "category": "food",
       "construction": [
 
       ],
@@ -1258,7 +1248,6 @@
       "duration": "10"
     },
     "GrilledMeat": {
-      "category": "food",
       "proficiency": {
         "profession": "Cook",
         "tier": 1
@@ -1277,7 +1266,6 @@
       "duration": "10"
     },
     "VegSoup": {
-      "category": "food",
       "proficiency": {
         "profession": "Cook",
         "tier": 2
@@ -1297,7 +1285,6 @@
       "duration": "10"
     },
     "FishSoup": {
-      "category": "food",
       "proficiency": {
         "profession": "Cook",
         "tier": 2
@@ -1317,7 +1304,6 @@
       "duration": "10"
     },
     "Bandage": {
-      "category": "food",
       "construction": [
         "WoodenTable"
       ],
@@ -1332,7 +1318,6 @@
       "duration": "30"
     },
     "Medicine": {
-      "category": "food",
       "construction": [
         "FirstAidStation"
       ],
@@ -1347,7 +1332,6 @@
       "duration": "200"
     },
     "Potion": {
-      "category": "food",
       "construction": [
         "FirstAidStation"
       ],
@@ -1362,7 +1346,6 @@
       "duration": "120"
     },
     "FirstAidStation": {
-      "category": "constructor",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 1
@@ -1381,7 +1364,6 @@
       "duration": "30"
     },
     "ImprovedBucketPump": {
-      "category": "constructor",
       "construction": [
         "Workbench"
       ],
@@ -1395,7 +1377,6 @@
       "duration": "30"
     },
     "BarrelOfWater": {
-      "category": "unclassified",
       "construction": [
         "ImprovedBucketPump"
       ],
@@ -1408,7 +1389,6 @@
       "duration": "30"
     },
     "SteelPickaxe": {
-      "category": "tool",
       "construction": [
         "Forge"
       ],
@@ -1422,7 +1402,6 @@
       "duration": "30"
     },
     "PumpedWater": {
-      "category": "unclassified",
       "construction": [
         "BucketPump"
       ],
@@ -1435,7 +1414,6 @@
       "duration": "10"
     },
     "WickerBasket": {
-      "category": "tool",
       "construction": [
 
       ],
@@ -1448,7 +1426,6 @@
       "duration": "30"
     },
     "WoodenStatue": {
-      "category": "unclassified",
       "construction": [
         "Workbench"
       ],
@@ -1461,7 +1438,6 @@
       "duration": "300"
     },
     "WoodenChair": {
-      "category": "unclassified",
       "construction": [
         "Workbench"
       ],
@@ -1474,7 +1450,6 @@
       "duration": "200"
     },
     "SteelShovel": {
-      "category": "tool",
       "construction": [
         "Workbench"
       ],
@@ -1488,7 +1463,6 @@
       "duration": "30"
     },
     "SteelAxe": {
-      "category": "tool",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 1
@@ -1506,7 +1480,6 @@
       "duration": "45"
     },
     "Snares": {
-      "category": "tool",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 1
@@ -1524,7 +1497,6 @@
       "duration": "30"
     },
     "HarvestingShears": {
-      "category": "tool",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 1
@@ -1543,7 +1515,6 @@
       "duration": "40"
     },
     "WheelBarrow": {
-      "category": "tool",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 1
@@ -1561,7 +1532,6 @@
       "duration": "30"
     },
     "AdvancedWorkbench": {
-      "category": "constructor",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 1
@@ -1580,7 +1550,6 @@
       "duration": "100"
     },
     "Wheel": {
-      "category": "unclassified",
       "construction": [
         "Workbench"
       ],
@@ -1594,7 +1563,6 @@
       "duration": "20"
     },
     "SteelMattock": {
-      "category": "tool",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 2
@@ -1612,7 +1580,6 @@
       "duration": "60"
     },
     "FishingNet": {
-      "category": "tool",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 2
@@ -1629,7 +1596,6 @@
       "duration": "200"
     },
     "LargeBarrel": {
-      "category": "tool",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 2
@@ -1648,7 +1614,6 @@
       "duration": "100"
     },
     "LeatherBackPack": {
-      "category": "tool",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 2
@@ -1667,7 +1632,6 @@
       "duration": "100"
     },
     "Cart": {
-      "category": "tool",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 2
@@ -1686,7 +1650,6 @@
       "duration": "200"
     },
     "BlockAndTackle": {
-      "category": "tool",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 2
@@ -1705,7 +1668,6 @@
       "duration": "50"
     },
     "CastingVessel": {
-      "category": "constructor",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 2
@@ -1725,7 +1687,6 @@
       "duration": "300"
     },
     "MarbleStatue": {
-      "category": "unclassified",
       "construction": [
         "AdvancedWorkbench"
       ],
@@ -1738,7 +1699,6 @@
       "duration": "400"
     },
     "MarbleBookshelf": {
-      "category": "unclassified",
       "construction": [
         "AdvancedWorkbench"
       ],
@@ -1752,7 +1712,6 @@
       "duration": "200"
     },
     "BulkWoodenPlank": {
-      "category": "unclassified",
       "construction": [
         "Workbench"
       ],
@@ -1765,7 +1724,6 @@
       "duration": "50"
     },
     "BulkFish": {
-      "category": "unclassified",
       "construction": [
         "Workbench"
       ],
@@ -1778,7 +1736,6 @@
       "duration": "50"
     },
     "ShearSheep": {
-      "category": "unclassified",
       "construction": [
 
       ],
@@ -1792,7 +1749,6 @@
       "duration": "20"
     },
     "CookedFruit": {
-      "category": "food",
       "proficiency": {
         "profession": "Cook",
         "tier": 1
@@ -1810,7 +1766,6 @@
       "duration": "30"
     },
     "FreshFruit": {
-      "category": "food",
       "construction": [
         "WoodenTable"
       ],
@@ -1823,7 +1778,6 @@
       "duration": "30"
     },
     "CookedVeg": {
-      "category": "food",
       "proficiency": {
         "profession": "Cook",
         "tier": 1
@@ -1841,7 +1795,6 @@
       "duration": "30"
     },
     "FlatBread": {
-      "category": "food",
       "proficiency": {
         "profession": "Cook",
         "tier": 1
@@ -1860,7 +1813,6 @@
       "duration": "30"
     },
     "MeatStew": {
-      "category": "food",
       "proficiency": {
         "profession": "Cook",
         "tier": 2
@@ -1880,7 +1832,6 @@
       "duration": "30"
     },
     "GrilledFish": {
-      "category": "food",
       "proficiency": {
         "profession": "Cook",
         "tier": 2
@@ -1898,7 +1849,6 @@
       "duration": "30"
     },
     "RefineGem2RedBull": {
-      "category": "food",
       "construction": [
 
       ],
@@ -1911,7 +1861,6 @@
       "duration": "30"
     },
     "Grill": {
-      "category": "constructor",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 1
@@ -1930,7 +1879,6 @@
       "duration": "40"
     },
     "Charcoal": {
-      "category": "unclassified",
       "construction": [
         "Forge"
       ],
@@ -1944,7 +1892,6 @@
       "duration": "30"
     },
     "MilkSheep": {
-      "category": "unclassified",
       "construction": [
 
       ],
@@ -1958,7 +1905,6 @@
       "duration": "20"
     },
     "SlaughterSheep": {
-      "category": "unclassified",
       "construction": [
 
       ],
@@ -1971,7 +1917,6 @@
       "duration": "20"
     },
     "OgreAle": {
-      "category": "food",
       "construction": [
         "FermentingVat"
       ],
@@ -1986,7 +1931,6 @@
       "duration": "45"
     },
     "ElvenWine": {
-      "category": "food",
       "construction": [
         "FermentingVat"
       ],

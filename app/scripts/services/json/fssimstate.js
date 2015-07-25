@@ -17,7 +17,6 @@ angular.module('craftyApp')
 
     this.set = function(json) {
 
-     
             this.taskTimeScalar ='1';
             this.selectedConstructor = '';
             this.selectedConstructorFilter = 'none';
@@ -28,7 +27,6 @@ angular.module('craftyApp')
                 var obj = { characterDesc : thisCharacter};
                 FSSimMessagingChannel.createSimObject( { category: 'character', desc : obj});
             }); 
-
 
             // Gatherables
             this.gatherables = {};  
@@ -59,7 +57,6 @@ angular.module('craftyApp')
             json.bank.forEach( function(item) {
                 FSSimMessagingChannel.createSimObject( { category: 'bankable', desc : item});
             }); 
-            FSSimMessagingChannel.createSimObject( { category: 'bankable', desc : {name:'', quantity : 1} });
             this.updateBank = function() {
                 simState.bankArray = Object.keys(simState.bank).map(function (key) {
                         return simState.bank[key];

@@ -15,22 +15,22 @@ angular.module('craftyApp')
     var FSBankable = function(obj) { 
         this.json = obj;
         this.json.quantity = parseInt( this.json.quantity, 10);
-        console.log(this.json.quantity);
         this.quantitybgcolor = 'rgba(200, 200, 200, 0.25)';
 
-        if (FSSimRules.craftableDefines.hasOwnProperty(this.json.name) === true) {
-          this.category = FSSimRules.craftableDefines[this.json.name].category;
-        }
-        else if (FSSimRules.toolDefines.hasOwnProperty(this.json.name) === true) {
+
+        if (FSSimRules.toolDefines.hasOwnProperty(this.json.name) === true) {
           this.category = 'tool';
         }
         else if (FSSimRules.foodDefines.hasOwnProperty(this.json.name) === true) {
           this.category = 'food';
         }
+        else if (FSSimRules.constructorDefines.hasOwnProperty(this.json.name) === true) {
+          this.category = 'constructor';
+        }
         else if (FSSimRules.gatherableDefines.hasOwnProperty(this.json.name) === true) {
           this.category = 'gatherable';
-        } else if (this.json.name === '') {
-          this.category = 'constructor';
+        } else {
+          this.category = 'unknown';
         }
     };
 
@@ -61,7 +61,7 @@ angular.module('craftyApp')
     FSBankable.prototype.setFlashQuantityTimeout = function( ) {
       setTimeout( (function() {
         if(typeof this !== 'undefined') {
-          this.quantitybgcolor = 'rgba(0, 0, 0, .0)';
+          this.quantitybgcolor = 'rgba(0, 0, 0, .0)'; //hide flash
         }
       }).bind(this), 500);
     };

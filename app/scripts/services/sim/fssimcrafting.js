@@ -40,7 +40,7 @@ angular.module('craftyApp')
                 var recipeInputQuantity = recipeInputObj[ recipeInputKey];
 
                 if (recipeInput in FSSimState.bank) {
-                  if ( FSSimState.bank[ recipeInput ].json.quantity.length < recipeInputQuantity) {
+                  if ( FSSimState.bank[ recipeInput ].json.quantity < recipeInputQuantity) {
                     hasIngredients = false;
                     FSContextConsole.log('Require ' + recipeInputQuantity +' '  + recipeInput + ' for ' + recipeKey + ' but only have  ' + FSSimState.bank[ recipeInput ].json.quantity.length, log);
                   }
