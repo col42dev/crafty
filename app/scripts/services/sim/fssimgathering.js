@@ -8,7 +8,7 @@
  * Operate on fsgatherables's.
  */
 angular.module('craftyApp')
-  .service('FSSimGathering', ['$rootScope', 'FSSimMessagingChannel', 'FSSimState', function ($rootScope, FSSimMessagingChannel, FSSimState) {
+  .service('FSSimGathering', ['$rootScope', 'FSSimMessagingChannel', 'FSSimState', 'FSTask', function ($rootScope, FSSimMessagingChannel, FSSimState, FSTask) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -47,7 +47,8 @@ angular.module('craftyApp')
          */
         this.isGatherable = function (gatherableType) {
             for ( var characterKey in FSSimState.characters ) {
-                if ( FSSimState.characters[characterKey].canPerformTask(gatherableType, 'gathering')) {
+                var thisTask = new FSTask({'name':gatherableType, 'category':'gathering', 'cell' : null});
+                if ( FSSimState.characters[characterKey].canPerformTask(thisTask)) {
                     return true;
                 }
             }

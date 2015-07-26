@@ -4,8 +4,7 @@
 
 
 <br/>
-<br/>
-test
+
 
 <div >
 
@@ -15,14 +14,12 @@ test
         <td style="min-width: 100px; min-height: 100px" 
             ng-repeat="col in row" 
             width="100" height ="100"
-            ng-click="getFSUIEventHandler().onClickWorld(col)" > 
-          <div style="width:100px;background:rgba(100, 200, 100, 0.5); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getWorld().getTaskPercentRemaining(col)}">
-              {{getWorld().getText(col)}}
-          </div>
-
-
-   
-
+            ng-click="getFSUIEventHandler().onClickWorld(col)"> 
+            <div style="height: 100%; width: 100%; background-color:{{getWorld().bgcolor(col)}}">
+              <div style="width:100px; background:rgba(20, 200, 20, 0.25); overflow:visible; word-wrap:normal" ng-style="{ 'width' : getWorld().getTaskPercentRemaining(col)}">
+                  {{getWorld().getText(col)}}
+              </div>
+            </div>
 
         </td>
       </tr>

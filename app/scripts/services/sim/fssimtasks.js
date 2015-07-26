@@ -44,7 +44,7 @@ angular.module('craftyApp')
      */
     this.createCellTask = function ( cell) {
         if (cell.task === null) {
-            var task = new FSTask( {'name':cell.resource, 'category':'harvesting', 'cell' : cell});
+            var task = new FSTask( {'name':cell.harvestable.json.name, 'category':'harvesting', 'cell' : cell});
             cell.task = task;
      
             if ( this.executeTask(task) === false) {
@@ -147,7 +147,7 @@ angular.module('craftyApp')
 
         // generate list of characters which can do this task.
         for ( var character in FSSimState.characters ) {
-            if ( FSSimState.characters[character].canPerformTask(task.name, task.category)) {
+            if ( FSSimState.characters[character].canPerformTask(task)) {
                 validCharacters.push( FSSimState.characters[character]);
             }
         }

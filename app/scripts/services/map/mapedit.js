@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('MapEdit', function () {
+  .service('MapEdit', function (FSSimMessagingChannel, FSHarvestable) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     this.worldMapDim = {rows : 6, cols: 8};
@@ -23,19 +23,17 @@ angular.module('craftyApp')
         for ( var row = 0; row < this.worldMapDim.rows; row ++) {
             this.worldMap.push([]);
              for ( var col = 0; col < this.worldMapDim.cols; col ++) {
-                var obj = {};
+
+                var obj = {harvestable:null};
                 if (row >= 2) {
-                    obj = { resource :'Earth' };
-                    obj.quantity = 1;
-                } else {
-                    obj = { resource : ''};
-                }
+                    obj.harvestable = new FSHarvestable({name: 'Earth', quantity: 1});
+                } 
                 this.worldMap[row].push(obj);
              }
         } 
     };
 
-    this.resize();
+    //this.resize();
 
     this.save = function() {
 

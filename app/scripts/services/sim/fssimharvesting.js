@@ -8,7 +8,7 @@
  * Operate on fsharvestables's.
  */
 angular.module('craftyApp')
-  .service('FSSimHarvesting', ['$rootScope', 'FSSimMessagingChannel', 'FSSimState', function ($rootScope, FSSimMessagingChannel, FSSimState) {
+  .service('FSSimHarvesting', ['$rootScope', 'FSSimMessagingChannel', 'FSSimState', 'FSTask', function ($rootScope, FSSimMessagingChannel, FSSimState, FSTask) {
  
     // AngularJS will instantiate a singleton by calling "new" on this function
 
@@ -34,11 +34,11 @@ angular.module('craftyApp')
 
               //cell
               if (arg.cell !== null) {
-                console.log('cell transation handler' + arg.cell);
-                if (parseInt(arg.cell.quantity, 10) > 0) {
-                  arg.cell.quantity = parseInt(arg.cell.quantity, 10) - 1;
-                  if (parseInt(arg.cell.quantity, 10) === 0) {
-                    arg.cell.resource = '';
+                if (parseInt(arg.cell.harvestable.json.quantity, 10) > 0) {
+                  arg.cell.harvestable.json.quantity = parseInt(arg.cell.harvestable.json.quantity, 10) - 1;
+                  if (parseInt(arg.cell.harvestable.json.quantity, 10) === 0) {
+                    delete arg.cell.harvestable;
+                    arg.cell.harvestable = null;
                   }
                 }
               }
@@ -57,7 +57,8 @@ angular.module('craftyApp')
          */
         this.isHarvestable = function (harvestableType) {
             for ( var characterKey in FSSimState.characters ) {
-                if ( FSSimState.characters[characterKey].canPerformTask(harvestableType, 'harvesting')) {
+                var thisTask = new FSTask({'name':harvestableType, 'category':'harvesting', 'cell' : null});
+                if ( FSSimState.characters[characterKey].canPerformTask(thisTask)) {
                     return true;
                 }
             }

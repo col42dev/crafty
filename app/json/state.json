@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "characters": [
     {
-      "name": "Stroldrin Harvester",
+      "name": "Aelfric, Elvish Harvester",
       "proficiency": {
         "profession": "Harvester",
         "tier": 0
@@ -12,17 +12,17 @@
       "stats": {
         "health": {
           "current": 50,
-          "max": 100,
+          "max": 175,
           "regeneratePeriod": 10
         },
         "energy": {
           "current": 50,
-          "max": 100,
+          "max": 120,
           "regeneratePeriod": 8
         },
         "mind": {
           "current": 40,
-          "max": 100,
+          "max": 120,
           "regeneratePeriod": 20
         }
       },
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "name": "Gronderlug Crafter",
+      "name": "Lug, Dwarvish Crafter",
       "proficiency": {
         "profession": "Toolsmith",
         "tier": 1
@@ -51,12 +51,12 @@
         },
         "energy": {
           "current": 40,
-          "max": 100,
+          "max": 80,
           "regeneratePeriod": 15
         },
         "mind": {
           "current": 100,
-          "max": 100,
+          "max": 150,
           "regeneratePeriod": 5
         }
       },
@@ -71,10 +71,10 @@
       ]
     },
     {
-      "name": "Dorasgrour Hunter",
+      "name": "Dora the Chef",
       "proficiency": {
-        "profession": "Hunter",
-        "tier": 0
+        "profession": "Cook",
+        "tier": 1
       },
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c3.b9144b93.png",
       "stats": {
@@ -105,7 +105,7 @@
       ]
     },
     {
-      "name": "Skoveath Laborer",
+      "name": "Skov the Strong, Ogre",
       "proficiency": {
         "profession": "Laborer",
         "tier": 0
@@ -118,13 +118,13 @@
           "regeneratePeriod": 10
         },
         "energy": {
-          "current": 100,
-          "max": 100,
+          "current": 200,
+          "max": 300,
           "regeneratePeriod": 5
         },
         "mind": {
           "current": 40,
-          "max": 100,
+          "max": 50,
           "regeneratePeriod": 30
         }
       },
@@ -142,7 +142,7 @@
   "gatherables": [
     {
       "name": "IronOre",
-      "quantity": 4
+      "quantity": 3
     },
     {
       "name": "Water",
@@ -194,10 +194,6 @@
     },
     {
       "name": "ShaolFish",
-      "quantity": 1
-    },
-    {
-      "name": "Sheep",
       "quantity": 1
     }
   ],
@@ -253,6 +249,18 @@
     {
       "name": "ShaolFish",
       "quantity": 100
+    },
+    {
+      "name": "Sheep",
+      "quantity": 100
+    },
+    {
+      "name": "Gem",
+      "quantity": 10
+    },
+    {
+      "name": "Fruit",
+      "quantity": 100
     }
   ],
   "bank": [
@@ -266,7 +274,11 @@
     },
     {
       "name": "ElvenWine",
-      "quantity": 5
+      "quantity": 2
+    },
+    {
+      "name": "RawGreenSalad",
+      "quantity": 4
     },
     {
       "name": "Bucket",
@@ -277,7 +289,7 @@
       "quantity": 1
     },
     {
-      "name": "Ale",
+      "name": "OgreAle",
       "quantity": 3
     }
   ],
@@ -292,6 +304,12 @@
     "BackPack",
     "Bucket",
     "GreekFireCatapult",
-    "WickerBasket"
+    "RawGreenSalad",
+    "WickerBasket",
+    "ShearSheep",
+    "FreshFruit",
+    "CookedFruit",
+    "CookedVeg",
+    "FlatBread"
   ]
 }

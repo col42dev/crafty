@@ -66,7 +66,7 @@ angular.module('craftyApp')
         
             var thisCharacter = this;
 
-            if (this.canPerformTask(task.name, task.category, task.cell) === true) {
+            if (this.canPerformTask(task) === true) {
 
               // Set modify stat timer intervals
               this.statUpdateInterval = {};
@@ -235,7 +235,11 @@ angular.module('craftyApp')
      * @desc - can character start the next task in queue.
      * @return 
      */
-    FSCharacter.prototype.canPerformTask = function (taskName, activityCategory, cell) {     
+    FSCharacter.prototype.canPerformTask = function (task) {     
+
+      var taskName = task.name;
+      var activityCategory = task.category;
+      var cell = task.cell;
 
       var canStartTask = true;
 
@@ -259,12 +263,12 @@ angular.module('craftyApp')
           break;
 
         case 'harvesting': {
-            if (FSSimState.harvestables.hasOwnProperty(taskName) !== true) {
+            if (cell === null && FSSimState.harvestables.hasOwnProperty(taskName) !== true) {
               canStartTask = false;
             } else {
-              if (cell != null)
+              if (cell !== null)
               {
-                if ( parseInt(cell.quantity, 10) === 0) {
+                if ( parseInt(cell.harvestable.quantity, 10) === 0) {
                   canStartTask = false;
                 }
 
@@ -274,7 +278,15 @@ angular.module('craftyApp')
               if ( this.hasStatsFor('harvesting') !== true) {
                 canStartTask = false;
               }
-              if ( FSSimState.harvestables[taskName].isHarvestableBy( this) !== true) {
+
+              if (cell !== null)
+              {
+                console.log('>>>' + cell.harvestable);
+                if ( cell.harvestable.isHarvestableBy( this) !== true) {
+                  canStartTask = false;
+                }
+              }
+              else if ( FSSimState.harvestables[taskName].isHarvestableBy( this) !== true) {
                 canStartTask = false;
               }
             }
