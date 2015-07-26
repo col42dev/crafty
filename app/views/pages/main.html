@@ -10,8 +10,9 @@
   <p></p>
   <button ng-click="getFSJSONLoader().loadAndCreateSim()">Load:</button><br/>
   <ul>
-  <b>rules:</b><input size="45" type="text" ng-model="getFSJSONLoader().user.rules"><br/>
-  <b>state:</b><input size="45" type="text" ng-model="getFSJSONLoader().user.state">
+  <b>rules:</b><input size="45" type="text" ng-model="getFSJSONLoader().user[0].url"><br/>
+  <b>state:</b><input size="45" type="text" ng-model="getFSJSONLoader().user[1].url"><br/>
+  <b>map:</b><input size="45" type="text" ng-model="getFSJSONLoader().user[2].url">
 </ul>
  
 </form>

@@ -20,134 +20,87 @@ angular.module('craftyApp')
 
 
 
-        this.myStopwatch = stopwatch;
-        this.taskTimeScalarDivVis = 'hidden';
+    this.myStopwatch = stopwatch;
+    this.taskTimeScalarDivVis = 'hidden';
 
-        this.master = {
-          //rules: 'https://api.myjson.com/bins/nucy' + '?pretty=1',
-          rules: 'http://localhost:9000/json/rules.json',
-          state: 'http://localhost:9000/json/state.json',
-          //rules: 'http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/rules.json',
   
-          //state: 'https://api.myjson.com/bins/1vby2' + '?pretty=1'
-          //state: 'http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/state.json'
-        };
-        this.user = angular.copy(this.master);
+    this.defaultDocumentName = {input: 'My Account Name'};
+    this.documentName = angular.copy(this.defaultDocumentName);
 
-        this.defaultDocumentName = {input: 'My Account Name'};
-        this.documentName = angular.copy(this.defaultDocumentName);
 
 
     /**
      * @desc 
      * @return 
      */
-    this.loadAndCreateSim = function() {
-
-        //load JSON rules
-        this.loadSimRules();
-  
+    this.createSimRules = function( data) {
+      console.log('createSimRules');
+      this.taskTimeScalarDivVis ='';
+      FSSimRules.set(data);
     };
+
+
+    /**
+     * @desc 
+     * @return 
+     */
+    this.createSimState = function(data) {
+      console.log('createSimState');
+      $location.path('/'); 
+      FSSimState.set(data);
+      FSSimMessagingChannel.updateGoals();
+      stopwatch.reset();
+      stopwatch.start();
+    };
+
+      /**
+     * @desc 
+     * @return 
+     */
+    this.createSimWorldMap = function(data) {
+      console.log('createSimWorldMap');
+    };
+
+
+    this.master = [
+        {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, title : 'craftyrules'},
+        {url: 'http://localhost:9000/json/state.json', onLoad: this.createSimState, title : 'craftystate'},
+        {url: 'http://localhost:9000/json/worldmap.json', onLoad: this.createSimWorldMap, title : 'craftymap'}
+    ];
+
+    this.user = angular.copy(this.master);
 
    /**
      * @desc 
      * @return 
      */
-     this.loadSimRules = function() {
+    this.loadAndCreateSim = function() {
 
-  
-         $http.get(this.user.rules,{
-            params: {
-                dataType: 'jsonp',
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Request-Headers' : 'access-control-allow-origin'
-                }
-            }
-        }).success(function(data) {
+       this.master.forEach( function( thisJSON) {
+               $http.get(thisJSON.url,{
+                  params: {
+                      dataType: 'jsonp',
+                      headers: {
+                          'Access-Control-Allow-Origin': '*',
+                          'Access-Control-Request-Headers' : 'access-control-allow-origin'
+                      }
+                  }
+              }).success(function(data) {
 
-            if ( data.title === 'craftyrules') {
-              thisService.rulesData = data;
+                  if ( data.title === thisJSON.title) {       
+                    if ( thisJSON.onLoad != null) {
+                      thisJSON.onLoad( data);
+                    }
+                  } else {
+                    window.alert('Validation failed for ' + thisJSON.url);
+                  }
 
-              setTimeout(thisService.createSimRules, 200);
-            } else {
-              window.alert('Validation failed for ' + thisService.user.rules);
-            }
-
-        }).error(function(data) {
-            data = data;
-            window.alert('JSON load failed for' + thisService.user.rules);
-        });
+              }).error(function(data) {
+                  data = data;
+                  window.alert('JSON load failed for' + thisJSON.url);
+              });
+         });
       };
-
-
-    /**
-     * @desc 
-     * @return 
-     */
-    this.createSimRules = function() {
-
-      console.log('Load JSON Rules success');
-      this.taskTimeScalarDivVis ='';
-     
-
-      FSSimRules.set(thisService.rulesData);
-
-    
-      thisService.loadSimState();
-    };
-
-
-     /**
-     * @desc 
-     * @return 
-     */
-     this.loadSimState = function() {
-
-      //load JSON state
-      $http.get(this.user.state,{
-          params: {
-              dataType: 'jsonp',
-              headers: {
-                  'Access-Control-Allow-Origin': '*',
-                  'Access-Control-Request-Headers' : 'access-control-allow-origin'
-              }
-          }
-      }).success(function(data) {
-
-          if ( data.title === 'craftystate') {
-            thisService.stateData = data;
-            setTimeout(thisService.createSimState, 200);
-          } else {
-            window.alert('Validation failed for ' + thisService.user.stateData);
-          }
-
-      }).error(function(data) {
-          data = data;
-          window.alert('JSON load failed for' + thisService.user.stateData);
-      });
-    };
-
-
-    /**
-     * @desc 
-     * @return 
-     */
-    this.createSimState = function() {
-
-      $location.path('/'); 
-
-      console.log('Load JSON State success');
-     
-      FSSimState.set(thisService.stateData);
-
-      FSSimMessagingChannel.updateGoals();
-   
-      stopwatch.reset();
-      stopwatch.start();
-    };
-
-
     /**
      * @desc 
      * @return 
