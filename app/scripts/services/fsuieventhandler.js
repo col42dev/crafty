@@ -58,7 +58,9 @@ angular.module('craftyApp')
 
 
 
-            /**
+
+
+        /**
          * @desc - order table by field values
          * @return 
          */
@@ -121,6 +123,15 @@ angular.module('craftyApp')
             }
          };
 
+        /**
+         * @desc 
+         * @return 
+         */
+        this.onClickWorld = function ( cell) {
+            //console.log( JSON.stringify(cell));
+            FSSimTasks.createCellTask(cell);
+        };
+      
 
         /**
         * @desc - order table by field values

@@ -2,23 +2,30 @@
 
 
 
-
-<br/>
-<br/>
-
-<div  style="width: {{50*getWorld().worldMapDim.cols}}px">
-
-<table class="table table-bordered table-condensed" style="table-layout: fixed">
+<div class="fadedbackground">
+<table class="table">
+  <thead>
+    <tr class="noselect">
+        <th class="col-sm-6"><h4>CHARACTERS</h4></th>
+        <th class="col-sm-1"><h4>QUEUED<br/>TASKS</h4></th>
+    </tr> 
+  </thead>
   <tbody>
-      <tr ng-repeat="row in getWorld().worldMap">
-        <td style="min-width: 100px; min-height: 100px" ng-repeat="col in row" width="100" height ="100"> 
-          <div style="width:60px">
-            <select  width="90" style="width: 90px" ng-model="col.resource" ng-options="v for v in getFSSimRules().harvestableDefinesKeys">
-            </select>
-          </div>
-        </td>
-      </tr>
+    <tr>    
+      <td valign="top"> 
+        <div ng-include src="'views/share/characterselect.html'"></div>
+      </td> 
+      <td valign="top"> 
+        <div ng-include src="'views/share/tasks.html'"></div>
+      </td> 
+    </tr>
   </tbody>
-</table>  
+</table>
+</div> <!--fadedbackground-->
+
+
+<td valign="top"> 
+  <div ng-include src="'views/share/world.html'"></div>
+</td> 
 
 

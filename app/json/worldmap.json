@@ -56,80 +56,138 @@
     ],
     [
       {
-        "resource": "Earth"
+        "resource": "Earth",
+        "quantity": "2"
       },
       {
-        "resource": "Earth"
+        "resource": "Stone",
+        "quantity": "20"
       },
       {
-        "resource": "Marble"
+        "resource": "Earth",
+        "quantity": 1
       },
       {
-        "resource": "Earth"
+        "resource": "Earth",
+        "quantity": "2"
       },
       {
-        "resource": "Earth"
+        "resource": "Earth",
+        "quantity": "2"
       },
       {
-        "resource": "Earth"
+        "resource": "Limestone",
+        "quantity": "40"
       },
       {
-        "resource": "Earth"
+        "resource": "Earth",
+        "quantity": "2"
       },
       {
-        "resource": "Earth"
+        "resource": "Earth",
+        "quantity": "4"
       }
     ],
     [
       {
-        "resource": "Earth"
+        "resource": "Earth",
+        "quantity": 1
       },
       {
-        "resource": "IronOre"
+        "resource": "Earth",
+        "quantity": 1
       },
       {
-        "resource": "Earth"
+        "resource": "Earth",
+        "quantity": 1
       },
       {
-        "resource": "Earth"
+        "resource": "HardStone",
+        "quantity": 1
       },
       {
-        "resource": "Earth"
+        "resource": "Earth",
+        "quantity": 1
       },
       {
-        "resource": "Earth"
+        "resource": "Limestone",
+        "quantity": 1
       },
       {
-        "resource": "Coal"
+        "resource": "Earth",
+        "quantity": 1
       },
       {
-        "resource": "Earth"
+        "resource": "Earth",
+        "quantity": 1
       }
     ],
     [
       {
-        "resource": "Earth"
+        "resource": "Marble",
+        "quantity": "30"
       },
       {
-        "resource": "Earth"
+        "resource": "Earth",
+        "quantity": 1
       },
       {
-        "resource": "Earth"
+        "resource": "Earth",
+        "quantity": 1
       },
       {
-        "resource": "Earth"
+        "resource": "Earth",
+        "quantity": 1
       },
       {
-        "resource": "IronOre"
+        "resource": "Earth",
+        "quantity": 1
       },
       {
-        "resource": "Earth"
+        "resource": "Earth",
+        "quantity": 1
       },
       {
-        "resource": "Coal"
+        "resource": "Earth",
+        "quantity": 1
       },
       {
-        "resource": "Earth"
+        "resource": "Earth",
+        "quantity": 1
+      }
+    ],
+    [
+      {
+        "resource": "Earth",
+        "quantity": 1
+      },
+      {
+        "resource": "Earth",
+        "quantity": 1
+      },
+      {
+        "resource": "Earth",
+        "quantity": 1
+      },
+      {
+        "resource": "Earth",
+        "quantity": 1
+      },
+      {
+        "resource": "Earth",
+        "quantity": 1
+      },
+      {
+        "resource": "Earth",
+        "quantity": 1
+      },
+      {
+        "resource": "Coal",
+        "quantity": "100"
+      },
+      {
+        "resource": "Earth",
+        "quantity": 1
       }
     ]
   ]

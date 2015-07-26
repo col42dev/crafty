@@ -38,6 +38,21 @@ angular.module('craftyApp')
         this.executeTask(task);
     };
 
+    /**
+     * @desc 
+     * Create Task and process it for execution by a character.
+     */
+    this.createCellTask = function ( cell) {
+        if (cell.task === null) {
+            var task = new FSTask( {'name':cell.resource, 'category':'harvesting', 'cell' : cell});
+            cell.task = task;
+     
+            if ( this.executeTask(task) === false) {
+                cell.task = null;
+            }
+        }
+    };
+
    /**
      * @desc 
      * Assign task to character or to pending task queue, discard it if it is inoperable.
@@ -56,11 +71,16 @@ angular.module('craftyApp')
                 this.pendingTasks.push( task);
             } else {
                  FSContextConsole.log('Task queue is full', true);
+                 return false;
             }
         }
         else {
-            this.logDependencies(task);
+            if ( task.cell === null) {
+                this.logDependencies(task);
+            }
+            return false;
         }
+        return true;
     };
 
     /**
@@ -68,6 +88,10 @@ angular.module('craftyApp')
      * callback from state when a character completes a task.
      */
     var onCompletedTaskHandler = function( task) {
+        if (task.cell !== null) {
+            task.cell.task = null;
+        }
+
         var completedTaskIndex = thisService.activeTasks.indexOf(task);
         if (completedTaskIndex !== -1) {
             thisService.activeTasks.splice( completedTaskIndex, 1);

@@ -31,6 +31,17 @@ angular.module('craftyApp')
               if ( FSSimState.harvestables[arg.type].json.quantity === 0) {
                 delete FSSimState.harvestables[arg.type];
               }
+
+              //cell
+              if (arg.cell !== null) {
+                console.log('cell transation handler' + arg.cell);
+                if (parseInt(arg.cell.quantity, 10) > 0) {
+                  arg.cell.quantity = parseInt(arg.cell.quantity, 10) - 1;
+                  if (parseInt(arg.cell.quantity, 10) === 0) {
+                    arg.cell.resource = '';
+                  }
+                }
+              }
             }
             FSSimState.updateHarvestables();
           }

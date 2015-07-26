@@ -8,7 +8,7 @@
  * Load JSON in to sim
  */
 angular.module('craftyApp')
-  .service('FSJSONLoader', [   'FSSimRules', 'FSSimState', 'FSSimMessagingChannel', '$http', '$location', 'stopwatch', function ( FSSimRules, FSSimState, FSSimMessagingChannel, $http, $location, stopwatch) {
+  .service('FSJSONLoader', [   'FSSimRules', 'FSSimState', 'FSSimMessagingChannel', '$http', '$location', 'stopwatch', 'World', function ( FSSimRules, FSSimState, FSSimMessagingChannel, $http, $location, stopwatch, World) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     var thisService = this;
@@ -50,8 +50,10 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    this.createSimWorldMap = function() {
+    this.createSimWorldMap = function(data) {
       console.log('createSimWorldMap');
+
+      World.set(data);
     };
 
 
@@ -97,7 +99,7 @@ angular.module('craftyApp')
                           } else {
                             window.alert('Validation failed for ' + thisService.master[loadJSONkey].url);
                           }
-                      };
+                      }
                 }
 
               }).error(function(json) {

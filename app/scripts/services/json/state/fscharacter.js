@@ -66,7 +66,7 @@ angular.module('craftyApp')
         
             var thisCharacter = this;
 
-            if (this.canPerformTask(task.name, task.category) === true) {
+            if (this.canPerformTask(task.name, task.category, task.cell) === true) {
 
               // Set modify stat timer intervals
               this.statUpdateInterval = {};
@@ -133,6 +133,10 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.harvestingOnStart = function () {
       // keep stubbed - called by reflective method.
+      var thisType = this.json.activity[0].name;
+
+      FSSimMessagingChannel.transaction( { category: 'harvestable', type: thisType,  quantity : -1, cell: this.json.activity[0].cell});
+
     };
 
      /**
@@ -142,9 +146,7 @@ angular.module('craftyApp')
     FSCharacter.prototype.harvestingOnStop = function () {
       var thisType = this.json.activity[0].name;
 
-      FSSimMessagingChannel.transaction( { category: 'harvestable', type: thisType,  quantity : -1});
-
-      FSSimMessagingChannel.transaction( { category: 'gatherable', type: thisType,  quantity : 1});
+      FSSimMessagingChannel.transaction( { category: 'gatherable', type: thisType,  quantity : 1, cell: this.json.activity[0].cell});
    
     };
 
@@ -155,7 +157,7 @@ angular.module('craftyApp')
     FSCharacter.prototype.gatheringOnStart = function () {
       var thisType = this.json.activity[0].name;
 
-      FSSimMessagingChannel.transaction( { category: 'gatherable', type: thisType,  quantity : -1});
+      FSSimMessagingChannel.transaction( { category: 'gatherable', type: thisType,  quantity : -1, cell: this.json.activity[0].cell});
 
     };
 
@@ -166,7 +168,7 @@ angular.module('craftyApp')
     FSCharacter.prototype.gatheringOnStop = function () {
       var thisType = this.json.activity[0].name;
 
-      FSSimMessagingChannel.transaction( { category: 'bankable', type: thisType, typeCategory: 'gatherable', quantity : 1});
+      FSSimMessagingChannel.transaction( { category: 'bankable', type: thisType, typeCategory: 'gatherable', quantity : 1, cell: this.json.activity[0].cell});
 
       // Rewards
       FSSimMessagingChannel.makeRewards( {'action':'gather', 'target':thisType});
@@ -233,7 +235,7 @@ angular.module('craftyApp')
      * @desc - can character start the next task in queue.
      * @return 
      */
-    FSCharacter.prototype.canPerformTask = function (taskName, activityCategory) {     
+    FSCharacter.prototype.canPerformTask = function (taskName, activityCategory, cell) {     
 
       var canStartTask = true;
 
@@ -260,7 +262,13 @@ angular.module('craftyApp')
             if (FSSimState.harvestables.hasOwnProperty(taskName) !== true) {
               canStartTask = false;
             } else {
-              if ( parseInt(FSSimState.harvestables[taskName].quantity, 10) === 0) {
+              if (cell != null)
+              {
+                if ( parseInt(cell.quantity, 10) === 0) {
+                  canStartTask = false;
+                }
+
+              } else if ( parseInt(FSSimState.harvestables[taskName].quantity, 10) === 0) {
                 canStartTask = false;
               }
               if ( this.hasStatsFor('harvesting') !== true) {

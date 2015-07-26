@@ -18,6 +18,10 @@ angular.module('craftyApp')
     var FSTask = function(taskObj) {
       this.name = taskObj.name;
       this.category = taskObj.category;
+      this.cell = null;
+      if ( taskObj.hasOwnProperty('cell')) {
+        this.cell = taskObj.cell;
+      }
 
       this.updateActiveTaskRemainingSeconds = 1;
       this.updateActiveTaskTotalSeconds = 1;

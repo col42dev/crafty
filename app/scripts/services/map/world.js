@@ -16,34 +16,40 @@ angular.module('craftyApp')
     this.json = {};
 
  
+  this.set = function(json) {
 
-    this.resize = function() {
+        console.log('World.set');
 
-        console.log(this.worldMapDim.rows + ', ' + this.worldMapDim.cols);
-        this.worldMap = [];
-        for ( var row = 0; row < this.worldMapDim.rows; row ++) {
-            this.worldMap.push([]);
-             for ( var col = 0; col < this.worldMapDim.cols; col ++) {
-                var obj = (row >= 2) ? { resource :'Earth' } : { resource : ''};
-                this.worldMap[row].push(obj);
+        // Rule Defines
+        this.json = json; 
+
+        for ( var row = 0; row < this.json.worldMap.length; row ++) {
+             for ( var col = 0; col < this.json.worldMap[row].length; col ++) {
+                this.json.worldMap[row][col].task = null;
              }
         } 
-    };
 
-    this.resize();
+  };
 
-    this.save = function() {
+  this.getText = function(col) {
+    if (parseInt(col.quantity, 10) > 0) {
+      return col.resource  + ':' + col.quantity;
+    }
 
-        console.log('save');
+    if (col.task !== null) {
+      return col.resource  + ':' + col.quantity;
+    }
+    
+    return '';
+  };
 
-        this.json = {};
+  this.getTaskPercentRemaining = function(col) {
+    if (col.task !== null) {
+      return col.task.percentRemaining();
+    }
+    return '0%';
+  };
 
-        this.json.title = 'craftymap';
-        this.json.version = '0.0.0';
-        this.json.worldMap = this.worldMap;
-
-        this.json = angular.toJson(this.json, true);
-    };
 
 
   });

@@ -23,7 +23,13 @@ angular.module('craftyApp')
         for ( var row = 0; row < this.worldMapDim.rows; row ++) {
             this.worldMap.push([]);
              for ( var col = 0; col < this.worldMapDim.cols; col ++) {
-                var obj = (row >= 2) ? { resource :'Earth' } : { resource : ''};
+                var obj = {};
+                if (row >= 2) {
+                    obj = { resource :'Earth' };
+                    obj.quantity = 1;
+                } else {
+                    obj = { resource : ''};
+                }
                 this.worldMap[row].push(obj);
              }
         } 
