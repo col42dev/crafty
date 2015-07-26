@@ -27,7 +27,7 @@ angular.module('craftyApp')
 
 
 
-    
+        // remap harvestableDefines as keys array - for use by html templates visuals only.
         this.harvestableDefinesKeys = Object.keys(simRules.harvestableDefines).map(function (key) {
                 return key;
               });
