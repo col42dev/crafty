@@ -71,7 +71,15 @@
 			"file": "app/scripts/services/util/fsjsonloader.js",
 			"settings":
 			{
-				"buffer_size": 6915,
+				"buffer_size": 5972,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/colinmoore/dev/crafty/app/views/pages/map.html",
+			"settings":
+			{
+				"buffer_size": 632,
 				"line_ending": "Unix"
 			}
 		},
@@ -79,7 +87,7 @@
 			"file": "app/index.html",
 			"settings":
 			{
-				"buffer_size": 5401,
+				"buffer_size": 5538,
 				"line_ending": "Unix"
 			}
 		},
@@ -87,7 +95,7 @@
 			"file": "app/scripts/app.js",
 			"settings":
 			{
-				"buffer_size": 1445,
+				"buffer_size": 1443,
 				"line_ending": "Unix"
 			}
 		},
@@ -95,7 +103,7 @@
 			"file": "/Users/colinmoore/dev/crafty/app/views/pages/mapedit.html",
 			"settings":
 			{
-				"buffer_size": 471,
+				"buffer_size": 1032,
 				"line_ending": "Unix"
 			}
 		},
@@ -104,6 +112,62 @@
 			"settings":
 			{
 				"buffer_size": 2764,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/main.js",
+			"settings":
+			{
+				"buffer_size": 1149,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/mapedit/mapedit.js",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/colinmoore/dev/crafty/app/json/worldmap.json",
+			"settings":
+			{
+				"buffer_size": 1851,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/pages/main.html",
+			"settings":
+			{
+				"buffer_size": 2597,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/json/fssimrules.js",
+			"settings":
+			{
+				"buffer_size": 1114,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/json/fssimstate.js",
+			"settings":
+			{
+				"buffer_size": 10522,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/map/world.js",
+			"settings":
+			{
+				"buffer_size": 276,
 				"line_ending": "Unix"
 			}
 		}
@@ -132,6 +196,7 @@
 	},
 	"file_history":
 	[
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmap.js",
 		"/Users/colinmoore/dev/crafty/app/views/share/characterselect.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/app.js",
 		"/Users/colinmoore/Dev/crafty/app/json/state.json",
@@ -258,8 +323,7 @@
 		"/Users/colinmoore/Dev/minecraft/pullMinecraft.sh",
 		"/Users/colinmoore/Dev/crafty/publishToEC2.sh",
 		"/Users/colinmoore/Dev/crafty/.yo-rc.json",
-		"/Users/colinmoore/Dropbox (MagicFuelGames)/MagicFuelGames Team Folder/Software/Prototypes/Web/crafty/smallerdataset.json",
-		"/Users/colinmoore/Dropbox (MagicFuelGames)/MagicFuelGames Team Folder/Software/Prototypes/Web/crafty/smallerdataset2.json"
+		"/Users/colinmoore/Dropbox (MagicFuelGames)/MagicFuelGames Team Folder/Software/Prototypes/Web/crafty/smallerdataset.json"
 	],
 	"find":
 	{
@@ -283,6 +347,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"<pre>\n{{getFSJSONLoader().simulation.jsonSerialized}}\n</pre>",
+			"harvestableDefines",
+			"*/\n",
+			"harvestableDefinesKeys",
 			"MeatS",
 			"Grilled",
 			"httpProvider",
@@ -406,11 +474,7 @@
 			"FSSimObjectChannel",
 			"FSBackpack",
 			"FSSimRules",
-			"FSSimObjectChannel",
-			"FSBackpack",
-			" \n",
-			"thisFactory",
-			"FSRecipe"
+			"FSSimObjectChannel"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -441,7 +505,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 12,
 			"sheets":
 			[
 				{
@@ -449,15 +513,15 @@
 					"file": "app/scripts/services/util/fsjsonloader.js",
 					"settings":
 					{
-						"buffer_size": 6915,
+						"buffer_size": 5972,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								868,
-								868
+								578,
+								578
 							]
 						],
 						"settings":
@@ -466,7 +530,7 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
+						"translation.x": 2.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -474,74 +538,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "app/index.html",
+					"file": "/Users/colinmoore/dev/crafty/app/views/pages/map.html",
 					"settings":
 					{
-						"buffer_size": 5401,
+						"buffer_size": 632,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 103.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/scripts/app.js",
-					"settings":
-					{
-						"buffer_size": 1445,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1336,
-								1336
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 126.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/Users/colinmoore/dev/crafty/app/views/pages/mapedit.html",
-					"settings":
-					{
-						"buffer_size": 471,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								216,
-								224
+								207,
+								207
 							]
 						],
 						"settings":
@@ -557,7 +565,91 @@
 					"type": "text"
 				},
 				{
+					"buffer": 2,
+					"file": "app/index.html",
+					"settings":
+					{
+						"buffer_size": 5538,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5408,
+								5408
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1206.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/scripts/app.js",
+					"settings":
+					{
+						"buffer_size": 1443,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								528,
+								528
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 29.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
 					"buffer": 4,
+					"file": "/Users/colinmoore/dev/crafty/app/views/pages/mapedit.html",
+					"settings":
+					{
+						"buffer_size": 1032,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1023,
+								1023
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "/Users/colinmoore/dev/crafty/app/views/share/charactersheetstats.html",
 					"settings":
 					{
@@ -580,6 +672,198 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 626.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/scripts/controllers/main.js",
+					"settings":
+					{
+						"buffer_size": 1149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								524,
+								524
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 51.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/scripts/services/mapedit/mapedit.js",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 30.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/Users/colinmoore/dev/crafty/app/json/worldmap.json",
+					"settings":
+					{
+						"buffer_size": 1851,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1851,
+								1851
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/views/pages/main.html",
+					"settings":
+					{
+						"buffer_size": 2597,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								666,
+								666
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/scripts/services/json/fssimrules.js",
+					"settings":
+					{
+						"buffer_size": 1114,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								909,
+								909
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/scripts/services/json/fssimstate.js",
+					"settings":
+					{
+						"buffer_size": 10522,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9489,
+								9489
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "app/scripts/services/map/world.js",
+					"settings":
+					{
+						"buffer_size": 276,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -643,6 +927,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 410.0,
+	"side_bar_width": 287.0,
 	"status_bar_visible": true
 }

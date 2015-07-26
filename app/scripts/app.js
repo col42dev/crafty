@@ -52,6 +52,10 @@ angular
         templateUrl: 'views/pages/mapedit.html',
         controller: 'MainCtrl'
       })
+      .when('/world', {
+        templateUrl: 'views/pages/world.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

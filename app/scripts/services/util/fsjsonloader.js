@@ -17,16 +17,10 @@ angular.module('craftyApp')
 
     dbdomain = 'ec2-54-201-237-107.us-west-2.compute.amazonaws.com';
 
-
-
-
     this.myStopwatch = stopwatch;
     this.taskTimeScalarDivVis = 'hidden';
-
-  
     this.defaultDocumentName = {input: 'My Account Name'};
     this.documentName = angular.copy(this.defaultDocumentName);
-
 
 
     /**
@@ -38,7 +32,6 @@ angular.module('craftyApp')
       this.taskTimeScalarDivVis ='';
       FSSimRules.set(data);
     };
-
 
     /**
      * @desc 
@@ -53,20 +46,20 @@ angular.module('craftyApp')
       stopwatch.start();
     };
 
-      /**
+    /**
      * @desc 
      * @return 
      */
-    this.createSimWorldMap = function(data) {
+    this.createSimWorldMap = function() {
       console.log('createSimWorldMap');
     };
 
 
-    this.master = [
-        {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, title : 'craftyrules'},
-        {url: 'http://localhost:9000/json/state.json', onLoad: this.createSimState, title : 'craftystate'},
-        {url: 'http://localhost:9000/json/worldmap.json', onLoad: this.createSimWorldMap, title : 'craftymap'}
-    ];
+    this.master = {
+        'craftyrules' : {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, data:null},
+        'craftystate' : {url: 'http://localhost:9000/json/state.json', onLoad: this.createSimState, data:null},
+        'craftymap' : {url: 'http://localhost:9000/json/worldmap.json', onLoad: this.createSimWorldMap, data:null}
+    };
 
     this.user = angular.copy(this.master);
 
@@ -76,8 +69,13 @@ angular.module('craftyApp')
      */
     this.loadAndCreateSim = function() {
 
-       this.master.forEach( function( thisJSON) {
-               $http.get(thisJSON.url,{
+      var successRefCount = 0;
+
+      for ( var thisJSONindex in this.master) {
+
+        var thisJSON = this.master[thisJSONindex];
+
+              $http.get(thisJSON.url,{
                   params: {
                       dataType: 'jsonp',
                       headers: {
@@ -85,22 +83,29 @@ angular.module('craftyApp')
                           'Access-Control-Request-Headers' : 'access-control-allow-origin'
                       }
                   }
-              }).success(function(data) {
+              }).success(function(json) {
 
-                  if ( data.title === thisJSON.title) {       
-                    if ( thisJSON.onLoad != null) {
-                      thisJSON.onLoad( data);
-                    }
-                  } else {
-                    window.alert('Validation failed for ' + thisJSON.url);
-                  }
+                thisService.master[json.title].data = json;
+    
+                successRefCount ++;
+                console.log('refcount:' + successRefCount);
 
-              }).error(function(data) {
-                  data = data;
+                if ( successRefCount === Object.keys(thisService.master).length) {
+                      for ( var loadJSONkey in thisService.master) {   
+                          if ( thisService.master[loadJSONkey].onLoad !== null) {
+                            thisService.master[loadJSONkey].onLoad( thisService.master[loadJSONkey].data);
+                          } else {
+                            window.alert('Validation failed for ' + thisService.master[loadJSONkey].url);
+                          }
+                      };
+                }
+
+              }).error(function(json) {
+                  json = json;
                   window.alert('JSON load failed for' + thisJSON.url);
               });
-         });
-      };
+         }
+    };
     /**
      * @desc 
      * @return 
