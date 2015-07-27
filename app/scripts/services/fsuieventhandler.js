@@ -127,9 +127,9 @@ angular.module('craftyApp')
          * @desc 
          * @return 
          */
-        this.onClickWorld = function ( cell) {
+        this.onClickWorld = function ( category, cell) {
             //console.log( JSON.stringify(cell));
-            FSSimTasks.createCellTask(cell);
+            FSSimTasks.createCellTask(category, cell);
         };
       
 

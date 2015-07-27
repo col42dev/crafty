@@ -104,6 +104,10 @@ angular.module('craftyApp')
     };
 
 
+        /**
+     * @desc 
+     * @return 
+     */
     this.validateJSON = function(json) {
 
         var errorLog = [];
@@ -249,27 +253,29 @@ angular.module('craftyApp')
     };
 
 
-            /**
-         * @desc 
-         * @return 
-         */
-        this.getTaskDuration = function (activityCategory, taskName, thisCharacter) {
-            var duration = 0;
 
-            switch ( activityCategory) {
-              case 'gathering':
-                duration = this.gatherables[taskName].duration(thisCharacter) / this.taskTimeScalar;
-                break;
-              case 'harvesting':
-                duration= this.harvestables[taskName].duration(thisCharacter) / this.taskTimeScalar;
-                break;
-              case 'crafting':
-                duration = this.craftables[taskName].duration(thisCharacter) / this.taskTimeScalar;
-                break;
-            }
+    /**
+     * @desc 
+     * @return 
+     */
+    this.getTaskDuration = function ( task) {
 
-            return duration;
-        };
+        var duration = 0;
+
+        switch ( task.category) {
+          case 'gathering':
+            duration = FSSimRules.gatherableDefines[task.name].duration / this.taskTimeScalar;
+            break;
+          case 'harvesting':
+            duration= FSSimRules.harvestableDefines[task.name].duration / this.taskTimeScalar;
+            break;
+          case 'crafting':
+            duration = FSSimRules.craftableDefines[task.name].duration / this.taskTimeScalar;
+            break;
+        }
+
+        return duration;
+    };
 
  
 

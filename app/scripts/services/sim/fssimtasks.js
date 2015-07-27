@@ -42,12 +42,24 @@ angular.module('craftyApp')
      * @desc 
      * Create Task and process it for execution by a character.
      */
-    this.createCellTask = function ( cell) {
+    this.createCellTask = function ( category, cell) {
         if (cell.task === null) {
-            var task = new FSTask( {'name':cell.harvestable.json.name, 'category':'harvesting', 'cell' : cell});
+            var name = null;
+            switch (category) {
+                case 'harvesting':
+                    name = cell.harvestables.json.name;
+                    break;
+                case 'gathering' :
+                    name = cell.gatherables.json.name;
+                    break;
+                default:
+                    window.alert('unhandled ctageory');
+                    break;
+            }
+            var task = new FSTask( {'name':name, 'category':category, 'cell' : cell});
             cell.task = task;
      
-            if ( this.executeTask(task) === false) {
+            if ( this.executeTask(task) === false) {  // could not execute task...
                 cell.task = null;
             }
         }

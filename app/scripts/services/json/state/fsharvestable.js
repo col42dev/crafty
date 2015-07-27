@@ -94,33 +94,6 @@ angular.module('craftyApp')
     };
 
 
-     /**
-     * @desc 
-     * @return 
-     */
-    FSHarvestable.prototype.duration =  function(  character) {
-
-      var tools = [];
-      
-      if ( character.json.tools.length > 0) {
-        tools.push(character.json.tools[0].json.name); // bug: only using tool in first slot
-      } else {
-        tools.push('Hands');
-      }
-
-      var duration = FSSimRules.harvestableDefines[this.json.name].duration;
-
-      // refactor
-      if ( FSSimRules.toolDefines[ tools[0] ].strength > duration/2) {
-        duration /= 2;
-        duration = Math.ceil(duration);
-      } else {
-        duration -= FSSimRules.toolDefines[ tools[0] ].strength;
-      }
-
-      return duration;
-    };
-
 
     return FSHarvestable;
 

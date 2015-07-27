@@ -49,17 +49,6 @@ angular.module('craftyApp')
     };
 
 
-     /**
-     * @desc 
-     * @return 
-     */
-    FSCraftable.prototype.duration =  function(  character) {
-
-      character = character;
-      var craftingDuration = FSSimRules.craftableDefines[this.json.name].duration ;
-          
-      return craftingDuration;
-    };
 
 
     return FSCraftable;

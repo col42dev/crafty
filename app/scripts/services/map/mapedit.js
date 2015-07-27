@@ -24,9 +24,9 @@ angular.module('craftyApp')
             this.worldMap.push([]);
              for ( var col = 0; col < this.worldMapDim.cols; col ++) {
 
-                var obj = {harvestable:null};
+                var obj = {harvestables:null};
                 if (row >= 2) {
-                    obj.harvestable = new FSHarvestable({name: 'Earth', quantity: 1});
+                    obj.harvestables = new FSHarvestable({name: 'Earth', quantity: 1});
                 } 
                 this.worldMap[row].push(obj);
              }

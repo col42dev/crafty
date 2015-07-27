@@ -84,7 +84,9 @@ angular.module('craftyApp')
               }
 
               // create task interval 
-              var duration = FSSimState.getTaskDuration(task.category, task.name, this) ;
+              var duration = FSSimState.getTaskDuration(task); 
+
+          
               task.createTimer( duration , function() {
                     if ( thisCharacter.hasStatsFor( task.category ) === true) {
                       if ( task.decrementTimer() === false) {
@@ -246,10 +248,15 @@ angular.module('craftyApp')
       switch ( activityCategory) {
 
         case 'gathering': {
-            if (FSSimState.gatherables.hasOwnProperty(taskName) !== true) {
+            if (cell === null && FSSimState.gatherables.hasOwnProperty(taskName) !== true) {
               canStartTask = false;
             } else {
-              if ( parseInt( FSSimState.gatherables[taskName].json.quantity, 10) === 0) {
+              if (cell !== null)
+              {
+                if ( parseInt(cell.gatherables.quantity, 10) === 0) {
+                  canStartTask = false;
+                }
+              } else if ( parseInt( FSSimState.gatherables[taskName].json.quantity, 10) === 0) {
                 canStartTask = false;
               }
               if ( this.hasStatsFor('gathering') !== true) {
@@ -268,7 +275,7 @@ angular.module('craftyApp')
             } else {
               if (cell !== null)
               {
-                if ( parseInt(cell.harvestable.quantity, 10) === 0) {
+                if ( parseInt(cell.harvestables.quantity, 10) === 0) {
                   canStartTask = false;
                 }
 
@@ -281,8 +288,7 @@ angular.module('craftyApp')
 
               if (cell !== null)
               {
-                console.log('>>>' + cell.harvestable);
-                if ( cell.harvestable.isHarvestableBy( this) !== true) {
+                if ( cell.harvestables.isHarvestableBy( this) !== true) {
                   canStartTask = false;
                 }
               }

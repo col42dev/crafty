@@ -27,20 +27,17 @@ angular.module('craftyApp')
               }
               FSSimState.harvestables[arg.type].modifyQuantity(arg.quantity);
             } else if (arg.quantity < 0) {
-              FSSimState.harvestables[arg.type].modifyQuantity( arg.quantity);
-              if ( FSSimState.harvestables[arg.type].json.quantity === 0) {
-                delete FSSimState.harvestables[arg.type];
-              }
-
-              //cell
               if (arg.cell !== null) {
-                if (parseInt(arg.cell.harvestable.json.quantity, 10) > 0) {
-                  arg.cell.harvestable.json.quantity = parseInt(arg.cell.harvestable.json.quantity, 10) - 1;
-                  if (parseInt(arg.cell.harvestable.json.quantity, 10) === 0) {
-                    delete arg.cell.harvestable;
-                    arg.cell.harvestable = null;
-                  }
+                arg.cell.harvestables.modifyQuantity( parseInt(arg.quantity, 10));
+                if (parseInt(arg.cell.harvestables.json.quantity, 10) === 0) {
+                  delete arg.cell.harvestables;
+                  arg.cell.harvestables = null;
                 }
+              } else {
+                  FSSimState.harvestables[arg.type].modifyQuantity( arg.quantity);
+                  if ( FSSimState.harvestables[arg.type].json.quantity === 0) {
+                    delete FSSimState.harvestables[arg.type];
+                  }
               }
             }
             FSSimState.updateHarvestables();
