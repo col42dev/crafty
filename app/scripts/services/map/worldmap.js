@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('WorldMap', function (FSHarvestable) {
+  .service('WorldMap', function (FSHarvestable, FSSimRules) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -30,6 +30,9 @@ angular.module('craftyApp')
         for ( var row = 0; row < this.json.worldMap.length; row ++) {
              for ( var col = 0; col < this.json.worldMap[row].length; col ++) {
                 this.json.worldMap[row][col].task = null;
+                if (this.json.worldMap[row][col].hasOwnProperty('harvestables') === false) {
+                  this.json.worldMap[row][col].harvestables = null;
+                }
                 if (this.json.worldMap[row][col].harvestables  !== null){
                   var obj = angular.copy(this.json.worldMap[row][col].harvestables);
                   this.json.worldMap[row][col].harvestables = null;
@@ -109,6 +112,19 @@ angular.module('craftyApp')
     return  color;
   };
 
+ /**
+   * @desc 
+   * @return 
+   */
+  this.getbgimage = function( col) {
+     if ( col.harvestables !== null) {
+        var url = '';
+        if (FSSimRules.harvestableDefines[col.harvestables.json.name ].hasOwnProperty('visual') === true) {
+          url = FSSimRules.harvestableDefines[ col.harvestables.json.name ].visual.url;
+        }
+        return 'url(' + url + ')';        
+    }
+  };
 
 
   });

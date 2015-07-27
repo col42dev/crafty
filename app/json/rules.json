@@ -362,6 +362,7 @@
   },
   "harvestableDefines": {
     "Earth": {
+      "visual" : { "url" : "http://previews.123rf.com/images/promesaartstudio/promesaartstudio1305/promesaartstudio130500117/19682513-dry-earth-texture.jpg"},
       "actionable": [
         "Dig"
       ],
@@ -369,6 +370,7 @@
       "duration": 10
     },
     "Stone": {
+      "visual" : { "url" : "http://previews.123rf.com/images/tequi/tequi1007/tequi100700037/7477653-Repeating-seamless-pattern-of-grey-stones-including-the-seamless-swatch-for-easy-filling-of-any-cont-Stock-Vector.jpg"},
       "actionable": [
         "Dig"
       ],
@@ -376,6 +378,7 @@
       "duration": 18
     },
     "HardStone": {
+      "visual" : { "url" : "http://previews.123rf.com/images/seamartini/seamartini1110/seamartini111000277/11006277-Seamless-rock-stone-background-for-design-and-decorate-Stock-Vector.jpg"},
       "actionable": [
         "Dig"
       ],
@@ -383,6 +386,7 @@
       "duration": 64
     },
     "Quartzstone": {
+      "visual" : { "url" : "http://previews.123rf.com/images/whitetag/whitetag1405/whitetag140512574/28489070-Quartz-stone-Stock-Photo.jpg"},
       "actionable": [
         "Dig"
       ],
@@ -390,6 +394,7 @@
       "duration": 140
     },
     "Limestone": {
+      "visual" : { "url" : "http://previews.123rf.com/images/kitch/kitch0807/kitch080700093/3295445-Limestone-Rock-Wall-Stock-Photo.jpg"},
       "actionable": [
         "Dig"
       ],
@@ -397,6 +402,7 @@
       "duration": 45
     },
     "Marble": {
+     "visual" : { "url" : "http://previews.123rf.com/images/mg1408/mg14081008/mg1408100800016/7556276-white-marble-texture-background-High-resolution--Stock-Photo.jpg"},
       "actionable": [
         "Dig"
       ],
@@ -404,6 +410,7 @@
       "duration": 96
     },
     "Granite": {
+      "visual" : { "url" : "http://previews.123rf.com/images/pilens/pilens1004/pilens100400100/6776015-close-up-of-beautiful-natural-design-of-granite-Stock-Photo-granite-texture-slab.jpg"},
       "actionable": [
         "Dig"
       ],
@@ -411,6 +418,7 @@
       "duration": 112
     },
     "Coal": {
+      "visual" : { "url" : "http://previews.123rf.com/images/anzelm/anzelm0901/anzelm090100006/4133585-Pile-of-coal-texture-background-Stock-Photo-mining.jpg"},
       "actionable": [
         "Dig"
       ],
@@ -418,6 +426,7 @@
       "duration": 30
     },
     "IronOre": {
+      "visual" : { "url" : "http://previews.123rf.com/images/pilgrimego/pilgrimego1110/pilgrimego111000128/11039934-texture-and-background-the-old-rusty-iron-texture-metal-rusty-antique.jpg"},
       "actionable": [
         "Dig"
       ],

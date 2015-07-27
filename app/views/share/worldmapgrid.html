@@ -16,18 +16,46 @@ click cell bottom-left resource text to gather.
             ng-repeat="col in row" 
             width="100" height ="100"
             > 
-            <div style="height: 100%; width: 100%; background-color:{{getWorldMap().bgcolor(col)}}; position:relative">
-              <div  style="width:100px; background:rgba(20, 200, 20, 0.25); overflow:visible; word-wrap:normal;" 
+            <div style="height: 100%; 
+                        width: 100%; 
+                        background-color:{{getWorldMap().bgcolor(col)}}; 
+                        position:relative "
+                        >
+
+                <div  style="width:100px; 
+                          height: 100%;
+                            background-color:rgba(20, 200, 20, 0.1); 
+                            overflow:visible; 
+                            opacity: .2;
+         
+                            word-wrap:normal;  
+                            position:absolute; 
+                            z-index: -1;"
+                        ng-style="{ 'background-image' : getWorldMap().getbgimage(col)}">
+              </div> 
+
+
+              <div  style="width:100px; 
+                          background-color:rgba(20, 200, 20, 1.0); 
+                          overflow:visible; 
+                          word-wrap:normal" 
                     ng-style="{ 'width' : getWorldMap().getTaskPercentRemaining('harvesting', col)}"
                     ng-click="getFSUIEventHandler().onClickWorld('harvesting', col)">
                   {{getWorldMap().getText('harvesting', col)}}
               </div>
 
-              <div  style="width:100px; background:rgba(20, 200, 20, 0.25); overflow:visible; word-wrap:normal;  position:absolute; bottom:0" 
+              <div  style="width:100px; 
+                            background-color:rgba(20, 200, 20, 0.1); 
+                            overflow:visible; 
+                            word-wrap:normal;  
+                            position:absolute; 
+                            bottom:0" 
                     ng-style="{ 'width' : getWorldMap().getTaskPercentRemaining('gathering', col)}"
                     ng-click="getFSUIEventHandler().onClickWorld('gathering', col)">
                   {{getWorldMap().getText('gathering', col)}}
               </div> 
+
+
             </div>
 
         </td>
