@@ -6,17 +6,21 @@
 <table class="table">
   <thead>
     <tr class="noselect">
-        <th class="col-sm-6"><h4>CHARACTERS</h4></th>
+        <th class="col-sm-8"><h4>CHARACTERS</h4></th>
         <th class="col-sm-1"><h4>QUEUED<br/>TASKS</h4></th>
+        <th class="col-sm-3"><h4>BANK</h4></th>
     </tr> 
   </thead>
   <tbody>
     <tr>    
-      <td valign="top"> 
+      <td valign="top" > 
         <div ng-include src="'views/share/characterselect.html'"></div>
       </td> 
       <td valign="top"> 
         <div ng-include src="'views/share/tasks.html'"></div>
+      </td> 
+      <td valign="top"> 
+        <div ng-include src="'views/share/bankables.html'"></div>
       </td> 
     </tr>
   </tbody>
