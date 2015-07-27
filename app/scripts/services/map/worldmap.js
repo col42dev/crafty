@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('World', function (FSHarvestable) {
+  .service('WorldMap', function (FSHarvestable) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 

@@ -50,11 +50,11 @@ angular
         controller: 'MainCtrl'
       })
       .when('/mapedit', {
-        templateUrl: 'views/pages/mapedit.html',
+        templateUrl: 'views/pages/worldmapedit.html',
         controller: 'MainCtrl'
       })
       .when('/world', {
-        templateUrl: 'views/pages/world.html',
+        templateUrl: 'views/pages/worldmap.html',
         controller: 'MainCtrl'
       })
       .otherwise({

@@ -8,7 +8,7 @@
  * Load JSON in to sim
  */
 angular.module('craftyApp')
-  .service('FSJSONLoader', [   'FSSimRules', 'FSSimState', 'FSSimMessagingChannel', '$http', '$location', 'stopwatch', 'World', function ( FSSimRules, FSSimState, FSSimMessagingChannel, $http, $location, stopwatch, World) {
+  .service('FSJSONLoader', [   'FSSimRules', 'FSSimState', 'FSSimMessagingChannel', '$http', '$location', 'stopwatch', 'WorldMap', 'WorldMapEdit', function ( FSSimRules, FSSimState, FSSimMessagingChannel, $http, $location, stopwatch, WorldMap, WorldMapEdit) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     var thisService = this;
@@ -53,18 +53,19 @@ angular.module('craftyApp')
     this.createSimWorldMap = function(data) {
       console.log('createSimWorldMap');
 
-      World.set(data);
+      WorldMap.set(data);
+      WorldMapEdit.set(data); // also init editor with this data.
     };
 
 
     this.master = {
-      'craftyrules' : {url: 'https://api.myjson.com/bins/16vp6?pretty=1', onLoad: this.createSimRules, data:null},
-      'craftystate' : {url: 'https://api.myjson.com/bins/1yqsa?pretty=1', onLoad: this.createSimState, data:null},
-      'craftymap' : {url: 'https://api.myjson.com/bins/431p6?pretty=1', onLoad: this.createSimWorldMap, data:null}
+      //'craftyrules' : {url: 'https://api.myjson.com/bins/16vp6?pretty=1', onLoad: this.createSimRules, data:null},
+      //'craftystate' : {url: 'https://api.myjson.com/bins/1yqsa?pretty=1', onLoad: this.createSimState, data:null},
+      //'craftymap' : {url: 'https://api.myjson.com/bins/431p6?pretty=1', onLoad: this.createSimWorldMap, data:null}
 
-      //'craftyrules' : {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, data:null},
-      //'craftystate' : {url: 'http://localhost:9000/json/state.json', onLoad: this.createSimState, data:null},
-      //'craftymap' : {url: 'http://localhost:9000/json/worldmap.json', onLoad: this.createSimWorldMap, data:null}
+      'craftyrules' : {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, data:null},
+      'craftystate' : {url: 'http://localhost:9000/json/state.json', onLoad: this.createSimState, data:null},
+      'craftymap' : {url: 'http://localhost:9000/json/worldmap.json', onLoad: this.createSimWorldMap, data:null}
     };
 
     this.user = angular.copy(this.master);

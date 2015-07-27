@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"ca",
+				"category"
+			],
+			[
+				"get",
+				"getTaskPercentRemaining"
+			],
+			[
 				"gatherb",
 				"gatherableDefines"
 			],
@@ -71,7 +79,7 @@
 			"file": "app/scripts/services/util/fsjsonloader.js",
 			"settings":
 			{
-				"buffer_size": 6514,
+				"buffer_size": 6964,
 				"line_ending": "Unix"
 			}
 		},
@@ -79,7 +87,7 @@
 			"file": "/Users/colinmoore/dev/crafty/app/views/pages/map.html",
 			"settings":
 			{
-				"buffer_size": 440,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -87,7 +95,7 @@
 			"file": "app/index.html",
 			"settings":
 			{
-				"buffer_size": 5532,
+				"buffer_size": 5540,
 				"line_ending": "Unix"
 			}
 		},
@@ -95,15 +103,15 @@
 			"file": "app/scripts/app.js",
 			"settings":
 			{
-				"buffer_size": 1554,
+				"buffer_size": 1577,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/Users/colinmoore/dev/crafty/app/views/pages/world.html",
+			"file": "app/views/pages/worldmap.html",
 			"settings":
 			{
-				"buffer_size": 607,
+				"buffer_size": 767,
 				"line_ending": "Unix"
 			}
 		},
@@ -116,10 +124,10 @@
 			}
 		},
 		{
-			"file": "/Users/colinmoore/dev/crafty/app/views/pages/mapedit.html",
+			"file": "app/views/pages/worldmapedit.html",
 			"settings":
 			{
-				"buffer_size": 1101,
+				"buffer_size": 1184,
 				"line_ending": "Unix"
 			}
 		},
@@ -135,7 +143,7 @@
 			"file": "app/scripts/controllers/main.js",
 			"settings":
 			{
-				"buffer_size": 1225,
+				"buffer_size": 1257,
 				"line_ending": "Unix"
 			}
 		},
@@ -151,7 +159,7 @@
 			"file": "/Users/colinmoore/dev/crafty/app/json/worldmap.json",
 			"settings":
 			{
-				"buffer_size": 2991,
+				"buffer_size": 11122,
 				"line_ending": "Unix"
 			}
 		},
@@ -175,7 +183,7 @@
 			"file": "app/scripts/services/json/fssimstate.js",
 			"settings":
 			{
-				"buffer_size": 10522,
+				"buffer_size": 10449,
 				"line_ending": "Unix"
 			}
 		},
@@ -183,15 +191,129 @@
 			"file": "app/scripts/services/map/world.js",
 			"settings":
 			{
-				"buffer_size": 473,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/services/map/mapedit.js",
+			"file": "app/scripts/services/map/worldmapedit.js",
 			"settings":
 			{
-				"buffer_size": 1258,
+				"buffer_size": 2186,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/share/mapgrid.html",
+			"settings":
+			{
+				"buffer_size": 1420,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/fsuieventhandler.js",
+			"settings":
+			{
+				"buffer_size": 7800,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/json/state/fscharacter.js",
+			"settings":
+			{
+				"buffer_size": 14378,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 63 files for \"canPerformTask\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n   67              var thisCharacter = this;\n   68  \n   69:             if (this.canPerformTask(task.name, task.category) === true) {\n   70  \n   71                // Set modify stat timer intervals\n   ..\n  236       * @return \n  237       */\n  238:     FSCharacter.prototype.canPerformTask = function (taskName, activityCategory) {     \n  239  \n  240        var canStartTask = true;\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js:\n   18          this.isCraftable = function (craftableType) {\n   19              for ( var characterKey in FSSimState.characters ) {\n   20:                 if ( FSSimState.characters[characterKey].canPerformTask(craftableType, 'crafting')) {\n   21                      return true;\n   22                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimgathering.js:\n   48          this.isGatherable = function (gatherableType) {\n   49              for ( var characterKey in FSSimState.characters ) {\n   50:                 if ( FSSimState.characters[characterKey].canPerformTask(gatherableType, 'gathering')) {\n   51                      return true;\n   52                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimharvesting.js:\n   55          this.isHarvestable = function (harvestableType) {\n   56              for ( var characterKey in FSSimState.characters ) {\n   57:                 if ( FSSimState.characters[characterKey].canPerformTask(harvestableType, 'harvesting')) {\n   58                      return true;\n   59                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js:\n  134          // generate list of characters which can do this task.\n  135          for ( var character in FSSimState.characters ) {\n  136:             if ( FSSimState.characters[character].canPerformTask(task.name, task.category)) {\n  137                  validCharacters.push( FSSimState.characters[character]);\n  138              }\n\n6 matches across 5 files\n\n\nSearching 62 files for \"canPerformTask\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n   67              var thisCharacter = this;\n   68  \n   69:             if (this.canPerformTask(task.name, task.category, task.cell) === true) {\n   70  \n   71                // Set modify stat timer intervals\n   ..\n  236       * @return \n  237       */\n  238:     FSCharacter.prototype.canPerformTask = function (taskName, activityCategory, cell) {     \n  239  \n  240        var canStartTask = true;\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js:\n   18          this.isCraftable = function (craftableType) {\n   19              for ( var characterKey in FSSimState.characters ) {\n   20:                 if ( FSSimState.characters[characterKey].canPerformTask(craftableType, 'crafting')) {\n   21                      return true;\n   22                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimgathering.js:\n   48          this.isGatherable = function (gatherableType) {\n   49              for ( var characterKey in FSSimState.characters ) {\n   50:                 if ( FSSimState.characters[characterKey].canPerformTask(gatherableType, 'gathering')) {\n   51                      return true;\n   52                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimharvesting.js:\n   58          this.isHarvestable = function (harvestableType) {\n   59              for ( var characterKey in FSSimState.characters ) {\n   60:                 if ( FSSimState.characters[characterKey].canPerformTask(harvestableType, 'harvesting')) {\n   61                      return true;\n   62                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js:\n  148          // generate list of characters which can do this task.\n  149          for ( var character in FSSimState.characters ) {\n  150:             if ( FSSimState.characters[character].canPerformTask(task.name, task.category)) {\n  151                  validCharacters.push( FSSimState.characters[character]);\n  152              }\n\n6 matches across 5 files\n\n\nSearching 62 files for \"getTaskDuration\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimstate.js:\n  254           * @return \n  255           */\n  256:         this.getTaskDuration = function (activityCategory, taskName, thisCharacter) {\n  257              var duration = 0;\n  258  \n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n   90                  duration = this.json.activity.cell.task.duration( this);\n   91                } else {\n   92:                 duration = FSSimState.getTaskDuration(task.category, task.name, this) ;\n   93                }*/\n   94                task.createTimer( duration , function() {\n\n2 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 4884,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "app/scripts/services/sim/fssimcrafting.js",
+			"settings":
+			{
+				"buffer_size": 2865,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/json/state/fstask.js",
+			"settings":
+			{
+				"buffer_size": 1657,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/sim/fssimtasks.js",
+			"settings":
+			{
+				"buffer_size": 10962,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/sim/fssimharvesting.js",
+			"settings":
+			{
+				"buffer_size": 2428,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/sim/fssimgathering.js",
+			"settings":
+			{
+				"buffer_size": 2838,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/json/state/fsharvestable.js",
+			"settings":
+			{
+				"buffer_size": 2790,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/json/state.json",
+			"settings":
+			{
+				"buffer_size": 5293,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/json/state/fsgatherable.js",
+			"settings":
+			{
+				"buffer_size": 1178,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/json/state/fscraftable.js",
+			"settings":
+			{
+				"buffer_size": 1441,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/map/worldmap.js",
+			"settings":
+			{
+				"buffer_size": 2879,
 				"line_ending": "Unix"
 			}
 		}
@@ -220,6 +342,7 @@
 	},
 	"file_history":
 	[
+		"/Users/colinmoore/dev/crafty/app/views/main.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmap.js",
 		"/Users/colinmoore/dev/crafty/app/views/share/characterselect.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/app.js",
@@ -337,7 +460,6 @@
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipedef.js",
 		"/Users/colinmoore/dev/crafty/app/views/bank.html",
 		"/Users/colinmoore/dev/crafty/app/views/crafting.html",
-		"/Users/colinmoore/dev/crafty/app/views/main.html",
 		"/Users/colinmoore/dev/crafty/app/views/harvestables.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsobject.js",
 		"/Users/colinmoore/dev/crafty/app/views/gatherables.html",
@@ -371,6 +493,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"duration",
+			"getTaskDuration",
+			"cell",
+			"harvestable",
+			"cell.",
+			"harve",
+			"canPerformTask",
+			"rgba",
+			"canPerformTask",
+			"' ",
 			"createSimWorldMap",
 			"<pre>\n{{getFSJSONLoader().simulation.jsonSerialized}}\n</pre>",
 			"harvestableDefines",
@@ -488,17 +620,7 @@
 			"checkR",
 			"rewar",
 			"updateGoals",
-			"onBankWithdrawal",
-			"updateG",
-			"thisFactory",
-			"bankTransaction",
-			"trans",
-			"thisFa",
-			"FSGatherable",
-			"FSBackpack",
-			"FSSimObjectChannel",
-			"FSBackpack",
-			"FSSimRules"
+			"onBankWithdrawal"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -537,15 +659,15 @@
 					"file": "app/scripts/services/util/fsjsonloader.js",
 					"settings":
 					{
-						"buffer_size": 6514,
+						"buffer_size": 6964,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3154,
-								3154
+								1492,
+								1492
 							]
 						],
 						"settings":
@@ -555,7 +677,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1196.0,
+						"translation.y": 628.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -565,15 +687,15 @@
 					"file": "/Users/colinmoore/dev/crafty/app/views/pages/map.html",
 					"settings":
 					{
-						"buffer_size": 440,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								156,
-								156
+								0,
+								0
 							]
 						],
 						"settings":
@@ -593,15 +715,15 @@
 					"file": "app/index.html",
 					"settings":
 					{
-						"buffer_size": 5532,
+						"buffer_size": 5540,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5475,
-								5475
+								5411,
+								5411
 							]
 						],
 						"settings":
@@ -611,7 +733,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1036.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -621,15 +743,15 @@
 					"file": "app/scripts/app.js",
 					"settings":
 					{
-						"buffer_size": 1554,
+						"buffer_size": 1577,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1445,
-								1445
+								1468,
+								1468
 							]
 						],
 						"settings":
@@ -639,25 +761,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 150.0,
+						"translation.y": 226.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "/Users/colinmoore/dev/crafty/app/views/pages/world.html",
+					"file": "app/views/pages/worldmap.html",
 					"settings":
 					{
-						"buffer_size": 607,
+						"buffer_size": 767,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								521,
-								521
+								743,
+								743
 							]
 						],
 						"settings":
@@ -702,18 +824,18 @@
 				},
 				{
 					"buffer": 6,
-					"file": "/Users/colinmoore/dev/crafty/app/views/pages/mapedit.html",
+					"file": "app/views/pages/worldmapedit.html",
 					"settings":
 					{
-						"buffer_size": 1101,
+						"buffer_size": 1184,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								941,
-								941
+								1168,
+								1168
 							]
 						],
 						"settings":
@@ -751,7 +873,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 626.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -761,15 +883,15 @@
 					"file": "app/scripts/controllers/main.js",
 					"settings":
 					{
-						"buffer_size": 1225,
+						"buffer_size": 1257,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1014,
-								1014
+								546,
+								546
 							]
 						],
 						"settings":
@@ -779,7 +901,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 66.0,
+						"translation.y": 25.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -815,15 +937,15 @@
 					"file": "/Users/colinmoore/dev/crafty/app/json/worldmap.json",
 					"settings":
 					{
-						"buffer_size": 2991,
+						"buffer_size": 11122,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2991,
-								2991
+								0,
+								11122
 							]
 						],
 						"settings":
@@ -833,7 +955,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2196.0,
+						"translation.y": 7416.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -850,8 +972,8 @@
 						"selection":
 						[
 							[
-								410,
-								510
+								2135,
+								2050
 							]
 						],
 						"settings":
@@ -861,7 +983,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1011.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -899,15 +1021,15 @@
 					"file": "app/scripts/services/json/fssimstate.js",
 					"settings":
 					{
-						"buffer_size": 10522,
+						"buffer_size": 10449,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9489,
-								9489
+								10032,
+								10032
 							]
 						],
 						"settings":
@@ -917,7 +1039,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3531.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -927,20 +1049,78 @@
 					"file": "app/scripts/services/map/world.js",
 					"settings":
 					{
-						"buffer_size": 473,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								168,
-								173
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 44.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "app/scripts/services/map/worldmapedit.js",
+					"settings":
+					{
+						"buffer_size": 2186,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								166,
+								178
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 280.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "app/views/share/mapgrid.html",
+					"settings":
+					{
+						"buffer_size": 1420,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1297,
+								1297
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -949,19 +1129,227 @@
 					"type": "text"
 				},
 				{
-					"buffer": 15,
-					"file": "app/scripts/services/map/mapedit.js",
+					"buffer": 17,
+					"file": "app/scripts/services/fsuieventhandler.js",
 					"settings":
 					{
-						"buffer_size": 1258,
+						"buffer_size": 7800,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								794,
-								794
+								4776,
+								4776
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 4.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "app/scripts/services/json/state/fscharacter.js",
+					"settings":
+					{
+						"buffer_size": 14378,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3321,
+								3321
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3407.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"settings":
+					{
+						"buffer_size": 4884,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										199,
+										213
+									],
+									[
+										393,
+										407
+									],
+									[
+										770,
+										784
+									],
+									[
+										1152,
+										1166
+									],
+									[
+										1539,
+										1553
+									],
+									[
+										1914,
+										1928
+									],
+									[
+										2286,
+										2300
+									],
+									[
+										2491,
+										2505
+									],
+									[
+										2874,
+										2888
+									],
+									[
+										3256,
+										3270
+									],
+									[
+										3643,
+										3657
+									],
+									[
+										4018,
+										4032
+									],
+									[
+										4369,
+										4384
+									],
+									[
+										4720,
+										4735
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								4403,
+								4403
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"output_tag": 3,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1365.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "app/scripts/services/sim/fssimcrafting.js",
+					"settings":
+					{
+						"buffer_size": 2865,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								246,
+								252
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "app/scripts/services/json/state/fstask.js",
+					"settings":
+					{
+						"buffer_size": 1657,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								724,
+								675
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 224.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "app/scripts/services/sim/fssimtasks.js",
+					"settings":
+					{
+						"buffer_size": 10962,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5524,
+								5538
 							]
 						],
 						"settings":
@@ -970,8 +1358,204 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
+						"translation.x": 9.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"file": "app/scripts/services/sim/fssimharvesting.js",
+					"settings":
+					{
+						"buffer_size": 2428,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1395,
+								1395
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
 						"translation.x": 0.0,
-						"translation.y": 51.0,
+						"translation.y": 95.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 24,
+					"file": "app/scripts/services/sim/fssimgathering.js",
+					"settings":
+					{
+						"buffer_size": 2838,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								989,
+								989
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 15.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 25,
+					"file": "app/scripts/services/json/state/fsharvestable.js",
+					"settings":
+					{
+						"buffer_size": 2790,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2754,
+								2754
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 801.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 26,
+					"file": "app/json/state.json",
+					"settings":
+					{
+						"buffer_size": 5293,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2094,
+								2094
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 27,
+					"file": "app/scripts/services/json/state/fsgatherable.js",
+					"settings":
+					{
+						"buffer_size": 1178,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1139,
+								1139
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 28,
+					"file": "app/scripts/services/json/state/fscraftable.js",
+					"settings":
+					{
+						"buffer_size": 1441,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1405,
+								1405
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 171.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 29,
+					"file": "app/scripts/services/map/worldmap.js",
+					"settings":
+					{
+						"buffer_size": 2879,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								307,
+								307
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 308.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1035,6 +1619,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 294.0,
+	"side_bar_width": 297.0,
 	"status_bar_visible": true
 }

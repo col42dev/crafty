@@ -90,8 +90,7 @@ angular.module('craftyApp')
               task.createTimer( duration , function() {
                     if ( thisCharacter.hasStatsFor( task.category ) === true) {
                       if ( task.decrementTimer() === false) {
-                        thisCharacter.completedTask();
-                      }
+                        thisCharacter.completedTask();                      }
                     }
                   }
                 );

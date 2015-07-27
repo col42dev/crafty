@@ -8,14 +8,17 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('MapEdit', function (FSSimMessagingChannel, FSHarvestable) {
+  .service('WorldMapEdit', function (FSSimMessagingChannel, FSHarvestable) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     this.worldMapDim = {rows : 6, cols: 8};
-    this.json = {};
+    this.json = {}; // data bound to <pre></pre> display tag
 
  
-
+  /**
+   * @desc generate JSON decription of map,
+   * @return 
+   */
     this.resize = function() {
 
         console.log(this.worldMapDim.rows + ', ' + this.worldMapDim.cols);
@@ -33,9 +36,40 @@ angular.module('craftyApp')
         } 
     };
 
-    //this.resize();
+  /**
+   * @desc 
+   * @return 
+   */
+    this.set = function(json) {
 
-    this.save = function() {
+        // Rule Defines
+        this.json = json; 
+
+        this.worldMapDim.rows = this.json.worldMap.length;
+        this.worldMapDim.cols = this.json.worldMap[0].length;
+         this.worldMap = [];
+
+        for ( var row = 0; row < this.json.worldMap.length; row ++) {
+            this.worldMap.push([]);
+             for ( var col = 0; col < this.json.worldMap[row].length; col ++) {
+
+                var obj = {};
+                if (this.json.worldMap[row][col].harvestables !== null) {
+                    obj.harvestables = this.json.worldMap[row][col].harvestables;
+                } 
+                this.worldMap[row].push(obj);
+             }
+        } 
+
+        this.JSONify();
+    };
+
+
+  /**
+   * @desc generate JSON decription of map,
+   * @return 
+   */
+    this.JSONify = function() {
 
         console.log('save');
 

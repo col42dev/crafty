@@ -1,0 +1,14 @@
+
+
+
+<form novalidate>
+  <pre><button ng-click="getWorldMapEdit().resize()">resize</button> (rows<input type="text" ng-model="getWorldMapEdit().worldMapDim.rows" value="{{getWorldMapEdit().worldMapDim.rows}}" size="4"/>, cols<input type="text" ng-model="getWorldMapEdit().worldMapDim.cols" value="{{getWorldMapEdit().worldMapDim.cols}}" size="4"/>)  <br/><br/> <button ng-click="getWorldMapEdit().JSONify()">JSONify</button></pre>
+</ul>
+<br/>
+
+<br/>
+<br/>
+
+<td valign="top"> 
+  <div ng-include src="'views/share/worldmapgridedit.html'"></div>
+</td> 

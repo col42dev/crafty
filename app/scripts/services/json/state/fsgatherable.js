@@ -46,15 +46,6 @@ angular.module('craftyApp')
     };
 
 
-    /**
-    * @desc 
-    * @return 
-    */
-    FSGatherable.prototype.duration =  function(  character) {
-      character = character;
-      var duration = FSSimRules.gatherableDefines[this.json.name].duration;
-      return duration;
-    };
 
 
   
