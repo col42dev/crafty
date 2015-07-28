@@ -507,6 +507,7 @@
       "duration": 32
     },
     "Gem": {
+      "visual" : { "url" : "http://favim.com/orig/201106/15/crystal-gem-gorgeous-pink-rock-Favim.com-76959.jpg"},
       "actionable": [
         "Dig"
       ],

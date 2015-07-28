@@ -59,9 +59,9 @@ angular.module('craftyApp')
 
 
     this.master = {
-      'craftyrules' : {url: 'https://api.myjson.com/bins/2pku2?pretty=1', onLoad: this.createSimRules, data:null},
+      'craftyrules' : {url: 'https://api.myjson.com/bins/2fi6i?pretty=1', onLoad: this.createSimRules, data:null},
       'craftystate' : {url: 'https://api.myjson.com/bins/1yqsa?pretty=1', onLoad: this.createSimState, data:null},
-      'craftymap' : {url: 'https://api.myjson.com/bins/1eej6?pretty=1', onLoad: this.createSimWorldMap, data:null}
+      'craftymap' : {url: 'https://api.myjson.com/bins/28uze?pretty=1', onLoad: this.createSimWorldMap, data:null}
 
       //'craftyrules' : {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, data:null},
       //'craftystate' : {url: 'http://localhost:9000/json/state.json', onLoad: this.createSimState, data:null},
@@ -78,9 +78,9 @@ angular.module('craftyApp')
 
       var successRefCount = 0;
 
-      for ( var thisJSONindex in this.master) {
+      for ( var thisJSONindex in this.user) {
 
-        var thisJSON = this.master[thisJSONindex];
+        var thisJSON = this.user[thisJSONindex];
 
               $http.get(thisJSON.url,{
                   params: {
@@ -92,19 +92,20 @@ angular.module('craftyApp')
                   }
               }).success(function(json) {
 
-                thisService.master[json.title].data = json;
+                thisService.user[json.title].data = json;
     
                 successRefCount ++;
                 console.log('refcount:' + successRefCount);
 
-                if ( successRefCount === Object.keys(thisService.master).length) {
-                      for ( var loadJSONkey in thisService.master) {   
-                          if ( thisService.master[loadJSONkey].onLoad !== null) {
-                            thisService.master[loadJSONkey].onLoad( thisService.master[loadJSONkey].data);
+                if ( successRefCount === Object.keys(thisService.user).length) {
+                      for ( var loadJSONkey in thisService.user) {   
+                          if ( thisService.user[loadJSONkey].onLoad !== null) {
+                            thisService.user[loadJSONkey].onLoad( thisService.user[loadJSONkey].data);
                           } else {
-                            window.alert('Validation failed for ' + thisService.master[loadJSONkey].url);
+                            window.alert('Validation failed for ' + thisService.user[loadJSONkey].url);
                           }
                       }
+                      $location.path('/'); 
                 }
 
               }).error(function(json) {
