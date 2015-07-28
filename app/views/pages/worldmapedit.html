@@ -1,9 +1,10 @@
 
 
+<p>Mapedit is used to create or edit existing world maps. By default it is populated with data loaded from worldmap.json.The resource types listed in cell selector are from rules.json:harvestableDefines.</p>
 
-<form novalidate>
-  <pre><button ng-click="getWorldMapEdit().resize()">resize</button> (rows<input type="text" ng-model="getWorldMapEdit().worldMapDim.rows" value="{{getWorldMapEdit().worldMapDim.rows}}" size="4"/>, cols<input type="text" ng-model="getWorldMapEdit().worldMapDim.cols" value="{{getWorldMapEdit().worldMapDim.cols}}" size="4"/>)  <br/><br/> <button ng-click="getWorldMapEdit().JSONify()">JSONify</button></pre>
-</ul>
+  <pre><button ng-click="getWorldMapEdit().resize()">resize</button> (rows<input type="text" ng-model="getWorldMapEdit().worldMapDim.rows" value="{{getWorldMapEdit().worldMapDim.rows}}" size="4"/>, cols<input type="text" ng-model="getWorldMapEdit().worldMapDim.cols" value="{{getWorldMapEdit().worldMapDim.cols}}" size="4"/>)<br>This will discard currently loaded mapedit data. </pre>
+
+  <pre><button ng-click="getWorldMapEdit().JSONify()">JSONify</button> <br>Lists the current map state in JSON format at the base of the page, this can be copied and pasted in to worldmap.json.<br>Click outside or grid area first to capture your most recent map state change. </pre>
 <br/>
 
 <br/>

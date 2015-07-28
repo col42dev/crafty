@@ -127,7 +127,15 @@
 			"file": "app/views/pages/worldmapedit.html",
 			"settings":
 			{
-				"buffer_size": 1184,
+				"buffer_size": 547,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/colinmoore/dev/crafty/app/views/share/worldmapgridedit.html",
+			"settings":
+			{
+				"buffer_size": 734,
 				"line_ending": "Unix"
 			}
 		},
@@ -159,7 +167,7 @@
 			"file": "/Users/colinmoore/dev/crafty/app/json/worldmap.json",
 			"settings":
 			{
-				"buffer_size": 11122,
+				"buffer_size": 10664,
 				"line_ending": "Unix"
 			}
 		},
@@ -207,7 +215,7 @@
 			"file": "app/views/share/mapgrid.html",
 			"settings":
 			{
-				"buffer_size": 1420,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -313,7 +321,23 @@
 			"file": "app/scripts/services/map/worldmap.js",
 			"settings":
 			{
-				"buffer_size": 2879,
+				"buffer_size": 3465,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/json/rules.json",
+			"settings":
+			{
+				"buffer_size": 40577,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/share/worldmapgrid.html",
+			"settings":
+			{
+				"buffer_size": 2315,
 				"line_ending": "Unix"
 			}
 		}
@@ -493,6 +517,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"lumber",
+			"rule",
 			"duration",
 			"getTaskDuration",
 			"cell",
@@ -618,9 +644,7 @@
 			"$rootScope",
 			"'$rootScope',",
 			"checkR",
-			"rewar",
-			"updateGoals",
-			"onBankWithdrawal"
+			"rewar"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -651,7 +675,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 19,
 			"sheets":
 			[
 				{
@@ -666,8 +690,8 @@
 						"selection":
 						[
 							[
-								1492,
-								1492
+								1447,
+								1447
 							]
 						],
 						"settings":
@@ -677,7 +701,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 628.0,
+						"translation.y": 488.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -778,8 +802,8 @@
 						"selection":
 						[
 							[
-								743,
-								743
+								764,
+								676
 							]
 						],
 						"settings":
@@ -827,15 +851,15 @@
 					"file": "app/views/pages/worldmapedit.html",
 					"settings":
 					{
-						"buffer_size": 1184,
+						"buffer_size": 547,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1168,
-								1168
+								526,
+								526
 							]
 						],
 						"settings":
@@ -852,6 +876,34 @@
 				},
 				{
 					"buffer": 7,
+					"file": "/Users/colinmoore/dev/crafty/app/views/share/worldmapgridedit.html",
+					"settings":
+					{
+						"buffer_size": 734,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3,
+								3
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "/Users/colinmoore/dev/crafty/app/views/share/charactersheetstats.html",
 					"settings":
 					{
@@ -879,7 +931,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "app/scripts/controllers/main.js",
 					"settings":
 					{
@@ -907,7 +959,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "app/scripts/services/mapedit/mapedit.js",
 					"settings":
 					{
@@ -933,11 +985,11 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "/Users/colinmoore/dev/crafty/app/json/worldmap.json",
 					"settings":
 					{
-						"buffer_size": 11122,
+						"buffer_size": 10664,
 						"regions":
 						{
 						},
@@ -945,7 +997,7 @@
 						[
 							[
 								0,
-								11122
+								10664
 							]
 						],
 						"settings":
@@ -955,13 +1007,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 7416.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "app/views/pages/main.html",
 					"settings":
 					{
@@ -989,7 +1041,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 13,
 					"file": "app/scripts/services/json/fssimrules.js",
 					"settings":
 					{
@@ -1017,7 +1069,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 14,
 					"file": "app/scripts/services/json/fssimstate.js",
 					"settings":
 					{
@@ -1045,7 +1097,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 15,
 					"file": "app/scripts/services/map/world.js",
 					"settings":
 					{
@@ -1073,7 +1125,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 16,
 					"file": "app/scripts/services/map/worldmapedit.js",
 					"settings":
 					{
@@ -1095,25 +1147,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 280.0,
+						"translation.y": 17.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 17,
 					"file": "app/views/share/mapgrid.html",
 					"settings":
 					{
-						"buffer_size": 1420,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1297,
-								1297
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1129,7 +1181,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 18,
 					"file": "app/scripts/services/fsuieventhandler.js",
 					"settings":
 					{
@@ -1157,7 +1209,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 19,
 					"file": "app/scripts/services/json/state/fscharacter.js",
 					"settings":
 					{
@@ -1168,8 +1220,8 @@
 						"selection":
 						[
 							[
-								3321,
-								3321
+								5777,
+								5821
 							]
 						],
 						"settings":
@@ -1179,13 +1231,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3407.0,
+						"translation.y": 3458.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 20,
 					"settings":
 					{
 						"buffer_size": 4884,
@@ -1281,7 +1333,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 20,
+					"buffer": 21,
 					"file": "app/scripts/services/sim/fssimcrafting.js",
 					"settings":
 					{
@@ -1309,7 +1361,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 22,
 					"file": "app/scripts/services/json/state/fstask.js",
 					"settings":
 					{
@@ -1337,7 +1389,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 23,
 					"file": "app/scripts/services/sim/fssimtasks.js",
 					"settings":
 					{
@@ -1365,7 +1417,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 24,
 					"file": "app/scripts/services/sim/fssimharvesting.js",
 					"settings":
 					{
@@ -1393,7 +1445,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 24,
+					"buffer": 25,
 					"file": "app/scripts/services/sim/fssimgathering.js",
 					"settings":
 					{
@@ -1421,7 +1473,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 25,
+					"buffer": 26,
 					"file": "app/scripts/services/json/state/fsharvestable.js",
 					"settings":
 					{
@@ -1449,7 +1501,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 26,
+					"buffer": 27,
 					"file": "app/json/state.json",
 					"settings":
 					{
@@ -1460,8 +1512,8 @@
 						"selection":
 						[
 							[
-								2094,
-								2094
+								204,
+								310
 							]
 						],
 						"settings":
@@ -1477,7 +1529,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 27,
+					"buffer": 28,
 					"file": "app/scripts/services/json/state/fsgatherable.js",
 					"settings":
 					{
@@ -1505,7 +1557,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 28,
+					"buffer": 29,
 					"file": "app/scripts/services/json/state/fscraftable.js",
 					"settings":
 					{
@@ -1533,19 +1585,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 29,
+					"buffer": 30,
 					"file": "app/scripts/services/map/worldmap.js",
 					"settings":
 					{
-						"buffer_size": 2879,
+						"buffer_size": 3465,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								307,
-								307
+								892,
+								892
 							]
 						],
 						"settings":
@@ -1555,7 +1607,63 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 308.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 31,
+					"file": "app/json/rules.json",
+					"settings":
+					{
+						"buffer_size": 40577,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10505,
+								10505
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 35.0,
+						"translation.y": 6911.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 32,
+					"file": "app/views/share/worldmapgrid.html",
+					"settings":
+					{
+						"buffer_size": 2315,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								946,
+								946
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 171.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1619,6 +1727,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 297.0,
+	"side_bar_width": 300.0,
 	"status_bar_visible": true
 }

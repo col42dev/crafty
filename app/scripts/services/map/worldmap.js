@@ -50,29 +50,28 @@ angular.module('craftyApp')
    * @return 
    */
   this.getText = function(catgeory, col) {
+    var padding = '                                      '; // make text click selection work for full width of cell
     if ( catgeory === 'harvesting') {
       if ( col.harvestables !== null) {
         if (parseInt(col.harvestables.json.quantity, 10) > 0) {
-          return col.harvestables.json.name + ':' + col.harvestables.json.quantity;
+          return col.harvestables.json.name + padding + '\n' + col.harvestables.json.quantity + padding;
         }
       }
       if (col.task !== null && col.task.category === 'harvesting') {
-        return col.task.name +':0';
+        return col.task.name + padding + '\n' + '0' + padding;
       }
-
-      return '';
     } else if ( catgeory === 'gathering') {
       if ( col.gatherables !== null) {
         if (parseInt(col.gatherables.json.quantity, 10) > 0) {
-          return col.gatherables.json.name + ':' + col.gatherables.json.quantity;
+          var padding = '                                      '; // text selection for full width of cell
+          return col.gatherables.json.name + padding + '\n' + col.gatherables.json.quantity + padding;
         }
       }
       if (col.task !== null && col.task.category === 'gathering') {
-        return col.task.name +':0';
+        return col.task.name + padding + '\n' + '0' + padding;
       }
-
-      return '';
     }
+    return '';
   };
 
   /**

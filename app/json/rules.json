@@ -441,6 +441,7 @@
       "duration": 15
     },
     "Fish": {
+      "visual" : { "url" : "http://cdn.c.photoshelter.com/img-get/I00001kErC2chJ9M/s/600/600/Lx321.jpg"}, 
       "actionable": [
         "Fish"
       ],
@@ -448,6 +449,7 @@
       "duration": 10
     },
     "Leaves": {
+      "visual" : { "url" : "http://www.hdwallpapersinn.com/wp-content/uploads/2015/04/autumn-leaves-wallpapers-hd.jpg"}, 
       "actionable": [
         "Pick"
       ],
@@ -455,6 +457,7 @@
       "duration": 15
     },
     "Sand": {
+      "visual" : { "url" : "http://classicalchristianity.com/wp-content/uploads/2012/03/Sand.jpg"}, 
       "actionable": [
         "Dig"
       ],
@@ -462,6 +465,7 @@
       "duration": 10
     },
     "Grain": {
+      "visual" : { "url" : "http://www.rtmtransport.com/wp-content/uploads/2013/01/Grain-Slide.jpg"}, 
       "actionable": [
         "Pick"
       ],
@@ -470,6 +474,7 @@
       "replenish": 15
     },
     "Wood": {
+      "visual" : { "url" : "http://img15.deviantart.net/2f1c/i/2012/324/5/4/magical_forrest_by_db_photoblogdotcom-d5ll91y.jpg"},
       "actionable": [
         "Chop",
         "Saw"
@@ -478,6 +483,7 @@
       "duration": 20
     },
     "Lumber": {
+      "visual" : { "url" : "http://arborwoodco.com/img/about-lumber.jpg"},
       "actionable": [
         "Chop",
         "Saw"
@@ -493,6 +499,7 @@
       "duration": 64
     },
     "Sheep": {
+      "visual" : { "url" : "https://c2.staticflickr.com/2/1085/924981220_bb790bf0e8_b.jpg"},
       "actionable": [
         "Tie"
       ],
@@ -507,6 +514,7 @@
       "duration": 120
     },
     "Fruit": {
+      "visual" : { "url" : "https://sagreenfingers.files.wordpress.com/2010/03/raspberriesphotobybienstephensononflickr-main_full.jpg"},    
       "actionable": [
         "Pick"
       ],

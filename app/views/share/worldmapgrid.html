@@ -24,9 +24,10 @@ click cell bottom-left resource text to gather.
 
                 <div  style="width:100px; 
                           height: 100%;
-                            background-color:rgba(20, 200, 20, 0.1); 
+                            background-color:rgba(20, 200, 20, 0.1);
+                            background-size: contain;
                             overflow:visible; 
-                            opacity: .2;
+                            opacity: .4;
          
                             word-wrap:normal;  
                             position:absolute; 
@@ -35,24 +36,24 @@ click cell bottom-left resource text to gather.
               </div> 
 
 
-              <div  style="width:100px; 
+              <div  style="width:100%; 
                           background-color:rgba(20, 200, 20, 1.0); 
                           overflow:visible; 
                           word-wrap:normal" 
                     ng-style="{ 'width' : getWorldMap().getTaskPercentRemaining('harvesting', col)}"
                     ng-click="getFSUIEventHandler().onClickWorld('harvesting', col)">
-                  {{getWorldMap().getText('harvesting', col)}}
+                  <b>{{getWorldMap().getText('harvesting', col)}}</b>
               </div>
 
               <div  style="width:100px; 
-                            background-color:rgba(20, 200, 20, 0.1); 
+                            background-color:rgba(20, 200, 20, 1.0); 
                             overflow:visible; 
                             word-wrap:normal;  
                             position:absolute; 
                             bottom:0" 
                     ng-style="{ 'width' : getWorldMap().getTaskPercentRemaining('gathering', col)}"
                     ng-click="getFSUIEventHandler().onClickWorld('gathering', col)">
-                  {{getWorldMap().getText('gathering', col)}}
+                  <b>{{getWorldMap().getText('gathering', col)}}</b>
               </div> 
 
 
