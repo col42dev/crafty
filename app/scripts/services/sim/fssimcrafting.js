@@ -8,16 +8,15 @@
  * Operate on fscraftable's.
  */
 angular.module('craftyApp')
-  .service('FSSimCrafting', function (FSSimState, FSSimRules, FSContextConsole, FSTask) {
+  .service('FSSimCrafting', function (FSSimState, FSSimRules, FSContextConsole) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
         /**
          * @desc 
          * @return 
          */
-        this.isCraftable = function (craftableType) {
+        this.isCraftable = function (thisTask) {
             for ( var characterKey in FSSimState.characters ) {
-                var thisTask = new FSTask({'name':craftableType, 'category':'crafting', 'cell' : null});
                 if ( FSSimState.characters[characterKey].canPerformTask(thisTask)) {
                     return true;
                 }

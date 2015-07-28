@@ -87,9 +87,7 @@ angular.module('craftyApp')
             }
         }
         else {
-            if ( task.cell === null) {
-                this.logDependencies(task);
-            }
+            this.logDependencies(task);
             return false;
         }
         return true;
@@ -240,7 +238,12 @@ angular.module('craftyApp')
 
                 // equipped
                 for ( characterKey in FSSimState.characters ) {
-                     if ( FSSimState.harvestables[keyName].isHarvestableBy(FSSimState.characters[characterKey]) === true) {
+                    if (task.cell !== null) {
+                        if ( task.cell.harvestables.isHarvestableBy(FSSimState.characters[characterKey]) === true) {
+                            hasEquippedTools = true;
+                        }
+                    }
+                    else if ( FSSimState.harvestables[keyName].isHarvestableBy(FSSimState.characters[characterKey]) === true) {
                       hasEquippedTools = true;
                     }
                 }

@@ -59,7 +59,7 @@ angular.module('craftyApp')
 
 
     this.master = {
-      'craftyrules' : {url: 'https://api.myjson.com/bins/161lu?pretty=1', onLoad: this.createSimRules, data:null},
+      'craftyrules' : {url: 'https://api.myjson.com/bins/2pku2?pretty=1', onLoad: this.createSimRules, data:null},
       'craftystate' : {url: 'https://api.myjson.com/bins/1yqsa?pretty=1', onLoad: this.createSimState, data:null},
       'craftymap' : {url: 'https://api.myjson.com/bins/1eej6?pretty=1', onLoad: this.createSimWorldMap, data:null}
 
@@ -75,8 +75,6 @@ angular.module('craftyApp')
      * @return 
      */
     this.loadAndCreateSim = function() {
-
-      $location.path('/world'); 
 
       var successRefCount = 0;
 

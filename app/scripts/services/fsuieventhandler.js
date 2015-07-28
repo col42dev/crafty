@@ -8,13 +8,13 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('FSUIEventHandler', function ( FSBankable,  FSSimMessagingChannel,  FSContextConsole, FSSimRules, FSSimState, FSSimRewards, FSSimCrafting, FSSimHarvesting, FSSimGathering, FSSimTasks) {
+  .service('FSUIEventHandler', function ( FSBankable,  FSSimMessagingChannel,  FSContextConsole, FSSimRules, FSSimState, FSSimRewards, FSSimCrafting, FSSimHarvesting, FSSimGathering, FSSimTasks, FSTask) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
 
         /**
-         * @desc 
+         * @desc tables view bgcolor
          * @return 
          */
         this.bgcolor= function( action, type) {
@@ -24,13 +24,16 @@ angular.module('craftyApp')
                     enabled = (FSSimState.rewards.indexOf(type) === -1) ? false : true ;
                     break;
                 case 'craft':
-                    enabled = FSSimCrafting.isCraftable(type) ;
+                    var craftableTask = new FSTask({'name':type, 'category':'crafting', 'cell' : null});
+                    enabled = FSSimCrafting.isCraftable(craftableTask) ;
                     break;
                 case 'gather':
-                    enabled = FSSimGathering.isGatherable(type);
+                    var gatherTask = new FSTask({'name':type, 'category':'gathering', 'cell' : null});
+                    enabled = FSSimGathering.isGatherable(gatherTask);
                     break;
                 case 'harvest':
-                    enabled = FSSimHarvesting.isHarvestable(type);
+                    var harvestTask = new FSTask({'name':type, 'category':'harvesting', 'cell' : null});
+                    enabled = FSSimHarvesting.isHarvestable(harvestTask);
                     break;
                 case 'bank':
                     {
@@ -128,7 +131,7 @@ angular.module('craftyApp')
          * @return 
          */
         this.onClickWorld = function ( category, cell) {
-            //console.log( JSON.stringify(cell));
+            FSContextConsole.clear();
             FSSimTasks.createCellTask(category, cell);
         };
       

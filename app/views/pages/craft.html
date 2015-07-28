@@ -3,24 +3,7 @@
 
 
 
-<p  align="right"><b>{{getFSJSONLoader().myStopwatch.data.pad(getFSJSONLoader().myStopwatch.data.hours)}}:{{getFSJSONLoader().myStopwatch.data.pad(getFSJSONLoader().myStopwatch.data.minutes)}}:{{getFSJSONLoader().myStopwatch.data.pad(getFSJSONLoader().myStopwatch.data.seconds)}}</b></p>
 
-
-<form novalidate>
-  <p></p>
-  <button ng-click="getFSJSONLoader().loadAndCreateSim()">Load:</button><br/>
-  <ul>
-  <b>rules:</b><input size="45" type="text" ng-model="getFSJSONLoader().user.craftyrules.url"><br/>
-  <b>state:</b><input size="45" type="text" ng-model="getFSJSONLoader().user.craftystate.url"><br/>
-  <b>map:</b><input size="45" type="text" ng-model="getFSJSONLoader().user.craftymap.url">
-</ul>
- 
-</form>
-
-
- 
-<p>For custom dataset upload a JSON description to <a href="http://myjson.com/">http://myjson.com/</a> and copy the generated URL in to text field.<p>
-</br>
 
 
 <div ng-include src="'views/share/goals.html'"></div>
@@ -68,8 +51,8 @@
 
 <thead>
     <tr class="noselect">
-        <th class="col-sm-1"><h4>HARVESTABLES</h4></th>
-        <th class="col-sm-1"><h4>GATHERABLES</h4></th>
+        <th class="col-sm-1"><h4>GLOBAL<br/>HARVESTABLES</h4></th>
+        <th class="col-sm-1"><h4>GLOBAL<br/>GATHERABLES</h4></th>
         <th class="col-sm-1"><h4>BANK</h4>equip/consume</th>
         <th class="col-sm-1"><h4>CRAFTABLES</h4></th>
     </tr>
@@ -108,11 +91,4 @@
 
 <br/>
 
-<form novalidate>
-<button ng-click="getFSJSONLoader().saveJson()">Save: (Enter Document Name)</button><input size="45" type="text" ng-model="getFSJSONLoader().documentName.input"></input>
-</form>
-<pre>
-{{getFSJSONLoader().simulation.jsonSerialized}}
-</pre>
-</br>
 

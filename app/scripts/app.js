@@ -30,7 +30,7 @@ angular
   
     $routeProvider
       .when('/', {
-        templateUrl: 'views/pages/main.html',
+        templateUrl: 'views/pages/worldmap.html',
         controller: 'MainCtrl'
       })
       .when('/character', {
@@ -53,8 +53,12 @@ angular
         templateUrl: 'views/pages/worldmapedit.html',
         controller: 'MainCtrl'
       })
-      .when('/world', {
-        templateUrl: 'views/pages/worldmap.html',
+      .when('/craft', {
+        templateUrl: 'views/pages/craft.html',
+        controller: 'MainCtrl'
+      })
+      .when('/load', {
+        templateUrl: 'views/pages/load.html',
         controller: 'MainCtrl'
       })
       .otherwise({

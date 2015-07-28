@@ -8,7 +8,7 @@
  * runtime mapping of JSON state 'gatherable' element.
  */
 angular.module('craftyApp')
-  .factory('FSGatherable', function (FSSimRules) {
+  .factory('FSGatherable', function () {
     // Service logic
     // ...
 

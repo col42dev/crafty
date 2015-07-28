@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('WorldMap', function (FSHarvestable, FSSimRules, FSSimHarvesting, FSSimGathering) {
+  .service('WorldMap', function (FSHarvestable, FSSimRules, FSSimHarvesting, FSSimGathering, FSTask) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -61,7 +61,6 @@ angular.module('craftyApp')
     } else if ( catgeory === 'gathering') {
       if ( col.gatherables !== null) {
         if (parseInt(col.gatherables.json.quantity, 10) > 0) {
-          var padding = '                                      '; // text selection for full width of cell
           return col.gatherables.json.name + padding + '\n' + col.gatherables.json.quantity + padding;
         }
       }
@@ -79,14 +78,16 @@ angular.module('craftyApp')
   this.getCellTextColor = function(catgeory, col) {
     if ( catgeory === 'harvesting') {
       if ( col.harvestables !== null) {
-        if ( FSSimHarvesting.isHarvestable(col.harvestables.json.name) === true) {
+        var harvestableTask = new FSTask({'name':col.harvestables.json.name, 'category':'harvesting', 'cell' : col});
+        if ( FSSimHarvesting.isHarvestable(harvestableTask) === true) {
           return '#000000';
         }
       }
  
     } else if ( catgeory === 'gathering') {
       if ( col.gatherables !== null) {
-        if ( FSSimGathering.isGatherable(col.gatherables.json.name) === true) {
+        var gatherableTask = new FSTask({'name':col.gatherables.json.name, 'category':'gathering', 'cell' : col});
+        if ( FSSimGathering.isGatherable(gatherableTask) === true) {
           return '#000000';
         }
       

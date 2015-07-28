@@ -8,7 +8,7 @@
  * Operate on fsharvestables's.
  */
 angular.module('craftyApp')
-  .service('FSSimHarvesting', ['$rootScope', 'FSSimMessagingChannel', 'FSSimState', 'FSTask', function ($rootScope, FSSimMessagingChannel, FSSimState, FSTask) {
+  .service('FSSimHarvesting', ['$rootScope', 'FSSimMessagingChannel', 'FSSimState', function ($rootScope, FSSimMessagingChannel, FSSimState) {
  
     // AngularJS will instantiate a singleton by calling "new" on this function
 
@@ -52,9 +52,8 @@ angular.module('craftyApp')
          * @desc 
          * @return 
          */
-        this.isHarvestable = function (harvestableType) {
+        this.isHarvestable = function (thisTask) {
             for ( var characterKey in FSSimState.characters ) {
-                var thisTask = new FSTask({'name':harvestableType, 'category':'harvesting', 'cell' : null});
                 if ( FSSimState.characters[characterKey].canPerformTask(thisTask)) {
                     return true;
                 }
