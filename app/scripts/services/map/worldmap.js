@@ -8,14 +8,13 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('WorldMap', function (FSHarvestable, FSSimRules) {
+  .service('WorldMap', function (FSHarvestable, FSSimRules, FSSimHarvesting, FSSimGathering) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
-    this.worldMapDim = {rows : 6, cols: 8};
-    this.json = {};
+  this.worldMapDim = {rows : 6, cols: 8};
+  this.json = {};
 
- 
    /**
    * @desc 
    * @return 
@@ -42,14 +41,13 @@ angular.module('craftyApp')
                 this.json.worldMap[row][col].gatherables = null;
              }
         } 
-
   };
 
   /**
    * @desc 
    * @return 
    */
-  this.getText = function(catgeory, col) {
+  this.getCellText = function(catgeory, col) {
     var padding = '                                      '; // make text click selection work for full width of cell
     if ( catgeory === 'harvesting') {
       if ( col.harvestables !== null) {
@@ -72,6 +70,30 @@ angular.module('craftyApp')
       }
     }
     return '';
+  };
+
+  /**
+   * @desc 
+   * @return 
+   */
+  this.getCellTextColor = function(catgeory, col) {
+    if ( catgeory === 'harvesting') {
+      if ( col.harvestables !== null) {
+        if ( FSSimHarvesting.isHarvestable(col.harvestables.json.name) === true) {
+          return '#000000';
+        }
+      }
+ 
+    } else if ( catgeory === 'gathering') {
+      if ( col.gatherables !== null) {
+        if ( FSSimGathering.isGatherable(col.gatherables.json.name) === true) {
+          return '#000000';
+        }
+      
+      }
+    }
+
+    return '#DD4444';
   };
 
   /**
