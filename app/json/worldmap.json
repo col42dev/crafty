@@ -3,51 +3,144 @@
   "version": "0.0.0",
   "worldMap": [
     [
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
       {
-        "harvestables": {
-          "json": {
-            "name": "Lumber",
-            "quantity": 30
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
+        "harvestables": null
       },
-      {}
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      }
     ],
     [
-      {},
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      },
+      {
+        "harvestables": null
+      }
+    ],
+    [
       {
         "harvestables": {
           "json": {
-            "name": "Sheep",
+            "name": "Earth",
             "quantity": 10
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
         }
       },
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
       {
         "harvestables": {
           "json": {
-            "name": "Wood",
-            "quantity": 20
+            "name": "Earth",
+            "quantity": 10
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
         }
@@ -55,14 +148,12 @@
       {
         "harvestables": {
           "json": {
-            "name": "Wood",
-            "quantity": 20
+            "name": "Earth",
+            "quantity": 10
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
         }
-      }
-    ],
-    [
+      },
       {
         "harvestables": {
           "json": {
@@ -84,117 +175,7 @@
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 2
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth",
-            "quantity": 2
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth",
-            "quantity": 3
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth",
-            "quantity": 13
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth",
-            "quantity": 11
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "HardStone",
-            "quantity": 13
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "HardStone",
-            "quantity": 13
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Granite",
-            "quantity": 30
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "IronOre",
-            "quantity": 20
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      }
-    ],
-    [
-      {
-        "harvestables": {
-          "json": {
-            "name": "Limestone",
-            "quantity": "4"
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Limestone",
-            "quantity": "4"
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Limestone",
+            "name": "Stone",
             "quantity": 1
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
@@ -248,7 +229,7 @@
       {
         "harvestables": {
           "json": {
-            "name": "HardStone",
+            "name": "Earth",
             "quantity": 1
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
@@ -257,7 +238,7 @@
       {
         "harvestables": {
           "json": {
-            "name": "Granite",
+            "name": "Earth",
             "quantity": 1
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
@@ -266,7 +247,52 @@
       {
         "harvestables": {
           "json": {
-            "name": "Granite",
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
             "quantity": 1
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
@@ -286,6 +312,60 @@
       {
         "harvestables": {
           "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Sand",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
             "name": "Limestone",
             "quantity": 1
           },
@@ -322,8 +402,100 @@
       {
         "harvestables": {
           "json": {
-            "name": "Coal",
-            "quantity": "2"
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      }
+    ],
+    [
+      {
+        "harvestables": {
+          "json": {
+            "name": "Gem",
+            "quantity": 1
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
         }
@@ -350,7 +522,25 @@
         "harvestables": {
           "json": {
             "name": "Quartzstone",
-            "quantity": "3"
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
         }
@@ -385,7 +575,97 @@
       {
         "harvestables": {
           "json": {
-            "name": "Marble",
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
             "quantity": 1
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
@@ -432,17 +712,8 @@
       {
         "harvestables": {
           "json": {
-            "name": "Coal",
-            "quantity": "2"
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Coal",
-            "quantity": "2"
+            "name": "Earth",
+            "quantity": 1
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
         }
@@ -459,25 +730,7 @@
       {
         "harvestables": {
           "json": {
-            "name": "Quartzstone",
-            "quantity": "3"
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Quartzstone",
-            "quantity": "3"
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Marble",
+            "name": "Earth",
             "quantity": 1
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
@@ -486,7 +739,7 @@
       {
         "harvestables": {
           "json": {
-            "name": "Marble",
+            "name": "Earth",
             "quantity": 1
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
@@ -495,7 +748,106 @@
       {
         "harvestables": {
           "json": {
-            "name": "Marble",
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
+            "quantity": 1
+          },
+          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth",
             "quantity": 1
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"

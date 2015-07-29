@@ -27,17 +27,18 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    this.createSimRules = function( data) {
+    this.createSimRules = function( data, url) {
       console.log('createSimRules');
       this.taskTimeScalarDivVis ='';
-      FSSimRules.set(data);
+      FSSimRules.set(data, url);
     };
 
     /**
      * @desc 
      * @return 
      */
-    this.createSimState = function(data) {
+    this.createSimState = function(data, url) {
+      url = url;
       console.log('createSimState');
      
       FSSimState.set(data);
@@ -50,7 +51,8 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    this.createSimWorldMap = function(data) {
+    this.createSimWorldMap = function(data, url) {
+      url = url;
       console.log('createSimWorldMap');
 
       WorldMap.set(data);
@@ -59,9 +61,9 @@ angular.module('craftyApp')
 
 
     this.master = {
-      'craftyrules' : {url: 'https://api.myjson.com/bins/2fi6i?pretty=1', onLoad: this.createSimRules, data:null},
-      'craftystate' : {url: 'https://api.myjson.com/bins/1yqsa?pretty=1', onLoad: this.createSimState, data:null},
-      'craftymap' : {url: 'https://api.myjson.com/bins/28uze?pretty=1', onLoad: this.createSimWorldMap, data:null}
+      'craftyrules' : {url: 'https://api.myjson.com/bins/4p92y', onLoad: this.createSimRules, data:null},
+      'craftystate' : {url: 'https://api.myjson.com/bins/1yqsa', onLoad: this.createSimState, data:null},
+      'craftymap' : {url: 'https://api.myjson.com/bins/4am2q', onLoad: this.createSimWorldMap, data:null}
 
       //'craftyrules' : {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, data:null},
       //'craftystate' : {url: 'http://localhost:9000/json/state.json', onLoad: this.createSimState, data:null},
@@ -100,7 +102,7 @@ angular.module('craftyApp')
                 if ( successRefCount === Object.keys(thisService.user).length) {
                       for ( var loadJSONkey in thisService.user) {   
                           if ( thisService.user[loadJSONkey].onLoad !== null) {
-                            thisService.user[loadJSONkey].onLoad( thisService.user[loadJSONkey].data);
+                            thisService.user[loadJSONkey].onLoad( thisService.user[loadJSONkey].data, thisService.user[loadJSONkey].url);
                           } else {
                             window.alert('Validation failed for ' + thisService.user[loadJSONkey].url);
                           }

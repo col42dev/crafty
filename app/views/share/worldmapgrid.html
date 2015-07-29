@@ -11,19 +11,20 @@ click cell top-left resource text to harvest.<br/>
 click cell bottom-left resource text to gather.
 <table class="table table-bordered table-condensed" style="table-layout: fixed">
   <tbody>
-      <tr ng-repeat="row in getWorldMap().json.worldMap" class="noselect" >
-        <td style="min-width: 100px; min-height: 100px" 
+      <tr ng-repeat="row in getWorldMap().json.worldMap" 
+          class="noselect"
+       >
+        <td ng-style="{ 'min-width': '100px', 'min-height': '100px', 'padding': '0px'}" 
             ng-repeat="col in row" 
             width="100" height ="100"
             > 
             <div style="height: 100%; 
                         width: 100%; 
                         background-color:{{getWorldMap().bgcolor(col)}}; 
-                        position:relative "
-                        >
+                        position:relative">
 
-                <div  style="width:100px; 
-                          height: 100%;
+                <div  style="width:100%; 
+                            height: 100%;
                             background-color:rgba(20, 200, 20, 0.1);
                             background-size: contain;
                             overflow:visible; 
@@ -37,6 +38,7 @@ click cell bottom-left resource text to gather.
 
 
               <div  style="width:100%; 
+ 
                           background-color:rgba(20, 200, 20, 1.0); 
                           overflow:visible; 
                           word-wrap:normal" 
@@ -45,7 +47,8 @@ click cell bottom-left resource text to gather.
                   <b ng-style="{ 'color': getWorldMap().getCellTextColor('harvesting', col)}">{{getWorldMap().getCellText('harvesting', col)}}</b>
               </div>
 
-              <div  style="width:100px; 
+              <div  style="width:100%; 
+                            height: 100;
                             background-color:rgba(20, 200, 20, 1.0); 
                             overflow:visible; 
                             word-wrap:normal;  

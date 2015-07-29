@@ -1,6 +1,12 @@
 
-<a href="https://docs.google.com/spreadsheets/d/15StNodeYJGOFdG6b8sHqYY06cG8ABDna2xyPOvemLEM/edit#gid=380833854">ProfessionsAndAbilities</a>
 
+
+<br/><b>title: {{getFSSimRules().rulesJSON.title}}<b>
+<br/><b>version: {{getFSSimRules().rulesJSON.version}}<b>
+
+
+<br/><button ng-click="getFSSimRules().updateServerVersionFromState()">Update server:</button>
+<br/>
 
 <div class="fadedbackground">
 
@@ -10,8 +16,9 @@
 <table class="table table-bordered table-condensed table-scrollable">
   <tbody>
     <tr class="noselect" >
-      <td width="15%" style="word-wrap:normal">Item</td>
-      <td width="45%" style="word-wrap:normal">Ingredients</td>
+      <td width="15%" style="word-wrap:normal">Name</td>
+      <td width="15%" style="word-wrap:normal">Output</td>
+      <td width="45%" style="word-wrap:normal">Input</td>
       <td width="15%" style="word-wrap:normal">Constructor</td>
       <td width="5%" style="word-wrap:normal">Crafting Time (S)</td>
       <td width="10%" style="word-wrap:normal">Proficiency<br>Profession</td>
@@ -25,12 +32,26 @@
   <table class="table table-bordered table-condensed table-scrollable">
     <tbody>
       <tr ng-repeat="(k,v)  in getFSSimRules().craftableDefines" class="noselect" >
-        <td width="15%">{{v.output}}</td> 
-        <td width="45%">{{v.input}}</td> 
-        <td width="15%">{{v.construction}}</td> 
-        <td width="5%">{{v.duration}}</td> 
-        <td width="10%">{{v.proficiency.profession}}</td> 
-        <td width="10%">{{v.proficiency.tier}}</td> 
+        <td width="15%">
+          <input type="text" ng-model="k" size="16" style="width:100%" readonly></input>
+        </td> 
+        <td width="15%">
+          <div ng-repeat="(outk,outv) in v.output">
+              <input  type="text"   size="16" ng-model="outk" style="width:100%" readonly> 
+              <input  type="number" size="2"  ng-model="v.output[outk]" style="width:100%">
+          </div>
+        </td> 
+        <td width="45%">
+          <div ng-repeat="(ink,inv) in v.input">
+              <input  type="text"   size="16" ng-model="ink" style="width:100%" readonly> 
+              <input  type="number" size="2"  ng-model="v.input[ink]" style="width:100%">
+          </div>
+        </td> 
+        <td width="15%"><input ng-model="v.construction" size="16" style="width:100%"></input></td> 
+        <td width="5%"><input type="number" ng-model="v.duration" size="4" style="width:100%"></input></td> 
+        <td width="10%"><input  ng-model="v.proficiency.profession" size="16" style="width:100%"></input></td> 
+        <td width="10%"><input type="number" ng-model="v.proficiency.tier" size="20" style="width:100%"></input></td> 
+             
       </tr>
     </tbody>
   </table>
@@ -228,6 +249,44 @@
 </div>
 
 </div><!--fadedbackground-->
+
+<br>
+
+<table class="table table-bordered table-condensed table-scrollable">
+  <theader>
+      <tr class="noselect" >
+          <td class="col-sm-1">
+              <button ng-click="getFSSimRules().onSerialize()" style="float: right;">Serialize:</button>
+          </td>
+          <td class="col-sm-1">
+            <button ng-click="getFSSimRules().onUpdateServerVersionWith()" style="float: right;">Update server:</button>
+          </td>
+
+      </tr>
+  </theader>
+    <tbody>
+      <tr class="noselect" >
+          <td class="col-sm-1">
+            <textarea cols="50" rows="20" ng-model="getFSSimRules().serializedData" style="float: left; width:100%"></textarea>
+          </td>
+          <td class="col-sm-1">
+            <textarea cols="50" rows="20" ng-model="getFSSimRules().updateServerVersionWithData" style="float: right; width:100%"></textarea>
+          </td>
+
+      </tr>
+  </tbody>
+</table>  
+</div>
+
+
+
+
+
+
+
+
+
+
 
 
 

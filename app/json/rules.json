@@ -492,6 +492,7 @@
       "duration": 128
     },
     "ShaolFish": {
+      "visual" : { "url" : "http://www.unexplainable.net/brainbox/uploads/2/Fish_3.jpg"},    
       "actionable": [
         "Net"
       ],
