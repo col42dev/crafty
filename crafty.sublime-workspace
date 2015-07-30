@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"h",
+				"harvestables"
+			],
+			[
 				"ca",
 				"category"
 			],
@@ -76,74 +80,46 @@
 	"buffers":
 	[
 		{
+			"contents": "'use strict';\n\n/**\n * @ngdoc service\n * @name craftyApp.accounts\n * @description\n * # accounts\n * Service in the craftyApp.\n */\nangular.module('craftyApp')\n  .service('Accounts', function () {\n    // AngularJS will instantiate a singleton by calling \"new\" on this function.\n\n     var thisService = this;\n\n  	var dbdomain = 'localhost';\n    //dbdomain = 'ec2-54-201-237-107.us-west-2.compute.amazonaws.com';\n\n       /**\n     * @desc \n     * @return \n     */\n    this.saveJson = function() {\n    	/*\n      console.log('input:' + this.user.input); \n\n\n      var json = thisService.simulation.deserialize();\n      json['documentName'] =  thisService.documentName.input;\n      json = JSON.stringify(json, undefined, 2);\n      this.postjson(json);\n      */\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    this.loadAccounts = function() {\n\n        var url = 'http://' + dbdomain + ':8080/';\n        $http.get(url,{\n            params: {\n                headers: {\n                    'Access-Control-Allow-Origin': '*',\n                    'Access-Control-Request-Headers' : 'access-control-allow-origin'\n                }\n            }\n        }).success(function(data) {\n\n          console.log('Load accounts success');\n          thisService.accountsData = data;\n\n        }).error(function(data) {\n            data = data;\n            window.alert('loadAccounts failed for ' + url);\n        });\n\n    };\n\n     /**\n     * @desc \n     * @return \n     */\n    this.selectAccount = function(index) {\n      console.log('selectAccount' + index);\n\n      thisService.data = thisService.accountsData[Object.keys(thisService.accountsData)[index]];\n\n\n     //todo: split in to state and rules: setTimeout(thisService.createSim, 200);\n\n   \n    };\n\n     /**\n     * @desc \n     * @return \n     */\n    this.removeAllAccounts = function() {\n\n        var url = 'http://' + dbdomain + ':8080/removealldocuments';\n        $http.get(url,{\n            params: {\n                headers: {\n                    'Access-Control-Allow-Origin': '*',\n                    'Access-Control-Request-Headers' : 'access-control-allow-origin'\n                }\n            }\n        }).success( function(data) {\n\n          console.log('removeAllAccounts success');\n          thisService.accountsData = data;\n          //$scope.$apply();\n\n        }).error( function(data) {\n            data = data;\n            window.alert('removeAllAccounts failed for ' + url);\n        });\n\n    };\n\n\n    /**\n     * @desc \n     * @return \n     */\n    // curl -H \"Accept: application/json\" -H \"Content-type: application/json\" -X POST -d '{\"tag\":\"noob\",\"score\":43,\"date\":\"now\"}' http://ec2-54-213-75-45.us-west-2.compute.amazonaws.com:8080/score\n    this.postjson = function(jsondata) {   \n        $http.defaults.useXDomain = true;  \n        delete $http.defaults.headers.common['X-Requested-With'];          \n        $http({\n           // url: 'http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com:8080/score',\n            url: 'http://' + dbdomain + ':8080/accounts',\n            method: 'POST',\n            data: jsondata,\n            headers: {'Content-Type': 'application/json'}\n        }).success(function (data, status, headers, config) {\n            //$scope.users = data.users; \n            //$location.path('/scores'); \n            window.alert('post success:' + status);\n        }).error(function (data, status, headers, config) {\n            //$scope.status = status + ' ' + headers;\n            window.alert('post error:' + status);\n            window.alert('post error:' + headers);\n        });\n    };\n\n  });\n",
+			"file": "app/scripts/services/accounts.js",
+			"file_size": 3575,
+			"file_write_time": 130827394000000000,
+			"settings":
+			{
+				"buffer_size": 3577,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "'use strict';\n\n/**\n * @ngdoc service\n * @name craftyApp.accounts\n * @description\n * # accounts\n * Service in the craftyApp.\n */\nangular.module('craftyApp')\n  .service('backendTimers', function () {\n    // AngularJS will instantiate a singleton by calling \"new\" on this function.\n\n     var thisService = this;\n\n  	var dbdomain = 'localhost';\n    //dbdomain = 'ec2-54-201-237-107.us-west-2.compute.amazonaws.com';\n\n       /**\n     * @desc \n     * @return \n     */\n    this.saveJson = function() {\n    	/*\n      console.log('input:' + this.user.input); \n\n\n      var json = thisService.simulation.deserialize();\n      json['documentName'] =  thisService.documentName.input;\n      json = JSON.stringify(json, undefined, 2);\n      this.postjson(json);\n      */\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    this.loadAccounts = function() {\n\n        var url = 'http://' + dbdomain + ':8080/';\n        $http.get(url,{\n            params: {\n                headers: {\n                    'Access-Control-Allow-Origin': '*',\n                    'Access-Control-Request-Headers' : 'access-control-allow-origin'\n                }\n            }\n        }).success(function(data) {\n\n          console.log('Load accounts success');\n          thisService.accountsData = data;\n\n        }).error(function(data) {\n            data = data;\n            window.alert('loadAccounts failed for ' + url);\n        });\n\n    };\n\n     /**\n     * @desc \n     * @return \n     */\n    this.selectAccount = function(index) {\n      console.log('selectAccount' + index);\n\n      thisService.data = thisService.accountsData[Object.keys(thisService.accountsData)[index]];\n\n\n     //todo: split in to state and rules: setTimeout(thisService.createSim, 200);\n\n   \n    };\n\n     /**\n     * @desc \n     * @return \n     */\n    this.removeAllAccounts = function() {\n\n        var url = 'http://' + dbdomain + ':8080/removealldocuments';\n        $http.get(url,{\n            params: {\n                headers: {\n                    'Access-Control-Allow-Origin': '*',\n                    'Access-Control-Request-Headers' : 'access-control-allow-origin'\n                }\n            }\n        }).success(function(data) {\n\n          console.log('removeAllAccounts success');\n          thisService.accountsData = data;\n          //$scope.$apply();\n\n        }).error(function(data) {\n            data = data;\n            window.alert('removeAllAccounts failed for ' + url);\n        });\n\n    };\n\n\n    /**\n     * @desc \n     * @return \n     */\n    // curl -H \"Accept: application/json\" -H \"Content-type: application/json\" -X POST -d '{\"tag\":\"noob\",\"score\":43,\"date\":\"now\"}' http://ec2-54-213-75-45.us-west-2.compute.amazonaws.com:8080/score\n    this.postjson = function(jsondata) {   \n        $http.defaults.useXDomain = true;  \n        delete $http.defaults.headers.common['X-Requested-With'];          \n        $http({\n           // url: 'http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com:8080/score',\n            url: 'http://' + dbdomain + ':8080/accounts',\n            method: 'POST',\n            data: jsondata,\n            headers: {'Content-Type': 'application/json'}\n        }).success(function (data, status, headers, config) {\n            //$scope.users = data.users; \n            //$location.path('/scores'); \n            window.alert('post success:' + status);\n        }).error(function (data, status, headers, config) {\n            //$scope.status = status + ' ' + headers;\n            window.alert('post error:' + status);\n            window.alert('post error:' + headers);\n        });\n    };\n\n  });\n",
+			"file": "app/scripts/services/util/backendTimers.js",
+			"file_size": 3575,
+			"file_write_time": 130827394000000000,
+			"settings":
+			{
+				"buffer_size": 3580,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "\n\n<button ng-click=\"getAccounts().loadAccounts()\">Refresh</button>\n\n<table class=\"table table-bordered table-condensed\">\n<thead>\n  <tr class=\"noselect\" >\n      <th class=\"col-sm-1\">Name</br> &nbsp</th>\n  </tr>\n</thead>\n</table>   \n\n  <div class=\"bodycontainer scrollable\">\n  <table class=\"table table-bordered table-condensed table-scrollable\">\n    <tbody>\n      <tr ng-repeat=\"(k,v)  in getAccounts().accountsData\" ng-click=\"getAccounts().selectAccount($index)\" class=\"noselect\" >\n        <td bgcolor=\"#00FF00\" class=\"col-sm-1\">{{v.documentName}}</td> \n      </tr>\n    </tbody>\n  </table>\n  </div>\n\n\n  <button ng-click=\"getAccounts().removeAllAccounts()\">Remove All Accounts</button>\n\n\n\n ",
+			"file": "/Users/colinmoore/dev/crafty/app/views/pages/db.html",
+			"file_size": 689,
+			"file_write_time": 130827393060000000,
+			"settings":
+			{
+				"buffer_size": 689,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "'use strict';\n\n/**\n * @ngdoc service\n * @name craftyApp.FSJSONLoader\n * @description\n * # FSJSONLoader\n * Load JSON in to sim\n */\nangular.module('craftyApp')\n  .service('FSJSONLoader', [   'FSSimRules', 'FSSimState', 'FSSimMessagingChannel', '$http', '$location', 'stopwatch', 'WorldMap', 'WorldMapEdit', function ( FSSimRules, FSSimState, FSSimMessagingChannel, $http, $location, stopwatch, WorldMap, WorldMapEdit) {\n    // AngularJS will instantiate a singleton by calling \"new\" on this function\n\n    var thisService = this;\n\n  \n    this.myStopwatch = stopwatch;\n    this.taskTimeScalarDivVis = 'hidden';\n    this.defaultDocumentName = {input: 'My Account Name'};\n    this.documentName = angular.copy(this.defaultDocumentName);\n\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createSimRules = function( data, url) {\n      console.log('createSimRules');\n      this.taskTimeScalarDivVis ='';\n      FSSimRules.set(data, url);\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createSimState = function(data, url) {\n      url = url;\n      console.log('createSimState');\n     \n      FSSimState.set(data);\n      FSSimMessagingChannel.updateGoals();\n      stopwatch.reset();\n      stopwatch.start();\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createSimWorldMap = function(data, url) {\n      url = url;\n      console.log('createSimWorldMap');\n\n      WorldMap.set(data);\n      WorldMapEdit.set(data); // also init editor with this data.\n    };\n\n\n    this.master = {\n      'craftyrules' : {url: 'https://api.myjson.com/bins/4p92y', onLoad: this.createSimRules, data:null},\n      'craftystate' : {url: 'https://api.myjson.com/bins/1yqsa', onLoad: this.createSimState, data:null},\n      'craftymap' : {url: 'https://api.myjson.com/bins/4am2q', onLoad: this.createSimWorldMap, data:null}\n\n      //'craftyrules' : {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, data:null},\n      //'craftystate' : {url: 'http://localhost:9000/json/state.json', onLoad: this.createSimState, data:null},\n      //'craftymap' : {url: 'http://localhost:9000/json/worldmap.json', onLoad: this.createSimWorldMap, data:null}\n    };\n\n    this.user = angular.copy(this.master);\n\n   /**\n     * @desc \n     * @return \n     */\n    this.loadAndCreateSim = function() {\n\n      var successRefCount = 0;\n\n      for ( var thisJSONindex in this.user) {\n\n        var thisJSON = this.user[thisJSONindex];\n\n              $http.get(thisJSON.url,{\n                  params: {\n                      dataType: 'json',\n                      headers: {\n                          'Access-Control-Allow-Origin': '*',\n                          'Access-Control-Request-Headers' : 'access-control-allow-origin'\n                      }\n                  }\n              }).success(function(json) {\n\n                thisService.user[json.title].data = json;\n    \n                successRefCount ++;\n                console.log('refcount:' + successRefCount);\n\n                if ( successRefCount === Object.keys(thisService.user).length) {\n                      for ( var loadJSONkey in thisService.user) {   \n                          if ( thisService.user[loadJSONkey].onLoad !== null) {\n                            thisService.user[loadJSONkey].onLoad( thisService.user[loadJSONkey].data, thisService.user[loadJSONkey].url);\n                          } else {\n                            window.alert('Validation failed for ' + thisService.user[loadJSONkey].url);\n                          }\n                      }\n                      $location.path('/'); \n                }\n\n              }).error(function(json) {\n                  json = json;\n                  window.alert('JSON load failed for' + thisJSON.url);\n              });\n         }\n    };\n\n\n    this.loadAndCreateSim();\n\n\n \n\n\n\n\n   \n\n\n    \n  }]);\n",
 			"file": "app/scripts/services/util/fsjsonloader.js",
+			"file_size": 7063,
+			"file_write_time": 130826406160000000,
 			"settings":
 			{
-				"buffer_size": 6964,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/colinmoore/dev/crafty/app/views/pages/map.html",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/index.html",
-			"settings":
-			{
-				"buffer_size": 5540,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/app.js",
-			"settings":
-			{
-				"buffer_size": 1577,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/pages/worldmap.html",
-			"settings":
-			{
-				"buffer_size": 767,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/colinmoore/dev/crafty/app/views/pages/rules.html",
-			"settings":
-			{
-				"buffer_size": 5893,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/pages/worldmapedit.html",
-			"settings":
-			{
-				"buffer_size": 547,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/colinmoore/dev/crafty/app/views/share/worldmapgridedit.html",
-			"settings":
-			{
-				"buffer_size": 734,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/colinmoore/dev/crafty/app/views/share/charactersheetstats.html",
-			"settings":
-			{
-				"buffer_size": 2764,
+				"buffer_size": 3825,
 				"line_ending": "Unix"
 			}
 		},
@@ -151,201 +127,28 @@
 			"file": "app/scripts/controllers/main.js",
 			"settings":
 			{
-				"buffer_size": 1257,
+				"buffer_size": 1479,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/services/mapedit/mapedit.js",
+			"file": "app/scripts/app.js",
 			"settings":
 			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/colinmoore/dev/crafty/app/json/worldmap.json",
-			"settings":
-			{
-				"buffer_size": 10664,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/pages/main.html",
-			"settings":
-			{
-				"buffer_size": 2622,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/json/fssimrules.js",
-			"settings":
-			{
-				"buffer_size": 1114,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/json/fssimstate.js",
-			"settings":
-			{
-				"buffer_size": 10449,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/map/world.js",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/map/worldmapedit.js",
-			"settings":
-			{
-				"buffer_size": 2186,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/share/mapgrid.html",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsuieventhandler.js",
-			"settings":
-			{
-				"buffer_size": 7800,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/json/state/fscharacter.js",
-			"settings":
-			{
-				"buffer_size": 14378,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 63 files for \"canPerformTask\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n   67              var thisCharacter = this;\n   68  \n   69:             if (this.canPerformTask(task.name, task.category) === true) {\n   70  \n   71                // Set modify stat timer intervals\n   ..\n  236       * @return \n  237       */\n  238:     FSCharacter.prototype.canPerformTask = function (taskName, activityCategory) {     \n  239  \n  240        var canStartTask = true;\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js:\n   18          this.isCraftable = function (craftableType) {\n   19              for ( var characterKey in FSSimState.characters ) {\n   20:                 if ( FSSimState.characters[characterKey].canPerformTask(craftableType, 'crafting')) {\n   21                      return true;\n   22                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimgathering.js:\n   48          this.isGatherable = function (gatherableType) {\n   49              for ( var characterKey in FSSimState.characters ) {\n   50:                 if ( FSSimState.characters[characterKey].canPerformTask(gatherableType, 'gathering')) {\n   51                      return true;\n   52                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimharvesting.js:\n   55          this.isHarvestable = function (harvestableType) {\n   56              for ( var characterKey in FSSimState.characters ) {\n   57:                 if ( FSSimState.characters[characterKey].canPerformTask(harvestableType, 'harvesting')) {\n   58                      return true;\n   59                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js:\n  134          // generate list of characters which can do this task.\n  135          for ( var character in FSSimState.characters ) {\n  136:             if ( FSSimState.characters[character].canPerformTask(task.name, task.category)) {\n  137                  validCharacters.push( FSSimState.characters[character]);\n  138              }\n\n6 matches across 5 files\n\n\nSearching 62 files for \"canPerformTask\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n   67              var thisCharacter = this;\n   68  \n   69:             if (this.canPerformTask(task.name, task.category, task.cell) === true) {\n   70  \n   71                // Set modify stat timer intervals\n   ..\n  236       * @return \n  237       */\n  238:     FSCharacter.prototype.canPerformTask = function (taskName, activityCategory, cell) {     \n  239  \n  240        var canStartTask = true;\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js:\n   18          this.isCraftable = function (craftableType) {\n   19              for ( var characterKey in FSSimState.characters ) {\n   20:                 if ( FSSimState.characters[characterKey].canPerformTask(craftableType, 'crafting')) {\n   21                      return true;\n   22                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimgathering.js:\n   48          this.isGatherable = function (gatherableType) {\n   49              for ( var characterKey in FSSimState.characters ) {\n   50:                 if ( FSSimState.characters[characterKey].canPerformTask(gatherableType, 'gathering')) {\n   51                      return true;\n   52                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimharvesting.js:\n   58          this.isHarvestable = function (harvestableType) {\n   59              for ( var characterKey in FSSimState.characters ) {\n   60:                 if ( FSSimState.characters[characterKey].canPerformTask(harvestableType, 'harvesting')) {\n   61                      return true;\n   62                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js:\n  148          // generate list of characters which can do this task.\n  149          for ( var character in FSSimState.characters ) {\n  150:             if ( FSSimState.characters[character].canPerformTask(task.name, task.category)) {\n  151                  validCharacters.push( FSSimState.characters[character]);\n  152              }\n\n6 matches across 5 files\n\n\nSearching 62 files for \"getTaskDuration\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimstate.js:\n  254           * @return \n  255           */\n  256:         this.getTaskDuration = function (activityCategory, taskName, thisCharacter) {\n  257              var duration = 0;\n  258  \n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n   90                  duration = this.json.activity.cell.task.duration( this);\n   91                } else {\n   92:                 duration = FSSimState.getTaskDuration(task.category, task.name, this) ;\n   93                }*/\n   94                task.createTimer( duration , function() {\n\n2 matches across 2 files\n",
-			"settings":
-			{
-				"buffer_size": 4884,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "app/scripts/services/sim/fssimcrafting.js",
-			"settings":
-			{
-				"buffer_size": 2865,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/json/state/fstask.js",
-			"settings":
-			{
-				"buffer_size": 1657,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/sim/fssimtasks.js",
-			"settings":
-			{
-				"buffer_size": 10962,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/sim/fssimharvesting.js",
-			"settings":
-			{
-				"buffer_size": 2428,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/sim/fssimgathering.js",
-			"settings":
-			{
-				"buffer_size": 2838,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/json/state/fsharvestable.js",
-			"settings":
-			{
-				"buffer_size": 2790,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/json/state.json",
-			"settings":
-			{
-				"buffer_size": 5293,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/json/state/fsgatherable.js",
-			"settings":
-			{
-				"buffer_size": 1178,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/json/state/fscraftable.js",
-			"settings":
-			{
-				"buffer_size": 1441,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/map/worldmap.js",
-			"settings":
-			{
-				"buffer_size": 3465,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/json/rules.json",
-			"settings":
-			{
-				"buffer_size": 40577,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/share/worldmapgrid.html",
-			"settings":
-			{
-				"buffer_size": 2315,
+				"buffer_size": 1695,
 				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -353,7 +156,11 @@
 	},
 	"console":
 	{
-		"height": 50.0
+		"height": 50.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
 	},
 	"distraction_free":
 	{
@@ -364,39 +171,75 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/colinmoore/Dev/crafty",
+		"/Users/colinmoore/Dev/crafty/app",
+		"/Users/colinmoore/Dev/crafty/app/scripts",
+		"/Users/colinmoore/Dev/crafty/app/scripts/controllers",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/map",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/util",
+		"/Users/colinmoore/Dev/crafty/app/views"
+	],
 	"file_history":
 	[
-		"/Users/colinmoore/dev/crafty/app/views/main.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmap.js",
-		"/Users/colinmoore/dev/crafty/app/views/share/characterselect.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/app.js",
-		"/Users/colinmoore/Dev/crafty/app/json/state.json",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/util/timers.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimrules.js",
+		"/Users/colinmoore/Dev/crafty/app/views/pages/rules.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/util/fsjsonloader.js",
-		"/Users/colinmoore/dev/crafty/publishToEC2JSON.sh",
 		"/Users/colinmoore/Dev/crafty/app/json/rules.json",
-		"/Users/colinmoore/Dev/crafty/app/views/share/charactersheet.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js",
+		"/Users/colinmoore/Dev/crafty/app/views/share/worldmapgrid.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js",
+		"/Users/colinmoore/dev/crafty/app/views/pages/worldmap.html",
+		"/Users/colinmoore/dev/crafty/app/views/pages/craft.html",
+		"/Users/colinmoore/dev/crafty/app/views/pages/load.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/app.js",
+		"/Users/colinmoore/Dev/crafty/app/index.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fsgatherable.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimgathering.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimharvesting.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmap.js",
+		"/Users/colinmoore/Dev/crafty/app/json/worldmap.json",
+		"/Users/colinmoore/dev/crafty/app/views/share/bank.html",
+		"/Users/colinmoore/dev/crafty/app/views/share/bankables.html",
+		"/Users/colinmoore/dev/crafty/app/views/pages/character.html",
+		"/Users/colinmoore/dev/crafty/app/views/share/constructors.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscraftable.js",
+		"/Users/colinmoore/Dev/crafty/app/json/state.json",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fsharvestable.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fstask.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js",
+		"/Users/colinmoore/Dev/crafty/app/views/share/mapgrid.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmapedit.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/world.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimstate.js",
+		"/Users/colinmoore/Dev/crafty/app/views/pages/main.html",
+		"/Users/colinmoore/dev/crafty/app/json/worldmap.json",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/mapedit/mapedit.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/main.js",
+		"/Users/colinmoore/dev/crafty/app/views/share/charactersheetstats.html",
+		"/Users/colinmoore/dev/crafty/app/views/share/worldmapgridedit.html",
+		"/Users/colinmoore/Dev/crafty/app/views/pages/worldmapedit.html",
+		"/Users/colinmoore/dev/crafty/app/views/pages/rules.html",
+		"/Users/colinmoore/Dev/crafty/app/views/pages/worldmap.html",
+		"/Users/colinmoore/dev/crafty/app/views/pages/map.html",
+		"/Users/colinmoore/dev/crafty/app/views/main.html",
+		"/Users/colinmoore/dev/crafty/app/views/share/characterselect.html",
+		"/Users/colinmoore/dev/crafty/publishToEC2JSON.sh",
+		"/Users/colinmoore/Dev/crafty/app/views/share/charactersheet.html",
 		"/Users/colinmoore/Dev/crafty/app/views/share/bankables.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimobjectfactory.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimbank.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fsbankable.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimgathering.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fsgatherable.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimharvesting.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fsharvestable.js",
-		"/Users/colinmoore/Dev/crafty/app/views/pages/rules.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscraftable.js",
 		"/Users/colinmoore/Dev/crafty/app/views/characterselect.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js",
-		"/Users/colinmoore/Dev/crafty/app/index.html",
 		"/Users/colinmoore/dev/crafty/app/views/pages/rewards.html",
 		"/Users/colinmoore/dev/crafty/app/views/pages/reference.html",
 		"/Users/colinmoore/dev/crafty/app/views/pages/db.html",
-		"/Users/colinmoore/dev/crafty/app/views/pages/character.html",
 		"/Users/colinmoore/dev/crafty/app/views/pages/main.html",
 		"/Users/colinmoore/Dev/crafty/app/views/main.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimmessagingchannel.js",
@@ -404,8 +247,6 @@
 		"/Users/colinmoore/Dev/crafty/app/views/craftables.html",
 		"/Users/colinmoore/Dev/crafty/app/views/harvestables.html",
 		"/Users/colinmoore/Dev/crafty/app/views/gatherables.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fstask.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/main.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimbank.js",
 		"/Users/colinmoore/Dev/crafty/app/views/recipes.html",
 		"/Users/colinmoore/Dev/crafty/app/views/db.html",
@@ -472,36 +313,15 @@
 		"/Users/colinmoore/Dev/crafty/db/craftydb.js",
 		"/Users/colinmoore/dev/Electoral-System-Simulator/app/scripts/services/electionservice.js",
 		"/Users/colinmoore/dev/craftydb/publishToEC2.sh",
-		"/Users/colinmoore/Dev/crafty/logs/[ec2-user@ip-172-31-38-189 html]$ npm list -g",
-		"/Users/colinmoore/Dev/crafty/db/craftydbapp.js",
-		"/Users/colinmoore/dev/craftydb/node_modules/body-parser/package.json",
-		"/Users/colinmoore/dev/crafty/db/package.json",
-		"/Users/colinmoore/dev/crafty/app/scripts/services/fssimfactory.js",
-		"/Users/colinmoore/dev/crafty/app/views/charactersheetstats.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsfactory.js",
-		"/Users/colinmoore/Desktop/provisioning/iOSDistributionNAE453G6R2commagicfuelgames.mobileprovision",
-		"/Users/colinmoore/Dev/crafty/app/views/crafting.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipedef.js",
-		"/Users/colinmoore/dev/crafty/app/views/bank.html",
-		"/Users/colinmoore/dev/crafty/app/views/crafting.html",
-		"/Users/colinmoore/dev/crafty/app/views/harvestables.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsobject.js",
-		"/Users/colinmoore/dev/crafty/app/views/gatherables.html",
-		"/Users/colinmoore/dev/crafty/app/views/recipes.html",
-		"/private/tmp/colinmoore(p4v)/Colins-MBP.home_ec2-54-67-81-203.us-west-1.compute.amazonaws.com_1666/ST_Prototypes/ML/crafty/smallerdataset#1.json",
-		"/Users/colinmoore/Dev/crafty/bower.json",
-		"/Users/colinmoore/Dev/minecraft/pullMinecraft.sh",
-		"/Users/colinmoore/Dev/crafty/publishToEC2.sh",
-		"/Users/colinmoore/Dev/crafty/.yo-rc.json",
-		"/Users/colinmoore/Dropbox (MagicFuelGames)/MagicFuelGames Team Folder/Software/Prototypes/Web/crafty/smallerdataset.json"
+		"/Users/colinmoore/Dev/crafty/logs/[ec2-user@ip-172-31-38-189 html]$ npm list -g"
 	],
 	"find":
 	{
-		"height": 36.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"/Users/colinmoore/Dev/crafty/app",
@@ -517,6 +337,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"toJson",
+			"url",
+			"min-w",
+			"gem",
+			"FSContextConsole",
+			"FSTask",
+			"isCraftable",
+			"isHarvestable",
+			"isGatherable",
 			"lumber",
 			"rule",
 			"duration",
@@ -635,16 +464,7 @@
 			"onClic",
 			"unlo",
 			"FSSimRewards",
-			"hasU",
-			"hasUn",
-			"hasUnl",
-			"canPerf",
-			"thisFactory",
-			"makeRewards",
-			"$rootScope",
-			"'$rootScope',",
-			"checkR",
-			"rewar"
+			"hasU"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -675,79 +495,84 @@
 	"groups":
 	[
 		{
-			"selected": 19,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/services/util/fsjsonloader.js",
+					"file": "app/scripts/services/accounts.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6964,
+						"buffer_size": 3577,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1447,
-								1447
+								2127,
+								2127
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 488.0,
+						"translation.y": 876.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/Users/colinmoore/dev/crafty/app/views/pages/map.html",
+					"file": "app/scripts/services/util/backendTimers.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 3580,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								168,
+								181
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "app/index.html",
+					"file": "/Users/colinmoore/dev/crafty/app/views/pages/db.html",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5540,
+						"buffer_size": 689,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5411,
-								5411
+								632,
+								632
 							]
 						],
 						"settings":
@@ -760,22 +585,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "app/scripts/app.js",
+					"file": "app/scripts/services/util/fsjsonloader.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1577,
+						"buffer_size": 3825,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1468,
-								1468
+								502,
+								527
 							]
 						],
 						"settings":
@@ -785,165 +612,57 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 226.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "app/views/pages/worldmap.html",
+					"file": "app/scripts/controllers/main.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 767,
+						"buffer_size": 1479,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								764,
-								676
+								1454,
+								1462
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 678.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "/Users/colinmoore/dev/crafty/app/views/pages/rules.html",
+					"file": "app/scripts/app.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5893,
+						"buffer_size": 1695,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 219.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/views/pages/worldmapedit.html",
-					"settings":
-					{
-						"buffer_size": 547,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								526,
-								526
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "/Users/colinmoore/dev/crafty/app/views/share/worldmapgridedit.html",
-					"settings":
-					{
-						"buffer_size": 734,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3,
-								3
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/Users/colinmoore/dev/crafty/app/views/share/charactersheetstats.html",
-					"settings":
-					{
-						"buffer_size": 2764,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2415,
-								2123
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "app/scripts/controllers/main.js",
-					"settings":
-					{
-						"buffer_size": 1257,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								546,
-								546
+								1246,
+								1246
 							]
 						],
 						"settings":
@@ -953,719 +672,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 25.0,
+						"translation.y": 468.0,
 						"zoom_level": 1.0
 					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "app/scripts/services/mapedit/mapedit.js",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 30.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "/Users/colinmoore/dev/crafty/app/json/worldmap.json",
-					"settings":
-					{
-						"buffer_size": 10664,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								10664
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "app/views/pages/main.html",
-					"settings":
-					{
-						"buffer_size": 2622,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2135,
-								2050
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1011.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "app/scripts/services/json/fssimrules.js",
-					"settings":
-					{
-						"buffer_size": 1114,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								371,
-								1105
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "app/scripts/services/json/fssimstate.js",
-					"settings":
-					{
-						"buffer_size": 10449,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10032,
-								10032
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3531.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "app/scripts/services/map/world.js",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 44.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "app/scripts/services/map/worldmapedit.js",
-					"settings":
-					{
-						"buffer_size": 2186,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								166,
-								178
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 17.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 17,
-					"file": "app/views/share/mapgrid.html",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 18,
-					"file": "app/scripts/services/fsuieventhandler.js",
-					"settings":
-					{
-						"buffer_size": 7800,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4776,
-								4776
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 4.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 19,
-					"file": "app/scripts/services/json/state/fscharacter.js",
-					"settings":
-					{
-						"buffer_size": 14378,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5777,
-								5821
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3458.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 20,
-					"settings":
-					{
-						"buffer_size": 4884,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										199,
-										213
-									],
-									[
-										393,
-										407
-									],
-									[
-										770,
-										784
-									],
-									[
-										1152,
-										1166
-									],
-									[
-										1539,
-										1553
-									],
-									[
-										1914,
-										1928
-									],
-									[
-										2286,
-										2300
-									],
-									[
-										2491,
-										2505
-									],
-									[
-										2874,
-										2888
-									],
-									[
-										3256,
-										3270
-									],
-									[
-										3643,
-										3657
-									],
-									[
-										4018,
-										4032
-									],
-									[
-										4369,
-										4384
-									],
-									[
-										4720,
-										4735
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								4403,
-								4403
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"output_tag": 3,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1365.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 21,
-					"file": "app/scripts/services/sim/fssimcrafting.js",
-					"settings":
-					{
-						"buffer_size": 2865,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								246,
-								252
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 22,
-					"file": "app/scripts/services/json/state/fstask.js",
-					"settings":
-					{
-						"buffer_size": 1657,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								724,
-								675
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 224.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 23,
-					"file": "app/scripts/services/sim/fssimtasks.js",
-					"settings":
-					{
-						"buffer_size": 10962,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5524,
-								5538
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 9.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 24,
-					"file": "app/scripts/services/sim/fssimharvesting.js",
-					"settings":
-					{
-						"buffer_size": 2428,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1395,
-								1395
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 95.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 25,
-					"file": "app/scripts/services/sim/fssimgathering.js",
-					"settings":
-					{
-						"buffer_size": 2838,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								989,
-								989
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 15.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 26,
-					"file": "app/scripts/services/json/state/fsharvestable.js",
-					"settings":
-					{
-						"buffer_size": 2790,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2754,
-								2754
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 801.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 27,
-					"file": "app/json/state.json",
-					"settings":
-					{
-						"buffer_size": 5293,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								204,
-								310
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 28,
-					"file": "app/scripts/services/json/state/fsgatherable.js",
-					"settings":
-					{
-						"buffer_size": 1178,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1139,
-								1139
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 29,
-					"file": "app/scripts/services/json/state/fscraftable.js",
-					"settings":
-					{
-						"buffer_size": 1441,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1405,
-								1405
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 171.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 30,
-					"file": "app/scripts/services/map/worldmap.js",
-					"settings":
-					{
-						"buffer_size": 3465,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								892,
-								892
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 31,
-					"file": "app/json/rules.json",
-					"settings":
-					{
-						"buffer_size": 40577,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10505,
-								10505
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 35.0,
-						"translation.y": 6911.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 32,
-					"file": "app/views/share/worldmapgrid.html",
-					"settings":
-					{
-						"buffer_size": 2315,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								946,
-								946
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 171.0,
-						"zoom_level": 1.0
-					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1673,7 +683,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -1702,14 +712,21 @@
 		]
 	},
 	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "crafty.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -1718,15 +735,32 @@
 	"select_project":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
 	},
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 300.0,
-	"status_bar_visible": true
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }

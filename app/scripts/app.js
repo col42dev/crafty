@@ -45,8 +45,8 @@ angular
         templateUrl: 'views/pages/rewards.html',
         controller: 'MainCtrl'
       })
-      .when('/db', {
-        templateUrl: 'views/pages/db.html',
+      .when('/timers', {
+        templateUrl: 'views/pages/timers.html',
         controller: 'MainCtrl'
       })
       .when('/mapedit', {

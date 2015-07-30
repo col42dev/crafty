@@ -10,7 +10,34 @@
  * Controller of the craftyApp
  */
 angular.module('craftyApp')
-  .controller('MainCtrl',['$scope', 'FSJSONLoader', 'FSSimRules', 'FSSimState', 'FSContextConsole', 'FSSimObjectFactory', 'FSSimBank', 'FSSimRewards', 'FSUIEventHandler', 'FSSimTasks', 'WorldMapEdit', 'WorldMap', function ($scope, FSJSONLoader, FSSimRules, FSSimState, FSContextConsole, FSSimObjectFactory, FSSimBank, FSSimRewards, FSUIEventHandler, FSSimTasks, WorldMapEdit, WorldMap) {
+  .controller('MainCtrl',[
+    '$scope', 
+    'FSJSONLoader', 
+    'FSSimRules', 
+    'FSSimState', 
+    'FSContextConsole', 
+    'FSSimObjectFactory', 
+    'FSSimBank', 
+    'FSSimRewards', 
+    'FSUIEventHandler', 
+    'FSSimTasks', 
+    'WorldMapEdit', 
+    'WorldMap',
+    'ServerSideTimers', 
+  function (
+    $scope, 
+    FSJSONLoader, 
+    FSSimRules, 
+    FSSimState, 
+    FSContextConsole, 
+    FSSimObjectFactory, 
+    FSSimBank, 
+    FSSimRewards, 
+    FSUIEventHandler, 
+    FSSimTasks, 
+    WorldMapEdit, 
+    WorldMap,
+    ServerSideTimers) {
 
     $scope.getFSJSONLoader = function() {
       return FSJSONLoader;
@@ -46,6 +73,10 @@ angular.module('craftyApp')
 
     $scope.getWorldMap = function() {
       return WorldMap;
+    };
+
+    $scope.getServerSideTimers = function() {
+      return ServerSideTimers;
     };
 
   }]);
