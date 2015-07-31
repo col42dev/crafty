@@ -19,7 +19,7 @@ angular.module('craftyApp')
     this.newTimerForm    = { name : 'mytimer', duration: 10, clientIntervalId : 0, remaining: 0};
 
   	var dbdomain = 'localhost';
-    //dbdomain = 'ec2-54-201-237-107.us-west-2.compute.amazonaws.com';
+    dbdomain = 'ec2-54-201-237-107.us-west-2.compute.amazonaws.com';
 
     this.timers = []; //contains timer object retrived from teh server.
 
@@ -142,8 +142,8 @@ angular.module('craftyApp')
 
  
 
-  /**
-     * @desc    
+    /**
+     * @desc   set up client side interval timer based off passed timer object. 
      *         
      */
     this.createClientIntervalTimer  = function(newTimer) {
