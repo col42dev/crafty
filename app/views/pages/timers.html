@@ -14,18 +14,18 @@
   <theader>
      <td class="col-sm-1">database ID</td> 
       <td class="col-sm-1">name</td> 
+      <td class="col-sm-1">starttime</td> 
       <td class="col-sm-1">duration</td> 
       <td class="col-sm-1">remaining</td> 
-      <td class="col-sm-1">starttime</td> 
       <td class="col-sm-1">kill timer</td> 
   </theader>
   <tbody>
     <tr ng-repeat="(k,v)  in getServerSideTimers().timers" ng-click="getServerSideTimers().onSelectTimer($index)" class="noselect" >
       <td class="col-sm-1">{{v._id}}</td> 
       <td class="col-sm-1">{{v.name}}</td> 
+      <td class="col-sm-1">{{getServerSideTimers().getFormattedDateTime(v.starttime)}}</td> 
       <td class="col-sm-1">{{getServerSideTimers().getFormattedTime(v.duration)}}</td> 
       <td class="col-sm-1"> <div ng-style="{'width': getServerSideTimers().getPercentageRemaining(v)}" style="background-color: rgba(54, 25, 25, .1); word-wrap:normal; overflow:visible;">{{getServerSideTimers().getFormattedTime(v.remaining)}}</div></td> 
-      <td class="col-sm-1">{{getServerSideTimers().getFormattedTime(v.starttime)}}</td> 
       <td class="col-sm-1"><button ng-click="getServerSideTimers().deleteTimer(v)">cancel</button></td> 
     </tr>
   </tbody>
