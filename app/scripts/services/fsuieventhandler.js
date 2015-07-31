@@ -8,7 +8,18 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('FSUIEventHandler', function ( FSBankable,  FSSimMessagingChannel,  FSContextConsole, FSSimRules, FSSimState, FSSimRewards, FSSimCrafting, FSSimHarvesting, FSSimGathering, FSSimTasks, FSTask) {
+  .service('FSUIEventHandler', 
+    function ( 
+      FSBankable,  
+      FSSimMessagingChannel,  
+      FSContextConsole, 
+      FSSimRules, 
+      FSSimState, 
+      FSSimRewards, 
+      FSSimCrafting, 
+      FSSimHarvesting, 
+      FSSimTasks, 
+      FSTask) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -26,10 +37,6 @@ angular.module('craftyApp')
                 case 'craft':
                     var craftableTask = new FSTask({'name':type, 'category':'crafting', 'cell' : null});
                     enabled = FSSimCrafting.isCraftable(craftableTask) ;
-                    break;
-                case 'gather':
-                    var gatherTask = new FSTask({'name':type, 'category':'gathering', 'cell' : null});
-                    enabled = FSSimGathering.isGatherable(gatherTask);
                     break;
                 case 'harvest':
                     var harvestTask = new FSTask({'name':type, 'category':'harvesting', 'cell' : null});
@@ -77,14 +84,6 @@ angular.module('craftyApp')
                     this.orderBankByOrder = (this.orderBankByOrder==='+') ? '-' : '+';
                     this.orderBankBy = this.orderBankByOrder + fieldName;
                     break;
-                case 'Gatherables':
-                    if ( this.hasOwnProperty('orderGatherablesBy') === false) {
-                        this.orderGatherablesBy = 'json.name';
-                        this.orderGatherablesByOrder = '+';
-                    }
-                    this.orderGatherablesByOrder = (this.orderGatherablesByOrder==='+') ? '-' : '+';
-                    this.orderGatherablesBy = this.orderGatherablesByOrder + fieldName;
-                    break;
                 case 'Harvestables':
                     if ( this.hasOwnProperty('orderHarvestablesBy') === false) {
                         this.orderHarvestablesBy = 'json.name';
@@ -118,7 +117,6 @@ angular.module('craftyApp')
                 case 'Bank':
                     this.onClickBank(keyName);
                     break;
-                case 'gatherable':
                 case 'harvestable':
                 case 'craftable':
                     FSSimTasks.createTask(tableName, keyName);

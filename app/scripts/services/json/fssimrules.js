@@ -25,7 +25,6 @@ angular.module('craftyApp')
 
         // Rule Defines
         this.harvestableDefines = json.harvestableDefines;  
-        this.gatherableDefines = json.gatherableDefines; 
         this.craftableDefines = json.craftableDefines; 
         this.toolDefines = json.toolDefines;  
         this.consumableDefines = json.consumableDefines;  

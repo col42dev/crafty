@@ -24,6 +24,7 @@ angular.module('craftyApp')
                   FSSimState.updateBank();
               }
               FSSimState.bank[arg.type].modifyQuantity(arg.quantity);
+              
             } else if (arg.quantity < 0) {
  
                 FSSimState.bank[arg.type].modifyQuantity( arg.quantity );

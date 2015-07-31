@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('WorldMap', function (FSHarvestable, FSSimRules, FSSimHarvesting, FSSimGathering, FSTask) {
+  .service('WorldMap', function (FSHarvestable, FSSimRules, FSSimHarvesting, FSTask) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -38,7 +38,6 @@ angular.module('craftyApp')
                   this.json.worldMap[row][col].harvestables = new FSHarvestable(obj.json);
                 }
 
-                this.json.worldMap[row][col].gatherables = null;
              }
         } 
   };
@@ -58,16 +57,7 @@ angular.module('craftyApp')
       if (col.task !== null && col.task.category === 'harvesting') {
         return col.task.name + padding + '\n' + '0' + padding;
       }
-    } else if ( catgeory === 'gathering') {
-      if ( col.gatherables !== null) {
-        if (parseInt(col.gatherables.json.quantity, 10) > 0) {
-          return col.gatherables.json.name + padding + '\n' + col.gatherables.json.quantity + padding;
-        }
-      }
-      if (col.task !== null && col.task.category === 'gathering') {
-        return col.task.name + padding + '\n' + '0' + padding;
-      }
-    }
+    } 
     return '';
   };
 
@@ -84,15 +74,7 @@ angular.module('craftyApp')
         }
       }
  
-    } else if ( catgeory === 'gathering') {
-      if ( col.gatherables !== null) {
-        var gatherableTask = new FSTask({'name':col.gatherables.json.name, 'category':'gathering', 'cell' : col});
-        if ( FSSimGathering.isGatherable(gatherableTask) === true) {
-          return '#000000';
-        }
-      
-      }
-    }
+    } 
 
     return '#DD4444';
   };
@@ -107,12 +89,7 @@ angular.module('craftyApp')
         return col.task.percentRemaining();
       }
       return '0%';
-    } else if ( catgeory === 'gathering') {
-      if (col.task !== null && col.task.category === 'gathering') {
-        return col.task.percentRemaining();
-      }
-      return '0%';
-    }
+    } 
   };
 
   /**

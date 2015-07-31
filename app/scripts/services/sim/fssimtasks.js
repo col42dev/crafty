@@ -24,9 +24,6 @@ angular.module('craftyApp')
         var task = null;
 
         switch (tableName) {
-            case 'gatherable':
-                task = new FSTask( {'name':keyName, 'category':'gathering'});
-                break;
             case 'harvestable':
                 task = new FSTask( {'name':keyName, 'category':'harvesting'});
                 break;
@@ -48,9 +45,6 @@ angular.module('craftyApp')
             switch (category) {
                 case 'harvesting':
                     name = cell.harvestables.json.name;
-                    break;
-                case 'gathering' :
-                    name = cell.gatherables.json.name;
                     break;
                 default:
                     window.alert('unhandled ctageory');
@@ -195,35 +189,6 @@ angular.module('craftyApp')
         var toolDefine;
 
         switch (category) {
-            case 'gathering':
-                // stats
-                for ( characterKey in FSSimState.characters ) {
-                     if ( FSSimState.characters[characterKey].hasStatsFor('gathering') === true) {
-                      haveStats = true;
-                    }
-                }
-                if ( haveStats === false) {
-                    FSContextConsole.log('No one has the required stats to start gathering ' + keyName, true);
-                }
-
-                // equipped
-               for ( characterKey in FSSimState.characters ) {
-                     if ( FSSimState.characters[characterKey].hasGatheringDependencies(keyName) === true) {
-                      hasEquippedTools = true;
-                    }
-                }
-                if ( hasEquippedTools === false) {
-                    FSContextConsole.log('No one is equipped with the required tools for gathering ' + keyName, true);
-
-                    for ( toolDefine in FSSimRules.toolDefines) {
-                        FSSimRules.toolDefines[toolDefine].actions.forEach( ( function ( action) {
-                            if ( FSSimRules.gatherableDefines[keyName].actionable.indexOf(action) !== -1) {
-                                FSContextConsole.log(toolDefine, true);
-                            } 
-                        }).bind(this));
-                    }
-                }
-                break;
 
             case 'harvesting':
                 // stats

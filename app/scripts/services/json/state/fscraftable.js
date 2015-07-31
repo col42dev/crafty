@@ -31,9 +31,6 @@ angular.module('craftyApp')
       }
       else if (FSSimRules.consumableDefines.hasOwnProperty(this.json.name) === true) {
         this.category = 'food';
-      }
-      else if (FSSimRules.gatherableDefines.hasOwnProperty(this.json.name) === true) {
-        this.category = 'gatherable';
       } else {
         this.category = 'unclassified';
       }

@@ -145,42 +145,20 @@ angular.module('craftyApp')
      * @return 
      */
     FSCharacter.prototype.harvestingOnStop = function () {
-      var thisType = this.json.activity[0].name;
+      //var thisType = this.json.activity[0].name;
 
-      FSSimMessagingChannel.transaction( { category: 'gatherable', type: thisType,  quantity : 1, cell: this.json.activity[0].cell});
+      //FSSimMessagingChannel.transaction( { category: 'gatherable', type: thisType,  quantity : 1, cell: this.json.activity[0].cell});
    
-    };
 
-    /**
-     * @desc 
-     * @return 
-     */
-    FSCharacter.prototype.gatheringOnStart = function () {
-      var thisType = this.json.activity[0].name;
-
-      FSSimMessagingChannel.transaction( { category: 'gatherable', type: thisType,  quantity : -1, cell: this.json.activity[0].cell});
-
-    };
-
-    /**
-     * @desc 
-     * @return 
-     */
-    FSCharacter.prototype.gatheringOnStop = function () {
-      var thisType = this.json.activity[0].name;
+       var thisType = this.json.activity[0].name;
 
       FSSimMessagingChannel.transaction( { category: 'bankable', type: thisType, typeCategory: 'gatherable', quantity : 1, cell: this.json.activity[0].cell});
 
       // Rewards
       FSSimMessagingChannel.makeRewards( {'action':'gather', 'target':thisType});
 
-      /*
-      var rewards = thisFactory.checkRewards( {'action':'gather', 'target':gatherableType});
-      if (rewards.hasOwnProperty('xp')) {
-          this.json.xp += rewards.xp;
-      }
-      */
     };
+
 
 
     /**
@@ -246,27 +224,6 @@ angular.module('craftyApp')
 
       switch ( activityCategory) {
 
-        case 'gathering': {
-            if (cell === null && FSSimState.gatherables.hasOwnProperty(taskName) !== true) {
-              canStartTask = false;
-            } else {
-              if (cell !== null)
-              {
-                if ( parseInt(cell.gatherables.quantity, 10) === 0) {
-                  canStartTask = false;
-                }
-              } else if ( parseInt( FSSimState.gatherables[taskName].json.quantity, 10) === 0) {
-                canStartTask = false;
-              }
-              if ( this.hasStatsFor('gathering') !== true) {
-                canStartTask = false;
-              }
-              if (this.hasGatheringDependencies(taskName) !== true) {
-                canStartTask = false;
-              }
-            } 
-          }
-          break;
 
         case 'harvesting': {
             if (cell === null && FSSimState.harvestables.hasOwnProperty(taskName) !== true) {
@@ -357,21 +314,7 @@ angular.module('craftyApp')
       return false;
     };
 
-    /**
-     * @desc 
-     * @return 
-     */
-    FSCharacter.prototype.hasGatheringDependencies = function ( gatheringName) {
-      var hasDependencies = false;
-
-      FSSimRules.gatherableDefines[gatheringName].actionable.forEach( ( function(thisActionable) {
-        if ( this.hasToolAction(thisActionable) === true) {
-          hasDependencies = true;
-        } 
-      }).bind(this)); 
-
-      return hasDependencies;
-    };
+  
 
     /**
      * @desc 

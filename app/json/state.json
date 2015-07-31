@@ -139,64 +139,6 @@
       ]
     }
   ],
-  "gatherables": [
-    {
-      "name": "IronOre",
-      "quantity": 3
-    },
-    {
-      "name": "Water",
-      "quantity": 200
-    },
-    {
-      "name": "Wood",
-      "quantity": 5
-    },
-    {
-      "name": "Wool",
-      "quantity": 10
-    },
-    {
-      "name": "Leaves",
-      "quantity": 5
-    },
-    {
-      "name": "Grain",
-      "quantity": 5
-    },
-    {
-      "name": "Antler",
-      "quantity": 9
-    },
-    {
-      "name": "Sand",
-      "quantity": 5
-    },
-    {
-      "name": "Meat",
-      "quantity": 10
-    },
-    {
-      "name": "Fish",
-      "quantity": 10
-    },
-    {
-      "name": "Feather",
-      "quantity": 5
-    },
-    {
-      "name": "Marble",
-      "quantity": 1
-    },
-    {
-      "name": "Lumber",
-      "quantity": 1
-    },
-    {
-      "name": "ShaolFish",
-      "quantity": 1
-    }
-  ],
   "harvestables": [
     {
       "name": "Earth",
