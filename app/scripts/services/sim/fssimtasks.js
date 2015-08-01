@@ -8,7 +8,24 @@
  * Operate on fstask's.
  */
 angular.module('craftyApp')
-  .service('FSSimTasks', [ '$rootScope',  'FSSimState', 'FSSimRules', 'FSTask', 'FSSimCrafting', 'FSContextConsole', 'FSSimMessagingChannel', function ($rootScope , FSSimState, FSSimRules, FSTask, FSSimCrafting, FSContextConsole, FSSimMessagingChannel) {
+  .service('FSSimTasks', 
+    [ 
+        '$rootScope',  
+        'FSSimState', 
+        'FSSimRules', 
+        'FSTask', 
+        'FSSimCrafting', 
+        'FSContextConsole', 
+        'FSSimMessagingChannel', 
+    function (
+        $rootScope , 
+        FSSimState, 
+        FSSimRules, 
+        FSTask, 
+        FSSimCrafting, 
+        FSContextConsole, 
+        FSSimMessagingChannel) 
+    {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     var thisService = this;
@@ -67,9 +84,30 @@ angular.module('craftyApp')
         var validCharacters = this.getValidCharacters(task);
         var validCharactersInactive = this.getInactiveCharacters(validCharacters);
 
-        if ( validCharactersInactive.length > 0) {
+        if ( validCharactersInactive.length > 1) {
             this.activeTasks.push( task);
-            validCharactersInactive[0].addTask( task );  
+
+            for ( var i = 0; i < 2; i ++) {
+                task.characters.push(validCharactersInactive[i]); 
+
+                delete FSSimState.characters[ validCharactersInactive[i].json.name];
+            }
+
+
+            // create task interval 
+              var duration = FSSimState.getTaskDuration(task); 
+
+              task.createTimer( duration , 
+                    function() {
+                      if ( task.decrementTimer() === false) {
+                        //FSSimMessagingChannel.completedTask( task ); 
+                        this.onCompletedTaskHandler (task);                    
+                      }
+                  }.bind(this)
+                );
+  
+              //
+              task[task.category + 'OnStart' ]();
 
         } else if (validCharacters.length > 0) {
             // queue task
@@ -87,11 +125,37 @@ angular.module('craftyApp')
         return true;
     };
 
+
+
+
     /**
      * @desc 
      * callback from state when a character completes a task.
      */
-    var onCompletedTaskHandler = function( task) {
+    this.onCompletedTaskHandler = function( task) {
+
+        //clear task intervals
+        /*
+        for (var statKeyname in FSSimRules.taskRules[task.category].stat) {
+        clearInterval( this.statUpdateInterval[statKeyname]);
+        }*/
+
+        //onStop task
+        task[ task.category + 'OnStop' ]();
+
+        //xp gain
+        //this.json.xp += parseInt(FSSimRules.taskRules[this.json.activity[0].category].xp, 10);
+
+
+        //var activeTask = this.json.activity[0];
+
+        //this.json.activity.splice(0, 1);
+
+        task.characters.forEach( function ( thisCharacter) {
+            FSSimState.characters[ thisCharacter.json.name] = thisCharacter;
+        });
+
+
         if (task.cell !== null) {
             task.cell.task = null;
         }
@@ -138,7 +202,7 @@ angular.module('craftyApp')
     };
 
     // Register 'onCompletedTaskHandler' callback after handler declaration
-    FSSimMessagingChannel.onCompletedTask($rootScope, onCompletedTaskHandler);
+    FSSimMessagingChannel.onCompletedTask($rootScope, this.onCompletedTaskHandler);
 
 
     /**
@@ -174,6 +238,8 @@ angular.module('craftyApp')
         return inactiveCharacters;
     };
 
+
+  
 
     /**
      * @desc 
