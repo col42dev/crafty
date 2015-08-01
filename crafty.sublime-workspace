@@ -84,10 +84,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/scripts/services/util/fsjsonloader.js",
+			"file": "app/index.html",
 			"settings":
 			{
-				"buffer_size": 3968,
+				"buffer_size": 5790,
 				"line_ending": "Unix"
 			}
 		},
@@ -95,193 +95,7 @@
 			"file": "app/json/rules.json",
 			"settings":
 			{
-				"buffer_size": 9676,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/json/state.json",
-			"settings":
-			{
-				"buffer_size": 3058,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/json/state/fscraftable.js",
-			"settings":
-			{
-				"buffer_size": 1308,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/json/state/fsharvestable.js",
-			"settings":
-			{
-				"buffer_size": 1505,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/pages/craft.html",
-			"settings":
-			{
-				"buffer_size": 1354,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/share/characterselect.html",
-			"settings":
-			{
-				"buffer_size": 1352,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/pages/worldmap.html",
-			"settings":
-			{
-				"buffer_size": 1055,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/colinmoore/dev/crafty/app/views/share/activetasks.html",
-			"settings":
-			{
-				"buffer_size": 893,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/index.html",
-			"settings":
-			{
-				"buffer_size": 5726,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/controllers/ModalDemoCtrl.js",
-			"settings":
-			{
-				"buffer_size": 1355,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/json/state/fsbankable.js",
-			"settings":
-			{
-				"buffer_size": 1752,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/colinmoore/dev/crafty/bower.json",
-			"settings":
-			{
-				"buffer_size": 424,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/colinmoore/dev/crafty/app/views/share/modaldemo.html",
-			"settings":
-			{
-				"buffer_size": 1117,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/modalservice.js",
-			"settings":
-			{
-				"buffer_size": 1316,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/controllers/main.js",
-			"settings":
-			{
-				"buffer_size": 1566,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/controllers/about.js",
-			"settings":
-			{
-				"buffer_size": 224,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/app.js",
-			"settings":
-			{
-				"buffer_size": 1715,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/json/worldmap.json",
-			"settings":
-			{
-				"buffer_size": 4226,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/sim/fssimtasks.js",
-			"settings":
-			{
-				"buffer_size": 10988,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/util/fscontextconsole.js",
-			"settings":
-			{
-				"buffer_size": 650,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 64 files for \"FSSimState.characters\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js:\n   17           */\n   18          this.isCraftable = function (thisTask) {\n   19:             for ( var characterKey in FSSimState.characters ) {\n   20:                 if ( FSSimState.characters[characterKey].canPerformTask(thisTask)) {\n   21                      return true;\n   22                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimharvesting.js:\n   54           */\n   55          this.isHarvestable = function (thisTask) {\n   56:             for ( var characterKey in FSSimState.characters ) {\n   57:                 if ( FSSimState.characters[characterKey].canPerformTask(thisTask)) {\n   58                      return true;\n   59                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimobjectfactory.js:\n   49                  {\n   50                    var characterName = arg.desc.characterDesc.name;\n   51:                   FSSimState.characters[characterName] = new FSCharacter(arg.desc.characterDesc);\n   52:                   FSSimState.selectedCharacter = FSSimState.characters[characterName];\n   53                  }\n   54                  break;\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js:\n   90              task.characters.push(validCharactersInactive[0]); \n   91  \n   92:             var characterIndex = FSSimState.characters.indexOf(validCharactersInactive[0]);\n   93              if ( characterIndex !== -1) {\n   94:                 FSSimState.characters.splice(characterIndex, 1);\n   95              }\n   96  \n   ..\n  155  \n  156          task.characters.forEach( function ( thisCharacter) {\n  157:             FSSimState.characters.push( thisCharacter );\n  158          });\n  159  \n  ...\n  217  \n  218          // generate list of characters which can do this task.\n  219:         for ( var character in FSSimState.characters ) {\n  220:             if ( FSSimState.characters[character].canPerformTask(task)) {\n  221:                 validCharacters.push( FSSimState.characters[character]);\n  222              }\n  223          }\n  ...\n  261              case 'harvesting':\n  262                  // stats\n  263:                 for ( characterKey in FSSimState.characters ) {\n  264:                      if ( FSSimState.characters[characterKey].hasStatsFor('harvesting') === true) {\n  265                        haveStats = true;\n  266                      }\n  ...\n  271  \n  272                  // equipped\n  273:                 for ( characterKey in FSSimState.characters ) {\n  274                      if (task.cell !== null) {\n  275:                         if ( task.cell.harvestables.isHarvestableBy(FSSimState.characters[characterKey]) === true) {\n  276                              hasEquippedTools = true;\n  277                          }\n  278                      }\n  279:                     else if ( FSSimState.harvestables[keyName].isHarvestableBy(FSSimState.characters[characterKey]) === true) {\n  280                        hasEquippedTools = true;\n  281                      }\n  ...\n  301  \n  302                              //stats\n  303:                             for ( characterKey in FSSimState.characters ) {\n  304:                                  if ( FSSimState.characters[characterKey].hasStatsFor('crafting') === true) {\n  305                                    haveStats = true;\n  306                                  }\n  ...\n  312                              //proficiency\n  313                              var hasProficiency = false;\n  314:                             for ( characterKey in FSSimState.characters ) {\n  315:                                  if ( FSSimState.characters[characterKey].hasCraftingProficiencyFor(keyName) === true) {\n  316                                    hasProficiency = true;\n  317                                  }\n\n21 matches across 4 files\n\n\nSearching 67 files for \"hasToolAction\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js:\n  189       * @return \n  190       */\n  191:     FSCharacter.prototype.hasToolAction = function ( toolAction, log) {\n  192:       var bHasToolAction = false;\n  193       \n  194        // build combined 'tool actions' array\n  ...\n  205          FSSimRules.toolDefines[thisTool].actions.forEach( ( function ( action) {\n  206            if ( toolAction === action) {\n  207:             bHasToolAction = true;\n  208            } \n  209          }).bind(this)); \n  210        } ).bind(this));   \n  211  \n  212:       if (bHasToolAction === false && log === true)  {\n  213          FSContextConsole.log('Equipped tool(s) (' + tools + ') do not have required action (' + toolAction  + ')');\n  214        }\n  215  \n  216:       return bHasToolAction;\n  217      };\n  218  \n\n5 matches in 1 file\n",
-			"settings":
-			{
-				"buffer_size": 4841,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "app/scripts/services/json/state/fscharacter.js",
-			"settings":
-			{
-				"buffer_size": 5417,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/json/state/fstask.js",
-			"settings":
-			{
-				"buffer_size": 4257,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/json/fssimrules.js",
-			"settings":
-			{
-				"buffer_size": 3505,
+				"buffer_size": 9396,
 				"line_ending": "Unix"
 			}
 		},
@@ -289,7 +103,23 @@
 			"file": "app/scripts/services/json/fssimstate.js",
 			"settings":
 			{
-				"buffer_size": 9204,
+				"buffer_size": 8465,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/sim/fssimtasks.js",
+			"settings":
+			{
+				"buffer_size": 9583,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/ModalDemoCtrl.js",
+			"settings":
+			{
+				"buffer_size": 1358,
 				"line_ending": "Unix"
 			}
 		},
@@ -298,70 +128,6 @@
 			"settings":
 			{
 				"buffer_size": 3269,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/map/worldmapedit.js",
-			"settings":
-			{
-				"buffer_size": 2186,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/sim/fssimbank.js",
-			"settings":
-			{
-				"buffer_size": 1496,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/sim/fssimcrafting.js",
-			"settings":
-			{
-				"buffer_size": 2747,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/sim/fssimharvesting.js",
-			"settings":
-			{
-				"buffer_size": 1930,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/fsuieventhandler.js",
-			"settings":
-			{
-				"buffer_size": 7322,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/sim/fssimmessagingchannel.js",
-			"settings":
-			{
-				"buffer_size": 3088,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/sim/fssimobjectfactory.js",
-			"settings":
-			{
-				"buffer_size": 1860,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/sim/fssimrewards.js",
-			"settings":
-			{
-				"buffer_size": 4254,
 				"line_ending": "Unix"
 			}
 		}
@@ -417,50 +183,61 @@
 	],
 	"file_history":
 	[
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimrewards.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimobjectfactory.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimmessagingchannel.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimharvesting.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimbank.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmapedit.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmap.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimstate.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimrules.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fstask.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/util/fscontextconsole.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js",
+		"/Users/colinmoore/Dev/crafty/app/json/worldmap.json",
+		"/Users/colinmoore/Dev/crafty/app/scripts/app.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/about.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/main.js",
+		"/Users/colinmoore/dev/crafty/app/views/share/modaldemo.html",
+		"/Users/colinmoore/dev/crafty/bower.json",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fsbankable.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/ModalDemoCtrl.js",
+		"/Users/colinmoore/Dev/crafty/app/index.html",
+		"/Users/colinmoore/dev/crafty/app/views/share/activetasks.html",
+		"/Users/colinmoore/Dev/crafty/app/views/pages/worldmap.html",
+		"/Users/colinmoore/Dev/crafty/app/views/share/characterselect.html",
+		"/Users/colinmoore/Dev/crafty/app/views/pages/craft.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fsharvestable.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscraftable.js",
+		"/Users/colinmoore/Dev/crafty/app/json/state.json",
+		"/Users/colinmoore/Dev/crafty/app/json/rules.json",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/util/fsjsonloader.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/modalservice.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/util/stopwatch.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/util/serverSideTimers.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/app.js",
-		"/Users/colinmoore/Dev/crafty/app/views/pages/craft.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/main.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/util/fsjsonloader.js",
 		"/Users/colinmoore/Dev/crafty/app/views/share/worldmapgrid.html",
 		"/Users/colinmoore/dev/crafty/app/views/pages/timers.html",
-		"/Users/colinmoore/Dev/crafty/app/index.html",
 		"/Users/colinmoore/Dev/crafty/app/views/pages/rules.html",
 		"/Users/colinmoore/Dev/crafty/app/views/pages/load.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimrules.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimobjectfactory.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fsbankable.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimbank.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimstate.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/accounts.js",
 		"/Users/colinmoore/dev/crafty/app/scripts/services/sim/fssimgathering.js",
 		"/Users/colinmoore/dev/crafty/app/views/pages/db.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/util/backendTimers.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/util/timers.js",
-		"/Users/colinmoore/Dev/crafty/app/json/rules.json",
 		"/Users/colinmoore/dev/crafty/app/views/pages/worldmap.html",
 		"/Users/colinmoore/dev/crafty/app/views/pages/craft.html",
 		"/Users/colinmoore/dev/crafty/app/views/pages/load.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fsgatherable.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimgathering.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimharvesting.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmap.js",
-		"/Users/colinmoore/Dev/crafty/app/json/worldmap.json",
 		"/Users/colinmoore/dev/crafty/app/views/share/bank.html",
 		"/Users/colinmoore/dev/crafty/app/views/share/bankables.html",
 		"/Users/colinmoore/dev/crafty/app/views/pages/character.html",
 		"/Users/colinmoore/dev/crafty/app/views/share/constructors.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscraftable.js",
-		"/Users/colinmoore/Dev/crafty/app/json/state.json",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fsharvestable.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fstask.js",
 		"/Users/colinmoore/Dev/crafty/app/views/share/mapgrid.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmapedit.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/world.js",
 		"/Users/colinmoore/Dev/crafty/app/views/pages/main.html",
 		"/Users/colinmoore/dev/crafty/app/json/worldmap.json",
@@ -469,7 +246,6 @@
 		"/Users/colinmoore/dev/crafty/app/views/share/worldmapgridedit.html",
 		"/Users/colinmoore/Dev/crafty/app/views/pages/worldmapedit.html",
 		"/Users/colinmoore/dev/crafty/app/views/pages/rules.html",
-		"/Users/colinmoore/Dev/crafty/app/views/pages/worldmap.html",
 		"/Users/colinmoore/dev/crafty/app/views/pages/map.html",
 		"/Users/colinmoore/dev/crafty/app/views/main.html",
 		"/Users/colinmoore/dev/crafty/app/views/share/characterselect.html",
@@ -481,8 +257,6 @@
 		"/Users/colinmoore/dev/crafty/app/views/pages/reference.html",
 		"/Users/colinmoore/dev/crafty/app/views/pages/main.html",
 		"/Users/colinmoore/Dev/crafty/app/views/main.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimmessagingchannel.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimrewards.js",
 		"/Users/colinmoore/Dev/crafty/app/views/craftables.html",
 		"/Users/colinmoore/Dev/crafty/app/views/harvestables.html",
 		"/Users/colinmoore/Dev/crafty/app/views/gatherables.html",
@@ -531,20 +305,12 @@
 		"/Users/colinmoore/Perforce/cmoore_MBP/crafty/state.json",
 		"/Users/colinmoore/Perforce/cmoore_MBP/crafty/rules.json",
 		"/Users/colinmoore/Dev/crafty/dist/index.html",
-		"/Users/colinmoore/dev/crafty/bower.json",
 		"/Users/colinmoore/dev/crafty/bower_components/bootstrap/bower.json",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsservice.js",
 		"/Users/colinmoore/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/colinmoore/dev/crafty/app/views/contextinfoconsole.html",
 		"/Users/colinmoore/dev/crafty/app/json/state.json",
-		"/Users/colinmoore/Dev/crafty/app/crafty.json",
-		"/Users/colinmoore/dev/crafty/app/json/defintions.json",
-		"/Users/colinmoore/dev/crafty/app/json/crafty.json",
-		"/Users/colinmoore/dev/crafty/app/json/defines.json",
-		"/Users/colinmoore/Downloads/sourcetree.license",
-		"/Users/colinmoore/dev/Electoral-System-Simulator/app/index.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/about.js",
-		"/Users/colinmoore/dev/crafty/app/json/rules.json"
+		"/Users/colinmoore/Dev/crafty/app/crafty.json"
 	],
 	"find":
 	{
@@ -726,37 +492,37 @@
 	"groups":
 	[
 		{
-			"selected": 23,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/services/util/fsjsonloader.js",
+					"file": "app/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3968,
+						"buffer_size": 5790,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1911,
-								1911
+								4232,
+								4232
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 616.0,
+						"translation.y": 1033.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -765,15 +531,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9676,
+						"buffer_size": 9396,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4940,
-								4940
+								994,
+								994
 							]
 						],
 						"settings":
@@ -783,266 +549,87 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3939.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/json/state.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3058,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2929,
-								2929
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1757.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/scripts/services/json/state/fscraftable.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1308,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								186,
-								186
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 23,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/scripts/services/json/state/fsharvestable.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1505,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1468,
-								1468
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 56.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "app/views/pages/craft.html",
+					"buffer": 2,
+					"file": "app/scripts/services/json/fssimstate.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1354,
+						"buffer_size": 8465,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1044,
-								1044
+								6938,
+								6938
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 606.0,
+						"translation.x": 3.0,
+						"translation.y": 3036.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 34,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "app/views/share/characterselect.html",
+					"buffer": 3,
+					"file": "app/scripts/services/sim/fssimtasks.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1352,
+						"buffer_size": 9583,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								947,
-								1027
+								8092,
+								8092
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 33,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/views/pages/worldmap.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1055,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1053,
-								1053
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 96.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/Users/colinmoore/dev/crafty/app/views/share/activetasks.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 893,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								811,
-								811
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 32,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "app/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5726,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4144,
-								4148
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 144.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 29,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
+					"buffer": 4,
 					"file": "app/scripts/controllers/ModalDemoCtrl.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1355,
+						"buffer_size": 1358,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								999,
-								999
+								450,
+								450
 							]
 						],
 						"settings":
@@ -1055,46 +642,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "app/scripts/services/json/state/fsbankable.js",
-					"semi_transient": false,
+					"buffer": 5,
+					"file": "app/scripts/services/map/worldmap.js",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1752,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								178,
-								178
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 18,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "/Users/colinmoore/dev/crafty/bower.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 424,
+						"buffer_size": 3269,
 						"regions":
 						{
 						},
@@ -1107,789 +664,15 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 31,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "/Users/colinmoore/dev/crafty/app/views/share/modaldemo.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1117,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1117,
-								1117
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "app/scripts/services/modalservice.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1316,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								999,
-								999
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 31.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 30,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "app/scripts/controllers/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1566,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								219,
-								219
-							]
-						],
-						"settings":
-						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 17,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "app/scripts/controllers/about.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 224,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								170,
-								170
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 17,
-					"file": "app/scripts/app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1715,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1433,
-								1433
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 336.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 18,
-					"file": "app/json/worldmap.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4226,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3549,
-								3549
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2496.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 19,
-					"file": "app/scripts/services/sim/fssimtasks.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10988,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								153,
-								153
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 19,
-					"type": "text"
-				},
-				{
-					"buffer": 20,
-					"file": "app/scripts/services/util/fscontextconsole.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 650,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								170,
-								170
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 28,
-					"type": "text"
-				},
-				{
-					"buffer": 21,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4841,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										240,
-										261
-									],
-									[
-										294,
-										315
-									],
-									[
-										620,
-										641
-									],
-									[
-										674,
-										695
-									],
-									[
-										1005,
-										1026
-									],
-									[
-										1141,
-										1162
-									],
-									[
-										1422,
-										1443
-									],
-									[
-										1553,
-										1574
-									],
-									[
-										1732,
-										1753
-									],
-									[
-										1926,
-										1947
-									],
-									[
-										1976,
-										1997
-									],
-									[
-										2078,
-										2099
-									],
-									[
-										2272,
-										2293
-									],
-									[
-										2331,
-										2352
-									],
-									[
-										2575,
-										2596
-									],
-									[
-										2729,
-										2750
-									],
-									[
-										2986,
-										3007
-									],
-									[
-										3232,
-										3253
-									],
-									[
-										3303,
-										3324
-									],
-									[
-										3650,
-										3671
-									],
-									[
-										3721,
-										3742
-									],
-									[
-										4126,
-										4139
-									],
-									[
-										4190,
-										4203
-									],
-									[
-										4439,
-										4452
-									],
-									[
-										4572,
-										4585
-									],
-									[
-										4783,
-										4796
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								3938,
-								3938
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 2,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1275.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 22,
-					"file": "app/scripts/services/json/state/fscharacter.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5417,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1894,
-								1894
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 931.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 23,
-					"file": "app/scripts/services/json/state/fstask.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4257,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								708,
-								708
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 219.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 24,
-					"file": "app/scripts/services/json/fssimrules.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3505,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								221,
-								221
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 22,
-					"type": "text"
-				},
-				{
-					"buffer": 25,
-					"file": "app/scripts/services/json/fssimstate.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9204,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								249,
-								249
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 26,
-					"file": "app/scripts/services/map/worldmap.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3269,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2137,
-								2137
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 715.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 27,
-					"file": "app/scripts/services/map/worldmapedit.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2186,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								152,
-								152
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 21,
-					"type": "text"
-				},
-				{
-					"buffer": 28,
-					"file": "app/scripts/services/sim/fssimbank.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1496,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								155,
-								155
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 24,
-					"type": "text"
-				},
-				{
-					"buffer": 29,
-					"file": "app/scripts/services/sim/fssimcrafting.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2747,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								164,
-								164
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 20,
-					"type": "text"
-				},
-				{
-					"buffer": 30,
-					"file": "app/scripts/services/sim/fssimharvesting.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1930,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1913,
-								1913
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 81.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 31,
-					"file": "app/scripts/services/fsuieventhandler.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7322,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1161,
-								1161
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2410.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 32,
-					"file": "app/scripts/services/sim/fssimmessagingchannel.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3088,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								339,
-								339
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 25,
-					"type": "text"
-				},
-				{
-					"buffer": 33,
-					"file": "app/scripts/services/sim/fssimobjectfactory.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1860,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								199,
-								199
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 26,
-					"type": "text"
-				},
-				{
-					"buffer": 34,
-					"file": "app/scripts/services/sim/fssimrewards.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4254,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								160,
-								160
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 27,
 					"type": "text"
 				}
 			]
@@ -1972,7 +755,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 300.0,
+	"side_bar_width": 344.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

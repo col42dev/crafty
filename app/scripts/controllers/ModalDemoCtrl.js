@@ -1,6 +1,6 @@
 'use strict';
 
-
+/*
 angular.module('craftyApp').controller('ModalDemoCtrl', ['$scope', '$modal', '$log', function ($scope, $modal, $log) {
 
   $scope.items = ['item1', 'item2', 'item3'];
@@ -34,6 +34,9 @@ angular.module('craftyApp').controller('ModalDemoCtrl', ['$scope', '$modal', '$l
 
 }]);
 
+
+
+
 // Please note that $modalInstance represents a modal window (instance) dependency.
 // It is not the same as the $modal service used above.
 
@@ -52,3 +55,7 @@ angular.module('craftyApp').controller('ModalInstanceCtrl', [ '$scope', '$modalI
     $modalInstance.dismiss('cancel');
   };
 }]);
+
+
+*/
+

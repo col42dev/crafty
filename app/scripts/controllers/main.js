@@ -25,6 +25,7 @@ angular.module('craftyApp')
     'WorldMapEdit', 
     'WorldMap',
     'ServerSideTimers', 
+    'RecipeModal',
   function (
     $scope, 
     FSJSONLoader, 
@@ -38,7 +39,8 @@ angular.module('craftyApp')
     FSSimTasks, 
     WorldMapEdit, 
     WorldMap,
-    ServerSideTimers)
+    ServerSideTimers,
+    RecipeModal)
      {
 
     $scope.getFSJSONLoader = function() {
@@ -79,6 +81,10 @@ angular.module('craftyApp')
 
     $scope.getServerSideTimers = function() {
       return ServerSideTimers;
+    };
+
+    $scope.getRecipeModal = function() {
+      return RecipeModal;
     };
 
 

@@ -66,7 +66,6 @@ angular.module('craftyApp')
 
       var taskName = task.name;
       var activityCategory = task.category;
-      var cell = task.cell;
 
       var canStartTask = true;
 

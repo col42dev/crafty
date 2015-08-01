@@ -19,7 +19,8 @@ angular.module('craftyApp')
       FSSimCrafting, 
       FSSimHarvesting, 
       FSSimTasks, 
-      FSTask) {
+      FSTask,
+      RecipeModal) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -128,8 +129,9 @@ angular.module('craftyApp')
          * @return 
          */
         this.onClickWorld = function ( category, cell) {
-            FSContextConsole.clear();
-            FSSimTasks.createCellTask(category, cell);
+            RecipeModal.open('lg', category, cell);
+            //FSContextConsole.clear();
+            //FSSimTasks.createCellTask(category, cell);
         };
       
 

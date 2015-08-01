@@ -7,10 +7,6 @@
   "harvestableDefines": {
     "Earth": {
       "visual" : { "url" : "http://previews.123rf.com/images/promesaartstudio/promesaartstudio1305/promesaartstudio130500117/19682513-dry-earth-texture.jpg"},
-      "actionable": [
-        "Dig"
-      ],
-      "hardness": 1,
       "duration": 10,
       "recipe": {
         "workers" : 2,
@@ -20,27 +16,14 @@
     },
     "Stone": {
       "visual" : { "url" : "http://previews.123rf.com/images/tequi/tequi1007/tequi100700037/7477653-Repeating-seamless-pattern-of-grey-stones-including-the-seamless-swatch-for-easy-filling-of-any-cont-Stock-Vector.jpg"},
-      "actionable": [
-        "Dig"
-      ],
-      "hardness": 2,
       "duration": 18
     },
     "Coal": {
       "visual" : { "url" : "http://previews.123rf.com/images/anzelm/anzelm0901/anzelm090100006/4133585-Pile-of-coal-texture-background-Stock-Photo-mining.jpg"},
-      "actionable": [
-        "Dig"
-      ],
-      "hardness": 3,
       "duration": 30
     },
     "Wood": {
       "visual" : { "url" : "http://img15.deviantart.net/2f1c/i/2012/324/5/4/magical_forrest_by_db_photoblogdotcom-d5ll91y.jpg"},
-      "actionable": [
-        "Chop",
-        "Saw"
-      ],
-      "hardness": 2,
       "duration": 20
     }
   },

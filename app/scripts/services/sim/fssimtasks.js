@@ -250,9 +250,7 @@ angular.module('craftyApp')
         var category = task.category;
         var keyName = task.name;
         var characterKey = null;
-        var hasEquippedTools = false;
         var haveStats = false;
-        var toolDefine;
 
         switch (category) {
 
@@ -265,31 +263,6 @@ angular.module('craftyApp')
                 }
                 if ( haveStats === false) {
                     FSContextConsole.log('No one has the required stats to start harvesting ' + keyName, true);
-                }
-
-                // equipped
-                for ( characterKey in FSSimState.characters ) {
-                    if (task.cell !== null) {
-                        if ( task.cell.harvestables.isHarvestableBy(FSSimState.characters[characterKey]) === true) {
-                            hasEquippedTools = true;
-                        }
-                    }
-                    else if ( FSSimState.harvestables[keyName].isHarvestableBy(FSSimState.characters[characterKey]) === true) {
-                      hasEquippedTools = true;
-                    }
-                }
-                if ( hasEquippedTools === false) {
-                    FSContextConsole.log('No one is equipped with the required tools for harvesting ' + keyName, true);
-
-                    for (   toolDefine in FSSimRules.toolDefines) {
-                        FSSimRules.toolDefines[toolDefine].actions.forEach( ( function ( action) {
-                            if ( FSSimRules.harvestableDefines[keyName].actionable.indexOf(action) !== -1) {
-                                if ( parseInt(FSSimRules.toolDefines[toolDefine].strength, 10) >= parseInt( FSSimRules.harvestableDefines[keyName].hardness, 10)) {
-                                    FSContextConsole.log(toolDefine, true);
-                                }
-                            } 
-                        }).bind(this));
-                    }
                 }
                 break;
 

@@ -119,9 +119,6 @@ angular.module('craftyApp')
             if (FSSimRules.harvestableDefines.hasOwnProperty( json.harvestables[keyName].name ) !== true) {
                 errorLog.push('state.json: harvestable ' + json.harvestables[keyName].name + ' does not exist in rules.json:harvestableDefines');
             }
-            if ( typeof json.harvestables[keyName].quantity !== 'number') {
-                errorLog.push('state.json: harvestable ' + json.harvestables[keyName].name + ' requires a number value for it (.quantity) property');
-            }
         }
 
         // craftables in craftableDefines
@@ -186,17 +183,10 @@ angular.module('craftyApp')
             if ( typeof FSSimRules.harvestableDefines[keyName].duration !== 'number') {
                 errorLog.push('rules.json: harvestableDefines['+ keyName +'].duration must be assigned a numerical value');
             }
-            if ( typeof FSSimRules.harvestableDefines[keyName].hardness !== 'number') {
-                errorLog.push('rules.json: harvestableDefines['+ keyName +'].hardness must be assigned a numerical value');
-            }
         }
 
         // toolDefines
-        for (  keyName in FSSimRules.toolDefines) {
-            if ( typeof FSSimRules.toolDefines[keyName].strength !== 'number') {
-                errorLog.push('rules.json: toolDefines['+ keyName +'].strength must be assigned a numerical value');
-            }
-        }
+
 
 
        // craftableDefines
