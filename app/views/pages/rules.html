@@ -103,9 +103,7 @@
   <tbody>
       <tr class="noselect" >
           <td class="col-sm-1">Name</td>
-          <td class="col-sm-1">Actionable</td>
           <td class="col-sm-1">Harvest Duration</td>
-          <td class="col-sm-1">Hardness</td>
       </tr>
   </tbody>
 </table>  
@@ -117,9 +115,7 @@
     <tbody>
       <tr ng-repeat="(k,v)  in getFSSimRules().harvestableDefines" class="noselect" >
         <td class="col-sm-1">{{k}}</td> 
-        <td class="col-sm-1">{{v.actionable}}</td> 
         <td class="col-sm-1">{{v.duration}}</td> 
-        <td class="col-sm-1">{{v.hardness}}</td> 
       </tr>
     </tbody>
   </table>

@@ -77,11 +77,8 @@ angular.module('craftyApp')
      * @return 
      */
     FSTask.prototype.harvestingOnStart = function () {
-      // keep stubbed - called by reflective method.
-      var thisType = this.name;
 
-      FSSimMessagingChannel.transaction( { category: 'harvestable', type: thisType,  quantity : -1, cell: this.cell});
-
+  
     };
 
      /**
@@ -93,9 +90,12 @@ angular.module('craftyApp')
 
       //FSSimMessagingChannel.transaction( { category: 'gatherable', type: thisType,  quantity : 1, cell: this.json.activity[0].cell});
    
+      var thisType = this.name;
 
-       var thisType = this.name;
+      FSSimMessagingChannel.transaction( { category: 'harvestable', type: thisType,  action : 'remove', cell: this.cell});
 
+
+   
       FSSimMessagingChannel.transaction( { category: 'bankable', type: thisType, typeCategory: 'gatherable', quantity : 1, cell: this.cell});
 
       // Rewards

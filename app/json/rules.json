@@ -16,15 +16,57 @@
     },
     "Stone": {
       "visual" : { "url" : "http://previews.123rf.com/images/tequi/tequi1007/tequi100700037/7477653-Repeating-seamless-pattern-of-grey-stones-including-the-seamless-swatch-for-easy-filling-of-any-cont-Stock-Vector.jpg"},
-      "duration": 18
+      "duration": 18,
+      "recipe": {
+        "workers" : 2,
+        "items" :  {
+        }
+      }
     },
     "Coal": {
       "visual" : { "url" : "http://previews.123rf.com/images/anzelm/anzelm0901/anzelm090100006/4133585-Pile-of-coal-texture-background-Stock-Photo-mining.jpg"},
-      "duration": 30
+      "duration": 30,
+      "recipe": {
+        "workers" : 2,
+        "items" :  {
+        }
+      }
     },
     "Wood": {
       "visual" : { "url" : "http://img15.deviantart.net/2f1c/i/2012/324/5/4/magical_forrest_by_db_photoblogdotcom-d5ll91y.jpg"},
-      "duration": 20
+      "duration": 20,
+      "recipe": {
+        "workers" : 2,
+        "items" :  {
+        }
+      }
+    },
+    "Leather": {
+      "visual" : { "url" : "http://www.visitdunkeld.com/Highland%20Cows/images/Highland%20Cow%2002_jpg.jpg"},
+      "duration": 20,
+      "recipe": {
+        "workers" : 2,
+        "items" :  {
+        }
+      }
+    },
+    "Fiber": {
+      "visual" : { "url" : "https://upload.wikimedia.org/wikipedia/commons/9/9a/String_Fibers.jpg"},
+      "duration": 20,
+      "recipe": {
+        "workers" : 2,
+        "items" :  {
+        }
+      }
+    },
+    "Metal": {
+      "visual" : { "url" : "http://www.cavinguk.co.uk/gallery/ffmines26_09_2004/normal/MineFace.jpg"},
+      "duration": 20,
+      "recipe": {
+        "workers" : 2,
+        "items" :  {
+        }
+      }
     }
   },
   "toolDefines": {

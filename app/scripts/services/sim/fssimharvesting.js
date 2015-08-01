@@ -20,25 +20,16 @@ angular.module('craftyApp')
         var onTransactionHandler = function( arg) {
 
           if ( arg.category === 'harvestable') {
-            if (arg.quantity > 0) {    
-              if (!(arg.type in FSSimState.harvestables)) {  // ensure there is an instance in harvestables before it can be incremented.
-                  var obj = {'name': arg.type, 'quantity': '0'};
+            if (arg.action === 'add') {    
+              if (!(arg.type in FSSimState.harvestables)) {   
+                  var obj = {'name': arg.type};
                   FSSimMessagingChannel.createSimObject( { category: 'harvestable', desc : obj});
               }
-              FSSimState.harvestables[arg.type].modifyQuantity(arg.quantity);
-            } else if (arg.quantity < 0) {
+            } else if (arg.action === 'remove') {
               if (arg.cell !== null) {
-                arg.cell.harvestables.modifyQuantity( parseInt(arg.quantity, 10));
-                if (parseInt(arg.cell.harvestables.json.quantity, 10) === 0) {
                   delete arg.cell.harvestables;
                   arg.cell.harvestables = null;
-                }
-              } else {
-                  FSSimState.harvestables[arg.type].modifyQuantity( arg.quantity);
-                  if ( FSSimState.harvestables[arg.type].json.quantity === 0) {
-                    delete FSSimState.harvestables[arg.type];
-                  }
-              }
+              } 
             }
             FSSimState.updateHarvestables();
           }

@@ -3,43 +3,31 @@
   "version": "0.0.0",
   "worldMap": [
     [
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      }
+      {},
+      {},
+      {},
+      {},
+      {},
+      {}
     ],
     [
+      {},
       {
-        "harvestables": null
+        "harvestables": {
+          "json": {
+            "name": "Leather"
+          }
+        }
       },
+      {},
+      {},
+      {},
       {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
+        "harvestables": {
+          "json": {
+            "name": "Wood"
+          }
+        }
       }
     ],
     [
@@ -185,7 +173,7 @@
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
+            "name": "Coal",
             "quantity": 1
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
@@ -194,7 +182,7 @@
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
+            "name": "Coal",
             "quantity": 1
           },
           "quantitybgcolor": "rgba(200, 200, 200, 0.0)"

@@ -1,0 +1,45 @@
+
+
+
+
+  
+        <div class="modal-header">
+            <h3 class="modal-title">Recipe Ingredients</h3>
+        </div>
+        <div class="modal-body">
+
+            <div class="fadedbackground">
+            <div class="bodycontainer scrollable">
+                <table class="table table-bordered table-condensed table-scrollable">
+                    <thead>
+                        <tr class="noselect" >
+                            <th class="col-sm-1">Workers</th>
+                            <th class="col-sm-1">Items</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-sm-1"> 
+                                <div style = "background:{{getRecipeModal().workerbgcolor}};">{{getRecipeModal().ingredients.workers}}</div>
+                            </td> 
+                            <td class="col-sm-1"> 
+                                <div>{{getRecipeModal().ingredients.items}}</div>
+                            </td> 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()" ng-disabled="{{getRecipeModal().buttonState['ok']}}">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()" ng-disabled="{{getRecipeModal().buttonState['cancel']}}">Cancel</button>
+        </div>
+
+
+    <button class="btn btn-default" ng-click="getRecipeModal().open()">Open me!</button>
+    <button class="btn btn-default" ng-click="getRecipeModal().open('lg')">Large modal</button>
+    <button class="btn btn-default" ng-click="getRecipeModal().open('sm')">Small modal</button>
+    <button class="btn btn-default" ng-click="getRecipeModal().toggleAnimation()">Toggle Animation ({{ getRecipeModal().animationsEnabled }})</button>
+    <div ng-show="getRecipeModal().selected">Selection from a modal: {{ getRecipeModal().selected }}</div>

@@ -84,6 +84,7 @@ angular.module('craftyApp')
     };
 
     $scope.getRecipeModal = function() {
+      console.log('RecipeModal');
       return RecipeModal;
     };
 

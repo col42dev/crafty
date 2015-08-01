@@ -129,9 +129,9 @@ angular.module('craftyApp')
          * @return 
          */
         this.onClickWorld = function ( category, cell) {
-            RecipeModal.open('lg', category, cell);
-            //FSContextConsole.clear();
-            //FSSimTasks.createCellTask(category, cell);
+            if (cell.task === null) {
+              RecipeModal.open('lg', category, cell);
+            }
         };
       
 

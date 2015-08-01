@@ -29,7 +29,7 @@ angular.module('craftyApp')
 
                 var obj = {harvestables:null};
                 if (row >= 2) {
-                    obj.harvestables = new FSHarvestable({name: 'Earth', quantity: 1});
+                    obj.harvestables = new FSHarvestable({name: 'Earth'});
                 } 
                 this.worldMap[row].push(obj);
              }

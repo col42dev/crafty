@@ -50,12 +50,7 @@ angular.module('craftyApp')
     var padding = '                                      '; // make text click selection work for full width of cell
     if ( catgeory === 'harvesting') {
       if ( col.harvestables !== null) {
-        if (parseInt(col.harvestables.json.quantity, 10) > 0) {
-          return col.harvestables.json.name + padding + '\n' + col.harvestables.json.quantity + padding;
-        }
-      }
-      if (col.task !== null && col.task.category === 'harvesting') {
-        return col.task.name + padding + '\n' + '0' + padding;
+          return col.harvestables.json.name + padding + '\n';
       }
     } 
     return '';
@@ -98,9 +93,7 @@ angular.module('craftyApp')
 
     var color  = 'rgba(0, 0, 0, .0)';
     if ( col.harvestables !== null) {
-      if (parseInt(col.harvestables.json.quantity, 10) > 0) {
         color = 'rgba(54, 25, 25, .1)';
-      }
     }
     if (col.task !== null  && col.task.category === 'harvesting') {
       color = 'rgba(54, 25, 25, .1)';
