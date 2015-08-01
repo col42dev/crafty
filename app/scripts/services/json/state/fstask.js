@@ -26,6 +26,15 @@ angular.module('craftyApp')
       this.updateActiveTaskRemainingSeconds = 1;
       this.updateActiveTaskTotalSeconds = 1;
       this.characters = [];
+
+      switch (this.category) {
+        case 'crafting' :
+          this.workers = FSSimRules.craftableDefines[this.name].workers;
+          break;
+        case 'harvesting' :
+          this.workers = FSSimRules.harvestableDefines[this.name].recipe.workers;
+          break;
+      }
     };
 
     FSTask.prototype.desc = function() {
@@ -86,9 +95,6 @@ angular.module('craftyApp')
      * @return 
      */
     FSTask.prototype.harvestingOnStop = function () {
-      //var thisType = this.json.activity[0].name;
-
-      //FSSimMessagingChannel.transaction( { category: 'gatherable', type: thisType,  quantity : 1, cell: this.json.activity[0].cell});
    
       var thisType = this.name;
 

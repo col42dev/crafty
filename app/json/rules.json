@@ -12,7 +12,8 @@
         "workers" : 2,
         "items" :  {
         }
-      }
+      },
+      "onHarvested": "remove"
     },
     "Stone": {
       "visual" : { "url" : "http://previews.123rf.com/images/tequi/tequi1007/tequi100700037/7477653-Repeating-seamless-pattern-of-grey-stones-including-the-seamless-swatch-for-easy-filling-of-any-cont-Stock-Vector.jpg"},
@@ -21,7 +22,8 @@
         "workers" : 2,
         "items" :  {
         }
-      }
+      },
+      "onHarvested": null
     },
     "Coal": {
       "visual" : { "url" : "http://previews.123rf.com/images/anzelm/anzelm0901/anzelm090100006/4133585-Pile-of-coal-texture-background-Stock-Photo-mining.jpg"},
@@ -30,7 +32,8 @@
         "workers" : 2,
         "items" :  {
         }
-      }
+      },
+      "onHarvested": null
     },
     "Wood": {
       "visual" : { "url" : "http://img15.deviantart.net/2f1c/i/2012/324/5/4/magical_forrest_by_db_photoblogdotcom-d5ll91y.jpg"},
@@ -39,7 +42,18 @@
         "workers" : 2,
         "items" :  {
         }
-      }
+      },
+      "onHarvested": null
+    },
+    "Water": {
+      "visual" : { "url" : "http://buzzerg.com/wp-content/uploads/8589130432002-fresh-nature-blue-waterfall-wallpaper-hd.jpg"},
+      "duration": 20,
+      "recipe": {
+        "workers" : 2,
+        "items" :  {
+        }
+      },
+      "onHarvested": null
     },
     "Leather": {
       "visual" : { "url" : "http://www.visitdunkeld.com/Highland%20Cows/images/Highland%20Cow%2002_jpg.jpg"},
@@ -48,7 +62,8 @@
         "workers" : 2,
         "items" :  {
         }
-      }
+      },
+      "onHarvested": null
     },
     "Fiber": {
       "visual" : { "url" : "https://upload.wikimedia.org/wikipedia/commons/9/9a/String_Fibers.jpg"},
@@ -57,7 +72,8 @@
         "workers" : 2,
         "items" :  {
         }
-      }
+      },
+      "onHarvested": null
     },
     "Metal": {
       "visual" : { "url" : "http://www.cavinguk.co.uk/gallery/ffmines26_09_2004/normal/MineFace.jpg"},
@@ -66,185 +82,66 @@
         "workers" : 2,
         "items" :  {
         }
-      }
+      },
+      "onHarvested": null
     }
   },
   "toolDefines": {
     "Hands": {
-      "strength": 2,
-      "actions": [
-        "Dig",
-        "Carry",
-        "Pick"
-      ]
     },
     "StonePickaxe": {
-      "strength": 3,
-      "actions": [
-        "Dig"
-      ]
     },
     "BronzePickaxe": {
-      "strength": 5,
-      "actions": [
-        "Dig"
-      ]
     },
     "Scythe": {
-      "strength": 8,
-      "actions": [
-        "Chop"
-      ]
     },
     "SteelPickaxe": {
-      "strength": 12,
-      "actions": [
-        "Dig"
-      ]
     },
     "HuntingBow": {
-      "strength": 3,
-      "actions": [
-        "Hunt"
-      ]
     },
     "FishingRod": {
-      "strength": 3,
-      "actions": [
-        "Fish"
-      ]
     },
     "WoodAxe": {
-      "strength": 3,
-      "actions": [
-        "Chop"
-      ]
     },
     "AntlerPickaxe": {
-      "strength": 3,
-      "actions": [
-        "Dig"
-      ]
     },
     "Rope": {
-      "strength": 4,
-      "actions": [
-        "Tie"
-      ]
     },
     "Barrel": {
-      "strength": 12,
-      "actions": [
-        "Carry",
-        "CarryLiquid"
-      ]
     },
     "BackPack": {
-      "strength": 3,
-      "actions": [
-        "Carry"
-      ]
     },
     "Shovel": {
-      "strength": 6,
-      "actions": [
-        "Dig"
-      ]
     },
     "Minecart": {
-      "strength": 20,
-      "actions": [
-        "Cart",
-        "Carry"
-      ]
     },
     "WickerBasket": {
-      "strength": 8,
-      "actions": [
-        "Carry"
-      ]
     },
     "SteelShovel": {
-      "strength": 10,
-      "actions": [
-        "Dig"
-      ]
     },
     "SteelAxe": {
-      "strength": 10,
-      "actions": [
-        "Chop"
-      ]
     },
     "Snares": {
-      "strength": 9,
-      "actions": [
-        "Hunt"
-      ]
     },
     "HarvestingShears": {
-      "strength": 6,
-      "actions": [
-        "Pick"
-      ]
     },
     "WheelBarrow": {
-      "strength": 15,
-      "actions": [
-        "Carry",
-        "Cart"
-      ]
     },
     "SteelMattock": {
-      "strength": 20,
-      "actions": [
-        "Dig"
-      ]
     },
     "FishingNet": {
-      "strength": 10,
-      "actions": [
-        "Fish",
-        "Net"
-      ]
     },
     "Cart": {
-      "strength": 30,
-      "actions": [
-        "Carry"
-      ]
     },
     "LargeBarrel": {
-      "strength": 20,
-      "actions": [
-        "Carry",
-        "CarryLiquid"
-      ]
     },
     "LeatherBackPack": {
-      "strength": 10,
-      "actions": [
-        "Carry"
-      ]
     },
     "BlockAndTackle": {
-      "strength": 30,
-      "actions": [
-        "Carry"
-      ]
     },
     "Saw": {
-      "strength": 30,
-      "actions": [
-        "Saw"
-      ]
     },
     "Bucket": {
-      "strength": 4,
-      "actions": [
-        "Carry",
-        "CarryLiquid"
-      ]
     }
   },
   "constructorDefines": {
@@ -274,30 +171,173 @@
     }
   },
   "craftableDefines": {
-    "WoodenTable": {
-      "construction": [
-
-      ],
-      "input": {
-        "Wood": 4
-      },
-      "output": {
-        "WoodenTable": 1
-      },
-      "duration": 30
-    },
     "Workbench": {
       "construction": [
 
       ],
+      "workers" : 1,
       "input": {
-        "Wood": 3,
-        "WoodenTable": 1
+        "Wood": 3
       },
       "output": {
         "Workbench": 1
+      }
+    },
+
+    "WoodenPlank1": {
+      "construction": [
+        "Workbench"
+      ],
+      "workers" : 1,
+      "input": {
+        "Wood": 2
       },
-      "duration": 30
+      "output": {
+        "WoodenPlank1": 1
+      }
+    },
+    "WoodenBeam1": {
+      "construction": [
+        "Workbench"
+      ],
+      "workers" : 1,
+      "input": {
+        "Wood": 3
+      },
+      "output": {
+        "WoodenBeam1": 1
+      }
+    },
+    "WoodenPanel1": {
+      "construction": [
+        "Workbench"
+      ],
+      "workers" : 1,
+      "input": {
+        "Wood": 4
+      },
+      "output": {
+        "WoodenPanel1": 1
+      }
+    },
+    "WoodenSpikes1": {
+      "construction": [
+        "Workbench"
+      ],
+      "workers" : 1,
+      "input": {
+        "Wood": 1
+      },
+      "output": {
+        "WoodenSpikes1": 1
+      }
+    },  
+
+    "WoodenPlank2": {
+      "construction": [
+        "Workbench"
+      ],
+      "workers" : 1,
+      "input": {
+        "Wood": 2,
+        "Water": 1
+      },
+      "output": {
+        "WoodenPlank2": 1
+      }
+    },
+    "WoodenBeam2": {
+      "construction": [
+        "Workbench"
+      ],
+      "workers" : 1,
+      "input": {
+        "Wood": 3,
+        "Water": 1
+      },
+      "output": {
+        "WoodenBeam2": 1
+      }
+    },
+    "WoodenPanel2": {
+      "construction": [
+        "Workbench"
+      ],
+      "workers" : 1,
+      "input": {
+        "Wood": 4,
+        "Water": 1
+      },
+      "output": {
+        "WoodenPanel2": 1
+      }
+    },
+    "WoodenSpikes2": {
+      "construction": [
+        "Workbench"
+      ],
+      "workers" : 1,
+      "input": {
+        "Wood": 1,
+        "Water": 1
+      },
+      "output": {
+        "WoodenSpikes2": 1
+      }
+    },
+
+
+    "WoodenPlank3": {
+      "construction": [
+        "Workbench"
+      ],
+      "workers" : 1,
+      "input": {
+        "Wood": 2,
+        "Water": 1
+      },
+      "output": {
+        "WoodenPlank3": 1
+      }
+    },
+    "WoodenBeam3": {
+      "construction": [
+        "Workbench"
+      ],
+      "workers" : 1,
+      "input": {
+        "Wood": 3,
+        "Water": 1
+      },
+      "output": {
+        "WoodenBeam3": 1
+      }
+    },
+    "WoodenPanel3": {
+      "construction": [
+        "Workbench"
+      ],
+      "workers" : 1,
+      "input": {
+        "Wood": 4,
+        "Water": 1
+      },
+      "output": {
+        "WoodenPanel3": 1
+      }
+    },
+    "WoodenSpikes3": {
+      "construction": [
+        "Workbench"
+      ],
+      "workers" : 1,
+      "input": {
+        "Wood": 1,
+        "Water": 1
+      },
+      "output": {
+        "WoodenSpikes3": 1
+      }
     }
   },
   "taskRules": {

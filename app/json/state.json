@@ -153,12 +153,54 @@
     {
       "name": "Constructor",
       "quantity": 1
+    },
+    {
+      "name": "Workbench",
+      "quantity": 1
+    },
+    {
+      "name": "Wood",
+      "quantity": 10
+    },
+    {
+      "name": "Leather",
+      "quantity": 10
+    },
+    {
+      "name": "Water",
+      "quantity": 10
+    },
+    {
+      "name": "Fiber",
+      "quantity": 10
+    },
+    {
+      "name": "Stone",
+      "quantity": 10
+    },
+    {
+      "name": "Coal",
+      "quantity": 10
     }
   ],
   "rewards": [
 
   ],
   "craftables": [
+    "WoodenPlank1",
+    "WoodenBeam1",
+    "WoodenPanel1",
+    "WoodenSpikes1",
+
+    "WoodenPlank2",
+    "WoodenBeam2",
+    "WoodenPanel2",
+    "WoodenSpikes2",
+
+    "WoodenPlank3",
+    "WoodenBeam3",
+    "WoodenPanel3",
+    "WoodenSpikes3"
 
   ]
 }

@@ -139,6 +139,8 @@ angular.module('craftyApp')
             }
             else if (FSSimRules.constructorDefines.hasOwnProperty(bankableName) === true) {
             }
+            else if (FSSimRules.harvestableDefines.hasOwnProperty(bankableName) === true) {
+            }
             else {
                 errorLog.push('state.json: bank itme  ' + bankableName + ' does not exist in rules.json:*');  
             }
@@ -198,20 +200,6 @@ angular.module('craftyApp')
                 }
             });
 
-            /*
-            for ( var craftableInput in FSSimRules.craftableDefines[keyName].input) {
-            
-            }
-
-            for ( var craftableOutput in FSSimRules.craftableDefines[keyName].output) {
-            
-            }
-            */
-
-
-            if ( typeof FSSimRules.craftableDefines[keyName].duration !== 'number') {
-                errorLog.push('rules.json: craftableDefines['+ keyName +'].duration must be assigned a numerical value');
-            }
 
         }
 
@@ -237,7 +225,7 @@ angular.module('craftyApp')
             duration= FSSimRules.harvestableDefines[task.name].duration / this.taskTimeScalar;
             break;
           case 'crafting':
-            duration = FSSimRules.craftableDefines[task.name].duration / this.taskTimeScalar;
+            duration = 5 / this.taskTimeScalar;
             break;
         }
 

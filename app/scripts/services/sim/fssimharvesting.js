@@ -8,7 +8,7 @@
  * Operate on fsharvestables's.
  */
 angular.module('craftyApp')
-  .service('FSSimHarvesting', ['$rootScope', 'FSSimMessagingChannel', 'FSSimState', function ($rootScope, FSSimMessagingChannel, FSSimState) {
+  .service('FSSimHarvesting', ['$rootScope', 'FSSimMessagingChannel', 'FSSimState', 'FSSimRules', function ($rootScope, FSSimMessagingChannel, FSSimState, FSSimRules) {
  
     // AngularJS will instantiate a singleton by calling "new" on this function
 
@@ -26,10 +26,13 @@ angular.module('craftyApp')
                   FSSimMessagingChannel.createSimObject( { category: 'harvestable', desc : obj});
               }
             } else if (arg.action === 'remove') {
-              if (arg.cell !== null) {
-                  delete arg.cell.harvestables;
-                  arg.cell.harvestables = null;
-              } 
+
+              if ( FSSimRules.harvestableDefines[arg.type].onHarvested === 'remove') {
+                if (arg.cell !== null) {
+                    delete arg.cell.harvestables;
+                    arg.cell.harvestables = null;
+                } 
+              }
             }
             FSSimState.updateHarvestables();
           }

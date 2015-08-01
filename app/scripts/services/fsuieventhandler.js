@@ -20,7 +20,8 @@ angular.module('craftyApp')
       FSSimHarvesting, 
       FSSimTasks, 
       FSTask,
-      RecipeModal) {
+      RecipeModal,
+      CraftingModal) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -117,9 +118,8 @@ angular.module('craftyApp')
                 case 'Bank':
                     this.onClickBank(keyName);
                     break;
-                case 'harvestable':
                 case 'craftable':
-                    FSSimTasks.createTask(tableName, keyName);
+                    CraftingModal.open('lg', key);
                     break;
             }
          };
