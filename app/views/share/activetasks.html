@@ -16,8 +16,8 @@
         <td>
           <div style = "background:rgba(200, 100, 100, 0.5); overflow:visible; word-wrap:normal" ng-style="{ 'width' : v.percentRemaining()}">{{v.name}} {{v.category}}</div>
         </td>
-        <td ng-repeat="character in v.characters" class="noselect" >
-          <div>{{character.json.name}} </div>
+        <td>
+          <div ng-repeat="character in v.characters" class="noselect" >{{character.json.name}}</div>
         </td>
       </tr>
     </tbody>

@@ -72,37 +72,6 @@ angular.module('craftyApp')
 
       switch ( activityCategory) {
 
-
-        case 'harvesting': {
-            if (cell === null && FSSimState.harvestables.hasOwnProperty(taskName) !== true) {
-              canStartTask = false;
-            } else {
-              if (cell !== null)
-              {
-                if ( parseInt(cell.harvestables.quantity, 10) === 0) {
-                  canStartTask = false;
-                }
-
-              } else if ( parseInt(FSSimState.harvestables[taskName].quantity, 10) === 0) {
-                canStartTask = false;
-              }
-              if ( this.hasStatsFor('harvesting') !== true) {
-                canStartTask = false;
-              }
-
-              if (cell !== null)
-              {
-                if ( cell.harvestables.isHarvestableBy( this) !== true) {
-                  canStartTask = false;
-                }
-              }
-              else if ( FSSimState.harvestables[taskName].isHarvestableBy( this) !== true) {
-                canStartTask = false;
-              }
-            }
-          }
-          break;
-
         case 'crafting': {  
             if ( FSSimCrafting.hasCraftingIngredients(taskName, false) !== true) {
               canStartTask = false;
@@ -184,37 +153,6 @@ angular.module('craftyApp')
     };
 
 
-    /**
-     * @desc : is this character equipped with a tool which has the specified action.
-     * @return 
-     */
-    FSCharacter.prototype.hasToolAction = function ( toolAction, log) {
-      var bHasToolAction = false;
-     
-      // build combined 'tool actions' array
-      var tools = ['Hands'];
-      if ( this.json.tools.length > 0) {
-        this.json.tools.forEach( function( thisTool ) {
-          if ( tools.indexOf( thisTool.json.name ) === -1) {
-            tools.push( thisTool.json.name);
-          }
-        });
-      } 
-
-      tools.forEach( ( function( thisTool) {
-        FSSimRules.toolDefines[thisTool].actions.forEach( ( function ( action) {
-          if ( toolAction === action) {
-            bHasToolAction = true;
-          } 
-        }).bind(this)); 
-      } ).bind(this));   
-
-      if (bHasToolAction === false && log === true)  {
-        FSContextConsole.log('Equipped tool(s) (' + tools + ') do not have required action (' + toolAction  + ')');
-      }
-
-      return bHasToolAction;
-    };
 
 
     /**

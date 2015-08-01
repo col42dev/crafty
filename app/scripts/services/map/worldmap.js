@@ -68,12 +68,10 @@ angular.module('craftyApp')
   this.getCellTextColor = function(catgeory, col) {
     if ( catgeory === 'harvesting') {
       if ( col.harvestables !== null) {
-        var harvestableTask = new FSTask({'name':col.harvestables.json.name, 'category':'harvesting', 'cell' : col});
-        if ( FSSimHarvesting.isHarvestable(harvestableTask) === true) {
+
           return '#000000';
-        }
       }
- 
+
     } 
 
     return '#DD4444';

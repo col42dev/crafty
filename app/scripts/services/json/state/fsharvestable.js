@@ -51,47 +51,7 @@ angular.module('craftyApp')
     };
 
 
-     /**
-     * @desc 
-     * @return 
-     */
-    FSHarvestable.prototype.isHarvestableBy =  function( character) {  
-
-      var tools = [];
-      
-      // build combined 'tool actions' array
-      tools.push('Hands');
-      if ( character.json.tools.length > 0) {
-        character.json.tools.forEach( function( thisTool ) {
-
-          if ( tools.indexOf( thisTool.json.name ) === -1) {
-            tools.push( thisTool.json.name);
-          }
-        });
-      } 
-
-
-      var isHarvestable = false;
-
-      tools.forEach( ( function( thisTool) {
-        FSSimRules.toolDefines[thisTool].actions.forEach( ( function ( thisAction) {
-            var toolHasRequiredAction = false;
-            // match harvest actions with actionables.
-            FSSimRules.harvestableDefines[this.json.name].actionable.forEach( ( function ( thisActionable){
-
-              if (thisAction === thisActionable) {
-
-                toolHasRequiredAction = true;
-                if ( parseInt( FSSimRules.toolDefines[ thisTool ].strength, 10) >= parseInt( FSSimRules.harvestableDefines[this.json.name].hardness, 10)) {
-                  isHarvestable = true;
-                } 
-              }
-            }).bind(this));
-        }).bind(this));
-      } ).bind(this));   
-
-      return isHarvestable;
-    };
+  
 
 
 

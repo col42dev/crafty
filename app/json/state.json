@@ -147,111 +147,18 @@
     {
       "name": "Stone",
       "quantity": 100
-    },
-    {
-      "name": "Coal",
-      "quantity": 100
-    },
-    {
-      "name": "IronOre",
-      "quantity": 100
-    },
-    {
-      "name": "Meat",
-      "quantity": 100
-    },
-    {
-      "name": "Fish",
-      "quantity": 100
-    },
-    {
-      "name": "Leaves",
-      "quantity": 100
-    },
-    {
-      "name": "Grain",
-      "quantity": 100
-    },
-    {
-      "name": "Sand",
-      "quantity": 100
-    },
-    {
-      "name": "Wood",
-      "quantity": 100
-    },
-    {
-      "name": "Marble",
-      "quantity": 100
-    },
-    {
-      "name": "Lumber",
-      "quantity": 100
-    },
-    {
-      "name": "ShaolFish",
-      "quantity": 100
-    },
-    {
-      "name": "Sheep",
-      "quantity": 100
-    },
-    {
-      "name": "Gem",
-      "quantity": 10
-    },
-    {
-      "name": "Fruit",
-      "quantity": 100
     }
   ],
   "bank": [
     {
       "name": "Constructor",
       "quantity": 1
-    },
-    {
-      "name": "WoodAxe",
-      "quantity": 1
-    },
-    {
-      "name": "ElvenWine",
-      "quantity": 2
-    },
-    {
-      "name": "RawGreenSalad",
-      "quantity": 4
-    },
-    {
-      "name": "Bucket",
-      "quantity": 1
-    },
-    {
-      "name": "Saw",
-      "quantity": 1
-    },
-    {
-      "name": "OgreAle",
-      "quantity": 3
     }
   ],
   "rewards": [
 
   ],
   "craftables": [
-    "Rope",
-    "WoodenTable",
-    "Workbench",
-    "AntlerPickaxe",
-    "BackPack",
-    "Bucket",
-    "GreekFireCatapult",
-    "RawGreenSalad",
-    "WickerBasket",
-    "ShearSheep",
-    "FreshFruit",
-    "CookedFruit",
-    "CookedVeg",
-    "FlatBread"
+
   ]
 }

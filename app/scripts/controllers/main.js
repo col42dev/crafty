@@ -2,6 +2,7 @@
 
 
 
+//angular.module('craftyApp', ['ui.bootstrap']);
 /**
  * @ngdoc function
  * @name craftyApp.controller:MainCtrl
@@ -37,7 +38,8 @@ angular.module('craftyApp')
     FSSimTasks, 
     WorldMapEdit, 
     WorldMap,
-    ServerSideTimers) {
+    ServerSideTimers)
+     {
 
     $scope.getFSJSONLoader = function() {
       return FSJSONLoader;
@@ -78,5 +80,6 @@ angular.module('craftyApp')
     $scope.getServerSideTimers = function() {
       return ServerSideTimers;
     };
+
 
   }]);

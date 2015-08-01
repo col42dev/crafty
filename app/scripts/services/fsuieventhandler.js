@@ -39,8 +39,7 @@ angular.module('craftyApp')
                     enabled = FSSimCrafting.isCraftable(craftableTask) ;
                     break;
                 case 'harvest':
-                    var harvestTask = new FSTask({'name':type, 'category':'harvesting', 'cell' : null});
-                    enabled = FSSimHarvesting.isHarvestable(harvestTask);
+                    enabled = true;
                     break;
                 case 'bank':
                     {

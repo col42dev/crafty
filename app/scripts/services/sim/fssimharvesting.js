@@ -48,17 +48,5 @@ angular.module('craftyApp')
         FSSimMessagingChannel.onTransaction($rootScope, onTransactionHandler);
 
 
-        /**
-         * @desc 
-         * @return 
-         */
-        this.isHarvestable = function (thisTask) {
-            for ( var characterKey in FSSimState.characters ) {
-                if ( FSSimState.characters[characterKey].canPerformTask(thisTask)) {
-                    return true;
-                }
-            }
-            return false;
-        };
         
   }]);
