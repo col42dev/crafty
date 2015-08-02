@@ -200,7 +200,10 @@
     "WoodenPlank3",
     "WoodenBeam3",
     "WoodenPanel3",
-    "WoodenSpikes3"
+    "WoodenSpikes3",
 
+    "WoodPickaxe1",
+    "WoodPickaxe2",
+    "WoodPickaxe3"
   ]
 }

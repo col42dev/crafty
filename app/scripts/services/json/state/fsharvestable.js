@@ -19,13 +19,6 @@ angular.module('craftyApp')
     };
 
 
-  
-
-
-  
-
-
-
     return FSHarvestable;
 
   });

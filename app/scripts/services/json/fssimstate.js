@@ -30,7 +30,6 @@ angular.module('craftyApp')
                 return;
             }
 
-
             this.taskTimeScalar ='1';
             this.selectedConstructor = '';
             this.selectedConstructorFilter = 'none';
@@ -41,20 +40,6 @@ angular.module('craftyApp')
                 var obj = { characterDesc : thisCharacter};
                 FSSimMessagingChannel.createSimObject( { category: 'character', desc : obj});
             }); 
-
-            /*
-            // Gatherables
-            this.gatherables = {};  
-            json.gatherables.forEach( (function(thisGatherables) {
-                FSSimMessagingChannel.createSimObject( { category: 'gatherable', desc : thisGatherables});
-            }).bind(this)); 
-            this.updateGatherables = function() {
-                simState.gatherablesArray = Object.keys(simState.gatherables).map(function (key) {
-                    return simState.gatherables[key];
-                });
-            };
-            this.updateGatherables();
-            */
   
             // Harvestables
             this.harvestables = {};  
@@ -79,6 +64,14 @@ angular.module('craftyApp')
                     });
             };
             this.updateBank();
+            for ( var keyName in this.bank) {
+                if (this.bank[keyName].category === 'constructor') {
+                    this.selectedConstructor = keyName;
+                    this.selectedConstructorFilter = keyName;
+                    console.log('sc:' + keyName);
+                }
+            }
+
  
             // Craftables
             this.craftables = {}; 
@@ -92,15 +85,11 @@ angular.module('craftyApp')
             };
             this.updateRecipes();
 
-    
-            //rewards
+            // Rewards
             this.rewards = [];
             json.rewards.forEach( ( function(thisReward) {
                 this.rewards.push(thisReward);
             }).bind(this)); 
-
-
-            
 
     };
 

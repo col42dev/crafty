@@ -20,7 +20,17 @@
                                 <div style = "background:{{getCraftingModal().workerbgcolor}};">{{getCraftingModal().ingredients.workers}}</div>
                             </td> 
                             <td class="col-sm-1"> 
-                                <div>{{getCraftingModal().ingredients.input}}</div>
+
+                                <table class="table table-bordered table-condensed">
+                                    <tbody>
+                                    <tr ng-repeat="(ki, kv) in getCraftingModal().ingredients.input" class="noselect" >
+                                            <div class="noselect" >
+                                                <td style = "background:{{getCraftingModal().itembgcolor[ki]}};">{{ki}}</td>
+                                                <td style = "background:{{getCraftingModal().itembgcolor[ki]}};">{{kv}}</td>
+                                            </div>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </td> 
                         </tr>
                     </tbody>

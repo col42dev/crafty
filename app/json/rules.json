@@ -220,7 +220,8 @@
       "workers" : 1,
       "input": {
         "Wood": 2,
-        "Water": 1
+        "Water": 1,
+        "Leather": 2
       },
       "output": {
         "WoodenPlank3": 1
@@ -233,7 +234,8 @@
       "workers" : 1,
       "input": {
         "Wood": 3,
-        "Water": 1
+        "Water": 1,
+        "Leather": 2
       },
       "output": {
         "WoodenBeam3": 1
@@ -246,7 +248,8 @@
       "workers" : 1,
       "input": {
         "Wood": 4,
-        "Water": 1
+        "Water": 1,
+        "Leather": 2
       },
       "output": {
         "WoodenPanel3": 1
@@ -259,10 +262,50 @@
       "workers" : 1,
       "input": {
         "Wood": 1,
-        "Water": 1
+        "Water": 1,
+        "Leather": 2
       },
       "output": {
         "WoodenSpikes3": 1
+      }
+    },
+    "WoodPickaxe1": {
+      "construction": [
+        "Workbench"
+      ],
+      "workers" : 1,
+      "input": {
+        "Wood": 1
+      },
+      "output": {
+        "WoodPickaxe": 1
+      }
+    },
+    "WoodPickaxe2": {
+      "construction": [
+        "Workbench"
+      ],
+      "workers" : 1,
+      "input": {
+        "Wood": 1,
+        "Water": 1
+      },
+      "output": {
+        "WoodPickaxe": 1
+      }
+    },
+    "WoodPickaxe3": {
+      "construction": [
+        "Workbench"
+      ],
+      "workers" : 1,
+      "input": {
+        "Wood": 1,
+        "Water": 2,
+        "Leather": 3
+      },
+      "output": {
+        "WoodPickaxe": 1
       }
     }
   },
