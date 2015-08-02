@@ -25,11 +25,9 @@ angular.module('craftyApp')
 	  	this.craftableName = craftableName;
 	  	this.ingredients =  FSSimRules.craftableDefines[this.craftableName.name];
 
+      var hasWorkers = ( Object.keys(FSSimState.characters).length >= FSSimRules.craftableDefines[this.craftableName.name].workers) ? true : false;
       // button states
-      this.buttonState['ok'] = false;
-      if ( Object.keys(FSSimState.characters).length < FSSimRules.craftableDefines[this.craftableName.name].workers) {
-        this.buttonState['ok'] = true;
-      } 
+      this.buttonState['ok'] = !hasWorkers;
       if ( FSSimCrafting.hasCraftingIngredients(this.craftableName.name, false) !== true) {
         this.buttonState['ok'] = true;
       }
@@ -39,7 +37,7 @@ angular.module('craftyApp')
       this.buttonState['cancel'] = false;
 
         // bg colors
-	    this.workerbgcolor = ( Object.keys(FSSimState.characters).length >= 2) ? 'rgba(20, 200, 20, 0.25)' : 'rgba(200, 20, 20, 0.25)';
+	    this.workerbgcolor = (hasWorkers === true) ? 'rgba(20, 200, 20, 0.25)' : 'rgba(200, 20, 20, 0.25)';
       for ( var thisItem in FSSimRules.craftableDefines[this.craftableName.name].input) {
           var quantityRequired = FSSimRules.craftableDefines[this.craftableName.name].input[thisItem];
           var quantityInBank = 0;

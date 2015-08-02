@@ -25,17 +25,14 @@ angular.module('craftyApp')
 	  	this.cell = cell;
 	  	this.ingredients =  FSSimRules.harvestableDefines[cell.harvestables.json.name].recipe;
 
+        var hasWorkers = (Object.keys(FSSimState.characters).length >= FSSimRules.harvestableDefines[cell.harvestables.json.name].recipe.workers) ? true : false;
+
         // set button disabled state
-	  	if ( Object.keys(FSSimState.characters).length >=  FSSimRules.harvestableDefines[cell.harvestables.json.name].recipe.workers) {
-	  		this.buttonState['ok'] = false;
-	  	} else {
-	  		this.buttonState['ok'] = true;
-	  	}
+	  	this.buttonState['ok'] = !hasWorkers;
 	  	this.buttonState['cancel'] = false;
 
         // set ingredients
-	    this.workerbgcolor = ( Object.keys(FSSimState.characters).length >= 2) ? 'rgba(20, 200, 20, 0.25)' : 'rgba(200, 20, 20, 0.25)';
-
+	    this.workerbgcolor = (hasWorkers === true) ? 'rgba(20, 200, 20, 0.25)' : 'rgba(200, 20, 20, 0.25)';
 
 	    var modalInstance = $modal.open({
 	      animation: this.animationsEnabled,
