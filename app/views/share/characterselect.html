@@ -7,7 +7,6 @@
 	<thead>
 		<tr class="noselect">
 		    <th class="col-sm-4"><h4>Name</h4></th>
-		    <th class="col-sm-2"><h7>Profession</h7></th>
 		    <th class="col-sm-1"><h4>XP</h4></th>
 		    <th class="col-sm-4"><h4>Equip</h4></th>
 		</tr>
@@ -17,10 +16,6 @@
 		<td bgcolor={{v.getbgcolor()}} class="col-sm-2" >
 			{{v.json.name}}
 		</td> 
-
-		<td class="col-sm-1" >
-			{{getFSSimState().characters[k].json.proficiency.profession}}
-		</td>
 	
 		<td class="col-sm-1" >
 			{{getFSSimState().characters[k].json.xp}}

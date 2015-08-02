@@ -78,7 +78,7 @@ angular.module('craftyApp')
 
 
     this.master = {
-      'craftyrules' : {url: 'https://api.myjson.com/bins/25wku', onLoad: this.createSimRules, data:null},
+      'craftyrules' : {url: 'https://api.myjson.com/bins/2a6we', onLoad: this.createSimRules, data:null},
       'craftystate' : {url: 'https://api.myjson.com/bins/577ri', onLoad: this.createSimState, data:null},
       'craftymap' : {url: 'https://api.myjson.com/bins/2qp1a', onLoad: this.createSimWorldMap, data:null}
 

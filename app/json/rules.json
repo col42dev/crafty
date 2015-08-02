@@ -79,7 +79,7 @@
       "visual" : { "url" : "http://www.cavinguk.co.uk/gallery/ffmines26_09_2004/normal/MineFace.jpg"},
       "duration": 20,
       "recipe": {
-        "workers" : 2,
+        "workers" : 3,
         "items" :  {
         }
       },

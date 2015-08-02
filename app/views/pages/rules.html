@@ -20,9 +20,6 @@
       <td width="15%" style="word-wrap:normal">Output</td>
       <td width="45%" style="word-wrap:normal">Input</td>
       <td width="15%" style="word-wrap:normal">Constructor</td>
-      <td width="5%" style="word-wrap:normal">Crafting Time (S)</td>
-      <td width="10%" style="word-wrap:normal">Proficiency<br>Profession</td>
-      <td width="10%" style="word-wrap:normal">Proficiency<br>Tier</td>
     </tr>
   </tbody>
 </table>  
@@ -48,43 +45,6 @@
           </div>
         </td> 
         <td width="15%"><input ng-model="v.construction" size="16" style="width:100%"></input></td> 
-        <td width="5%"><input type="number" ng-model="v.duration" size="4" style="width:100%"></input></td> 
-        <td width="10%"><input  ng-model="v.proficiency.profession" size="16" style="width:100%"></input></td> 
-        <td width="10%"><input type="number" ng-model="v.proficiency.tier" size="20" style="width:100%"></input></td> 
-             
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-</div><!--fadedbackground-->
-
-
-
-<div class="fadedbackground">
-
-<h4>TOOL RULES</h4>
-
-<div class="bodycontainer scrollable">
-<table class="table table-bordered table-condensed table-scrollable">
-  <tbody>
-      <tr class="noselect" >
-          <td class="col-sm-1">Name</td>
-          <td class="col-sm-1">Strength</td>
-          <td class="col-sm-1">Actions</td>
-      </tr>
-  </tbody>
-</table>  
-</div>
-
-<div class="bodycontainer scrollable">
-  <table class="table table-bordered table-condensed table-scrollable">
-
-    <tbody>
-      <tr ng-repeat="(k,v)  in getFSSimRules().toolDefines" class="noselect" >
-        <td class="col-sm-1">{{k}}</td> 
-        <td class="col-sm-1">{{v.strength}}</td> 
-        <td class="col-sm-1">{{v.actions}}</td> 
       </tr>
     </tbody>
   </table>
@@ -122,37 +82,6 @@
 </div>
 
 </div><!--fadedbackground-->
-
-
-<div class="fadedbackground">
-
-<h4>CONSUMABLE RULES</h4>
-
-<div class="bodycontainer scrollable">
-<table class="table table-bordered table-condensed table-scrollable">
-  <tbody>
-      <tr class="noselect" >
-          <td class="col-sm-1">Name</td>
-          <td class="col-sm-1">Effect</td>
-      </tr>
-  </tbody>
-</table>  
-</div>
-
-<div class="bodycontainer scrollable">
-  <table class="table table-bordered table-condensed table-scrollable">
-
-    <tbody>
-      <tr ng-repeat="(k,v)  in getFSSimRules().consumableDefines" class="noselect" >
-        <td class="col-sm-1">{{k}}</td> 
-        <td class="col-sm-1">{{v.onConsume.stat}}</td> 
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-</div><!--fadedbackground-->
-
 
 
 
