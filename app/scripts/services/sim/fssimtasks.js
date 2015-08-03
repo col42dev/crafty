@@ -30,9 +30,6 @@ angular.module('craftyApp')
     {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-    var thisService = this;
-    this.activeTasks = [];
-    this.pendingTasks = [];
     var MAX_QUEUED_TASK_COUNT = 6;
 
     /**
@@ -88,7 +85,7 @@ angular.module('craftyApp')
         var validCharactersInactive = this.getWorkersArray();
 
         if ( validCharactersInactive.length >= task.workers) {
-            this.activeTasks.push( task);
+            FSSimState.activeTasks.push( task);
 
             // move character from worker pool in to task
             for ( var i = 0; i < task.workers; i ++) {
@@ -132,6 +129,12 @@ angular.module('craftyApp')
             FSSimState.characters[ thisCharacter.json.name] = thisCharacter;
         });
 
+        // remove task from active list
+        var activeTaskIndex = FSSimState.activeTasks.indexOf( task);
+        if ( activeTaskIndex !== -1) {
+            FSSimState.activeTasks.splice( activeTaskIndex, 1);
+        }
+
     };
 
     // Register 'onCompletedTaskHandler' callback after handler declaration
@@ -149,7 +152,7 @@ angular.module('craftyApp')
         if ( catgeory === 'harvesting') {
             var percentRemaining = '0%';
      
-            this.activeTasks.forEach( function ( activeTask) {
+            FSSimState.activeTasks.forEach( function ( activeTask) {
      
                 if ((activeTask.cellIndex.row === taskCellIndex.row) && 
                     (activeTask.cellIndex.col === taskCellIndex.col)) {
@@ -175,7 +178,7 @@ angular.module('craftyApp')
 
         var task = null;
 
-        this.activeTasks.forEach( function ( activeTask) {
+        FSSimState.activeTasks.forEach( function ( activeTask) {
                 if ((activeTask.cellIndex.row === taskCellIndex.row) && 
                     (activeTask.cellIndex.col === taskCellIndex.col)) {
                     task = activeTask;

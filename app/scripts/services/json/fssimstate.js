@@ -91,6 +91,12 @@ angular.module('craftyApp')
                 this.rewards.push(thisReward);
             }).bind(this)); 
 
+            //Tasks
+            this.activeTasks = [];
+
+            this.pendingTasks = [];
+  
+
     };
 
 

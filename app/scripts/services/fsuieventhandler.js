@@ -130,11 +130,13 @@ angular.module('craftyApp')
          * @return 
          */
         this.onClickWorld = function ( category, row, col) {
-            var cell = col;
 
             var cellIndex = WorldMap.getIndexOf(row, col);
 
-            if (cell.task === null) {
+            var existingTask = FSSimTasks.getTaskAtWorldLocation( cellIndex);
+
+
+            if (existingTask === null) {
               RecipeModal.open(category, cellIndex);
             }
         };
