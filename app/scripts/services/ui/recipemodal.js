@@ -8,7 +8,7 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('RecipeModal', function ($modal, $log, FSContextConsole, FSSimTasks, FSSimRules, FSSimState) {
+  .service('RecipeModal', function ($modal, $log, FSContextConsole, FSSimTasks, FSSimRules, FSSimState, WorldMap) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 	  this.ingredients = null;
@@ -20,9 +20,17 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-	  this.open = function (size, category, cell) {
+	  this.open = function (category, cellIndex) {
+
+	  	var size = 'lg';
+
+	
 	  	this.category = category;
-	  	this.cell = cell;
+	  	this.cellIndex = cellIndex;
+
+	  	 var cell = WorldMap.json.worldMap[cellIndex.row][cellIndex.col];
+
+
 	  	this.ingredients =  FSSimRules.harvestableDefines[cell.harvestables.json.name].recipe;
 
         var hasWorkers = (Object.keys(FSSimState.characters).length >= FSSimRules.harvestableDefines[cell.harvestables.json.name].recipe.workers) ? true : false;
@@ -44,8 +52,10 @@ angular.module('craftyApp')
 	    });
 
 	    modalInstance.result.then(function () {
+
+
 			FSContextConsole.clear();
-			FSSimTasks.createCellTask(this.category, this.cell);
+			FSSimTasks.createCellTask(this.category, this.cellIndex);
 	    }.bind(this), function () {
 	    });
 	  };

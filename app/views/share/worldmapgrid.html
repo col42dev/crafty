@@ -41,8 +41,8 @@ click cell top-left resource text to harvest.<br/>
                           background-color:rgba(20, 200, 20, 1.0); 
                           overflow:visible; 
                           word-wrap:normal" 
-                    ng-style="{ 'width' : getWorldMap().getTaskPercentRemaining('harvesting', col)}"
-                    ng-click="getFSUIEventHandler().onClickWorld('harvesting', col)">
+                    ng-style="{ 'width' : getFSSimTasks().getTaskPercentRemaining('harvesting', row, col)}"
+                    ng-click="getFSUIEventHandler().onClickWorld('harvesting', row, col)">
                   <b ng-style="{ 'color': getWorldMap().getCellTextColor('harvesting', col)}">{{getWorldMap().getCellText('harvesting', col)}}</b>
               </div>
 

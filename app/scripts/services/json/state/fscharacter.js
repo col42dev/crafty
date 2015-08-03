@@ -78,12 +78,6 @@ angular.module('craftyApp')
             if ( FSSimCrafting.hasCraftingConstructor(taskName, false) !== true) {
               canStartTask = false;
             }
-            if ( this.hasStatsFor('crafting') !== true) {
-              canStartTask = false;
-            }
-            if ( this.hasCraftingProficiencyFor(taskName) !== true) {
-              canStartTask = false;
-            }
           }
           break;
       }

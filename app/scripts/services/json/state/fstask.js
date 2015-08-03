@@ -18,9 +18,11 @@ angular.module('craftyApp')
     var FSTask = function(taskObj) {
       this.name = taskObj.name;
       this.category = taskObj.category;
-      this.cell = null;
-      if ( taskObj.hasOwnProperty('cell')) {
-        this.cell = taskObj.cell;
+
+
+      this.cellIndex = null;
+      if ( taskObj.hasOwnProperty('cellIndex')) {
+        this.cellIndex = taskObj.cellIndex;
       }
 
       this.updateActiveTaskRemainingSeconds = 1;
@@ -98,11 +100,11 @@ angular.module('craftyApp')
    
       var thisType = this.name;
 
-      FSSimMessagingChannel.transaction( { category: 'harvestable', type: thisType,  action : 'remove', cell: this.cell});
+      FSSimMessagingChannel.transaction( { category: 'harvestable', type: thisType,  action : 'remove',  cellIndex : this.cellIndex});
 
 
    
-      FSSimMessagingChannel.transaction( { category: 'bankable', type: thisType, typeCategory: 'gatherable', quantity : 1, cell: this.cell});
+      FSSimMessagingChannel.transaction( { category: 'bankable', type: thisType, typeCategory: 'gatherable', quantity : 1});
 
       // Rewards
       FSSimMessagingChannel.makeRewards( {'action':'gather', 'target':thisType});

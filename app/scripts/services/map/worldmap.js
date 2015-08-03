@@ -42,12 +42,24 @@ angular.module('craftyApp')
         } 
   };
 
+   /**
+   * @desc 
+   * @return 
+   */
+  this.getIndexOf = function(row, col) {
+    var rowIndex = this.json.worldMap.indexOf(row);
+    var colIndex = row.indexOf(col);
+    //console.log(rowIndex + ', ' + colIndex);
+    return { 'row' : rowIndex, 'col' : colIndex };
+  };
+
+
   /**
    * @desc 
    * @return 
    */
   this.getCellText = function(catgeory, col) {
-    var padding = '                                      '; // make text click selection work for full width of cell
+    var padding = '                                      '; // hacky: make text click selection work for full width of cell
     if ( catgeory === 'harvesting') {
       if ( col.harvestables !== null) {
           return col.harvestables.json.name + padding + '\n';
@@ -72,18 +84,7 @@ angular.module('craftyApp')
     return '#DD4444';
   };
 
-  /**
-   * @desc 
-   * @return 
-   */
-  this.getTaskPercentRemaining = function(catgeory, col) {
-    if ( catgeory === 'harvesting') {
-      if (col.task !== null && col.task.category === 'harvesting') {
-        return col.task.percentRemaining();
-      }
-      return '0%';
-    } 
-  };
+
 
   /**
    * @desc 
@@ -95,9 +96,9 @@ angular.module('craftyApp')
     if ( col.harvestables !== null) {
         color = 'rgba(54, 25, 25, .1)';
     }
-    if (col.task !== null  && col.task.category === 'harvesting') {
-      color = 'rgba(54, 25, 25, .1)';
-    }
+    //if (col.task !== null  && col.task.category === 'harvesting') {
+    //  color = 'rgba(54, 25, 25, .1)';
+    //}
 
     return  color;
   };

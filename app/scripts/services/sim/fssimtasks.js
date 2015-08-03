@@ -16,7 +16,8 @@ angular.module('craftyApp')
         'FSTask', 
         'FSSimCrafting', 
         'FSContextConsole', 
-        'FSSimMessagingChannel', 
+        'FSSimMessagingChannel',
+        'WorldMap', 
     function (
         $rootScope , 
         FSSimState, 
@@ -24,7 +25,8 @@ angular.module('craftyApp')
         FSTask, 
         FSSimCrafting, 
         FSContextConsole, 
-        FSSimMessagingChannel) 
+        FSSimMessagingChannel,
+        WorldMap) 
     {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
@@ -54,10 +56,16 @@ angular.module('craftyApp')
 
     /**
      * @desc 
-     * Create Task and process it for execution by a character.
+     * Create task and trigger it.
      */
-    this.createCellTask = function ( category, cell) {
-        if (cell.task === null) {
+    this.createCellTask = function ( category, cellIndex) {
+
+        var existingTask = this.getTaskAtWorldLocation( cellIndex);
+
+        if (existingTask === null) {
+
+            var cell = WorldMap.json.worldMap[cellIndex.row][cellIndex.col];
+   
             var name = null;
             switch (category) {
                 case 'harvesting':
@@ -67,12 +75,8 @@ angular.module('craftyApp')
                     window.alert('unhandled catagory');
                     break;
             }
-            var task = new FSTask( {'name':name, 'category':category, 'cell' : cell});
-            cell.task = task;
-     
-            if ( this.executeTask(task) === false) {  // could not execute task...
-                cell.task = null;
-            }
+            var task = new FSTask( {'name':name, 'category':category, 'cellIndex' : cellIndex});
+            this.executeTask(task);
         }
     };
 
@@ -86,6 +90,7 @@ angular.module('craftyApp')
         if ( validCharactersInactive.length >= task.workers) {
             this.activeTasks.push( task);
 
+            // move character from worker pool in to task
             for ( var i = 0; i < task.workers; i ++) {
                 task.characters.push(validCharactersInactive[i]); 
 
@@ -108,23 +113,9 @@ angular.module('craftyApp')
               task[task.category + 'OnStart' ]();
 
         } 
-        /*else if (validCharacters.length > 0) {
-            // queue task
-            if (this.pendingTasks.length < MAX_QUEUED_TASK_COUNT) {
-                this.pendingTasks.push( task);
-            } else {
-                 FSContextConsole.log('Task queue is full', true);
-                 return false;
-            }
-        }
-        else {
-            this.logDependencies(task);
-            return false;
-        }*/
+
         return true;
     };
-
-
 
 
     /**
@@ -133,78 +124,66 @@ angular.module('craftyApp')
      */
     this.onCompletedTaskHandler = function( task) {
 
-        //clear task intervals
-        /*
-        for (var statKeyname in FSSimRules.taskRules[task.category].stat) {
-        clearInterval( this.statUpdateInterval[statKeyname]);
-        }*/
-
-        //onStop task
+        // onStop task
         task[ task.category + 'OnStop' ]();
 
-        //xp gain
-        //this.json.xp += parseInt(FSSimRules.taskRules[this.json.activity[0].category].xp, 10);
-
-
-        //var activeTask = this.json.activity[0];
-
-        //this.json.activity.splice(0, 1);
-
+        // move workers back in to pool
         task.characters.forEach( function ( thisCharacter) {
             FSSimState.characters[ thisCharacter.json.name] = thisCharacter;
         });
 
-
-        if (task.cell !== null) {
-            task.cell.task = null;
-        }
-
-        var completedTaskIndex = thisService.activeTasks.indexOf(task);
-        if (completedTaskIndex !== -1) {
-            thisService.activeTasks.splice( completedTaskIndex, 1);
-        }
-
-        // look for next task to start.
-        /*
-        var pendingTasksToRemove = [];
-
-        for (var pendingTaskKey in thisService.pendingTasks ) {
-
-            var pendingTask = thisService.pendingTasks[pendingTaskKey];
-
-            var validCharactersInactive = this.getWorkersArray();
-
-            if ( validCharactersInactive.length > 0) {
-                // start this pending task
-                thisService.activeTasks.push( pendingTask);
-                validCharactersInactive[0].addTask( pendingTask ); 
-                pendingTasksToRemove.push(pendingTask);
-                break;
-            }  else if (validCharacters.length === 0){
-                // pending task cannot be started by any characters (idle or active) so remove it from pending queue. 
-                pendingTasksToRemove.push(pendingTask);
-
-            } else {
-                // task can be started but by a currebtly active character.
-                // look through remainder of list for a valid task to start.
-            }
-        }
-
-        // remove flagged tasks from pendingTasks.
-        pendingTasksToRemove.forEach( function( task) {
-
-                var removeTaskIndex = thisService.pendingTasks.indexOf(task);
-                if (removeTaskIndex !== -1) {
-                    thisService.pendingTasks.splice( removeTaskIndex, 1);
-                }
-        });
-        */
     };
 
     // Register 'onCompletedTaskHandler' callback after handler declaration
     FSSimMessagingChannel.onCompletedTask($rootScope, this.onCompletedTaskHandler);
 
 
+    /**
+    * @desc 
+    * @return 
+    */
+    this.getTaskPercentRemaining = function(catgeory, row, col) {
+
+        var taskCellIndex = WorldMap.getIndexOf(row, col);
+
+        if ( catgeory === 'harvesting') {
+            var percentRemaining = '0%';
+     
+            this.activeTasks.forEach( function ( activeTask) {
+     
+                if ((activeTask.cellIndex.row === taskCellIndex.row) && 
+                    (activeTask.cellIndex.col === taskCellIndex.col)) {
+    
+                    if (activeTask.category === 'harvesting') {
+                        percentRemaining = activeTask.percentRemaining();
+                    }
+                }
+            });
+
+            return percentRemaining;
+        } 
+
+        return '0%';
+    };
+
+
+   /**
+    * @desc 
+    * @return 
+    */
+    this.getTaskAtWorldLocation = function( taskCellIndex) {
+
+        var task = null;
+
+        this.activeTasks.forEach( function ( activeTask) {
+                if ((activeTask.cellIndex.row === taskCellIndex.row) && 
+                    (activeTask.cellIndex.col === taskCellIndex.col)) {
+                    task = activeTask;
+                }
+            });
+
+       return task;
+    };
 
     /**
      * @desc  legacy - refactor this function away!

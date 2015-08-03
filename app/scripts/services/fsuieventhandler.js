@@ -21,7 +21,8 @@ angular.module('craftyApp')
       FSSimTasks, 
       FSTask,
       RecipeModal,
-      CraftingModal) {
+      CraftingModal,
+      WorldMap) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -37,7 +38,7 @@ angular.module('craftyApp')
                     enabled = (FSSimState.rewards.indexOf(type) === -1) ? false : true ;
                     break;
                 case 'craft':
-                    var craftableTask = new FSTask({'name':type, 'category':'crafting', 'cell' : null});
+                    var craftableTask = new FSTask({'name':type, 'category':'crafting', 'cellIndex' : null});
                     enabled = FSSimCrafting.isCraftable(craftableTask) ;
                     break;
                 case 'harvest':
@@ -128,9 +129,13 @@ angular.module('craftyApp')
          * @desc 
          * @return 
          */
-        this.onClickWorld = function ( category, cell) {
+        this.onClickWorld = function ( category, row, col) {
+            var cell = col;
+
+            var cellIndex = WorldMap.getIndexOf(row, col);
+
             if (cell.task === null) {
-              RecipeModal.open('lg', category, cell);
+              RecipeModal.open(category, cellIndex);
             }
         };
       
