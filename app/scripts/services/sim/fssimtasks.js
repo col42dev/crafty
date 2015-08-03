@@ -41,7 +41,7 @@ angular.module('craftyApp')
 
         switch (tableName) {
             case 'craftable':
-                task = new FSTask( {json : {'name':keyName, 'category':'crafting', 'cellIndex' : null}} );
+                task = new FSTask( {json : {'name':keyName, 'category':'crafting', 'cellIndex' : null, 'characters' : []}} );
                 this.executeTask(task);
                 break;
         }
@@ -70,7 +70,7 @@ angular.module('craftyApp')
                     window.alert('unhandled catagory');
                     break;
             }
-            var task = new FSTask( {json : { 'name':name, 'category':category, 'cellIndex' : cellIndex}});
+            var task = new FSTask( {json : { 'name':name, 'category':category, 'cellIndex' : cellIndex, 'characters' : []}} );
             this.executeTask(task);
         }
     };
@@ -87,7 +87,7 @@ angular.module('craftyApp')
 
             // move workers from worker pool in to task
             for ( var i = 0; i < task.workers; i ++) {
-                task.characters.push(validCharactersInactive[i]); 
+                task.json.characters.push(validCharactersInactive[i]); 
 
                 delete FSSimState.characters[ validCharactersInactive[i].json.name];
             }
@@ -121,7 +121,7 @@ angular.module('craftyApp')
         task[ task.json.category + 'OnStop' ]();
 
         // move workers back in to pool
-        task.characters.forEach( function ( thisCharacter) {
+        task.json.characters.forEach( function ( thisCharacter) {
             FSSimState.characters[ thisCharacter.json.name] = thisCharacter;
         });
 

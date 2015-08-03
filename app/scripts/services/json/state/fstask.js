@@ -16,14 +16,10 @@ angular.module('craftyApp')
 
     // FStask
     var FSTask = function(taskObj) {
-      this.json = {};
-      this.json = taskObj.json;
-    
-
+      this.json = taskObj.json; 
       this.updateActiveTaskRemainingSeconds = 1;
       this.updateActiveTaskTotalSeconds = 1;
-      this.characters = [];
-
+   
       switch (this.json.category) {
         case 'crafting' :
           this.workers = FSSimRules.craftableDefines[this.json.name].workers;
@@ -34,12 +30,16 @@ angular.module('craftyApp')
       }
     };
 
+    /**
+     * @desc 
+     * @return 
+     */
     FSTask.prototype.desc = function() {
       return this.json.name  + ' ' + this.json.category;
     };
 
 
-        /**
+    /**
      * @desc 
      * @return 
      */
@@ -51,7 +51,7 @@ angular.module('craftyApp')
       this.updateActiveTaskInterval =  setInterval( onInterval, 1000);
     };
 
-       /**
+    /**
      * @desc 
      * @return : true until timed out.
      */
@@ -76,14 +76,11 @@ angular.module('craftyApp')
       return percent+'%';
     };
 
-
-
    /**
      * @desc 
      * @return 
      */
     FSTask.prototype.harvestingOnStart = function () {
-
   
     };
 
@@ -107,7 +104,6 @@ angular.module('craftyApp')
     };
 
 
-
     /**
      * @desc 
      * @return 
@@ -125,6 +121,7 @@ angular.module('craftyApp')
       }).bind(this));
 
     };
+
 
     /**
      * @desc 
