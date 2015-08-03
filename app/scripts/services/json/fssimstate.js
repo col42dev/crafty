@@ -9,15 +9,21 @@
  * Data only - co not add implementation.
  */
 angular.module('craftyApp')
-  .service('FSSimState', function (FSSimMessagingChannel, FSSimRules) {
+  .service('FSSimState', function (FSSimMessagingChannel, FSSimRules, $http) {
     // AngularJS will instantiate a singleton by calling "new" on this function.
 
     var simState = this;
 
+    this.state = null;
+    this.stateURL = null;
 
-    this.set = function(json) {
 
-            //validate
+    this.set = function(json, stateURL) {
+
+            this.stateURL = stateURL;
+            this.state = angular.copy(json);
+
+            // validate
             var errorLog = this.validateJSON(json);
             if ( errorLog.length > 0) {
 
@@ -39,12 +45,14 @@ angular.module('craftyApp')
             json.characters.forEach( function(thisCharacter) {
                 var obj = { characterDesc : thisCharacter};
                 FSSimMessagingChannel.createSimObject( { category: 'character', desc : obj});
+       
             }); 
   
             // Harvestables
             this.harvestables = {};  
             json.harvestables.forEach( function(thisHarvestable) {
                 FSSimMessagingChannel.createSimObject( { category: 'harvestable', desc : thisHarvestable});
+
             }); 
             this.updateHarvestables = function() {
                 simState.harvestablesArray = Object.keys(simState.harvestables).map(function (key) {
@@ -91,16 +99,97 @@ angular.module('craftyApp')
                 this.rewards.push(thisReward);
             }).bind(this)); 
 
-            //Tasks
+            // Tasks
             this.activeTasks = [];
+            if (json.hasOwnProperty('activeTasks') === true) {
+                json.activeTasks.forEach( function( taskObj ) {
+                    var obj = { category: 'task', desc : taskObj };
+                    FSSimMessagingChannel.createSimObject( obj );
+                    this.activeTasks.push(obj.returnValue);
+                }.bind(this)); 
+            }
 
             this.pendingTasks = [];
-  
 
     };
 
+    /**
+     * @desc 
+     * @return 
+     */
+    this.serialize = function () {
 
-        /**
+            var out = angular.copy(this.state);
+
+            // Characters
+            out.characters = [];
+            for ( var character in this.characters) {
+                out.characters.push(this.characters[character].json);
+            }
+  
+            // Harvestables
+            out.harvestables = [];
+            for ( var harvestable in this.harvestables) {
+                out.harvestables.push(this.harvestables[harvestable].json);
+            }
+
+            // Bank
+            out.bank = [];
+            for ( var bankitem in this.bank) {
+                out.bank.push(this.bank[bankitem].json);
+            }
+
+            // Craftables
+            out.craftables = [];
+            for ( var craftable in this.craftables) {
+                out.craftables.push(this.craftables[craftable].json.name);
+            }
+
+            // Rewards
+            out.rewards = [];
+            for ( var reward in this.rewards) {
+                out.rewards.push(this.rewards[reward]);
+            }
+
+            // Tasks
+            out.activeTasks = [];
+            for ( var activeTask in this.activeTasks) {
+                out.activeTasks.push( this.activeTasks[activeTask].json);
+            }
+
+            out.pendingTasks = [];
+
+
+
+            this.state =  angular.copy(out);
+
+            console.log('>' + this.stateURL);
+
+            // upload to server
+            $http.put( 
+                this.stateURL, 
+                this.state
+            )
+            .success(function() {
+                console.log('SUCCESS');
+            })
+            .error( function(response) { 
+                window.alert('FAILED:');  
+            });
+
+    };
+
+    /**
+     * @desc 
+     * @return 
+     */
+    this.getState = function() {
+
+        return JSON.stringify(this.state, null, 2);
+    };
+
+
+    /**
      * @desc 
      * @return 
      */

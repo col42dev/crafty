@@ -17,6 +17,7 @@ angular.module('craftyApp')
     'FSCharacter', 
     'FSCraftable', 
     'FSBankable', 
+    'FSTask',
   function ( 
     $rootScope, 
     FSSimMessagingChannel, 
@@ -25,7 +26,8 @@ angular.module('craftyApp')
     FSHarvestable, 
     FSCharacter, 
     FSCraftable, 
-    FSBankable) 
+    FSBankable,
+    FSTask) 
   {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
@@ -44,6 +46,9 @@ angular.module('craftyApp')
                   break;
               case 'bankable':
                   FSSimState.bank[arg.desc.name] = new FSBankable(arg.desc);
+                  break;
+              case 'task':
+                  arg.returnValue = new FSTask(arg.desc);
                   break;
               case 'character':
                 {

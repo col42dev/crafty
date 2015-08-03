@@ -12,8 +12,7 @@ angular.module('craftyApp')
     [ 
         '$rootScope',  
         'FSSimState', 
-        'FSSimRules', 
-        'FSTask', 
+        'FSSimRules',  
         'FSSimCrafting', 
         'FSContextConsole', 
         'FSSimMessagingChannel',
@@ -22,7 +21,6 @@ angular.module('craftyApp')
         $rootScope , 
         FSSimState, 
         FSSimRules, 
-        FSTask, 
         FSSimCrafting, 
         FSContextConsole, 
         FSSimMessagingChannel,
@@ -37,16 +35,14 @@ angular.module('craftyApp')
      * Create Task and process it for execution by a character.
      */
     this.createTask = function ( tableName, keyName) {
-        var task = null;
 
         switch (tableName) {
             case 'craftable':
-                task = new FSTask( {json : {'name':keyName, 'category':'crafting', 'cellIndex' : null, 'characters' : []}} );
-                this.executeTask(task);
+                var obj = { category: 'task', desc : {json : {'name':keyName, 'category':'crafting', 'cellIndex' : null, 'characters' : []}} };
+                FSSimMessagingChannel.createSimObject( obj );
+                this.executeTask(obj.returnValue);
                 break;
         }
-
-
     };
 
     /**
@@ -70,8 +66,11 @@ angular.module('craftyApp')
                     window.alert('unhandled catagory');
                     break;
             }
-            var task = new FSTask( {json : { 'name':name, 'category':category, 'cellIndex' : cellIndex, 'characters' : []}} );
-            this.executeTask(task);
+
+            var obj = { category: 'task', desc : {json : { 'name':name, 'category':category, 'cellIndex' : cellIndex, 'characters' : []}} };
+            FSSimMessagingChannel.createSimObject( obj );
+
+            this.executeTask( obj.returnValue );
         }
     };
 
@@ -148,16 +147,17 @@ angular.module('craftyApp')
         if ( catgeory === 'harvesting') {
             var percentRemaining = '0%';
      
-            FSSimState.activeTasks.forEach( function ( activeTask) {
-     
-                if ((activeTask.json.cellIndex.row === taskCellIndex.row) && 
-                    (activeTask.json.cellIndex.col === taskCellIndex.col)) {
-    
-                    if (activeTask.json.category === 'harvesting') {
-                        percentRemaining = activeTask.percentRemaining();
+            if (typeof(FSSimState.activeTasks) !== 'undefined') {
+                FSSimState.activeTasks.forEach( function ( activeTask) {
+                    if ((activeTask.json.cellIndex.row === taskCellIndex.row) && 
+                        (activeTask.json.cellIndex.col === taskCellIndex.col)) {
+        
+                        if (activeTask.json.category === 'harvesting') {
+                            percentRemaining = activeTask.percentRemaining();
+                        }
                     }
-                }
-            });
+                });
+            }
 
             return percentRemaining;
         } 

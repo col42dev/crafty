@@ -55,10 +55,9 @@ angular.module('craftyApp')
      * @return 
      */
     this.createSimState = function(data, url) {
-      url = url;
       console.log('createSimState');
      
-      FSSimState.set(data);
+      FSSimState.set(data, url);
       FSSimMessagingChannel.updateGoals();
       stopwatch.reset();
       stopwatch.start();
@@ -79,7 +78,7 @@ angular.module('craftyApp')
 
     this.master = {
       'craftyrules' : {url: 'https://api.myjson.com/bins/2a6we', onLoad: this.createSimRules, data:null},
-      'craftystate' : {url: 'https://api.myjson.com/bins/577ri', onLoad: this.createSimState, data:null},
+      'craftystate' : {url: 'https://api.myjson.com/bins/596r2', onLoad: this.createSimState, data:null},
       'craftymap' : {url: 'https://api.myjson.com/bins/2qp1a', onLoad: this.createSimWorldMap, data:null}
 
    //   'craftyrules' : {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, data:null},

@@ -8,7 +8,19 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('FSUIEventHandler', 
+  .service('FSUIEventHandler', [
+      'FSBankable',  
+      'FSSimMessagingChannel',  
+      'FSContextConsole', 
+      'FSSimRules', 
+      'FSSimState',
+      'FSSimRewards', 
+      'FSSimCrafting', 
+      'FSSimHarvesting', 
+      'FSSimTasks', 
+      'RecipeModal',
+      'CraftingModal',
+      'WorldMap',
     function ( 
       FSBankable,  
       FSSimMessagingChannel,  
@@ -19,7 +31,6 @@ angular.module('craftyApp')
       FSSimCrafting, 
       FSSimHarvesting, 
       FSSimTasks, 
-      FSTask,
       RecipeModal,
       CraftingModal,
       WorldMap) {
@@ -38,8 +49,9 @@ angular.module('craftyApp')
                     enabled = (FSSimState.rewards.indexOf(type) === -1) ? false : true ;
                     break;
                 case 'craft':
-                    var craftableTask = new FSTask({ json :{ 'name':type, 'category':'crafting', 'cellIndex' : null, 'characters' : []}});
-                    enabled = FSSimCrafting.isCraftable(craftableTask) ;
+                    var obj = { category: 'task', desc : { json :{ 'name':type, 'category':'crafting', 'cellIndex' : null, 'characters' : []}}};
+                    FSSimMessagingChannel.createSimObject( obj );
+                    enabled = FSSimCrafting.isCraftable(obj.returnValue) ;
                     break;
                 case 'harvest':
                     enabled = true;
@@ -222,4 +234,4 @@ angular.module('craftyApp')
 
  
 
-  });
+  }]);
