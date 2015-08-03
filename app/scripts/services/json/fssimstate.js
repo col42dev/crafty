@@ -215,9 +215,9 @@ angular.module('craftyApp')
 
         var duration = 0;
 
-        switch ( task.category) {
+        switch ( task.json.category) {
           case 'harvesting':
-            duration= FSSimRules.harvestableDefines[task.name].duration / this.taskTimeScalar;
+            duration= FSSimRules.harvestableDefines[task.json.name].duration / this.taskTimeScalar;
             break;
           case 'crafting':
             duration = 5 / this.taskTimeScalar;

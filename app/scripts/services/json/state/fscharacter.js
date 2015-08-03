@@ -64,8 +64,8 @@ angular.module('craftyApp')
      */
     FSCharacter.prototype.canPerformTask = function (task) {     
 
-      var taskName = task.name;
-      var activityCategory = task.category;
+      var taskName = task.json.name;
+      var activityCategory = task.json.category;
 
       var canStartTask = true;
 
@@ -105,23 +105,6 @@ angular.module('craftyApp')
       }
 
       return hasRequiredProficiency;
-    };
-
-    /**
-     * @desc 
-     * @return 
-     */
-    FSCharacter.prototype.hasSpareActivitySlot = function (log) {
-
-      if ( this.json.activity.length < 4 ) {
-        return true;
-      }
-
-      if ( log === true) {
-        FSContextConsole.log('Activty queue is full');
-      }
-
-      return false;
     };
 
   

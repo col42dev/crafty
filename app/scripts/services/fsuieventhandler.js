@@ -38,7 +38,7 @@ angular.module('craftyApp')
                     enabled = (FSSimState.rewards.indexOf(type) === -1) ? false : true ;
                     break;
                 case 'craft':
-                    var craftableTask = new FSTask({'name':type, 'category':'crafting', 'cellIndex' : null});
+                    var craftableTask = new FSTask({ json :{ 'name':type, 'category':'crafting', 'cellIndex' : null}});
                     enabled = FSSimCrafting.isCraftable(craftableTask) ;
                     break;
                 case 'harvest':

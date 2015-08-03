@@ -16,31 +16,26 @@ angular.module('craftyApp')
 
     // FStask
     var FSTask = function(taskObj) {
-      this.name = taskObj.name;
-      this.category = taskObj.category;
-
-
-      this.cellIndex = null;
-      if ( taskObj.hasOwnProperty('cellIndex')) {
-        this.cellIndex = taskObj.cellIndex;
-      }
+      this.json = {};
+      this.json = taskObj.json;
+    
 
       this.updateActiveTaskRemainingSeconds = 1;
       this.updateActiveTaskTotalSeconds = 1;
       this.characters = [];
 
-      switch (this.category) {
+      switch (this.json.category) {
         case 'crafting' :
-          this.workers = FSSimRules.craftableDefines[this.name].workers;
+          this.workers = FSSimRules.craftableDefines[this.json.name].workers;
           break;
         case 'harvesting' :
-          this.workers = FSSimRules.harvestableDefines[this.name].recipe.workers;
+          this.workers = FSSimRules.harvestableDefines[this.json.name].recipe.workers;
           break;
       }
     };
 
     FSTask.prototype.desc = function() {
-      return this.name  + ' ' + this.category;
+      return this.json.name  + ' ' + this.json.category;
     };
 
 
@@ -98,9 +93,9 @@ angular.module('craftyApp')
      */
     FSTask.prototype.harvestingOnStop = function () {
    
-      var thisType = this.name;
+      var thisType = this.json.name;
 
-      FSSimMessagingChannel.transaction( { category: 'harvestable', type: thisType,  action : 'remove',  cellIndex : this.cellIndex});
+      FSSimMessagingChannel.transaction( { category: 'harvestable', type: thisType,  action : 'remove',  cellIndex : this.json.cellIndex});
 
 
    
@@ -119,7 +114,7 @@ angular.module('craftyApp')
      */
     FSTask.prototype.craftingOnStart = function () {
 
-      var craftableType = this.name;
+      var craftableType = this.json.name;
       var recipeInputObj = FSSimRules.craftableDefines[ craftableType ].input;
       var recipeInputKeys = Object.keys( recipeInputObj );
 
@@ -137,7 +132,7 @@ angular.module('craftyApp')
      */
     FSTask.prototype.craftingOnStop = function () {
 
-      var craftableKey = this.name;
+      var craftableKey = this.json.name;
 
       // generate output in bank.
       var craftableOutputObj = FSSimRules.craftableDefines[craftableKey].output;

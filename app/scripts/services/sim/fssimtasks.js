@@ -40,15 +40,13 @@ angular.module('craftyApp')
         var task = null;
 
         switch (tableName) {
-            case 'harvestable':
-                task = new FSTask( {'name':keyName, 'category':'harvesting'});
-                break;
             case 'craftable':
-                task = new FSTask( {'name':keyName, 'category':'crafting'});
+                task = new FSTask( {json : {'name':keyName, 'category':'crafting', 'cellIndex' : null}} );
+                this.executeTask(task);
                 break;
         }
 
-        this.executeTask(task);
+
     };
 
     /**
@@ -72,7 +70,7 @@ angular.module('craftyApp')
                     window.alert('unhandled catagory');
                     break;
             }
-            var task = new FSTask( {'name':name, 'category':category, 'cellIndex' : cellIndex});
+            var task = new FSTask( {json : { 'name':name, 'category':category, 'cellIndex' : cellIndex}});
             this.executeTask(task);
         }
     };
@@ -87,28 +85,26 @@ angular.module('craftyApp')
         if ( validCharactersInactive.length >= task.workers) {
             FSSimState.activeTasks.push( task);
 
-            // move character from worker pool in to task
+            // move workers from worker pool in to task
             for ( var i = 0; i < task.workers; i ++) {
                 task.characters.push(validCharactersInactive[i]); 
 
                 delete FSSimState.characters[ validCharactersInactive[i].json.name];
             }
 
-
             // create task interval 
-              var duration = FSSimState.getTaskDuration(task); 
+            var duration = FSSimState.getTaskDuration(task); 
 
-              task.createTimer( duration , 
-                    function() {
-                      if ( task.decrementTimer() === false) {
-                        this.onCompletedTaskHandler (task);                    
-                      }
-                  }.bind(this)
-                );
+            task.createTimer( duration , 
+                function() {
+                  if ( task.decrementTimer() === false) {
+                    this.onCompletedTaskHandler (task);                    
+                  }
+              }.bind(this)
+            );
   
-              //
-              task[task.category + 'OnStart' ]();
-
+            // task category onStart specifics.
+            task[task.json.category + 'OnStart' ]();
         } 
 
         return true;
@@ -122,7 +118,7 @@ angular.module('craftyApp')
     this.onCompletedTaskHandler = function( task) {
 
         // onStop task
-        task[ task.category + 'OnStop' ]();
+        task[ task.json.category + 'OnStop' ]();
 
         // move workers back in to pool
         task.characters.forEach( function ( thisCharacter) {
@@ -154,10 +150,10 @@ angular.module('craftyApp')
      
             FSSimState.activeTasks.forEach( function ( activeTask) {
      
-                if ((activeTask.cellIndex.row === taskCellIndex.row) && 
-                    (activeTask.cellIndex.col === taskCellIndex.col)) {
+                if ((activeTask.json.cellIndex.row === taskCellIndex.row) && 
+                    (activeTask.json.cellIndex.col === taskCellIndex.col)) {
     
-                    if (activeTask.category === 'harvesting') {
+                    if (activeTask.json.category === 'harvesting') {
                         percentRemaining = activeTask.percentRemaining();
                     }
                 }
@@ -179,8 +175,8 @@ angular.module('craftyApp')
         var task = null;
 
         FSSimState.activeTasks.forEach( function ( activeTask) {
-                if ((activeTask.cellIndex.row === taskCellIndex.row) && 
-                    (activeTask.cellIndex.col === taskCellIndex.col)) {
+                if ((activeTask.json.cellIndex.row === taskCellIndex.row) && 
+                    (activeTask.json.cellIndex.col === taskCellIndex.col)) {
                     task = activeTask;
                 }
             });
@@ -211,8 +207,8 @@ angular.module('craftyApp')
      */
     this.logDependencies = function ( task ) {
 
-        var category = task.category;
-        var keyName = task.name;
+        var category = task.json.category;
+        var keyName = task.json.name;
         var characterKey = null;
         var haveStats = false;
 
