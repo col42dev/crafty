@@ -31,7 +31,6 @@ angular.module('craftyApp')
         this.constructorDefines = json.constructorDefines;  
         this.taskRules = json.taskRules;  
         this.rewardRules = json.rewardRules;  
-        this.craftableDefines1 = json.craftableDefines1; 
 
 
 
