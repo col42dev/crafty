@@ -23,7 +23,7 @@
   <div class="bodycontainer scrollable">
   <table class="table table-bordered table-condensed table-scrollable">
     <tbody>
-      <tr ng-repeat="(k,v)  in getFSSimState().craftablesArray | orderBy:getFSJSONLoader().simulation.orderRecipesBy | filter:{ construction:getFSSimState().selectedConstructorFilter  }" class="noselect" style="background-color: rgba(54, 25, 25, .1)">
+      <tr ng-repeat="(k,v)  in getFSSimState().craftablesArray | orderBy:getFSUIEventHandler().orderRecipesBy | filter:{ construction:getFSSimState().selectedConstructorFilter  }" class="noselect" style="background-color: rgba(54, 25, 25, .1)">
         <td class="col-sm-4"> 
               <div style = "background:{{getFSUIEventHandler().bgcolor('craft', v.json.name)}};" ng-click="getFSUIEventHandler().onClickBody('craftable', v.json)">   {{v.json.name}}</div>
         </td> 

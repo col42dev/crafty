@@ -77,13 +77,9 @@ angular.module('craftyApp')
 
 
     this.master = {
-      'craftyrules' : {url: 'https://api.myjson.com/bins/2a6we', onLoad: this.createSimRules, data:null},
-      'craftystate' : {url: 'https://api.myjson.com/bins/596r2', onLoad: this.createSimState, data:null},
-      'craftymap' : {url: 'https://api.myjson.com/bins/2qp1a', onLoad: this.createSimWorldMap, data:null}
-
-   //   'craftyrules' : {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, data:null},
-   //   'craftystate' : {url: 'http://localhost:9000/json/state.json', onLoad: this.createSimState, data:null},
-   //   'craftymap' : {url: 'http://localhost:9000/json/worldmap.json', onLoad: this.createSimWorldMap, data:null}
+      'craftyrules' : {url: 'https://api.myjson.com/bins/4kd8e', onLoad: this.createSimRules, data:null},
+      'craftystate' : {url: 'https://api.myjson.com/bins/2px9a', onLoad: this.createSimState, data:null},
+      'craftymap' : {url: 'https://api.myjson.com/bins/24wba', onLoad: this.createSimWorldMap, data:null}
     };
 
     this.user = angular.copy(this.master);

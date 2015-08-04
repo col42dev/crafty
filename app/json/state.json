@@ -187,6 +187,8 @@
 
   ],
   "craftables": [
+    "Workbench",
+    
     "WoodenPlank1",
     "WoodenBeam1",
     "WoodenPanel1",

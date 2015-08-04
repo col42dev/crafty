@@ -14,7 +14,7 @@ angular.module('craftyApp')
     // FSBankable
     var FSBankable = function(obj) { 
         this.json = obj;
-        this.json.quantity = parseInt( this.json.quantity, 10);
+        //this.json.quantity = parseInt( this.json.quantity, 10);
         this.quantitybgcolor = 'rgba(200, 200, 200, 0.25)';
 
         if (FSSimRules.toolDefines.hasOwnProperty(this.json.name) === true) {
