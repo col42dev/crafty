@@ -5,12 +5,8 @@
 <thead>
   <tr class="noselect" >
       <th class="col-sm-4" ng-click="getFSUIEventHandler().onClickHeader('Craftables', 'json.name')">Name</th>
-      <th class="col-sm-1" ng-click="getFSUIEventHandler().onClickHeader('Craftables', 'json.name')">
-          <div style='height:20px; width:90px; display:table-cell; vertical-align:middle'>
-            <img src= 'http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/unlock.69ea04fd.png' width="50%" style="max-width: 100%; max-height: 100%; display:block; margin:auto;" />
-          </div> 
-      </th>
-      <th class="col-sm-3" ng-click="getFSUIEventHandler().onClickHeader('Craftables', 'json.category')">Category</th>
+      <th class="col-sm-3" ng-click="getFSUIEventHandler().onClickHeader('Craftables', 'json.name')">Output</th>
+      <th class="col-sm-2" ng-click="getFSUIEventHandler().onClickHeader('Craftables', 'json.category')">Category</th>
       <th class="col-sm-1" ng-click="getFSUIEventHandler().onClickHeader('Craftables', 'json.duration')">
           <div style='height:30px; width:90px; display:table-cell; vertical-align:middle'>
             <img src= 'http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/clockface.9a46d0f5.png' width="80%" style="max-width: 100%; max-height: 100%; display:block; margin:auto;" />
@@ -27,13 +23,20 @@
         <td class="col-sm-4"> 
               <div style = "background:{{getFSUIEventHandler().bgcolor('craft', v.json.name)}};" ng-click="getFSUIEventHandler().onClickBody('craftable', v.json)">   {{v.json.name}}</div>
         </td> 
-        <td class="col-sm-1" >
-          <div style='height:20px; width:90px; display:table-cell; vertical-align:middle'>
-            <img src= 'http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/{{getFSSimRewards().getUnlockImage("craft", v.json.name)}}' width="50%" style="max-width: 100%; max-height: 100%; display:block; margin:auto;" />
-          </div>
-        </td> 
-        <td class="col-sm-3" >{{v.getCategory()}}</td> 
-        <td class="col-sm-1"> {{v.duration(getFSSimState().selectedCharacter)}}</td> 
+        <td class="col-sm-3" >
+                                <table class="table table-bordered table-condensed">
+                                    <tbody>
+                                    <tr ng-repeat="(ki, kv) in v.getOutput()" class="noselect" >
+                                            <div class="noselect" >
+                                                <td class="col-sm-5">{{ki}}</td>
+                                                <td class="col-sm-1">{{kv}}</td>
+                                            </div>
+                                    </tr>
+                                    </tbody>
+                                </table>
+        </td>
+        <td class="col-sm-2" >{{v.getCategory()}}</td> 
+        <td class="col-sm-1"> {{v.duration()}}</td> 
       </tr>
     </tbody>
   </table>

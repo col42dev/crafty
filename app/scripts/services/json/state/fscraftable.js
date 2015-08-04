@@ -45,6 +45,22 @@ angular.module('craftyApp')
       return this.category;
     };
 
+    /**
+     * @desc 
+     * @return 
+     */
+    FSCraftable.prototype.duration = function( ) {
+      return FSSimRules.craftableDefines[this.json.name].duration;
+    };
+
+    /**
+     * @desc 
+     * @return 
+     */
+    FSCraftable.prototype.getOutput = function( ) {
+      return FSSimRules.craftableDefines[this.json.name].output;
+    };
+
 
 
 

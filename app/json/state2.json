@@ -155,15 +155,7 @@
       "quantity": 1
     },
     {
-      "name": "Workbench1",
-      "quantity": 1
-    },
-    {
-      "name": "Workbench2",
-      "quantity": 1
-    },
-    {
-      "name": "Workbench3",
+      "name": "Workbench",
       "quantity": 1
     },
     {
@@ -191,42 +183,74 @@
       "quantity": 10
     }
   ],
+
+  "constructors": {
+    "1" : {
+      "Workbench" : 1,
+      "StoneWorks" : 1,
+      "Forge" : 1,
+      "Lab" : 1,
+    },
+    "2" : {
+      "Workbench" : 1,
+      "StoneWorks" : 1,
+      "Forge" : 1,
+      "Lab" : 1
+    },
+    "3" : {
+      "Workbench" : 1,
+      "StoneWorks" : 1,
+      "Forge" : 1,
+      "Lab" : 1
+    }
+  },
+
   "rewards": [
 
   ],
   "craftables": [
-    "Workbench1",
-    "Workbench2",
-    "Workbench3",
-    "Forge1",
-    "Forge2",
-    "Forge3",
-    "SimpleCookingArea1",
-    "SimpleCookingArea2",
-    "SimpleCookingArea3",
+    "Workbench",
+
     "WoodenPlank1",
     "WoodenBeam1",
     "WoodenPanel1",
     "WoodenSpikes1",
+
     "WoodenPlank2",
     "WoodenBeam2",
     "WoodenPanel2",
     "WoodenSpikes2",
+
     "WoodenPlank3",
     "WoodenBeam3",
     "WoodenPanel3",
     "WoodenSpikes3",
+
     "WoodPickaxe1",
     "WoodPickaxe2",
-    "WoodPickaxe3",
-    "Rope1",
-    "Rope2",
-    "Rope3",
-    "SimpleDefenseTower1",
-    "SimpleDefenseTower2",
-    "SimpleDefenseTower3",
-    "SimpleWoodTrap1",
-    "SimpleWoodTrap2",
-    "SimpleWoodTrap3"
-  ]
+    "WoodPickaxe3"
+  ],
+  "craftables1": {
+     "1" : [
+      "Workbench",
+      "WoodenPlank",
+      "WoodenBeam",
+      "WoodenPanel",
+      "WoodenSpikes"
+    ],
+    "2" : [
+      "Workbench",
+      "WoodenPlank",
+      "WoodenBeam",
+      "WoodenPanel",
+      "WoodenSpikes"
+    ],
+    "3" : [
+      "Workbench",
+      "WoodenPlank",
+      "WoodenBeam",
+      "WoodenPanel",
+      "WoodenSpikes"
+    ]
+  }
 }

@@ -76,7 +76,6 @@ angular.module('craftyApp')
                 if (this.bank[keyName].category === 'constructor') {
                     this.selectedConstructor = keyName;
                     this.selectedConstructorFilter = keyName;
-                    console.log('sc:' + keyName);
                 }
             }
 
@@ -309,7 +308,7 @@ angular.module('craftyApp')
             duration= FSSimRules.harvestableDefines[task.json.name].duration / this.taskTimeScalar;
             break;
           case 'crafting':
-            duration = 5 / this.taskTimeScalar;
+            duration = FSSimRules.craftableDefines[task.json.name].duration  / this.taskTimeScalar;
             break;
         }
 

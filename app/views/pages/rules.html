@@ -16,10 +16,11 @@
 <table class="table table-bordered table-condensed table-scrollable">
   <tbody>
     <tr class="noselect" >
-      <td width="15%" style="word-wrap:normal">Name</td>
-      <td width="15%" style="word-wrap:normal">Output</td>
-      <td width="45%" style="word-wrap:normal">Input</td>
-      <td width="15%" style="word-wrap:normal">Constructor</td>
+      <td class="col-sm-1" style="word-wrap:normal">Name</td>
+      <td class="col-sm-1" style="word-wrap:normal">Output</td>
+      <td class="col-sm-3" style="word-wrap:normal">Input</td>
+      <td class="col-sm-1" style="word-wrap:normal">Constructor</td>
+      <td class="col-sm-1" style="word-wrap:normal">Duration</td>
     </tr>
   </tbody>
 </table>  
@@ -29,22 +30,23 @@
   <table class="table table-bordered table-condensed table-scrollable">
     <tbody>
       <tr ng-repeat="(k,v)  in getFSSimRules().craftableDefines" class="noselect" >
-        <td width="15%">
+        <td class="col-sm-1">
           <input type="text" ng-model="k" size="16" style="width:100%" readonly></input>
         </td> 
-        <td width="15%">
+        <td class="col-sm-1">
           <div ng-repeat="(outk,outv) in v.output">
               <input  type="text"   size="16" ng-model="outk" style="width:100%" readonly> 
               <input  type="number" size="2"  ng-model="v.output[outk]" style="width:100%">
           </div>
         </td> 
-        <td width="45%">
+        <td class="col-sm-3">
           <div ng-repeat="(ink,inv) in v.input">
               <input  type="text"   size="16" ng-model="ink" style="width:100%" readonly> 
               <input  type="number" size="2"  ng-model="v.input[ink]" style="width:100%">
           </div>
         </td> 
-        <td width="15%"><input ng-model="v.construction" size="16" style="width:100%"></input></td> 
+        <td class="col-sm-1"><input ng-model="v.construction" size="16" style="width:100%"></input></td>
+        <td class="col-sm-1"><input type="number" ng-model="v.duration" size="3" style="width:100%"></input></td>  
       </tr>
     </tbody>
   </table>
