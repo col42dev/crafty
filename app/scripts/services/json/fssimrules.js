@@ -32,8 +32,6 @@ angular.module('craftyApp')
         this.taskRules = json.taskRules;  
         this.rewardRules = json.rewardRules;  
 
-
-
         // remap harvestableDefines as keys array - for use by html templates visuals only.
         var hKeys = Object.keys(this.harvestableDefines);
         console.log( JSON.stringify(hKeys));

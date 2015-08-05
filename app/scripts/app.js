@@ -62,6 +62,10 @@ angular
         templateUrl: 'views/pages/load.html',
         controller: 'MainCtrl'
       })
+      .when('/gdocs', {
+        templateUrl: 'views/pages/gdocs.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -21,25 +21,25 @@ angular.module('craftyApp')
    */
   this.set = function(json) {
 
-        console.log('World.set');
+      console.log('World.set');
 
-        // Rule Defines
-        this.json = json; 
+      // Rule Defines
+      this.json = json; 
 
-        for ( var row = 0; row < this.json.worldMap.length; row ++) {
-             for ( var col = 0; col < this.json.worldMap[row].length; col ++) {
-                this.json.worldMap[row][col].task = null;
-                if (this.json.worldMap[row][col].hasOwnProperty('harvestables') === false) {
-                  this.json.worldMap[row][col].harvestables = null;
-                }
-                if (this.json.worldMap[row][col].harvestables  !== null){
-                  var obj = angular.copy(this.json.worldMap[row][col].harvestables);
-                  this.json.worldMap[row][col].harvestables = null;
-                  this.json.worldMap[row][col].harvestables = new FSHarvestable(obj.json);
-                }
+      for ( var row = 0; row < this.json.worldMap.length; row ++) {
+           for ( var col = 0; col < this.json.worldMap[row].length; col ++) {
+              this.json.worldMap[row][col].task = null;
+              if (this.json.worldMap[row][col].hasOwnProperty('harvestables') === false) {
+                this.json.worldMap[row][col].harvestables = null;
+              }
+              if (this.json.worldMap[row][col].harvestables  !== null){
+                var obj = angular.copy(this.json.worldMap[row][col].harvestables);
+                this.json.worldMap[row][col].harvestables = null;
+                this.json.worldMap[row][col].harvestables = new FSHarvestable(obj.json);
+              }
 
-             }
-        } 
+           }
+      } 
   };
 
    /**
@@ -108,7 +108,7 @@ angular.module('craftyApp')
    * @return 
    */
   this.getbgimage = function( col) {
-     if ( col.harvestables !== null) {
+     if ( col.harvestables !== null && typeof col.harvestables !== 'undefined') {
         var url = '';
         if (FSSimRules.harvestableDefines[col.harvestables.json.name ].hasOwnProperty('visual') === true) {
           url = FSSimRules.harvestableDefines[ col.harvestables.json.name ].visual.url;

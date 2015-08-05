@@ -4,34 +4,11 @@
   "worldMap": [
     [
       {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
+        "harvestables": {
+          "json": {
+            "name": "Fiber"
+          }
+        }
       },
       {
         "harvestables": {
@@ -41,21 +18,114 @@
         }
       },
       {
-        "harvestables": null
+        "harvestables": {
+          "json": {
+            "name": "Fiber"
+          }
+        }
       },
       {
-        "harvestables": null
+        "harvestables": {
+          "json": {
+            "name": "Fiber"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Fiber"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Fiber"
+          }
+        }
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
       }
     ],
     [
       {
-        "harvestables": null
+        "harvestables": {
+          "json": {
+            "name": "Wood"
+          }
+        }
       },
       {
-        "harvestables": null
+        "harvestables": {
+          "json": {
+            "name": "Wood"
+          }
+        }
       },
       {
-        "harvestables": null
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      }
+    ],
+    [
+      {
+        "harvestables": {
+          "json": {
+            "name": "Wood"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Wood"
+          }
+        }
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
       },
       {
         "harvestables": {
@@ -65,92 +135,69 @@
         }
       },
       {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
-      },
-      {
         "harvestables": {
           "json": {
-            "name": "Wood"
+            "name": "Leather"
           }
         }
       },
       {
-        "harvestables": {
-          "json": {
-            "name": "Wood"
-          }
-        }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Fiber"
+            "name": "Leather"
           }
         }
-      },
-      {
-        "harvestables": null
-      },
-      {
-        "harvestables": null
       }
     ],
     [
       {
         "harvestables": {
           "json": {
+            "name": "Wood"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Wood"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
             "name": "Water"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Water"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
           }
         }
       },
@@ -201,14 +248,14 @@
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
+            "name": "Wood"
           }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
+            "name": "Wood"
           }
         }
       },
@@ -243,14 +290,14 @@
       {
         "harvestables": {
           "json": {
-            "name": "Coal"
+            "name": "Earth"
           }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
+            "name": "Stone"
           }
         }
       },
@@ -294,28 +341,21 @@
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
+            "name": "Water"
           }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
+            "name": "Water"
           }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
+            "name": "Water"
           }
         }
       },
@@ -343,21 +383,28 @@
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
+            "name": "Metal"
           }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
+            "name": "Stone"
           }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
+            "name": "Stone"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Coal"
           }
         }
       },
@@ -378,7 +425,7 @@
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
+            "name": "Stone"
           }
         }
       }
@@ -408,7 +455,14 @@
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
+            "name": "Water"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Water"
           }
         }
       },
@@ -422,149 +476,49 @@
       {
         "harvestables": {
           "json": {
-            "name": "Coal"
+            "name": "Metal"
           }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
+            "name": "Stone"
           }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
+            "name": "Stone"
           }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
+            "name": "Stone"
           }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
+            "name": "Stone"
           }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
+            "name": "Stone"
           }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      }
-    ],
-    [
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Coal"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
-          }
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth"
+            "name": "Stone"
           }
         }
       }

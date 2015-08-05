@@ -38,5 +38,21 @@ angular.module('craftyApp')
 
         // Register 'onTransactionHandler' after function declaration
         FSSimMessagingChannel.onTransaction($rootScope, onTransactionHandler);
+
+        /**
+        * @desc 
+        * 
+        */
+        this.deleteItem = function( bankItem) {
+
+          console.log('deleteItem:' + bankItem.json.name);
+
+          bankItem.modifyQuantity( - bankItem.json.quantity );
+          if ( FSSimState.bank[bankItem.json.name].json.quantity === 0) {
+            delete  FSSimState.bank[bankItem.json.name];
+            FSSimState.updateBank();
+          }
+
+        };
   
   }]);

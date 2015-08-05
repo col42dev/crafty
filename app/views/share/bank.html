@@ -5,9 +5,9 @@
   <table class="table table-bordered table-condensed">
     <thead>
         <tr class="noselect" >
-            <th class="col-sm-3" ng-click="getFSUIEventHandler().onClickHeader('Bank', 'json.name')">Name</th>
+            <th class="col-sm-6" ng-click="getFSUIEventHandler().onClickHeader('Bank', 'json.name')">Name</th>
             <th class="col-sm-2" ng-click="getFSUIEventHandler().onClickHeader('Bank', 'category')">Category</th>
-            <th class="col-sm-2" ng-click="getFSUIEventHandler().onClickHeader('Bank', 'json.quantity')">#</th>
+            <th class="col-sm-1" ng-click="getFSUIEventHandler().onClickHeader('Bank', 'json.quantity')">#</th>
         </tr>
     </thead>
   </table>  
@@ -16,7 +16,7 @@
      <table class="table table-bordered table-condensed table-scrollable" >
         <tbody> 
           <tr  ng-repeat="v in getFSSimState().bankArray | orderBy:getFSUIEventHandler().orderBankBy | filter:{ category:'!constructor'}" ng-click="getFSUIEventHandler().onClickBody('Bank', v.json)" class="noselect" style="background-color: rgba(54, 25, 25, .1)">
-            <td class="col-sm-3"> 
+            <td class="col-sm-6"> 
               <div style = "background:{{getFSUIEventHandler().bgcolor('bank',v.json.name)}};">  {{v.json.name}}</div>
 
               
@@ -24,8 +24,8 @@
 
             </td> 
             <td class="col-sm-2"> {{v.category}}</td>
-            <td class="col-sm-2"> 
-              <input  type="number" size="2"  ng-model="v.json.quantity" style="width:100%">
+            <td class="col-sm-1"> 
+              <div><input  style = "background:{{v.quantitybgcolor}};width:100%" type="number" size="2"  ng-model="v.json.quantity"></div>
             </td> 
           </tr>
         </tbody>

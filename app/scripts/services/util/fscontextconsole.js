@@ -11,9 +11,8 @@ angular.module('craftyApp')
   .service('FSContextConsole', function () {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-        // Gatherables
-    	this.message = 'click red cell for context info';
-
+    // Gatherables
+    this.message = 'click red cell for context info';
 
      /**
      * @desc 

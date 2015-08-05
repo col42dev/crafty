@@ -8,11 +8,12 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('WorldMapEdit', function (FSSimMessagingChannel, FSHarvestable) {
+  .service('WorldMapEdit', function (FSSimMessagingChannel, FSHarvestable, $http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     this.worldMapDim = {rows : 6, cols: 8};
     this.json = {}; // data bound to <pre></pre> display tag
+    this.worldMapURL = null;
 
  
   /**
@@ -40,8 +41,9 @@ angular.module('craftyApp')
    * @desc 
    * @return 
    */
-    this.set = function(json) {
+    this.set = function(json, worldMapURL) {
 
+        this.worldMapURL = worldMapURL;
         // Rule Defines
         this.json = json; 
 
@@ -65,13 +67,11 @@ angular.module('craftyApp')
     };
 
 
-  /**
-   * @desc generate JSON decription of map,
-   * @return 
-   */
+    /**
+    * @desc 
+    * @return 
+    */
     this.JSONify = function() {
-
-        console.log('save');
 
         this.json = {};
 
@@ -80,6 +80,33 @@ angular.module('craftyApp')
         this.json.worldMap = this.worldMap;
 
         this.json = angular.toJson(this.json, true);
+
+    };
+
+  
+
+    /**
+    * @desc 
+    * @return 
+    */
+    this.updateServer = function() {
+
+
+        this.JSONify();
+
+        // upload to server
+        $http.put( 
+            this.worldMapURL, 
+            this.json 
+        )
+        .success(function() {
+            console.log('SUCCESS');
+            window.alert('server updated');
+        })
+        .error( function(response) { 
+            console.log('Failed to Update server:');
+            window.alert('Failed to Update server: ' + JSON.stringify(response));  
+        });
     };
 
 

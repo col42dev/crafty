@@ -27,6 +27,7 @@ angular.module('craftyApp')
     'ServerSideTimers', 
     'RecipeModal',
     'CraftingModal',
+    'GDocs',
   function (
     $scope, 
     FSJSONLoader, 
@@ -42,7 +43,8 @@ angular.module('craftyApp')
     WorldMap,
     ServerSideTimers,
     RecipeModal,
-    CraftingModal)
+    CraftingModal,
+    GDocs)
      {
 
     $scope.getFSJSONLoader = function() {
@@ -63,6 +65,10 @@ angular.module('craftyApp')
 
     $scope.getFSSimRewards = function() {
       return FSSimRewards;
+    };
+
+    $scope.getFSSimBank = function() {
+      return FSSimBank;
     };
 
     $scope.getFSUIEventHandler = function() {
@@ -92,6 +98,12 @@ angular.module('craftyApp')
     $scope.getCraftingModal = function() {
       return CraftingModal;
     };
+
+    $scope.getGDocs = function() {
+      return GDocs;
+    };
+
+
 
 
   }]);

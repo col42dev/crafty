@@ -22,7 +22,11 @@ angular.module('craftyApp')
    
       switch (this.json.category) {
         case 'crafting' :
-          this.workers = FSSimRules.craftableDefines[this.json.name].workers;
+          if (typeof FSSimRules.craftableDefines[this.json.name] === 'undefined') {
+            console.log(this.json.name);
+          } else {
+            this.workers = FSSimRules.craftableDefines[this.json.name].workers;
+          }
           break;
         case 'harvesting' :
           this.workers = FSSimRules.harvestableDefines[this.json.name].recipe.workers;

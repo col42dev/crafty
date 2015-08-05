@@ -5,12 +5,18 @@
 <br/><b>version: {{getFSSimRules().rulesJSON.version}}<b>
 
 
-<br/><button ng-click="getFSSimRules().updateServerVersionFromState()">Update server:</button>
+<br/>
+<pre>
+<button ng-click="getFSSimRules().updateServerVersionFromState()">Update server:</button> at {{getFSSimRules().rulesURL}}
+</pre>
 <br/>
 
 <div class="fadedbackground">
 
 <h4>CRAFTABLES RULES</h4>
+
+<button ng-click="getGDocs().update()">Update from Google Doc</button> {{getGDocs().spreadsheet}}
+
 
 <div class="bodycontainer scrollable">
 <table class="table table-bordered table-condensed table-scrollable">
@@ -150,10 +156,14 @@
   <theader>
       <tr class="noselect" >
           <td class="col-sm-1">
-              <button ng-click="getFSSimRules().onSerialize()" style="float: right;">Serialize:</button>
+              <pre>
+              <button ng-click="getFSSimRules().onSerialize()" style="float: left;">Serialize:</button><br/><br/>Displays current rules state as JSON in text area below.
+              </pre>
           </td>
           <td class="col-sm-1">
-            <button ng-click="getFSSimRules().onUpdateServerVersionWith()" style="float: right;">Update server:</button>
+            <pre>
+            <button ng-click="getFSSimRules().onUpdateServerVersionWith()" style="float: left;">Update server:</button><br/><br/>at {{getFSSimRules().rulesURL}}. Paste JSON to be uploaded to the server in the text area below. There is a risk this will break the build, if the change is significant you should use myjson.com to genrate a new url and test this first. 
+            </pre>
           </td>
 
       </tr>

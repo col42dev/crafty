@@ -68,17 +68,16 @@ angular.module('craftyApp')
      * @return 
      */
     this.createSimWorldMap = function(data, url) {
-      url = url;
       console.log('createSimWorldMap');
 
       WorldMap.set(data);
-      WorldMapEdit.set(data); // also init editor with this data.
+      WorldMapEdit.set(data, url); // also init editor with this data.
     };
 
 
     this.master = {
-      'craftyrules' : {url: 'https://api.myjson.com/bins/2uwci', onLoad: this.createSimRules, data:null},
-     'craftystate' : {url: 'https://api.myjson.com/bins/198qa', onLoad: this.createSimState, data:null},
+      'craftyrules' : {url: 'https://api.myjson.com/bins/1oswy', onLoad: this.createSimRules, data:null},
+     'craftystate' : {url: 'https://api.myjson.com/bins/3d14i', onLoad: this.createSimState, data:null},
       'craftymap' : {url: 'https://api.myjson.com/bins/24wba', onLoad: this.createSimWorldMap, data:null}
 
      // 'craftyrules' : {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, data:null},
