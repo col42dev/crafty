@@ -82,9 +82,15 @@ angular.module('craftyApp')
 
         // Craftables
         this.craftables = {}; 
+        /*
         json.craftables.forEach( function( recipeName ) {
             FSSimMessagingChannel.createSimObject( { category: 'craftables', desc : recipeName});
-        }); 
+        });*/ 
+        // populate from defines - assumes all are unlocked.
+        for ( var craftableDefine in FSSimRules.craftableDefines) {
+            FSSimMessagingChannel.createSimObject( { category: 'craftables', desc : craftableDefine});
+        }
+
         this.updateRecipes = function() {
             simState.craftablesArray = Object.keys(simState.craftables).map(function (key) {
                     return simState.craftables[key];
@@ -109,8 +115,36 @@ angular.module('craftyApp')
         }
 
         this.pendingTasks = [];
+
+        this.rebuildMirrors();
     };
 
+
+  /**
+     * @desc mirrorred representations used by visualizations
+     * @return 
+     */
+    this.rebuildMirrors = function() {
+
+
+
+        console.log('rebuildMirrors:' + Object.keys(this.craftables).length);
+
+        // 
+        this.craftablesMirror = {};
+        for ( var cdi = 0; cdi < Object.keys(this.craftables).length; cdi ++) {
+
+            var keyname = Object.keys(this.craftables)[cdi];
+            var recipename = FSSimRules.craftableDefines[keyname].recipename;
+
+            if ( this.craftablesMirror.hasOwnProperty( recipename) === false) {
+                this.craftablesMirror[recipename] = {};
+            }
+
+            this.craftablesMirror[recipename][keyname] =  this.craftables[keyname];
+        }
+   
+    };
     /**
      * @desc 
      * @return 
@@ -272,6 +306,7 @@ angular.module('craftyApp')
 
 
        // craftableDefines
+       /*
         for (  keyName in FSSimRules.craftableDefines) {
 
             FSSimRules.craftableDefines[keyName].construction.forEach( function( constructorName ) {
@@ -282,6 +317,7 @@ angular.module('craftyApp')
 
 
         }
+        */
 
 
 

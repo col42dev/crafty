@@ -4,46 +4,21 @@
   "worldMap": [
     [
       {
-        "harvestables": {
-          "json": {
-            "name": "Fiber"
-          }
-        }
       },
       {
-        "harvestables": {
-          "json": {
-            "name": "Fiber"
-          }
-        }
+
       },
       {
-        "harvestables": {
-          "json": {
-            "name": "Fiber"
-          }
-        }
+
       },
       {
-        "harvestables": {
-          "json": {
-            "name": "Fiber"
-          }
-        }
+
       },
       {
-        "harvestables": {
-          "json": {
-            "name": "Fiber"
-          }
-        }
+
       },
       {
-        "harvestables": {
-          "json": {
-            "name": "Fiber"
-          }
-        }
+
       },
       {
       },
@@ -128,27 +103,15 @@
       {
       },
       {
-        "harvestables": {
-          "json": {
-            "name": "Leather"
-          }
-        }
+
       },
       {
-        "harvestables": {
-          "json": {
-            "name": "Leather"
-          }
-        }
+
       },
       {
       },
       {
-        "harvestables": {
-          "json": {
-            "name": "Leather"
-          }
-        }
+
       }
     ],
     [

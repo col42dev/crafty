@@ -34,6 +34,8 @@ angular.module('craftyApp')
       } else {
         this.category = 'unclassified';
       }
+
+      this.recipename = FSSimRules.craftableDefines[this.json.name].recipename;
     };
 
 

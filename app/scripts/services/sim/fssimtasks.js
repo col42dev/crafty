@@ -143,24 +143,28 @@ angular.module('craftyApp')
     this.getTaskPercentRemaining = function(catgeory, row, col) {
 
         var taskCellIndex = WorldMap.getIndexOf(row, col);
+        if ( taskCellIndex !== null ) {
 
-        if ( catgeory === 'harvesting') {
-            var percentRemaining = '0%';
-     
-            if (typeof(FSSimState.activeTasks) !== 'undefined') {
-                FSSimState.activeTasks.forEach( function ( activeTask) {
-                    if ((activeTask.json.cellIndex.row === taskCellIndex.row) && 
-                        (activeTask.json.cellIndex.col === taskCellIndex.col)) {
-        
-                        if (activeTask.json.category === 'harvesting') {
-                            percentRemaining = activeTask.percentRemaining();
+            if ( catgeory === 'harvesting') {
+                var percentRemaining = '0%';
+         
+                if (typeof(FSSimState.activeTasks) !== 'undefined') {
+                    FSSimState.activeTasks.forEach( function ( activeTask) {
+                        if ( activeTask.json.cellIndex !== null) {
+                            if ((activeTask.json.cellIndex.row === taskCellIndex.row) && 
+                                (activeTask.json.cellIndex.col === taskCellIndex.col)) {
+                
+                                if (activeTask.json.category === 'harvesting') {
+                                    percentRemaining = activeTask.percentRemaining();
+                                }
+                            }
                         }
-                    }
-                });
-            }
+                    });
+                }
 
-            return percentRemaining;
-        } 
+                return percentRemaining;
+            } 
+        }
 
         return '0%';
     };
@@ -175,9 +179,11 @@ angular.module('craftyApp')
         var task = null;
 
         FSSimState.activeTasks.forEach( function ( activeTask) {
-                if ((activeTask.json.cellIndex.row === taskCellIndex.row) && 
-                    (activeTask.json.cellIndex.col === taskCellIndex.col)) {
-                    task = activeTask;
+                if ( activeTask.json.cellIndex !== null) {
+                    if ((activeTask.json.cellIndex.row === taskCellIndex.row) && 
+                        (activeTask.json.cellIndex.col === taskCellIndex.col)) {
+                        task = activeTask;
+                    }
                 }
             });
 

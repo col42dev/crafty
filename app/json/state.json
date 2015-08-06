@@ -303,7 +303,7 @@
       "quantity": 10
     },
     {
-      "name": "Leather",
+      "name": "Animals",
       "quantity": 10
     },
     {
@@ -311,7 +311,7 @@
       "quantity": 10
     },
     {
-      "name": "Fiber",
+      "name": "Plants",
       "quantity": 10
     },
     {
@@ -327,26 +327,6 @@
 
   ],
   "craftables": [
-    "Forge1",
-    "Forge2",
-    "Forge3",
-    "WoodenPlank1",
-    "WoodenBeam1",
-    "WoodenPanel1",
-    "WoodenSpikes1",
-    "WoodenPlank2",
-    "WoodenBeam2",
-    "WoodenPanel2",
-    "WoodenSpikes2",
-    "WoodenPlank3",
-    "WoodenBeam3",
-    "WoodenPanel3",
-    "WoodenSpikes3",
-    "WoodPickaxe1",
-    "WoodPickaxe2",
-    "WoodPickaxe3",
-    "Rope1",
-    "Rope2",
-    "Rope3"
+
   ]
 }

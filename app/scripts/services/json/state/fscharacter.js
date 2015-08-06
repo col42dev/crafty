@@ -9,7 +9,7 @@
  * runtime mapping of JSON state 'character'.
  */
 angular.module('craftyApp')
-  .factory('FSCharacter', function (FSTask, FSContextConsole, FSSimRules, FSSimState, FSSimMessagingChannel, FSSimCrafting) {
+  .factory('FSCharacter', function (FSTask, FSContextConsole, FSSimRules, FSSimState) {
     // Service logic
     // ...
 
@@ -56,56 +56,6 @@ angular.module('craftyApp')
     };
 
 
-
-
-    /**
-     * @desc - can character start the next task in queue.
-     * @return 
-     */
-    FSCharacter.prototype.canPerformTask = function (task) {     
-
-      var taskName = task.json.name;
-      var activityCategory = task.json.category;
-
-      var canStartTask = true;
-
-      switch ( activityCategory) {
-
-        case 'crafting': {  
-            if ( FSSimCrafting.hasCraftingIngredients(taskName, false) !== true) {
-              canStartTask = false;
-            }
-            if ( FSSimCrafting.hasCraftingConstructor(taskName, false) !== true) {
-              canStartTask = false;
-            }
-          }
-          break;
-      }
-
-      return canStartTask;
-    };
-
-   
-
-
-    /**
-     * @desc Does character have the required proficiency for crafting specified item.
-     * @return 
-     */
-    FSCharacter.prototype.hasCraftingProficiencyFor = function ( craftableKeyName ) {
-      var hasRequiredProficiency = true;
-
-      if ( FSSimRules.craftableDefines[craftableKeyName].hasOwnProperty( OPTIONAL_PROPERTY_PROFICIENECY ) === true) {
-            hasRequiredProficiency = false;
-            if ( this.json.proficiency.profession === FSSimRules.craftableDefines[craftableKeyName].proficiency.profession) {
-                if ( parseInt(this.json.proficiency.tier, 10) >= parseInt(FSSimRules.craftableDefines[craftableKeyName].proficiency.tier, 10)){
-                  hasRequiredProficiency = true;
-                }
-            }
-      }
-
-      return hasRequiredProficiency;
-    };
 
   
 

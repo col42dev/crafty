@@ -32,6 +32,18 @@ angular.module('craftyApp')
         this.taskRules = json.taskRules;  
         this.rewardRules = json.rewardRules;  
 
+
+
+        this.rebuildMirrors();
+
+    };
+
+     /**
+     * @desc mirrorred representations used by visualizations
+     * @return 
+     */
+    this.rebuildMirrors = function() {
+
         // remap harvestableDefines as keys array - for use by html templates visuals only.
         var hKeys = Object.keys(this.harvestableDefines);
         console.log( JSON.stringify(hKeys));
@@ -39,8 +51,26 @@ angular.module('craftyApp')
                 return key;
               });
 
-    };
 
+        console.log('rebuildMirrors:' + Object.keys(this.craftableDefines).length);
+
+        // 
+        this.craftableDefinesMirror = {};
+        for ( var cdi = 0; cdi < Object.keys(this.craftableDefines).length; cdi ++) {
+
+            var keyname = Object.keys(this.craftableDefines)[cdi];
+            var recipename = this.craftableDefines[keyname].recipename;
+
+            if ( this.craftableDefinesMirror.hasOwnProperty( recipename) === false) {
+                this.craftableDefinesMirror[recipename] = {};
+            }
+
+            this.craftableDefinesMirror[recipename][keyname] =  this.craftableDefines[keyname];
+
+
+        }
+   
+    };
 
      /**
      * @desc update myJSON.com server with current JSON rules state. Increment version.
@@ -54,6 +84,18 @@ angular.module('craftyApp')
         var newVersionIdArray = newJSONrules.version.split('.');
         newVersionIdArray[2] = parseInt(newVersionIdArray[2], 10) + 1;
         newJSONrules.version = newVersionIdArray.join('.');
+
+
+
+          // Rule Defines
+        newJSONrules.harvestableDefines = this.harvestableDefines;  
+        newJSONrules.craftableDefines = this.craftableDefines; 
+        newJSONrules.toolDefines = this.toolDefines;  
+        newJSONrules.consumableDefines = this.consumableDefines;  
+        newJSONrules.constructorDefines = this.constructorDefines;  
+        newJSONrules.taskRules = this.taskRules;  
+        newJSONrules.rewardRules = this.rewardRules;  
+
 
 
         $http.put( 
