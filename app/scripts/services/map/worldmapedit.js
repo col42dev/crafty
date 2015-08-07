@@ -8,12 +8,13 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('WorldMapEdit', function (FSSimMessagingChannel, FSHarvestable, $http) {
+  .service('WorldMapEdit', function (FSSimMessagingChannel, FSHarvestable, FSSimRules, $http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     this.worldMapDim = {rows : 6, cols: 8};
     this.json = {}; // data bound to <pre></pre> display tag
     this.worldMapURL = null;
+    this.worldMap = [];
 
  
   /**
@@ -66,6 +67,47 @@ angular.module('craftyApp')
         this.JSONify();
     };
 
+
+    /**
+    * @desc 
+    * @return 
+    */
+    this.editCell = function( col) {
+
+        if ( col.harvestables.json.name.length === 0) {
+            col.harvestables = null;
+        }
+
+    };
+
+  
+    /**
+    * @desc 
+    * @return 
+    */
+    this.bgcolor= function( col) {
+
+        var color  = 'rgba(0, 0, 0, .0)';
+        if ( col.harvestables !== null) {
+            color = 'rgba(54, 25, 25, .1)';
+        }
+ 
+        return  color;
+    };
+
+    /**
+    * @desc 
+    * @return 
+    */
+    this.getbgimage = function( col) {
+        if ( col.harvestables !== null && typeof col.harvestables !== 'undefined') {
+            var url = '';
+            if (FSSimRules.harvestableDefines[col.harvestables.json.name ].hasOwnProperty('visual') === true) {
+              url = FSSimRules.harvestableDefines[ col.harvestables.json.name ].visual.url;
+            }
+            return 'url(' + url + ')';        
+        }
+    };
 
     /**
     * @desc 

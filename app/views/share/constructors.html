@@ -1,5 +1,4 @@
 
-  <div class="bodycontainer scrollable" style="max-height: 200px">
     <table class="table table-bordered table-condensed">
       <thead>
         <tr class="noselect" >
@@ -9,6 +8,9 @@
         </tr>
       </thead>
     </table>  
+
+  <div class="bodycontainer scrollable" style="max-height: 200px">
+
     <table class="table table-bordered table-condensed table-scrollable" >
       <tbody> 
         <tr ng-repeat="v in getFSSimState().bankArray | orderBy:getFSUIEventHandler().orderBankBy | filter:{ category:'constructor'}" ng-click="getFSUIEventHandler().onClickBody('Bank', v.json)" class="noselect" style="background-color: rgba(54, 25, 25, .1)">

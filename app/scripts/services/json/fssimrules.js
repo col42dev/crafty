@@ -46,6 +46,7 @@ angular.module('craftyApp')
 
         // remap harvestableDefines as keys array - for use by html templates visuals only.
         var hKeys = Object.keys(this.harvestableDefines);
+        hKeys.push('');
         console.log( JSON.stringify(hKeys));
         this.harvestableDefinesKeys = hKeys.map(function (key) {
                 return key;
