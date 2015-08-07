@@ -11,11 +11,6 @@ angular.module('craftyApp')
   .service('GDocs', ['$http', 'FSSimRules',  function ($http, FSSimRules) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-
-
-
-
-
    this.recipes = {};
 
   //  this.spreadsheet = '1GMFHfYlPbazTaV0u_MA6YY9gdMXJ04fmzOYQJxTtHXs';
