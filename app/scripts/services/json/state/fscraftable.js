@@ -31,12 +31,11 @@ angular.module('craftyApp')
       }
       else if (FSSimRules.consumableDefines.hasOwnProperty(this.json.name) === true) {
         this.category = 'food';
-      }
-      else if (FSSimRules.gatherableDefines.hasOwnProperty(this.json.name) === true) {
-        this.category = 'gatherable';
       } else {
         this.category = 'unclassified';
       }
+
+      this.recipename = FSSimRules.craftableDefines[this.json.name].recipename;
     };
 
 
@@ -46,6 +45,22 @@ angular.module('craftyApp')
      */
     FSCraftable.prototype.getCategory = function( ) {
       return this.category;
+    };
+
+    /**
+     * @desc 
+     * @return 
+     */
+    FSCraftable.prototype.duration = function( ) {
+      return FSSimRules.craftableDefines[this.json.name].duration;
+    };
+
+    /**
+     * @desc 
+     * @return 
+     */
+    FSCraftable.prototype.getOutput = function( ) {
+      return FSSimRules.craftableDefines[this.json.name].output;
     };
 
 

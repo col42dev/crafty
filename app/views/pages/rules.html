@@ -1,21 +1,41 @@
 
-<a href="https://docs.google.com/spreadsheets/d/15StNodeYJGOFdG6b8sHqYY06cG8ABDna2xyPOvemLEM/edit#gid=380833854">ProfessionsAndAbilities</a>
+
+
+<br/><b>title: {{getFSSimRules().rulesJSON.title}}<b>
+<br/><b>version: {{getFSSimRules().rulesJSON.version}}<b>
+
+
+<br/>
+<pre>
+<button ng-click="getFSSimRules().updateServerVersionFromState()">Update server:</button> at {{getFSSimRules().rulesURL}}
+</pre>
+<br/>
 
 
 <div class="fadedbackground">
 
 <h4>CRAFTABLES RULES</h4>
 
+<button ng-click="getGDocs().update()">Update from Google Doc</button> {{getGDocs().spreadsheet}}
+
+
 <div class="bodycontainer scrollable">
 <table class="table table-bordered table-condensed table-scrollable">
   <tbody>
     <tr class="noselect" >
-      <td width="15%" style="word-wrap:normal">Item</td>
-      <td width="45%" style="word-wrap:normal">Ingredients</td>
-      <td width="15%" style="word-wrap:normal">Constructor</td>
-      <td width="5%" style="word-wrap:normal">Crafting Time (S)</td>
-      <td width="10%" style="word-wrap:normal">Proficiency<br>Profession</td>
-      <td width="10%" style="word-wrap:normal">Proficiency<br>Tier</td>
+      <td class="col-sm-1" style="word-wrap:normal">RecipeName</td>
+      <td class="col-sm-18">
+        <table class="table table-bordered table-condensed table-scrollable">
+          <tbody>
+            <td class="col-sm-1" style="word-wrap:normal">Id</td>
+            <td class="col-sm-2" style="word-wrap:normal">Output</td>
+            <td class="col-sm-2" style="word-wrap:normal">Input</td>
+            <td class="col-sm-1" style="word-wrap:normal">Workers</td>
+            <td class="col-sm-2" style="word-wrap:normal">Constructor</td>
+            <td class="col-sm-1" style="word-wrap:normal">Duration</td>
+          </tbody>
+        </table>  
+      </td>
     </tr>
   </tbody>
 </table>  
@@ -24,46 +44,42 @@
 <div class="bodycontainer scrollable">
   <table class="table table-bordered table-condensed table-scrollable">
     <tbody>
-      <tr ng-repeat="(k,v)  in getFSSimRules().craftableDefines" class="noselect" >
-        <td width="15%">{{v.output}}</td> 
-        <td width="45%">{{v.input}}</td> 
-        <td width="15%">{{v.construction}}</td> 
-        <td width="5%">{{v.duration}}</td> 
-        <td width="10%">{{v.proficiency.profession}}</td> 
-        <td width="10%">{{v.proficiency.tier}}</td> 
-      </tr>
-    </tbody>
-  </table>
-</div>
+      <tr ng-repeat="(km,vm)  in getFSSimRules().craftableDefinesMirror" class="noselect" >
 
-</div><!--fadedbackground-->
+        <td class="col-sm-1">
+          <div type="text" ng-model="km" size="10" style="width:100%" readonly>{{km}}</div>
+        </td> 
+        <td class="col-sm-18">
+          <table class="table table-bordered table-condensed table-scrollable">
+              <tbody>
+           
+                <tr ng-repeat="(k,v)  in vm">
+                  <td class="col-sm-1">
+                    <input type="text" ng-model="k" size="16" style="width:100%" readonly></input>
+                  </td> 
+                  <td class="col-sm-2">
+                    <div ng-repeat="(outk,outv) in v.output">
+                        <input  type="text"   size="16" ng-model="outk" style="width:100%" readonly> 
+                        <input  type="number" size="2"  ng-model="v.output[outk]" style="width:100%">
+                    </div>
+                  </td> 
+                  <td class="col-sm-2">
+                    <div ng-repeat="(ink,inv) in v.input">
+                        <input  type="text"   size="16" ng-model="ink" style="width:100%" readonly> 
+                        <input  type="number" size="2"  ng-model="v.input[ink]" style="width:100%">
+                    </div>
+                  </td> 
+                  <td class="col-sm-1"><input ng-model="v.workers" size="4" style="width:100%"></input></td>
+                  <td class="col-sm-2"><input ng-model="v.construction" size="16" style="width:100%"></input></td>
+                  <td class="col-sm-1"><input type="number" ng-model="v.duration" size="3" style="width:100%"></input></td>  
+                </div>
+
+            </tbody>
+          </table> 
+
+        </td> 
 
 
-
-<div class="fadedbackground">
-
-<h4>TOOL RULES</h4>
-
-<div class="bodycontainer scrollable">
-<table class="table table-bordered table-condensed table-scrollable">
-  <tbody>
-      <tr class="noselect" >
-          <td class="col-sm-1">Name</td>
-          <td class="col-sm-1">Strength</td>
-          <td class="col-sm-1">Actions</td>
-      </tr>
-  </tbody>
-</table>  
-</div>
-
-<div class="bodycontainer scrollable">
-  <table class="table table-bordered table-condensed table-scrollable">
-
-    <tbody>
-      <tr ng-repeat="(k,v)  in getFSSimRules().toolDefines" class="noselect" >
-        <td class="col-sm-1">{{k}}</td> 
-        <td class="col-sm-1">{{v.strength}}</td> 
-        <td class="col-sm-1">{{v.actions}}</td> 
       </tr>
     </tbody>
   </table>
@@ -82,9 +98,7 @@
   <tbody>
       <tr class="noselect" >
           <td class="col-sm-1">Name</td>
-          <td class="col-sm-1">Actionable</td>
           <td class="col-sm-1">Harvest Duration</td>
-          <td class="col-sm-1">Hardness</td>
       </tr>
   </tbody>
 </table>  
@@ -96,79 +110,13 @@
     <tbody>
       <tr ng-repeat="(k,v)  in getFSSimRules().harvestableDefines" class="noselect" >
         <td class="col-sm-1">{{k}}</td> 
-        <td class="col-sm-1">{{v.actionable}}</td> 
         <td class="col-sm-1">{{v.duration}}</td> 
-        <td class="col-sm-1">{{v.hardness}}</td> 
       </tr>
     </tbody>
   </table>
 </div>
 
 </div><!--fadedbackground-->
-
-
-<div class="fadedbackground">
-
-<h4>GATHER RULES</h4>
-
-<div class="bodycontainer scrollable">
-<table class="table table-bordered table-condensed table-scrollable">
-  <tbody>
-      <tr class="noselect" >
-          <td class="col-sm-1">Type</td>
-          <td class="col-sm-1">Gather Duration</td>
-          <td class="col-sm-1">Actionable</td>
-      </tr>
-  </tbody>
-</table>  
-</div>
-
-<div class="bodycontainer scrollable">
-  <table class="table table-bordered table-condensed table-scrollable">
-
-    <tbody>
-      <tr ng-repeat="(k,v)  in getFSSimRules().gatherableDefines" class="noselect" >
-        <td class="col-sm-1">{{k}}</td> 
-        <td class="col-sm-1">{{v.duration}}</td> 
-        <td class="col-sm-1">{{v.actionable}}</td> 
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-</div><!--fadedbackground-->
-
-
-
-<div class="fadedbackground">
-
-<h4>CONSUMABLE RULES</h4>
-
-<div class="bodycontainer scrollable">
-<table class="table table-bordered table-condensed table-scrollable">
-  <tbody>
-      <tr class="noselect" >
-          <td class="col-sm-1">Name</td>
-          <td class="col-sm-1">Effect</td>
-      </tr>
-  </tbody>
-</table>  
-</div>
-
-<div class="bodycontainer scrollable">
-  <table class="table table-bordered table-condensed table-scrollable">
-
-    <tbody>
-      <tr ng-repeat="(k,v)  in getFSSimRules().consumableDefines" class="noselect" >
-        <td class="col-sm-1">{{k}}</td> 
-        <td class="col-sm-1">{{v.onConsume.stat}}</td> 
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-</div><!--fadedbackground-->
-
 
 
 
@@ -228,6 +176,48 @@
 </div>
 
 </div><!--fadedbackground-->
+
+<br>
+
+<table class="table table-bordered table-condensed table-scrollable">
+  <theader>
+      <tr class="noselect" >
+          <td class="col-sm-1">
+              <pre>
+              <button ng-click="getFSSimRules().onSerialize()" style="float: left;">Serialize:</button><br/><br/>Displays current rules state as JSON in text area below.
+              </pre>
+          </td>
+          <td class="col-sm-1">
+            <pre>
+            <button ng-click="getFSSimRules().onUpdateServerVersionWith()" style="float: left;">Update server:</button><br/><br/>at {{getFSSimRules().rulesURL}}. Paste JSON to be uploaded to the server in the text area below. There is a risk this will break the build, if the change is significant you should use myjson.com to genrate a new url and test this first. 
+            </pre>
+          </td>
+
+      </tr>
+  </theader>
+    <tbody>
+      <tr class="noselect" >
+          <td class="col-sm-1">
+            <textarea cols="50" rows="20" ng-model="getFSSimRules().serializedData" style="float: left; width:100%"></textarea>
+          </td>
+          <td class="col-sm-1">
+            <textarea cols="50" rows="20" ng-model="getFSSimRules().updateServerVersionWithData" style="float: right; width:100%"></textarea>
+          </td>
+
+      </tr>
+  </tbody>
+</table>  
+</div>
+
+
+
+
+
+
+
+
+
+
 
 
 

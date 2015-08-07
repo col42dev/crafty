@@ -26,10 +26,10 @@
 <br/>
 
 <form novalidate>
-<button ng-click="getFSJSONLoader().saveJson()">Save: (Enter Document Name)</button><input size="45" type="text" ng-model="getFSJSONLoader().documentName.input"></input>
+<button ng-click="getFSSimState().serialize()">Save State</button> update "state" data to server.
 </form>
 <pre>
-{{getFSJSONLoader().simulation.jsonSerialized}}
+{{getFSSimState().getState()}}
 </pre>
 </br>
 

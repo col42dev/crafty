@@ -8,13 +8,42 @@
 <table class="table table-bordered table-condensed" style="table-layout: fixed">
   <tbody>
       <tr ng-repeat="row in getWorldMapEdit().worldMap">
-        <td style="min-width: 100px; min-height: 100px" ng-repeat="col in row" width="100" height ="100"> 
-          <div style="width:60px">
-            <select  width="90" style="width: 90px" ng-model="col.harvestables.json.name" ng-options="v for v in getFSSimRules().harvestableDefinesKeys">
-            </select>
-            #<input size="3" type="text" ng-model="col.harvestables.json.quantity">
+        <td ng-style="{ 'min-width': '100px', 'min-height': '100px', 'padding': '0px'}" 
+            ng-repeat="col in row" 
+            width="100" height ="100"
+            > 
+
+
+                <div style="height: 100%; 
+                        width: 100%; 
+                        background-color:{{getWorldMapEdit().bgcolor(col)}}; 
+                        position:relative">
+
+
+
+                <div  style="width:100%; 
+                            height: 100%;
+                            background-color:rgba(20, 200, 20, 0.1);
+                            background-size: cover;
+                            overflow:visible; 
+                            opacity: .4;
+         
+                            word-wrap:normal;  
+                            position:absolute; 
+                            z-index: -1;"
+                        ng-style="{ 'background-image' : getWorldMapEdit().getbgimage(col)}">
+                </div> 
+
+                <select  width="90" style="width: 90px" ng-change="getWorldMapEdit().editCell(col)" ng-model="col.harvestables.json.name" ng-options="v for v in getFSSimRules().harvestableDefinesKeys">
+                </select>
+
+                <div  style="width:100%; 
+                          background-color:rgba(20, 200, 20, 1.0); 
+                          overflow:visible; 
+                          word-wrap:normal">  
+                </div>
+
   
-          </div>
         </td>
       </tr>
   </tbody>

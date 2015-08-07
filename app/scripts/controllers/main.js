@@ -2,6 +2,7 @@
 
 
 
+//angular.module('craftyApp', ['ui.bootstrap']);
 /**
  * @ngdoc function
  * @name craftyApp.controller:MainCtrl
@@ -10,7 +11,41 @@
  * Controller of the craftyApp
  */
 angular.module('craftyApp')
-  .controller('MainCtrl',['$scope', 'FSJSONLoader', 'FSSimRules', 'FSSimState', 'FSContextConsole', 'FSSimObjectFactory', 'FSSimBank', 'FSSimRewards', 'FSUIEventHandler', 'FSSimTasks', 'WorldMapEdit', 'WorldMap', function ($scope, FSJSONLoader, FSSimRules, FSSimState, FSContextConsole, FSSimObjectFactory, FSSimBank, FSSimRewards, FSUIEventHandler, FSSimTasks, WorldMapEdit, WorldMap) {
+  .controller('MainCtrl',[
+    '$scope', 
+    'FSJSONLoader', 
+    'FSSimRules', 
+    'FSSimState', 
+    'FSContextConsole', 
+    'FSSimObjectFactory', 
+    'FSSimBank', 
+    'FSSimRewards', 
+    'FSUIEventHandler', 
+    'FSSimTasks', 
+    'WorldMapEdit', 
+    'WorldMap',
+    'ServerSideTimers', 
+    'RecipeModal',
+    'CraftingModal',
+    'GDocs',
+  function (
+    $scope, 
+    FSJSONLoader, 
+    FSSimRules, 
+    FSSimState, 
+    FSContextConsole, 
+    FSSimObjectFactory, 
+    FSSimBank, 
+    FSSimRewards, 
+    FSUIEventHandler, 
+    FSSimTasks, 
+    WorldMapEdit, 
+    WorldMap,
+    ServerSideTimers,
+    RecipeModal,
+    CraftingModal,
+    GDocs)
+     {
 
     $scope.getFSJSONLoader = function() {
       return FSJSONLoader;
@@ -32,6 +67,10 @@ angular.module('craftyApp')
       return FSSimRewards;
     };
 
+    $scope.getFSSimBank = function() {
+      return FSSimBank;
+    };
+
     $scope.getFSUIEventHandler = function() {
       return FSUIEventHandler;
     };
@@ -47,5 +86,24 @@ angular.module('craftyApp')
     $scope.getWorldMap = function() {
       return WorldMap;
     };
+
+    $scope.getServerSideTimers = function() {
+      return ServerSideTimers;
+    };
+
+    $scope.getRecipeModal = function() {
+      return RecipeModal;
+    };
+
+    $scope.getCraftingModal = function() {
+      return CraftingModal;
+    };
+
+    $scope.getGDocs = function() {
+      return GDocs;
+    };
+
+
+
 
   }]);

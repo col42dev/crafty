@@ -3,62 +3,207 @@
   "version": "0.0.0",
   "worldMap": [
     [
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
       {
-        "harvestables": {
-          "json": {
-            "name": "Lumber",
-            "quantity": 30
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
       },
-      {}
+      {
+
+      },
+      {
+
+      },
+      {
+
+      },
+      {
+
+      },
+      {
+
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      }
     ],
     [
-      {},
       {
         "harvestables": {
           "json": {
-            "name": "Sheep",
-            "quantity": 10
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {
-        "harvestables": {
-          "json": {
-            "name": "Wood",
-            "quantity": 20
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Wood"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Wood",
-            "quantity": 20
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Wood"
+          }
+        }
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      }
+    ],
+    [
+      {
+        "harvestables": {
+          "json": {
+            "name": "Wood"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Wood"
+          }
+        }
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+      },
+      {
+
+      },
+      {
+
+      },
+      {
+      },
+      {
+
+      }
+    ],
+    [
+      {
+        "harvestables": {
+          "json": {
+            "name": "Wood"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Wood"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Water"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth"
+          }
         }
       }
     ],
@@ -66,109 +211,92 @@
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Wood"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Wood"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 2
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Earth"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 2
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Earth"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 3
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Earth"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 13
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Coal"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 11
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Earth"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Stone"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "HardStone",
-            "quantity": 13
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Earth"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "HardStone",
-            "quantity": 13
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Earth"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Granite",
-            "quantity": 30
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Metal"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "IronOre",
-            "quantity": 20
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Earth"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Earth"
+          }
         }
       }
     ],
@@ -176,109 +304,92 @@
       {
         "harvestables": {
           "json": {
-            "name": "Limestone",
-            "quantity": "4"
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Water"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Limestone",
-            "quantity": "4"
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Water"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Limestone",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Water"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Earth"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Coal"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Coal"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Metal"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Stone"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "HardStone",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Stone"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Granite",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Coal"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Granite",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Metal"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Earth"
+          }
+        }
+      },
+      {
+        "harvestables": {
+          "json": {
+            "name": "Stone"
+          }
         }
       }
     ],
@@ -286,219 +397,92 @@
       {
         "harvestables": {
           "json": {
-            "name": "Limestone",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Earth"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Earth"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Earth"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Water"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Coal",
-            "quantity": "2"
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Water"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Coal"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Metal"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Quartzstone",
-            "quantity": "3"
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Stone"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Stone"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Stone"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Stone"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Marble",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      }
-    ],
-    [
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Stone"
+          }
         }
       },
       {
         "harvestables": {
           "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Coal",
-            "quantity": "2"
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Coal",
-            "quantity": "2"
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Earth",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Quartzstone",
-            "quantity": "3"
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Quartzstone",
-            "quantity": "3"
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Marble",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Marble",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
-        }
-      },
-      {
-        "harvestables": {
-          "json": {
-            "name": "Marble",
-            "quantity": 1
-          },
-          "quantitybgcolor": "rgba(200, 200, 200, 0.0)"
+            "name": "Stone"
+          }
         }
       }
     ]

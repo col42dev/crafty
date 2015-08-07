@@ -16,12 +16,27 @@ angular.module('craftyApp')
          * @return 
          */
         this.isCraftable = function (thisTask) {
-            for ( var characterKey in FSSimState.characters ) {
-                if ( FSSimState.characters[characterKey].canPerformTask(thisTask)) {
-                    return true;
+
+            var taskName = thisTask.json.name;
+            var activityCategory = thisTask.json.category;
+
+            var canStartTask = true;
+
+            switch ( activityCategory) {
+
+              case 'crafting': {  
+                  if ( this.hasCraftingIngredients(taskName, false) !== true) {
+                    canStartTask = false;
+                  }
+                  if ( this.hasCraftingConstructor(taskName, false) !== true) {
+                    canStartTask = false;
+                  }
                 }
+                break;
             }
-            return false;
+
+            return canStartTask;
+
         };
 
         /**

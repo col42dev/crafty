@@ -8,15 +8,32 @@
  * Load JSON in to sim
  */
 angular.module('craftyApp')
-  .service('FSJSONLoader', [   'FSSimRules', 'FSSimState', 'FSSimMessagingChannel', '$http', '$location', 'stopwatch', 'WorldMap', 'WorldMapEdit', function ( FSSimRules, FSSimState, FSSimMessagingChannel, $http, $location, stopwatch, WorldMap, WorldMapEdit) {
+  .service('FSJSONLoader', 
+    [   
+      'FSSimRules', 
+      'FSSimState', 
+      'FSSimMessagingChannel', 
+      '$http', 
+      '$location', 
+      'stopwatch', 
+      'WorldMap', 
+      'WorldMapEdit', 
+    function ( 
+      FSSimRules, 
+      FSSimState, 
+      FSSimMessagingChannel, 
+      $http, 
+      $location, 
+      stopwatch, 
+      WorldMap, 
+      WorldMapEdit) 
+    {
+
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     var thisService = this;
 
-    var dbdomain = 'localhost';
-
-    dbdomain = 'ec2-54-201-237-107.us-west-2.compute.amazonaws.com';
-
+  
     this.myStopwatch = stopwatch;
     this.taskTimeScalarDivVis = 'hidden';
     this.defaultDocumentName = {input: 'My Account Name'};
@@ -27,20 +44,20 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    this.createSimRules = function( data) {
+    this.createSimRules = function( data, url) {
       console.log('createSimRules');
       this.taskTimeScalarDivVis ='';
-      FSSimRules.set(data);
+      FSSimRules.set(data, url);
     };
 
     /**
      * @desc 
      * @return 
      */
-    this.createSimState = function(data) {
+    this.createSimState = function(data, url) {
       console.log('createSimState');
      
-      FSSimState.set(data);
+      FSSimState.set(data, url);
       FSSimMessagingChannel.updateGoals();
       stopwatch.reset();
       stopwatch.start();
@@ -50,22 +67,22 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    this.createSimWorldMap = function(data) {
+    this.createSimWorldMap = function(data, url) {
       console.log('createSimWorldMap');
 
       WorldMap.set(data);
-      WorldMapEdit.set(data); // also init editor with this data.
+      WorldMapEdit.set(data, url); // also init editor with this data.
     };
 
 
     this.master = {
-      'craftyrules' : {url: 'https://api.myjson.com/bins/2fi6i?pretty=1', onLoad: this.createSimRules, data:null},
-      'craftystate' : {url: 'https://api.myjson.com/bins/1yqsa?pretty=1', onLoad: this.createSimState, data:null},
-      'craftymap' : {url: 'https://api.myjson.com/bins/28uze?pretty=1', onLoad: this.createSimWorldMap, data:null}
+      'craftyrules' : {url: 'https://api.myjson.com/bins/3ji5e', onLoad: this.createSimRules, data:null},
+     'craftystate' : {url: 'https://api.myjson.com/bins/1a9rm', onLoad: this.createSimState, data:null},
+      'craftymap' : {url: 'https://api.myjson.com/bins/3hu4k', onLoad: this.createSimWorldMap, data:null},
 
-      //'craftyrules' : {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, data:null},
-      //'craftystate' : {url: 'http://localhost:9000/json/state.json', onLoad: this.createSimState, data:null},
-      //'craftymap' : {url: 'http://localhost:9000/json/worldmap.json', onLoad: this.createSimWorldMap, data:null}
+     // 'craftyrules' : {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, data:null},
+     // 'craftystate' : {url: 'http://localhost:9000/json/state.json', onLoad: this.createSimState, data:null},
+     // 'craftymap' : {url: 'http://localhost:9000/json/worldmap.json', onLoad: this.createSimWorldMap, data:null}
     };
 
     this.user = angular.copy(this.master);
@@ -100,7 +117,7 @@ angular.module('craftyApp')
                 if ( successRefCount === Object.keys(thisService.user).length) {
                       for ( var loadJSONkey in thisService.user) {   
                           if ( thisService.user[loadJSONkey].onLoad !== null) {
-                            thisService.user[loadJSONkey].onLoad( thisService.user[loadJSONkey].data);
+                            thisService.user[loadJSONkey].onLoad( thisService.user[loadJSONkey].data, thisService.user[loadJSONkey].url);
                           } else {
                             window.alert('Validation failed for ' + thisService.user[loadJSONkey].url);
                           }
@@ -119,113 +136,7 @@ angular.module('craftyApp')
     this.loadAndCreateSim();
 
 
-    /**
-     * @desc 
-     * @return 
-     */
-    this.saveJson = function() {
-      console.log('input:' + this.user.input); 
-
-      var json = thisService.simulation.deserialize();
-      json['documentName'] =  thisService.documentName.input;
-      json = JSON.stringify(json, undefined, 2);
-      this.postjson(json);
-    };
-
-    /**
-     * @desc 
-     * @return 
-     */
-    this.loadAccounts = function() {
-
-        var url = 'http://' + dbdomain + ':8080/';
-        $http.get(url,{
-            params: {
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Request-Headers' : 'access-control-allow-origin'
-                }
-            }
-        }).success(function(data) {
-
-          console.log('Load accounts success');
-          thisService.accountsData = data;
-
-        }).error(function(data) {
-            data = data;
-            window.alert('loadAccounts failed for ' + url);
-        });
-
-    };
-
-     /**
-     * @desc 
-     * @return 
-     */
-    this.selectAccount = function(index) {
-      console.log('selectAccount' + index);
-
-      thisService.data = thisService.accountsData[Object.keys(thisService.accountsData)[index]];
-
-
-     //todo: split in to state and rules: setTimeout(thisService.createSim, 200);
-
-   
-    };
-
-     /**
-     * @desc 
-     * @return 
-     */
-    this.removeAllAccounts = function() {
-
-        var url = 'http://' + dbdomain + ':8080/removealldocuments';
-        $http.get(url,{
-            params: {
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Request-Headers' : 'access-control-allow-origin'
-                }
-            }
-        }).success(function(data) {
-
-          console.log('removeAllAccounts success');
-          thisService.accountsData = data;
-          //$scope.$apply();
-
-        }).error(function(data) {
-            data = data;
-            window.alert('removeAllAccounts failed for ' + url);
-        });
-
-    };
-
-
-    /**
-     * @desc 
-     * @return 
-     */
-    // curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"tag":"noob","score":43,"date":"now"}' http://ec2-54-213-75-45.us-west-2.compute.amazonaws.com:8080/score
-    this.postjson = function(jsondata) {   
-        $http.defaults.useXDomain = true;  
-        delete $http.defaults.headers.common['X-Requested-With'];          
-        $http({
-           // url: 'http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com:8080/score',
-            url: 'http://' + dbdomain + ':8080/accounts',
-            method: 'POST',
-            data: jsondata,
-            headers: {'Content-Type': 'application/json'}
-        }).success(function (data, status, headers, config) {
-            //$scope.users = data.users; 
-            //$location.path('/scores'); 
-            window.alert('post success:' + status);
-        }).error(function (data, status, headers, config) {
-            //$scope.status = status + ' ' + headers;
-            window.alert('post error:' + status);
-            window.alert('post error:' + headers);
-        });
-    };
-
+ 
 
 
 

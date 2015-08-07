@@ -9,102 +9,217 @@
  * Data only - co not add implementation.
  */
 angular.module('craftyApp')
-  .service('FSSimState', function (FSSimMessagingChannel, FSSimRules) {
+  .service('FSSimState', function (FSSimMessagingChannel, FSSimRules, $http) {
     // AngularJS will instantiate a singleton by calling "new" on this function.
 
     var simState = this;
 
+    this.state = null;
+    this.stateURL = null;
 
-    this.set = function(json) {
 
-            //validate
-            var errorLog = this.validateJSON(json);
-            if ( errorLog.length > 0) {
+    this.set = function(json, stateURL) {
 
-                console.log(errorLog);
+        this.stateURL = stateURL;
+        this.state = angular.copy(json);
 
-                errorLog.forEach( function( thisErrorMessage ) {
-                    window.alert(thisErrorMessage);
+        // validate
+        var errorLog = this.validateJSON(json);
+        if ( errorLog.length > 0) {
+
+            console.log(errorLog);
+
+            errorLog.forEach( function( thisErrorMessage ) {
+                window.alert(thisErrorMessage);
+            });
+        
+            return;
+        }
+
+        this.taskTimeScalar ='1';
+        this.selectedConstructor = '';
+        this.selectedConstructorFilter = 'none';
+
+        // Characters
+        this.characters = {};  
+        json.characters.forEach( function(thisCharacter) {
+            var obj = { characterDesc : thisCharacter};
+            FSSimMessagingChannel.createSimObject( { category: 'character', desc : obj});
+   
+        }); 
+
+        // Harvestables
+        this.harvestables = {};  
+        json.harvestables.forEach( function(thisHarvestable) {
+            FSSimMessagingChannel.createSimObject( { category: 'harvestable', desc : thisHarvestable});
+
+        }); 
+        this.updateHarvestables = function() {
+            simState.harvestablesArray = Object.keys(simState.harvestables).map(function (key) {
+                return simState.harvestables[key];
+            });
+        };
+        this.updateHarvestables();
+
+        // Bank
+        this.bank = {};  
+        json.bank.forEach( function(item) {
+            FSSimMessagingChannel.createSimObject( { category: 'bankable', desc : item});
+        }); 
+        this.updateBank = function() {
+            simState.bankArray = Object.keys(simState.bank).map(function (key) {
+                    return simState.bank[key];
                 });
-            
- 
-                return;
+        };
+        this.updateBank();
+        for ( var keyName in this.bank) {
+            if (this.bank[keyName].category === 'constructor') {
+                this.selectedConstructor = keyName;
+                this.selectedConstructorFilter = keyName;
             }
+        }
 
 
-            this.taskTimeScalar ='1';
-            this.selectedConstructor = '';
-            this.selectedConstructorFilter = 'none';
+        // Craftables
+        this.craftables = {}; 
+        /*
+        json.craftables.forEach( function( recipeName ) {
+            FSSimMessagingChannel.createSimObject( { category: 'craftables', desc : recipeName});
+        });*/ 
+        // populate from defines - assumes all are unlocked.
+        for ( var craftableDefine in FSSimRules.craftableDefines) {
+            FSSimMessagingChannel.createSimObject( { category: 'craftables', desc : craftableDefine});
+        }
 
-            // Characters
-            this.characters = {};  
-            json.characters.forEach( function(thisCharacter) {
-                var obj = { characterDesc : thisCharacter};
-                FSSimMessagingChannel.createSimObject( { category: 'character', desc : obj});
-            }); 
-
-            // Gatherables
-            this.gatherables = {};  
-            json.gatherables.forEach( (function(thisGatherables) {
-                FSSimMessagingChannel.createSimObject( { category: 'gatherable', desc : thisGatherables});
-            }).bind(this)); 
-            this.updateGatherables = function() {
-                simState.gatherablesArray = Object.keys(simState.gatherables).map(function (key) {
-                    return simState.gatherables[key];
+        this.updateRecipes = function() {
+            simState.craftablesArray = Object.keys(simState.craftables).map(function (key) {
+                    return simState.craftables[key];
                 });
-            };
-            this.updateGatherables();
-  
-            // Harvestables
-            this.harvestables = {};  
-            json.harvestables.forEach( function(thisHarvestable) {
-                FSSimMessagingChannel.createSimObject( { category: 'harvestable', desc : thisHarvestable});
-            }); 
-            this.updateHarvestables = function() {
-                simState.harvestablesArray = Object.keys(simState.harvestables).map(function (key) {
-                    return simState.harvestables[key];
-                });
-            };
-            this.updateHarvestables();
- 
-            // Bank
-            this.bank = {};  
-            json.bank.forEach( function(item) {
-                FSSimMessagingChannel.createSimObject( { category: 'bankable', desc : item});
-            }); 
-            this.updateBank = function() {
-                simState.bankArray = Object.keys(simState.bank).map(function (key) {
-                        return simState.bank[key];
-                    });
-            };
-            this.updateBank();
- 
-            // Craftables
-            this.craftables = {}; 
-            json.craftables.forEach( function( recipeName ) {
-                FSSimMessagingChannel.createSimObject( { category: 'craftables', desc : recipeName});
-            }); 
-            this.updateRecipes = function() {
-                simState.craftablesArray = Object.keys(simState.craftables).map(function (key) {
-                        return simState.craftables[key];
-                    });
-            };
-            this.updateRecipes();
+        };
+        this.updateRecipes();
 
-    
-            //rewards
-            this.rewards = [];
-            json.rewards.forEach( ( function(thisReward) {
-                this.rewards.push(thisReward);
-            }).bind(this)); 
+        // Rewards
+        this.rewards = [];
+        json.rewards.forEach( ( function(thisReward) {
+            this.rewards.push(thisReward);
+        }).bind(this)); 
 
+        // Tasks
+        this.activeTasks = [];
+        if (json.hasOwnProperty('activeTasks') === true) {
+            json.activeTasks.forEach( function( taskObj ) {
+                var obj = { category: 'task', desc : taskObj };
+                FSSimMessagingChannel.createSimObject( obj );
+                this.activeTasks.push(obj.returnValue);
+            }.bind(this)); 
+        }
 
-            
+        this.pendingTasks = [];
 
+        this.rebuildMirrors();
     };
 
 
-        /**
+  /**
+     * @desc mirrorred representations used by visualizations
+     * @return 
+     */
+    this.rebuildMirrors = function() {
+
+
+
+        console.log('rebuildMirrors:' + Object.keys(this.craftables).length);
+
+        // 
+        this.craftablesMirror = {};
+        for ( var cdi = 0; cdi < Object.keys(this.craftables).length; cdi ++) {
+
+            var keyname = Object.keys(this.craftables)[cdi];
+            var recipename = FSSimRules.craftableDefines[keyname].recipename;
+
+            if ( this.craftablesMirror.hasOwnProperty( recipename) === false) {
+                this.craftablesMirror[recipename] = {};
+            }
+
+            this.craftablesMirror[recipename][keyname] =  this.craftables[keyname];
+        }
+   
+    };
+    /**
+     * @desc 
+     * @return 
+     */
+    this.serialize = function () {
+
+        var out = angular.copy(this.state);
+
+        // Characters
+        out.characters = [];
+        for ( var character in this.characters) {
+            out.characters.push(this.characters[character].json);
+        }
+
+        // Harvestables
+        out.harvestables = [];
+        for ( var harvestable in this.harvestables) {
+            out.harvestables.push(this.harvestables[harvestable].json);
+        }
+
+        // Bank
+        out.bank = [];
+        for ( var bankitem in this.bank) {
+            out.bank.push(this.bank[bankitem].json);
+        }
+
+        // Craftables
+        out.craftables = [];
+        for ( var craftable in this.craftables) {
+            out.craftables.push(this.craftables[craftable].json.name);
+        }
+
+        // Rewards
+        out.rewards = [];
+        for ( var reward in this.rewards) {
+            out.rewards.push(this.rewards[reward]);
+        }
+
+        // Tasks
+        out.activeTasks = [];
+        for ( var activeTask in this.activeTasks) {
+            out.activeTasks.push( this.activeTasks[activeTask].json);
+        }
+
+        out.pendingTasks = [];
+
+
+        this.state =  angular.copy(out);
+
+        console.log('>' + this.stateURL);
+
+        // upload to server
+        $http.put( 
+            this.stateURL, 
+            this.state
+        ).success(function() {
+            console.log('SUCCESS');
+        })
+        .error( function(response) { 
+            window.alert('FAILED:');  
+        });
+
+    };
+
+    /**
+     * @desc 
+     * @return 
+     */
+    this.getState = function() {
+
+        return JSON.stringify(this.state, null, 2);
+    };
+
+
+    /**
      * @desc 
      * @return 
      */
@@ -113,23 +228,10 @@ angular.module('craftyApp')
         var errorLog = [];
         var keyName ;
 
-        // gatherables in gatherableDefines
-        for (  keyName in json.gatherables) {
-            if (FSSimRules.gatherableDefines.hasOwnProperty( json.gatherables[keyName].name ) !== true) {
-                console.log('state.json: gatherable ' + json.gatherables[keyName].name + ' does not exist in rules.json:gatherableDefines');
-            }
-            if ( typeof json.gatherables[keyName].quantity !== 'number') {
-                errorLog.push('state.json: gatherable ' + json.gatherables[keyName].name + ' requires a number value for it (.quantity) property');
-            }
-        }
-
         // harvestables in harvestableDefines
         for (  keyName in json.harvestables) {
             if (FSSimRules.harvestableDefines.hasOwnProperty( json.harvestables[keyName].name ) !== true) {
                 errorLog.push('state.json: harvestable ' + json.harvestables[keyName].name + ' does not exist in rules.json:harvestableDefines');
-            }
-            if ( typeof json.harvestables[keyName].quantity !== 'number') {
-                errorLog.push('state.json: harvestable ' + json.harvestables[keyName].name + ' requires a number value for it (.quantity) property');
             }
         }
 
@@ -151,8 +253,8 @@ angular.module('craftyApp')
             }
             else if (FSSimRules.constructorDefines.hasOwnProperty(bankableName) === true) {
             }
-            else if (FSSimRules.gatherableDefines.hasOwnProperty(bankableName) === true) {
-            } 
+            else if (FSSimRules.harvestableDefines.hasOwnProperty(bankableName) === true) {
+            }
             else {
                 errorLog.push('state.json: bank itme  ' + bankableName + ' does not exist in rules.json:*');  
             }
@@ -184,8 +286,6 @@ angular.module('craftyApp')
             }
             else if (FSSimRules.constructorDefines.hasOwnProperty(targetName) === true) {
             }
-            else if (FSSimRules.gatherableDefines.hasOwnProperty(targetName) === true) {
-            } 
             else if (FSSimRules.craftableDefines.hasOwnProperty(targetName) === true) {
             } 
             else {
@@ -194,32 +294,19 @@ angular.module('craftyApp')
         }
 
 
-        // gatherableDefines
-        for (  keyName in FSSimRules.gatherableDefines) {
-            if ( typeof FSSimRules.gatherableDefines[keyName].duration !== 'number') {
-                errorLog.push('rules.json: gatherableDefines['+ keyName +'].duration must be assigned a numerical value');
-            }
-        }
-
         // harvestableDefines
         for (  keyName in FSSimRules.harvestableDefines) {
             if ( typeof FSSimRules.harvestableDefines[keyName].duration !== 'number') {
                 errorLog.push('rules.json: harvestableDefines['+ keyName +'].duration must be assigned a numerical value');
             }
-            if ( typeof FSSimRules.harvestableDefines[keyName].hardness !== 'number') {
-                errorLog.push('rules.json: harvestableDefines['+ keyName +'].hardness must be assigned a numerical value');
-            }
         }
 
         // toolDefines
-        for (  keyName in FSSimRules.toolDefines) {
-            if ( typeof FSSimRules.toolDefines[keyName].strength !== 'number') {
-                errorLog.push('rules.json: toolDefines['+ keyName +'].strength must be assigned a numerical value');
-            }
-        }
+
 
 
        // craftableDefines
+       /*
         for (  keyName in FSSimRules.craftableDefines) {
 
             FSSimRules.craftableDefines[keyName].construction.forEach( function( constructorName ) {
@@ -228,22 +315,9 @@ angular.module('craftyApp')
                 }
             });
 
-            /*
-            for ( var craftableInput in FSSimRules.craftableDefines[keyName].input) {
-            
-            }
-
-            for ( var craftableOutput in FSSimRules.craftableDefines[keyName].output) {
-            
-            }
-            */
-
-
-            if ( typeof FSSimRules.craftableDefines[keyName].duration !== 'number') {
-                errorLog.push('rules.json: craftableDefines['+ keyName +'].duration must be assigned a numerical value');
-            }
 
         }
+        */
 
 
 
@@ -262,15 +336,12 @@ angular.module('craftyApp')
 
         var duration = 0;
 
-        switch ( task.category) {
-          case 'gathering':
-            duration = FSSimRules.gatherableDefines[task.name].duration / this.taskTimeScalar;
-            break;
+        switch ( task.json.category) {
           case 'harvesting':
-            duration= FSSimRules.harvestableDefines[task.name].duration / this.taskTimeScalar;
+            duration= FSSimRules.harvestableDefines[task.json.name].duration / this.taskTimeScalar;
             break;
           case 'crafting':
-            duration = FSSimRules.craftableDefines[task.name].duration / this.taskTimeScalar;
+            duration = FSSimRules.craftableDefines[task.json.name].duration  / this.taskTimeScalar;
             break;
         }
 

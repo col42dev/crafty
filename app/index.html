@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>crafty</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -38,14 +38,14 @@
              <a class="navbar-brand" href="#/character">characters</a>
              <a class="navbar-brand" href="#/rewards">rewards</a>
              <a class="navbar-brand" href="#/rules">rules</a>
-             <a class="navbar-brand" href="#/db">db</a>
+             <a class="navbar-brand" href="#/timers">timers</a>
              <a class="navbar-brand" href="#/mapedit">mapeditor</a>
              <a class="navbar-brand" href="#/load">load</a>
+             
  
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
             <ul class="nav navbar-nav">
             </ul>
           </div>
@@ -88,23 +88,23 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.1.js"></script>
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
-
+ 
         <script src="scripts/services/fsuieventhandler.js"></script>
-    
-
+        
         <script src="scripts/services/util/stopwatch.js"></script>
         <script src="scripts/services/util/fscontextconsole.js"></script>
         <script src="scripts/services/util/fsjsonloader.js"></script>
+        <script src="scripts/services/util/serverSideTimers.js"></script>
  
         <script src="scripts/services/json/state/fscharacter.js"></script>
         <script src="scripts/services/json/state/fstask.js"></script>
         <script src="scripts/services/json/state/fsbankable.js"></script>
-        <script src="scripts/services/json/state/fsgatherable.js"></script>
         <script src="scripts/services/json/state/fsharvestable.js"></script>
         <script src="scripts/services/json/state/fscraftable.js"></script>
         <script src="scripts/services/json/fssimrules.js"></script>
@@ -118,10 +118,12 @@
         <script src="scripts/services/sim/fssimrewards.js"></script>
         <script src="scripts/services/sim/fssimcrafting.js"></script>
         <script src="scripts/services/sim/fssimharvesting.js"></script>
-        <script src="scripts/services/sim/fssimgathering.js"></script>
 
         <script src="scripts/services/map/worldmapedit.js"></script>
-        <script src="scripts/services/map/worldmap.js"></script>
+        <script src="scripts/services/map/worldmap.js"></script> 
+        <script src="scripts/services/ui/recipemodal.js"></script>
+        <script src="scripts/services/ui/craftingmodal.js"></script>
+        <script src="scripts/services/gdocs.js"></script>
         <!-- endbuild -->
 </body>
 </html>

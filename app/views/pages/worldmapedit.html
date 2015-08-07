@@ -4,7 +4,7 @@
 
   <pre><button ng-click="getWorldMapEdit().resize()">resize</button> (rows<input type="text" ng-model="getWorldMapEdit().worldMapDim.rows" value="{{getWorldMapEdit().worldMapDim.rows}}" size="4"/>, cols<input type="text" ng-model="getWorldMapEdit().worldMapDim.cols" value="{{getWorldMapEdit().worldMapDim.cols}}" size="4"/>)<br>This will discard currently loaded mapedit data. </pre>
 
-  <pre><button ng-click="getWorldMapEdit().JSONify()">JSONify</button> <br>Lists the current map state in JSON format at the base of the page, this can be copied and pasted in to worldmap.json.<br>Click outside or grid area first to capture your most recent map state change. </pre>
+  <pre><button ng-click="getWorldMapEdit().updateServer()">Update Server</button>  at {{getWorldMapEdit().worldMapURL}}<br>Updates worldmap JSON on server with this locally edited version.<br>Click outside or grid area first to capture your most recent map state change. </pre>
 <br/>
 
 <br/>

@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.bootstrap'
   ])
   .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
 
@@ -45,8 +46,8 @@ angular
         templateUrl: 'views/pages/rewards.html',
         controller: 'MainCtrl'
       })
-      .when('/db', {
-        templateUrl: 'views/pages/db.html',
+      .when('/timers', {
+        templateUrl: 'views/pages/timers.html',
         controller: 'MainCtrl'
       })
       .when('/mapedit', {
@@ -59,6 +60,10 @@ angular
       })
       .when('/load', {
         templateUrl: 'views/pages/load.html',
+        controller: 'MainCtrl'
+      })
+      .when('/gdocs', {
+        templateUrl: 'views/pages/gdocs.html',
         controller: 'MainCtrl'
       })
       .otherwise({

@@ -6,26 +6,21 @@
 
 
 
-<div ng-include src="'views/share/goals.html'"></div>
-
-
-<br/>
-
 <div class="fadedbackground">
 <table class="table">
   <thead>
     <tr class="noselect">
-        <th class="col-sm-6"><h4>CHARACTERS</h4></th>
-        <th class="col-sm-1"><h4>QUEUED<br/>TASKS</h4></th>
+        <th class="col-sm-2"><h4>WORKER POOL</h4></th>
+        <th class="col-sm-2"><h4>ACTIVE<br/>TASKS</h4></th>
     </tr> 
   </thead>
   <tbody>
     <tr>    
-      <td valign="top"> 
+      <td valign="top" > 
         <div ng-include src="'views/share/characterselect.html'"></div>
       </td> 
       <td valign="top"> 
-        <div ng-include src="'views/share/tasks.html'"></div>
+        <div ng-include src="'views/share/activetasks.html'"></div>
       </td> 
     </tr>
   </tbody>
@@ -51,25 +46,13 @@
 
 <thead>
     <tr class="noselect">
-        <th class="col-sm-1"><h4>GLOBAL<br/>HARVESTABLES</h4></th>
-        <th class="col-sm-1"><h4>GLOBAL<br/>GATHERABLES</h4></th>
         <th class="col-sm-1"><h4>BANK</h4>equip/consume</th>
-        <th class="col-sm-1"><h4>CRAFTABLES</h4></th>
+        <th class="col-sm-2"><h4>CRAFTABLES</h4></th>
     </tr>
 </thead>
 <tbody>
 
 <tr>     
-
-<td valign="top"> 
-  <div ng-include src="'views/share/harvestables.html'"></div>
-</td> 
-
-
-<td valign="top"> 
-  <div ng-include src="'views/share/gatherables.html'"></div>
-</td> 
-
 
 <td valign="top"> 
   <div ng-include src="'views/share/bankables.html'"></div>
@@ -83,10 +66,6 @@
 </tbody>
 </table>
 </div> <!--fadedbackground-->
-
-
-<div ng-include src="'views/share/contextinfoconsole.html'"></div>
-
 
 
 <br/>

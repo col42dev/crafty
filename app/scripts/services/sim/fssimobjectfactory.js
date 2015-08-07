@@ -8,7 +8,27 @@
  * Sim implementation module for object instaniation.
  */
 angular.module('craftyApp')
-  .service('FSSimObjectFactory', ['$rootScope', 'FSSimMessagingChannel', 'FSSimState', 'FSSimRules', 'FSGatherable', 'FSHarvestable', 'FSCharacter', 'FSCraftable', 'FSBankable', function ( $rootScope, FSSimMessagingChannel, FSSimState, FSSimRules, FSGatherable, FSHarvestable, FSCharacter, FSCraftable, FSBankable) {
+  .service('FSSimObjectFactory', [
+    '$rootScope', 
+    'FSSimMessagingChannel', 
+    'FSSimState', 
+    'FSSimRules', 
+    'FSHarvestable', 
+    'FSCharacter', 
+    'FSCraftable', 
+    'FSBankable', 
+    'FSTask',
+  function ( 
+    $rootScope, 
+    FSSimMessagingChannel, 
+    FSSimState, 
+    FSSimRules, 
+    FSHarvestable, 
+    FSCharacter, 
+    FSCraftable, 
+    FSBankable,
+    FSTask) 
+  {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -18,9 +38,6 @@ angular.module('craftyApp')
         */
         var onCreateSimObjectHandler = function( arg) {
             switch (arg.category) {
-              case 'gatherable' :
-                  FSSimState.gatherables[arg.desc.name] = new FSGatherable(arg.desc);
-                  break;
               case 'harvestable' :
                   FSSimState.harvestables[arg.desc.name] = new FSHarvestable(arg.desc);
                   break;
@@ -29,6 +46,9 @@ angular.module('craftyApp')
                   break;
               case 'bankable':
                   FSSimState.bank[arg.desc.name] = new FSBankable(arg.desc);
+                  break;
+              case 'task':
+                  arg.returnValue = new FSTask(arg.desc);
                   break;
               case 'character':
                 {

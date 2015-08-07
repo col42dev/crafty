@@ -155,147 +155,7 @@
       "quantity": 1
     },
     {
-      "name": "Workbench1",
-      "quantity": 1
-    },
-    {
-      "name": "Workbench2",
-      "quantity": 1
-    },
-    {
-      "name": "Workbench3",
-      "quantity": 1
-    },
-    {
-      "name": "Forge1",
-      "quantity": 1
-    },
-    {
-      "name": "Forge2",
-      "quantity": 1
-    },
-    {
-      "name": "Forge3",
-      "quantity": 1
-    },
-    {
-      "name": "WoodenTrap1",
-      "quantity": 1
-    },
-    {
-      "name": "WoodenTrap2",
-      "quantity": 1
-    },
-    {
-      "name": "WoodenTrap3",
-      "quantity": 1
-    },
-    {
-      "name": "WoodenTower1",
-      "quantity": 1
-    },
-    {
-      "name": "WoodenTower2",
-      "quantity": 1
-    },
-    {
-      "name": "WoodenTower3",
-      "quantity": 1
-    },
-    {
-      "name": "StoneWorks1",
-      "quantity": 1
-    },
-    {
-      "name": "StoneWorks2",
-      "quantity": 1
-    },
-    {
-      "name": "StoneWorks3",
-      "quantity": 1
-    },
-    {
-      "name": "Lab1",
-      "quantity": 1
-    },
-    {
-      "name": "Lab2",
-      "quantity": 1
-    },
-    {
-      "name": "Lab3",
-      "quantity": 1
-    },
-    {
-      "name": "WoodenCookingArea1" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenCookingArea2" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenCookingArea3" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenEatingObject1" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenEatingObject2" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenEatingObject3" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenRestingArea1" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenRestingArea2" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenRestingArea3" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenPeacefulObject1" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenPeacefulObject2" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenPeacefulObject3" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenHealingArea1" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenHealingArea2" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenHealingArea3" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenStudyArea1" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenStudyArea1" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenStudyArea3",
+      "name": "Workbench",
       "quantity": 1
     },
     {
@@ -303,7 +163,7 @@
       "quantity": 10
     },
     {
-      "name": "Animals",
+      "name": "Leather",
       "quantity": 10
     },
     {
@@ -311,7 +171,7 @@
       "quantity": 10
     },
     {
-      "name": "Plants",
+      "name": "Fiber",
       "quantity": 10
     },
     {
@@ -323,10 +183,74 @@
       "quantity": 10
     }
   ],
+
+  "constructors": {
+    "1" : {
+      "Workbench" : 1,
+      "StoneWorks" : 1,
+      "Forge" : 1,
+      "Lab" : 1,
+    },
+    "2" : {
+      "Workbench" : 1,
+      "StoneWorks" : 1,
+      "Forge" : 1,
+      "Lab" : 1
+    },
+    "3" : {
+      "Workbench" : 1,
+      "StoneWorks" : 1,
+      "Forge" : 1,
+      "Lab" : 1
+    }
+  },
+
   "rewards": [
 
   ],
   "craftables": [
+    "Workbench",
 
-  ]
+    "WoodenPlank1",
+    "WoodenBeam1",
+    "WoodenPanel1",
+    "WoodenSpikes1",
+
+    "WoodenPlank2",
+    "WoodenBeam2",
+    "WoodenPanel2",
+    "WoodenSpikes2",
+
+    "WoodenPlank3",
+    "WoodenBeam3",
+    "WoodenPanel3",
+    "WoodenSpikes3",
+
+    "WoodPickaxe1",
+    "WoodPickaxe2",
+    "WoodPickaxe3"
+  ],
+  "craftables1": {
+     "1" : [
+      "Workbench",
+      "WoodenPlank",
+      "WoodenBeam",
+      "WoodenPanel",
+      "WoodenSpikes"
+    ],
+    "2" : [
+      "Workbench",
+      "WoodenPlank",
+      "WoodenBeam",
+      "WoodenPanel",
+      "WoodenSpikes"
+    ],
+    "3" : [
+      "Workbench",
+      "WoodenPlank",
+      "WoodenBeam",
+      "WoodenPanel",
+      "WoodenSpikes"
+    ]
+  }
 }

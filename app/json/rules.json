@@ -1,1965 +1,2420 @@
 {
   "title": "craftyrules",
-  "version": "0.0.0",
+  "version": "0.0.7",
   "rewardRules": {
-    "It's Sheep We're Up Against": {
-      "desc": "Herd some Sheep",
-      "action": "gather",
-      "target": "Sheep",
-      "xp": 2,
-      "recipeUnlocks": [
-
-      ]
-    },
-    "Domestication": {
-      "desc": "Craft a Wooden Table",
-      "action": "craft",
-      "target": "WoodenTable",
-      "xp": 4,
-      "recipeUnlocks": [
-        "Paper",
-        "FineHat",
-        "FlagonOfAle",
-        "Ale",
-        "Bandage"
-      ]
-    },
-    "Eat Your Greens": {
-      "desc": "Craft Cooked Veg",
-      "action": "craft",
-      "target": "CookedVeg",
-      "xp": 4,
-      "recipeUnlocks": [
-
-      ]
-    },
-    "Ready to Work": {
-      "desc": "Craft a Workbench",
-      "action": "craft",
-      "target": "Workbench",
-      "xp": 4,
-      "recipeUnlocks": [
-        "Forge",
-        "WoodenPlanks",
-        "DiceTable",
-        "Minecart",
-        "Loom",
-        "Shovel",
-        "FishingRod",
-        "HuntingBow",
-        "CartWheel",
-        "Barrel",
-        "FirstAidStation",
-        "WoodenStatue",
-        "WoodenChair",
-        "WheelBarrow",
-        "AdvancedWorkbench",
-        "Wheel",
-        "Cart",
-        "LargeBarrel",
-        "LeatherBackPack",
-        "BulkWoodenPlank"
-      ]
-    },
-    "Labours Lost": {
-      "desc": "Craft a WheelBarrow",
-      "action": "craft",
-      "target": "WheelBarrow",
-      "xp": 4,
-      "recipeUnlocks": [
-
-      ]
-    },
-    "Forging Ahead": {
-      "desc": "Craft a Forge",
-      "action": "craft",
-      "target": "Forge",
-      "xp": 12,
-      "recipeUnlocks": [
-        "Glass",
-        "Saw",
-        "Nails",
-        "FermentingVat",
-        "Scythe",
-        "WoodAxe",
-        "Steel",
-        "SteelWire",
-        "SteelPickaxe",
-        "CastingVessel",
-        "SteelShovel",
-        "SteelAxe",
-        "Snares",
-        "HarvestingShears",
-        "SteelMattock",
-        "BlockAndTackle",
-        "Grill",
-        "Charcoal"
-      ]
-    },
-    "Bloomery": {
-      "desc": "Forge Steel",
-      "action": "craft",
-      "target": "Steel",
-      "xp": 3,
-      "recipeUnlocks": [
-
-      ]
-    },
-    "Lumberjack": {
-      "desc": "Gather Lumber",
-      "action": "gather",
-      "target": "Lumber",
-      "xp": 6,
-      "recipeUnlocks": [
-        "BulkWoodenPlank"
-      ]
-    },
-    "Catapult": {
-      "desc": "Craft a GreekFireCatapult",
-      "action": "craft",
-      "target": "GreekFireCatapult",
-      "xp": 6,
-      "recipeUnlocks": [
-        "BulkWoodenPlank"
-      ]
-    },
-    "Liquidated": {
-      "desc": "Craft a FlagonOfAle",
-      "action": "craft",
-      "target": "FlagonOfAle",
-      "xp": 12,
-      "recipeUnlocks": [
-
-      ]
-    },
-    "Master Brewer": {
-      "desc": "Craft a FermentingVat",
-      "action": "craft",
-      "target": "FermentingVat",
-      "xp": 6,
-      "recipeUnlocks": [
-        "BulkAle",
-        "OgreAle",
-        "ElvenWine"
-      ]
-    },
-    "Warp & Weft": {
-      "desc": "Craft a Loom",
-      "action": "craft",
-      "target": "Loom",
-      "xp": 4,
-      "recipeUnlocks": [
-        "Cloth"
-      ]
-    },
-    "Onward to Technology": {
-      "desc": "Craft a AdvancedWorkbench",
-      "action": "craft",
-      "target": "AdvancedWorkbench",
-      "xp": 20,
-      "recipeUnlocks": [
-        "BucketPump",
-        "CatapultBase",
-        "CatapultArm",
-        "GreekFire",
-        "TwistedRopes",
-        "MarbleStatue",
-        "MarbleBookshelf"
-      ]
-    },
-    "Pump it Up": {
-      "desc": "Craft a BucketPump",
-      "action": "craft",
-      "target": "BucketPump",
-      "xp": 8,
-      "recipeUnlocks": [
-        "PumpedWater",
-        "ImprovedBucketPump",
-        "BarrelOfWater"
-      ]
-    },
-    "St John's Ambulance": {
-      "desc": "Craft a FirstAidStation",
-      "action": "craft",
-      "target": "FirstAidStation",
-      "xp": 4,
-      "recipeUnlocks": [
-        "Medicine",
-        "Potion"
-      ]
-    },
-    "Hunting and Fishing": {
-      "desc": "Craft a HuntingBow",
-      "action": "craft",
-      "target": "HuntingBow",
-      "xp": 6,
-      "recipeUnlocks": [
-        "FishingRod",
-        "FishingNet",
-        "GrilledMeat",
-        "BulkFish",
-        "MeatStew",
-        "GrilledFish",
-        "MilkSheep",
-        "SlaughterSheep"
-      ]
-    },
-    "Bought a Gem to get RedBull": {
-      "desc": "Gather a Gem",
-      "action": "gather",
-      "target": "Gem",
-      "xp": 24,
-      "recipeUnlocks": [
-        "RefineGem2RedBull"
-      ]
-    }
-  },
-  "gatherableDefines": {
-    "Earth": {
-      "duration": 20,
-      "actionable": [
-        "Carry"
-      ]
-    },
-    "Stone": {
-      "duration": 40,
-      "actionable": [
-        "Carry"
-      ]
-    },
-    "HardStone": {
-      "duration": 30,
-      "actionable": [
-        "Carry"
-      ]
-    },
-    "Quartzstone": {
-      "duration": 10,
-      "actionable": [
-        "Carry"
-      ]
-    },
-    "Limestone": {
-      "duration": 10,
-      "actionable": [
-        "Carry"
-      ]
-    },
-    "Marble": {
-      "duration": 30,
-      "actionable": [
-        "Cart"
-      ]
-    },
-    "Granite": {
-      "duration": 10,
-      "actionable": [
-        "Cart"
-      ]
-    },
-    "Coal": {
-      "duration": 20,
-      "actionable": [
-        "Carry"
-      ]
-    },
-    "IronOre": {
-      "duration": 20,
-      "actionable": [
-        "Carry"
-      ]
-    },
-    "Water": {
-      "duration": 10,
-      "actionable": [
-        "CarryLiquid"
-      ]
-    },
-    "Wood": {
-      "duration": 10,
-      "actionable": [
-        "Carry"
-      ]
-    },
-    "Wool": {
-      "duration": 30,
-      "actionable": [
-        "Carry"
-      ]
-    },
-    "Leaves": {
-      "duration": 10,
-      "actionable": [
-        "CarryLiquid"
-      ]
-    },
-    "Grain": {
-      "duration": 20,
-      "actionable": [
-        "CarryLiquid"
-      ]
-    },
-    "Antler": {
-      "duration": 60,
-      "actionable": [
-        "Carry"
-      ]
-    },
-    "Sand": {
-      "duration": 10,
-      "actionable": [
-        "CarryLiquid"
-      ]
-    },
-    "Meat": {
-      "duration": 15,
-      "actionable": [
-        "Carry"
-      ]
-    },
-    "Fish": {
-      "duration": 15,
-      "actionable": [
-        "Carry"
-      ]
-    },
-    "Feather": {
-      "duration": 5,
-      "actionable": [
-        "Carry"
-      ]
-    },
-    "Lumber": {
-      "duration": 50,
-      "actionable": [
-        "Cart"
-      ]
-    },
-    "ShaolFish": {
-      "duration": 50,
-      "actionable": [
-        "Cart"
-      ]
-    },
-    "Sheep": {
-      "duration": 20,
-      "actionable": [
-        "Carry"
-      ]
-    },
-    "Fruit": {
-      "duration": 20,
-      "actionable": [
-        "Carry"
-      ]
-    },
-    "Gem": {
-      "duration": 20,
-      "actionable": [
-        "Carry"
-      ]
-    }
   },
   "harvestableDefines": {
     "Earth": {
-      "visual" : { "url" : "http://previews.123rf.com/images/promesaartstudio/promesaartstudio1305/promesaartstudio130500117/19682513-dry-earth-texture.jpg"},
-      "actionable": [
-        "Dig"
-      ],
-      "hardness": 1,
-      "duration": 10
+      "visual": {
+        "url": "http://previews.123rf.com/images/promesaartstudio/promesaartstudio1305/promesaartstudio130500117/19682513-dry-earth-texture.jpg"
+      },
+      "duration": 10,
+      "recipe": {
+        "workers": 2,
+        "items": {
+        }
+      },
+      "onHarvested": "remove"
     },
     "Stone": {
-      "visual" : { "url" : "http://previews.123rf.com/images/tequi/tequi1007/tequi100700037/7477653-Repeating-seamless-pattern-of-grey-stones-including-the-seamless-swatch-for-easy-filling-of-any-cont-Stock-Vector.jpg"},
-      "actionable": [
-        "Dig"
-      ],
-      "hardness": 2,
-      "duration": 18
-    },
-    "HardStone": {
-      "visual" : { "url" : "http://previews.123rf.com/images/seamartini/seamartini1110/seamartini111000277/11006277-Seamless-rock-stone-background-for-design-and-decorate-Stock-Vector.jpg"},
-      "actionable": [
-        "Dig"
-      ],
-      "hardness": 8,
-      "duration": 64
-    },
-    "Quartzstone": {
-      "visual" : { "url" : "http://previews.123rf.com/images/whitetag/whitetag1405/whitetag140512574/28489070-Quartz-stone-Stock-Photo.jpg"},
-      "actionable": [
-        "Dig"
-      ],
-      "hardness": 20,
-      "duration": 140
-    },
-    "Limestone": {
-      "visual" : { "url" : "http://previews.123rf.com/images/kitch/kitch0807/kitch080700093/3295445-Limestone-Rock-Wall-Stock-Photo.jpg"},
-      "actionable": [
-        "Dig"
-      ],
-      "hardness": 5,
-      "duration": 45
-    },
-    "Marble": {
-     "visual" : { "url" : "http://previews.123rf.com/images/mg1408/mg14081008/mg1408100800016/7556276-white-marble-texture-background-High-resolution--Stock-Photo.jpg"},
-      "actionable": [
-        "Dig"
-      ],
-      "hardness": 12,
-      "duration": 96
-    },
-    "Granite": {
-      "visual" : { "url" : "http://previews.123rf.com/images/pilens/pilens1004/pilens100400100/6776015-close-up-of-beautiful-natural-design-of-granite-Stock-Photo-granite-texture-slab.jpg"},
-      "actionable": [
-        "Dig"
-      ],
-      "hardness": 16,
-      "duration": 112
+      "visual": {
+        "url": "http://previews.123rf.com/images/tequi/tequi1007/tequi100700037/7477653-Repeating-seamless-pattern-of-grey-stones-including-the-seamless-swatch-for-easy-filling-of-any-cont-Stock-Vector.jpg"
+      },
+      "duration": 18,
+      "recipe": {
+        "workers": 2,
+        "items": {
+        }
+      },
+      "onHarvested": null
     },
     "Coal": {
-      "visual" : { "url" : "http://previews.123rf.com/images/anzelm/anzelm0901/anzelm090100006/4133585-Pile-of-coal-texture-background-Stock-Photo-mining.jpg"},
-      "actionable": [
-        "Dig"
-      ],
-      "hardness": 3,
-      "duration": 30
-    },
-    "IronOre": {
-      "visual" : { "url" : "http://previews.123rf.com/images/pilgrimego/pilgrimego1110/pilgrimego111000128/11039934-texture-and-background-the-old-rusty-iron-texture-metal-rusty-antique.jpg"},
-      "actionable": [
-        "Dig"
-      ],
-      "hardness": 3,
-      "duration": 50
-    },
-    "Meat": {
-      "actionable": [
-        "Hunt"
-      ],
-      "hardness": 1,
-      "duration": 15
-    },
-    "Fish": {
-      "visual" : { "url" : "http://cdn.c.photoshelter.com/img-get/I00001kErC2chJ9M/s/600/600/Lx321.jpg"}, 
-      "actionable": [
-        "Fish"
-      ],
-      "hardness": 1,
-      "duration": 10
-    },
-    "Leaves": {
-      "visual" : { "url" : "http://www.hdwallpapersinn.com/wp-content/uploads/2015/04/autumn-leaves-wallpapers-hd.jpg"}, 
-      "actionable": [
-        "Pick"
-      ],
-      "hardness": 1,
-      "duration": 15
-    },
-    "Sand": {
-      "visual" : { "url" : "http://classicalchristianity.com/wp-content/uploads/2012/03/Sand.jpg"}, 
-      "actionable": [
-        "Dig"
-      ],
-      "hardness": 1,
-      "duration": 10
-    },
-    "Grain": {
-      "visual" : { "url" : "http://www.rtmtransport.com/wp-content/uploads/2013/01/Grain-Slide.jpg"}, 
-      "actionable": [
-        "Pick"
-      ],
-      "hardness": 1,
-      "duration": 15,
-      "replenish": 15
+      "visual": {
+        "url": "http://previews.123rf.com/images/anzelm/anzelm0901/anzelm090100006/4133585-Pile-of-coal-texture-background-Stock-Photo-mining.jpg"
+      },
+      "duration": 30,
+      "recipe": {
+        "workers": 2,
+        "items": {
+        }
+      },
+      "onHarvested": null
     },
     "Wood": {
-      "visual" : { "url" : "http://img15.deviantart.net/2f1c/i/2012/324/5/4/magical_forrest_by_db_photoblogdotcom-d5ll91y.jpg"},
-      "actionable": [
-        "Chop",
-        "Saw"
-      ],
-      "hardness": 2,
-      "duration": 20
+      "visual": {
+        "url": "http://img15.deviantart.net/2f1c/i/2012/324/5/4/magical_forrest_by_db_photoblogdotcom-d5ll91y.jpg"
+      },
+      "duration": 20,
+      "recipe": {
+        "workers": 2,
+        "items": {
+        }
+      },
+      "onHarvested": null
     },
-    "Lumber": {
-      "visual" : { "url" : "http://arborwoodco.com/img/about-lumber.jpg"},
-      "actionable": [
-        "Chop",
-        "Saw"
-      ],
-      "hardness": 8,
-      "duration": 128
+    "Water": {
+      "visual": {
+        "url": "http://buzzerg.com/wp-content/uploads/8589130432002-fresh-nature-blue-waterfall-wallpaper-hd.jpg"
+      },
+      "duration": 20,
+      "recipe": {
+        "workers": 2,
+        "items": {
+        }
+      },
+      "onHarvested": null
     },
-    "ShaolFish": {
-      "actionable": [
-        "Net"
-      ],
-      "hardness": 8,
-      "duration": 64
+    "Animals": {
+      "visual": {
+        "url": "http://www.visitdunkeld.com/Highland%20Cows/images/Highland%20Cow%2002_jpg.jpg"
+      },
+      "duration": 20,
+      "recipe": {
+        "workers": 2,
+        "items": {
+        }
+      },
+      "onHarvested": null
     },
-    "Sheep": {
-      "visual" : { "url" : "https://c2.staticflickr.com/2/1085/924981220_bb790bf0e8_b.jpg"},
-      "actionable": [
-        "Tie"
-      ],
-      "hardness": 2,
-      "duration": 32
+    "Plants": {
+      "visual": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/String_Fibers.jpg"
+      },
+      "duration": 20,
+      "recipe": {
+        "workers": 2,
+        "items": {
+        }
+      },
+      "onHarvested": null
     },
-    "Gem": {
-      "visual" : { "url" : "http://favim.com/orig/201106/15/crystal-gem-gorgeous-pink-rock-Favim.com-76959.jpg"},
-      "actionable": [
-        "Dig"
-      ],
-      "hardness": 12,
-      "duration": 120
-    },
-    "Fruit": {
-      "visual" : { "url" : "https://sagreenfingers.files.wordpress.com/2010/03/raspberriesphotobybienstephensononflickr-main_full.jpg"},    
-      "actionable": [
-        "Pick"
-      ],
-      "hardness": 2,
-      "duration": 20
+    "Metals": {
+      "visual": {
+        "url": "http://www.cavinguk.co.uk/gallery/ffmines26_09_2004/normal/MineFace.jpg"
+      },
+      "duration": 20,
+      "recipe": {
+        "workers": 3,
+        "items": {
+        }
+      },
+      "onHarvested": null
     }
   },
   "toolDefines": {
-    "Hands": {
-      "strength": 2,
-      "actions": [
-        "Dig",
-        "Carry",
-        "Pick"
-      ]
-    },
-    "StonePickaxe": {
-      "strength": 3,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "BronzePickaxe": {
-      "strength": 5,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "Scythe": {
-      "strength": 8,
-      "actions": [
-        "Chop"
-      ]
-    },
-    "SteelPickaxe": {
-      "strength": 12,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "HuntingBow": {
-      "strength": 3,
-      "actions": [
-        "Hunt"
-      ]
-    },
-    "FishingRod": {
-      "strength": 3,
-      "actions": [
-        "Fish"
-      ]
-    },
-    "WoodAxe": {
-      "strength": 3,
-      "actions": [
-        "Chop"
-      ]
-    },
-    "AntlerPickaxe": {
-      "strength": 3,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "Rope": {
-      "strength": 4,
-      "actions": [
-        "Tie"
-      ]
-    },
-    "Barrel": {
-      "strength": 12,
-      "actions": [
-        "Carry",
-        "CarryLiquid"
-      ]
-    },
-    "BackPack": {
-      "strength": 3,
-      "actions": [
-        "Carry"
-      ]
-    },
-    "Shovel": {
-      "strength": 6,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "Minecart": {
-      "strength": 20,
-      "actions": [
-        "Cart",
-        "Carry"
-      ]
-    },
-    "WickerBasket": {
-      "strength": 8,
-      "actions": [
-        "Carry"
-      ]
-    },
-    "SteelShovel": {
-      "strength": 10,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "SteelAxe": {
-      "strength": 10,
-      "actions": [
-        "Chop"
-      ]
-    },
-    "Snares": {
-      "strength": 9,
-      "actions": [
-        "Hunt"
-      ]
-    },
-    "HarvestingShears": {
-      "strength": 6,
-      "actions": [
-        "Pick"
-      ]
-    },
-    "WheelBarrow": {
-      "strength": 15,
-      "actions": [
-        "Carry",
-        "Cart"
-      ]
-    },
-    "SteelMattock": {
-      "strength": 20,
-      "actions": [
-        "Dig"
-      ]
-    },
-    "FishingNet": {
-      "strength": 10,
-      "actions": [
-        "Fish",
-        "Net"
-      ]
-    },
-    "Cart": {
-      "strength": 30,
-      "actions": [
-        "Carry"
-      ]
-    },
-    "LargeBarrel": {
-      "strength": 20,
-      "actions": [
-        "Carry",
-        "CarryLiquid"
-      ]
-    },
-    "LeatherBackPack": {
-      "strength": 10,
-      "actions": [
-        "Carry"
-      ]
-    },
-    "BlockAndTackle": {
-      "strength": 30,
-      "actions": [
-        "Carry"
-      ]
-    },
-    "Saw": {
-      "strength": 30,
-      "actions": [
-        "Saw"
-      ]
-    },
-    "Bucket": {
-      "strength": 4,
-      "actions": [
-        "Carry",
-        "CarryLiquid"
-      ]
-    }
   },
   "constructorDefines": {
     "Constructor": {
     },
-    "WoodenTable": {
+    "Workbench1": {
     },
-    "Workbench": {
+    "Workbench2": {
     },
-    "Forge": {
+    "Workbench3": {
     },
-    "Loom": {
+    "Forge1": {
     },
-    "FermentingVat": {
+    "Forge2": {
     },
-    "BucketPump": {
+    "Forge3": {
     },
-    "FirstAidStation": {
+    "WoodenTrap1": {
     },
-    "ImprovedBucketPump": {
+    "WoodenTrap2": {
     },
-    "AdvancedWorkbench": {
+    "WoodenTrap3": {
     },
-    "CastingVessel": {
+    "WoodenTower1": {
     },
-    "Grill": {
+    "WoodenTower2": {
+    },
+    "WoodenTower3": {
+    },
+    "StoneWorks1": {
+    },
+    "StoneWorks2": {
+    },
+    "StoneWorks3": {
+    },
+    "Lab1": {
+    },
+    "Lab2": {
+    },
+    "Lab3": {
+    },
+    "WoodenCookingArea1": {
+    },
+    "WoodenCookingArea2": {
+    },
+    "WoodenCookingArea3": {
+    },
+    "WoodenEatingObject1": {
+    },
+    "WoodenEatingObject2": {
+    },
+    "WoodenEatingObject3": {
+    },
+    "WoodenRestingArea1": {
+    },
+    "WoodenRestingArea2": {
+    },
+    "WoodenRestingArea3": {
+    },
+    "WoodenPeacefulObject1": {
+    },
+    "WoodenPeacefulObject2": {
+    },
+    "WoodenPeacefulObject3": {
+    },
+    "WoodenHealingArea1": {
+    },
+    "WoodenHealingArea2": {
+    },
+    "WoodenHealingArea3": {
+    },
+    "WoodenStudyArea1": {
+    },
+    "WoodenStudyArea3": {
     }
   },
   "craftableDefines": {
-    "Rope": {
+    "Wood1": {
       "construction": [
-
+        "Forest1"
       ],
+      "workers": 2,
       "input": {
-        "Wool": 1
       },
       "output": {
-        "Rope": 3
-      },
-      "duration": 15
-    },
-    "WoodenTable": {
-      "construction": [
-
-      ],
-      "input": {
-        "Wood": 4
-      },
-      "output": {
-        "WoodenTable": 1
-      },
-      "duration": 30
-    },
-    "Workbench": {
-      "construction": [
-
-      ],
-      "input": {
-        "Wood": 3,
-        "WoodenTable": 1
-      },
-      "output": {
-        "Workbench": 1
-      },
-      "duration": 30
-    },
-    "BackPack": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 1
-      },
-      "construction": [
-
-      ],
-      "input": {
-        "Cloth": 3,
-        "Rope": 1
-      },
-      "output": {
-        "BackPack": 1
-      },
-      "duration": 30
-    },
-    "Forge": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 1
-      },
-      "construction": [
-        "Workbench"
-      ],
-      "input": {
-        "Water": 3,
-        "Coal": 1,
-        "IronOre": 1,
-        "Stone": 2
-      },
-      "output": {
-        "Forge": 1
-      },
-      "duration": 60
-    },
-    "AntlerPickaxe": {
-      "construction": [
-
-      ],
-      "input": {
-        "Wood": 2,
-        "Antler": 1
-      },
-      "output": {
-        "AntlerPickaxe": 1
-      },
-      "duration": 15
-    },
-    "Paper": {
-      "construction": [
-        "WoodenTable"
-      ],
-      "input": {
-        "Leaves": 1
-      },
-      "output": {
-        "Paper": 1
-      },
-      "duration": 20
-    },
-    "Books": {
-      "construction": [
-        "WoodenTable"
-      ],
-      "input": {
-        "Paper": 12,
-        "Rope": 1,
-        "Feather": 2
-      },
-      "output": {
-        "Books": 1
-      },
-      "duration": 45
-    },
-    "FineHat": {
-      "construction": [
-        "WoodenTable"
-      ],
-      "input": {
-        "Cloth": 2,
-        "Feather": 1
-      },
-      "output": {
-        "FineHat": 1
-      },
-      "duration": 15
-    },
-    "FlagonOfAle": {
-      "construction": [
-        "WoodenTable"
-      ],
-      "input": {
-        "Ale": 6,
-        "Glass": 1,
-        "Cloth": 1,
-        "Antler": 1
-      },
-      "output": {
-        "FlagonOfAle": 1
-      },
-      "duration": 15
-    },
-    "WoodenPlanks": {
-      "construction": [
-        "Workbench"
-      ],
-      "input": {
-        "Wood": 2
-      },
-      "output": {
-        "WoodenPlanks": 2
-      },
-      "duration": 15
-    },
-    "DiceTable": {
-      "construction": [
-        "Workbench"
-      ],
-      "input": {
-        "WoodenTable": 1,
-        "Antler": 3,
-        "Cloth": 1
-      },
-      "output": {
-        "DiceTable": 1
-      },
-      "duration": 45
-    },
-    "Minecart": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 2
-      },
-      "construction": [
-        "Workbench"
-      ],
-      "input": {
-        "WoodenPlanks": 4,
-        "Nails": 10
-      },
-      "output": {
-        "Minecart": 1
-      },
-      "duration": 60
-    },
-    "Loom": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 1
-      },
-      "construction": [
-        "Workbench"
-      ],
-      "input": {
-        "Wood": 2,
-        "Rope": 2
-      },
-      "output": {
-        "Loom": 1
-      },
-      "duration": 30
-    },
-    "Glass": {
-      "construction": [
-        "Forge"
-      ],
-      "input": {
-        "Sand": 2
-      },
-      "output": {
-        "Glass": 1
-      },
-      "duration": 45
-    },
-    "Shovel": {
-      "construction": [
-        "Workbench"
-      ],
-      "input": {
-        "Wood": 2
-      },
-      "output": {
-        "Shovel": 1
-      },
-      "duration": 15
-    },
-    "Cloth": {
-      "construction": [
-        "Loom"
-      ],
-      "input": {
-        "Wool": 1
-      },
-      "output": {
-        "Cloth": 1
-      },
-      "duration": 15
-    },
-    "Ale": {
-      "construction": [
-        "WoodenTable"
-      ],
-      "input": {
-        "Water": 3,
-        "Grain": 1
-      },
-      "output": {
-        "Ale": 1
-      },
-      "duration": 45
-    },
-    "Saw": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 2
-      },
-      "construction": [
-        "Forge"
-      ],
-      "input": {
-        "IronOre": 2,
         "Wood": 1
       },
-      "output": {
-        "Saw": 1
-      },
-      "duration": 45
+      "duration": 60,
+      "recipename": "Wood"
     },
-    "Bucket": {
+    "Water1": {
       "construction": [
-
+        "River1"
       ],
+      "workers": 2,
       "input": {
-        "Wood": 2,
-        "Rope": 1
       },
       "output": {
-        "Bucket": 1
-      },
-      "duration": 30
-    },
-    "Nails": {
-      "construction": [
-        "Forge"
-      ],
-      "input": {
-        "IronOre": 1
-      },
-      "output": {
-        "Nails": 5
-      },
-      "duration": 10
-    },
-    "FermentingVat": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 2
-      },
-      "construction": [
-        "Forge"
-      ],
-      "input": {
-        "IronOre": 3,
-        "Wood": 1
-      },
-      "output": {
-        "FermentingVat": 1
-      },
-      "duration": 45
-    },
-    "BulkAle": {
-      "construction": [
-        "FermentingVat"
-      ],
-      "input": {
-        "Grain": 2,
-        "Water": 4
-      },
-      "output": {
-        "Ale": 3
-      },
-      "duration": 60
-    },
-    "BucketPump": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 2
-      },
-      "construction": [
-        "AdvancedWorkbench"
-      ],
-      "input": {
-        "Bucket": 2,
-        "Rope": 3,
-        "Wood": 2
-      },
-      "output": {
-        "BucketPump": 1
-      },
-      "duration": 30
-    },
-    "Scythe": {
-      "construction": [
-        "Forge"
-      ],
-      "input": {
-        "IronOre": 2,
-        "Wood": 2
-      },
-      "output": {
-        "Scythe": 1
-      },
-      "duration": 45
-    },
-    "WoodAxe": {
-      "construction": [
-        "Forge"
-      ],
-      "input": {
-        "IronOre": 1,
-        "Wood": 1
-      },
-      "output": {
-        "WoodAxe": 1
-      },
-      "duration": 30
-    },
-    "HuntingBow": {
-      "construction": [
-        "Workbench"
-      ],
-      "input": {
-        "Antler": 1,
-        "Wood": 2,
-        "Rope": 1
-      },
-      "output": {
-        "HuntingBow": 1
-      },
-      "duration": 30
-    },
-    "FishingRod": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 1
-      },
-      "construction": [
-        "Workbench"
-      ],
-      "input": {
-        "Rope": 2,
-        "Wood": 2,
-        "IronOre": 1
-      },
-      "output": {
-        "FishingRod": 1
-      },
-      "duration": 45
-    },
-    "CatapultBase": {
-      "construction": [
-        "AdvancedWorkbench"
-      ],
-      "input": {
-        "TwistedRopes": 1,
-        "WoodenPlanks": 20,
-        "CartWheel": 2,
-        "Stone": 2
-      },
-      "output": {
-        "CatapultBase": 1
-      },
-      "duration": 60
-    },
-    "CatapultArm": {
-      "construction": [
-        "AdvancedWorkbench"
-      ],
-      "input": {
-        "Steel": 1,
-        "Antler": 2,
-        "SteelWire": 2
-      },
-      "output": {
-        "CatapultArm": 1
-      },
-      "duration": 60
-    },
-    "GreekFireCatapult": {
-      "construction": [
-        "AdvancedWorkbench"
-      ],
-      "input": {
-        "CatapultBase": 1,
-        "CatapultArm": 1,
-        "GreekFire": 1,
-        "TwistedRopes": 3
-      },
-      "output": {
-        "GreekFireCatapult": 1
-      },
-      "duration": 30
-    },
-    "GreekFire": {
-      "construction": [
-        "AdvancedWorkbench"
-      ],
-      "input": {
-        "Water": 2,
-        "Leaves": 5,
-        "Sand": 2,
-        "Fish": 1
-      },
-      "output": {
-        "GreekFire": 1
-      },
-      "duration": 120
-    },
-    "TwistedRopes": {
-      "construction": [
-        "AdvancedWorkbench"
-      ],
-      "input": {
-        "Rope": 2
-      },
-      "output": {
-        "TwistedRopes": 1
-      },
-      "duration": 15
-    },
-    "Steel": {
-      "construction": [
-        "Forge"
-      ],
-      "input": {
-        "IronOre": 1,
-        "Coal": 1,
-        "Water": 2
-      },
-      "output": {
-        "Steel": 1
-      },
-      "duration": 30
-    },
-    "SteelWire": {
-      "construction": [
-        "Forge"
-      ],
-      "input": {
-        "Steel": 1
-      },
-      "output": {
-        "SteelWire": 3
-      },
-      "duration": 20
-    },
-    "CartWheel": {
-      "construction": [
-        "Workbench"
-      ],
-      "input": {
-        "Steel": 1,
-        "Wood": 4
-      },
-      "output": {
-        "CartWheel": 1
-      },
-      "duration": 45
-    },
-    "Barrel": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 1
-      },
-      "construction": [
-        "Workbench"
-      ],
-      "input": {
-        "IronOre": 1,
-        "Wood": 2
-      },
-      "output": {
-        "Barrel": 1
-      },
-      "duration": 45
-    },
-    "RawGreenSalad": {
-      "construction": [
-
-      ],
-      "input": {
-        "Leaves": 1,
         "Water": 1
       },
-      "output": {
-        "RawGreenSalad": 2
-      },
-      "duration": 10
+      "duration": 120,
+      "recipename": "Water"
     },
-    "GrilledMeat": {
-      "proficiency": {
-        "profession": "Cook",
-        "tier": 1
-      },
+    "Animals1": {
       "construction": [
-        "Grill"
+        "Pasture1"
       ],
+      "workers": 2,
       "input": {
-        "Wood": 1,
-        "Water": 1,
-        "Meat": 1
       },
       "output": {
-        "GrilledMeat": 4
+        "Animals": 1
       },
-      "duration": 10
+      "duration": 600,
+      "recipename": "Animals"
     },
-    "VegSoup": {
-      "proficiency": {
-        "profession": "Cook",
-        "tier": 2
-      },
+    "Plants1": {
       "construction": [
-        "Grill"
+        "Field1"
       ],
+      "workers": 2,
       "input": {
-        "Charcoal": 1,
-        "Leaves": 3,
-        "Grain": 1,
-        "Water": 2
       },
       "output": {
-        "VegSoup": 6
+        "Plants": 1
       },
-      "duration": 10
+      "duration": 1200,
+      "recipename": "Plants"
     },
-    "FishSoup": {
-      "proficiency": {
-        "profession": "Cook",
-        "tier": 2
-      },
+    "Stone1": {
       "construction": [
-        "Grill"
+        "Quarry1"
       ],
+      "workers": 2,
       "input": {
-        "Leaves": 2,
-        "Water": 2,
-        "Fish": 2,
-        "Charcoal": 1
       },
       "output": {
-        "FishSoup": 4
+        "Stone": 1
       },
-      "duration": 10
+      "duration": 2200,
+      "recipename": "Stone"
     },
-    "Bandage": {
+    "Coal1": {
       "construction": [
-        "WoodenTable"
+        "CoalDeposit1"
       ],
+      "workers": 2,
       "input": {
-        "Cloth": 3,
-        "Leaves": 1,
-        "Paper": 1
       },
       "output": {
-        "Bandage": 1
+        "Coal": 1
       },
-      "duration": 30
+      "duration": 3200,
+      "recipename": "Coal"
     },
-    "Medicine": {
+    "Metals1": {
       "construction": [
-        "FirstAidStation"
+        "MetalsDeposit1"
       ],
+      "workers": 2,
       "input": {
-        "Leaves": 2,
-        "Water": 1,
-        "Paper": 1
       },
       "output": {
-        "Medicine": 1
+        "Metals": 1
       },
-      "duration": 200
+      "duration": 4800,
+      "recipename": "Metals"
     },
-    "Potion": {
+    "MagicCrystals1": {
       "construction": [
-        "FirstAidStation"
+        "MagicCrystalsDeposit1"
       ],
+      "workers": 2,
       "input": {
-        "Leaves": 1,
-        "Water": 1,
-        "Glass": 1
       },
       "output": {
-        "Potion": 1
+        "MagicCrystals": 1
       },
-      "duration": 120
+      "duration": 7200,
+      "recipename": "Magic Crystals"
     },
-    "FirstAidStation": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 1
-      },
+    "Wood2": {
       "construction": [
-        "Workbench"
+        "Forest2"
       ],
+      "workers": 2,
       "input": {
-        "WoodenTable": 1,
-        "Cloth": 3,
-        "Glass": 3
       },
       "output": {
-        "FirstAidStation": 1
+        "Wood": 3
       },
-      "duration": 30
+      "duration": 60,
+      "recipename": "Wood"
     },
-    "ImprovedBucketPump": {
+    "Water2": {
       "construction": [
-        "Workbench"
+        "River2"
       ],
+      "workers": 2,
       "input": {
-        "BucketPump": 1,
-        "Barrel": 2
-      },
-      "output": {
-        "ImprovedBucketPump": 1
-      },
-      "duration": 30
-    },
-    "BarrelOfWater": {
-      "construction": [
-        "ImprovedBucketPump"
-      ],
-      "input": {
-        "Water": 2
-      },
-      "output": {
-        "Water": 10
-      },
-      "duration": 30
-    },
-    "SteelPickaxe": {
-      "construction": [
-        "Forge"
-      ],
-      "input": {
-        "Steel": 1,
-        "Wood": 2
-      },
-      "output": {
-        "SteelPickaxe": 10
-      },
-      "duration": 30
-    },
-    "PumpedWater": {
-      "construction": [
-        "BucketPump"
-      ],
-      "input": {
-        "Water": 1
       },
       "output": {
         "Water": 3
       },
-      "duration": 10
+      "duration": 120,
+      "recipename": "Water"
     },
-    "WickerBasket": {
+    "Animals2": {
       "construction": [
-
+        "Pasture2"
       ],
+      "workers": 2,
       "input": {
-        "Leaves": 5
       },
       "output": {
-        "WickerBasket": 1
+        "Animals": 3
       },
-      "duration": 30
+      "duration": 600,
+      "recipename": "Animals"
     },
-    "WoodenStatue": {
+    "Plants2": {
       "construction": [
-        "Workbench"
+        "Field2"
       ],
+      "workers": 2,
       "input": {
+      },
+      "output": {
+        "Plants": 3
+      },
+      "duration": 1200,
+      "recipename": "Plants"
+    },
+    "Stone2": {
+      "construction": [
+        "Quarry2"
+      ],
+      "workers": 2,
+      "input": {
+      },
+      "output": {
+        "Stone": 3
+      },
+      "duration": 2200,
+      "recipename": "Stone"
+    },
+    "Coal2": {
+      "construction": [
+        "CoalDeposit2"
+      ],
+      "workers": 2,
+      "input": {
+      },
+      "output": {
+        "Coal": 3
+      },
+      "duration": 3200,
+      "recipename": "Coal"
+    },
+    "Metals2": {
+      "construction": [
+        "MetalsDeposit2"
+      ],
+      "workers": 2,
+      "input": {
+      },
+      "output": {
+        "Metals": 3
+      },
+      "duration": 4800,
+      "recipename": "Metals"
+    },
+    "MagicCrystals2": {
+      "construction": [
+        "MagicCrystalsDeposit2"
+      ],
+      "workers": 2,
+      "input": {
+      },
+      "output": {
+        "MagicCrystals": 3
+      },
+      "duration": 7200,
+      "recipename": "Magic Crystals"
+    },
+    "Wood3": {
+      "construction": [
+        "Forest3"
+      ],
+      "workers": 2,
+      "input": {
+      },
+      "output": {
         "Wood": 5
       },
-      "output": {
-        "WoodenStatue": 1
-      },
-      "duration": 300
+      "duration": 60,
+      "recipename": "Wood"
     },
-    "WoodenChair": {
+    "Water3": {
       "construction": [
-        "Workbench"
+        "River3"
       ],
+      "workers": 2,
       "input": {
-        "Wood": 4
       },
       "output": {
-        "WoodenChair": 1
+        "Water": 5
       },
-      "duration": 200
+      "duration": 120,
+      "recipename": "Water"
     },
-    "SteelShovel": {
+    "Animals3": {
       "construction": [
-        "Workbench"
+        "Pasture3"
       ],
+      "workers": 2,
       "input": {
-        "Steel": 2,
-        "Wood": 2
       },
       "output": {
-        "SteelShovel": 1
+        "Animals": 5
       },
-      "duration": 30
+      "duration": 600,
+      "recipename": "Animals"
     },
-    "SteelAxe": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 1
-      },
+    "Plants3": {
       "construction": [
-        "Workbench"
+        "Field3"
       ],
+      "workers": 2,
       "input": {
-        "Steel": 1,
-        "Wood": 2
       },
       "output": {
-        "SteelAxe": 1
+        "Plants": 5
       },
-      "duration": 45
+      "duration": 1200,
+      "recipename": "Plants"
     },
-    "Snares": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 1
-      },
+    "Stone3": {
       "construction": [
-        "Workbench"
+        "Quarry3"
       ],
+      "workers": 2,
       "input": {
-        "SteelWire": 1,
-        "Wood": 1
       },
       "output": {
-        "Snares": 1
+        "Stone": 5
       },
-      "duration": 30
+      "duration": 2200,
+      "recipename": "Stone"
     },
-    "HarvestingShears": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 1
-      },
+    "Coal3": {
       "construction": [
-        "Workbench"
+        "CoalDeposit3"
       ],
+      "workers": 2,
       "input": {
-        "SteelWire": 1,
-        "Wood": 1,
-        "Steel": 1
       },
       "output": {
-        "HarvestingShears": 1
+        "Coal": 5
       },
-      "duration": 40
+      "duration": 3200,
+      "recipename": "Coal"
     },
-    "WheelBarrow": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 1
-      },
+    "Metals3": {
       "construction": [
-        "Workbench"
+        "MetalsDeposit3"
       ],
+      "workers": 2,
       "input": {
-        "Wheel": 1,
-        "WoodenPlanks": 3
       },
       "output": {
-        "WheelBarrow": 1
+        "Metals": 5
       },
-      "duration": 30
+      "duration": 4800,
+      "recipename": "Metals"
     },
-    "AdvancedWorkbench": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 1
-      },
+    "MagicCrystals3": {
       "construction": [
-        "Workbench"
+        "MagicCrystalsDeposit3"
       ],
+      "workers": 2,
       "input": {
-        "WoodenTable": 2,
-        "Stone": 1,
-        "Steel": 1
       },
       "output": {
-        "AdvancedWorkbench": 1
+        "MagicCrystals": 5
       },
-      "duration": 100
+      "duration": 7200,
+      "recipename": "Magic Crystals"
     },
-    "Wheel": {
+    "Forest2": {
       "construction": [
-        "Workbench"
+        "Forest1"
       ],
+      "workers": 3,
       "input": {
-        "Wood": 1,
-        "Nails": 5
+        "Metals": 10
       },
       "output": {
-        "Wheel": 1
+        "Forest2": 1
       },
-      "duration": 20
+      "duration": 60,
+      "recipename": "Forest"
     },
-    "SteelMattock": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 2
-      },
+    "River2": {
       "construction": [
-        "Workbench"
+        "River1"
       ],
+      "workers": 3,
       "input": {
-        "Steel": 2,
-        "Wood": 2
+        "Wood": 15
       },
       "output": {
-        "SteelMattock": 1
+        "River2": 1
       },
-      "duration": 60
+      "duration": 70,
+      "recipename": "River"
     },
-    "FishingNet": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 2
-      },
+    "Pasture2": {
       "construction": [
-
+        "Pasture1"
       ],
+      "workers": 3,
       "input": {
-        "Rope": 20
+        "Wood": 20
       },
       "output": {
-        "FishingNet": 1
+        "Pasture2": 1
       },
-      "duration": 200
+      "duration": 80,
+      "recipename": "Pasture"
     },
-    "LargeBarrel": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 2
-      },
+    "Field2": {
       "construction": [
-        "Workbench"
+        "Field1"
       ],
+      "workers": 3,
       "input": {
-        "WoodenPlanks": 6,
+        "Wood": 20
+      },
+      "output": {
+        "Field2": 1
+      },
+      "duration": 90,
+      "recipename": "Field"
+    },
+    "Quarry2": {
+      "construction": [
+        "Quarry1"
+      ],
+      "workers": 3,
+      "input": {
+        "Wood": 25
+      },
+      "output": {
+        "Quarry2": 1
+      },
+      "duration": 100,
+      "recipename": "Quarry"
+    },
+    "CoalDeposit2": {
+      "construction": [
+        "CoalDeposit1"
+      ],
+      "workers": 3,
+      "input": {
+        "Wood": 30
+      },
+      "output": {
+        "CoalDeposit2": 1
+      },
+      "duration": 120,
+      "recipename": "CoalDeposit"
+    },
+    "MetalsDeposit2": {
+      "construction": [
+        "MetalsDeposit1"
+      ],
+      "workers": 3,
+      "input": {
+        "Wood": 35
+      },
+      "output": {
+        "MetalsDeposit2": 1
+      },
+      "duration": 140,
+      "recipename": "MetalsDeposit"
+    },
+    "MagicCrystalsDeposit2": {
+      "construction": [
+        "MagicCrystalsDeposit1"
+      ],
+      "workers": 3,
+      "input": {
+        "Wood": 40
+      },
+      "output": {
+        "MagicCrystalsDeposit2": 1
+      },
+      "duration": 160,
+      "recipename": "MagicCrystalsDeposit"
+    },
+    "Forest3": {
+      "construction": [
+        "Forest2"
+      ],
+      "workers": 3,
+      "input": {
+        "MetalBeam": 10,
+        "Gears": 5,
+        "Rope": 4
+      },
+      "output": {
+        "Forest3": 1
+      },
+      "duration": 90,
+      "recipename": "Forest"
+    },
+    "River3": {
+      "construction": [
+        "River2"
+      ],
+      "workers": 3,
+      "input": {
+        "WoodenPlank": 15,
+        "Nails": 7,
+        "Stone": 4
+      },
+      "output": {
+        "River3": 1
+      },
+      "duration": 105,
+      "recipename": "River"
+    },
+    "Pasture3": {
+      "construction": [
+        "Pasture2"
+      ],
+      "workers": 3,
+      "input": {
+        "WoodenPlank": 20,
         "Nails": 10,
-        "Rope": 2
+        "Rope": 5
       },
       "output": {
-        "LargeBarrel": 1
+        "Pasture3": 1
       },
-      "duration": 100
+      "duration": 120,
+      "recipename": "Pasture"
     },
-    "LeatherBackPack": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 2
-      },
+    "Field3": {
       "construction": [
-        "Workbench"
+        "Field2"
       ],
+      "workers": 3,
       "input": {
-        "Cloth": 5,
-        "Meat": 2,
-        "Rope": 3
+        "WoodenPlank": 20,
+        "Nails": 13,
+        "Stone": 6
       },
       "output": {
-        "LeatherBackPack": 1
+        "Field3": 1
       },
-      "duration": 100
+      "duration": 135,
+      "recipename": "Field"
     },
-    "Cart": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 2
-      },
+    "Quarry3": {
       "construction": [
-        "Workbench"
+        "Quarry2"
       ],
+      "workers": 3,
       "input": {
-        "WoodenPlanks": 10,
-        "Nails": 10,
-        "CartWheel": 2
+        "WoodenBeam": 25,
+        "Nails": 16,
+        "Rope": 8
       },
       "output": {
-        "Cart": 1
+        "Quarry3": 1
       },
-      "duration": 200
+      "duration": 150,
+      "recipename": "Quarry"
     },
-    "BlockAndTackle": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 2
-      },
+    "CoalDeposit3": {
       "construction": [
-        "AdvancedWorkbench"
+        "CoalDeposit2"
       ],
+      "workers": 3,
       "input": {
-        "Rope": 10,
-        "Wood": 1,
-        "Steel": 1
+        "WoodenBeam": 30,
+        "MetalBeam": 15,
+        "Rope": 8
       },
       "output": {
-        "BlockAndTackle": 1
+        "CoalDeposit3": 1
       },
-      "duration": 50
+      "duration": 180,
+      "recipename": "CoalDeposit"
     },
-    "CastingVessel": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 2
-      },
+    "MetalsDeposit3": {
       "construction": [
-        "Forge"
+        "MetalsDeposit2"
       ],
+      "workers": 3,
       "input": {
-        "IronOre": 3,
-        "Wood": 1,
-        "SteelWire": 2,
-        "Water": 2
+        "WoodenBeam": 35,
+        "MetalBeam": 17,
+        "Rope": 8
       },
       "output": {
-        "CastingVessel": 1
+        "MetalsDeposit3": 1
       },
-      "duration": 300
+      "duration": 210,
+      "recipename": "MetalsDeposit"
     },
-    "MarbleStatue": {
+    "MagicCrystalsDeposit3": {
       "construction": [
-        "AdvancedWorkbench"
+        "MagicCrystalsDeposit2"
       ],
+      "workers": 3,
       "input": {
-        "Marble": 5
+        "WoodenBeam": 40,
+        "MetalBeam": 20,
+        "Drapes": 10
       },
       "output": {
-        "MarbleStatue": 1
+        "MagicCrystalsDeposit3": 1
       },
-      "duration": 400
+      "duration": 240,
+      "recipename": "MagicCrystalsDeposit"
     },
-    "MarbleBookshelf": {
+    "WoodenPlank1": {
       "construction": [
-        "AdvancedWorkbench"
+        "Workbench1"
       ],
+      "workers": 1,
       "input": {
-        "Marble": 5,
-        "Books": 1
+        "Wood": 2
       },
       "output": {
-        "MarbleBookshelf": 1
+        "WoodenPlank": 1
       },
-      "duration": 200
+      "duration": 20,
+      "recipename": "Wooden Plank"
     },
-    "BulkWoodenPlank": {
+    "WoodenBeam1": {
       "construction": [
-        "Workbench"
+        "Workbench1"
       ],
+      "workers": 1,
       "input": {
-        "Lumber": 1
+        "Wood": 3,
+        "Nails": 1
       },
       "output": {
-        "WoodenPlanks": 10
+        "WoodenBeam": 1
       },
-      "duration": 50
+      "duration": 20,
+      "recipename": "Wooden Beam"
     },
-    "BulkFish": {
+    "WoodenPanel1": {
       "construction": [
-        "Workbench"
+        "Workbench1"
       ],
+      "workers": 1,
       "input": {
-        "ShaolFish": 1
+        "Wood": 4,
+        "Nails": 3
       },
       "output": {
-        "Fish": 10
+        "WoodenPanel": 1
       },
-      "duration": 50
+      "duration": 20,
+      "recipename": "Wooden Panel"
     },
-    "ShearSheep": {
+    "WoodenSpikes1": {
       "construction": [
-
+        "Workbench1"
       ],
+      "workers": 1,
       "input": {
-        "Sheep": 1
-      },
-      "output": {
-        "Wool": 1,
-        "Sheep": 1
-      },
-      "duration": 20
-    },
-    "CookedFruit": {
-      "proficiency": {
-        "profession": "Cook",
-        "tier": 1
-      },
-      "construction": [
-        "WoodenTable"
-      ],
-      "input": {
-        "Fruit": 2,
         "Wood": 1
       },
       "output": {
-        "CookedFruit": 2
+        "WoodenSpikes": 1
       },
-      "duration": 30
+      "duration": 20,
+      "recipename": "Wooden Spikes"
     },
-    "FreshFruit": {
+    "FibersFromPlants1": {
       "construction": [
-        "WoodenTable"
+        "Workbench1"
       ],
+      "workers": 1,
       "input": {
-        "Fruit": 2
+        "Plants": 2
       },
       "output": {
-        "FreshFruit": 2
+        "Fibers": 1
       },
-      "duration": 30
+      "duration": 20,
+      "recipename": "Fibers"
     },
-    "CookedVeg": {
-      "proficiency": {
-        "profession": "Cook",
-        "tier": 1
-      },
+    "FibersFromAnimals1": {
       "construction": [
-        "WoodenTable"
+        "Workbench1"
       ],
+      "workers": 1,
       "input": {
-        "Leaves": 2,
-        "Wood": 1
-      },
-      "output": {
-        "CookedVeg": 4
-      },
-      "duration": 30
-    },
-    "FlatBread": {
-      "proficiency": {
-        "profession": "Cook",
-        "tier": 1
-      },
-      "construction": [
-        "Grill"
-      ],
-      "input": {
-        "Grain": 1,
-        "Wood": 1,
+        "Animals": 1,
         "Water": 1
       },
       "output": {
-        "FlatBread": 4
+        "Fibers": 1
       },
-      "duration": 30
+      "duration": 20,
+      "recipename": "Fibers"
     },
-    "MeatStew": {
-      "proficiency": {
-        "profession": "Cook",
-        "tier": 2
-      },
+    "Leather1": {
       "construction": [
-        "Grill"
+        "Workbench"
       ],
+      "workers": 1,
       "input": {
-        "Meat": 2,
-        "Leaves": 1,
-        "Grain": 1,
-        "Charcoal": 1
+        "Animals": 1,
+        "Water": 2
       },
       "output": {
-        "CookedFruit": 2
+        "Leather": 1
       },
-      "duration": 30
+      "duration": 20,
+      "recipename": "Leather"
     },
-    "GrilledFish": {
-      "proficiency": {
-        "profession": "Cook",
-        "tier": 2
-      },
+    "Rope1": {
       "construction": [
-        "Grill"
+        "Workbench1"
       ],
+      "workers": 1,
       "input": {
-        "Fish": 4,
-        "Charcoal": 1
+        "Fibers": 1
       },
       "output": {
-        "GrilledFish": 4
+        "Rope": 1
       },
-      "duration": 30
+      "duration": 20,
+      "recipename": "Rope"
     },
-    "RefineGem2RedBull": {
+    "Fabric1": {
       "construction": [
-
+        "Workbench1"
       ],
+      "workers": 1,
       "input": {
-        "Gem": 1
+        "Fibers": 2,
+        "Water": 1
       },
       "output": {
-        "RefineGem2RedBull": 5
+        "Fabric": 1
       },
-      "duration": 30
+      "duration": 25,
+      "recipename": "Fabric"
     },
-    "Grill": {
-      "proficiency": {
-        "profession": "Toolsmith",
-        "tier": 1
-      },
+    "Paper1": {
       "construction": [
-        "Forge"
+        "Workbench1"
       ],
+      "workers": 1,
       "input": {
-        "IronOre": 3,
+        "Wood": 2,
+        "Water": 1
+      },
+      "output": {
+        "Paper": 1
+      },
+      "duration": 25,
+      "recipename": "Paper"
+    },
+    "Torch1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 2
+      },
+      "output": {
+        "Torch": 1
+      },
+      "duration": 10,
+      "recipename": "Torch"
+    },
+    "Glass1": {
+      "construction": [
+        "Forge1"
+      ],
+      "workers": 1,
+      "input": {
         "Stone": 1,
-        "SteelWire": 1
+        "Coal": 1
       },
       "output": {
-        "Grill": 1
+        "Glass": 1
       },
-      "duration": 40
+      "duration": 15,
+      "recipename": "Glass"
     },
-    "Charcoal": {
+    "Gears1": {
       "construction": [
-        "Forge"
+        "Forge1"
       ],
+      "workers": 1,
       "input": {
-        "Coal": 1,
+        "Metals": 1
+      },
+      "output": {
+        "Gears": 1
+      },
+      "duration": 30,
+      "recipename": "Gears"
+    },
+    "Lock1": {
+      "construction": [
+        "Forge1"
+      ],
+      "workers": 1,
+      "input": {
+        "Metals": 2,
+        "Gears": 1
+      },
+      "output": {
+        "Lock": 1
+      },
+      "duration": 45,
+      "recipename": "Lock"
+    },
+    "Nails1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 1,
+      "input": {
+        "Metals": 1
+      },
+      "output": {
+        "Nails": 1
+      },
+      "duration": 10,
+      "recipename": "Nails"
+    },
+    "Dyes1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 1,
+      "input": {
+        "Water": 2,
+        "Stone": 1
+      },
+      "output": {
+        "Dyes": 1
+      },
+      "duration": 15,
+      "recipename": "Dyes"
+    },
+    "Drapes1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 1,
+      "input": {
+        "Fabric": 2,
+        "Dyes": 1
+      },
+      "output": {
+        "Drapes": 1
+      },
+      "duration": 45,
+      "recipename": "Drapes"
+    },
+    "Pot1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 1,
+      "input": {
+        "Metals": 2
+      },
+      "output": {
+        "Pot": 1
+      },
+      "duration": 25,
+      "recipename": "Pot"
+    },
+    "Bottle1": {
+      "construction": [
+        "Forge1"
+      ],
+      "workers": 1,
+      "input": {
+        "Glass": 2,
         "Wood": 1
       },
       "output": {
-        "Charcoal": 2
+        "Bottle": 1
       },
-      "duration": 30
+      "duration": 20,
+      "recipename": "Bottle"
     },
-    "MilkSheep": {
+    "MetalBar1": {
       "construction": [
-
+        "Forge1"
       ],
+      "workers": 1,
       "input": {
-        "Sheep": 1
+        "Metals": 2,
+        "Coal": 2
       },
       "output": {
-        "Ale": 1,
-        "Sheep": 1
+        "MetalBar": 1
       },
-      "duration": 20
+      "duration": 10,
+      "recipename": "Metal Bar"
     },
-    "SlaughterSheep": {
+    "MetalBeam1": {
       "construction": [
-
+        "Forge1"
       ],
+      "workers": 1,
       "input": {
-        "Sheep": 1
+        "Metals": 4,
+        "Coal": 2
       },
       "output": {
-        "Meat": 3
+        "MetalBeam": 1
       },
-      "duration": 20
+      "duration": 20,
+      "recipename": "Metal Beam"
     },
-    "OgreAle": {
+    "Herbs1": {
       "construction": [
-        "FermentingVat"
+        "Workbench1"
       ],
+      "workers": 1,
       "input": {
+        "Plants": 1
+      },
+      "output": {
+        "Herbs": 1
+      },
+      "duration": 5,
+      "recipename": "Herbs"
+    },
+    "WoodenPlank2": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 6,
+        "Water": 1
+      },
+      "output": {
+        "WoodenPlank": 4
+      },
+      "duration": 30,
+      "recipename": "Pack of Wooden Planks"
+    },
+    "WoodenBeam2": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 9,
+        "Water": 1
+      },
+      "output": {
+        "WoodenBeam": 4
+      },
+      "duration": 30,
+      "recipename": "Pack of Wooden Beams"
+    },
+    "WoodenPanel2": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 12,
+        "Water": 1
+      },
+      "output": {
+        "WoodenPanel": 4
+      },
+      "duration": 30,
+      "recipename": "Pack of Wooden Panels"
+    },
+    "WoodenSpikes2": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 3,
+        "Water": 1
+      },
+      "output": {
+        "WoodenSpikes": 4
+      },
+      "duration": 30,
+      "recipename": "Pack of Wooden Spikes"
+    },
+    "Rope2": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Fibers": 3,
+        "Water": 1
+      },
+      "output": {
+        "Rope": 4
+      },
+      "duration": 30,
+      "recipename": "Pack of Ropes"
+    },
+    "Fabric2": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Fibers": 6,
         "Water": 3,
-        "Grain": 2,
-        "Leaves": 1
+        "Wood": 1
       },
       "output": {
-        "OgreAle": 2
+        "Fabric": 4
       },
-      "duration": 45
+      "duration": 45,
+      "recipename": "Pack of Fabric"
     },
-    "ElvenWine": {
+    "Paper2": {
       "construction": [
-        "FermentingVat"
+        "Workbench2"
       ],
+      "workers": 1,
       "input": {
-        "Water": 2,
-        "Leaves": 2
+        "Wood": 6,
+        "Water": 3,
+        "WoodenPlank": 1
       },
       "output": {
-        "ElvenWine": 2
+        "Paper": 4
       },
-      "duration": 45
+      "duration": 35,
+      "recipename": "Pack of Paper"
+    },
+    "Torch2": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 6,
+        "Coal": 1
+      },
+      "output": {
+        "Torch": 4
+      },
+      "duration": 15,
+      "recipename": "Pack of Torches"
+    },
+    "Glass2": {
+      "construction": [
+        "Forge2"
+      ],
+      "workers": 1,
+      "input": {
+        "Stone": 3,
+        "Coal": 3,
+        "Wood": 1
+      },
+      "output": {
+        "Glass": 4
+      },
+      "duration": 25,
+      "recipename": "Pack of Glass"
+    },
+    "Gears2": {
+      "construction": [
+        "Forge2"
+      ],
+      "workers": 1,
+      "input": {
+        "Metals": 3
+      },
+      "output": {
+        "Gears": 4
+      },
+      "duration": 45,
+      "recipename": "Pack of Gears"
+    },
+    "Lock2": {
+      "construction": [
+        "Forge2"
+      ],
+      "workers": 1,
+      "input": {
+        "Metals": 6,
+        "Gears": 3
+      },
+      "output": {
+        "Lock": 4
+      },
+      "duration": 60,
+      "recipename": "Pack of Locks"
+    },
+    "Nails2": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Metals": 3
+      },
+      "output": {
+        "Nails": 4
+      },
+      "duration": 15,
+      "recipename": "Pack of Nails"
+    },
+    "Dyes2": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Water": 6,
+        "Stone": 3
+      },
+      "output": {
+        "Dyes": 4
+      },
+      "duration": 25,
+      "recipename": "Pack of Dyes"
+    },
+    "Drapes2": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Fabric": 6,
+        "Dyes": 3
+      },
+      "output": {
+        "Drapes": 4
+      },
+      "duration": 70,
+      "recipename": "Pack of Drapes"
+    },
+    "Pot2": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Metals": 6
+      },
+      "output": {
+        "Pot": 4
+      },
+      "duration": 35,
+      "recipename": "Pack of Pots"
+    },
+    "Bottle2": {
+      "construction": [
+        "Forge2"
+      ],
+      "workers": 1,
+      "input": {
+        "Glass": 6,
+        "Wood": 3
+      },
+      "output": {
+        "Bottle": 4
+      },
+      "duration": 30,
+      "recipename": "Pack of Bottles"
+    },
+    "MetalBar2": {
+      "construction": [
+        "Forge2"
+      ],
+      "workers": 1,
+      "input": {
+        "Metals": 6,
+        "Coal": 6,
+        "Water": 1
+      },
+      "output": {
+        "MetalBar": 4
+      },
+      "duration": 15,
+      "recipename": "Pack of Metal Bars"
+    },
+    "MetalBeam2": {
+      "construction": [
+        "Forge2"
+      ],
+      "workers": 1,
+      "input": {
+        "Metals": 12,
+        "Coal": 6,
+        "Water": 2
+      },
+      "output": {
+        "MetalBeam": 4
+      },
+      "duration": 30,
+      "recipename": "Pack of Metal Beam"
+    },
+    "CarvedWoodenPlank1": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "WoodenPlank": 5,
+        "Water": 1
+      },
+      "output": {
+        "CarvedWoodenPlank": 4
+      },
+      "duration": 60,
+      "recipename": "Carved Wooden Plank"
+    },
+    "Herbs2": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Plants": 3,
+        "Rope": 1
+      },
+      "output": {
+        "Herbs": 4
+      },
+      "duration": 10,
+      "recipename": "Pack of Herbs"
+    },
+    "Book1": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Paper": 10,
+        "Leather": 3,
+        "Dyes": 1
+      },
+      "output": {
+        "Book": 1
+      },
+      "duration": 80,
+      "recipename": "Book"
+    },
+    "BottleOfMedicine1": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Bottle": 1,
+        "Water": 2,
+        "Herbs": 3
+      },
+      "output": {
+        "BottleOfMedicine": 1
+      },
+      "duration": 60,
+      "recipename": "Bottle of Medicine"
+    },
+    "WoodenPlank3": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 18,
+        "Water": 3,
+        "Leather": 1
+      },
+      "output": {
+        "WoodenPlank": 15
+      },
+      "duration": 40,
+      "recipename": "Lots of Wooden Planks"
+    },
+    "WoodenBeam3": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 27,
+        "Water": 3,
+        "Leather": 1
+      },
+      "output": {
+        "WoodenBeam": 15
+      },
+      "duration": 40,
+      "recipename": "Lots of Wooden Beams"
+    },
+    "WoodenPanel3": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 36,
+        "Water": 3,
+        "Leather": 1
+      },
+      "output": {
+        "WoodenPanel": 15
+      },
+      "duration": 40,
+      "recipename": "Lots of Wooden Panels"
+    },
+    "WoodenSpikes3": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 9,
+        "Water": 3,
+        "Leather": 1
+      },
+      "output": {
+        "WoodenSpikes": 15
+      },
+      "duration": 40,
+      "recipename": "Lots of  Wooden Spikes"
+    },
+    "Rope3": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "Fibers": 10,
+        "Water": 3
+      },
+      "output": {
+        "Rope": 15
+      },
+      "duration": 45,
+      "recipename": "Lots of Rope"
+    },
+    "Fabric3": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "Fibers": 18,
+        "Water": 9,
+        "Wood": 3
+      },
+      "output": {
+        "Fabric": 15
+      },
+      "duration": 70,
+      "recipename": "Lots of Fabric"
+    },
+    "Paper3": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 18,
+        "Water": 9,
+        "WoodenPlank": 3
+      },
+      "output": {
+        "Paper": 15
+      },
+      "duration": 50,
+      "recipename": "Lots of Paper"
+    },
+    "Torch3": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 18,
+        "Coal": 3
+      },
+      "output": {
+        "Torch": 15
+      },
+      "duration": 25,
+      "recipename": "Lots of Torches"
+    },
+    "Glass3": {
+      "construction": [
+        "Forge3"
+      ],
+      "workers": 1,
+      "input": {
+        "Stone": 9,
+        "Coal": 9,
+        "Wood": 3
+      },
+      "output": {
+        "Glass": 15
+      },
+      "duration": 40,
+      "recipename": "Lots of Glass"
+    },
+    "Gears3": {
+      "construction": [
+        "Forge3"
+      ],
+      "workers": 1,
+      "input": {
+        "Metals": 9
+      },
+      "output": {
+        "Gears": 15
+      },
+      "duration": 70,
+      "recipename": "Lots of Gears"
+    },
+    "Lock3": {
+      "construction": [
+        "Forge3"
+      ],
+      "workers": 1,
+      "input": {
+        "Metals": 18,
+        "Gears": 9
+      },
+      "output": {
+        "Lock": 15
+      },
+      "duration": 90,
+      "recipename": "Lots of Locks"
+    },
+    "Nails3": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "Metals": 9
+      },
+      "output": {
+        "Nails": 15
+      },
+      "duration": 25,
+      "recipename": "Lots of Nails"
+    },
+    "Dyes3": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "Water": 18,
+        "Stone": 9
+      },
+      "output": {
+        "Dyes": 15
+      },
+      "duration": 40,
+      "recipename": "Lots of Dyes"
+    },
+    "Drapes3": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "Fabric": 18,
+        "Dyes": 9
+      },
+      "output": {
+        "Drapes": 15
+      },
+      "duration": 105,
+      "recipename": "Lots of Drapes"
+    },
+    "Pot3": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "Metals": 18
+      },
+      "output": {
+        "Pot": 15
+      },
+      "duration": 50,
+      "recipename": "Lots of Pot"
+    },
+    "Bottle3": {
+      "construction": [
+        "Forge3"
+      ],
+      "workers": 1,
+      "input": {
+        "Glass": 18,
+        "Wood": 9
+      },
+      "output": {
+        "Bottle": 15
+      },
+      "duration": 45,
+      "recipename": "Lots of Bottles"
+    },
+    "MetalBar3": {
+      "construction": [
+        "Forge3"
+      ],
+      "workers": 1,
+      "input": {
+        "Metals": 6,
+        "Coal": 6,
+        "Water": 1
+      },
+      "output": {
+        "MetalBar": 15
+      },
+      "duration": 25,
+      "recipename": "Lots of Metal Bars"
+    },
+    "MetalBeam3": {
+      "construction": [
+        "Forge3"
+      ],
+      "workers": 1,
+      "input": {
+        "Metals": 12,
+        "Coal": 6,
+        "Water": 2
+      },
+      "output": {
+        "MetalBeam": 15
+      },
+      "duration": 45,
+      "recipename": "Lots of Metal Beams"
+    },
+    "CarvedWoodenPlank2": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "WoodenPlank": 15,
+        "Water": 3,
+        "Stone": 1
+      },
+      "output": {
+        "CarvedWoodenPlank": 4
+      },
+      "duration": 90,
+      "recipename": "Lots of Carved Wooden Plank"
+    },
+    "Herbs3": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Plants": 9,
+        "Rope": 3
+      },
+      "output": {
+        "Herbs": 15
+      },
+      "duration": 15,
+      "recipename": "Lots of Herbs"
+    },
+    "Book2": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "Paper": 30,
+        "Leather": 10,
+        "Dyes": 3
+      },
+      "output": {
+        "Book": 4
+      },
+      "duration": 120,
+      "recipename": "Pack of Books"
+    },
+    "BottleOfMedicine2": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "Bottle": 3,
+        "Water": 6,
+        "Herbs": 9
+      },
+      "output": {
+        "BottleOfMedicine": 4
+      },
+      "duration": 90,
+      "recipename": "Pack of Bottle of Medicine"
+    },
+    "WoodPickaxe1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 2
+      },
+      "output": {
+        "Pickaxe": 1
+      },
+      "duration": 15,
+      "recipename": "Wood Pickaxe"
+    },
+    "WoodPickaxe2": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 6,
+        "Water": 1
+      },
+      "output": {
+        "Pickaxe": 4
+      },
+      "duration": 15,
+      "recipename": "Pack of Wood Pickaxe"
+    },
+    "WoodPickaxe3": {
+      "construction": [
+        "Workbench3"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 18,
+        "Water": 3,
+        "Leather": 1
+      },
+      "output": {
+        "Pickaxe": 15
+      },
+      "duration": 15,
+      "recipename": "Lots of Wood Pickaxe"
+    },
+    "WoodenTower1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 2,
+      "input": {
+        "Wood": 4,
+        "WoodenPlank": 2,
+        "Rope": 1
+      },
+      "output": {
+        "WoodenTower1": 1
+      },
+      "duration": 40,
+      "recipename": "Simple Wooden Tower"
+    },
+    "WoodenTrap1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 1,
+      "input": {
+        "WoodenSpikes": 2,
+        "Rope": 1
+      },
+      "output": {
+        "WoodenTrap1": 1
+      },
+      "duration": 10,
+      "recipename": "Simple Wooden Trap"
+    },
+    "WoodenTower2": {
+      "construction": [
+        "WoodenTower1"
+      ],
+      "workers": 3,
+      "input": {
+        "Wood": 12,
+        "WoodenPlank": 6,
+        "Rope": 3
+      },
+      "output": {
+        "WoodenTower2": 1
+      },
+      "duration": 60,
+      "recipename": "Upgraded Wooden Tower"
+    },
+    "WoodenTrap2": {
+      "construction": [
+        "WoodenTrap1"
+      ],
+      "workers": 2,
+      "input": {
+        "WoodenSpikes": 6,
+        "Rope": 3
+      },
+      "output": {
+        "WoodenTrap2": 1
+      },
+      "duration": 15,
+      "recipename": "Upgraded Wooden Trap"
+    },
+    "WoodenTower3": {
+      "construction": [
+        "WoodenTower2"
+      ],
+      "workers": 4,
+      "input": {
+        "Wood": 36,
+        "WoodenPlank": 18,
+        "Rope": 9
+      },
+      "output": {
+        "WoodenTower3": 1
+      },
+      "duration": 90,
+      "recipename": "Advanced Wooden Tower"
+    },
+    "WoodenTrap3": {
+      "construction": [
+        "WoodenTrap2"
+      ],
+      "workers": 3,
+      "input": {
+        "WoodenSpikes": 18,
+        "Rope": 9
+      },
+      "output": {
+        "WoodenTrap3": 1
+      },
+      "duration": 20,
+      "recipename": "Advanced Wooden Trap"
+    },
+    "Stoneworks1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 2,
+      "input": {
+        "WoodenBeam": 2,
+        "Water": 5,
+        "Rope": 4
+      },
+      "output": {
+        "Stoneworks1": 1
+      },
+      "duration": 90,
+      "recipename": "Stoneworks"
+    },
+    "Forge1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 2,
+      "input": {
+        "Stone": 6,
+        "Water": 4,
+        "Leather": 2
+      },
+      "output": {
+        "Forge1": 1
+      },
+      "duration": 120,
+      "recipename": "Forge"
+    },
+    "Lab1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 2,
+      "input": {
+        "WoodenPlank": 6,
+        "Pot": 2,
+        "Drapes": 3
+      },
+      "output": {
+        "Lab1": 1
+      },
+      "duration": 200,
+      "recipename": "Lab"
+    },
+    "Workbench2": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 3,
+      "input": {
+        "WoodenBeam": 8,
+        "WoodenPlank": 4,
+        "WoodenPanel": 3
+      },
+      "output": {
+        "Workbench2": 1
+      },
+      "duration": 160,
+      "recipename": "Upgraded Workbench"
+    },
+    "Stoneworks2": {
+      "construction": [
+        "StoneWorks1"
+      ],
+      "workers": 3,
+      "input": {
+        "WoodenBeam": 6,
+        "Water": 15,
+        "Rope": 12
+      },
+      "output": {
+        "Stoneworks2": 1
+      },
+      "duration": 135,
+      "recipename": "Upgraded Stoneworks"
+    },
+    "Forge2": {
+      "construction": [
+        "Forge1"
+      ],
+      "workers": 3,
+      "input": {
+        "Stone": 18,
+        "Water": 12,
+        "Leather": 6
+      },
+      "output": {
+        "Forge2": 1
+      },
+      "duration": 180,
+      "recipename": "Upgraded Forge"
+    },
+    "Lab2": {
+      "construction": [
+        "Lab1"
+      ],
+      "workers": 3,
+      "input": {
+        "WoodenPlank": 18,
+        "Pot": 6,
+        "Drapes": 9
+      },
+      "output": {
+        "Lab2": 1
+      },
+      "duration": 300,
+      "recipename": "Upgraded Lab"
+    },
+    "Workbench3": {
+      "construction": [
+        "Workbench2"
+      ],
+      "workers": 4,
+      "input": {
+        "WoodenBeam": 24,
+        "WoodenPlank": 12,
+        "WoodenPanel": 9
+      },
+      "output": {
+        "Workbench3": 1
+      },
+      "duration": 240,
+      "recipename": "Advanced Workbench"
+    },
+    "Stoneworks3": {
+      "construction": [
+        "StoneWorks2"
+      ],
+      "workers": 4,
+      "input": {
+        "WoodenBeam": 18,
+        "Water": 45,
+        "Rope": 36
+      },
+      "output": {
+        "Stoneworks3": 1
+      },
+      "duration": 200,
+      "recipename": "Advanced Stoneworks"
+    },
+    "Forge3": {
+      "construction": [
+        "Forge2"
+      ],
+      "workers": 4,
+      "input": {
+        "Stone": 54,
+        "Water": 36,
+        "Leather": 18
+      },
+      "output": {
+        "Forge3": 1
+      },
+      "duration": 270,
+      "recipename": "Advanced Forge"
+    },
+    "Lab3": {
+      "construction": [
+        "Lab2"
+      ],
+      "workers": 4,
+      "input": {
+        "WoodenPlank": 54,
+        "Pot": 18,
+        "Drapes": 27
+      },
+      "output": {
+        "Lab3": 1
+      },
+      "duration": 450,
+      "recipename": "Advanced Lab"
+    },
+    "WoodenCookingArea1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 3,
+      "input": {
+        "Wood": 5,
+        "Stone": 2
+      },
+      "output": {
+        "WoodenCookingArea1": 1
+      },
+      "duration": 10,
+      "recipename": "Cooking Campfire"
+    },
+    "WoodenEatingObject1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 2,
+        "WoodenPlank": 1
+      },
+      "output": {
+        "WoodenEatingObject1": 1
+      },
+      "duration": 5,
+      "recipename": "Wooden Bar & Stool"
+    },
+    "WoodenCookingArea2": {
+      "construction": [
+        "WoodenCookingArea1"
+      ],
+      "workers": 4,
+      "input": {
+        "WoodenBeam": 2,
+        "Pot": 1,
+        "Stone": 5
+      },
+      "output": {
+        "WoodenCookingArea2": 1
+      },
+      "duration": 30,
+      "recipename": "Medium Cooking Fire"
+    },
+    "WoodenEatingObject2": {
+      "construction": [
+        "WoodenEatingObject1"
+      ],
+      "workers": 2,
+      "input": {
+        "Wood": 6,
+        "WoodenPlank": 2,
+        "Pot": 1
+      },
+      "output": {
+        "WoodenEatingObject2": 1
+      },
+      "duration": 15,
+      "recipename": "Medium Wooden Bar & Stool"
+    },
+    "WoodenCookingArea3": {
+      "construction": [
+        "WoodenCookingArea2"
+      ],
+      "workers": 5,
+      "input": {
+        "WoodenBeam": 6,
+        "Pot": 3,
+        "Stone": 10
+      },
+      "output": {
+        "WoodenCookingArea3": 1
+      },
+      "duration": 45,
+      "recipename": "Large Cooking Fire"
+    },
+    "WoodenEatingObject3": {
+      "construction": [
+        "WoodenEatingObject2"
+      ],
+      "workers": 3,
+      "input": {
+        "WoodenPlank": 6,
+        "CarvedWoodenPlank": 6,
+        "Pot": 3
+      },
+      "output": {
+        "WoodenEatingObject3": 1
+      },
+      "duration": 20,
+      "recipename": "Large Wooden Bar & Stool"
+    },
+    "WoodenRestingArea1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 3,
+      "input": {
+        "Wood": 4,
+        "Fibers": 2
+      },
+      "output": {
+        "WoodenRestingArea1": 1
+      },
+      "duration": 20,
+      "recipename": "Wooden Beds"
+    },
+    "WoodenPeacefulObject1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 3,
+        "Bottle": 2
+      },
+      "output": {
+        "WoodenPeacefulObject1": 1
+      },
+      "duration": 10,
+      "recipename": "Wooden Lamp"
+    },
+    "WoodenRestingArea2": {
+      "construction": [
+        "WoodenRestingArea1"
+      ],
+      "workers": 4,
+      "input": {
+        "Fabric": 6,
+        "WoodenPlank": 10,
+        "Fibers": 6
+      },
+      "output": {
+        "WoodenRestingArea2": 1
+      },
+      "duration": 60,
+      "recipename": "Comfortable Beds"
+    },
+    "WoodenPeacefulObject2": {
+      "construction": [
+        "WoodenPeacefulObject1"
+      ],
+      "workers": 2,
+      "input": {
+        "WoodenPlank": 3,
+        "Bottle": 4,
+        "Dyes": 3
+      },
+      "output": {
+        "WoodenPeacefulObject2": 1
+      },
+      "duration": 30,
+      "recipename": "Nice Wooden Lamp"
+    },
+    "WoodenRestingArea3": {
+      "construction": [
+        "WoodenRestingArea2"
+      ],
+      "workers": 5,
+      "input": {
+        "Drapes": 12,
+        "CarvedWoodenPlank": 15,
+        "Fibers": 18
+      },
+      "output": {
+        "WoodenRestingArea3": 1
+      },
+      "duration": 90,
+      "recipename": "Luxury Beds"
+    },
+    "WoodenPeacefulObject3": {
+      "construction": [
+        "WoodenPeacefulObject2"
+      ],
+      "workers": 3,
+      "input": {
+        "CarvedWoodenPlank": 4,
+        "Bottle": 12,
+        "Dyes": 9
+      },
+      "output": {
+        "WoodenPeacefulObject3": 1
+      },
+      "duration": 45,
+      "recipename": "Luxury Wooden Lamp"
+    },
+    "WoodenHealingArea1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 3,
+      "input": {
+        "Wood": 5,
+        "Water": 8,
+        "Herbs": 3
+      },
+      "output": {
+        "WoodenHealingArea1": 1
+      },
+      "duration": 50,
+      "recipename": "Wooden Infirmary"
+    },
+    "WoodenHealingObject1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 1,
+      "input": {
+        "Wood": 4,
+        "Herbs": 3
+      },
+      "output": {
+        "WoodenHealingObject1": 1
+      },
+      "duration": 25,
+      "recipename": "Wooden Medical Cabinet"
+    },
+    "WoodenHealingArea2": {
+      "construction": [
+        "WoodenHealingArea1"
+      ],
+      "workers": 4,
+      "input": {
+        "WoodenPlank": 12,
+        "Water": 24,
+        "BottleOfMedicine": 5
+      },
+      "output": {
+        "WoodenHealingArea2": 1
+      },
+      "duration": 75,
+      "recipename": "Medium Wooden Infirmary"
+    },
+    "WoodenHealingObject2": {
+      "construction": [
+        "WoodenHealingObject1"
+      ],
+      "workers": 2,
+      "input": {
+        "WoodenPlank": 4,
+        "Bottle": 3,
+        "Herbs": 1
+      },
+      "output": {
+        "WoodenHealingObject2": 1
+      },
+      "duration": 35,
+      "recipename": "Medium Wooden Medical Cabinet"
+    },
+    "WoodenHealingArea3": {
+      "construction": [
+        "WoodenHealingArea2"
+      ],
+      "workers": 5,
+      "input": {
+        "CarvedWoodenPlank": 15,
+        "Water": 48,
+        "BottleOfMedicine": 10
+      },
+      "output": {
+        "WoodenHealingArea3": 1
+      },
+      "duration": 110,
+      "recipename": "Large Wooden Infirmary"
+    },
+    "WoodenHealingObject3": {
+      "construction": [
+        "WoodenHealingObject2"
+      ],
+      "workers": 3,
+      "input": {
+        "CarvedWoodenPlank": 4,
+        "BottleOfMedicine": 8,
+        "Herbs": 4
+      },
+      "output": {
+        "WoodenHealingObject3": 1
+      },
+      "duration": 45,
+      "recipename": "Large Wooden Medical Cabinet"
+    },
+    "WoodenStudyArea1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 3,
+      "input": {
+        "Wood": 8,
+        "WoodenPlank": 4,
+        "Paper": 6
+      },
+      "output": {
+        "WoodenStudyArea1": 1
+      },
+      "duration": 70,
+      "recipename": "Wooden Bookshelves"
+    },
+    "WoodenStudyObject1": {
+      "construction": [
+        "Workbench1"
+      ],
+      "workers": 1,
+      "input": {
+        "Paper": 3,
+        "Dyes": 1
+      },
+      "output": {
+        "WoodenStudyObject1": 1
+      },
+      "duration": 35,
+      "recipename": "Simple Painting"
+    },
+    "WoodenStudyArea2": {
+      "construction": [
+        "WoodenStudyArea1"
+      ],
+      "workers": 4,
+      "input": {
+        "CarvedWoodenPlank": 5,
+        "WoodenPlank": 12,
+        "Book": 5
+      },
+      "output": {
+        "WoodenStudyArea2": 1
+      },
+      "duration": 110,
+      "recipename": "Nice Bookshelves"
+    },
+    "WoodenStudyObject2": {
+      "construction": [
+        "WoodenStudyObject1"
+      ],
+      "workers": 2,
+      "input": {
+        "Paper": 9,
+        "Dyes": 3,
+        "Wood": 2
+      },
+      "output": {
+        "WoodenStudyObject2": 1
+      },
+      "duration": 50,
+      "recipename": "Nice Painting"
+    },
+    "WoodenStudyArea3": {
+      "construction": [
+        "WoodenStudyArea2"
+      ],
+      "workers": 5,
+      "input": {
+        "CarvedWoodenPlank": 10,
+        "WoodenPlank": 36,
+        "Book": 20
+      },
+      "output": {
+        "WoodenStudyArea3": 1
+      },
+      "duration": 165,
+      "recipename": "Fancy Bookshelves"
+    },
+    "WoodenStudyObject3": {
+      "construction": [
+        "WoodenStudyObject2"
+      ],
+      "workers": 2,
+      "input": {
+        "Fabric": 9,
+        "Dyes": 10,
+        "CarvedWoodenPlank": 3
+      },
+      "output": {
+        "WoodenStudyObject3": 1
+      },
+      "duration": 75,
+      "recipename": "Fancy Painting"
     }
   },
   "taskRules": {
@@ -1967,15 +2422,6 @@
       "stat": {
         "energy": {
           "secondsPerDecrement": 2,
-          "minRequired": 20
-        }
-      },
-      "xp": 1
-    },
-    "gathering": {
-      "stat": {
-        "energy": {
-          "secondsPerDecrement": 3,
           "minRequired": 20
         }
       },
@@ -1996,263 +2442,5 @@
     }
   },
   "consumableDefines": {
-    "BulkAle": {
-      "onConsume": {
-        "stat": {
-          "energy": {
-            "current": 50
-          },
-          "mind": {
-            "current": -70
-          }
-        }
-      }
-    },
-    "FlagonOfAle": {
-      "onConsume": {
-        "stat": {
-          "energy": {
-            "current": 50
-          },
-          "mind": {
-            "current": -30
-          }
-        }
-      }
-    },
-    "Bandage": {
-      "onConsume": {
-        "stat": {
-          "health": {
-            "current": 30
-          },
-          "mind": {
-            "current": 0
-          }
-        }
-      }
-    },
-    "FishSoup": {
-      "onConsume": {
-        "stat": {
-          "energy": {
-            "current": 20
-          },
-          "mind": {
-            "current": 80
-          }
-        }
-      }
-    },
-    "VegSoup": {
-      "onConsume": {
-        "stat": {
-          "energy": {
-            "current": 80
-          },
-          "mind": {
-            "current": -20
-          }
-        }
-      }
-    },
-    "GrilledMeat": {
-      "onConsume": {
-        "stat": {
-          "mind": {
-            "current": 0
-          }
-        }
-      }
-    },
-    "RawGreenSalad": {
-      "onConsume": {
-        "stat": {
-          "energy": {
-            "current": 20
-          },
-          "mind": {
-            "current": 0
-          }
-        }
-      }
-    },
-    "Potion": {
-      "onConsume": {
-        "stat": {
-          "energy": {
-            "current": 50
-          },
-          "mind": {
-            "current": 10
-          },
-          "health": {
-            "current": -10
-          }
-        }
-      }
-    },
-    "Medicine": {
-      "onConsume": {
-        "stat": {
-          "health": {
-            "current": 50
-          },
-          "mind": {
-            "current": 10
-          },
-          "energy": {
-            "current": -10
-          }
-        }
-      }
-    },
-    "FreshFruit": {
-      "onConsume": {
-        "stat": {
-          "health": {
-            "current": 0
-          },
-          "mind": {
-            "current": 0
-          },
-          "energy": {
-            "current": 20
-          }
-        }
-      }
-    },
-    "CookedFruit": {
-      "onConsume": {
-        "stat": {
-          "health": {
-            "current": 0
-          },
-          "mind": {
-            "current": 20
-          },
-          "energy": {
-            "current": 40
-          }
-        }
-      }
-    },
-    "CookedVeg": {
-      "onConsume": {
-        "stat": {
-          "health": {
-            "current": 0
-          },
-          "mind": {
-            "current": -20
-          },
-          "energy": {
-            "current": 60
-          }
-        }
-      }
-    },
-    "FlatBread": {
-      "onConsume": {
-        "stat": {
-          "health": {
-            "current": 0
-          },
-          "mind": {
-            "current": 20
-          },
-          "energy": {
-            "current": 20
-          }
-        }
-      }
-    },
-    "MeatStew": {
-      "onConsume": {
-        "stat": {
-          "health": {
-            "current": 0
-          },
-          "mind": {
-            "current": 40
-          },
-          "energy": {
-            "current": 40
-          }
-        }
-      }
-    },
-    "GrilledFish": {
-      "onConsume": {
-        "stat": {
-          "health": {
-            "current": 0
-          },
-          "mind": {
-            "current": 80
-          },
-          "energy": {
-            "current": 20
-          }
-        }
-      }
-    },
-    "RefineGem2RedBull": {
-      "onConsume": {
-        "stat": {
-          "health": {
-            "current": 100
-          },
-          "mind": {
-            "current": 100
-          },
-          "energy": {
-            "current": 100
-          }
-        }
-      }
-    },
-    "OgreAle": {
-      "onConsume": {
-        "stat": {
-          "health": {
-            "current": -30
-          },
-          "mind": {
-            "current": -30
-          },
-          "energy": {
-            "current": 200
-          }
-        }
-      }
-    },
-    "ElvenWine": {
-      "onConsume": {
-        "stat": {
-          "health": {
-            "current": 10
-          },
-          "mind": {
-            "current": 60
-          },
-          "energy": {
-            "current": 20
-          }
-        }
-      }
-    },
-    "Ale": {
-      "onConsume": {
-        "stat": {
-          "energy": {
-            "current": 20
-          },
-          "mind": {
-            "current": -5
-          }
-        }
-      }
-    }
   }
 }

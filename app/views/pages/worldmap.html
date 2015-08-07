@@ -1,17 +1,16 @@
 
 
 
-<div ng-include src="'views/share/goals.html'"></div>
 
 <br/>
 
-<div class="fadedbackground">
+<div class="fadedbackground" style="min-height: 300px;">
 <table class="table">
   <thead>
     <tr class="noselect">
-        <th class="col-sm-8"><h4>CHARACTERS</h4></th>
-        <th class="col-sm-1"><h4>QUEUED<br/>TASKS</h4></th>
-        <th class="col-sm-3"><h4>BANK</h4></th>
+        <th class="col-sm-2"><h4>WORKER POOL</h4></th>
+        <th class="col-sm-2"><h4>ACTIVE<br/>TASKS</h4></th>
+        <th class="col-sm-2"><h4>BANK</h4></th>
     </tr> 
   </thead>
   <tbody>
@@ -20,7 +19,7 @@
         <div ng-include src="'views/share/characterselect.html'"></div>
       </td> 
       <td valign="top"> 
-        <div ng-include src="'views/share/tasks.html'"></div>
+        <div ng-include src="'views/share/activetasks.html'"></div>
       </td> 
       <td valign="top"> 
         <div ng-include src="'views/share/bank.html'"></div>
@@ -38,10 +37,10 @@
   <div ng-include src="'views/share/worldmapgrid.html'"></div>
 </td> 
 
+
+
 <br/>
 
-<td valign="top"> 
-  <div ng-include src="'views/share/contextinfoconsole.html'"></div>
-</td> 
+
 
 

@@ -8,7 +8,32 @@
  * Service in the craftyApp.
  */
 angular.module('craftyApp')
-  .service('FSUIEventHandler', function ( FSBankable,  FSSimMessagingChannel,  FSContextConsole, FSSimRules, FSSimState, FSSimRewards, FSSimCrafting, FSSimHarvesting, FSSimGathering, FSSimTasks, FSTask) {
+  .service('FSUIEventHandler', [
+      'FSBankable',  
+      'FSSimMessagingChannel',  
+      'FSContextConsole', 
+      'FSSimRules', 
+      'FSSimState',
+      'FSSimRewards', 
+      'FSSimCrafting', 
+      'FSSimHarvesting', 
+      'FSSimTasks', 
+      'RecipeModal',
+      'CraftingModal',
+      'WorldMap',
+    function ( 
+      FSBankable,  
+      FSSimMessagingChannel,  
+      FSContextConsole, 
+      FSSimRules, 
+      FSSimState, 
+      FSSimRewards, 
+      FSSimCrafting, 
+      FSSimHarvesting, 
+      FSSimTasks, 
+      RecipeModal,
+      CraftingModal,
+      WorldMap) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
 
@@ -24,16 +49,12 @@ angular.module('craftyApp')
                     enabled = (FSSimState.rewards.indexOf(type) === -1) ? false : true ;
                     break;
                 case 'craft':
-                    var craftableTask = new FSTask({'name':type, 'category':'crafting', 'cell' : null});
-                    enabled = FSSimCrafting.isCraftable(craftableTask) ;
-                    break;
-                case 'gather':
-                    var gatherTask = new FSTask({'name':type, 'category':'gathering', 'cell' : null});
-                    enabled = FSSimGathering.isGatherable(gatherTask);
+                    var obj = { category: 'task', desc : { json :{ 'name':type, 'category':'crafting', 'cellIndex' : null, 'characters' : []}}};
+                    FSSimMessagingChannel.createSimObject( obj );
+                    enabled = FSSimCrafting.isCraftable(obj.returnValue) ;
                     break;
                 case 'harvest':
-                    var harvestTask = new FSTask({'name':type, 'category':'harvesting', 'cell' : null});
-                    enabled = FSSimHarvesting.isHarvestable(harvestTask);
+                    enabled = true;
                     break;
                 case 'bank':
                     {
@@ -77,14 +98,6 @@ angular.module('craftyApp')
                     this.orderBankByOrder = (this.orderBankByOrder==='+') ? '-' : '+';
                     this.orderBankBy = this.orderBankByOrder + fieldName;
                     break;
-                case 'Gatherables':
-                    if ( this.hasOwnProperty('orderGatherablesBy') === false) {
-                        this.orderGatherablesBy = 'json.name';
-                        this.orderGatherablesByOrder = '+';
-                    }
-                    this.orderGatherablesByOrder = (this.orderGatherablesByOrder==='+') ? '-' : '+';
-                    this.orderGatherablesBy = this.orderGatherablesByOrder + fieldName;
-                    break;
                 case 'Harvestables':
                     if ( this.hasOwnProperty('orderHarvestablesBy') === false) {
                         this.orderHarvestablesBy = 'json.name';
@@ -118,10 +131,8 @@ angular.module('craftyApp')
                 case 'Bank':
                     this.onClickBank(keyName);
                     break;
-                case 'gatherable':
-                case 'harvestable':
                 case 'craftable':
-                    FSSimTasks.createTask(tableName, keyName);
+                    CraftingModal.open('lg', key);
                     break;
             }
          };
@@ -130,9 +141,16 @@ angular.module('craftyApp')
          * @desc 
          * @return 
          */
-        this.onClickWorld = function ( category, cell) {
-            FSContextConsole.clear();
-            FSSimTasks.createCellTask(category, cell);
+        this.onClickWorld = function ( category, row, col) {
+
+            var cellIndex = WorldMap.getIndexOf(row, col);
+
+            var existingTask = FSSimTasks.getTaskAtWorldLocation( cellIndex);
+
+
+            if (existingTask === null) {
+              RecipeModal.open(category, cellIndex);
+            }
         };
       
 
@@ -216,4 +234,4 @@ angular.module('craftyApp')
 
  
 
-  });
+  }]);

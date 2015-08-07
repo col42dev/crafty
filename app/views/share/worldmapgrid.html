@@ -8,24 +8,24 @@
 
 <div >
 click cell top-left resource text to harvest.<br/>
-click cell bottom-left resource text to gather.
 <table class="table table-bordered table-condensed" style="table-layout: fixed">
   <tbody>
-      <tr ng-repeat="row in getWorldMap().json.worldMap" class="noselect" >
-        <td style="min-width: 100px; min-height: 100px" 
+      <tr ng-repeat="row in getWorldMap().json.worldMap" 
+          class="noselect"
+       >
+        <td ng-style="{ 'min-width': '100px', 'min-height': '100px', 'padding': '0px'}" 
             ng-repeat="col in row" 
             width="100" height ="100"
             > 
             <div style="height: 100%; 
                         width: 100%; 
                         background-color:{{getWorldMap().bgcolor(col)}}; 
-                        position:relative "
-                        >
+                        position:relative">
 
-                <div  style="width:100px; 
-                          height: 100%;
+                <div  style="width:100%; 
+                            height: 100%;
                             background-color:rgba(20, 200, 20, 0.1);
-                            background-size: contain;
+                            background-size: cover;
                             overflow:visible; 
                             opacity: .4;
          
@@ -37,24 +37,15 @@ click cell bottom-left resource text to gather.
 
 
               <div  style="width:100%; 
+ 
                           background-color:rgba(20, 200, 20, 1.0); 
                           overflow:visible; 
                           word-wrap:normal" 
-                    ng-style="{ 'width' : getWorldMap().getTaskPercentRemaining('harvesting', col)}"
-                    ng-click="getFSUIEventHandler().onClickWorld('harvesting', col)">
+                    ng-style="{ 'width' : getFSSimTasks().getTaskPercentRemaining('harvesting', row, col)}"
+                    ng-click="getFSUIEventHandler().onClickWorld('harvesting', row, col)">
                   <b ng-style="{ 'color': getWorldMap().getCellTextColor('harvesting', col)}">{{getWorldMap().getCellText('harvesting', col)}}</b>
               </div>
 
-              <div  style="width:100px; 
-                            background-color:rgba(20, 200, 20, 1.0); 
-                            overflow:visible; 
-                            word-wrap:normal;  
-                            position:absolute; 
-                            bottom:0" 
-                    ng-style="{ 'width' : getWorldMap().getTaskPercentRemaining('gathering', col)}"
-                    ng-click="getFSUIEventHandler().onClickWorld('gathering', col)">
-                  <b ng-style="{ 'color': getWorldMap().getCellTextColor('gathering', col)}">{{getWorldMap().getCellText('gathering', col)}}</b>
-              </div> 
 
 
             </div>
