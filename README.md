@@ -44,8 +44,10 @@ Running `grunt test` will run the unit tests with karma.
 **Crafting UI**
 ![craftingdash](https://github.com/col42dev/crafty/blob/master/documentation/Screen%20Shot%202015-08-05%20at%2016.43.06.png?raw=true)
 
+**Workers Pool And World Map**
 ![screen1](https://github.com/col42dev/crafty/blob/master/documentation/Screen%20Shot%202015-08-24%20at%2016.47.45.png?raw=true)
 
+**Workers Pool And Crafting UI**
 ![screen1](https://github.com/col42dev/crafty/blob/master/documentation/Screen%20Shot%202015-08-24%20at%2016.47.58.png?raw=true)
 
 ![screen1](https://github.com/col42dev/crafty/blob/master/documentation/Screen%20Shot%202015-08-24%20at%2016.48.14.png?raw=true)
