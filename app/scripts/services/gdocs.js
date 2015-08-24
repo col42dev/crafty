@@ -118,6 +118,8 @@ oef8ni3
 
                 recipe.recipename = this.response.feed.entry[i].gsx$recipename.$t;
 
+                recipe.category = this.response.feed.entry[i].gsx$recipecategory.$t;
+
 
                 //console.log( JSON.stringify( recipe, null, 2));
 

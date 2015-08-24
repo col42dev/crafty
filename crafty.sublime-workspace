@@ -96,6 +96,94 @@
 	"buffers":
 	[
 		{
+			"file": "app/index.html",
+			"settings":
+			{
+				"buffer_size": 5852,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/pages/load.html",
+			"settings":
+			{
+				"buffer_size": 2180,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/json/fssimstate.js",
+			"settings":
+			{
+				"buffer_size": 12288,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/util/fsjsonloader.js",
+			"settings":
+			{
+				"buffer_size": 3929,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/sim/fssimtasks.js",
+			"settings":
+			{
+				"buffer_size": 7114,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/colinmoore/Perforce/cmoore_MBP/SliceOfMine/Assets/StreamingAssets/crafting.html",
+			"settings":
+			{
+				"buffer_size": 3559,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/views/share/activetasks.html",
+			"settings":
+			{
+				"buffer_size": 1100,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/json/fssimrules.js",
+			"settings":
+			{
+				"buffer_size": 5379,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/gdocs.js",
+			"settings":
+			{
+				"buffer_size": 5064,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/pages/rules.html",
+			"settings":
+			{
+				"buffer_size": 6779,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/share/tasks.html",
+			"settings":
+			{
+				"buffer_size": 731,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "app/views/share/craftables.html",
 			"settings":
 			{
@@ -104,66 +192,28 @@
 			}
 		},
 		{
-			"file": "app/scripts/services/json/fssimrules.js",
+			"file": "app/scripts/services/json/state/fstask.js",
 			"settings":
 			{
-				"buffer_size": 4781,
+				"buffer_size": 4177,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/services/json/fssimstate.js",
+			"contents": "Searching 74 files for \"setTimeout\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fsbankable.js:\n   56       */\n   57      FSBankable.prototype.setFlashQuantityTimeout = function( ) {\n   58:       setTimeout( (function() {\n   59          if(typeof this !== 'undefined') {\n   60            this.quantitybgcolor = 'rgba(0, 0, 0, .0)'; //hide flash\n\n1 match in 1 file\n",
 			"settings":
 			{
-				"buffer_size": 10824,
-				"line_ending": "Unix"
+				"buffer_size": 381,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
 			}
 		},
 		{
-			"file": "app/scripts/services/json/state/fscraftable.js",
+			"file": "app/scripts/services/json/state/fsbankable.js",
 			"settings":
 			{
-				"buffer_size": 1732,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/json/rules.json",
-			"settings":
-			{
-				"buffer_size": 45611,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/gdocs.js",
-			"settings":
-			{
-				"buffer_size": 4978,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/pages/rules.html",
-			"settings":
-			{
-				"buffer_size": 6534,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/styles/main.css",
-			"settings":
-			{
-				"buffer_size": 2269,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/pages/craft.html",
-			"settings":
-			{
-				"buffer_size": 1072,
+				"buffer_size": 1753,
 				"line_ending": "Unix"
 			}
 		}
@@ -175,12 +225,16 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 0.0,
-		"last_filter": "",
+		"height": 127.0,
+		"last_filter": "markdown pre",
 		"selected_items":
 		[
+			[
+				"markdown pre",
+				"Markdown Preview: Preview in Browser"
+			]
 		],
-		"width": 0.0
+		"width": 575.0
 	},
 	"console":
 	{
@@ -211,6 +265,7 @@
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/map",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/ui",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/util",
 		"/Users/colinmoore/Dev/crafty/app/styles",
 		"/Users/colinmoore/Dev/crafty/app/views",
@@ -219,36 +274,50 @@
 	],
 	"file_history":
 	[
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js",
-		"/Users/colinmoore/Dev/crafty/app/json/rules.json",
-		"/Users/colinmoore/Dev/crafty/app/views/pages/load.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/util/fsjsonloader.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/util/fscontextconsole.js",
-		"/Users/colinmoore/Dev/crafty/app/views/share/worldmapgridedit.html",
-		"/Users/colinmoore/Dev/crafty/app/views/pages/gdocs.html",
-		"/Users/colinmoore/Dev/crafty/app/views/pages/worldmapedit.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmapedit.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmap.js",
+		"/Users/colinmoore/Dev/crafty/app/views/share/goals.html",
+		"/Users/colinmoore/Perforce/cmoore_MBP/SliceOfMine/Assets/StreamingAssets/index.html",
+		"/Users/colinmoore/Perforce/cmoore_MBP/SliceOfMine/Assets/Scripts/Crafting/SimTimer.cs",
+		"/Users/colinmoore/Perforce/cmoore_MBP/SliceOfMine/Assets/StreamingAssets/craftingcontroller.js",
+		"/Users/colinmoore/Perforce/cmoore_MBP/SliceOfMine/Assets/StreamingAssets/crafting.js",
+		"/Users/colinmoore/Perforce/cmoore_MBP/SliceOfMine/Assets/StreamingAssets/{",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fsbankable.js",
-		"/Users/colinmoore/Dev/crafty/app/json/state.json",
-		"/Users/colinmoore/Dev/crafty/app/json/worldmap.json",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimbank.js",
+		"/Users/colinmoore/Desktop/restart",
+		"/Users/colinmoore/Desktop/norestart",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmapedit.js",
+		"/Users/colinmoore/Dev/crafty/app/views/share/constructors.html",
+		"/Users/colinmoore/Dev/crafty/app/views/pages/craft.html",
+		"/Users/colinmoore/Dev/crafty/app/styles/main.css",
+		"/Users/colinmoore/Dev/crafty/app/views/pages/rules.html",
+		"/Users/colinmoore/dev/col42dev.github.io/_posts/2015-7-14-Linux MongoDB EC2 install.md",
+		"/Users/colinmoore/dev/col42dev.github.io/_posts/2015-7-13-Linux mEaN stack install.md",
+		"/Users/colinmoore/dev/col42dev.github.io/_posts/2015-8-8-markdown preview using SublimeText.md",
+		"/Users/colinmoore/dev/col42dev.github.io/_posts/2015-8-8-google sheets API.md",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/gdocs.js",
+		"/Users/colinmoore/Dev/crafty/app/json/rules.json",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimcrafting.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscraftable.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimstate.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/util/fsjsonloader.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimrules.js",
 		"/Users/colinmoore/Dev/crafty/app/views/share/craftables.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimbank.js",
-		"/Users/colinmoore/Dev/crafty/app/views/share/constructors.html",
+		"/Users/colinmoore/Dev/crafty/app/views/share/worldmapgridedit.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js",
+		"/Users/colinmoore/Dev/crafty/app/views/pages/load.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/util/fscontextconsole.js",
+		"/Users/colinmoore/Dev/crafty/app/views/pages/gdocs.html",
+		"/Users/colinmoore/Dev/crafty/app/views/pages/worldmapedit.html",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmap.js",
+		"/Users/colinmoore/Dev/crafty/app/json/state.json",
+		"/Users/colinmoore/Dev/crafty/app/json/worldmap.json",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js",
 		"/Users/colinmoore/Dev/crafty/app/views/share/bank.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fstask.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/main.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/app.js",
 		"/Users/colinmoore/Dev/crafty/app/index.html",
 		"/Users/colinmoore/dev/crafty/app/views/pages/gdoc.html",
-		"/Users/colinmoore/Dev/crafty/app/views/pages/rules.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscraftable.js",
 		"/Users/colinmoore/Dev/crafty/app/json/rules2.json",
 		"/Users/colinmoore/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/Users/colinmoore/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
@@ -261,7 +330,6 @@
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fsharvestable.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimharvesting.js",
 		"/Users/colinmoore/Dev/crafty/app/views/share/worldmapgrid.html",
-		"/Users/colinmoore/Dev/crafty/app/views/pages/craft.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/ui/recipemodal.js",
 		"/Users/colinmoore/Dev/crafty/app/views/share/tasks.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/craftingmodal.js",
@@ -333,20 +401,7 @@
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimtasks.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscharacter.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimobjectchannel.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/stopwatch.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimgathering.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimharvesting.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimcrafting.js",
-		"/Users/colinmoore/Dev/crafty/app/views/charactersheetstats.html",
-		"/Users/colinmoore/Dev/crafty/app/views/rewards.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimservice.js",
-		"/Users/colinmoore/Dev/crafty/app/views/goals.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimrewards.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsbackpack.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimstate.js",
-		"/Users/colinmoore/Dev/crafty/app/views/contextinfoconsole.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fscontextconsole.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsrecipe.js"
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/stopwatch.js"
 	],
 	"find":
 	{
@@ -370,6 +425,23 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"constructorDefines",
+			"validateJSON",
+			"WoodenTrap3",
+			"setTimeout",
+			"sondata.jsonState",
+			"sondata.jsonState.bank\n",
+			"bank",
+			"ctrller",
+			"ctr",
+			"ctrller",
+			"parseInt",
+			"= worker",
+			"Workbench3",
+			"workst",
+			"updateServerVersionWithData",
+			"serializedData",
+			"stateURL",
 			"metal",
 			"craftables",
 			"isCraftable",
@@ -480,24 +552,7 @@
 			"Grill",
 			"Meal",
 			"BasicMeal",
-			"    \"BasicMeal\",\nBasicMeal",
-			"BasicMeal",
-			"wool",
-			"Wool",
-			"BackPack",
-			"Rope",
-			"forEa",
-			"toolDefines",
-			"indexOf",
-			"bank",
-			"bankWith",
-			"bankwith",
-			"bankDeposit",
-			"characterObjs",
-			"hasUnlocks",
-			"FSService",
-			"FSSimObjectChannel",
-			"stopActiveTask"
+			"    \"BasicMeal\",\nBasicMeal"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -528,24 +583,24 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 9,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/share/craftables.html",
+					"file": "app/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1938,
+						"buffer_size": 5852,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1471,
-								1471
+								568,
+								485
 							]
 						],
 						"settings":
@@ -558,37 +613,37 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/scripts/services/json/fssimrules.js",
+					"file": "app/views/pages/load.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4781,
+						"buffer_size": 2180,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1189,
-								1203
+								1463,
+								1463
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 460.0,
+						"translation.y": 306.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -597,15 +652,75 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10824,
+						"buffer_size": 12288,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4490,
-								4490
+								8973,
+								8973
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 3.0,
+						"translation.y": 4131.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/scripts/services/util/fsjsonloader.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3929,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1772,
+								1739
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 4.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/scripts/services/sim/fssimtasks.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7114,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3271,
+								3271
 							]
 						],
 						"settings":
@@ -615,32 +730,62 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1048.0,
+						"translation.y": 1465.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "app/scripts/services/json/state/fscraftable.js",
+					"buffer": 5,
+					"file": "/Users/colinmoore/Perforce/cmoore_MBP/SliceOfMine/Assets/StreamingAssets/crafting.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1732,
+						"buffer_size": 3559,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1139,
-								1149
+								2659,
+								2689
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 714.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/views/share/activetasks.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1100,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1044,
+								1044
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -648,54 +793,54 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "app/json/rules.json",
+					"buffer": 7,
+					"file": "app/scripts/services/json/fssimrules.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 45611,
+						"buffer_size": 5379,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3873,
-								3883
+								643,
+								643
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4572.0,
+						"translation.y": 938.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 8,
 					"file": "app/scripts/services/gdocs.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4978,
+						"buffer_size": 5064,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4747,
-								4747
+								4373,
+								4373
 							]
 						],
 						"settings":
@@ -705,27 +850,57 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1506.0,
+						"translation.y": 1293.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 9,
 					"file": "app/views/pages/rules.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6534,
+						"buffer_size": 6779,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								353,
-								359
+								2147,
+								2147
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 573.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/views/share/tasks.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 731,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -742,50 +917,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "app/styles/main.css",
+					"buffer": 11,
+					"file": "app/views/share/craftables.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2269,
+						"buffer_size": 1938,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2265,
-								2265
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1096.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/views/pages/craft.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1072,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								767,
-								767
+								893,
+								893
 							]
 						],
 						"settings":
@@ -795,10 +940,116 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 336.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "app/scripts/services/json/state/fstask.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4177,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1221,
+								1190
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 297.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 381,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										213,
+										223
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								234,
+								234
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/scripts/services/json/state/fsbankable.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1753,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1062,
+								1062
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 271.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
 			]

@@ -16,6 +16,8 @@ angular.module('craftyApp')
 
     this.state = null;
     this.stateURL = null;
+    this.serializedData = null;
+    this.updateServerVersionWithData = null;
 
 
     this.set = function(json, stateURL) {
@@ -24,6 +26,7 @@ angular.module('craftyApp')
         this.state = angular.copy(json);
 
         // validate
+
         var errorLog = this.validateJSON(json);
         if ( errorLog.length > 0) {
 
@@ -149,7 +152,7 @@ angular.module('craftyApp')
      * @desc 
      * @return 
      */
-    this.serialize = function () {
+    this.onSerialize = function () {
 
         var out = angular.copy(this.state);
 
@@ -192,11 +195,12 @@ angular.module('craftyApp')
         out.pendingTasks = [];
 
 
-        this.state =  angular.copy(out);
+        this.serializedData = angular.toJson(angular.copy(out), true);
 
         console.log('>' + this.stateURL);
 
         // upload to server
+        /*
         $http.put( 
             this.stateURL, 
             this.state
@@ -205,9 +209,38 @@ angular.module('craftyApp')
         })
         .error( function(response) { 
             window.alert('FAILED:');  
+        });*/
+
+    };
+
+    /**
+     * @desc update myJSON.com server with current JSON state. Increment version.
+     * @return 
+     */
+    this.onUpdateServerVersionWith = function() {
+        //console.log( this.updateServerVersionWithData);
+
+        var newJSONrstate = {};
+        newJSONrstate = this.updateServerVersionWithData;
+
+        $http.put( 
+            this.stateURL, 
+            newJSONrstate
+        )
+        .success(function(response) {
+            console.log('SUCCESS' + angular.toJson(response));
+
+            simState.set(response, simState.stateURL);
+            window.alert('server updated');
+        })
+        .error( function(response) { 
+            simState.updateServerVersionWithData = null;
+            console.log('FAILED' + angular.toJson(response, true)); 
+            window.alert('FAILED:' + angular.toJson(response, true));  
         });
 
     };
+
 
     /**
      * @desc 
@@ -253,10 +286,21 @@ angular.module('craftyApp')
             }
             else if (FSSimRules.constructorDefines.hasOwnProperty(bankableName) === true) {
             }
+              else if (FSSimRules.craftableDefines.hasOwnProperty(bankableName) === true) {
+            }
             else if (FSSimRules.harvestableDefines.hasOwnProperty(bankableName) === true) {
             }
             else {
-                errorLog.push('state.json: bank itme  ' + bankableName + ' does not exist in rules.json:*');  
+                var craftable = false;
+                for (  var craftkeyName in FSSimRules.craftableDefines) {
+                    if (FSSimRules.craftableDefines[craftkeyName].output.hasOwnProperty(bankableName)) {
+                        craftable = true;
+                    }
+                }
+
+                if ( craftable === false) {
+                    errorLog.push('state.json: bank item  ' + bankableName + ' does not exist in rules.json:*');  
+                }
             }
 
             if ( typeof json.bank[keyName].quantity !== 'number') {

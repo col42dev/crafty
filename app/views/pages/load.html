@@ -25,11 +25,36 @@
 
 <br/>
 
-<form novalidate>
-<button ng-click="getFSSimState().serialize()">Save State</button> update "state" data to server.
-</form>
-<pre>
-{{getFSSimState().getState()}}
-</pre>
-</br>
+
+
+
+
+<table class="table table-bordered table-condensed table-scrollable">
+  <theader>
+      <tr class="noselect" >
+          <td class="col-sm-1">
+              <pre>
+              <button ng-click="getFSSimState().onSerialize()" style="float: left;">Serialize:</button><br/><br/>Displays current state data as JSON in text area below.
+              </pre>
+          </td>
+          <td class="col-sm-1">
+            <pre>
+            <button ng-click="getFSSimState().onUpdateServerVersionWith()" style="float: left;">Update server:</button><br/><br/>at {{getFSSimState().stateURL}}. Paste JSON to be uploaded to the server in the text area below. There is a risk this will break the build, if the change is significant you should use myjson.com to genrate a new url and test this first. 
+            </pre>
+          </td>
+
+      </tr>
+  </theader>
+    <tbody>
+      <tr class="noselect" >
+          <td class="col-sm-1">
+            <textarea cols="50" rows="20" ng-model="getFSSimState().serializedData " style="float: left; width:100%"></textarea>
+          </td>
+          <td class="col-sm-1">
+            <textarea cols="50" rows="20" ng-model="getFSSimState().updateServerVersionWithData" style="float: right; width:100%"></textarea>
+          </td>
+
+      </tr>
+  </tbody>
+</table>  
 

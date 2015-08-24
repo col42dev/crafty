@@ -32,6 +32,22 @@ angular.module('craftyApp')
         this.taskRules = json.taskRules;  
         this.rewardRules = json.rewardRules;  
 
+        // dynamically generate object list of construtors
+
+        this.constructorDefines = {};
+        for ( var cdi = 0; cdi < Object.keys(this.craftableDefines).length; cdi ++) {
+
+            var keyname = Object.keys(this.craftableDefines)[cdi];
+            var construction = this.craftableDefines[keyname].construction[0];
+
+            console.log(construction);
+
+            if ( this.constructorDefines.hasOwnProperty(construction) === false) {
+                console.log('+');
+                this.constructorDefines[construction] = {};
+            }
+        }
+
 
 
         this.rebuildMirrors();

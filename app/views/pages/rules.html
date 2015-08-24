@@ -28,6 +28,7 @@
         <table class="table table-bordered table-condensed table-scrollable">
           <tbody>
             <td class="col-sm-1" style="word-wrap:normal">Id</td>
+            <td class="col-sm-1" style="word-wrap:normal">Category</td>
             <td class="col-sm-2" style="word-wrap:normal">Output</td>
             <td class="col-sm-2" style="word-wrap:normal">Input</td>
             <td class="col-sm-1" style="word-wrap:normal">Workers</td>
@@ -56,6 +57,9 @@
                 <tr ng-repeat="(k,v)  in vm">
                   <td class="col-sm-1">
                     <input type="text" ng-model="k" size="16" style="width:100%" readonly></input>
+                  </td> 
+                  <td class="col-sm-1">
+                    <input type="text" ng-model="v.category" size="16" style="width:100%" readonly></input>
                   </td> 
                   <td class="col-sm-2">
                     <div ng-repeat="(outk,outv) in v.output">
