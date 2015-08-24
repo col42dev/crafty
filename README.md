@@ -1,4 +1,4 @@
-# (crafty)[http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/#/]
+# [crafty](http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/#/)
 
 crafty is prototype web app which simulate interactions on a crafting chain technology tree. Simulation components include worker agents and resource gathering from a world map. All tasks are timed determined by the crafting chain rules. A crafting task can only be initiated if all its dependencies are met, these include available workers and a list of required resources and quantities, recipes also require a specific constructor (workstation).
 
