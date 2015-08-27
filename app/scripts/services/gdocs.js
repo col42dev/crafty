@@ -127,10 +127,24 @@ oef8ni3
                 var recipeid = this.response.feed.entry[i].gsx$recipeid.$t;
 
 
-                recipe.outputprefabname = this.response.feed.entry[i].gsx$outputprefabname.$t;
+                if ( this.response.feed.entry[i].gsx$outputprefabname.$t.length > 0) {
+                  recipe.outputprefabname = this.response.feed.entry[i].gsx$outputprefabname.$t;
+                }
 
 
                 this.recipes[recipeid] = recipe;
+
+                recipe.playerlevelneeded = parseInt( this.response.feed.entry[i].gsx$playerlevelneeded.$t, 10);
+
+                if (this.response.feed.entry[i].gsx$recipesimulationmotive1id.$t.length > 0) {
+                  recipe.motives= {}
+                  for ( var motivesIndex = 0; motivesIndex < 1; motivesIndex ++) {
+                        var id = this.response.feed.entry[i].gsx$recipesimulationmotive1id.$t;
+                        var capacity = this.response.feed.entry[i].gsx$recipesimulationmotive1capacity.$t;
+                        recipe.motives[id] = capacity;
+                  }
+                }
+     
               }
 
 
