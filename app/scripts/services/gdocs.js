@@ -126,6 +126,10 @@ oef8ni3
 
                 var recipeid = this.response.feed.entry[i].gsx$recipeid.$t;
 
+
+                recipe.outputprefabname = this.response.feed.entry[i].gsx$outputprefabname.$t;
+
+
                 this.recipes[recipeid] = recipe;
               }
 
