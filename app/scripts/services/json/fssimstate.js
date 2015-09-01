@@ -36,7 +36,7 @@ angular.module('craftyApp')
                 window.alert(thisErrorMessage);
             });
         
-            return;
+           return;
         }
 
         this.taskTimeScalar ='1';

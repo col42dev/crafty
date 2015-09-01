@@ -112,15 +112,6 @@
 			}
 		},
 		{
-			"contents": "{\n  \"title\": \"craftystate\",\n  \"version\": \"0.0.1\",\n  \"characters\": [\n    {\n      \"name\": \"Aelfric, Elvish Harvester\",\n      \"proficiency\": {\n        \"profession\": \"Harvester\",\n        \"tier\": 0\n      },\n      \"image\": \"http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c1.8d006e6f.jpg\",\n      \"stats\": {\n        \"health\": {\n          \"current\": 67,\n          \"max\": 175,\n          \"regeneratePeriod\": 10\n        },\n        \"energy\": {\n          \"current\": 71,\n          \"max\": 120,\n          \"regeneratePeriod\": 8\n        },\n        \"mind\": {\n          \"current\": 47,\n          \"max\": 120,\n          \"regeneratePeriod\": 20\n        }\n      },\n      \"activity\": [\n\n      ],\n      \"tools\": [\n\n      ],\n      \"weapons\": [\n\n      ]\n    },\n    {\n      \"name\": \"Lug, Dwarvish Crafter\",\n      \"proficiency\": {\n        \"profession\": \"Toolsmith\",\n        \"tier\": 1\n      },\n      \"image\": \"http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c2.3a5cb818.png\",\n      \"stats\": {\n        \"health\": {\n          \"current\": 67,\n          \"max\": 100,\n          \"regeneratePeriod\": 10\n        },\n        \"energy\": {\n          \"current\": 50,\n          \"max\": 80,\n          \"regeneratePeriod\": 15\n        },\n        \"mind\": {\n          \"current\": 134,\n          \"max\": 150,\n          \"regeneratePeriod\": 5\n        }\n      },\n      \"activity\": [\n\n      ],\n      \"tools\": [\n\n      ],\n      \"weapons\": [\n\n      ]\n    },\n    {\n      \"name\": \"Dora the Chef\",\n      \"proficiency\": {\n        \"profession\": \"Cook\",\n        \"tier\": 1\n      },\n      \"image\": \"http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c3.b9144b93.png\",\n      \"stats\": {\n        \"health\": {\n          \"current\": 100,\n          \"max\": 100,\n          \"regeneratePeriod\": 10\n        },\n        \"energy\": {\n          \"current\": 100,\n          \"max\": 100,\n          \"regeneratePeriod\": 5\n        },\n        \"mind\": {\n          \"current\": 27,\n          \"max\": 100,\n          \"regeneratePeriod\": 20\n        }\n      },\n      \"activity\": [\n\n      ],\n      \"tools\": [\n\n      ],\n      \"weapons\": [\n\n      ]\n    },\n    {\n      \"name\": \"Skov the Strong, Ogre\",\n      \"proficiency\": {\n        \"profession\": \"Laborer\",\n        \"tier\": 0\n      },\n      \"image\": \"http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c4.59c1ea4d.png\",\n      \"stats\": {\n        \"health\": {\n          \"current\": 77,\n          \"max\": 100,\n          \"regeneratePeriod\": 10\n        },\n        \"energy\": {\n          \"current\": 234,\n          \"max\": 300,\n          \"regeneratePeriod\": 5\n        },\n        \"mind\": {\n          \"current\": 45,\n          \"max\": 50,\n          \"regeneratePeriod\": 30\n        }\n      },\n      \"activity\": [\n\n      ],\n      \"tools\": [\n\n      ],\n      \"weapons\": [\n\n      ]\n    }\n  ],\n  \"harvestables\": [\n    {\n      \"name\": \"Earth\",\n      \"quantity\": 100\n    },\n    {\n      \"name\": \"Stone\",\n      \"quantity\": 100\n    }\n  ],\n  \"bank\": [\n    {\n      \"name\": \"Constructor1\",\n      \"quantity\": 1\n    },\n    {\n      \"name\": \"Wood\",\n      \"quantity\": 60\n    },\n    {\n      \"name\": \"Leather\",\n      \"quantity\": 10\n    },\n    {\n      \"name\": \"Water\",\n      \"quantity\": 10\n    },\n    {\n      \"name\": \"Plants\",\n      \"quantity\": 10\n    },\n    {\n      \"name\": \"Stone\",\n      \"quantity\": 10\n    },\n    {\n      \"name\": \"Coal\",\n      \"quantity\": 10\n    },\n    {\n      \"name\": \"Metals\",\n      \"quantity\": 25\n    }\n  ],\n  \"rewards\": [\n\n  ],\n  \"craftables\": [\n    \"Wood1\",\n    \"Water1\",\n    \"Animals1\",\n    \"Plants1\",\n    \"Stone1\",\n    \"Coal1\",\n    \"Metals1\",\n    \"MagicCrystals1\",\n    \"Wood2\",\n    \"Water2\",\n    \"Animals2\",\n    \"Plants2\",\n    \"Stone2\",\n    \"Coal2\",\n    \"Metals2\",\n    \"MagicCrystals2\",\n    \"Wood3\",\n    \"Water3\",\n    \"Animals3\",\n    \"Plants3\",\n    \"Stone3\",\n    \"Coal3\",\n    \"Metals3\",\n    \"MagicCrystals3\",\n    \"LoggingCamp1\",\n    \"Bridge1\",\n    \"Pasture1\",\n    \"Farm1\",\n    \"Quarry1\",\n    \"CoalMine1\",\n    \"MetalMine1\",\n    \"LoggingCamp2\",\n    \"Bridge2\",\n    \"Pasture2\",\n    \"Farm2\",\n    \"Quarry2\",\n    \"CoalMine2\",\n    \"MetalMine2\",\n    \"LoggingCamp3\",\n    \"Bridge3\",\n    \"Pasture3\",\n    \"Farm3\",\n    \"Quarry3\",\n    \"CoalMine3\",\n    \"MetalMine3\",\n    \"WoodenPlank1\",\n    \"WoodenBeam1\",\n    \"WoodenPanel1\",\n    \"WoodenSpikes1\",\n    \"Fibers1\",\n    \"Leather1\",\n    \"Bones1\",\n    \"Rope1\",\n    \"Fabric1\",\n    \"Paper1\",\n    \"Glass1\",\n    \"Gears1\",\n    \"Nails1\",\n    \"Dyes1\",\n    \"Drapes1\",\n    \"Pot1\",\n    \"Bottle1\",\n    \"MetalBeam1\",\n    \"Herbs1\",\n    \"WoodenPlank2\",\n    \"WoodenBeam2\",\n    \"WoodenPanel2\",\n    \"WoodenSpikes2\",\n    \"Fibers2\",\n    \"Leather2\",\n    \"CarvedLeather1\",\n    \"Bones2\",\n    \"CarvedBones1\",\n    \"Rope2\",\n    \"Fabric2\",\n    \"Paper2\",\n    \"Glass2\",\n    \"Gears2\",\n    \"Nails2\",\n    \"Dyes2\",\n    \"Drapes2\",\n    \"Pot2\",\n    \"Bottle2\",\n    \"MetalBeam2\",\n    \"CarvedWoodenPlank1\",\n    \"CarvedWoodenPanel1\",\n    \"Herbs2\",\n    \"Book1\",\n    \"BottleOfMedicine1\",\n    \"WoodenPlank3\",\n    \"WoodenBeam3\",\n    \"WoodenPanel3\",\n    \"WoodenSpikes3\",\n    \"Fibers3\",\n    \"Leather3\",\n    \"CarvedLeather2\",\n    \"Bones3\",\n    \"CarvedBones3\",\n    \"Rope3\",\n    \"Fabric3\",\n    \"Paper3\",\n    \"Glass3\",\n    \"Gears3\",\n    \"Nails3\",\n    \"Dyes3\",\n    \"Drapes3\",\n    \"Pot3\",\n    \"Bottle3\",\n    \"MetalBeam3\",\n    \"CarvedWoodenPlank2\",\n    \"CarvedWoodenPanel2\",\n    \"Herbs3\",\n    \"Book2\",\n    \"Encyclopedia1\",\n    \"Paint1\",\n    \"BottleOfMedicine2\",\n    \"WoodPickaxe1\",\n    \"WoodPickaxe2\",\n    \"WoodPickaxe3\",\n    \"WoodenTower1\",\n    \"WoodenTrap1\",\n    \"WoodenTower2\",\n    \"WoodenTrap2\",\n    \"WoodenTower3\",\n    \"WoodenTrap3\",\n    \"Sawmill1\",\n    \"Stoneworks1\",\n    \"Mill1\",\n    \"Meatworks1\",\n    \"Forge1\",\n    \"Lab1\",\n    \"Sawmill2\",\n    \"Stoneworks2\",\n    \"Mill2\",\n    \"Meatworks2\",\n    \"Forge2\",\n    \"Lab2\",\n    \"Sawmill3\",\n    \"Stoneworks3\",\n    \"Mill3\",\n    \"Meatworks3\",\n    \"Forge3\",\n    \"Lab3\",\n    \"CookingArea1\",\n    \"EatingObject1\",\n    \"CookingArea2\",\n    \"EatingObject2\",\n    \"CookingArea3\",\n    \"EatingObject3\",\n    \"RestingArea1\",\n    \"PeacefulObject1\",\n    \"RestingArea2\",\n    \"PeacefulObject2\",\n    \"RestingArea3\",\n    \"PeacefulObject3\",\n    \"HealingArea1\",\n    \"HealingObject1\",\n    \"HealingArea2\",\n    \"HealingObject2\",\n    \"HealingArea3\",\n    \"HealingObject3\",\n    \"SocialArea1\",\n    \"SocialObject1\",\n    \"SocialArea2\",\n    \"SocialObject2\",\n    \"SocialArea3\",\n    \"SocialObject3\",\n    \"CultureArea1\",\n    \"CultureObject1\",\n    \"CultureArea2\",\n    \"CultureObject2\",\n    \"CultureArea3\",\n    \"CultureObject3\"\n  ],\n  \"activeTasks\": [\n\n  ],\n  \"pendingTasks\": [\n\n  ]\n}",
-			"settings":
-			{
-				"buffer_size": 6481,
-				"line_ending": "Unix",
-				"name": "{"
-			}
-		},
-		{
 			"file": "app/scripts/services/util/fsjsonloader.js",
 			"settings":
 			{
@@ -140,7 +131,7 @@
 			"file": "/Users/colinmoore/Perforce/cmoore_MBP/SliceOfMine/Assets/StreamingAssets/crafting.html",
 			"settings":
 			{
-				"buffer_size": 3881,
+				"buffer_size": 4173,
 				"line_ending": "Windows"
 			}
 		},
@@ -164,7 +155,7 @@
 			"file": "app/scripts/services/gdocs.js",
 			"settings":
 			{
-				"buffer_size": 5064,
+				"buffer_size": 6221,
 				"line_ending": "Unix"
 			}
 		},
@@ -181,7 +172,15 @@
 			"file": "app/views/pages/rules.html",
 			"settings":
 			{
-				"buffer_size": 6779,
+				"buffer_size": 7589,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/pages/gdoc.html",
+			"settings":
+			{
+				"buffer_size": 34,
 				"line_ending": "Unix"
 			}
 		},
@@ -435,6 +434,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"level",
 			"MetalBar",
 			"Lock",
 			"Torc",
@@ -561,8 +561,7 @@
 			"Steel",
 			"Sheep",
 			"Fish\"",
-			"Fish",
-			"food"
+			"Fish"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -593,7 +592,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -639,8 +638,8 @@
 						"selection":
 						[
 							[
-								975,
-								975
+								974,
+								974
 							]
 						],
 						"settings":
@@ -650,44 +649,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 190.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6481,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								6481
-							]
-						],
-						"settings":
-						{
-							"auto_name": "{",
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4105.0,
+						"translation.y": 3053.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "app/scripts/services/util/fsjsonloader.js",
 					"semi_transient": false,
 					"settings":
@@ -717,7 +686,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "app/scripts/services/sim/fssimtasks.js",
 					"semi_transient": false,
 					"settings":
@@ -747,12 +716,12 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "/Users/colinmoore/Perforce/cmoore_MBP/SliceOfMine/Assets/StreamingAssets/crafting.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3881,
+						"buffer_size": 4173,
 						"regions":
 						{
 						},
@@ -777,7 +746,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "app/views/share/activetasks.html",
 					"semi_transient": false,
 					"settings":
@@ -807,7 +776,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "app/scripts/services/json/fssimrules.js",
 					"semi_transient": false,
 					"settings":
@@ -837,20 +806,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 7,
 					"file": "app/scripts/services/gdocs.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5064,
+						"buffer_size": 6221,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								638,
-								747
+								4835,
+								4835
 							]
 						],
 						"settings":
@@ -860,14 +829,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 598.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 8,
 					"semi_transient": false,
 					"settings":
 					{
@@ -892,24 +861,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 9,
 					"file": "app/views/pages/rules.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6779,
+						"buffer_size": 7589,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2147,
-								2147
+								4040,
+								4040
 							]
 						],
 						"settings":
@@ -919,10 +888,38 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 573.0,
+						"translation.y": 768.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/views/pages/gdoc.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 34,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
