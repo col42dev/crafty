@@ -153,6 +153,24 @@ oef8ni3
                 recipe.xp = parseInt( this.response.feed.entry[i].gsx$recipeplayerxpadded.$t, 10); 
      
                 recipe.automate = this.response.feed.entry[i].gsx$outputautomaticrenew.$t;
+
+
+                if (this.response.feed.entry[i].gsx$objectslotcategory.$t.length > 0) {
+                  recipe.objectSlotCategory = this.response.feed.entry[i].gsx$objectslotcategory.$t;
+                }
+
+                if (this.response.feed.entry[i].gsx$motiveslotcapacity.$t.length > 0) {
+                  recipe.motiveSlotCapacity = this.response.feed.entry[i].gsx$motiveslotcapacity.$t;
+                }
+
+                if (this.response.feed.entry[i].gsx$workstationslotcapacity.$t.length > 0) {
+                  recipe.workstationSlotCapacity = this.response.feed.entry[i].gsx$workstationslotcapacity.$t;
+                }
+
+                if (this.response.feed.entry[i].gsx$defenseslotcapacity.$t.length > 0) {
+                  recipe.defenseSlotCapacity = this.response.feed.entry[i].gsx$defenseslotcapacity.$t;
+                }
+
      
 
               }

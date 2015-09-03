@@ -39,6 +39,8 @@
             <td class="col-sm-1" style="word-wrap:normal">PlayerLvl</td>
             <td class="col-sm-1" style="word-wrap:normal">xp</td>
             <td class="col-sm-1" style="word-wrap:normal">auto</td>
+            <td class="col-sm-1" style="word-wrap:normal">capacity<br/>M.W.D</td>
+            <td class="col-sm-1" style="word-wrap:normal">Object<br/>Slot<br/>Category</td>
           </tbody>
         </table>  
       </td>
@@ -84,7 +86,16 @@
                   <td class="col-sm-1"><input type="text" ng-model="v.outputprefabname" size="16" style="width:100%"></input></td>  
                   <td class="col-sm-1"><input type="number" ng-model="v.playerlevelneeded" size="3" style="width:100%"></input></td> 
                   <td class="col-sm-1"><input type="number" ng-model="v.xp" size="3" style="width:100%"></input></td> 
-                  <td class="col-sm-1"><input type="text" ng-model="v.automate" size="7" style="width:100%"></input></td>  
+                  <td class="col-sm-1"><input type="text" ng-model="v.automate" size="7" style="width:100%"></input></td> 
+
+                  <td class="col-sm-1">
+                    {{v.motiveSlotCapacity}} {{v.workstationSlotCapacity}} {{v.defenseSlotCapacity}}
+                  </td>  
+
+                  <td class="col-sm-1">
+                    {{v.objectSlotCategory}} 
+
+                  </td>  
             
                 </div>
 
