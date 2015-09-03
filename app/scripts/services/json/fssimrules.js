@@ -102,6 +102,9 @@ angular.module('craftyApp')
         newVersionIdArray[2] = parseInt(newVersionIdArray[2], 10) + 1;
         newJSONrules.version = newVersionIdArray.join('.');
 
+        var d = new Date();
+        newJSONrules.lastEditDate = d.toString();
+
 
 
           // Rule Defines

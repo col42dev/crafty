@@ -25,6 +25,10 @@ angular.module('craftyApp')
         this.stateURL = stateURL;
         this.state = angular.copy(json);
 
+        var d = new Date();
+        this.state.lastEditDate = d.toString();
+
+
         // validate
 
         var errorLog = this.validateJSON(json);
@@ -218,14 +222,22 @@ angular.module('craftyApp')
      * @return 
      */
     this.onUpdateServerVersionWith = function() {
-        //console.log( this.updateServerVersionWithData);
+      
+        var newJSONstate = {};
+        newJSONstate = JSON.parse(this.updateServerVersionWithData);
 
-        var newJSONrstate = {};
-        newJSONrstate = this.updateServerVersionWithData;
+        var newVersionIdArray = newJSONstate.version.split('.');
+        newVersionIdArray[2] = parseInt(newVersionIdArray[2], 10) + 1;
+        newJSONstate.version = newVersionIdArray.join('.');
+
+        var d = new Date();
+        newJSONstate.lastEditDate = d.toString();
+
+        newJSONstate = JSON.stringify(newJSONstate);
 
         $http.put( 
             this.stateURL, 
-            newJSONrstate
+            newJSONstate
         )
         .success(function(response) {
             console.log('SUCCESS' + angular.toJson(response));

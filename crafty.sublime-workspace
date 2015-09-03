@@ -107,7 +107,7 @@
 			"file": "app/scripts/services/json/fssimstate.js",
 			"settings":
 			{
-				"buffer_size": 12290,
+				"buffer_size": 12287,
 				"line_ending": "Unix"
 			}
 		},
@@ -131,7 +131,7 @@
 			"file": "/Users/colinmoore/Perforce/cmoore_MBP/SliceOfMine/Assets/StreamingAssets/crafting.html",
 			"settings":
 			{
-				"buffer_size": 4173,
+				"buffer_size": 4164,
 				"line_ending": "Windows"
 			}
 		},
@@ -172,7 +172,7 @@
 			"file": "app/views/pages/rules.html",
 			"settings":
 			{
-				"buffer_size": 7589,
+				"buffer_size": 7599,
 				"line_ending": "Unix"
 			}
 		},
@@ -631,15 +631,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12290,
+						"buffer_size": 12287,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								974,
-								974
+								972,
+								972
 							]
 						],
 						"settings":
@@ -648,8 +648,8 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 3053.0,
+						"translation.x": 4.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -721,7 +721,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4173,
+						"buffer_size": 4164,
 						"regions":
 						{
 						},
@@ -832,7 +832,7 @@
 						"translation.y": 598.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -870,15 +870,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7589,
+						"buffer_size": 7599,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4040,
-								4040
+								1338,
+								1338
 							]
 						],
 						"settings":
@@ -888,10 +888,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 768.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
