@@ -30,6 +30,7 @@ omu0e9t
 orndd4q
 14iw6g
 oef8ni3
+ov2goyk
    
 
    'https://spreadsheets.google.com/feeds/list/1a5nPRqrNvu6gAVVtrnAJ5bvGqXCiDVOLivtZrKTIzOo/od3otrm/public/values?alt=json';
@@ -160,15 +161,15 @@ oef8ni3
                 }
 
                 if (this.response.feed.entry[i].gsx$motiveslotcapacity.$t.length > 0) {
-                  recipe.motiveSlotCapacity = this.response.feed.entry[i].gsx$motiveslotcapacity.$t;
+                  recipe.motiveSlotCapacity = parseInt( this.response.feed.entry[i].gsx$motiveslotcapacity.$t, 10);
                 }
 
                 if (this.response.feed.entry[i].gsx$workstationslotcapacity.$t.length > 0) {
-                  recipe.workstationSlotCapacity = this.response.feed.entry[i].gsx$workstationslotcapacity.$t;
+                  recipe.workstationSlotCapacity = parseInt(this.response.feed.entry[i].gsx$workstationslotcapacity.$t, 10);
                 }
 
                 if (this.response.feed.entry[i].gsx$defenseslotcapacity.$t.length > 0) {
-                  recipe.defenseSlotCapacity = this.response.feed.entry[i].gsx$defenseslotcapacity.$t;
+                  recipe.defenseSlotCapacity = parseInt(this.response.feed.entry[i].gsx$defenseslotcapacity.$t, 10);
                 }
 
      
@@ -191,6 +192,101 @@ oef8ni3
           	console.log('spreadsheet not found.');
 
           });
+
+
+          // progression
+          console.log('progression');
+
+          url = 'https://spreadsheets.google.com/feeds/list/'+spreadsheet+'/ov2goyk/public/values?alt=json';
+
+          $http.get(url,{
+              params: {
+                  dataType: 'json',
+                  headers: {
+                      'Access-Control-Allow-Origin': '*',
+                      'Access-Control-Request-Headers' : 'access-control-allow-origin'
+                  }
+              }
+          }).success(function(json) {
+
+            this.response = json;
+
+            console.log( 'length:' + this.response.feed.entry.length);
+
+            var entry0 = this.response.feed.entry[0];
+
+            var progressions = {};
+
+
+            for (var i = 0; i < this.response.feed.entry.length; i++) { 
+
+              var progression = {};
+
+              var content = this.response.feed.entry[i].content;
+              //console.log( angular.toJson(content));
+
+              var playerlevel = this.response.feed.entry[i].gsx$playerlevel.$t;
+              console.log( playerlevel);
+
+              if (playerlevel.length > 0 ) {
+                progression.playerLevel = parseInt( this.response.feed.entry[i].gsx$playerlevel.$t, 10);
+                //console.log( playerxpneeded);
+
+                progression.playerXPNeeded = parseInt( this.response.feed.entry[i].gsx$playerxpneeded.$t, 10);
+
+                progression.recipes = {};
+                for ( var recipeIndex = 1; recipeIndex <= 5; recipeIndex ++) {
+        
+
+                  var propnameRecipeID = 'gsx$recipe' + recipeIndex + 'id';
+                  var propnameRecipeAmount = 'gsx$recipe' + recipeIndex + 'amount';
+                  var propnameRecipeXP = 'gsx$recipe' + recipeIndex + 'xp';
+
+                  var propvalueRecipeID = this.response.feed.entry[i][propnameRecipeID].$t;
+
+                  if ( propvalueRecipeID.length > 0) {
+
+                    if (this.response.feed.entry[i][propnameRecipeID].$t !== 'NULL') {
+                      var recipeID = this.response.feed.entry[i][propnameRecipeID].$t;
+                      var recipe = {};
+                      
+                      recipe.amount = parseInt( this.response.feed.entry[i][propnameRecipeAmount].$t, 10);
+                      recipe.xp = parseInt( this.response.feed.entry[i][propnameRecipeXP].$t, 10);
+
+                      progression.recipes[ recipeID] = recipe;
+                    }
+                  }
+                }
+
+                progression.additionalMaxWorkers = parseInt( this.response.feed.entry[i].gsx$additionalmaxworkers.$t, 10);
+                progression.additionalMaxWorkersxp = parseInt( this.response.feed.entry[i].gsx$additionalmaxworkersxp.$t, 10);
+                progression.maxHeroes = parseInt( this.response.feed.entry[i].gsx$maxheroes.$t, 10);
+                progression.maxHeroesUnlocked = parseInt( this.response.feed.entry[i].gsx$maxheroesunlocked.$t, 10);
+                progression.maxDefenseTraps = parseInt( this.response.feed.entry[i].gsx$maxdefensetraps.$t, 10);
+                progression.maxDefenseTowers = parseInt( this.response.feed.entry[i].gsx$maxdefensetowers.$t, 10);
+                progression.maxCombatWaves = parseInt( this.response.feed.entry[i].gsx$maxcombatwaves.$t, 10);
+                progression.enforceHunger = (this.response.feed.entry[i].gsx$enforcehunger.$t === 'TRUE') ? 1 : 0;
+                progression.enforceRest = (this.response.feed.entry[i].gsx$enforcerest.$t === 'TRUE') ? 1 : 0;
+
+              }
+
+              progressions[playerlevel] = progression;
+
+              console.log( angular.toJson(progression));
+
+            }
+
+            FSSimRules.progressionDefines = angular.copy(progressions);
+            FSSimRules.rebuildMirrors();
+
+
+
+          }.bind(this)).error(function() {
+
+            console.log('progression spreadsheet not found.');
+
+          });
+
 	};
 
 

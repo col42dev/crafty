@@ -31,6 +31,7 @@ angular.module('craftyApp')
         this.constructorDefines = json.constructorDefines;  
         this.taskRules = json.taskRules;  
         this.rewardRules = json.rewardRules;  
+        this.progressionDefines = json.progressionDefines; 
 
         // dynamically generate object list of construtors
 
@@ -63,13 +64,12 @@ angular.module('craftyApp')
         // remap harvestableDefines as keys array - for use by html templates visuals only.
         var hKeys = Object.keys(this.harvestableDefines);
         hKeys.push('');
-        console.log( JSON.stringify(hKeys));
+        //console.log( JSON.stringify(hKeys));
         this.harvestableDefinesKeys = hKeys.map(function (key) {
                 return key;
               });
 
 
-        console.log('rebuildMirrors:' + Object.keys(this.craftableDefines).length);
 
         // 
         this.craftableDefinesMirror = {};
@@ -83,8 +83,34 @@ angular.module('craftyApp')
             }
 
             this.craftableDefinesMirror[recipename][keyname] =  this.craftableDefines[keyname];
+        }
 
 
+
+
+
+        // remap progressionDefines as keys array - for use by html templates visuals only.
+        var pKeys = Object.keys(this.progressionDefines);
+        pKeys.push('');
+        //console.log( JSON.stringify(pKeys));
+        this.progressionDefinesKeys = pKeys.map(function (key) {
+                return key;
+              });
+
+
+    
+        // 
+        this.progressionDefinesMirror = {};
+        for ( var cdi = 0; cdi < Object.keys(this.progressionDefines).length; cdi ++) {
+
+            var keyname = Object.keys(this.progressionDefines)[cdi];
+            var playerLevel = this.progressionDefines[keyname].playerLevel;
+
+            if ( this.progressionDefinesMirror.hasOwnProperty( playerLevel) === false) {
+                this.progressionDefinesMirror[playerLevel] = {};
+            }
+
+            this.progressionDefinesMirror[playerLevel][keyname] =  this.progressionDefines[keyname];
         }
    
     };
@@ -105,9 +131,7 @@ angular.module('craftyApp')
         var d = new Date();
         newJSONrules.lastEditDate = d.toString();
 
-
-
-          // Rule Defines
+        // Rule Defines
         newJSONrules.harvestableDefines = this.harvestableDefines;  
         newJSONrules.craftableDefines = this.craftableDefines; 
         newJSONrules.toolDefines = this.toolDefines;  
@@ -115,7 +139,7 @@ angular.module('craftyApp')
         newJSONrules.constructorDefines = this.constructorDefines;  
         newJSONrules.taskRules = this.taskRules;  
         newJSONrules.rewardRules = this.rewardRules;  
-
+        newJSONrules.progressionDefines = this.progressionDefines; 
 
 
         $http.put( 

@@ -37,9 +37,9 @@
             <td class="col-sm-1" style="word-wrap:normal">Duration</td>
             <td class="col-sm-1" style="word-wrap:normal">Output<br/>Prefab<br/>Name</td>
             <td class="col-sm-1" style="word-wrap:normal">PlayerLvl</td>
-            <td class="col-sm-1" style="word-wrap:normal">xp</td>
-            <td class="col-sm-1" style="word-wrap:normal">auto</td>
-            <td class="col-sm-1" style="word-wrap:normal">capacity<br/>M.W.D</td>
+            <td class="col-sm-1" style="word-wrap:normal">XP</td>
+            <td class="col-sm-1" style="word-wrap:normal">Auto</td>
+            <td class="col-sm-1" style="word-wrap:normal">Capacities:<br/>Motives<br/>WorkSt.<br/>Defences</td>
             <td class="col-sm-1" style="word-wrap:normal">Object<br/>Slot<br/>Category</td>
           </tbody>
         </table>  
@@ -89,7 +89,7 @@
                   <td class="col-sm-1"><input type="text" ng-model="v.automate" size="7" style="width:100%"></input></td> 
 
                   <td class="col-sm-1">
-                    {{v.motiveSlotCapacity}} {{v.workstationSlotCapacity}} {{v.defenseSlotCapacity}}
+                    {{v.motiveSlotCapacity}}<br>{{v.workstationSlotCapacity}}<br>{{v.defenseSlotCapacity}}
                   </td>  
 
                   <td class="col-sm-1">
@@ -111,6 +111,117 @@
 </div>
 
 </div><!--fadedbackground-->
+
+
+
+<div class="fadedbackground">
+
+<h4>PLAYER PROGRESSION RULES</h4>
+
+
+<div class="bodycontainer scrollable">
+  <table class="table table-bordered table-condensed table-scrollable">
+    <tbody>
+        <tr >
+   
+          <td class="col-sm-1">
+            <div type="text" ng-model="km" size="10" style="width:100%" readonly>{{km}}</div>
+          </td> 
+
+          <td class="col-sm-10">
+              <table class="table table-bordered table-condensed table-scrollable">
+                <tbody>
+                  <tr>
+                    <td class="col-sm-1" style="word-wrap:normal">XP Needed</td>
+                    <td class="col-sm-1" style="word-wrap:normal">additional<br/>max<br/>workers</td>
+                    <td class="col-sm-1" style="word-wrap:normal">additional<br/>max<br/>workersxp</td>
+                    <td class="col-sm-1" style="word-wrap:normal">max<br/>heroes</td>
+                    <td class="col-sm-1" style="word-wrap:normal">max<br/>heroes<br/>unlocked</td>
+                    <td class="col-sm-1" style="word-wrap:normal">max<br/>defense<br/>traps</td>
+                    <td class="col-sm-1" style="word-wrap:normal">max<br/>defense<br/>towers</td>
+                    <td class="col-sm-1" style="word-wrap:normal">max<br/>combat<br/>waves</td>
+                    <td class="col-sm-1" style="word-wrap:normal">enforce<br/>hunger</td>
+                    <td class="col-sm-1" style="word-wrap:normal">enforce<br/>rest</td>
+                  </tr>
+                </tbody>
+              </table >
+          </td> 
+
+      </tr>
+      <tr ng-repeat="(km,vm)   in getFSSimRules().progressionDefinesMirror" class="noselect" >
+   
+        <td class="col-sm-1">
+          <div type="text" ng-model="km" size="10" style="width:100%" readonly>{{km}}</div>
+        </td> 
+
+
+        <td class="col-sm-10">
+
+              <table class="table table-bordered table-condensed table-scrollable">
+                <tbody>
+           
+                  <tr ng-repeat="(k,v)  in vm">
+
+                    <td class="col-sm-1">
+                      <div type="text" ng-model="km" size="10" style="width:100%" readonly>{{v.playerXPNeeded}}</div>
+                    </td> 
+
+                    <td class="col-sm-1">
+                      <div type="text" ng-model="km" size="10" style="width:100%" readonly>{{v.additionalMaxWorkers}}</div>
+                    </td> 
+
+                    <td class="col-sm-1">
+                      <div type="text" ng-model="km" size="10" style="width:100%" readonly>{{v.additionalMaxWorkersxp}}</div>
+                    </td> 
+
+                    <td class="col-sm-1">
+                      <div type="text" ng-model="km" size="10" style="width:100%" readonly>{{v.maxHeroes}}</div>
+                    </td> 
+
+                    <td class="col-sm-1">
+                      <div type="text" ng-model="km" size="10" style="width:100%" readonly>{{v.maxHeroesUnlocked}}</div>
+                    </td> 
+
+                    <td class="col-sm-1">
+                      <div type="text" ng-model="km" size="10" style="width:100%" readonly>{{v.maxDefenseTraps}}</div>
+                    </td> 
+
+                    <td class="col-sm-1">
+                      <div type="text" ng-model="km" size="10" style="width:100%" readonly>{{v.maxDefenseTowers}}</div>
+                    </td> 
+
+                    <td class="col-sm-1">
+                      <div type="text" ng-model="km" size="10" style="width:100%" readonly>{{v.maxCombatWaves}}</div>
+                    </td> 
+
+                    <td class="col-sm-1">
+                      <div type="text" ng-model="km" size="10" style="width:100%" readonly>{{v.enforceHunger}}</div>
+                    </td> 
+
+                    <td class="col-sm-1">
+                      <div type="text" ng-model="km" size="10" style="width:100%" readonly>{{v.enforceRest}}</div>
+                    </td> 
+
+                  </tr>
+
+
+                </tbody>
+              </table> 
+        </td> 
+      
+
+   
+  
+
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!--fadedbackground-->
+
+
 
 
 
