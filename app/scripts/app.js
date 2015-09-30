@@ -66,6 +66,10 @@ angular
         templateUrl: 'views/pages/gdocs.html',
         controller: 'MainCtrl'
       })
+      .when('/mapstate', {
+        templateUrl: 'views/pages/mapstate.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

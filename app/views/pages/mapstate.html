@@ -1,0 +1,38 @@
+
+
+
+<br/><b>title: {{getFSMapState().mapstateJSON.title}}<b>
+<br/><b>version: {{getFSMapState().mapstateJSON.version}}<b>
+<br/><b>last edit date: {{getFSMapState().mapstateJSON.lastEditDate}}<b>
+
+
+<br/>
+<pre>
+<button ng-click="getFSMapState().updateServerVersionFromState()">Update server:</button> at {{getFSMapState().mapStateURL}}
+</pre>
+<br/>
+
+
+<div class="fadedbackground">
+
+<h4>MAP STATE</h4>
+
+<button ng-click="getFSMapState().update()">Update from Google Doc</button> {{getFSMapState().spreadsheet}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

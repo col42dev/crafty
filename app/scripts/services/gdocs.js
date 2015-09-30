@@ -258,7 +258,7 @@ ov2goyk
                   }
                 }
 
-                progression.additionalMaxWorkers = parseInt( this.response.feed.entry[i].gsx$additionalmaxworkers.$t, 10);
+                progression.maxWorkers = parseInt( this.response.feed.entry[i].gsx$maxworkers.$t, 10);
                 progression.additionalMaxWorkersxp = parseInt( this.response.feed.entry[i].gsx$additionalmaxworkersxp.$t, 10);
                 progression.maxHeroes = parseInt( this.response.feed.entry[i].gsx$maxheroes.$t, 10);
                 progression.maxHeroesUnlocked = parseInt( this.response.feed.entry[i].gsx$maxheroesunlocked.$t, 10);

@@ -15,7 +15,8 @@ angular.module('craftyApp')
     '$scope', 
     'FSJSONLoader', 
     'FSSimRules', 
-    'FSSimState', 
+    'FSSimState',
+    'FSMapState',  
     'FSContextConsole', 
     'FSSimObjectFactory', 
     'FSSimBank', 
@@ -33,6 +34,7 @@ angular.module('craftyApp')
     FSJSONLoader, 
     FSSimRules, 
     FSSimState, 
+    FSMapState,
     FSContextConsole, 
     FSSimObjectFactory, 
     FSSimBank, 
@@ -53,6 +55,10 @@ angular.module('craftyApp')
 
     $scope.getFSSimRules = function() {
       return FSSimRules;
+    };
+
+    $scope.getFSMapState = function() {
+      return FSMapState;
     };
 
     $scope.getFSSimState = function() {
