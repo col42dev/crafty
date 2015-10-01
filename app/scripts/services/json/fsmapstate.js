@@ -14,11 +14,25 @@ angular.module('craftyApp')
  
     this.mapStateJSON = {};
 
-    this.mapStateURL = 'https://api.myjson.com/bins/3oiyu';
+    this.mapStateURL = 'null';
+    this.mapStateJSONtxt = {};
    
 
 
     this.spreadsheet = '1xP0aCx9S4wG_3XN9au5VezJ6xVTnZWNlOLX8l6B69n4';
+
+
+// https://spreadsheets.google.com/feeds/list/1xP0aCx9S4wG_3XN9au5VezJ6xVTnZWNlOLX8l6B69n4/oypka71/public/values?alt=json
+
+   this.set = function(json, url) {
+
+    this.mapStateURL = url;
+    this.mapStateJSON = json;
+
+    this.mapStateJSONtxt =  JSON.stringify(this.mapStateJSON, null, 2);
+
+
+   };
 
  
     this.update = function() {
@@ -59,9 +73,14 @@ angular.module('craftyApp')
               for (var colIndex = 0; colIndex < 64; colIndex++) { 
 
                 var cell = this.response.feed.entry[rowIndex]['gsx$h'+(colIndex+1)];
-                console.log( 'row:'+rowIndex +', col:'+colIndex + ' : ' + angular.toJson(cell));
+                //console.log( 'row:'+rowIndex +', col:'+colIndex + ' : ' + angular.toJson(cell));
 
-                row.push( cell);
+                var cellValue = cell.$t;
+                if (cellValue.length == 0) {
+                    cellValue = '_';
+                }
+
+                row.push(cellValue);
               }
 
               map.rows.push(row);
@@ -70,6 +89,8 @@ angular.module('craftyApp')
             }
 
             this.mapStateJSON.map = angular.copy(map);
+
+            this.mapStateJSONtxt =  JSON.stringify(this.mapStateJSON, null, 2);
 
          
 
@@ -87,15 +108,31 @@ angular.module('craftyApp')
 
     this.updateServerVersionFromState = function() { 
 
+
+        var d = new Date();
+        this.mapStateJSON.lastEditDate = d.toString();
+
+        var newVersionIdArray = this.mapStateJSON.version.split('.');
+        newVersionIdArray[2] = parseInt(newVersionIdArray[2], 10) + 1;
+        this.mapStateJSON.version = newVersionIdArray.join('.');
+
+
+
+    
+        this.mapStateJSON.title = 'mapstate';
+
+
          $http.put( 
             this.mapStateURL, 
             this.mapStateJSON
         )
         .success(function(response) {
-            console.log('SUCCESS' + angular.toJson(response));
+            //console.log('SUCCESS' + angular.toJson(response));
             //simRules.rulesJSON.version = newJSONrules.version;
             window.alert('server updated');
-        })
+            this.mapStateJSONtxt =  JSON.stringify(this.mapStateJSON, null, 2);
+
+        }.bind(this))
         .error( function(response) { 
             console.log('FAILED' + angular.toJson(response, true)); 
             window.alert('FAILED:' + angular.toJson(response, true));  

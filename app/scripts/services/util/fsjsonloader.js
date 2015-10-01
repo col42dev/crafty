@@ -12,6 +12,7 @@ angular.module('craftyApp')
     [   
       'FSSimRules', 
       'FSSimState', 
+      'FSMapState', 
       'FSSimMessagingChannel', 
       '$http', 
       '$location', 
@@ -21,6 +22,7 @@ angular.module('craftyApp')
     function ( 
       FSSimRules, 
       FSSimState, 
+      FSMapState, 
       FSSimMessagingChannel, 
       $http, 
       $location, 
@@ -75,10 +77,22 @@ angular.module('craftyApp')
     };
 
 
+    /**
+     * @desc 
+     * @return 
+     */
+    this.createMapState = function(data, url) {
+      console.log('createSimMapState');
+
+      FSMapState.set(data, url); 
+    };
+
+
     this.master = {
       'craftyrules' : {url: 'https://api.myjson.com/bins/3ji5e', onLoad: this.createSimRules, data:null},
      'craftystate' : {url: 'https://api.myjson.com/bins/1a9rm', onLoad: this.createSimState, data:null},
       'craftymap' : {url: 'https://api.myjson.com/bins/1yomi', onLoad: this.createSimWorldMap, data:null},
+      'mapstate' : {url: 'https://api.myjson.com/bins/42y9a', onLoad: this.createMapState, data:null},
 
      // 'craftyrules' : {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, data:null},
      // 'craftystate' : {url: 'http://localhost:9000/json/state.json', onLoad: this.createSimState, data:null},
