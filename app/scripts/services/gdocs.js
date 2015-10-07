@@ -129,7 +129,7 @@ ov2goyk
 
 
                 if ( this.response.feed.entry[i].gsx$outputprefabname.$t.length > 0) {
-                  recipe.outputprefabname = this.response.feed.entry[i].gsx$outputprefabname.$t;
+                 //recipe.outputprefabname = this.response.feed.entry[i].gsx$outputprefabname.$t;
                 }
 
 
@@ -139,10 +139,16 @@ ov2goyk
 
                 if (this.response.feed.entry[i].gsx$recipesimulationmotive1id.$t.length > 0) {
                   recipe.motives= {};
-                  for ( var motivesIndex = 0; motivesIndex < 1; motivesIndex ++) {
-                        var id = this.response.feed.entry[i].gsx$recipesimulationmotive1id.$t;
-                        var capacity = this.response.feed.entry[i].gsx$recipesimulationmotive1capacity.$t;
-                        recipe.motives[id] = capacity;
+                  for ( var motivesIndex = 1; motivesIndex <= 3; motivesIndex ++) {
+
+                        var recipesimulationmotive = 'gsx$recipesimulationmotive' + motivesIndex + 'id';
+                        var id = this.response.feed.entry[i][recipesimulationmotive].$t;
+
+                        if (id.length > 0) {
+                          var recipesimulationmotivecapacity = 'gsx$recipesimulationmotive' + motivesIndex + 'capacity';
+                          var capacity = parseInt( this.response.feed.entry[i][recipesimulationmotivecapacity].$t, 10);
+                          recipe.motives[id] = capacity;
+                        }
                   }
                 }
 

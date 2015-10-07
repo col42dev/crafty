@@ -35,11 +35,12 @@
             <td class="col-sm-1" style="word-wrap:normal">Workers</td>
             <td class="col-sm-2" style="word-wrap:normal">Constructor</td>
             <td class="col-sm-1" style="word-wrap:normal">Duration</td>
-            <td class="col-sm-1" style="word-wrap:normal">Output<br/>Prefab<br/>Name</td>
+            <!--td class="col-sm-1" style="word-wrap:normal">Output<br/>Prefab<br/>Name</td-->
             <td class="col-sm-1" style="word-wrap:normal">PlayerLvl</td>
             <td class="col-sm-1" style="word-wrap:normal">XP</td>
             <td class="col-sm-1" style="word-wrap:normal">Auto</td>
             <td class="col-sm-1" style="word-wrap:normal">Capacities:<br/>Motives<br/>WorkSt.<br/>Defences</td>
+            <td class="col-sm-1" style="word-wrap:normal">Motives</td>
             <td class="col-sm-1" style="word-wrap:normal">Object<br/>Slot<br/>Category</td>
           </tbody>
         </table>  
@@ -83,14 +84,20 @@
                   <td class="col-sm-1"><input ng-model="v.workers" size="4" style="width:100%"></input></td>
                   <td class="col-sm-2"><input ng-model="v.construction" size="16" style="width:100%"></input></td>
                   <td class="col-sm-1"><input type="number" ng-model="v.duration" size="3" style="width:100%"></input></td>  
-                  <td class="col-sm-1"><input type="text" ng-model="v.outputprefabname" size="16" style="width:100%"></input></td>  
+                  <!--td class="col-sm-1"><input type="text" ng-model="v.outputprefabname" size="16" style="width:100%"></input></td-->  
                   <td class="col-sm-1"><input type="number" ng-model="v.playerlevelneeded" size="3" style="width:100%"></input></td> 
                   <td class="col-sm-1"><input type="number" ng-model="v.xp" size="3" style="width:100%"></input></td> 
                   <td class="col-sm-1"><input type="text" ng-model="v.automate" size="7" style="width:100%"></input></td> 
 
                   <td class="col-sm-1">
                     {{v.motiveSlotCapacity}}<br>{{v.workstationSlotCapacity}}<br>{{v.defenseSlotCapacity}}
-                  </td>  
+                  </td> 
+
+                  <td class="col-sm-1">
+                   <div ng-repeat="(outk,outv) in v.motives">
+                        {{outk}}:{{v.motives[outk]}}
+                    </div>
+                  </td>   
 
                   <td class="col-sm-1">
                     {{v.objectSlotCategory}} 
