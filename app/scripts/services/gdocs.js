@@ -33,7 +33,7 @@ oef8ni3
 ov2goyk
    
 
-   'https://spreadsheets.google.com/feeds/list/1a5nPRqrNvu6gAVVtrnAJ5bvGqXCiDVOLivtZrKTIzOo/od3otrm/public/values?alt=json';
+   'https://spreadsheets.google.com/feeds/list/1xP0aCx9S4wG_3XN9au5VezJ6xVTnZWNlOLX8l6B69n4/od3otrm/public/values?alt=json';
 */
 
   this.spreadsheet = '1xP0aCx9S4wG_3XN9au5VezJ6xVTnZWNlOLX8l6B69n4';
@@ -176,6 +176,20 @@ ov2goyk
 
                 if (this.response.feed.entry[i].gsx$defenseslotcapacity.$t.length > 0) {
                   recipe.defenseSlotCapacity = parseInt(this.response.feed.entry[i].gsx$defenseslotcapacity.$t, 10);
+                }
+
+                // local/global storage
+
+                if (this.response.feed.entry[i].gsx$recipelocalstorage.$t.length > 0) {
+                  if (parseInt(this.response.feed.entry[i].gsx$recipelocalstorage.$t, 10) != 0) {
+                    recipe.localStorage = parseInt(this.response.feed.entry[i].gsx$recipelocalstorage.$t, 10);
+                  }
+                }
+
+                if (this.response.feed.entry[i].gsx$recipeglobalstorage.$t.length > 0) {
+                  if (parseInt(this.response.feed.entry[i].gsx$recipeglobalstorage.$t, 10) != 0) {
+                    recipe.globalStorage = parseInt(this.response.feed.entry[i].gsx$recipeglobalstorage.$t, 10);
+                  }
                 }
 
      
