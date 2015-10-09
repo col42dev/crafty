@@ -117,7 +117,10 @@ ov2goyk
                 	recipe.duration = 1;
                 }
 
+               
                 recipe.recipename = this.response.feed.entry[i].gsx$recipename.$t;
+
+                recipe.desc = this.response.feed.entry[i].gsx$recipedescription.$t;
 
                 recipe.category = this.response.feed.entry[i].gsx$recipecategory.$t;
 
@@ -128,9 +131,9 @@ ov2goyk
                 var recipeid = this.response.feed.entry[i].gsx$recipeid.$t;
 
 
-                if ( this.response.feed.entry[i].gsx$outputprefabname.$t.length > 0) {
+                //if ( this.response.feed.entry[i].gsx$outputprefabname.$t.length > 0) {
                  //recipe.outputprefabname = this.response.feed.entry[i].gsx$outputprefabname.$t;
-                }
+                //}
 
 
                 this.recipes[recipeid] = recipe;
