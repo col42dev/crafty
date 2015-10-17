@@ -82,6 +82,7 @@ ov2goyk
                 recipe.construction.push(workstation+workstationLevel);
 
                 recipe.workers = parseInt( this.response.feed.entry[i].gsx$inputworkersamount.$t, 10);
+                recipe.actionPoints = parseInt( this.response.feed.entry[i].gsx$inputactionpointsamount.$t, 10);
 
                 recipe.input = {};
                 for ( var resourceInputIndex = 1; resourceInputIndex <= 3; resourceInputIndex ++) {
@@ -105,6 +106,10 @@ ov2goyk
                 		var resourceOutputLevel = this.response.feed.entry[i][propnameOutputLevel].$t;
                 		if (resourceOutputLevel.length > 0) {
                 			resourceOutputLevel = parseInt( resourceOutputLevel, 10);
+                      if (resourceOutputLevel == 0) 
+                      {
+                        resourceOutputLevel = '';
+                      }
                 		} else {
                 			resourceOutputLevel = '';
                 		}
@@ -183,17 +188,12 @@ ov2goyk
 
                 // local/global storage
 
-                if (this.response.feed.entry[i].gsx$recipelocalstorage.$t.length > 0) {
-                  if (parseInt(this.response.feed.entry[i].gsx$recipelocalstorage.$t, 10) != 0) {
-                    recipe.localStorage = parseInt(this.response.feed.entry[i].gsx$recipelocalstorage.$t, 10);
-                  }
-                }
 
-                if (this.response.feed.entry[i].gsx$recipeglobalstorage.$t.length > 0) {
-                  if (parseInt(this.response.feed.entry[i].gsx$recipeglobalstorage.$t, 10) != 0) {
-                    recipe.globalStorage = parseInt(this.response.feed.entry[i].gsx$recipeglobalstorage.$t, 10);
-                  }
-                }
+                recipe.localStorage = parseInt(this.response.feed.entry[i].gsx$recipelocalstorage.$t, 10);
+
+
+                recipe.globalStorage = parseInt(this.response.feed.entry[i].gsx$recipeglobalstorage.$t, 10);
+
 
      
 
