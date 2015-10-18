@@ -1,6 +1,6 @@
 {
   "title": "craftyrules",
-  "version": "0.0.7",
+  "version": "0.0.133",
   "rewardRules": {
   },
   "harvestableDefines": {
@@ -103,1261 +103,1268 @@
   },
   "toolDefines": {
   },
-  "constructorDefines": {
-    "Constructor": {
-    },
-    "Workbench1": {
-    },
-    "Workbench2": {
-    },
-    "Workbench3": {
-    },
-    "Forge1": {
-    },
-    "Forge2": {
-    },
-    "Forge3": {
-    },
-    "WoodenTrap1": {
-    },
-    "WoodenTrap2": {
-    },
-    "WoodenTrap3": {
-    },
-    "WoodenTower1": {
-    },
-    "WoodenTower2": {
-    },
-    "WoodenTower3": {
-    },
-    "StoneWorks1": {
-    },
-    "StoneWorks2": {
-    },
-    "StoneWorks3": {
-    },
-    "Lab1": {
-    },
-    "Lab2": {
-    },
-    "Lab3": {
-    },
-    "WoodenCookingArea1": {
-    },
-    "WoodenCookingArea2": {
-    },
-    "WoodenCookingArea3": {
-    },
-    "WoodenEatingObject1": {
-    },
-    "WoodenEatingObject2": {
-    },
-    "WoodenEatingObject3": {
-    },
-    "WoodenRestingArea1": {
-    },
-    "WoodenRestingArea2": {
-    },
-    "WoodenRestingArea3": {
-    },
-    "WoodenPeacefulObject1": {
-    },
-    "WoodenPeacefulObject2": {
-    },
-    "WoodenPeacefulObject3": {
-    },
-    "WoodenHealingArea1": {
-    },
-    "WoodenHealingArea2": {
-    },
-    "WoodenHealingArea3": {
-    },
-    "WoodenStudyArea1": {
-    },
-    "WoodenStudyArea3": {
-    }
-  },
   "craftableDefines": {
-    "Wood1": {
+    "CoalDeposit1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 0,
+      "actionPoints": 1,
+      "input": {
+      },
+      "output": {
+        "CoalDeposit1": 1
+      },
+      "duration": 1,
+      "recipename": "Coal Deposit",
+      "desc": "A deposit of coal",
+      "category": "Deposits",
+      "playerlevelneeded": 1,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Corridor1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 2,
+      "actionPoints": 1,
+      "input": {
+        "Wood": 1
+      },
+      "output": {
+        "Corridor1": 1
+      },
+      "duration": 2,
+      "recipename": "Corridor",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 1,
+      "xp": 0,
+      "automate": "FALSE",
+      "defenseSlotCapacity": 1,
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Field1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 0,
+      "actionPoints": 1,
+      "input": {
+      },
+      "output": {
+        "Field1": 1
+      },
+      "duration": 1,
+      "recipename": "Field",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 1,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Forest1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 0,
+      "actionPoints": 1,
+      "input": {
+      },
+      "output": {
+        "Forest1": 1
+      },
+      "duration": 1,
+      "recipename": "Forest",
+      "desc": "An empty patch of fertile land",
+      "category": "Deposits",
+      "playerlevelneeded": 1,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "GoldDeposit1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 0,
+      "actionPoints": 1,
+      "input": {
+      },
+      "output": {
+        "GoldDeposit1": 1
+      },
+      "duration": 1,
+      "recipename": "Gold Deposit",
+      "desc": "A deposit of gold",
+      "category": "Deposits",
+      "playerlevelneeded": 1,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Herd1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 0,
+      "actionPoints": 1,
+      "input": {
+      },
+      "output": {
+        "Herd1": 1
+      },
+      "duration": 1,
+      "recipename": "Herd",
+      "desc": "Some animals wandering about",
+      "category": "Deposits",
+      "playerlevelneeded": 1,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "LoggingCamp1": {
       "construction": [
         "Forest1"
       ],
       "workers": 2,
+      "actionPoints": 1,
+      "input": {
+      },
+      "output": {
+        "LoggingCamp1": 1
+      },
+      "duration": 5,
+      "recipename": "Logging Camp",
+      "desc": "A small tent and some logs on the ground",
+      "category": "Deposits",
+      "playerlevelneeded": 1,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 10,
+      "globalStorage": 0
+    },
+    "MagicCrystalsDeposit1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 0,
+      "actionPoints": 1,
+      "input": {
+      },
+      "output": {
+        "MagicCrystalsDeposit1": 1
+      },
+      "duration": 1,
+      "recipename": "Magic Crystal Deposit",
+      "desc": "A deposit of magic crystals",
+      "category": "Deposits",
+      "playerlevelneeded": 1,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "MetalDeposit1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 0,
+      "actionPoints": 1,
+      "input": {
+      },
+      "output": {
+        "MetalDeposit1": 1
+      },
+      "duration": 1,
+      "recipename": "Metal Deposit",
+      "desc": "A deposit of metal",
+      "category": "Deposits",
+      "playerlevelneeded": 1,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "River1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 0,
+      "actionPoints": 1,
+      "input": {
+      },
+      "output": {
+        "River1": 1
+      },
+      "duration": 1,
+      "recipename": "River",
+      "desc": "Some flowing water",
+      "category": "Deposits",
+      "playerlevelneeded": 1,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "StoneDeposit1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 0,
+      "actionPoints": 1,
+      "input": {
+      },
+      "output": {
+        "StoneDeposit1": 1
+      },
+      "duration": 1,
+      "recipename": "Stone Deposit",
+      "desc": "A deposit of stones",
+      "category": "Deposits",
+      "playerlevelneeded": 1,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "ThroneRoom1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 2,
+      "actionPoints": 1,
+      "input": {
+      },
+      "output": {
+        "ThroneRoom1": 1
+      },
+      "duration": 1,
+      "recipename": "Throne Room",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 1,
+      "motives": {
+        "Hunger": 2,
+        "Rest": 2,
+        "Health": 0
+      },
+      "xp": 0,
+      "automate": "FALSE",
+      "defenseSlotCapacity": 6,
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Wood1": {
+      "construction": [
+        "LoggingCamp1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
       "input": {
       },
       "output": {
         "Wood": 1
       },
       "duration": 60,
-      "recipename": "Wood"
+      "recipename": "Wood",
+      "desc": "Rough wood, branches",
+      "category": "Resources",
+      "playerlevelneeded": 1,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "Water1": {
+    "LandMine1": {
       "construction": [
-        "River1"
+        "Constructor1"
       ],
-      "workers": 2,
+      "workers": 1,
+      "actionPoints": 1,
       "input": {
+        "Wood": 1
       },
       "output": {
-        "Water": 1
+        "LandMine1": 1
       },
-      "duration": 120,
-      "recipename": "Water"
+      "duration": 2,
+      "recipename": "Land Mine",
+      "desc": "A ground placed mine that detonates and does AOE damage to groups of enemies",
+      "category": "Defense",
+      "playerlevelneeded": 2,
+      "xp": 1,
+      "automate": "FALSE",
+      "objectSlotCategory": "Defense",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "Animals1": {
+    "WoodenTrap1": {
       "construction": [
-        "Pasture1"
+        "Constructor1"
       ],
-      "workers": 2,
+      "workers": 1,
+      "actionPoints": 1,
       "input": {
+        "Wood": 2
       },
       "output": {
-        "Animals": 1
+        "WoodenTrap1": 1
       },
-      "duration": 600,
-      "recipename": "Animals"
+      "duration": 2,
+      "recipename": "Spike Trap",
+      "desc": "Spikes that come out of the ground when someone steps on it",
+      "category": "Defense",
+      "playerlevelneeded": 3,
+      "xp": 1,
+      "automate": "FALSE",
+      "objectSlotCategory": "Defense",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "Plants1": {
+    "CookingArea1": {
       "construction": [
-        "Field1"
+        "Constructor1"
       ],
       "workers": 2,
+      "actionPoints": 1,
       "input": {
+        "Wood": 14
       },
       "output": {
-        "Plants": 1
+        "CookingArea1": 1
       },
-      "duration": 1200,
-      "recipename": "Plants"
+      "duration": 10,
+      "recipename": "Kitchen",
+      "desc": "A small fire on the ground",
+      "category": "Rooms",
+      "playerlevelneeded": 3,
+      "motives": {
+        "Hunger": 2
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "motiveSlotCapacity": 1,
+      "defenseSlotCapacity": 4,
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "Stone1": {
+    "ProjectileTower1": {
       "construction": [
-        "Quarry1"
+        "Constructor1"
       ],
-      "workers": 2,
+      "workers": 1,
+      "actionPoints": 1,
       "input": {
+        "Wood": 4,
+        "WoodenPlank": 4
       },
       "output": {
-        "Stone": 1
+        "ProjectileTower1": 1
       },
-      "duration": 2200,
-      "recipename": "Stone"
+      "duration": 10,
+      "recipename": "Ballista Tower",
+      "desc": "A ballista or bow mounted on a small structure",
+      "category": "Defense",
+      "playerlevelneeded": 4,
+      "xp": 1,
+      "automate": "FALSE",
+      "objectSlotCategory": "Defense",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "Coal1": {
+    "Sawmill1": {
       "construction": [
-        "CoalDeposit1"
+        "Constructor1"
       ],
-      "workers": 2,
+      "workers": 1,
+      "actionPoints": 1,
       "input": {
-      },
-      "output": {
-        "Coal": 1
-      },
-      "duration": 3200,
-      "recipename": "Coal"
-    },
-    "Metals1": {
-      "construction": [
-        "MetalsDeposit1"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "Metals": 1
-      },
-      "duration": 4800,
-      "recipename": "Metals"
-    },
-    "MagicCrystals1": {
-      "construction": [
-        "MagicCrystalsDeposit1"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "MagicCrystals": 1
-      },
-      "duration": 7200,
-      "recipename": "Magic Crystals"
-    },
-    "Wood2": {
-      "construction": [
-        "Forest2"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "Wood": 3
-      },
-      "duration": 60,
-      "recipename": "Wood"
-    },
-    "Water2": {
-      "construction": [
-        "River2"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "Water": 3
-      },
-      "duration": 120,
-      "recipename": "Water"
-    },
-    "Animals2": {
-      "construction": [
-        "Pasture2"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "Animals": 3
-      },
-      "duration": 600,
-      "recipename": "Animals"
-    },
-    "Plants2": {
-      "construction": [
-        "Field2"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "Plants": 3
-      },
-      "duration": 1200,
-      "recipename": "Plants"
-    },
-    "Stone2": {
-      "construction": [
-        "Quarry2"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "Stone": 3
-      },
-      "duration": 2200,
-      "recipename": "Stone"
-    },
-    "Coal2": {
-      "construction": [
-        "CoalDeposit2"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "Coal": 3
-      },
-      "duration": 3200,
-      "recipename": "Coal"
-    },
-    "Metals2": {
-      "construction": [
-        "MetalsDeposit2"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "Metals": 3
-      },
-      "duration": 4800,
-      "recipename": "Metals"
-    },
-    "MagicCrystals2": {
-      "construction": [
-        "MagicCrystalsDeposit2"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "MagicCrystals": 3
-      },
-      "duration": 7200,
-      "recipename": "Magic Crystals"
-    },
-    "Wood3": {
-      "construction": [
-        "Forest3"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
         "Wood": 5
       },
-      "duration": 60,
-      "recipename": "Wood"
-    },
-    "Water3": {
-      "construction": [
-        "River3"
-      ],
-      "workers": 2,
-      "input": {
-      },
       "output": {
-        "Water": 5
+        "Sawmill1": 1
       },
-      "duration": 120,
-      "recipename": "Water"
-    },
-    "Animals3": {
-      "construction": [
-        "Pasture3"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "Animals": 5
-      },
-      "duration": 600,
-      "recipename": "Animals"
-    },
-    "Plants3": {
-      "construction": [
-        "Field3"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "Plants": 5
-      },
-      "duration": 1200,
-      "recipename": "Plants"
-    },
-    "Stone3": {
-      "construction": [
-        "Quarry3"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "Stone": 5
-      },
-      "duration": 2200,
-      "recipename": "Stone"
-    },
-    "Coal3": {
-      "construction": [
-        "CoalDeposit3"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "Coal": 5
-      },
-      "duration": 3200,
-      "recipename": "Coal"
-    },
-    "Metals3": {
-      "construction": [
-        "MetalsDeposit3"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "Metals": 5
-      },
-      "duration": 4800,
-      "recipename": "Metals"
-    },
-    "MagicCrystals3": {
-      "construction": [
-        "MagicCrystalsDeposit3"
-      ],
-      "workers": 2,
-      "input": {
-      },
-      "output": {
-        "MagicCrystals": 5
-      },
-      "duration": 7200,
-      "recipename": "Magic Crystals"
-    },
-    "Forest2": {
-      "construction": [
-        "Forest1"
-      ],
-      "workers": 3,
-      "input": {
-        "Metals": 10
-      },
-      "output": {
-        "Forest2": 1
-      },
-      "duration": 60,
-      "recipename": "Forest"
-    },
-    "River2": {
-      "construction": [
-        "River1"
-      ],
-      "workers": 3,
-      "input": {
-        "Wood": 15
-      },
-      "output": {
-        "River2": 1
-      },
-      "duration": 70,
-      "recipename": "River"
-    },
-    "Pasture2": {
-      "construction": [
-        "Pasture1"
-      ],
-      "workers": 3,
-      "input": {
-        "Wood": 20
-      },
-      "output": {
-        "Pasture2": 1
-      },
-      "duration": 80,
-      "recipename": "Pasture"
-    },
-    "Field2": {
-      "construction": [
-        "Field1"
-      ],
-      "workers": 3,
-      "input": {
-        "Wood": 20
-      },
-      "output": {
-        "Field2": 1
-      },
-      "duration": 90,
-      "recipename": "Field"
-    },
-    "Quarry2": {
-      "construction": [
-        "Quarry1"
-      ],
-      "workers": 3,
-      "input": {
-        "Wood": 25
-      },
-      "output": {
-        "Quarry2": 1
-      },
-      "duration": 100,
-      "recipename": "Quarry"
-    },
-    "CoalDeposit2": {
-      "construction": [
-        "CoalDeposit1"
-      ],
-      "workers": 3,
-      "input": {
-        "Wood": 30
-      },
-      "output": {
-        "CoalDeposit2": 1
-      },
-      "duration": 120,
-      "recipename": "CoalDeposit"
-    },
-    "MetalsDeposit2": {
-      "construction": [
-        "MetalsDeposit1"
-      ],
-      "workers": 3,
-      "input": {
-        "Wood": 35
-      },
-      "output": {
-        "MetalsDeposit2": 1
-      },
-      "duration": 140,
-      "recipename": "MetalsDeposit"
-    },
-    "MagicCrystalsDeposit2": {
-      "construction": [
-        "MagicCrystalsDeposit1"
-      ],
-      "workers": 3,
-      "input": {
-        "Wood": 40
-      },
-      "output": {
-        "MagicCrystalsDeposit2": 1
-      },
-      "duration": 160,
-      "recipename": "MagicCrystalsDeposit"
-    },
-    "Forest3": {
-      "construction": [
-        "Forest2"
-      ],
-      "workers": 3,
-      "input": {
-        "MetalBeam": 10,
-        "Gears": 5,
-        "Rope": 4
-      },
-      "output": {
-        "Forest3": 1
-      },
-      "duration": 90,
-      "recipename": "Forest"
-    },
-    "River3": {
-      "construction": [
-        "River2"
-      ],
-      "workers": 3,
-      "input": {
-        "WoodenPlank": 15,
-        "Nails": 7,
-        "Stone": 4
-      },
-      "output": {
-        "River3": 1
-      },
-      "duration": 105,
-      "recipename": "River"
-    },
-    "Pasture3": {
-      "construction": [
-        "Pasture2"
-      ],
-      "workers": 3,
-      "input": {
-        "WoodenPlank": 20,
-        "Nails": 10,
-        "Rope": 5
-      },
-      "output": {
-        "Pasture3": 1
-      },
-      "duration": 120,
-      "recipename": "Pasture"
-    },
-    "Field3": {
-      "construction": [
-        "Field2"
-      ],
-      "workers": 3,
-      "input": {
-        "WoodenPlank": 20,
-        "Nails": 13,
-        "Stone": 6
-      },
-      "output": {
-        "Field3": 1
-      },
-      "duration": 135,
-      "recipename": "Field"
-    },
-    "Quarry3": {
-      "construction": [
-        "Quarry2"
-      ],
-      "workers": 3,
-      "input": {
-        "WoodenBeam": 25,
-        "Nails": 16,
-        "Rope": 8
-      },
-      "output": {
-        "Quarry3": 1
-      },
-      "duration": 150,
-      "recipename": "Quarry"
-    },
-    "CoalDeposit3": {
-      "construction": [
-        "CoalDeposit2"
-      ],
-      "workers": 3,
-      "input": {
-        "WoodenBeam": 30,
-        "MetalBeam": 15,
-        "Rope": 8
-      },
-      "output": {
-        "CoalDeposit3": 1
-      },
-      "duration": 180,
-      "recipename": "CoalDeposit"
-    },
-    "MetalsDeposit3": {
-      "construction": [
-        "MetalsDeposit2"
-      ],
-      "workers": 3,
-      "input": {
-        "WoodenBeam": 35,
-        "MetalBeam": 17,
-        "Rope": 8
-      },
-      "output": {
-        "MetalsDeposit3": 1
-      },
-      "duration": 210,
-      "recipename": "MetalsDeposit"
-    },
-    "MagicCrystalsDeposit3": {
-      "construction": [
-        "MagicCrystalsDeposit2"
-      ],
-      "workers": 3,
-      "input": {
-        "WoodenBeam": 40,
-        "MetalBeam": 20,
-        "Drapes": 10
-      },
-      "output": {
-        "MagicCrystalsDeposit3": 1
-      },
-      "duration": 240,
-      "recipename": "MagicCrystalsDeposit"
+      "duration": 20,
+      "recipename": "Sawmill",
+      "desc": "A workbench used to cut wood",
+      "category": "Rooms",
+      "playerlevelneeded": 4,
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "motiveSlotCapacity": 1,
+      "defenseSlotCapacity": 2,
+      "localStorage": 0,
+      "globalStorage": 0
     },
     "WoodenPlank1": {
       "construction": [
-        "Workbench1"
+        "Sawmill1"
       ],
       "workers": 1,
+      "actionPoints": 1,
       "input": {
         "Wood": 2
       },
       "output": {
         "WoodenPlank": 1
       },
-      "duration": 20,
-      "recipename": "Wooden Plank"
+      "duration": 5,
+      "recipename": "Wooden Plank",
+      "desc": "Cute wood",
+      "category": "Materials",
+      "playerlevelneeded": 4,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Farm1": {
+      "construction": [
+        "Field1"
+      ],
+      "workers": 2,
+      "actionPoints": 1,
+      "input": {
+        "Wood": 10,
+        "WoodenPlank": 2
+      },
+      "output": {
+        "Farm1": 1
+      },
+      "duration": 30,
+      "recipename": "Farm",
+      "desc": "Some simple fencing at the edge of a field",
+      "category": "Deposits",
+      "playerlevelneeded": 5,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 10,
+      "globalStorage": 0
+    },
+    "FireTrap1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 1,
+      "actionPoints": 1,
+      "input": {
+        "Wood": 4,
+        "Plants": 2
+      },
+      "output": {
+        "FireTrap1": 1
+      },
+      "duration": 2,
+      "recipename": "Fire Trap",
+      "desc": "Flames that come out of the ground when someone steps on it",
+      "category": "Defense",
+      "playerlevelneeded": 5,
+      "xp": 1,
+      "automate": "FALSE",
+      "objectSlotCategory": "Defense",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Plants1": {
+      "construction": [
+        "Farm1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Plants": 1
+      },
+      "duration": 120,
+      "recipename": "Plants",
+      "desc": "A mix of wheat, leaves, fruit",
+      "category": "Resources",
+      "playerlevelneeded": 5,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "LoggingCamp2": {
+      "construction": [
+        "LoggingCamp1"
+      ],
+      "workers": 1,
+      "actionPoints": 1,
+      "input": {
+        "WoodenBeam": 1,
+        "WoodenPlank": 2
+      },
+      "output": {
+        "LoggingCamp2": 1
+      },
+      "duration": 60,
+      "recipename": "Logging Camp (Level 2)",
+      "desc": "A nicer version of the camp, with a shed",
+      "category": "Deposits",
+      "playerlevelneeded": 6,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 30,
+      "globalStorage": 0
+    },
+    "StorageArea1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 1,
+      "actionPoints": 1,
+      "input": {
+        "Wood": 6,
+        "WoodenBeam": 2,
+        "WoodenPlank": 2
+      },
+      "output": {
+        "StorageArea1": 1
+      },
+      "duration": 10,
+      "recipename": "Storage Room",
+      "desc": "A room that stores resources and materials",
+      "category": "Rooms",
+      "playerlevelneeded": 6,
+      "xp": 5,
+      "automate": "FALSE",
+      "defenseSlotCapacity": 2,
+      "localStorage": 0,
+      "globalStorage": 100
+    },
+    "Wood2": {
+      "construction": [
+        "LoggingCamp2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Wood": 2
+      },
+      "duration": 60,
+      "recipename": "Wood",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 6,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
     "WoodenBeam1": {
       "construction": [
-        "Workbench1"
+        "Sawmill1"
       ],
       "workers": 1,
+      "actionPoints": 1,
       "input": {
-        "Wood": 3,
-        "Nails": 1
+        "Plants": 2,
+        "WoodenPlank": 2
       },
       "output": {
         "WoodenBeam": 1
       },
-      "duration": 20,
-      "recipename": "Wooden Beam"
+      "duration": 5,
+      "recipename": "Wooden Beam",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 6,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "GreatHall1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 2,
+      "actionPoints": 1,
+      "input": {
+        "WoodenPlank": 4,
+        "WoodenBeam": 4,
+        "WoodenPanel": 2
+      },
+      "output": {
+        "GreatHall1": 1
+      },
+      "duration": 60,
+      "recipename": "The Great Hall",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 7,
+      "xp": 10,
+      "automate": "FALSE",
+      "motiveSlotCapacity": 0,
+      "workstationSlotCapacity": 0,
+      "defenseSlotCapacity": 6,
+      "localStorage": 0,
+      "globalStorage": 50
     },
     "WoodenPanel1": {
       "construction": [
-        "Workbench1"
+        "Sawmill1"
       ],
       "workers": 1,
+      "actionPoints": 1,
       "input": {
         "Wood": 4,
-        "Nails": 3
+        "WoodenPlank": 3
       },
       "output": {
         "WoodenPanel": 1
       },
-      "duration": 20,
-      "recipename": "Wooden Panel"
+      "duration": 10,
+      "recipename": "Wooden Panel",
+      "desc": "Several planks with branches as support",
+      "category": "Materials",
+      "playerlevelneeded": 7,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodenSpikes1": {
+    "Fibers1": {
       "construction": [
-        "Workbench1"
+        "Mill1"
       ],
       "workers": 1,
-      "input": {
-        "Wood": 1
-      },
-      "output": {
-        "WoodenSpikes": 1
-      },
-      "duration": 20,
-      "recipename": "Wooden Spikes"
-    },
-    "FibersFromPlants1": {
-      "construction": [
-        "Workbench1"
-      ],
-      "workers": 1,
+      "actionPoints": 1,
       "input": {
         "Plants": 2
       },
       "output": {
         "Fibers": 1
       },
-      "duration": 20,
-      "recipename": "Fibers"
+      "duration": 5,
+      "recipename": "Fibers",
+      "desc": "Cotton or hemp in fiber form",
+      "category": "Materials",
+      "playerlevelneeded": 8,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "FibersFromAnimals1": {
+    "FlamethrowerTower1": {
       "construction": [
-        "Workbench1"
+        "Constructor1"
       ],
       "workers": 1,
+      "actionPoints": 1,
       "input": {
-        "Animals": 1,
-        "Water": 1
+        "WoodenPlank": 2,
+        "WoodenBeam": 2,
+        "Fibers": 2
       },
       "output": {
+        "FlamethrowerTower1": 1
+      },
+      "duration": 10,
+      "recipename": "Flamethower Tower",
+      "desc": "A barrel mounted on a small structure that hurls flaming objects",
+      "category": "Defense",
+      "playerlevelneeded": 8,
+      "xp": 1,
+      "automate": "FALSE",
+      "objectSlotCategory": "Defense",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Mill1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 1,
+      "actionPoints": 1,
+      "input": {
+        "WoodenPlank": 5,
+        "WoodenBeam": 1
+      },
+      "output": {
+        "Mill1": 1
+      },
+      "duration": 10,
+      "recipename": "Mill",
+      "desc": "A workbench with a wheel",
+      "category": "Rooms",
+      "playerlevelneeded": 8,
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "motiveSlotCapacity": 1,
+      "defenseSlotCapacity": 2,
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "RestingArea1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 1,
+      "actionPoints": 1,
+      "input": {
+        "WoodenPlank": 4,
         "Fibers": 1
       },
+      "output": {
+        "RestingArea1": 1
+      },
       "duration": 20,
-      "recipename": "Fibers"
+      "recipename": "Beds",
+      "desc": "A couple beds or bunkbeds made out of wood.",
+      "category": "Rooms",
+      "playerlevelneeded": 9,
+      "motives": {
+        "Rest": 6
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "motiveSlotCapacity": 1,
+      "defenseSlotCapacity": 4,
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "CookingArea2": {
+      "construction": [
+        "CookingArea1"
+      ],
+      "workers": 1,
+      "actionPoints": 1,
+      "input": {
+        "WoodenPlank": 7,
+        "Stone": 10
+      },
+      "output": {
+        "CookingArea2": 1
+      },
+      "duration": 30,
+      "recipename": "Kitchen (Level 2)",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 10,
+      "motives": {
+        "Hunger": 4
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "motiveSlotCapacity": 1,
+      "defenseSlotCapacity": 4,
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Quarry1": {
+      "construction": [
+        "StoneDeposit1"
+      ],
+      "workers": 2,
+      "actionPoints": 1,
+      "input": {
+        "Wood": 20,
+        "WoodenPlank": 2
+      },
+      "output": {
+        "Quarry1": 1
+      },
+      "duration": 70,
+      "recipename": "Stone Quarry",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 10,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 10,
+      "globalStorage": 0
+    },
+    "Stone1": {
+      "construction": [
+        "Quarry1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Stone": 1
+      },
+      "duration": 300,
+      "recipename": "Stone",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 10,
+      "xp": 5,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "WoodenTrap2": {
+      "construction": [
+        "WoodenTrap1"
+      ],
+      "workers": 1,
+      "actionPoints": 1,
+      "input": {
+        "Stone": 3,
+        "WoodenPlank": 2
+      },
+      "output": {
+        "WoodenTrap2": 1
+      },
+      "duration": 12,
+      "recipename": "Spike Trap (Level 2)",
+      "desc": "",
+      "category": "Defense",
+      "playerlevelneeded": 10,
+      "xp": 1,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Animals1": {
+      "construction": [
+        "Pasture1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Animals1": 1
+      },
+      "duration": 180,
+      "recipename": "Animals",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 11,
+      "xp": 5,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "FireTrap2": {
+      "construction": [
+        "FireTrap1"
+      ],
+      "workers": 1,
+      "actionPoints": 1,
+      "input": {
+        "Wood": 6,
+        "Animals": 3
+      },
+      "output": {
+        "FireTrap2": 1
+      },
+      "duration": 2,
+      "recipename": "Fire Trap (Level 2)",
+      "desc": "Flames that come out of the ground when someone steps on it",
+      "category": "Defense",
+      "playerlevelneeded": 11,
+      "xp": 1,
+      "automate": "FALSE",
+      "objectSlotCategory": "Defense",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Pasture1": {
+      "construction": [
+        "Herd1"
+      ],
+      "workers": 1,
+      "actionPoints": 1,
+      "input": {
+        "WoodenPanel": 6
+      },
+      "output": {
+        "Pasture1": 1
+      },
+      "duration": 90,
+      "recipename": "Pasture",
+      "desc": "An enclosed space with various animals in it: cows, sheep, dogs, chickens, etc...",
+      "category": "Deposits",
+      "playerlevelneeded": 11,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 10,
+      "globalStorage": 0
     },
     "Leather1": {
       "construction": [
-        "Workbench"
+        "Meatworks1"
       ],
       "workers": 1,
+      "actionPoints": 1,
       "input": {
         "Animals": 1,
-        "Water": 2
+        "Stone": 1,
+        "Wood": 1
       },
       "output": {
         "Leather": 1
       },
       "duration": 20,
-      "recipename": "Leather"
+      "recipename": "Leather",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 12,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "Rope1": {
+    "Meatworks1": {
       "construction": [
-        "Workbench1"
+        "Constructor1"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "Fibers": 1
+        "WoodenPanel": 6,
+        "Stone": 6
       },
       "output": {
-        "Rope": 1
-      },
-      "duration": 20,
-      "recipename": "Rope"
-    },
-    "Fabric1": {
-      "construction": [
-        "Workbench1"
-      ],
-      "workers": 1,
-      "input": {
-        "Fibers": 2,
-        "Water": 1
-      },
-      "output": {
-        "Fabric": 1
-      },
-      "duration": 25,
-      "recipename": "Fabric"
-    },
-    "Paper1": {
-      "construction": [
-        "Workbench1"
-      ],
-      "workers": 1,
-      "input": {
-        "Wood": 2,
-        "Water": 1
-      },
-      "output": {
-        "Paper": 1
-      },
-      "duration": 25,
-      "recipename": "Paper"
-    },
-    "Torch1": {
-      "construction": [
-        "Workbench1"
-      ],
-      "workers": 1,
-      "input": {
-        "Wood": 2
-      },
-      "output": {
-        "Torch": 1
-      },
-      "duration": 10,
-      "recipename": "Torch"
-    },
-    "Glass1": {
-      "construction": [
-        "Forge1"
-      ],
-      "workers": 1,
-      "input": {
-        "Stone": 1,
-        "Coal": 1
-      },
-      "output": {
-        "Glass": 1
+        "Meatworks1": 1
       },
       "duration": 15,
-      "recipename": "Glass"
+      "recipename": "Meatworks",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 12,
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "motiveSlotCapacity": 1,
+      "defenseSlotCapacity": 2,
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "Gears1": {
+    "RestingArea2": {
       "construction": [
-        "Forge1"
+        "RestingArea1"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "Metals": 1
+        "WoodenPanel": 3,
+        "Leather": 5
       },
       "output": {
-        "Gears": 1
-      },
-      "duration": 30,
-      "recipename": "Gears"
-    },
-    "Lock1": {
-      "construction": [
-        "Forge1"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 2,
-        "Gears": 1
-      },
-      "output": {
-        "Lock": 1
-      },
-      "duration": 45,
-      "recipename": "Lock"
-    },
-    "Nails1": {
-      "construction": [
-        "Workbench1"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 1
-      },
-      "output": {
-        "Nails": 1
-      },
-      "duration": 10,
-      "recipename": "Nails"
-    },
-    "Dyes1": {
-      "construction": [
-        "Workbench1"
-      ],
-      "workers": 1,
-      "input": {
-        "Water": 2,
-        "Stone": 1
-      },
-      "output": {
-        "Dyes": 1
-      },
-      "duration": 15,
-      "recipename": "Dyes"
-    },
-    "Drapes1": {
-      "construction": [
-        "Workbench1"
-      ],
-      "workers": 1,
-      "input": {
-        "Fabric": 2,
-        "Dyes": 1
-      },
-      "output": {
-        "Drapes": 1
-      },
-      "duration": 45,
-      "recipename": "Drapes"
-    },
-    "Pot1": {
-      "construction": [
-        "Workbench1"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 2
-      },
-      "output": {
-        "Pot": 1
-      },
-      "duration": 25,
-      "recipename": "Pot"
-    },
-    "Bottle1": {
-      "construction": [
-        "Forge1"
-      ],
-      "workers": 1,
-      "input": {
-        "Glass": 2,
-        "Wood": 1
-      },
-      "output": {
-        "Bottle": 1
-      },
-      "duration": 20,
-      "recipename": "Bottle"
-    },
-    "MetalBar1": {
-      "construction": [
-        "Forge1"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 2,
-        "Coal": 2
-      },
-      "output": {
-        "MetalBar": 1
-      },
-      "duration": 10,
-      "recipename": "Metal Bar"
-    },
-    "MetalBeam1": {
-      "construction": [
-        "Forge1"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 4,
-        "Coal": 2
-      },
-      "output": {
-        "MetalBeam": 1
-      },
-      "duration": 20,
-      "recipename": "Metal Beam"
-    },
-    "Herbs1": {
-      "construction": [
-        "Workbench1"
-      ],
-      "workers": 1,
-      "input": {
-        "Plants": 1
-      },
-      "output": {
-        "Herbs": 1
-      },
-      "duration": 5,
-      "recipename": "Herbs"
-    },
-    "WoodenPlank2": {
-      "construction": [
-        "Workbench2"
-      ],
-      "workers": 1,
-      "input": {
-        "Wood": 6,
-        "Water": 1
-      },
-      "output": {
-        "WoodenPlank": 4
-      },
-      "duration": 30,
-      "recipename": "Pack of Wooden Planks"
-    },
-    "WoodenBeam2": {
-      "construction": [
-        "Workbench2"
-      ],
-      "workers": 1,
-      "input": {
-        "Wood": 9,
-        "Water": 1
-      },
-      "output": {
-        "WoodenBeam": 4
-      },
-      "duration": 30,
-      "recipename": "Pack of Wooden Beams"
-    },
-    "WoodenPanel2": {
-      "construction": [
-        "Workbench2"
-      ],
-      "workers": 1,
-      "input": {
-        "Wood": 12,
-        "Water": 1
-      },
-      "output": {
-        "WoodenPanel": 4
-      },
-      "duration": 30,
-      "recipename": "Pack of Wooden Panels"
-    },
-    "WoodenSpikes2": {
-      "construction": [
-        "Workbench2"
-      ],
-      "workers": 1,
-      "input": {
-        "Wood": 3,
-        "Water": 1
-      },
-      "output": {
-        "WoodenSpikes": 4
-      },
-      "duration": 30,
-      "recipename": "Pack of Wooden Spikes"
-    },
-    "Rope2": {
-      "construction": [
-        "Workbench2"
-      ],
-      "workers": 1,
-      "input": {
-        "Fibers": 3,
-        "Water": 1
-      },
-      "output": {
-        "Rope": 4
-      },
-      "duration": 30,
-      "recipename": "Pack of Ropes"
-    },
-    "Fabric2": {
-      "construction": [
-        "Workbench2"
-      ],
-      "workers": 1,
-      "input": {
-        "Fibers": 6,
-        "Water": 3,
-        "Wood": 1
-      },
-      "output": {
-        "Fabric": 4
-      },
-      "duration": 45,
-      "recipename": "Pack of Fabric"
-    },
-    "Paper2": {
-      "construction": [
-        "Workbench2"
-      ],
-      "workers": 1,
-      "input": {
-        "Wood": 6,
-        "Water": 3,
-        "WoodenPlank": 1
-      },
-      "output": {
-        "Paper": 4
-      },
-      "duration": 35,
-      "recipename": "Pack of Paper"
-    },
-    "Torch2": {
-      "construction": [
-        "Workbench2"
-      ],
-      "workers": 1,
-      "input": {
-        "Wood": 6,
-        "Coal": 1
-      },
-      "output": {
-        "Torch": 4
-      },
-      "duration": 15,
-      "recipename": "Pack of Torches"
-    },
-    "Glass2": {
-      "construction": [
-        "Forge2"
-      ],
-      "workers": 1,
-      "input": {
-        "Stone": 3,
-        "Coal": 3,
-        "Wood": 1
-      },
-      "output": {
-        "Glass": 4
-      },
-      "duration": 25,
-      "recipename": "Pack of Glass"
-    },
-    "Gears2": {
-      "construction": [
-        "Forge2"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 3
-      },
-      "output": {
-        "Gears": 4
-      },
-      "duration": 45,
-      "recipename": "Pack of Gears"
-    },
-    "Lock2": {
-      "construction": [
-        "Forge2"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 6,
-        "Gears": 3
-      },
-      "output": {
-        "Lock": 4
+        "RestingArea2": 1
       },
       "duration": 60,
-      "recipename": "Pack of Locks"
+      "recipename": "Beds (Level 2)",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 12,
+      "motives": {
+        "Rest": 8
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "motiveSlotCapacity": 1,
+      "defenseSlotCapacity": 4,
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "Nails2": {
+    "FlamethrowerTower2": {
       "construction": [
-        "Workbench2"
+        "Constructor1"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "Metals": 3
+        "WoodenPanel": 2,
+        "Leather": 3,
+        "Tallow": 2
       },
       "output": {
-        "Nails": 4
+        "FlamethrowerTower2": 1
       },
-      "duration": 15,
-      "recipename": "Pack of Nails"
+      "duration": 10,
+      "recipename": "Flamethower Tower (Level 2)",
+      "desc": "A barrel mounted on a small structure that hurls flaming objects",
+      "category": "Defense",
+      "playerlevelneeded": 13,
+      "xp": 1,
+      "automate": "FALSE",
+      "objectSlotCategory": "Defense",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "Dyes2": {
+    "Tallow1": {
       "construction": [
-        "Workbench2"
+        "Meatworks1"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "Water": 6,
-        "Stone": 3
+        "Animals": 2
       },
       "output": {
-        "Dyes": 4
+        "Tallow": 1
       },
-      "duration": 25,
-      "recipename": "Pack of Dyes"
-    },
-    "Drapes2": {
-      "construction": [
-        "Workbench2"
-      ],
-      "workers": 1,
-      "input": {
-        "Fabric": 6,
-        "Dyes": 3
-      },
-      "output": {
-        "Drapes": 4
-      },
-      "duration": 70,
-      "recipename": "Pack of Drapes"
-    },
-    "Pot2": {
-      "construction": [
-        "Workbench2"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 6
-      },
-      "output": {
-        "Pot": 4
-      },
-      "duration": 35,
-      "recipename": "Pack of Pots"
-    },
-    "Bottle2": {
-      "construction": [
-        "Forge2"
-      ],
-      "workers": 1,
-      "input": {
-        "Glass": 6,
-        "Wood": 3
-      },
-      "output": {
-        "Bottle": 4
-      },
-      "duration": 30,
-      "recipename": "Pack of Bottles"
-    },
-    "MetalBar2": {
-      "construction": [
-        "Forge2"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 6,
-        "Coal": 6,
-        "Water": 1
-      },
-      "output": {
-        "MetalBar": 4
-      },
-      "duration": 15,
-      "recipename": "Pack of Metal Bars"
-    },
-    "MetalBeam2": {
-      "construction": [
-        "Forge2"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 12,
-        "Coal": 6,
-        "Water": 2
-      },
-      "output": {
-        "MetalBeam": 4
-      },
-      "duration": 30,
-      "recipename": "Pack of Metal Beam"
+      "duration": 5,
+      "recipename": "Tallow",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 13,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
     "CarvedWoodenPlank1": {
       "construction": [
-        "Workbench2"
+        "Sawmill1"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
         "WoodenPlank": 5,
+        "Wood": 3
+      },
+      "output": {
+        "CarvedWoodenPlank": 1
+      },
+      "duration": 10,
+      "recipename": "Carved Wooden Plank",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 14,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "TrophyRoom1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "CarvedWoodenPlank": 10,
+        "WoodenPanel": 2,
+        "Leather": 6
+      },
+      "output": {
+        "TrophyRoom1": 1
+      },
+      "duration": 240,
+      "recipename": "The Trophy Room",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 14,
+      "xp": 10,
+      "automate": "FALSE",
+      "motiveSlotCapacity": 0,
+      "workstationSlotCapacity": 0,
+      "defenseSlotCapacity": 6,
+      "localStorage": 0,
+      "globalStorage": 50
+    },
+    "MetalMine1": {
+      "construction": [
+        "MetalDeposit1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenBeam": 10
+      },
+      "output": {
+        "MetalMine1": 1
+      },
+      "duration": 120,
+      "recipename": "Metal Mine",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 15,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 10,
+      "globalStorage": 0
+    },
+    "Metals1": {
+      "construction": [
+        "MetalMine1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Metals": 1
+      },
+      "duration": 4800,
+      "recipename": "Metals",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 15,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "ProjectileTower2": {
+      "construction": [
+        "ProjectileTower1"
+      ],
+      "workers": 3,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 12,
+        "WoodenPlank": 6,
+        "Rope": 3
+      },
+      "output": {
+        "ProjectileTower2": 1
+      },
+      "duration": 60,
+      "recipename": "Upgraded Ballista Tower",
+      "desc": "",
+      "category": "Defense",
+      "playerlevelneeded": 99,
+      "xp": 1,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Animals2": {
+      "construction": [
+        "Pasture2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Animals": 3
+      },
+      "duration": 600,
+      "recipename": "Animals",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Animals3": {
+      "construction": [
+        "Pasture3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Animals": 5
+      },
+      "duration": 600,
+      "recipename": "Animals",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Bones1": {
+      "construction": [
+        "Meatworks1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Animals": 2,
         "Water": 1
       },
       "output": {
-        "CarvedWoodenPlank": 4
+        "Bones": 1
       },
-      "duration": 60,
-      "recipename": "Carved Wooden Plank"
+      "duration": 5,
+      "recipename": "Bones",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "Herbs2": {
+    "Bones2": {
       "construction": [
-        "Workbench2"
+        "Meatworks2"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "Plants": 3,
-        "Rope": 1
+        "Animals": 3,
+        "Water": 6
       },
       "output": {
-        "Herbs": 4
+        "Bones": 4
       },
-      "duration": 10,
-      "recipename": "Pack of Herbs"
+      "duration": 15,
+      "recipename": "Pack of Bones",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Bones3": {
+      "construction": [
+        "Meatworks3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Animals": 9,
+        "Water": 18
+      },
+      "output": {
+        "Bones": 15
+      },
+      "duration": 45,
+      "recipename": "Lots of Bones",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
     "Book1": {
       "construction": [
-        "Workbench2"
+        "Mill2"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
         "Paper": 10,
         "Leather": 3,
@@ -1366,337 +1373,22 @@
       "output": {
         "Book": 1
       },
-      "duration": 80,
-      "recipename": "Book"
-    },
-    "BottleOfMedicine1": {
-      "construction": [
-        "Workbench2"
-      ],
-      "workers": 1,
-      "input": {
-        "Bottle": 1,
-        "Water": 2,
-        "Herbs": 3
-      },
-      "output": {
-        "BottleOfMedicine": 1
-      },
-      "duration": 60,
-      "recipename": "Bottle of Medicine"
-    },
-    "WoodenPlank3": {
-      "construction": [
-        "Workbench3"
-      ],
-      "workers": 1,
-      "input": {
-        "Wood": 18,
-        "Water": 3,
-        "Leather": 1
-      },
-      "output": {
-        "WoodenPlank": 15
-      },
       "duration": 40,
-      "recipename": "Lots of Wooden Planks"
-    },
-    "WoodenBeam3": {
-      "construction": [
-        "Workbench3"
-      ],
-      "workers": 1,
-      "input": {
-        "Wood": 27,
-        "Water": 3,
-        "Leather": 1
-      },
-      "output": {
-        "WoodenBeam": 15
-      },
-      "duration": 40,
-      "recipename": "Lots of Wooden Beams"
-    },
-    "WoodenPanel3": {
-      "construction": [
-        "Workbench3"
-      ],
-      "workers": 1,
-      "input": {
-        "Wood": 36,
-        "Water": 3,
-        "Leather": 1
-      },
-      "output": {
-        "WoodenPanel": 15
-      },
-      "duration": 40,
-      "recipename": "Lots of Wooden Panels"
-    },
-    "WoodenSpikes3": {
-      "construction": [
-        "Workbench3"
-      ],
-      "workers": 1,
-      "input": {
-        "Wood": 9,
-        "Water": 3,
-        "Leather": 1
-      },
-      "output": {
-        "WoodenSpikes": 15
-      },
-      "duration": 40,
-      "recipename": "Lots of  Wooden Spikes"
-    },
-    "Rope3": {
-      "construction": [
-        "Workbench3"
-      ],
-      "workers": 1,
-      "input": {
-        "Fibers": 10,
-        "Water": 3
-      },
-      "output": {
-        "Rope": 15
-      },
-      "duration": 45,
-      "recipename": "Lots of Rope"
-    },
-    "Fabric3": {
-      "construction": [
-        "Workbench3"
-      ],
-      "workers": 1,
-      "input": {
-        "Fibers": 18,
-        "Water": 9,
-        "Wood": 3
-      },
-      "output": {
-        "Fabric": 15
-      },
-      "duration": 70,
-      "recipename": "Lots of Fabric"
-    },
-    "Paper3": {
-      "construction": [
-        "Workbench3"
-      ],
-      "workers": 1,
-      "input": {
-        "Wood": 18,
-        "Water": 9,
-        "WoodenPlank": 3
-      },
-      "output": {
-        "Paper": 15
-      },
-      "duration": 50,
-      "recipename": "Lots of Paper"
-    },
-    "Torch3": {
-      "construction": [
-        "Workbench3"
-      ],
-      "workers": 1,
-      "input": {
-        "Wood": 18,
-        "Coal": 3
-      },
-      "output": {
-        "Torch": 15
-      },
-      "duration": 25,
-      "recipename": "Lots of Torches"
-    },
-    "Glass3": {
-      "construction": [
-        "Forge3"
-      ],
-      "workers": 1,
-      "input": {
-        "Stone": 9,
-        "Coal": 9,
-        "Wood": 3
-      },
-      "output": {
-        "Glass": 15
-      },
-      "duration": 40,
-      "recipename": "Lots of Glass"
-    },
-    "Gears3": {
-      "construction": [
-        "Forge3"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 9
-      },
-      "output": {
-        "Gears": 15
-      },
-      "duration": 70,
-      "recipename": "Lots of Gears"
-    },
-    "Lock3": {
-      "construction": [
-        "Forge3"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 18,
-        "Gears": 9
-      },
-      "output": {
-        "Lock": 15
-      },
-      "duration": 90,
-      "recipename": "Lots of Locks"
-    },
-    "Nails3": {
-      "construction": [
-        "Workbench3"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 9
-      },
-      "output": {
-        "Nails": 15
-      },
-      "duration": 25,
-      "recipename": "Lots of Nails"
-    },
-    "Dyes3": {
-      "construction": [
-        "Workbench3"
-      ],
-      "workers": 1,
-      "input": {
-        "Water": 18,
-        "Stone": 9
-      },
-      "output": {
-        "Dyes": 15
-      },
-      "duration": 40,
-      "recipename": "Lots of Dyes"
-    },
-    "Drapes3": {
-      "construction": [
-        "Workbench3"
-      ],
-      "workers": 1,
-      "input": {
-        "Fabric": 18,
-        "Dyes": 9
-      },
-      "output": {
-        "Drapes": 15
-      },
-      "duration": 105,
-      "recipename": "Lots of Drapes"
-    },
-    "Pot3": {
-      "construction": [
-        "Workbench3"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 18
-      },
-      "output": {
-        "Pot": 15
-      },
-      "duration": 50,
-      "recipename": "Lots of Pot"
-    },
-    "Bottle3": {
-      "construction": [
-        "Forge3"
-      ],
-      "workers": 1,
-      "input": {
-        "Glass": 18,
-        "Wood": 9
-      },
-      "output": {
-        "Bottle": 15
-      },
-      "duration": 45,
-      "recipename": "Lots of Bottles"
-    },
-    "MetalBar3": {
-      "construction": [
-        "Forge3"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 6,
-        "Coal": 6,
-        "Water": 1
-      },
-      "output": {
-        "MetalBar": 15
-      },
-      "duration": 25,
-      "recipename": "Lots of Metal Bars"
-    },
-    "MetalBeam3": {
-      "construction": [
-        "Forge3"
-      ],
-      "workers": 1,
-      "input": {
-        "Metals": 12,
-        "Coal": 6,
-        "Water": 2
-      },
-      "output": {
-        "MetalBeam": 15
-      },
-      "duration": 45,
-      "recipename": "Lots of Metal Beams"
-    },
-    "CarvedWoodenPlank2": {
-      "construction": [
-        "Workbench3"
-      ],
-      "workers": 1,
-      "input": {
-        "WoodenPlank": 15,
-        "Water": 3,
-        "Stone": 1
-      },
-      "output": {
-        "CarvedWoodenPlank": 4
-      },
-      "duration": 90,
-      "recipename": "Lots of Carved Wooden Plank"
-    },
-    "Herbs3": {
-      "construction": [
-        "Workbench2"
-      ],
-      "workers": 1,
-      "input": {
-        "Plants": 9,
-        "Rope": 3
-      },
-      "output": {
-        "Herbs": 15
-      },
-      "duration": 15,
-      "recipename": "Lots of Herbs"
+      "recipename": "Book",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
     "Book2": {
       "construction": [
-        "Workbench3"
+        "Mill3"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
         "Paper": 30,
         "Leather": 10,
@@ -1706,13 +1398,114 @@
         "Book": 4
       },
       "duration": 120,
-      "recipename": "Pack of Books"
+      "recipename": "Pack of Books",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Bottle1": {
+      "construction": [
+        "Forge1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Glass": 2,
+        "Wood": 1
+      },
+      "output": {
+        "Bottle": 1
+      },
+      "duration": 5,
+      "recipename": "Bottle",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Bottle2": {
+      "construction": [
+        "Forge2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Glass": 6,
+        "Wood": 3
+      },
+      "output": {
+        "Bottle": 4
+      },
+      "duration": 15,
+      "recipename": "Pack of Bottles",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Bottle3": {
+      "construction": [
+        "Forge3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Glass": 18,
+        "Wood": 9
+      },
+      "output": {
+        "Bottle": 15
+      },
+      "duration": 45,
+      "recipename": "Lots of Bottles",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "BottleOfMedicine1": {
+      "construction": [
+        "Mill2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Bottle": 1,
+        "Water": 2,
+        "Herbs": 3
+      },
+      "output": {
+        "BottleOfMedicine": 1
+      },
+      "duration": 40,
+      "recipename": "Bottle of Medicine",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
     "BottleOfMedicine2": {
       "construction": [
-        "Workbench3"
+        "Mill3"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
         "Bottle": 3,
         "Water": 6,
@@ -1721,168 +1514,957 @@
       "output": {
         "BottleOfMedicine": 4
       },
-      "duration": 90,
-      "recipename": "Pack of Bottle of Medicine"
+      "duration": 120,
+      "recipename": "Pack of Bottle of Medicine",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodPickaxe1": {
+    "Bridge1": {
       "construction": [
-        "Workbench1"
+        "River1"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "Wood": 2
+        "WoodenPanel": 4
       },
       "output": {
-        "Pickaxe": 1
+        "Bridge1": 1
       },
-      "duration": 15,
-      "recipename": "Wood Pickaxe"
+      "duration": 45,
+      "recipename": "Bridge",
+      "desc": "A small covered spot at the top of the bridge",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodPickaxe2": {
+    "Bridge2": {
       "construction": [
-        "Workbench2"
+        "Bridge1"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "Wood": 6,
+        "Stone": 15
+      },
+      "output": {
+        "Bridge2": 1
+      },
+      "duration": 70,
+      "recipename": "Bridge",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Bridge3": {
+      "construction": [
+        "Bridge2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPanel": 15,
+        "Nails": 7,
+        "Stone": 4
+      },
+      "output": {
+        "Bridge3": 1
+      },
+      "duration": 105,
+      "recipename": "Bridge",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "CarvedBones1": {
+      "construction": [
+        "Meatworks2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Bones": 5,
+        "Water": 6
+      },
+      "output": {
+        "CarvedBones": 1
+      },
+      "duration": 10,
+      "recipename": "Carved Bones",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "CarvedBones3": {
+      "construction": [
+        "Meatworks3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Bones": 15,
+        "Water": 18,
+        "WoodenSpikes": 5
+      },
+      "output": {
+        "CarvedBones": 4
+      },
+      "duration": 30,
+      "recipename": "Pack of Carved Bones",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "CarvedLeather1": {
+      "construction": [
+        "Meatworks2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Leather": 5,
+        "Water": 6
+      },
+      "output": {
+        "CarvedLeather": 1
+      },
+      "duration": 10,
+      "recipename": "Carved Leather",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "CarvedLeather2": {
+      "construction": [
+        "Meatworks3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Leather": 15,
+        "Water": 18,
+        "WoodenSpikes": 5
+      },
+      "output": {
+        "CarvedLeather": 4
+      },
+      "duration": 30,
+      "recipename": "Pack of Carved Leather",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "CarvedWoodenPanel1": {
+      "construction": [
+        "Sawmill2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "CarvedWoodenPlank": 5,
+        "Nails": 3,
         "Water": 1
       },
       "output": {
-        "Pickaxe": 4
+        "CarvedWoodenPanel": 1
       },
-      "duration": 15,
-      "recipename": "Pack of Wood Pickaxe"
+      "duration": 25,
+      "recipename": "Carved Wooden Panel",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodPickaxe3": {
+    "CarvedWoodenPanel2": {
       "construction": [
-        "Workbench3"
+        "Sawmill3"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "Wood": 18,
+        "CarvedWoodenPlank": 15,
+        "Nails": 6,
+        "Water": 3
+      },
+      "output": {
+        "CarvedWoodenPanel": 4
+      },
+      "duration": 75,
+      "recipename": "Pack of Carved Wooden Panel",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "CarvedWoodenPlank2": {
+      "construction": [
+        "Sawmill3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPlank": 15,
         "Water": 3,
-        "Leather": 1
+        "Stone": 1
       },
       "output": {
-        "Pickaxe": 15
+        "CarvedWoodenPlank": 4
       },
-      "duration": 15,
-      "recipename": "Lots of Wood Pickaxe"
+      "duration": 30,
+      "recipename": "Pack of Carved Wooden Plank",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodenTower1": {
+    "Coal1": {
       "construction": [
-        "Workbench1"
-      ],
-      "workers": 2,
-      "input": {
-        "Wood": 4,
-        "WoodenPlank": 2,
-        "Rope": 1
-      },
-      "output": {
-        "WoodenTower1": 1
-      },
-      "duration": 40,
-      "recipename": "Simple Wooden Tower"
-    },
-    "WoodenTrap1": {
-      "construction": [
-        "Workbench1"
+        "CoalMine1"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "WoodenSpikes": 2,
-        "Rope": 1
       },
       "output": {
-        "WoodenTrap1": 1
+        "Coal": 1
       },
-      "duration": 10,
-      "recipename": "Simple Wooden Trap"
+      "duration": 3200,
+      "recipename": "Coal",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodenTower2": {
+    "Coal2": {
       "construction": [
-        "WoodenTower1"
+        "CoalMine2"
       ],
-      "workers": 3,
+      "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "Wood": 12,
-        "WoodenPlank": 6,
-        "Rope": 3
       },
       "output": {
-        "WoodenTower2": 1
+        "Coal": 3
       },
-      "duration": 60,
-      "recipename": "Upgraded Wooden Tower"
+      "duration": 3200,
+      "recipename": "Coal",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodenTrap2": {
+    "Coal3": {
       "construction": [
-        "WoodenTrap1"
+        "CoalMine3"
       ],
-      "workers": 2,
+      "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "WoodenSpikes": 6,
-        "Rope": 3
       },
       "output": {
-        "WoodenTrap2": 1
+        "Coal": 5
       },
-      "duration": 15,
-      "recipename": "Upgraded Wooden Trap"
+      "duration": 3200,
+      "recipename": "Coal",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodenTower3": {
+    "CoalMine1": {
       "construction": [
-        "WoodenTower2"
+        "CoalDeposit1"
       ],
-      "workers": 4,
+      "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "Wood": 36,
-        "WoodenPlank": 18,
-        "Rope": 9
+        "Wood": 8
       },
       "output": {
-        "WoodenTower3": 1
+        "CoalMine1": 1
       },
-      "duration": 90,
-      "recipename": "Advanced Wooden Tower"
+      "duration": 3200,
+      "recipename": "Coal Mine",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodenTrap3": {
+    "CoalMine2": {
       "construction": [
-        "WoodenTrap2"
+        "CoalMine1"
       ],
-      "workers": 3,
+      "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "WoodenSpikes": 18,
-        "Rope": 9
+        "WoodenBeam": 15
       },
       "output": {
-        "WoodenTrap3": 1
+        "CoalMine2": 1
+      },
+      "duration": 120,
+      "recipename": "Coal Mine",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "CoalMine3": {
+      "construction": [
+        "CoalMine2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenBeam": 30,
+        "MetalBeam": 15,
+        "Rope": 8
+      },
+      "output": {
+        "CoalMine3": 1
+      },
+      "duration": 180,
+      "recipename": "Coal Mine",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "CookingArea3": {
+      "construction": [
+        "CookingArea1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenBeam": 8,
+        "Wood": 10,
+        "Stone": 8
+      },
+      "output": {
+        "CookingArea3": 1
+      },
+      "duration": 45,
+      "recipename": "Large Oven",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Hunger": 50
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "CultureArea1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPanel": 8,
+        "Stone": 6,
+        "Paper": 6
+      },
+      "output": {
+        "CultureArea1": 1
+      },
+      "duration": 70,
+      "recipename": "Simple Desks",
+      "desc": "",
+      "category": "Culture",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Culture": 3
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "CultureArea2": {
+      "construction": [
+        "CultureArea1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "CarvedWoodenPlank": 5,
+        "WoodenPanel": 5,
+        "Book": 5
+      },
+      "output": {
+        "CultureArea2": 1
+      },
+      "duration": 110,
+      "recipename": "Nice Bookshelves",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Culture": 30
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "CultureArea3": {
+      "construction": [
+        "CultureArea1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "CarvedLeather": 14,
+        "CarvedWoodenPanel": 18,
+        "Encyclopedia": 7
+      },
+      "output": {
+        "CultureArea3": 1
+      },
+      "duration": 165,
+      "recipename": "Fancy Bookshelves",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Culture": 50
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "CultureObject1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Paper": 1,
+        "Dyes": 5,
+        "WoodenPlank": 2
+      },
+      "output": {
+        "CultureObject1": 1
+      },
+      "duration": 35,
+      "recipename": "Simple Painting",
+      "desc": "",
+      "category": "Culture",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Culture": 1
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "CultureObject2": {
+      "construction": [
+        "CultureObject1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Fabric": 8,
+        "Dyes": 5,
+        "CarvedWoodenPlank": 4
+      },
+      "output": {
+        "CultureObject2": 1
+      },
+      "duration": 50,
+      "recipename": "Nice Painting",
+      "desc": "",
+      "category": "Culture",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Culture": 15
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "CultureObject3": {
+      "construction": [
+        "CultureObject1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Fabric": 10,
+        "Paint": 12,
+        "CarvedWoodenPanel": 4
+      },
+      "output": {
+        "CultureObject3": 1
+      },
+      "duration": 75,
+      "recipename": "Fancy Painting",
+      "desc": "",
+      "category": "Culture",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Culture": 25
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Drapes1": {
+      "construction": [
+        "Mill1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Fabric": 2,
+        "Dyes": 1
+      },
+      "output": {
+        "Drapes": 1
       },
       "duration": 20,
-      "recipename": "Advanced Wooden Trap"
+      "recipename": "Drapes",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "Stoneworks1": {
+    "Drapes2": {
       "construction": [
-        "Workbench1"
+        "Mill2"
       ],
-      "workers": 2,
+      "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "WoodenBeam": 2,
-        "Water": 5,
+        "Fabric": 6,
+        "Dyes": 3
+      },
+      "output": {
+        "Drapes": 4
+      },
+      "duration": 60,
+      "recipename": "Pack of Drapes",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Drapes3": {
+      "construction": [
+        "Mill3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Fabric": 18,
+        "Dyes": 9
+      },
+      "output": {
+        "Drapes": 15
+      },
+      "duration": 180,
+      "recipename": "Lots of Drapes",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Dyes1": {
+      "construction": [
+        "Mill1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Water": 2,
+        "Stone": 1
+      },
+      "output": {
+        "Dyes": 1
+      },
+      "duration": 5,
+      "recipename": "Dyes",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Dyes2": {
+      "construction": [
+        "Mill2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Water": 6,
+        "Stone": 3
+      },
+      "output": {
+        "Dyes": 4
+      },
+      "duration": 15,
+      "recipename": "Pack of Dyes",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Dyes3": {
+      "construction": [
+        "Mill3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Water": 18,
+        "Stone": 9
+      },
+      "output": {
+        "Dyes": 15
+      },
+      "duration": 45,
+      "recipename": "Lots of Dyes",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "EatingObject2": {
+      "construction": [
+        "EatingObject1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "CarvedWoodenPlank": 6,
+        "WoodenPanel": 3
+      },
+      "output": {
+        "EatingObject2": 1
+      },
+      "duration": 15,
+      "recipename": "Nice Bar & Stools",
+      "desc": "",
+      "category": "Hunger",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Hunger": 2
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "EatingObject3": {
+      "construction": [
+        "EatingObject1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPlank": 6,
+        "CarvedWoodenPlank": 5,
+        "Pot": 3
+      },
+      "output": {
+        "EatingObject3": 1
+      },
+      "duration": 20,
+      "recipename": "Fancy Bar & Stools",
+      "desc": "",
+      "category": "Hunger",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Hunger": 25
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Encyclopedia1": {
+      "construction": [
+        "Mill3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Book": 10,
+        "Leather": 3
+      },
+      "output": {
+        "Encyclopedia": 1
+      },
+      "duration": 100,
+      "recipename": "Encyclopedia",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Fabric1": {
+      "construction": [
+        "Mill1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Fibers": 2,
+        "Water": 1
+      },
+      "output": {
+        "Fabric": 1
+      },
+      "duration": 10,
+      "recipename": "Fabric",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Fabric2": {
+      "construction": [
+        "Mill2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Fibers": 6,
+        "Water": 3,
+        "Wood": 1
+      },
+      "output": {
+        "Fabric": 4
+      },
+      "duration": 30,
+      "recipename": "Pack of Fabric",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Fabric3": {
+      "construction": [
+        "Mill3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Fibers": 18,
+        "Water": 9,
+        "Wood": 3
+      },
+      "output": {
+        "Fabric": 15
+      },
+      "duration": 90,
+      "recipename": "Lots of Fabric",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Farm2": {
+      "construction": [
+        "Farm1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPanel": 6,
         "Rope": 4
       },
       "output": {
-        "Stoneworks1": 1
+        "Farm2": 1
       },
       "duration": 90,
-      "recipename": "Stoneworks"
+      "recipename": "Farm (Level 2)",
+      "desc": "The farm now has a wooden barrel held together by rope",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Farm3": {
+      "construction": [
+        "Farm2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPanel": 20,
+        "Nails": 13,
+        "Stone": 6
+      },
+      "output": {
+        "Farm3": 1
+      },
+      "duration": 135,
+      "recipename": "Farm",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Fibers2": {
+      "construction": [
+        "Mill2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Plants": 6,
+        "Water": 1
+      },
+      "output": {
+        "Fibers": 4
+      },
+      "duration": 15,
+      "recipename": "Pack of Fibers",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Fibers3": {
+      "construction": [
+        "Mill3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Plants": 18,
+        "Water": 3
+      },
+      "output": {
+        "Fibers": 15
+      },
+      "duration": 45,
+      "recipename": "Lots of Fibers",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
     "Forge1": {
       "construction": [
-        "Workbench1"
+        "Constructor1"
       ],
       "workers": 2,
+      "actionPoints": 0,
       "input": {
         "Stone": 6,
         "Water": 4,
@@ -1892,61 +2474,21 @@
         "Forge1": 1
       },
       "duration": 120,
-      "recipename": "Forge"
-    },
-    "Lab1": {
-      "construction": [
-        "Workbench1"
-      ],
-      "workers": 2,
-      "input": {
-        "WoodenPlank": 6,
-        "Pot": 2,
-        "Drapes": 3
-      },
-      "output": {
-        "Lab1": 1
-      },
-      "duration": 200,
-      "recipename": "Lab"
-    },
-    "Workbench2": {
-      "construction": [
-        "Workbench1"
-      ],
-      "workers": 3,
-      "input": {
-        "WoodenBeam": 8,
-        "WoodenPlank": 4,
-        "WoodenPanel": 3
-      },
-      "output": {
-        "Workbench2": 1
-      },
-      "duration": 160,
-      "recipename": "Upgraded Workbench"
-    },
-    "Stoneworks2": {
-      "construction": [
-        "StoneWorks1"
-      ],
-      "workers": 3,
-      "input": {
-        "WoodenBeam": 6,
-        "Water": 15,
-        "Rope": 12
-      },
-      "output": {
-        "Stoneworks2": 1
-      },
-      "duration": 135,
-      "recipename": "Upgraded Stoneworks"
+      "recipename": "Forge",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
     "Forge2": {
       "construction": [
         "Forge1"
       ],
-      "workers": 3,
+      "workers": 2,
+      "actionPoints": 0,
       "input": {
         "Stone": 18,
         "Water": 12,
@@ -1956,61 +2498,21 @@
         "Forge2": 1
       },
       "duration": 180,
-      "recipename": "Upgraded Forge"
-    },
-    "Lab2": {
-      "construction": [
-        "Lab1"
-      ],
-      "workers": 3,
-      "input": {
-        "WoodenPlank": 18,
-        "Pot": 6,
-        "Drapes": 9
-      },
-      "output": {
-        "Lab2": 1
-      },
-      "duration": 300,
-      "recipename": "Upgraded Lab"
-    },
-    "Workbench3": {
-      "construction": [
-        "Workbench2"
-      ],
-      "workers": 4,
-      "input": {
-        "WoodenBeam": 24,
-        "WoodenPlank": 12,
-        "WoodenPanel": 9
-      },
-      "output": {
-        "Workbench3": 1
-      },
-      "duration": 240,
-      "recipename": "Advanced Workbench"
-    },
-    "Stoneworks3": {
-      "construction": [
-        "StoneWorks2"
-      ],
-      "workers": 4,
-      "input": {
-        "WoodenBeam": 18,
-        "Water": 45,
-        "Rope": 36
-      },
-      "output": {
-        "Stoneworks3": 1
-      },
-      "duration": 200,
-      "recipename": "Advanced Stoneworks"
+      "recipename": "Upgraded Forge",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
     "Forge3": {
       "construction": [
         "Forge2"
       ],
-      "workers": 4,
+      "workers": 2,
+      "actionPoints": 0,
       "input": {
         "Stone": 54,
         "Water": 36,
@@ -2020,13 +2522,462 @@
         "Forge3": 1
       },
       "duration": 270,
-      "recipename": "Advanced Forge"
+      "recipename": "Advanced Forge",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Gears1": {
+      "construction": [
+        "Forge1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Metals": 1
+      },
+      "output": {
+        "Gears": 1
+      },
+      "duration": 15,
+      "recipename": "Gears",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Gears2": {
+      "construction": [
+        "Forge2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Metals": 3
+      },
+      "output": {
+        "Gears": 4
+      },
+      "duration": 45,
+      "recipename": "Pack of Gears",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Gears3": {
+      "construction": [
+        "Forge3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Metals": 9
+      },
+      "output": {
+        "Gears": 15
+      },
+      "duration": 135,
+      "recipename": "Lots of Gears",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Glass1": {
+      "construction": [
+        "Forge1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Stone": 1,
+        "Coal": 1
+      },
+      "output": {
+        "Glass": 1
+      },
+      "duration": 5,
+      "recipename": "Glass",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Glass2": {
+      "construction": [
+        "Forge2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Stone": 3,
+        "Coal": 3,
+        "Wood": 1
+      },
+      "output": {
+        "Glass": 4
+      },
+      "duration": 15,
+      "recipename": "Pack of Glass",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Glass3": {
+      "construction": [
+        "Forge3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Stone": 9,
+        "Coal": 9,
+        "Wood": 3
+      },
+      "output": {
+        "Glass": 15
+      },
+      "duration": 45,
+      "recipename": "Lots of Glass",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "HealingArea1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPlank": 8,
+        "Plants": 2,
+        "Water": 4
+      },
+      "output": {
+        "HealingArea1": 1
+      },
+      "duration": 50,
+      "recipename": "Infirmary",
+      "desc": "Shelves that store plants and buckets of water used for healing",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Health": 3
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "HealingArea2": {
+      "construction": [
+        "HealingArea1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 12,
+        "Herbs": 22,
+        "Water": 10
+      },
+      "output": {
+        "HealingArea2": 1
+      },
+      "duration": 75,
+      "recipename": "Upgraded Infirmary",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Health": 30
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "HealingArea3": {
+      "construction": [
+        "HealingArea1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "CarvedWoodenPlank": 16,
+        "BottleOfMedicine": 20,
+        "Water": 50
+      },
+      "output": {
+        "HealingArea3": 1
+      },
+      "duration": 110,
+      "recipename": "Advanved Infirmary",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Health": 50
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "HealingObject1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 6,
+        "Herbs": 2
+      },
+      "output": {
+        "HealingObject1": 1
+      },
+      "duration": 25,
+      "recipename": "Medical Cabinet",
+      "desc": "Wall-mounted shelves with picked herbs, should look organized",
+      "category": "Health",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Health": 1
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "HealingObject2": {
+      "construction": [
+        "HealingObject1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPlank": 5,
+        "Bottle": 1,
+        "Herbs": 3
+      },
+      "output": {
+        "HealingObject2": 1
+      },
+      "duration": 35,
+      "recipename": "Upgraded Medical Cabinet",
+      "desc": "",
+      "category": "Health",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Health": 15
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "HealingObject3": {
+      "construction": [
+        "HealingObject1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "CarvedWoodenPlank": 4,
+        "BottleOfMedicine": 10,
+        "Herbs": 4
+      },
+      "output": {
+        "HealingObject3": 1
+      },
+      "duration": 45,
+      "recipename": "Advanced Medical Cabinet",
+      "desc": "",
+      "category": "Health",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Health": 25
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Herbs1": {
+      "construction": [
+        "Mill1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Plants": 1
+      },
+      "output": {
+        "Herbs": 1
+      },
+      "duration": 2,
+      "recipename": "Herbs",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Herbs2": {
+      "construction": [
+        "Mill2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Plants": 3,
+        "Rope": 1
+      },
+      "output": {
+        "Herbs": 4
+      },
+      "duration": 6,
+      "recipename": "Pack of Herbs",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Herbs3": {
+      "construction": [
+        "Mill3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Plants": 9,
+        "Rope": 3
+      },
+      "output": {
+        "Herbs": 15
+      },
+      "duration": 18,
+      "recipename": "Lots of Herbs",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Keep1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 36
+      },
+      "output": {
+        "Keep1": 1
+      },
+      "duration": 60,
+      "recipename": "The Keep",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 10,
+      "automate": "FALSE",
+      "motiveSlotCapacity": 1,
+      "workstationSlotCapacity": 1,
+      "defenseSlotCapacity": 1,
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Lab1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 2,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPlank": 6,
+        "Pot": 2,
+        "Drapes": 3
+      },
+      "output": {
+        "Lab1": 1
+      },
+      "duration": 200,
+      "recipename": "Lab",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Lab2": {
+      "construction": [
+        "Lab1"
+      ],
+      "workers": 2,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPlank": 18,
+        "Pot": 6,
+        "Drapes": 9
+      },
+      "output": {
+        "Lab2": 1
+      },
+      "duration": 300,
+      "recipename": "Upgraded Lab",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
     "Lab3": {
       "construction": [
         "Lab2"
       ],
-      "workers": 4,
+      "workers": 2,
+      "actionPoints": 0,
       "input": {
         "WoodenPlank": 54,
         "Pot": 18,
@@ -2036,385 +2987,1695 @@
         "Lab3": 1
       },
       "duration": 450,
-      "recipename": "Advanced Lab"
+      "recipename": "Advanced Lab",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodenCookingArea1": {
+    "Leather2": {
       "construction": [
-        "Workbench1"
-      ],
-      "workers": 3,
-      "input": {
-        "Wood": 5,
-        "Stone": 2
-      },
-      "output": {
-        "WoodenCookingArea1": 1
-      },
-      "duration": 10,
-      "recipename": "Cooking Campfire"
-    },
-    "WoodenEatingObject1": {
-      "construction": [
-        "Workbench1"
+        "Meatworks2"
       ],
       "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Animals": 3,
+        "Water": 6
+      },
+      "output": {
+        "Leather": 4
+      },
+      "duration": 15,
+      "recipename": "Pack of Leather",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Leather3": {
+      "construction": [
+        "Meatworks3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Animals": 9,
+        "Water": 18
+      },
+      "output": {
+        "Leather": 15
+      },
+      "duration": 45,
+      "recipename": "Lots of Leather",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "LoggingCamp3": {
+      "construction": [
+        "LoggingCamp2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "MetalBeam": 10,
+        "Gears": 5,
+        "Rope": 4
+      },
+      "output": {
+        "LoggingCamp3": 1
+      },
+      "duration": 90,
+      "recipename": "Logging Camp",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "MagicCrystals1": {
+      "construction": [
+        "MagicCrystalsDeposit1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 15
+      },
+      "output": {
+        "MagicCrystalMine1": 1
+      },
+      "duration": 7200,
+      "recipename": "Magic Crystal Mine",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "MagicCrystals2": {
+      "construction": [
+        "MagicCrystalMine2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "MagicCrystals": 3
+      },
+      "duration": 7200,
+      "recipename": "Magic Crystals",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "MagicCrystals3": {
+      "construction": [
+        "MagicCrystalMine3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "MagicCrystals": 5
+      },
+      "duration": 7200,
+      "recipename": "Magic Crystals",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Meatworks2": {
+      "construction": [
+        "Meatworks1"
+      ],
+      "workers": 2,
+      "actionPoints": 0,
+      "input": {
+        "WoodenBeam": 8,
+        "Metals": 5,
+        "Rope": 8
+      },
+      "output": {
+        "Meatworks2": 1
+      },
+      "duration": 25,
+      "recipename": "Upgraded Meatworks",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Meatworks3": {
+      "construction": [
+        "Meatworks2"
+      ],
+      "workers": 2,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPanel": 8,
+        "MetalBeam": 5,
+        "Rope": 8
+      },
+      "output": {
+        "Meatworks3": 1
+      },
+      "duration": 35,
+      "recipename": "Advanced Meatworks",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "MetalBeam1": {
+      "construction": [
+        "Forge1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Metals": 4,
+        "Coal": 2
+      },
+      "output": {
+        "MetalBeam": 1
+      },
+      "duration": 5,
+      "recipename": "Metal Beam",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "MetalBeam2": {
+      "construction": [
+        "Forge2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Metals": 12,
+        "Coal": 6,
+        "Water": 2
+      },
+      "output": {
+        "MetalBeam": 4
+      },
+      "duration": 15,
+      "recipename": "Pack of Metal Beam",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "MetalBeam3": {
+      "construction": [
+        "Forge3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Metals": 12,
+        "Coal": 6,
+        "Water": 2
+      },
+      "output": {
+        "MetalBeam": 15
+      },
+      "duration": 45,
+      "recipename": "Lots of Metal Beams",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "MetalMine2": {
+      "construction": [
+        "MetalMine1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenBeam": 20
+      },
+      "output": {
+        "MetalMine2": 1
+      },
+      "duration": 140,
+      "recipename": "Metal Mine",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "MetalMine3": {
+      "construction": [
+        "MetalMine2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenBeam": 35,
+        "MetalBeam": 17,
+        "Rope": 8
+      },
+      "output": {
+        "MetalMine3": 1
+      },
+      "duration": 210,
+      "recipename": "Metal Mine",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Metals2": {
+      "construction": [
+        "MetalMine2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Metals": 3
+      },
+      "duration": 4800,
+      "recipename": "Metals",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Metals3": {
+      "construction": [
+        "MetalMine3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Metals": 5
+      },
+      "duration": 4800,
+      "recipename": "Metals",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Mill2": {
+      "construction": [
+        "Mill1"
+      ],
+      "workers": 2,
+      "actionPoints": 0,
+      "input": {
+        "WoodenBeam": 5,
+        "Metals": 3,
+        "Rope": 6
+      },
+      "output": {
+        "Mill2": 1
+      },
+      "duration": 15,
+      "recipename": "Upgraded Mill",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Mill3": {
+      "construction": [
+        "Mill2"
+      ],
+      "workers": 2,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPanel": 8,
+        "MetalBeam": 3,
+        "Rope": 6
+      },
+      "output": {
+        "Mill3": 1
+      },
+      "duration": 25,
+      "recipename": "Advanced Mill",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Nails1": {
+      "construction": [
+        "Forge1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Metals": 1
+      },
+      "output": {
+        "Nails": 1
+      },
+      "duration": 3,
+      "recipename": "Nails",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Nails2": {
+      "construction": [
+        "Forge2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Metals": 3
+      },
+      "output": {
+        "Nails": 4
+      },
+      "duration": 9,
+      "recipename": "Pack of Nails",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Nails3": {
+      "construction": [
+        "Forge3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Metals": 9
+      },
+      "output": {
+        "Nails": 15
+      },
+      "duration": 27,
+      "recipename": "Lots of Nails",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Paint1": {
+      "construction": [
+        "Mill3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Dyes": 12,
+        "Bones": 4
+      },
+      "output": {
+        "Paint": 1
+      },
+      "duration": 90,
+      "recipename": "Paint",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Paper1": {
+      "construction": [
+        "Sawmill1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
       "input": {
         "Wood": 2,
+        "Water": 1
+      },
+      "output": {
+        "Paper": 1
+      },
+      "duration": 10,
+      "recipename": "Paper",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Paper2": {
+      "construction": [
+        "Sawmill2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 6,
+        "Water": 3,
         "WoodenPlank": 1
       },
       "output": {
-        "WoodenEatingObject1": 1
-      },
-      "duration": 5,
-      "recipename": "Wooden Bar & Stool"
-    },
-    "WoodenCookingArea2": {
-      "construction": [
-        "WoodenCookingArea1"
-      ],
-      "workers": 4,
-      "input": {
-        "WoodenBeam": 2,
-        "Pot": 1,
-        "Stone": 5
-      },
-      "output": {
-        "WoodenCookingArea2": 1
+        "Paper": 4
       },
       "duration": 30,
-      "recipename": "Medium Cooking Fire"
+      "recipename": "Pack of Paper",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodenEatingObject2": {
+    "Paper3": {
       "construction": [
-        "WoodenEatingObject1"
-      ],
-      "workers": 2,
-      "input": {
-        "Wood": 6,
-        "WoodenPlank": 2,
-        "Pot": 1
-      },
-      "output": {
-        "WoodenEatingObject2": 1
-      },
-      "duration": 15,
-      "recipename": "Medium Wooden Bar & Stool"
-    },
-    "WoodenCookingArea3": {
-      "construction": [
-        "WoodenCookingArea2"
-      ],
-      "workers": 5,
-      "input": {
-        "WoodenBeam": 6,
-        "Pot": 3,
-        "Stone": 10
-      },
-      "output": {
-        "WoodenCookingArea3": 1
-      },
-      "duration": 45,
-      "recipename": "Large Cooking Fire"
-    },
-    "WoodenEatingObject3": {
-      "construction": [
-        "WoodenEatingObject2"
-      ],
-      "workers": 3,
-      "input": {
-        "WoodenPlank": 6,
-        "CarvedWoodenPlank": 6,
-        "Pot": 3
-      },
-      "output": {
-        "WoodenEatingObject3": 1
-      },
-      "duration": 20,
-      "recipename": "Large Wooden Bar & Stool"
-    },
-    "WoodenRestingArea1": {
-      "construction": [
-        "Workbench1"
-      ],
-      "workers": 3,
-      "input": {
-        "Wood": 4,
-        "Fibers": 2
-      },
-      "output": {
-        "WoodenRestingArea1": 1
-      },
-      "duration": 20,
-      "recipename": "Wooden Beds"
-    },
-    "WoodenPeacefulObject1": {
-      "construction": [
-        "Workbench1"
+        "Mill3"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "Wood": 3,
-        "Bottle": 2
+        "Wood": 18,
+        "Water": 9,
+        "WoodenPlank": 3
       },
       "output": {
-        "WoodenPeacefulObject1": 1
-      },
-      "duration": 10,
-      "recipename": "Wooden Lamp"
-    },
-    "WoodenRestingArea2": {
-      "construction": [
-        "WoodenRestingArea1"
-      ],
-      "workers": 4,
-      "input": {
-        "Fabric": 6,
-        "WoodenPlank": 10,
-        "Fibers": 6
-      },
-      "output": {
-        "WoodenRestingArea2": 1
-      },
-      "duration": 60,
-      "recipename": "Comfortable Beds"
-    },
-    "WoodenPeacefulObject2": {
-      "construction": [
-        "WoodenPeacefulObject1"
-      ],
-      "workers": 2,
-      "input": {
-        "WoodenPlank": 3,
-        "Bottle": 4,
-        "Dyes": 3
-      },
-      "output": {
-        "WoodenPeacefulObject2": 1
-      },
-      "duration": 30,
-      "recipename": "Nice Wooden Lamp"
-    },
-    "WoodenRestingArea3": {
-      "construction": [
-        "WoodenRestingArea2"
-      ],
-      "workers": 5,
-      "input": {
-        "Drapes": 12,
-        "CarvedWoodenPlank": 15,
-        "Fibers": 18
-      },
-      "output": {
-        "WoodenRestingArea3": 1
+        "Paper": 15
       },
       "duration": 90,
-      "recipename": "Luxury Beds"
+      "recipename": "Lots of Paper",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodenPeacefulObject3": {
+    "Pasture2": {
       "construction": [
-        "WoodenPeacefulObject2"
+        "Pasture1"
       ],
-      "workers": 3,
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 20,
+        "Nails": 5
+      },
+      "output": {
+        "Pasture2": 1
+      },
+      "duration": 80,
+      "recipename": "Pasture",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Pasture3": {
+      "construction": [
+        "Pasture2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPanel": 20,
+        "Nails": 10,
+        "Rope": 5
+      },
+      "output": {
+        "Pasture3": 1
+      },
+      "duration": 120,
+      "recipename": "Pasture",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "PeacefulObject1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPlank": 3,
+        "Fibers": 1
+      },
+      "output": {
+        "PeacefulObject1": 1
+      },
+      "duration": 10,
+      "recipename": "Wooden Beds",
+      "desc": "Wall-attached beds",
+      "category": "Rest",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Rest": 4
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "PeacefulObject2": {
+      "construction": [
+        "PeacefulObject1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPlank": 2,
+        "Dyes": 2
+      },
+      "output": {
+        "PeacefulObject2": 1
+      },
+      "duration": 30,
+      "recipename": "Comfortable Berth",
+      "desc": "",
+      "category": "Rest",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Rest": 15
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "PeacefulObject3": {
+      "construction": [
+        "PeacefulObject1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
       "input": {
         "CarvedWoodenPlank": 4,
-        "Bottle": 12,
-        "Dyes": 9
+        "Bottle": 4,
+        "Dyes": 4
       },
       "output": {
-        "WoodenPeacefulObject3": 1
+        "PeacefulObject3": 1
       },
       "duration": 45,
-      "recipename": "Luxury Wooden Lamp"
+      "recipename": "Luxury Berth",
+      "desc": "",
+      "category": "Rest",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Rest": 25
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodenHealingArea1": {
+    "Plants2": {
       "construction": [
-        "Workbench1"
+        "Farm2"
       ],
-      "workers": 3,
+      "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "Wood": 5,
-        "Water": 8,
-        "Herbs": 3
       },
       "output": {
-        "WoodenHealingArea1": 1
+        "Plants": 2
+      },
+      "duration": 100,
+      "recipename": "Plants",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Plants3": {
+      "construction": [
+        "Farm3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Plants": 5
+      },
+      "duration": 1200,
+      "recipename": "Plants",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Pot1": {
+      "construction": [
+        "Forge1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Metals": 2
+      },
+      "output": {
+        "Pot": 1
+      },
+      "duration": 6,
+      "recipename": "Pot",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Pot2": {
+      "construction": [
+        "Forge2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Metals": 6
+      },
+      "output": {
+        "Pot": 4
+      },
+      "duration": 18,
+      "recipename": "Pack of Pots",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Pot3": {
+      "construction": [
+        "Forge3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Metals": 18
+      },
+      "output": {
+        "Pot": 15
+      },
+      "duration": 54,
+      "recipename": "Lots of Pot",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "ProjectileTower3": {
+      "construction": [
+        "ProjectileTower2"
+      ],
+      "workers": 4,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 36,
+        "WoodenPlank": 18,
+        "Rope": 9
+      },
+      "output": {
+        "ProjectileTower3": 1
+      },
+      "duration": 360,
+      "recipename": "Advanced Ballista Tower",
+      "desc": "",
+      "category": "Defense",
+      "playerlevelneeded": 99,
+      "xp": 1,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Quarry2": {
+      "construction": [
+        "Quarry1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenBeam": 10
+      },
+      "output": {
+        "Quarry2": 1
+      },
+      "duration": 100,
+      "recipename": "Stone Quarry",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Quarry3": {
+      "construction": [
+        "Quarry2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenBeam": 25,
+        "Nails": 16,
+        "Rope": 8
+      },
+      "output": {
+        "Quarry3": 1
+      },
+      "duration": 150,
+      "recipename": "Stone Quarry",
+      "desc": "",
+      "category": "Deposits",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "RestingArea3": {
+      "construction": [
+        "RestingArea1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Drapes": 6,
+        "CarvedWoodenPlank": 15,
+        "Fabric": 12
+      },
+      "output": {
+        "RestingArea3": 1
+      },
+      "duration": 90,
+      "recipename": "Luxury Beds",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Rest": 50
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Rope1": {
+      "construction": [
+        "Mill1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Fibers": 3
+      },
+      "output": {
+        "Rope": 1
+      },
+      "duration": 5,
+      "recipename": "Rope",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Rope2": {
+      "construction": [
+        "Mill2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Fibers": 3,
+        "Water": 1
+      },
+      "output": {
+        "Rope": 4
+      },
+      "duration": 15,
+      "recipename": "Pack of Ropes",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Rope3": {
+      "construction": [
+        "Mill3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Fibers": 10,
+        "Water": 3
+      },
+      "output": {
+        "Rope": 15
+      },
+      "duration": 45,
+      "recipename": "Lots of Rope",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Sawmill2": {
+      "construction": [
+        "Sawmill1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Stone": 4,
+        "WoodenPlank": 12,
+        "WoodenPanel": 8
+      },
+      "output": {
+        "Sawmill2": 1
+      },
+      "duration": 160,
+      "recipename": "Upgraded Sawmill",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Sawmill3": {
+      "construction": [
+        "Sawmill2"
+      ],
+      "workers": 2,
+      "actionPoints": 0,
+      "input": {
+        "WoodenBeam": 24,
+        "WoodenPlank": 12,
+        "WoodenPanel": 9
+      },
+      "output": {
+        "Sawmill3": 1
+      },
+      "duration": 240,
+      "recipename": "Advanced Sawmill",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "SocialArea1": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPanel": 8,
+        "Animals": 1
+      },
+      "output": {
+        "SocialArea1": 1
       },
       "duration": 50,
-      "recipename": "Wooden Infirmary"
+      "recipename": "Simple Benches",
+      "desc": "Comes with a dog-like animal, for companionship",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Social": 3
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodenHealingObject1": {
+    "SocialArea2": {
       "construction": [
-        "Workbench1"
+        "SocialArea1"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "Wood": 4,
-        "Herbs": 3
+        "Wood": 6,
+        "CarvedLeather": 7,
+        "Plants": 6
       },
       "output": {
-        "WoodenHealingObject1": 1
-      },
-      "duration": 25,
-      "recipename": "Wooden Medical Cabinet"
-    },
-    "WoodenHealingArea2": {
-      "construction": [
-        "WoodenHealingArea1"
-      ],
-      "workers": 4,
-      "input": {
-        "WoodenPlank": 12,
-        "Water": 24,
-        "BottleOfMedicine": 5
-      },
-      "output": {
-        "WoodenHealingArea2": 1
+        "SocialArea2": 1
       },
       "duration": 75,
-      "recipename": "Medium Wooden Infirmary"
+      "recipename": "Nice Bench",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Social": 30
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodenHealingObject2": {
+    "SocialArea3": {
       "construction": [
-        "WoodenHealingObject1"
-      ],
-      "workers": 2,
-      "input": {
-        "WoodenPlank": 4,
-        "Bottle": 3,
-        "Herbs": 1
-      },
-      "output": {
-        "WoodenHealingObject2": 1
-      },
-      "duration": 35,
-      "recipename": "Medium Wooden Medical Cabinet"
-    },
-    "WoodenHealingArea3": {
-      "construction": [
-        "WoodenHealingArea2"
-      ],
-      "workers": 5,
-      "input": {
-        "CarvedWoodenPlank": 15,
-        "Water": 48,
-        "BottleOfMedicine": 10
-      },
-      "output": {
-        "WoodenHealingArea3": 1
-      },
-      "duration": 110,
-      "recipename": "Large Wooden Infirmary"
-    },
-    "WoodenHealingObject3": {
-      "construction": [
-        "WoodenHealingObject2"
-      ],
-      "workers": 3,
-      "input": {
-        "CarvedWoodenPlank": 4,
-        "BottleOfMedicine": 8,
-        "Herbs": 4
-      },
-      "output": {
-        "WoodenHealingObject3": 1
-      },
-      "duration": 45,
-      "recipename": "Large Wooden Medical Cabinet"
-    },
-    "WoodenStudyArea1": {
-      "construction": [
-        "Workbench1"
-      ],
-      "workers": 3,
-      "input": {
-        "Wood": 8,
-        "WoodenPlank": 4,
-        "Paper": 6
-      },
-      "output": {
-        "WoodenStudyArea1": 1
-      },
-      "duration": 70,
-      "recipename": "Wooden Bookshelves"
-    },
-    "WoodenStudyObject1": {
-      "construction": [
-        "Workbench1"
+        "SocialArea1"
       ],
       "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "Paper": 3,
-        "Dyes": 1
+        "CarvedWoodenPanel": 12,
+        "CarvedLeather": 30,
+        "Drapes": 8
       },
       "output": {
-        "WoodenStudyObject1": 1
-      },
-      "duration": 35,
-      "recipename": "Simple Painting"
-    },
-    "WoodenStudyArea2": {
-      "construction": [
-        "WoodenStudyArea1"
-      ],
-      "workers": 4,
-      "input": {
-        "CarvedWoodenPlank": 5,
-        "WoodenPlank": 12,
-        "Book": 5
-      },
-      "output": {
-        "WoodenStudyArea2": 1
+        "SocialArea3": 1
       },
       "duration": 110,
-      "recipename": "Nice Bookshelves"
+      "recipename": "Fancy Bench",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Social": 50
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodenStudyObject2": {
+    "SocialObject1": {
       "construction": [
-        "WoodenStudyObject1"
+        "Constructor1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 4,
+        "Bones": 3
+      },
+      "output": {
+        "SocialObject1": 1
+      },
+      "duration": 25,
+      "recipename": "Simple Chairs",
+      "desc": "A couple of chair made of wood and bones",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Social": 1
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "SocialObject2": {
+      "construction": [
+        "SocialObject1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "WoodenPlank": 4,
+        "CarvedBones": 2
+      },
+      "output": {
+        "SocialObject2": 1
+      },
+      "duration": 35,
+      "recipename": "Nice Chair",
+      "desc": "",
+      "category": "Social",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Social": 15
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "SocialObject3": {
+      "construction": [
+        "SocialObject1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "CarvedWoodenPlank": 6,
+        "CarvedBones": 12,
+        "Bottle": 8
+      },
+      "output": {
+        "SocialObject3": 1
+      },
+      "duration": 45,
+      "recipename": "Fancy Chair",
+      "desc": "",
+      "category": "Social",
+      "playerlevelneeded": 99,
+      "motives": {
+        "Social": 25
+      },
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Stone2": {
+      "construction": [
+        "Quarry2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Stone": 3
+      },
+      "duration": 2200,
+      "recipename": "Stones",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Stone3": {
+      "construction": [
+        "Quarry3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Stone": 5
+      },
+      "duration": 2200,
+      "recipename": "Stone",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Stoneworks1": {
+      "construction": [
+        "Constructor1"
       ],
       "workers": 2,
+      "actionPoints": 0,
       "input": {
-        "Paper": 9,
-        "Dyes": 3,
+        "WoodenBeam": 2,
+        "Water": 5,
+        "Rope": 4
+      },
+      "output": {
+        "Stoneworks1": 1
+      },
+      "duration": 90,
+      "recipename": "Stoneworks",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Stoneworks2": {
+      "construction": [
+        "StoneWorks1"
+      ],
+      "workers": 2,
+      "actionPoints": 0,
+      "input": {
+        "WoodenBeam": 6,
+        "Water": 15,
+        "Rope": 12
+      },
+      "output": {
+        "Stoneworks2": 1
+      },
+      "duration": 135,
+      "recipename": "Upgraded Stoneworks",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Stoneworks3": {
+      "construction": [
+        "StoneWorks2"
+      ],
+      "workers": 2,
+      "actionPoints": 0,
+      "input": {
+        "WoodenBeam": 18,
+        "Water": 45,
+        "Rope": 36
+      },
+      "output": {
+        "Stoneworks3": 1
+      },
+      "duration": 200,
+      "recipename": "Advanced Stoneworks",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Water1": {
+      "construction": [
+        "Bridge1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Water": 1
+      },
+      "duration": 30,
+      "recipename": "Water",
+      "desc": "Liquid, held in buckets",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Water2": {
+      "construction": [
+        "Bridge2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Water": 3
+      },
+      "duration": 120,
+      "recipename": "Water",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Water3": {
+      "construction": [
+        "Bridge3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Water": 5
+      },
+      "duration": 120,
+      "recipename": "Water",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "Wood3": {
+      "construction": [
+        "LoggingCamp3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "Wood": 5
+      },
+      "duration": 60,
+      "recipename": "Wood",
+      "desc": "",
+      "category": "Resources",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "TRUE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "WoodenBeam2": {
+      "construction": [
+        "Sawmill2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 9,
+        "Water": 1
+      },
+      "output": {
+        "WoodenBeam": 4
+      },
+      "duration": 15,
+      "recipename": "Pack of Wooden Beams",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "WoodenBeam3": {
+      "construction": [
+        "Sawmill3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 27,
+        "Water": 3,
+        "Leather": 1
+      },
+      "output": {
+        "WoodenBeam": 15
+      },
+      "duration": 45,
+      "recipename": "Lots of Wooden Beams",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "WoodenPanel2": {
+      "construction": [
+        "Sawmill2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 12,
+        "WoodenPlank": 9
+      },
+      "output": {
+        "WoodenPanel": 4
+      },
+      "duration": 30,
+      "recipename": "Pack of Wooden Panels",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 5,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "WoodenPanel3": {
+      "construction": [
+        "Sawmill3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 36,
+        "Nails": 27,
+        "Water": 10
+      },
+      "output": {
+        "WoodenPanel": 15
+      },
+      "duration": 90,
+      "recipename": "Lots of Wooden Panels",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "WoodenPlank2": {
+      "construction": [
+        "Sawmill2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 6,
+        "Water": 1
+      },
+      "output": {
+        "WoodenPlank": 4
+      },
+      "duration": 15,
+      "recipename": "Pack of Wooden Planks",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 2,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "WoodenPlank3": {
+      "construction": [
+        "Sawmill3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 18,
+        "Water": 3,
+        "Leather": 1
+      },
+      "output": {
+        "WoodenPlank": 15
+      },
+      "duration": 45,
+      "recipename": "Lots of Wooden Planks",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "WoodenSpikes1": {
+      "construction": [
+        "Sawmill1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 1
+      },
+      "output": {
+        "WoodenSpikes": 1
+      },
+      "duration": 3,
+      "recipename": "Wooden Spikes",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "WoodenSpikes2": {
+      "construction": [
+        "Sawmill2"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 3,
+        "Water": 1
+      },
+      "output": {
+        "WoodenSpikes": 4
+      },
+      "duration": 9,
+      "recipename": "Pack of Wooden Spikes",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "WoodenSpikes3": {
+      "construction": [
+        "Sawmill3"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
+        "Wood": 9,
+        "Water": 3,
+        "Leather": 1
+      },
+      "output": {
+        "WoodenSpikes": 15
+      },
+      "duration": 27,
+      "recipename": "Lots of  Wooden Spikes",
+      "desc": "",
+      "category": "Materials",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "WoodenTrap3": {
+      "construction": [
+        "WoodenTrap2"
+      ],
+      "workers": 3,
+      "actionPoints": 0,
+      "input": {
+        "WoodenSpikes": 18,
+        "Rope": 9
+      },
+      "output": {
+        "WoodenTrap3": 1
+      },
+      "duration": 80,
+      "recipename": "Advanced Spikes Trap",
+      "desc": "",
+      "category": "Defense",
+      "playerlevelneeded": 99,
+      "xp": 1,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "WoodPickaxe1": {
+      "construction": [
+        "Sawmill1"
+      ],
+      "workers": 1,
+      "actionPoints": 0,
+      "input": {
         "Wood": 2
       },
       "output": {
-        "WoodenStudyObject2": 1
+        "Pickaxe": 1
       },
-      "duration": 50,
-      "recipename": "Nice Painting"
+      "duration": 5,
+      "recipename": "Wood Pickaxe",
+      "desc": "",
+      "category": "Equipment",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "objectSlotCategory": "Motive",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodenStudyArea3": {
+    "WoodPickaxe2": {
       "construction": [
-        "WoodenStudyArea2"
+        "Sawmill2"
       ],
-      "workers": 5,
+      "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "CarvedWoodenPlank": 10,
-        "WoodenPlank": 36,
-        "Book": 20
+        "Wood": 6,
+        "Water": 1
       },
       "output": {
-        "WoodenStudyArea3": 1
+        "Pickaxe": 4
       },
-      "duration": 165,
-      "recipename": "Fancy Bookshelves"
+      "duration": 15,
+      "recipename": "Pack of Wood Pickaxe",
+      "desc": "",
+      "category": "Equipment",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     },
-    "WoodenStudyObject3": {
+    "WoodPickaxe3": {
       "construction": [
-        "WoodenStudyObject2"
+        "Sawmill3"
       ],
-      "workers": 2,
+      "workers": 1,
+      "actionPoints": 0,
       "input": {
-        "Fabric": 9,
-        "Dyes": 10,
-        "CarvedWoodenPlank": 3
+        "Wood": 18,
+        "Water": 3,
+        "Leather": 1
       },
       "output": {
-        "WoodenStudyObject3": 1
+        "Pickaxe": 15
       },
-      "duration": 75,
-      "recipename": "Fancy Painting"
+      "duration": 45,
+      "recipename": "Lots of Wood Pickaxe",
+      "desc": "",
+      "category": "Equipment",
+      "playerlevelneeded": 99,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
+    },
+    "NULL": {
+      "construction": [
+        "Constructor1"
+      ],
+      "workers": 0,
+      "actionPoints": 0,
+      "input": {
+      },
+      "output": {
+        "NULL": 0
+      },
+      "duration": 1,
+      "recipename": "NULL",
+      "desc": "",
+      "category": "Rooms",
+      "playerlevelneeded": 99999,
+      "xp": 0,
+      "automate": "FALSE",
+      "localStorage": 0,
+      "globalStorage": 0
     }
   },
   "taskRules": {
@@ -2442,5 +4703,1406 @@
     }
   },
   "consumableDefines": {
+  },
+  "constructorDefines": {
+    "Constructor1": {
+    },
+    "Forest1": {
+    },
+    "LoggingCamp1": {
+    },
+    "Sawmill1": {
+    },
+    "Field1": {
+    },
+    "Farm1": {
+    },
+    "LoggingCamp2": {
+    },
+    "Mill1": {
+    },
+    "CookingArea1": {
+    },
+    "StoneDeposit1": {
+    },
+    "Quarry1": {
+    },
+    "WoodenTrap1": {
+    },
+    "Pasture1": {
+    },
+    "FireTrap1": {
+    },
+    "Herd1": {
+    },
+    "Meatworks1": {
+    },
+    "RestingArea1": {
+    },
+    "MetalDeposit1": {
+    },
+    "MetalMine1": {
+    },
+    "ProjectileTower1": {
+    },
+    "Pasture2": {
+    },
+    "Pasture3": {
+    },
+    "Meatworks2": {
+    },
+    "Meatworks3": {
+    },
+    "Mill2": {
+    },
+    "Mill3": {
+    },
+    "Forge1": {
+    },
+    "Forge2": {
+    },
+    "Forge3": {
+    },
+    "River1": {
+    },
+    "Bridge1": {
+    },
+    "Bridge2": {
+    },
+    "Sawmill2": {
+    },
+    "Sawmill3": {
+    },
+    "CoalMine1": {
+    },
+    "CoalMine2": {
+    },
+    "CoalMine3": {
+    },
+    "CoalDeposit1": {
+    },
+    "CultureArea1": {
+    },
+    "CultureObject1": {
+    },
+    "EatingObject1": {
+    },
+    "Farm2": {
+    },
+    "HealingArea1": {
+    },
+    "HealingObject1": {
+    },
+    "Lab1": {
+    },
+    "Lab2": {
+    },
+    "MagicCrystalsDeposit1": {
+    },
+    "MagicCrystalMine2": {
+    },
+    "MagicCrystalMine3": {
+    },
+    "MetalMine2": {
+    },
+    "MetalMine3": {
+    },
+    "PeacefulObject1": {
+    },
+    "Farm3": {
+    },
+    "ProjectileTower2": {
+    },
+    "Quarry2": {
+    },
+    "SocialArea1": {
+    },
+    "SocialObject1": {
+    },
+    "Quarry3": {
+    },
+    "StoneWorks1": {
+    },
+    "StoneWorks2": {
+    },
+    "Bridge3": {
+    },
+    "LoggingCamp3": {
+    },
+    "WoodenTrap2": {
+    }
+  },
+  "lastEditDate": "Sat Oct 17 2015 14:30:54 GMT+0100 (BST)",
+  "progressionDefines": {
+    "1": {
+      "playerLevel": 1,
+      "playerXPNeeded": 0,
+      "recipes": {
+        "Corridor1": {
+          "amount": 12,
+          "xp": 0
+        },
+        "LoggingCamp1": {
+          "amount": 1,
+          "xp": 5
+        },
+        "ThroneRoom1": {
+          "amount": 1,
+          "xp": 0
+        }
+      },
+      "maxWorkers": 2,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 1,
+      "maxHeroesUnlocked": 2,
+      "maxDefenseTraps": 0,
+      "maxDefenseTowers": 0,
+      "maxCombatWaves": 2,
+      "enforceHunger": 0,
+      "enforceRest": 0
+    },
+    "2": {
+      "playerLevel": 2,
+      "playerXPNeeded": 5,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "LandMine1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 2,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 2,
+      "maxHeroesUnlocked": 2,
+      "maxDefenseTraps": 0,
+      "maxDefenseTowers": 0,
+      "maxCombatWaves": 2,
+      "enforceHunger": 0,
+      "enforceRest": 0
+    },
+    "3": {
+      "playerLevel": 3,
+      "playerXPNeeded": 6,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "CookingArea1": {
+          "amount": 1,
+          "xp": 5
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 3,
+      "additionalMaxWorkersxp": 3,
+      "maxHeroes": 2,
+      "maxHeroesUnlocked": 3,
+      "maxDefenseTraps": 1,
+      "maxDefenseTowers": 0,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 0
+    },
+    "4": {
+      "playerLevel": 4,
+      "playerXPNeeded": 15,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "ProjectileTower1": {
+          "amount": 1,
+          "xp": 1
+        },
+        "Sawmill1": {
+          "amount": 1,
+          "xp": 5
+        }
+      },
+      "maxWorkers": 3,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 2,
+      "maxHeroesUnlocked": 3,
+      "maxDefenseTraps": 1,
+      "maxDefenseTowers": 1,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 0
+    },
+    "5": {
+      "playerLevel": 5,
+      "playerXPNeeded": 21,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "LandMine1": {
+          "amount": 1,
+          "xp": 1
+        },
+        "FireTrap1": {
+          "amount": 1,
+          "xp": 1
+        },
+        "Farm1": {
+          "amount": null,
+          "xp": 0
+        }
+      },
+      "maxWorkers": 4,
+      "additionalMaxWorkersxp": 3,
+      "maxHeroes": 3,
+      "maxHeroesUnlocked": 4,
+      "maxDefenseTraps": 2,
+      "maxDefenseTowers": 1,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 0
+    },
+    "6": {
+      "playerLevel": 6,
+      "playerXPNeeded": 26,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "FireTrap1": {
+          "amount": 1,
+          "xp": 1
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        },
+        "StorageArea1": {
+          "amount": 1,
+          "xp": 5
+        },
+        "LoggingCamp2": {
+          "amount": 1,
+          "xp": 5
+        }
+      },
+      "maxWorkers": 4,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 3,
+      "maxHeroesUnlocked": 4,
+      "maxDefenseTraps": 4,
+      "maxDefenseTowers": 1,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 0
+    },
+    "7": {
+      "playerLevel": 7,
+      "playerXPNeeded": 38,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "GreatHall1": {
+          "amount": 1,
+          "xp": 10
+        },
+        "ProjectileTower1": {
+          "amount": 1,
+          "xp": 1
+        },
+        "CookingArea1": {
+          "amount": 1,
+          "xp": 5
+        }
+      },
+      "maxWorkers": 5,
+      "additionalMaxWorkersxp": 3,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 5,
+      "maxDefenseTraps": 4,
+      "maxDefenseTowers": 2,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 0
+    },
+    "8": {
+      "playerLevel": 8,
+      "playerXPNeeded": 57,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "FlamethrowerTower1": {
+          "amount": 1,
+          "xp": 1
+        },
+        "FireTrap1": {
+          "amount": 1,
+          "xp": 1
+        },
+        "Mill1": {
+          "amount": null,
+          "xp": 0
+        }
+      },
+      "maxWorkers": 5,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 5,
+      "maxDefenseTraps": 5,
+      "maxDefenseTowers": 3,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 0
+    },
+    "9": {
+      "playerLevel": 9,
+      "playerXPNeeded": 59,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "RestingArea1": {
+          "amount": 1,
+          "xp": 5
+        },
+        "FlamethrowerTower1": {
+          "amount": 1,
+          "xp": 1
+        },
+        "FireTrap1": {
+          "amount": 1,
+          "xp": 1
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 6,
+      "additionalMaxWorkersxp": 3,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 6,
+      "maxDefenseTraps": 7,
+      "maxDefenseTowers": 4,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "10": {
+      "playerLevel": 10,
+      "playerXPNeeded": 70,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "CookingArea2": {
+          "amount": 1,
+          "xp": 5
+        },
+        "WoodenTrap2": {
+          "amount": 1,
+          "xp": 1
+        },
+        "Quarry1": {
+          "amount": 1,
+          "xp": 5
+        },
+        "ProjectileTower1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 7,
+      "additionalMaxWorkersxp": 3,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 6,
+      "maxDefenseTraps": 7,
+      "maxDefenseTowers": 5,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "11": {
+      "playerLevel": 11,
+      "playerXPNeeded": 85,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "Pasture1": {
+          "amount": 1,
+          "xp": 0
+        },
+        "FireTrap2": {
+          "amount": 1,
+          "xp": 1
+        },
+        "WoodenTrap2": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 8,
+      "additionalMaxWorkersxp": 3,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 6,
+      "maxDefenseTraps": 7,
+      "maxDefenseTowers": 5,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "12": {
+      "playerLevel": 12,
+      "playerXPNeeded": 90,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "RestingArea2": {
+          "amount": 1,
+          "xp": 5
+        },
+        "Meatworks1": {
+          "amount": 1,
+          "xp": 5
+        },
+        "WoodenTrap2": {
+          "amount": 1,
+          "xp": 1
+        },
+        "FlamethrowerTower1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 8,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 6,
+      "maxDefenseTraps": 7,
+      "maxDefenseTowers": 6,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "13": {
+      "playerLevel": 13,
+      "playerXPNeeded": 102,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap2": {
+          "amount": 1,
+          "xp": 1
+        },
+        "FireTrap2": {
+          "amount": 1,
+          "xp": 1
+        },
+        "FlamethrowerTower2": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 8,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 6,
+      "maxDefenseTraps": 9,
+      "maxDefenseTowers": 6,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "14": {
+      "playerLevel": 14,
+      "playerXPNeeded": 105,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "TrophyRoom1": {
+          "amount": 1,
+          "xp": 10
+        },
+        "FlamethrowerTower1": {
+          "amount": 1,
+          "xp": 1
+        },
+        "CookingArea1": {
+          "amount": 1,
+          "xp": 5
+        },
+        "FireTrap2": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 9,
+      "additionalMaxWorkersxp": 3,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 6,
+      "maxDefenseTraps": 10,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "15": {
+      "playerLevel": 15,
+      "playerXPNeeded": 125,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "MetalMine1": {
+          "amount": 1,
+          "xp": 0
+        },
+        "RestingArea1": {
+          "amount": 1,
+          "xp": 5
+        },
+        "ProjectileTower2": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 3,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 6,
+      "maxDefenseTraps": 10,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "16": {
+      "playerLevel": 16,
+      "playerXPNeeded": 134,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 11,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "17": {
+      "playerLevel": 17,
+      "playerXPNeeded": 135,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 12,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "18": {
+      "playerLevel": 18,
+      "playerXPNeeded": 136,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 13,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "19": {
+      "playerLevel": 19,
+      "playerXPNeeded": 137,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 14,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "20": {
+      "playerLevel": 20,
+      "playerXPNeeded": 138,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 15,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "21": {
+      "playerLevel": 21,
+      "playerXPNeeded": 139,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 16,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "22": {
+      "playerLevel": 22,
+      "playerXPNeeded": 140,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 17,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "23": {
+      "playerLevel": 23,
+      "playerXPNeeded": 141,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 18,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "24": {
+      "playerLevel": 24,
+      "playerXPNeeded": 142,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 19,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "25": {
+      "playerLevel": 25,
+      "playerXPNeeded": 143,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 20,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "26": {
+      "playerLevel": 26,
+      "playerXPNeeded": 144,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 21,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "27": {
+      "playerLevel": 27,
+      "playerXPNeeded": 145,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 22,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "28": {
+      "playerLevel": 28,
+      "playerXPNeeded": 146,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 23,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "29": {
+      "playerLevel": 29,
+      "playerXPNeeded": 147,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 24,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "30": {
+      "playerLevel": 30,
+      "playerXPNeeded": 148,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 25,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "31": {
+      "playerLevel": 31,
+      "playerXPNeeded": 149,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 26,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "32": {
+      "playerLevel": 32,
+      "playerXPNeeded": 150,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 27,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "33": {
+      "playerLevel": 33,
+      "playerXPNeeded": 151,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 28,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "34": {
+      "playerLevel": 34,
+      "playerXPNeeded": 152,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 29,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "35": {
+      "playerLevel": 35,
+      "playerXPNeeded": 153,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 30,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "36": {
+      "playerLevel": 36,
+      "playerXPNeeded": 154,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 31,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "37": {
+      "playerLevel": 37,
+      "playerXPNeeded": 155,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 32,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "38": {
+      "playerLevel": 38,
+      "playerXPNeeded": 156,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 33,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "39": {
+      "playerLevel": 39,
+      "playerXPNeeded": 157,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 34,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "40": {
+      "playerLevel": 40,
+      "playerXPNeeded": 158,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 35,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "41": {
+      "playerLevel": 41,
+      "playerXPNeeded": 159,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 36,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "42": {
+      "playerLevel": 42,
+      "playerXPNeeded": 160,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 37,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "43": {
+      "playerLevel": 43,
+      "playerXPNeeded": 161,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 38,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "44": {
+      "playerLevel": 44,
+      "playerXPNeeded": 162,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 39,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "45": {
+      "playerLevel": 45,
+      "playerXPNeeded": 163,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 40,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "46": {
+      "playerLevel": 46,
+      "playerXPNeeded": 164,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 41,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "47": {
+      "playerLevel": 47,
+      "playerXPNeeded": 165,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 42,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "48": {
+      "playerLevel": 48,
+      "playerXPNeeded": 166,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 43,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "49": {
+      "playerLevel": 49,
+      "playerXPNeeded": 167,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 44,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    },
+    "50": {
+      "playerLevel": 50,
+      "playerXPNeeded": 168,
+      "recipes": {
+        "Corridor1": {
+          "amount": 3,
+          "xp": 0
+        },
+        "WoodenTrap1": {
+          "amount": 1,
+          "xp": 1
+        }
+      },
+      "maxWorkers": 10,
+      "additionalMaxWorkersxp": 0,
+      "maxHeroes": 4,
+      "maxHeroesUnlocked": 99,
+      "maxDefenseTraps": 45,
+      "maxDefenseTowers": 7,
+      "maxCombatWaves": 2,
+      "enforceHunger": 1,
+      "enforceRest": 1
+    }
   }
 }

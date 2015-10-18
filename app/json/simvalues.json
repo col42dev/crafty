@@ -1,0 +1,13 @@
+{
+  "lastEditDate": "Sun Oct 18 2015 21:38:44 GMT+0100 (BST)",
+  "version": "0.0.5",
+  "title": "simvalues",
+  "map": {
+    "RoomAssignedWorkerActionPoinjtGain": 5,
+    "ActionPointIncrementRateSeconds": 5
+  },
+  "globals": {
+    "RoomAssignedWorkerActionPointGain": 5,
+    "ActionPointIncrementRateSeconds": 5
+  }
+}

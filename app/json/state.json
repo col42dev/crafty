@@ -1,6 +1,6 @@
 {
   "title": "craftystate",
-  "version": "0.0.0",
+  "version": "0.0.6",
   "characters": [
     {
       "name": "Aelfric, Elvish Harvester",
@@ -11,17 +11,17 @@
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c1.8d006e6f.jpg",
       "stats": {
         "health": {
-          "current": 50,
+          "current": 175,
           "max": 175,
           "regeneratePeriod": 10
         },
         "energy": {
-          "current": 50,
+          "current": 120,
           "max": 120,
           "regeneratePeriod": 8
         },
         "mind": {
-          "current": 40,
+          "current": 120,
           "max": 120,
           "regeneratePeriod": 20
         }
@@ -45,17 +45,17 @@
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c2.3a5cb818.png",
       "stats": {
         "health": {
-          "current": 50,
+          "current": 100,
           "max": 100,
           "regeneratePeriod": 10
         },
         "energy": {
-          "current": 40,
+          "current": 80,
           "max": 80,
           "regeneratePeriod": 15
         },
         "mind": {
-          "current": 100,
+          "current": 150,
           "max": 150,
           "regeneratePeriod": 5
         }
@@ -89,7 +89,7 @@
           "regeneratePeriod": 5
         },
         "mind": {
-          "current": 20,
+          "current": 100,
           "max": 100,
           "regeneratePeriod": 20
         }
@@ -113,17 +113,17 @@
       "image": "http://ec2-54-201-237-107.us-west-2.compute.amazonaws.com/crafty/images/c4.59c1ea4d.png",
       "stats": {
         "health": {
-          "current": 60,
+          "current": 100,
           "max": 100,
           "regeneratePeriod": 10
         },
         "energy": {
-          "current": 200,
+          "current": 300,
           "max": 300,
           "regeneratePeriod": 5
         },
         "mind": {
-          "current": 40,
+          "current": 50,
           "max": 50,
           "regeneratePeriod": 30
         }
@@ -142,168 +142,24 @@
   "harvestables": [
     {
       "name": "Earth",
-      "quantity": 100
+      "quantity": 10
     },
     {
       "name": "Stone",
-      "quantity": 100
+      "quantity": 10
     }
   ],
   "bank": [
     {
-      "name": "Constructor",
-      "quantity": 1
-    },
-    {
-      "name": "Workbench1",
-      "quantity": 1
-    },
-    {
-      "name": "Workbench2",
-      "quantity": 1
-    },
-    {
-      "name": "Workbench3",
-      "quantity": 1
-    },
-    {
-      "name": "Forge1",
-      "quantity": 1
-    },
-    {
-      "name": "Forge2",
-      "quantity": 1
-    },
-    {
-      "name": "Forge3",
-      "quantity": 1
-    },
-    {
-      "name": "WoodenTrap1",
-      "quantity": 1
-    },
-    {
-      "name": "WoodenTrap2",
-      "quantity": 1
-    },
-    {
-      "name": "WoodenTrap3",
-      "quantity": 1
-    },
-    {
-      "name": "WoodenTower1",
-      "quantity": 1
-    },
-    {
-      "name": "WoodenTower2",
-      "quantity": 1
-    },
-    {
-      "name": "WoodenTower3",
-      "quantity": 1
-    },
-    {
-      "name": "StoneWorks1",
-      "quantity": 1
-    },
-    {
-      "name": "StoneWorks2",
-      "quantity": 1
-    },
-    {
-      "name": "StoneWorks3",
-      "quantity": 1
-    },
-    {
-      "name": "Lab1",
-      "quantity": 1
-    },
-    {
-      "name": "Lab2",
-      "quantity": 1
-    },
-    {
-      "name": "Lab3",
-      "quantity": 1
-    },
-    {
-      "name": "WoodenCookingArea1" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenCookingArea2" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenCookingArea3" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenEatingObject1" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenEatingObject2" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenEatingObject3" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenRestingArea1" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenRestingArea2" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenRestingArea3" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenPeacefulObject1" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenPeacefulObject2" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenPeacefulObject3" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenHealingArea1" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenHealingArea2" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenHealingArea3" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenStudyArea1" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenStudyArea1" ,
-      "quantity": 1
-    },
-    {
-      "name": "WoodenStudyArea3",
+      "name": "Constructor1",
       "quantity": 1
     },
     {
       "name": "Wood",
-      "quantity": 10
+      "quantity": 12
     },
     {
-      "name": "Animals",
+      "name": "Leather",
       "quantity": 10
     },
     {
@@ -321,12 +177,203 @@
     {
       "name": "Coal",
       "quantity": 10
+    },
+    {
+      "name": "Metals",
+      "quantity": 10
     }
   ],
   "rewards": [
 
   ],
   "craftables": [
+    "ThroneRoom1",
+    "Corridor1",
+    "LoggingCamp1",
+    "Wood1",
+    "WoodenTrap1",
+    "CookingArea1",
+    "ProjectileTower1",
+    "Sawmill1",
+    "WoodenPlank1",
+    "FireTrap1",
+    "Plants1",
+    "Farm1",
+    "WoodenBeam1",
+    "GreatHall1",
+    "FlamethrowerTower1",
+    "RestingArea1",
+    "Mill1",
+    "Fibers1",
+    "CookingArea2",
+    "Stone1",
+    "Quarry1",
+    "WoodenTrap2",
+    "FireTrap2",
+    "Pasture1",
+    "Animals1",
+    "Meatworks1",
+    "Leather1",
+    "RestingArea2",
+    "LoggingCamp2",
+    "Wood2",
+    "TrophyRoom1",
+    "CarvedWoodenPlank1",
+    "MetalMine1",
+    "Metals1",
+    "ProjectileTower2",
+    "Bridge2",
+    "Bridge3",
+    "Water1",
+    "Water3",
+    "Water2",
+    "CoalMine1",
+    "CoalMine2",
+    "CoalMine3",
+    "Coal3",
+    "Coal1",
+    "Coal2",
+    "CultureArea1",
+    "CultureObject1",
+    "HealingArea1",
+    "HealingObject1",
+    "PeacefulObject1",
+    "Keep1",
+    "SocialArea1",
+    "SocialObject1",
+    "Stoneworks1",
+    "Lab1",
+    "Forge1",
+    "CookingArea3",
+    "CultureArea2",
+    "CultureArea3",
+    "CultureObject2",
+    "CultureObject3",
+    "EatingObject2",
+    "EatingObject3",
+    "Farm2",
+    "Farm3",
+    "Plants2",
+    "Plants3",
+    "Bottle3",
+    "Gears3",
+    "Glass3",
+    "MetalBeam3",
+    "Nails3",
+    "Pot3",
+    "Gears1",
+    "Glass1",
+    "MetalBeam1",
+    "Nails1",
+    "Pot1",
+    "Bottle1",
+    "Bottle2",
+    "Gears2",
+    "Glass2",
+    "MetalBeam2",
+    "Nails2",
+    "Pot2",
+    "Forge2",
+    "Forge3",
+    "HealingArea2",
+    "HealingArea3",
+    "HealingObject2",
+    "HealingObject3",
+    "Lab2",
+    "Lab3",
+    "LoggingCamp3",
+    "Wood3",
+    "MagicCrystals2",
+    "MagicCrystals3",
+    "MagicCrystals1",
+    "Bones1",
+    "Bones3",
+    "CarvedBones3",
+    "CarvedLeather2",
+    "Leather3",
+    "Bones2",
+    "CarvedBones1",
+    "CarvedLeather1",
+    "Leather2",
+    "Meatworks3",
+    "Meatworks2",
+    "MetalMine2",
+    "MetalMine3",
+    "Metals3",
+    "Metals2",
+    "Herbs1",
+    "Rope1",
+    "Dyes1",
+    "Book2",
+    "BottleOfMedicine2",
+    "Drapes3",
+    "Dyes3",
+    "Encyclopedia1",
+    "Fabric3",
+    "Fibers3",
+    "Herbs3",
+    "Paint1",
+    "Paper3",
+    "Rope3",
+    "Drapes1",
+    "Fabric1",
+    "Book1",
+    "BottleOfMedicine1",
+    "Drapes2",
+    "Dyes2",
+    "Fabric2",
+    "Fibers2",
+    "Herbs2",
+    "Rope2",
+    "Mill3",
+    "Mill2",
+    "Pasture2",
+    "Pasture3",
+    "Animals2",
+    "Animals3",
+    "PeacefulObject2",
+    "PeacefulObject3",
+    "ProjectileTower3",
+    "Quarry2",
+    "Quarry3",
+    "Stone3",
+    "Stone2",
+    "RestingArea3",
+    "Bridge1",
+    "WoodPickaxe1",
+    "WoodPickaxe2",
+    "WoodPickaxe3",
+    "WoodenPanel1",
+    "Paper1",
+    "WoodenPanel2",
+    "WoodenPlank2",
+    "Paper2",
+    "WoodenSpikes1",
+    "CarvedWoodenPanel1",
+    "WoodenBeam2",
+    "WoodenSpikes2",
+    "CarvedWoodenPanel2",
+    "CarvedWoodenPlank2",
+    "WoodenBeam3",
+    "WoodenPanel3",
+    "WoodenPlank3",
+    "WoodenSpikes3",
+    "Sawmill2",
+    "Sawmill3",
+    "SocialArea2",
+    "SocialArea3",
+    "SocialObject2",
+    "SocialObject3",
+    "Stoneworks2",
+    "Stoneworks3",
+    "WoodenTrap3",
+    "NULL"
+  ],
+  "activeTasks": [
 
-  ]
+  ],
+  "pendingTasks": [
+
+  ],
+  "lastEditDate": "Fri Oct 09 2015 15:45:41 GMT+0100 (BST)"
 }

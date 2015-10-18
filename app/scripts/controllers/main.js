@@ -17,6 +17,7 @@ angular.module('craftyApp')
     'FSSimRules', 
     'FSSimState',
     'FSMapState',  
+    'FSSimValues',
     'FSContextConsole', 
     'FSSimObjectFactory', 
     'FSSimBank', 
@@ -28,6 +29,7 @@ angular.module('craftyApp')
     'ServerSideTimers', 
     'RecipeModal',
     'CraftingModal',
+    
     'GDocs',
   function (
     $scope, 
@@ -35,6 +37,7 @@ angular.module('craftyApp')
     FSSimRules, 
     FSSimState, 
     FSMapState,
+    FSSimValues,
     FSContextConsole, 
     FSSimObjectFactory, 
     FSSimBank, 
@@ -46,6 +49,7 @@ angular.module('craftyApp')
     ServerSideTimers,
     RecipeModal,
     CraftingModal,
+   
     GDocs)
      {
 
@@ -107,6 +111,10 @@ angular.module('craftyApp')
 
     $scope.getGDocs = function() {
       return GDocs;
+    };
+
+    $scope.getFSSimValues = function() {
+      return FSSimValues;
     };
 
 

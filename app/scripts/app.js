@@ -70,6 +70,10 @@ angular
         templateUrl: 'views/pages/mapstate.html',
         controller: 'MainCtrl'
       })
+      .when('/simvalues', {
+        templateUrl: 'views/pages/simvalues.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
