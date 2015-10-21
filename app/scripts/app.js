@@ -74,6 +74,10 @@ angular
         templateUrl: 'views/pages/simvalues.html',
         controller: 'MainCtrl'
       })
+      .when('/simworkers', {
+        templateUrl: 'views/pages/simworkers.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

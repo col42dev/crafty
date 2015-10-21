@@ -23,7 +23,7 @@ angular.module('craftyApp')
 
   this.spreadsheet = '1xP0aCx9S4wG_3XN9au5VezJ6xVTnZWNlOLX8l6B69n4';
 
-https://spreadsheets.google.com/feeds/worksheets/1a5nPRqrNvu6gAVVtrnAJ5bvGqXCiDVOLivtZrKTIzOo/private/full
+https://spreadsheets.google.com/feeds/worksheets/1xP0aCx9S4wG_3XN9au5VezJ6xVTnZWNlOLX8l6B69n4/private/full
 
 od3otrm
 omu0e9t
@@ -148,6 +148,7 @@ otw4nb - simvalues
 
                 recipe.playerlevelneeded = parseInt( this.response.feed.entry[i].gsx$playerlevelneeded.$t, 10);
 
+                /*
                 if (this.response.feed.entry[i].gsx$recipesimulationmotive1id.$t.length > 0) {
                   recipe.motives= {};
                   for ( var motivesIndex = 1; motivesIndex <= 3; motivesIndex ++) {
@@ -161,10 +162,8 @@ otw4nb - simvalues
                           recipe.motives[id] = capacity;
                         }
                   }
-                }
+                }*/
 
-
-                recipe.playerlevelneeded = parseInt( this.response.feed.entry[i].gsx$playerlevelneeded.$t, 10);
 
 
       

@@ -1,0 +1,42 @@
+
+
+
+<br/><b>title: {{getFSSimWorkers().stateJSON.title}}<b>
+<br/><b>version: {{getFSSimWorkers().stateJSON.version}}<b>
+<br/><b>last edit date: {{getFSSimWorkers().stateJSON.lastEditDate}}<b>
+
+
+<br/>
+<pre>
+<button ng-click="getFSSimWorkers().updateServerVersionFromState()">Update server:</button> at {{getFSSimWorkers().stateURL}}
+</pre>
+<br/>
+
+
+<div class="fadedbackground">
+
+<h4>SIM WORKERS</h4>
+
+<button ng-click="getFSSimWorkers().update()">Update from Google Doc</button> {{getFSSimWorkers().spreadsheet}}
+
+
+<br/>
+<textarea cols="50" rows="20" ng-model="getFSSimWorkers().stateJSONtxt" style="float: right; width:100%"></textarea>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

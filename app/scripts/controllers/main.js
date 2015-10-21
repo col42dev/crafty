@@ -18,6 +18,7 @@ angular.module('craftyApp')
     'FSSimState',
     'FSMapState',  
     'FSSimValues',
+    'FSSimWorkers',
     'FSContextConsole', 
     'FSSimObjectFactory', 
     'FSSimBank', 
@@ -38,6 +39,7 @@ angular.module('craftyApp')
     FSSimState, 
     FSMapState,
     FSSimValues,
+    FSSimWorkers,
     FSContextConsole, 
     FSSimObjectFactory, 
     FSSimBank, 
@@ -115,6 +117,10 @@ angular.module('craftyApp')
 
     $scope.getFSSimValues = function() {
       return FSSimValues;
+    };
+
+    $scope.getFSSimWorkers = function() {
+      return FSSimWorkers;
     };
 
 
