@@ -84,7 +84,6 @@ otw4nb - simvalues
                 recipe.construction = [];
                 recipe.construction.push(workstation+workstationLevel);
 
-                recipe.workers = parseInt( this.response.feed.entry[i].gsx$inputworkersamount.$t, 10);
                 recipe.actionPoints = parseInt( this.response.feed.entry[i].gsx$inputactionpointsamount.$t, 10);
 
                 recipe.input = {};
