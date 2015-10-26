@@ -12,7 +12,7 @@ angular.module('craftyApp')
   .service('FSSimRules', function ($http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     var simRules = this;
-    this.rulesJSON = null;
+    this.rulesJSON = {};
     this.updateServerVersionWithData = null;
     this.rulesURL = null;
     this.serializedData = null;
@@ -62,27 +62,32 @@ angular.module('craftyApp')
     this.rebuildMirrors = function() {
 
         // remap harvestableDefines as keys array - for use by html templates visuals only.
-        var hKeys = Object.keys(this.harvestableDefines);
-        hKeys.push('');
-        //console.log( JSON.stringify(hKeys));
-        this.harvestableDefinesKeys = hKeys.map(function (key) {
-                return key;
-              });
+        if (this.harvestableDefines) {
+            var hKeys = Object.keys(this.harvestableDefines);
+            hKeys.push('');
+            //console.log( JSON.stringify(hKeys));
+            this.harvestableDefinesKeys = hKeys.map(function (key) {
+                    return key;
+                  });
 
+        }
 
 
         // 
         this.craftableDefinesMirror = {};
-        for ( var cdi = 0; cdi < Object.keys(this.craftableDefines).length; cdi ++) {
+        if (this.craftableDefines) {
 
-            var keyname = Object.keys(this.craftableDefines)[cdi];
-            var recipename = this.craftableDefines[keyname].recipename;
+            for ( var cdi = 0; cdi < Object.keys(this.craftableDefines).length; cdi ++) {
 
-            if ( this.craftableDefinesMirror.hasOwnProperty( recipename) === false) {
-                this.craftableDefinesMirror[recipename] = {};
+                var keyname = Object.keys(this.craftableDefines)[cdi];
+                var recipename = this.craftableDefines[keyname].recipename;
+
+                if ( this.craftableDefinesMirror.hasOwnProperty( recipename) === false) {
+                    this.craftableDefinesMirror[recipename] = {};
+                }
+
+                this.craftableDefinesMirror[recipename][keyname] =  this.craftableDefines[keyname];
             }
-
-            this.craftableDefinesMirror[recipename][keyname] =  this.craftableDefines[keyname];
         }
 
 
@@ -90,27 +95,32 @@ angular.module('craftyApp')
 
 
         // remap progressionDefines as keys array - for use by html templates visuals only.
-        var pKeys = Object.keys(this.progressionDefines);
-        pKeys.push('');
-        //console.log( JSON.stringify(pKeys));
-        this.progressionDefinesKeys = pKeys.map(function (key) {
-                return key;
-              });
+        if (this.progressionDefines) {
 
+            var pKeys = Object.keys(this.progressionDefines);
+
+            pKeys.push('');
+            //console.log( JSON.stringify(pKeys));
+            this.progressionDefinesKeys = pKeys.map(function (key) {
+                    return key;
+                  });
+        }
 
     
         // 
         this.progressionDefinesMirror = {};
-        for ( var cdi = 0; cdi < Object.keys(this.progressionDefines).length; cdi ++) {
+        if (this.progressionDefines) {
+            for ( var cdi = 0; cdi < Object.keys(this.progressionDefines).length; cdi ++) {
 
-            var keyname = Object.keys(this.progressionDefines)[cdi];
-            var playerLevel = this.progressionDefines[keyname].playerLevel;
+                var keyname = Object.keys(this.progressionDefines)[cdi];
+                var playerLevel = this.progressionDefines[keyname].playerLevel;
 
-            if ( this.progressionDefinesMirror.hasOwnProperty( playerLevel) === false) {
-                this.progressionDefinesMirror[playerLevel] = {};
+                if ( this.progressionDefinesMirror.hasOwnProperty( playerLevel) === false) {
+                    this.progressionDefinesMirror[playerLevel] = {};
+                }
+
+                this.progressionDefinesMirror[playerLevel][keyname] =  this.progressionDefines[keyname];
             }
-
-            this.progressionDefinesMirror[playerLevel][keyname] =  this.progressionDefines[keyname];
         }
    
     };

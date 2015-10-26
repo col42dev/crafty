@@ -206,7 +206,7 @@ otw4nb - simvalues
           	
           	 console.log('spreadsheet found.');
 
-          	 FSSimRules.craftableDefines = angular.copy(this.recipes);
+          	 FSSimRules.rulesJSON.craftableDefines = angular.copy(this.recipes);
 
              FSSimRules.rebuildMirrors();
 
@@ -301,7 +301,7 @@ otw4nb - simvalues
 
             }
 
-            FSSimRules.progressionDefines = angular.copy(progressions);
+            FSSimRules.rulesJSON.progressionDefines = angular.copy(progressions);
             FSSimRules.rebuildMirrors();
 
 

@@ -107,7 +107,7 @@
 			"file": "app/scripts/app.js",
 			"settings":
 			{
-				"buffer_size": 2062,
+				"buffer_size": 2183,
 				"line_ending": "Unix"
 			}
 		},
@@ -131,7 +131,7 @@
 			"file": "app/scripts/controllers/main.js",
 			"settings":
 			{
-				"buffer_size": 2184,
+				"buffer_size": 2299,
 				"line_ending": "Unix"
 			}
 		},
@@ -151,6 +151,14 @@
 			"settings":
 			{
 				"buffer_size": 3608,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/json/fssimworkers.js",
+			"settings":
+			{
+				"buffer_size": 4986,
 				"line_ending": "Unix"
 			}
 		},
@@ -200,7 +208,33 @@
 			"file": "app/scripts/services/util/fsjsonloader.js",
 			"settings":
 			{
-				"buffer_size": 4578,
+				"buffer_size": 4916,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/ui/craftingmodal.js",
+			"settings":
+			{
+				"buffer_size": 3129,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 80 files for \"IndexOf\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js:\n   47              switch( action) {\n   48                   case 'reward':\n   49:                     enabled = (FSSimState.rewards.indexOf(type) === -1) ? false : true ;\n   50                      break;\n   51                  case 'craft':\n   ..\n  144          this.onClickWorld = function ( category, row, col) {\n  145  \n  146:             var cellIndex = WorldMap.getIndexOf(row, col);\n  147  \n  148              var existingTask = FSSimTasks.getTaskAtWorldLocation( cellIndex);\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimworkers.js:\n   86                if (raceprofession === 'Race') {\n   87                  var race = this.response.feed.entry[rowIndex]['gsx$workerraceprofession'].$t\n   88:                 if ( races.IndexOf(race)\n   89  \n   90                } else if (raceprofession === 'Profession') {\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmap.js:\n   47     * @return \n   48     */\n   49:   this.getIndexOf = function(row, col) {\n   50:     var rowIndex = this.json.worldMap.indexOf(row);\n   51:     var colIndex = row.indexOf(col);\n   52      //console.log(rowIndex + ', ' + colIndex);\n   53      return { 'row' : rowIndex, 'col' : colIndex };\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimrewards.js:\n   24              for (var thisRewardRule in FSSimRules.rewardRules) {\n   25                  if (FSSimRules.rewardRules.hasOwnProperty(thisRewardRule)) {        \n   26:                     if ( FSSimState.rewards.indexOf(thisRewardRule) === -1) {\n   27                          console.log('GOAL:' + thisRewardRule);\n   28  \n   ..\n   53                              \n   54                              // reward reward\n   55:                             if ( FSSimState.rewards.indexOf(thisRewardRule) === -1) {\n   56                                  console.log('REWARD:' + thisRewardRule);\n   57                                  FSSimState.rewards.push(thisRewardRule);\n   ..\n   97                      if (FSSimRules.rewardRules[thisRewardRule].action === checkDesc.action) {\n   98                          if (FSSimRules.rewardRules[thisRewardRule].target === checkDesc.target) {\n   99:                             if ( FSSimState.rewards.indexOf(thisRewardRule) === -1) {\n  100                                  return 'images/unlock.69ea04fd.png'; \n  101                              }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js:\n  126  \n  127          // remove task from active list\n  128:         var activeTaskIndex = FSSimState.activeTasks.indexOf( task);\n  129          if ( activeTaskIndex !== -1) {\n  130              FSSimState.activeTasks.splice( activeTaskIndex, 1);\n  ...\n  143      this.getTaskPercentRemaining = function(catgeory, row, col) {\n  144  \n  145:         var taskCellIndex = WorldMap.getIndexOf(row, col);\n  146          if ( taskCellIndex !== null ) {\n  147  \n\n/Users/colinmoore/Dev/crafty/app/scripts/services/util/serverSideTimers.js:\n  126          }).success(function() {\n  127              clearInterval(timer.clientIntervalId);\n  128:             var index = this.timers.indexOf(timer);\n  129              if (index !== -1) {\n  130                  this.timers.splice(index, 1);\n  ...\n  156                  if ( thisTimer.remaining <= 0) {\n  157                      clearInterval(thisTimer.clientIntervalId);\n  158:                     var index = thisService.timers.indexOf(thisTimer);\n  159                      if (index !== -1) {\n  160                          thisService.timers.splice(index, 1);\n\n13 matches across 6 files\n\n\nSearching 80 files for \"IndexOf\"\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js:\n   47              switch( action) {\n   48                   case 'reward':\n   49:                     enabled = (FSSimState.rewards.indexOf(type) === -1) ? false : true ;\n   50                      break;\n   51                  case 'craft':\n   ..\n  144          this.onClickWorld = function ( category, row, col) {\n  145  \n  146:             var cellIndex = WorldMap.getIndexOf(row, col);\n  147  \n  148              var existingTask = FSSimTasks.getTaskAtWorldLocation( cellIndex);\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimworkers.js:\n   86                if (raceprofession === 'Race') {\n   87                  var race = this.response.feed.entry[rowIndex]['gsx$workerraceprofession'].$t;\n   88:                 if ( races.IndexOf(race)  === -1) {\n   89                    races[race] = {};\n   90                  }\n   ..\n   92                } else if (raceprofession === 'Profession') {\n   93                  var profession = this.response.feed.entry[rowIndex]['gsx$workerraceprofession'].$t;\n   94:                 if ( professions.IndexOf(professions)  === -1) {\n   95                    professions[professions] = {};\n   96                  }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmap.js:\n   47     * @return \n   48     */\n   49:   this.getIndexOf = function(row, col) {\n   50:     var rowIndex = this.json.worldMap.indexOf(row);\n   51:     var colIndex = row.indexOf(col);\n   52      //console.log(rowIndex + ', ' + colIndex);\n   53      return { 'row' : rowIndex, 'col' : colIndex };\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimrewards.js:\n   24              for (var thisRewardRule in FSSimRules.rewardRules) {\n   25                  if (FSSimRules.rewardRules.hasOwnProperty(thisRewardRule)) {        \n   26:                     if ( FSSimState.rewards.indexOf(thisRewardRule) === -1) {\n   27                          console.log('GOAL:' + thisRewardRule);\n   28  \n   ..\n   53                              \n   54                              // reward reward\n   55:                             if ( FSSimState.rewards.indexOf(thisRewardRule) === -1) {\n   56                                  console.log('REWARD:' + thisRewardRule);\n   57                                  FSSimState.rewards.push(thisRewardRule);\n   ..\n   97                      if (FSSimRules.rewardRules[thisRewardRule].action === checkDesc.action) {\n   98                          if (FSSimRules.rewardRules[thisRewardRule].target === checkDesc.target) {\n   99:                             if ( FSSimState.rewards.indexOf(thisRewardRule) === -1) {\n  100                                  return 'images/unlock.69ea04fd.png'; \n  101                              }\n\n/Users/colinmoore/Dev/crafty/app/scripts/services/sim/fssimtasks.js:\n  126  \n  127          // remove task from active list\n  128:         var activeTaskIndex = FSSimState.activeTasks.indexOf( task);\n  129          if ( activeTaskIndex !== -1) {\n  130              FSSimState.activeTasks.splice( activeTaskIndex, 1);\n  ...\n  143      this.getTaskPercentRemaining = function(catgeory, row, col) {\n  144  \n  145:         var taskCellIndex = WorldMap.getIndexOf(row, col);\n  146          if ( taskCellIndex !== null ) {\n  147  \n\n/Users/colinmoore/Dev/crafty/app/scripts/services/util/serverSideTimers.js:\n  126          }).success(function() {\n  127              clearInterval(timer.clientIntervalId);\n  128:             var index = this.timers.indexOf(timer);\n  129              if (index !== -1) {\n  130                  this.timers.splice(index, 1);\n  ...\n  156                  if ( thisTimer.remaining <= 0) {\n  157                      clearInterval(thisTimer.clientIntervalId);\n  158:                     var index = thisService.timers.indexOf(thisTimer);\n  159                      if (index !== -1) {\n  160                          thisService.timers.splice(index, 1);\n\n14 matches across 6 files\n",
+			"settings":
+			{
+				"buffer_size": 7684,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "app/scripts/services/map/worldmap.js",
+			"settings":
+			{
+				"buffer_size": 2929,
 				"line_ending": "Unix"
 			}
 		},
@@ -208,7 +242,15 @@
 			"file": "app/index.html",
 			"settings":
 			{
-				"buffer_size": 6127,
+				"buffer_size": 6269,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/pages/simworkers.html",
+			"settings":
+			{
+				"buffer_size": 654,
 				"line_ending": "Unix"
 			}
 		},
@@ -429,6 +471,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"IndexOf",
+			"Control",
+			"IndexOf",
+			"indexOf",
 			"map",
 			"mapStateURL",
 			"FunctionRoom1",
@@ -552,11 +598,7 @@
 			"duration",
 			"getTaskDuration",
 			"cell",
-			"harvestable",
-			"cell.",
-			"harve",
-			"canPerformTask",
-			"rgba"
+			"harvestable"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -587,7 +629,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 13,
 			"sheets":
 			[
 				{
@@ -603,8 +645,8 @@
 						"selection":
 						[
 							[
-								6216,
-								6216
+								2168,
+								2172
 							]
 						],
 						"settings":
@@ -614,10 +656,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1915.0,
+						"translation.y": 910.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -626,15 +668,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2062,
+						"buffer_size": 2183,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1953,
-								1953
+								2074,
+								2074
 							]
 						],
 						"settings":
@@ -644,10 +686,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 453.0,
+						"translation.y": 541.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -677,7 +719,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
@@ -707,7 +749,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
@@ -716,15 +758,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2184,
+						"buffer_size": 2299,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2164,
-								2164
+								2279,
+								2279
 							]
 						],
 						"settings":
@@ -734,10 +776,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1146.0,
+						"translation.y": 1141.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -753,8 +795,8 @@
 						"selection":
 						[
 							[
-								640,
-								651
+								386,
+								385
 							]
 						],
 						"settings":
@@ -764,10 +806,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 990.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -783,8 +825,8 @@
 						"selection":
 						[
 							[
-								498,
-								499
+								768,
+								768
 							]
 						],
 						"settings":
@@ -794,14 +836,44 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1233.0,
+						"translation.y": 855.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 7,
+					"file": "app/scripts/services/json/fssimworkers.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4986,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4500,
+								4503
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1881.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "app/json/rules.json",
 					"semi_transient": false,
 					"settings":
@@ -827,11 +899,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "app/json/mapstate.json",
 					"semi_transient": false,
 					"settings":
@@ -858,11 +930,11 @@
 						"translation.y": 36577.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "app/json/simvalues.json",
 					"semi_transient": false,
 					"settings":
@@ -889,11 +961,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "app/json/state.json",
 					"semi_transient": false,
 					"settings":
@@ -919,11 +991,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "app/json/worldmap.json",
 					"semi_transient": false,
 					"settings":
@@ -949,24 +1021,24 @@
 						"translation.y": 6901.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 13,
 					"file": "app/scripts/services/util/fsjsonloader.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4578,
+						"buffer_size": 4916,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2494,
-								2527
+								2909,
+								2909
 							]
 						],
 						"settings":
@@ -976,27 +1048,237 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 367.0,
+						"translation.y": 1149.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
-					"file": "app/index.html",
-					"semi_transient": false,
+					"buffer": 14,
+					"file": "app/scripts/services/ui/craftingmodal.js",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 6127,
+						"buffer_size": 3129,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5241,
-								5241
+								2401,
+								2404
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 610.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7684,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										238,
+										245
+									],
+									[
+										477,
+										484
+									],
+									[
+										850,
+										857
+									],
+									[
+										1058,
+										1065
+									],
+									[
+										1134,
+										1141
+									],
+									[
+										1178,
+										1185
+									],
+									[
+										1591,
+										1598
+									],
+									[
+										1856,
+										1863
+									],
+									[
+										2321,
+										2328
+									],
+									[
+										2654,
+										2661
+									],
+									[
+										2921,
+										2928
+									],
+									[
+										3212,
+										3219
+									],
+									[
+										3510,
+										3517
+									],
+									[
+										3912,
+										3919
+									],
+									[
+										4151,
+										4158
+									],
+									[
+										4525,
+										4532
+									],
+									[
+										4838,
+										4845
+									],
+									[
+										5070,
+										5077
+									],
+									[
+										5146,
+										5153
+									],
+									[
+										5190,
+										5197
+									],
+									[
+										5603,
+										5610
+									],
+									[
+										5868,
+										5875
+									],
+									[
+										6333,
+										6340
+									],
+									[
+										6666,
+										6673
+									],
+									[
+										6933,
+										6940
+									],
+									[
+										7224,
+										7231
+									],
+									[
+										7522,
+										7529
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								5100,
+								5100
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1170.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "app/scripts/services/map/worldmap.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2929,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1281,
+								1281
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 353.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "app/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6269,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5383,
+								5383
 							]
 						],
 						"settings":
@@ -1006,27 +1288,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1321.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
-					"file": "app/views/pages/simvalues.html",
+					"buffer": 18,
+					"file": "app/views/pages/simworkers.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 645,
+						"buffer_size": 654,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								386,
-								386
+								574,
+								574
 							]
 						],
 						"settings":
@@ -1038,6 +1320,34 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "app/views/pages/simvalues.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 645,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								645
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
