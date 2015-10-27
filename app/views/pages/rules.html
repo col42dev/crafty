@@ -32,7 +32,7 @@
             <td class="col-sm-1" style="word-wrap:normal">Category</td>
             <td class="col-sm-2" style="word-wrap:normal">Output</td>
             <td class="col-sm-2" style="word-wrap:normal">Input</td>
-            <td class="col-sm-1" style="word-wrap:normal">Workers</td>
+            <td class="col-sm-1" style="word-wrap:normal">Max<br>Workers</td>
             <td class="col-sm-1" style="word-wrap:normal">Action<br/>Points</td>
             <td class="col-sm-2" style="word-wrap:normal">Constructor</td>
             <td class="col-sm-1" style="word-wrap:normal">Duration</td>
@@ -82,7 +82,11 @@
                         <input  type="number" size="2"  ng-model="v.input[ink]" style="width:100%">
                     </div>
                   </td> 
-                  <td class="col-sm-1"><input ng-model="v.workers" size="4" style="width:100%"></input></td>
+             
+                    <td class="col-sm-1">
+                      {{v.maxWorkers}}
+                    </td> 
+
                   <td class="col-sm-1"><input ng-model="v.actionPoints" size="4" style="width:100%"></input></td>
                   <td class="col-sm-2"><input ng-model="v.construction" size="16" style="width:100%"></input></td>
                   <td class="col-sm-1"><input type="number" ng-model="v.duration" size="3" style="width:100%"></input></td>  

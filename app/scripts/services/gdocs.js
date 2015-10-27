@@ -84,6 +84,7 @@ otw4nb - simvalues
                 recipe.construction = [];
                 recipe.construction.push(workstation+workstationLevel);
 
+
                 recipe.actionPoints = parseInt( this.response.feed.entry[i].gsx$inputactionpointsamount.$t, 10);
 
                 recipe.input = {};
@@ -164,6 +165,9 @@ otw4nb - simvalues
                 }*/
 
 
+                if (this.response.feed.entry[i].gsx$recipesimulationmaxworkers.$t.length > 0) {
+                  recipe.maxWorkers = parseInt( this.response.feed.entry[i].gsx$recipesimulationmaxworkers.$t, 10);
+                } 
 
       
                 recipe.xp = parseInt( this.response.feed.entry[i].gsx$recipeplayerxpadded.$t, 10); 
@@ -205,7 +209,7 @@ otw4nb - simvalues
           	
           	 console.log('spreadsheet found.');
 
-          	 FSSimRules.rulesJSON.craftableDefines = angular.copy(this.recipes);
+          	 FSSimRules.craftableDefines = angular.copy(this.recipes);
 
              FSSimRules.rebuildMirrors();
 
@@ -300,7 +304,7 @@ otw4nb - simvalues
 
             }
 
-            FSSimRules.rulesJSON.progressionDefines = angular.copy(progressions);
+            FSSimRules.progressionDefines = angular.copy(progressions);
             FSSimRules.rebuildMirrors();
 
 

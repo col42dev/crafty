@@ -99,23 +99,7 @@
 			"file": "app/scripts/services/gdocs.js",
 			"settings":
 			{
-				"buffer_size": 11877,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/app.js",
-			"settings":
-			{
-				"buffer_size": 2183,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/json/fssimstate.js",
-			"settings":
-			{
-				"buffer_size": 12654,
+				"buffer_size": 12006,
 				"line_ending": "Unix"
 			}
 		},
@@ -123,7 +107,7 @@
 			"file": "app/views/pages/rules.html",
 			"settings":
 			{
-				"buffer_size": 12806,
+				"buffer_size": 12827,
 				"line_ending": "Unix"
 			}
 		},
@@ -180,43 +164,21 @@
 			}
 		},
 		{
-			"file": "app/json/simvalues.json",
-			"settings":
-			{
-				"buffer_size": 316,
-				"line_ending": "Unix",
-				"name": "{"
-			}
-		},
-		{
-			"file": "app/json/state.json",
-			"settings":
-			{
-				"buffer_size": 6695,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/json/worldmap.json",
-			"settings":
-			{
-				"buffer_size": 7641,
-				"line_ending": "Unix"
-			}
-		},
-		{
+			"contents": "'use strict';\n\n/**\n * @ngdoc service\n * @name craftyApp.FSJSONLoader\n * @description\n * # FSJSONLoader\n * Load JSON in to sim\n */\nangular.module('craftyApp')\n  .service('FSJSONLoader', \n    [   \n      'FSSimRules', \n      'FSSimState', \n      'FSMapState', \n      'FSSimValues', \n      'FSSimWorkers',\n      'FSSimMessagingChannel', \n      '$http', \n      '$location', \n      'stopwatch', \n      'WorldMap', \n      'WorldMapEdit', \n    function ( \n      FSSimRules, \n      FSSimState, \n      FSMapState, \n      FSSimValues, \n      FSSimWorkers, \n      FSSimMessagingChannel, \n      $http, \n      $location, \n      stopwatch, \n      WorldMap, \n      WorldMapEdit) \n    {\n\n    // AngularJS will instantiate a singleton by calling \"new\" on this function\n\n    var thisService = this;\n\n  \n    this.myStopwatch = stopwatch;\n    this.taskTimeScalarDivVis = 'hidden';\n    this.defaultDocumentName = {input: 'My Account Name'};\n    this.documentName = angular.copy(this.defaultDocumentName);\n\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createSimRules = function( data, url) {\n      console.log('createSimRules');\n      this.taskTimeScalarDivVis ='';\n      FSSimRules.set(data, url);\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createSimState = function(data, url) {\n      console.log('createSimState');\n     \n      FSSimState.set(data, url);\n      FSSimMessagingChannel.updateGoals();\n      stopwatch.reset();\n      stopwatch.start();\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createSimWorldMap = function(data, url) {\n      console.log('createSimWorldMap');\n\n      WorldMap.set(data);\n      WorldMapEdit.set(data, url); // also init editor with this data.\n    };\n\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createMapState = function(data, url) {\n      console.log('createSimMapState');\n\n      FSMapState.set(data, url); \n    };\n\n        /**\n     * @desc \n     * @return \n     */\n    this.createSimValues = function(data, url) {\n      console.log('createSimValues');\n\n      FSSimValues.set(data, url); \n    };\n\n            /**\n     * @desc \n     * @return \n     */\n    this.createSimWorkers = function(data, url) {\n      console.log('createSimWorkers');\n\n      FSSimWorkers.set(data, url); \n    };\n\n    this.master = {\n      'craftyrules' : {url: 'https://api.myjson.com/bins/3ji5e', onLoad: this.createSimRules, data:null},\n      'craftystate' : {url: 'https://api.myjson.com/bins/1a9rm', onLoad: this.createSimState, data:null},\n      'craftymap' : {url: 'https://api.myjson.com/bins/1yomi', onLoad: this.createSimWorldMap, data:null},\n      'mapstate' : {url: 'https://api.myjson.com/bins/42y9a', onLoad: this.createMapState, data:null},\n      'simvalues' : {url: 'https://api.myjson.com/bins/4rrxs', onLoad: this.createSimValues, data:null},\n      'simworkers' : {url: 'https://api.myjson.com/bins/4xb60', onLoad: this.createSimWorkers, data:null},\n\n\n     // 'craftyrules' : {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, data:null},\n     // 'craftystate' : {url: 'http://localhost:9000/json/state.json', onLoad: this.createSimState, data:null},\n     // 'craftymap' : {url: 'http://localhost:9000/json/worldmap.json', onLoad: this.createSimWorldMap, data:null}\n    };\n\n    this.user = angular.copy(this.master);\n\n   /**\n     * @desc \n     * @return \n     */\n    this.loadAndCreateSim = function() {\n\n      var successRefCount = 0;\n\n      for ( var thisJSONindex in this.user) {\n\n        var thisJSON = this.user[thisJSONindex];\n\n              $http.get(thisJSON.url,{\n                  params: {\n                      dataType: 'json',\n                      headers: {\n                          'Access-Control-Allow-Origin': '*',\n                          'Access-Control-Request-Headers' : 'access-control-allow-origin'\n                      }\n                  }\n              }).success(function(json) {\n\n                thisService.user[json.title].data = json;\n    \n                successRefCount ++;\n                console.log('refcount:' + successRefCount);\n\n                if ( successRefCount === Object.keys(thisService.user).length) {\n                      for ( var loadJSONkey in thisService.user) {   \n                          if ( thisService.user[loadJSONkey].onLoad !== null) {\n                            thisService.user[loadJSONkey].onLoad( thisService.user[loadJSONkey].data, thisService.user[loadJSONkey].url);\n                          } else {\n                            window.alert('Validation failed for ' + thisService.user[loadJSONkey].url);\n                          }\n                      }\n                      $location.path('/'); \n                }\n\n              }).error(function(json) {\n                  json = json;\n                  window.alert('JSON load failed for' + thisJSON.url);\n              });\n         }\n    };\n\n\n    this.loadAndCreateSim();\n\n\n \n\n\n\n\n   \n\n\n    \n  }]);\n",
 			"file": "app/scripts/services/util/fsjsonloader.js",
+			"file_size": 4916,
+			"file_write_time": 130899108510000000,
 			"settings":
 			{
-				"buffer_size": 4916,
+				"buffer_size": 4917,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/services/ui/craftingmodal.js",
+			"file": "app/scripts/services/json/fssimrules.js",
 			"settings":
 			{
-				"buffer_size": 3129,
+				"buffer_size": 6720,
 				"line_ending": "Unix"
 			}
 		},
@@ -320,12 +282,15 @@
 	],
 	"file_history":
 	[
+		"/Users/colinmoore/Dev/crafty/app/scripts/app.js",
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimstate.js",
+		"/Users/colinmoore/Dev/crafty/app/json/simvalues.json",
+		"/Users/colinmoore/Dev/crafty/app/json/state.json",
+		"/Users/colinmoore/Dev/crafty/app/json/worldmap.json",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimrules.js",
 		"/Users/colinmoore/dev/crafty/app/views/pages/mapstate.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/util/fsjsonloader.js",
 		"/Users/colinmoore/Dev/crafty/app/views/pages/load.html",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/fssimstate.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/app.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/controllers/main.js",
 		"/Users/colinmoore/Dev/crafty/app/index.html",
 		"/Users/colinmoore/Perforce/cmoore_MBP/SliceOfMine/Assets/Prefabs/RoomPlacer.prefab",
@@ -365,8 +330,6 @@
 		"/Users/colinmoore/Dev/crafty/app/views/pages/gdocs.html",
 		"/Users/colinmoore/Dev/crafty/app/views/pages/worldmapedit.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/map/worldmap.js",
-		"/Users/colinmoore/Dev/crafty/app/json/state.json",
-		"/Users/colinmoore/Dev/crafty/app/json/worldmap.json",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/json/state/fscharacter.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsuieventhandler.js",
 		"/Users/colinmoore/Dev/crafty/app/views/share/bank.html",
@@ -446,8 +409,7 @@
 		"/Users/colinmoore/Dev/crafty/app/views/bank.html",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fssimobjectfactory.js",
 		"/Users/colinmoore/Dev/crafty/app/scripts/services/fsbankable.js",
-		"/Users/colinmoore/Dev/crafty/app/scripts/services/fstask.js",
-		"/Users/colinmoore/dev/crafty/app/views/tasks.html"
+		"/Users/colinmoore/Dev/crafty/app/scripts/services/fstask.js"
 	],
 	"find":
 	{
@@ -471,6 +433,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"maxWorkers",
+			"recipesimulationmaxworkers",
+			"maxWorkers",
+			"rulesJSON",
+			"harvestableDefines",
 			"IndexOf",
 			"Control",
 			"IndexOf",
@@ -593,12 +560,7 @@
 			"isCraftable",
 			"isHarvestable",
 			"isGatherable",
-			"lumber",
-			"rule",
-			"duration",
-			"getTaskDuration",
-			"cell",
-			"harvestable"
+			"lumber"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -629,7 +591,7 @@
 	"groups":
 	[
 		{
-			"selected": 13,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -638,15 +600,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11877,
+						"buffer_size": 12006,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2168,
-								2172
+								6345,
+								6345
 							]
 						],
 						"settings":
@@ -656,87 +618,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 910.0,
+						"translation.y": 2046.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/scripts/app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2183,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2074,
-								2074
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 541.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/scripts/services/json/fssimstate.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12654,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								812,
-								824
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 54.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 18,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "app/views/pages/rules.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12806,
+						"buffer_size": 12827,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1249,
-								1249
+								3751,
+								3751
 							]
 						],
 						"settings":
@@ -746,14 +648,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 909.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 19,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 2,
 					"file": "app/scripts/controllers/main.js",
 					"semi_transient": false,
 					"settings":
@@ -779,11 +681,11 @@
 						"translation.y": 1141.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 3,
 					"file": "/Users/colinmoore/dev/crafty/app/scripts/services/json/fsmapstate.js",
 					"semi_transient": false,
 					"settings":
@@ -809,11 +711,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 4,
 					"file": "app/scripts/services/json/fssimvalues.js",
 					"semi_transient": false,
 					"settings":
@@ -839,11 +741,11 @@
 						"translation.y": 855.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 5,
 					"file": "app/scripts/services/json/fssimworkers.js",
 					"semi_transient": false,
 					"settings":
@@ -869,11 +771,11 @@
 						"translation.y": 1881.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 6,
 					"file": "app/json/rules.json",
 					"semi_transient": false,
 					"settings":
@@ -899,11 +801,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 7,
 					"file": "app/json/mapstate.json",
 					"semi_transient": false,
 					"settings":
@@ -927,118 +829,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 36577.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 16,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "app/json/simvalues.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 316,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								316,
-								316
-							]
-						],
-						"settings":
-						{
-							"auto_name": "{",
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "app/json/state.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6695,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6695,
-								6695
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "app/json/worldmap.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7641,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7641,
-								7641
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 6901.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
+					"buffer": 8,
 					"file": "app/scripts/services/util/fsjsonloader.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4916,
+						"buffer_size": 4917,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2909,
-								2909
+								2388,
+								2388
 							]
 						],
 						"settings":
@@ -1047,45 +858,45 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 1149.0,
+						"translation.x": 4.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
-					"file": "app/scripts/services/ui/craftingmodal.js",
-					"semi_transient": true,
+					"buffer": 9,
+					"file": "app/scripts/services/json/fssimrules.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3129,
+						"buffer_size": 6720,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2401,
-								2404
+								483,
+								484
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 610.0,
+						"translation.y": 372.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 10,
 					"semi_transient": false,
 					"settings":
 					{
@@ -1231,11 +1042,11 @@
 						"translation.y": 1170.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 11,
 					"file": "app/scripts/services/map/worldmap.js",
 					"semi_transient": false,
 					"settings":
@@ -1261,11 +1072,11 @@
 						"translation.y": 353.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 12,
 					"file": "app/index.html",
 					"semi_transient": false,
 					"settings":
@@ -1291,11 +1102,11 @@
 						"translation.y": 1321.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 13,
 					"file": "app/views/pages/simworkers.html",
 					"semi_transient": false,
 					"settings":
@@ -1319,11 +1130,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 14,
 					"file": "app/views/pages/simvalues.html",
 					"semi_transient": false,
 					"settings":
@@ -1347,7 +1158,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]

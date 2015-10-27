@@ -12,7 +12,7 @@ angular.module('craftyApp')
   .service('FSSimRules', function ($http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     var simRules = this;
-    this.rulesJSON = {};
+    this.rulesJSON = null;
     this.updateServerVersionWithData = null;
     this.rulesURL = null;
     this.serializedData = null;
