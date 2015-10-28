@@ -99,7 +99,7 @@
 			"file": "app/scripts/services/gdocs.js",
 			"settings":
 			{
-				"buffer_size": 12006,
+				"buffer_size": 11408,
 				"line_ending": "Unix"
 			}
 		},
@@ -600,15 +600,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12006,
+						"buffer_size": 11408,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6345,
-								6345
+								5462,
+								5462
 							]
 						],
 						"settings":
@@ -618,7 +618,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2046.0,
+						"translation.y": 1942.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

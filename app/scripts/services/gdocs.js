@@ -139,30 +139,22 @@ otw4nb - simvalues
                 var recipeid = this.response.feed.entry[i].gsx$recipeid.$t;
 
 
-                //if ( this.response.feed.entry[i].gsx$outputprefabname.$t.length > 0) {
-                 //recipe.outputprefabname = this.response.feed.entry[i].gsx$outputprefabname.$t;
-                //}
 
 
                 this.recipes[recipeid] = recipe;
 
                 recipe.playerlevelneeded = parseInt( this.response.feed.entry[i].gsx$playerlevelneeded.$t, 10);
 
-                /*
-                if (this.response.feed.entry[i].gsx$recipesimulationmotive1id.$t.length > 0) {
-                  recipe.motives= {};
-                  for ( var motivesIndex = 1; motivesIndex <= 3; motivesIndex ++) {
+                recipe.simMotives= [];
+                for ( var motivesIndex = 1; motivesIndex <= 5; motivesIndex ++) {
 
-                        var recipesimulationmotive = 'gsx$recipesimulationmotive' + motivesIndex + 'id';
-                        var id = this.response.feed.entry[i][recipesimulationmotive].$t;
+                      var recipesimulationmotive = 'gsx$recipesimulationmotive' + motivesIndex + 'id';
+                      var id = this.response.feed.entry[i][recipesimulationmotive].$t;
 
-                        if (id.length > 0) {
-                          var recipesimulationmotivecapacity = 'gsx$recipesimulationmotive' + motivesIndex + 'capacity';
-                          var capacity = parseInt( this.response.feed.entry[i][recipesimulationmotivecapacity].$t, 10);
-                          recipe.motives[id] = capacity;
-                        }
-                  }
-                }*/
+                      if (id.length > 0) {
+                        recipe.simMotives.push(id);
+                      }
+                }
 
 
                 if (this.response.feed.entry[i].gsx$recipesimulationmaxworkers.$t.length > 0) {
