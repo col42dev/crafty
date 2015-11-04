@@ -96,10 +96,21 @@
 	"buffers":
 	[
 		{
+			"contents": "'use strict';\n\n/**\n * @ngdoc service\n * @name craftyApp.gdocs\n * @description\n * # gdocs\n * Service in the craftyApp.\n */\nangular.module('craftyApp')\n  .service('GDocs', ['$http', 'FSSimRules',  function ($http, FSSimRules) {\n    // AngularJS will instantiate a singleton by calling \"new\" on this function\n\n\n\n\n\n\n   this.recipes = {};\n\n  //  this.spreadsheet = '1GMFHfYlPbazTaV0u_MA6YY9gdMXJ04fmzOYQJxTtHXs';\n/*\n\n  this.spreadsheet = '1xP0aCx9S4wG_3XN9au5VezJ6xVTnZWNlOLX8l6B69n4';\n\nhttps://spreadsheets.google.com/feeds/worksheets/1xP0aCx9S4wG_3XN9au5VezJ6xVTnZWNlOLX8l6B69n4/private/full\n\nod3otrm\nomu0e9t\norndd4q\n14iw6g\noef8ni3\nov2goyk\nortobxn\noypka71 - mapstate\notw4nb - simvalues\nomsznkc - character level stats\n   \n\n   'https://spreadsheets.google.com/feeds/list/1xP0aCx9S4wG_3XN9au5VezJ6xVTnZWNlOLX8l6B69n4/od3otrm/public/values?alt=json';\n*/\n\n  this.spreadsheet = '1xP0aCx9S4wG_3XN9au5VezJ6xVTnZWNlOLX8l6B69n4';\n\n \n   this.update = function() {\n\n   	console.log('GDocs: update');\n\n   	  var spreadsheet = this.spreadsheet;\n\n\n   	  var url = 'https://spreadsheets.google.com/feeds/list/'+spreadsheet+'/od3otrm/public/values?alt=json';\n\n          $http.get(url,{\n              params: {\n                  dataType: 'json',\n                  headers: {\n                      'Access-Control-Allow-Origin': '*',\n                      'Access-Control-Request-Headers' : 'access-control-allow-origin'\n                  }\n              }\n          }).success(function(json) {\n\n          	this.response = json;\n\n          	console.log( 'length:' + this.response.feed.entry.length);\n\n          	var entry0 = this.response.feed.entry[0];\n\n            for (var i = 0; i < this.response.feed.entry.length; i++) { \n\n              var content = this.response.feed.entry[i].content;\n              console.log( angular.toJson(content));\n\n              var workstation = this.response.feed.entry[i].gsx$recipeworkstationid.$t;\n\n              if (workstation.length > 0 && workstation !== 'Null') {\n\n                var recipe = {};\n\n                var workstationLevel = this.response.feed.entry[i].gsx$recipeworkstationlevel.$t;\n\n\n                recipe.construction = [];\n                recipe.construction.push(workstation+workstationLevel);\n\n\n                recipe.actionPoints = parseInt( this.response.feed.entry[i].gsx$inputactionpointsamount.$t, 10);\n\n                recipe.input = {};\n                for ( var resourceInputIndex = 1; resourceInputIndex <= 3; resourceInputIndex ++) {\n                	var propnameInputID = 'gsx$inputresource' + resourceInputIndex + 'id';\n                	var propnameInputAmount = 'gsx$inputresource' + resourceInputIndex + 'amount';\n                	var resourceInputId = this.response.feed.entry[i][propnameInputID].$t;\n                	if ( resourceInputId.length > 0) {\n                		var resourceAmount = parseInt( this.response.feed.entry[i][propnameInputAmount].$t, 10);\n                		recipe.input[resourceInputId] = resourceAmount;\n                	}\n                }\n\n                recipe.output = {};\n                for ( var resourceOutputIndex = 1; resourceOutputIndex <= 1; resourceOutputIndex ++) {\n                	var propnameOutputID = 'gsx$outputresource' + resourceOutputIndex + 'id';\n                	var propnameOutputAmount = 'gsx$outputresource' + resourceOutputIndex + 'amount';\n                	var propnameOutputLevel = 'gsx$outputresource' + resourceOutputIndex + 'level';\n                	var resourceOutputId = this.response.feed.entry[i][propnameOutputID].$t;\n                	if ( resourceOutputId.length > 0) {\n                		var resourceOutputAmount = parseInt( this.response.feed.entry[i][propnameOutputAmount].$t, 10);\n                		var resourceOutputLevel = this.response.feed.entry[i][propnameOutputLevel].$t;\n                		if (resourceOutputLevel.length > 0) {\n                			resourceOutputLevel = parseInt( resourceOutputLevel, 10);\n                      if (resourceOutputLevel == 0) \n                      {\n                        resourceOutputLevel = '';\n                      }\n                		} else {\n                			resourceOutputLevel = '';\n                		}\n                		recipe.output[resourceOutputId+resourceOutputLevel] = resourceOutputAmount;\n                	}\n                }\n\n                recipe.duration = parseInt( this.response.feed.entry[i].gsx$inputtimeamount.$t, 10);\n                if ( recipe.duration === 0) {\n                	recipe.duration = 1;\n                }\n\n               \n                recipe.recipename = this.response.feed.entry[i].gsx$recipename.$t;\n\n                recipe.desc = this.response.feed.entry[i].gsx$recipedescription.$t;\n\n                recipe.category = this.response.feed.entry[i].gsx$recipecategory.$t;\n\n\n                //console.log( JSON.stringify( recipe, null, 2));\n\n\n                var recipeid = this.response.feed.entry[i].gsx$recipeid.$t;\n\n\n\n\n                this.recipes[recipeid] = recipe;\n\n                recipe.playerlevelneeded = parseInt( this.response.feed.entry[i].gsx$playerlevelneeded.$t, 10);\n\n                recipe.simMotives= [];\n                for ( var motivesIndex = 1; motivesIndex <= 5; motivesIndex ++) {\n\n                      var recipesimulationmotive = 'gsx$recipesimulationmotive' + motivesIndex + 'id';\n                      var id = this.response.feed.entry[i][recipesimulationmotive].$t;\n\n                      if (id.length > 0) {\n                        recipe.simMotives.push(id);\n                      }\n                }\n\n\n                if (this.response.feed.entry[i].gsx$recipesimulationmaxworkers.$t.length > 0) {\n                  recipe.maxWorkers = parseInt( this.response.feed.entry[i].gsx$recipesimulationmaxworkers.$t, 10);\n                } \n\n      \n                recipe.xp = parseInt( this.response.feed.entry[i].gsx$recipeplayerxpadded.$t, 10); \n     \n                recipe.automate = this.response.feed.entry[i].gsx$outputautomaticrenew.$t;\n\n\n                if (this.response.feed.entry[i].gsx$objectslotcategory.$t.length > 0) {\n                  recipe.objectSlotCategory = this.response.feed.entry[i].gsx$objectslotcategory.$t;\n                }\n\n                if (this.response.feed.entry[i].gsx$motiveslotcapacity.$t.length > 0) {\n                  recipe.motiveSlotCapacity = parseInt( this.response.feed.entry[i].gsx$motiveslotcapacity.$t, 10);\n                }\n\n                if (this.response.feed.entry[i].gsx$workstationslotcapacity.$t.length > 0) {\n                  recipe.workstationSlotCapacity = parseInt(this.response.feed.entry[i].gsx$workstationslotcapacity.$t, 10);\n                }\n\n                if (this.response.feed.entry[i].gsx$defenseslotcapacity.$t.length > 0) {\n                  recipe.defenseSlotCapacity = parseInt(this.response.feed.entry[i].gsx$defenseslotcapacity.$t, 10);\n                }\n\n                // local/global storage\n\n\n                recipe.localStorage = parseInt(this.response.feed.entry[i].gsx$recipelocalstorage.$t, 10);\n\n\n                recipe.globalStorage = parseInt(this.response.feed.entry[i].gsx$recipeglobalstorage.$t, 10);\n\n\n     \n\n              }\n\n\n			       }\n          	\n          	 console.log('spreadsheet found.');\n\n          	 FSSimRules.craftableDefines = angular.copy(this.recipes);\n\n             FSSimRules.rebuildMirrors();\n\n             window.alert('Updated. Now update server to persist this change.');\n\n          }.bind(this)).error(function() {\n\n          	console.log('spreadsheet not found.');\n\n          });\n\n\n          // progression\n          console.log('progression');\n\n          url = 'https://spreadsheets.google.com/feeds/list/'+spreadsheet+'/ov2goyk/public/values?alt=json';\n\n          $http.get(url,{\n              params: {\n                  dataType: 'json',\n                  headers: {\n                      'Access-Control-Allow-Origin': '*',\n                      'Access-Control-Request-Headers' : 'access-control-allow-origin'\n                  }\n              }\n          }).success(function(json) {\n\n            this.response = json;\n\n            console.log( 'length:' + this.response.feed.entry.length);\n\n            var entry0 = this.response.feed.entry[0];\n\n            var progressions = {};\n\n\n            for (var i = 0; i < this.response.feed.entry.length; i++) { \n\n              var progression = {};\n\n              var content = this.response.feed.entry[i].content;\n              //console.log( angular.toJson(content));\n\n              var playerlevel = this.response.feed.entry[i].gsx$playerlevel.$t;\n              console.log( playerlevel);\n\n              if (playerlevel.length > 0 ) {\n                progression.playerLevel = parseInt( this.response.feed.entry[i].gsx$playerlevel.$t, 10);\n                //console.log( playerxpneeded);\n\n                progression.playerXPNeeded = parseInt( this.response.feed.entry[i].gsx$playerxpneeded.$t, 10);\n\n                progression.recipes = {};\n                for ( var recipeIndex = 1; recipeIndex <= 5; recipeIndex ++) {\n        \n\n                  var propnameRecipeID = 'gsx$recipe' + recipeIndex + 'id';\n                  var propnameRecipeAmount = 'gsx$recipe' + recipeIndex + 'amount';\n                  var propnameRecipeXP = 'gsx$recipe' + recipeIndex + 'xp';\n\n                  var propvalueRecipeID = this.response.feed.entry[i][propnameRecipeID].$t;\n\n                  if ( propvalueRecipeID.length > 0) {\n\n                    if (this.response.feed.entry[i][propnameRecipeID].$t !== 'NULL') {\n                      var recipeID = this.response.feed.entry[i][propnameRecipeID].$t;\n                      var recipe = {};\n                      \n                      recipe.amount = parseInt( this.response.feed.entry[i][propnameRecipeAmount].$t, 10);\n                      recipe.xp = parseInt( this.response.feed.entry[i][propnameRecipeXP].$t, 10);\n\n                      progression.recipes[ recipeID] = recipe;\n                    }\n                  }\n                }\n\n                progression.maxWorkers = parseInt( this.response.feed.entry[i].gsx$maxworkers.$t, 10);\n                progression.additionalMaxWorkersxp = parseInt( this.response.feed.entry[i].gsx$additionalmaxworkersxp.$t, 10);\n                progression.maxHeroes = parseInt( this.response.feed.entry[i].gsx$maxheroes.$t, 10);\n                progression.maxHeroesUnlocked = parseInt( this.response.feed.entry[i].gsx$maxheroesunlocked.$t, 10);\n                progression.maxDefenseTraps = parseInt( this.response.feed.entry[i].gsx$maxdefensetraps.$t, 10);\n                progression.maxDefenseTowers = parseInt( this.response.feed.entry[i].gsx$maxdefensetowers.$t, 10);\n                progression.maxCombatWaves = parseInt( this.response.feed.entry[i].gsx$maxcombatwaves.$t, 10);\n                progression.enforceHunger = (this.response.feed.entry[i].gsx$enforcehunger.$t === 'TRUE') ? 1 : 0;\n                progression.enforceRest = (this.response.feed.entry[i].gsx$enforcerest.$t === 'TRUE') ? 1 : 0;\n\n              }\n\n              progressions[playerlevel] = progression;\n\n              console.log( angular.toJson(progression));\n\n            }\n\n            FSSimRules.progressionDefines = angular.copy(progressions);\n            FSSimRules.rebuildMirrors();\n\n\n\n          }.bind(this)).error(function() {\n\n            console.log('progression spreadsheet not found.');\n\n          });\n\n	};\n\n\n	//this.getSummary();\n\n\n\n  }]);\n",
 			"file": "app/scripts/services/gdocs.js",
+			"file_size": 11408,
+			"file_write_time": 130905133320000000,
 			"settings":
 			{
-				"buffer_size": 11408,
+				"buffer_size": 11440,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/pages/craft.html",
+			"settings":
+			{
+				"buffer_size": 1072,
 				"line_ending": "Unix"
 			}
 		},
@@ -120,13 +131,10 @@
 			}
 		},
 		{
-			"contents": "'use strict';\n\n\n/**\n * @ngdoc service\n * @name craftyApp.FSMapState\n * @description\n * # FSMapState\n * Data only - do not add implementations.\n */\nangular.module('craftyApp')\n  .service('FSMapState', function ($http) {\n    // AngularJS will instantiate a singleton by calling \"new\" on this function\n \n    this.mapStateJSON = {};\n\n    this.mapStateURL = 'null';\n    this.mapStateJSONtxt = {};\n   \n\n\n    this.spreadsheet = '1xP0aCx9S4wG_3XN9au5VezJ6xVTnZWNlOLX8l6B69n4';\n\n\n// https://spreadsheets.google.com/feeds/list/1xP0aCx9S4wG_3XN9au5VezJ6xVTnZWNlOLX8l6B69n4/oypka71/public/values?alt=json\n\n   this.set = function(json, url) {\n\n    this.mapStateURL = url;\n    this.mapStateJSON = json;\n\n    this.mapStateJSONtxt =  JSON.stringify(this.mapStateJSON, null, 2);\n\n\n   };\n\n \n    this.update = function() {\n\n        console.log('GDocs: update');\n\n        var spreadsheet = this.spreadsheet;\n\n        var url = 'https://spreadsheets.google.com/feeds/list/'+spreadsheet+'/oypka71/public/values?alt=json';\n\n        $http.get(url,{\n          params: {\n              dataType: 'json',\n              headers: {\n                  'Access-Control-Allow-Origin': '*',\n                  'Access-Control-Request-Headers' : 'access-control-allow-origin'\n              }\n          }\n        }).success(function(json) {\n\n            this.response = json;\n\n            console.log( 'length:' + this.response.feed.entry.length);\n\n  \n            var map = {};\n\n\n\n            map.rows = [];\n\n            for (var rowIndex = 0; rowIndex < this.response.feed.entry.length; rowIndex++) { \n\n              var row = [];\n              //var content = this.response.feed.entry[rowIndex].content;\n              //console.log( angular.toJson(content));\n\n              for (var colIndex = 0; colIndex < 64; colIndex++) { \n\n                var cell = this.response.feed.entry[rowIndex]['gsx$h'+(colIndex+1)];\n                //console.log( 'row:'+rowIndex +', col:'+colIndex + ' : ' + angular.toJson(cell));\n\n                var cellValue = cell.$t;\n                if (cellValue.length == 0) {\n                    cellValue = '_';\n                }\n\n                row.push(cellValue  );\n              }\n\n              map.rows.push(row);\n\n\n            }\n\n            this.mapStateJSON.map = angular.copy(map);\n\n            this.mapStateJSONtxt =  JSON.stringify(this.mapStateJSON, null, 2);\n\n         \n\n\n            window.alert('Updated. Now update server to persist this change.');\n\n        }.bind(this)).error(function() {\n\n            console.log('spreadsheet not found.');\n\n        });\n\n    };\n\n\n    this.updateServerVersionFromState = function() { \n\n\n        var d = new Date();\n        this.mapStateJSON.lastEditDate = d.toString();\n\n        var newVersionIdArray = this.mapStateJSON.version.split('.');\n        newVersionIdArray[2] = parseInt(newVersionIdArray[2], 10) + 1;\n        this.mapStateJSON.version = newVersionIdArray.join('.');\n\n\n\n    \n        this.mapStateJSON.title = 'mapstate';\n\n\n         $http.put( \n            this.mapStateURL, \n            this.mapStateJSON\n        )\n        .success(function(response) {\n            //console.log('SUCCESS' + angular.toJson(response));\n            //simRules.rulesJSON.version = newJSONrules.version;\n            window.alert('server updated');\n            this.mapStateJSONtxt =  JSON.stringify(this.mapStateJSON, null, 2);\n\n        }.bind(this))\n        .error( function(response) { \n            console.log('FAILED' + angular.toJson(response, true)); \n            window.alert('FAILED:' + angular.toJson(response, true));  \n        });\n    };\n\n\n  });\n",
 			"file": "/Users/colinmoore/dev/crafty/app/scripts/services/json/fsmapstate.js",
-			"file_size": 3585,
-			"file_write_time": 130881691030000000,
 			"settings":
 			{
-				"buffer_size": 3587,
+				"buffer_size": 3678,
 				"line_ending": "Unix"
 			}
 		},
@@ -164,13 +172,13 @@
 			}
 		},
 		{
-			"contents": "'use strict';\n\n/**\n * @ngdoc service\n * @name craftyApp.FSJSONLoader\n * @description\n * # FSJSONLoader\n * Load JSON in to sim\n */\nangular.module('craftyApp')\n  .service('FSJSONLoader', \n    [   \n      'FSSimRules', \n      'FSSimState', \n      'FSMapState', \n      'FSSimValues', \n      'FSSimWorkers',\n      'FSSimMessagingChannel', \n      '$http', \n      '$location', \n      'stopwatch', \n      'WorldMap', \n      'WorldMapEdit', \n    function ( \n      FSSimRules, \n      FSSimState, \n      FSMapState, \n      FSSimValues, \n      FSSimWorkers, \n      FSSimMessagingChannel, \n      $http, \n      $location, \n      stopwatch, \n      WorldMap, \n      WorldMapEdit) \n    {\n\n    // AngularJS will instantiate a singleton by calling \"new\" on this function\n\n    var thisService = this;\n\n  \n    this.myStopwatch = stopwatch;\n    this.taskTimeScalarDivVis = 'hidden';\n    this.defaultDocumentName = {input: 'My Account Name'};\n    this.documentName = angular.copy(this.defaultDocumentName);\n\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createSimRules = function( data, url) {\n      console.log('createSimRules');\n      this.taskTimeScalarDivVis ='';\n      FSSimRules.set(data, url);\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createSimState = function(data, url) {\n      console.log('createSimState');\n     \n      FSSimState.set(data, url);\n      FSSimMessagingChannel.updateGoals();\n      stopwatch.reset();\n      stopwatch.start();\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createSimWorldMap = function(data, url) {\n      console.log('createSimWorldMap');\n\n      WorldMap.set(data);\n      WorldMapEdit.set(data, url); // also init editor with this data.\n    };\n\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createMapState = function(data, url) {\n      console.log('createSimMapState');\n\n      FSMapState.set(data, url); \n    };\n\n        /**\n     * @desc \n     * @return \n     */\n    this.createSimValues = function(data, url) {\n      console.log('createSimValues');\n\n      FSSimValues.set(data, url); \n    };\n\n            /**\n     * @desc \n     * @return \n     */\n    this.createSimWorkers = function(data, url) {\n      console.log('createSimWorkers');\n\n      FSSimWorkers.set(data, url); \n    };\n\n    this.master = {\n      'craftyrules' : {url: 'https://api.myjson.com/bins/3ji5e', onLoad: this.createSimRules, data:null},\n      'craftystate' : {url: 'https://api.myjson.com/bins/1a9rm', onLoad: this.createSimState, data:null},\n      'craftymap' : {url: 'https://api.myjson.com/bins/1yomi', onLoad: this.createSimWorldMap, data:null},\n      'mapstate' : {url: 'https://api.myjson.com/bins/42y9a', onLoad: this.createMapState, data:null},\n      'simvalues' : {url: 'https://api.myjson.com/bins/4rrxs', onLoad: this.createSimValues, data:null},\n      'simworkers' : {url: 'https://api.myjson.com/bins/4xb60', onLoad: this.createSimWorkers, data:null},\n\n\n     // 'craftyrules' : {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, data:null},\n     // 'craftystate' : {url: 'http://localhost:9000/json/state.json', onLoad: this.createSimState, data:null},\n     // 'craftymap' : {url: 'http://localhost:9000/json/worldmap.json', onLoad: this.createSimWorldMap, data:null}\n    };\n\n    this.user = angular.copy(this.master);\n\n   /**\n     * @desc \n     * @return \n     */\n    this.loadAndCreateSim = function() {\n\n      var successRefCount = 0;\n\n      for ( var thisJSONindex in this.user) {\n\n        var thisJSON = this.user[thisJSONindex];\n\n              $http.get(thisJSON.url,{\n                  params: {\n                      dataType: 'json',\n                      headers: {\n                          'Access-Control-Allow-Origin': '*',\n                          'Access-Control-Request-Headers' : 'access-control-allow-origin'\n                      }\n                  }\n              }).success(function(json) {\n\n                thisService.user[json.title].data = json;\n    \n                successRefCount ++;\n                console.log('refcount:' + successRefCount);\n\n                if ( successRefCount === Object.keys(thisService.user).length) {\n                      for ( var loadJSONkey in thisService.user) {   \n                          if ( thisService.user[loadJSONkey].onLoad !== null) {\n                            thisService.user[loadJSONkey].onLoad( thisService.user[loadJSONkey].data, thisService.user[loadJSONkey].url);\n                          } else {\n                            window.alert('Validation failed for ' + thisService.user[loadJSONkey].url);\n                          }\n                      }\n                      $location.path('/'); \n                }\n\n              }).error(function(json) {\n                  json = json;\n                  window.alert('JSON load failed for' + thisJSON.url);\n              });\n         }\n    };\n\n\n    this.loadAndCreateSim();\n\n\n \n\n\n\n\n   \n\n\n    \n  }]);\n",
+			"contents": "'use strict';\n\n/**\n * @ngdoc service\n * @name craftyApp.FSJSONLoader\n * @description\n * # FSJSONLoader\n * Load JSON in to sim\n */\nangular.module('craftyApp')\n  .service('FSJSONLoader', \n    [   \n      'FSSimRules', \n      'FSSimState', \n      'FSMapState', \n      'FSSimValues', \n      'FSSimWorkers',\n      'FSSimMessagingChannel', \n      '$http', \n      '$location', \n      'stopwatch', \n      'WorldMap', \n      'WorldMapEdit', \n    function ( \n      FSSimRules, \n      FSSimState, \n      FSMapState, \n      FSSimValues, \n      FSSimWorkers, \n      FSSimMessagingChannel, \n      $http, \n      $location, \n      stopwatch, \n      WorldMap, \n      WorldMapEdit) \n    {\n\n    // AngularJS will instantiate a singleton by calling \"new\" on this function\n\n    var thisService = this;\n\n  \n    this.myStopwatch = stopwatch;\n    this.taskTimeScalarDivVis = 'hidden';\n    this.defaultDocumentName = {input: 'My Account Name'};\n    this.documentName = angular.copy(this.defaultDocumentName);\n\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createSimRules = function( data, url) {\n      console.log('createSimRules');\n      this.taskTimeScalarDivVis ='';\n      FSSimRules.set(data, url);\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createSimState = function(data, url) {\n      console.log('createSimState');\n     \n      FSSimState.set(data, url);\n      FSSimMessagingChannel.updateGoals();\n      stopwatch.reset();\n      stopwatch.start();\n    };\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createSimWorldMap = function(data, url) {\n      console.log('createSimWorldMap');\n\n      WorldMap.set(data);\n      WorldMapEdit.set(data, url); // also init editor with this data.\n    };\n\n\n    /**\n     * @desc \n     * @return \n     */\n    this.createMapState = function(data, url) {\n      console.log('createSimMapState');\n\n      FSMapState.set(data, url); \n    };\n\n        /**\n     * @desc \n     * @return \n     */\n    this.createSimValues = function(data, url) {\n      console.log('createSimValues');\n\n      FSSimValues.set(data, url); \n    };\n\n            /**\n     * @desc \n     * @return \n     */\n    this.createSimWorkers = function(data, url) {\n      console.log('createSimWorkers');\n\n      FSSimWorkers.set(data, url); \n    };\n\n    this.master = {\n      'craftyrules' : {url: 'https://api.myjson.com/bins/3ji5e', onLoad: this.createSimRules, data:null},\n      'craftystate' : {url: 'https://api.myjson.com/bins/1a9rm', onLoad: this.createSimState, data:null},\n      'craftymap' : {url: 'https://api.myjson.com/bins/1yomi', onLoad: this.createSimWorldMap, data:null},\n      'mapstate' : {url: 'https://api.myjson.com/bins/42y9a', onLoad: this.createMapState, data:null},\n      'simvalues' : {url: 'https://api.myjson.consolem/bins/4rrxs', onLoad: this.createSimValues, data:null},\n      'simworkers' : {url: 'https://api.myjson.com/bins/4xb60', onLoad: this.createSimWorkers, data:null},\n\n\n     // 'craftyrules' : {url: 'http://localhost:9000/json/rules.json', onLoad: this.createSimRules, data:null},\n     // 'craftystate' : {url: 'http://localhost:9000/json/state.json', onLoad: this.createSimState, data:null},\n     // 'craftymap' : {url: 'http://localhost:9000/json/worldmap.json', onLoad: this.createSimWorldMap, data:null}\n    };\n\n    this.user = angular.copy(this.master);\n\n   /**\n     * @desc \n     * @return \n     */\n    this.loadAndCreateSim = function() {\n\n      var successRefCount = 0;\n\n      for ( var thisJSONindex in this.user) {\n\n        var thisJSON = this.user[thisJSONindex];\n\n              $http.get(thisJSON.url,{\n                  params: {\n                      dataType: 'json',\n                      headers: {\n                          'Access-Control-Allow-Origin': '*',\n                          'Access-Control-Request-Headers' : 'access-control-allow-origin'\n                      }\n                  }\n              }).success(function(json) {\n\n                thisService.user[json.title].data = json;\n    \n                successRefCount ++;\n                console.log('refcount:' + successRefCount);\n\n                if ( successRefCount === Object.keys(thisService.user).length) {\n                      for ( var loadJSONkey in thisService.user) {   \n                          if ( thisService.user[loadJSONkey].onLoad !== null) {\n                            thisService.user[loadJSONkey].onLoad( thisService.user[loadJSONkey].data, thisService.user[loadJSONkey].url);\n                          } else {\n                            window.alert('Validation failed for ' + thisService.user[loadJSONkey].url);\n                          }\n                      }\n                      $location.path('/'); \n                }\n\n              }).error(function(json) {\n                  json = json;\n                  window.alert('JSON load failed for' + thisJSON.url);\n              });\n         }\n    };\n\n\n    this.loadAndCreateSim();\n\n\n \n\n\n\n\n   \n\n\n    \n  }]);\n",
 			"file": "app/scripts/services/util/fsjsonloader.js",
 			"file_size": 4916,
 			"file_write_time": 130899108510000000,
 			"settings":
 			{
-				"buffer_size": 4917,
+				"buffer_size": 4922,
 				"line_ending": "Unix"
 			}
 		},
@@ -433,6 +441,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"window.alert",
+			"window.al",
+			"stateURL",
 			"maxWorkers",
 			"recipesimulationmaxworkers",
 			"maxWorkers",
@@ -557,10 +568,7 @@
 			"gem",
 			"FSContextConsole",
 			"FSTask",
-			"isCraftable",
-			"isHarvestable",
-			"isGatherable",
-			"lumber"
+			"isCraftable"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -600,15 +608,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11408,
+						"buffer_size": 11440,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5462,
-								5462
+								7433,
+								7366
 							]
 						],
 						"settings":
@@ -618,7 +626,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1942.0,
+						"translation.y": 2770.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -626,6 +634,36 @@
 				},
 				{
 					"buffer": 1,
+					"file": "app/views/pages/craft.html",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1072,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 361.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "app/views/pages/rules.html",
 					"semi_transient": false,
 					"settings":
@@ -651,11 +689,11 @@
 						"translation.y": 909.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "app/scripts/controllers/main.js",
 					"semi_transient": false,
 					"settings":
@@ -678,27 +716,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1141.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "/Users/colinmoore/dev/crafty/app/scripts/services/json/fsmapstate.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3587,
+						"buffer_size": 3678,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								386,
-								385
+								1741,
+								1741
 							]
 						],
 						"settings":
@@ -708,14 +746,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 758.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "app/scripts/services/json/fssimvalues.js",
 					"semi_transient": false,
 					"settings":
@@ -727,8 +765,8 @@
 						"selection":
 						[
 							[
-								768,
-								768
+								1054,
+								1062
 							]
 						],
 						"settings":
@@ -738,14 +776,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 855.0,
+						"translation.y": 115.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "app/scripts/services/json/fssimworkers.js",
 					"semi_transient": false,
 					"settings":
@@ -771,11 +809,11 @@
 						"translation.y": 1881.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "app/json/rules.json",
 					"semi_transient": false,
 					"settings":
@@ -801,11 +839,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "app/json/mapstate.json",
 					"semi_transient": false,
 					"settings":
@@ -832,24 +870,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "app/scripts/services/util/fsjsonloader.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4917,
+						"buffer_size": 4922,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2388,
-								2388
+								2725,
+								2744
 							]
 						],
 						"settings":
@@ -866,7 +904,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "app/scripts/services/json/fssimrules.js",
 					"semi_transient": false,
 					"settings":
@@ -892,11 +930,11 @@
 						"translation.y": 372.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"semi_transient": false,
 					"settings":
 					{
@@ -1042,11 +1080,11 @@
 						"translation.y": 1170.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "app/scripts/services/map/worldmap.js",
 					"semi_transient": false,
 					"settings":
@@ -1072,11 +1110,11 @@
 						"translation.y": 353.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 13,
 					"file": "app/index.html",
 					"semi_transient": false,
 					"settings":
@@ -1088,8 +1126,8 @@
 						"selection":
 						[
 							[
-								5383,
-								5383
+								3203,
+								3203
 							]
 						],
 						"settings":
@@ -1099,14 +1137,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1321.0,
+						"translation.y": 639.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 14,
 					"file": "app/views/pages/simworkers.html",
 					"semi_transient": false,
 					"settings":
@@ -1130,11 +1168,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 15,
 					"file": "app/views/pages/simvalues.html",
 					"semi_transient": false,
 					"settings":
@@ -1146,8 +1184,8 @@
 						"selection":
 						[
 							[
-								0,
-								645
+								371,
+								371
 							]
 						],
 						"settings":
@@ -1158,7 +1196,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
