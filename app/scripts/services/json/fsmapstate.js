@@ -70,7 +70,8 @@ angular.module('craftyApp')
               //var content = this.response.feed.entry[rowIndex].content;
               //console.log( angular.toJson(content));
 
-              for (var colIndex = 0; colIndex < 64; colIndex++) { 
+              var colIndex = 0;
+              while (this.response.feed.entry[rowIndex].hasOwnProperty('gsx$h'+(colIndex+1))) { 
 
                 var cell = this.response.feed.entry[rowIndex]['gsx$h'+(colIndex+1)];
                 //console.log( 'row:'+rowIndex +', col:'+colIndex + ' : ' + angular.toJson(cell));
@@ -80,7 +81,8 @@ angular.module('craftyApp')
                     cellValue = '_';
                 }
 
-                row.push(cellValue);
+                row.push(cellValue  );
+                colIndex ++;
               }
 
               map.rows.push(row);
